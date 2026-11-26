@@ -27,6 +27,23 @@
 
 <nav class="lam-nav hidden" id="dieuHuong" aria-label="Chuyển nhanh tới câu"></nav>
 
+<div id="manKhoa" class="man-khoa hidden" role="alertdialog" aria-modal="true" aria-labelledby="mkTieuDe">
+  <div class="card">
+    <div class="o-khoa">🔒</div>
+    <h3 id="mkTieuDe">Bài của em đang bị khoá</h3>
+    <p>Em đã rời khỏi màn hình làm bài <b>2 lần</b>. Em giơ tay báo thầy để thầy mở khoá. Các câu đã làm vẫn được giữ.</p>
+    <p class="small muted">Đồng hồ vẫn chạy. Trang tự mở lại khi thầy mở khoá. Nếu rời màn hình thêm lần nữa, bài sẽ <b>tự nộp</b>.</p>
+    <p class="small muted" id="mkLuc"></p>
+  </div>
+</div>
+
+<dialog id="dCanhBao" class="card">
+  <h3>⚠ Cảnh báo lần 1</h3>
+  <p>Em vừa rời khỏi màn hình làm bài. Đây là bài <b>thi nghiêm</b>:</p>
+  <ul class="small"><li>Lần 2: bài bị khoá, chờ thầy mở.</li><li>Lần 3: bài tự nộp.</li></ul>
+  <div class="row"><button class="btn blue" id="btnDaHieu">Em đã hiểu, làm tiếp</button></div>
+</dialog>
+
 <dialog id="dNop" class="card">
   <h3>Nộp bài?</h3>
   <p id="nopTom"></p>
@@ -45,6 +62,8 @@
   const NHAN = CH.NHAN;
 
   let DE = null, A = {}, BAN = {}, lechGio = 0, hanNop = 0, daNop = false, dangGui = false, henGui = null, henDongHo = null;
+  let TN = false, biKhoa = false, viPham = 0, roiLuc = 0, henKhoa = null, giuSang = null;
+  const KHOA_VP = "vp-" + maBai + "-" + (hoSo.id || "");      // rời màn hình mà chưa kịp báo máy chủ (trang bị tắt, mất mạng)
 
   /* ---------- lưu trong máy: không mất câu đã làm khi rớt mạng, tắt trình duyệt ---------- */
   function luuMay() { API.LS.set(KHOA_LUU, JSON.stringify({ A, BAN })); }
@@ -57,7 +76,7 @@
 
   /* ---------- gửi theo lô ---------- */
   async function gui(nop) {
-    if (dangGui && !nop) return;
+    if ((dangGui || biKhoa) && !nop) return;
     const goiDi = Object.assign({}, nop ? A : BAN);
     if (!nop && !Object.keys(goiDi).length) return;
     dangGui = true;
@@ -68,6 +87,7 @@
       return true;
     } catch (e) {
       if (e.ma === "da-nop") { daNop = true; API.LS.set(KHOA_LUU, null); return "da-nop"; }
+      if (e.ma === "bi-khoa-thi") { if (!nop) moKhoa(); return false; }
       if (e.ma === "het-phien") { bao("Phiên đăng nhập đã hết. Câu trả lời vẫn được giữ trong máy: em <a href='./'>đăng nhập lại</a> rồi vào lại bài.", "red"); }
       return false;
     } finally { dangGui = false; trangThaiLuu(); }
@@ -78,8 +98,72 @@
   document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden" && !daNop) gui(); });
 
   function chon(i, v) {
-    if (daNop) return;
+    if (daNop || biKhoa) return;
     A[i] = v; BAN[i] = v; luuMay(); trangThaiLuu(); danhDau(i);
+  }
+
+  /* ---------- thi nghiêm: rời màn hình lần 1 cảnh báo, lần 2 khoá chờ thầy mở, lần 3 tự nộp ---------- */
+  function roi() {
+    if (!TN || daNop || biKhoa || roiLuc) return;
+    roiLuc = Date.now(); API.LS.set(KHOA_VP, String(roiLuc));
+  }
+  function quayLai() {
+    if (document.visibilityState === "visible") giuManHinh();
+    if (!roiLuc || document.visibilityState !== "visible" || !document.hasFocus()) return;
+    const lau = Date.now() - roiLuc; roiLuc = 0;
+    if (lau < 1000) { API.LS.set(KHOA_VP, null); return; }       // chớp nhoáng (thông báo hệ thống): bỏ qua
+    baoViPham();
+  }
+  document.addEventListener("visibilitychange", () => document.visibilityState === "hidden" ? roi() : quayLai());
+  window.addEventListener("blur", roi);
+  window.addEventListener("focus", quayLai);
+  async function giuManHinh() {                                  // giữ màn hình sáng để máy không tự tắt màn hình giữa giờ
+    if (!TN || daNop || giuSang || !navigator.wakeLock) return;
+    try { giuSang = await navigator.wakeLock.request("screen"); giuSang.addEventListener("release", () => { giuSang = null; }); } catch (e) { }
+  }
+  async function baoViPham() {
+    if (daNop) return;
+    let r = null;
+    for (let lan = 0; !r && lan < 6; lan++) {
+      try { r = await P.goi("hs.viPham", { maBai, traLoi: Object.assign({}, BAN) }); }
+      catch (e) { if (e.ma === "da-nop") { r = { daNop: true }; break; } await API.sleep(4000); }
+    }
+    if (!r) return;                                              // vẫn giữ dấu trong máy, lần mở trang sau sẽ báo lại
+    API.LS.set(KHOA_VP, null);
+    if (r.daLuu) { BAN = {}; luuMay(); trangThaiLuu(); }
+    viPham = r.viPham || viPham;
+    if (r.daNop) return xongNop("Em đã rời khỏi màn hình làm bài <b>3 lần</b> nên bài đã được <b>tự nộp</b>.");
+    if (r.khoa) return moKhoa();
+    if (viPham === 1 && !$("#dCanhBao").open) $("#dCanhBao").showModal();
+    veTinhTrangTN();
+  }
+  $("#btnDaHieu").onclick = () => $("#dCanhBao").close();
+  function veTinhTrangTN() {
+    const el = $("#tnTom"); if (!el) return;
+    el.innerHTML = viPham ? `Em đã rời màn hình <b>${viPham}</b> lần.` + (viPham >= 2 ? " Lần nữa bài sẽ tự nộp." : " Lần 2 bài sẽ bị khoá.") : "";
+  }
+  function moKhoa() {
+    biKhoa = true; viPham = Math.max(viPham, 2);
+    if ($("#dCanhBao").open) $("#dCanhBao").close();
+    if ($("#dNop").open) $("#dNop").close();
+    $("#manKhoa").classList.remove("hidden");
+    clearTimeout(henKhoa); henKhoa = setTimeout(hoiKhoa, 6000);
+  }
+  async function hoiKhoa() {
+    clearTimeout(henKhoa);
+    if (!biKhoa || daNop) return;
+    try {
+      const r = await P.goi("hs.trangThaiThi", { maBai });
+      $("#mkLuc").textContent = "Kiểm tra lúc " + new Date().toLocaleTimeString("vi-VN");
+      if (r.daNop) { biKhoa = false; $("#manKhoa").classList.add("hidden"); return xongNop("Bài đã được nộp."); }
+      if (!r.khoa) {
+        biKhoa = false; viPham = r.viPham; $("#manKhoa").classList.add("hidden");
+        bao("🔓 Thầy đã mở khoá. Em làm tiếp nhé. Nếu rời màn hình thêm lần nữa, bài sẽ <b>tự nộp</b>.", "green");
+        veTinhTrangTN(); if (Object.keys(BAN).length) gui();
+        return;
+      }
+    } catch (e) { }
+    henKhoa = setTimeout(hoiKhoa, 6000);
   }
 
   /* ---------- vẽ đề ---------- */
@@ -132,23 +216,30 @@
       await API.sleep(10000); r = await gui(true);
     }
     if (!r) { $("#btnNop").disabled = false; return bao("Vẫn chưa nộp được. Em kiểm tra mạng rồi bấm Nộp bài lần nữa. Nếu đã hết giờ, máy chủ sẽ tự chấm các câu đã gửi trước đó.", "red"); }
-    daNop = true; API.LS.set(KHOA_LUU, null); trangThaiLuu();
-    $("#deBai").innerHTML = ""; $("#dieuHuong").classList.add("hidden"); $("#hangNop").classList.add("hidden"); $("#dongHo").textContent = "";
+    xongNop();
+  }
+  function xongNop(loiBao) {
+    daNop = true; biKhoa = false; clearTimeout(henDongHo); clearTimeout(henKhoa); clearInterval(henGui);
+    API.LS.set(KHOA_LUU, null); API.LS.set(KHOA_VP, null); trangThaiLuu();
+    $("#manKhoa").classList.add("hidden"); if ($("#dCanhBao").open) $("#dCanhBao").close();
+    if (giuSang) giuSang.release().catch(() => { });
+    $("#deBai").innerHTML = ""; $("#dieuHuong").classList.add("hidden"); $("#hangNop").classList.add("hidden"); $("#dongHo").textContent = ""; $("#btnVe").classList.remove("hidden");
+    loiTuNop = loiBao || "";
     xemKetQua();
   }
 
   /* ---------- kết quả: mở khi cả lớp đã nộp ---------- */
-  let henKQ = null;
+  let henKQ = null, loiTuNop = "";
   async function xemKetQua() {
     clearTimeout(henKQ);
     let r;
     try { r = await P.goi("hs.ketQua", { maBai }); }
     catch (e) { bao(esc(e.message), "red"); henKQ = setTimeout(xemKetQua, 30000); return; }
     if (r.cho) {
-      bao(`✅ Em đã nộp bài. Điểm và lời giải sẽ hiện khi cả lớp nộp xong (đã nộp <b>${r.daNop}/${r.tong}</b>). Trang tự cập nhật, em cũng có thể quay lại sau.`, "green");
+      bao((loiTuNop ? loiTuNop + "<br>" : "") + `✅ Em đã nộp bài. Điểm và lời giải sẽ hiện khi cả lớp nộp xong (đã nộp <b>${r.daNop}/${r.tong}</b>). Trang tự cập nhật, em cũng có thể quay lại sau.`, "green");
       henKQ = setTimeout(xemKetQua, 30000); return;
     }
-    bao("");
+    bao(loiTuNop, "red");
     $("#tenBai").textContent = r.bai.ten; $("#trangThaiLuu").textContent = "Kết quả";
     let h = `<div class="diem-to"><span>Điểm của em</span><b>${CH.day(r.diem)}</b><small>/ 10</small></div>`, loai = "";
     r.cau.forEach((c, n) => {
@@ -175,6 +266,15 @@
     lechGio = new Date(r.bayGio).getTime() - Date.now();
     hanNop = new Date(r.hanNop).getTime();
     veDe(); trangThaiLuu(); dongHo(); henLich();
+    TN = !!r.thiNghiem; viPham = r.viPham || 0;
+    if (TN) {
+      $("#btnVe").classList.add("hidden");                       // không có nút thoát giữa giờ: rời trang cũng tính là rời màn hình
+      $("#deBai").insertAdjacentHTML("afterbegin", `<div class="note yellow tn-note">🔒 <b>Bài thi nghiêm.</b> Em không rời khỏi màn hình làm bài (chuyển ứng dụng, mở tab khác, tắt màn hình). Lần 1: cảnh báo. Lần 2: bài bị khoá, chờ thầy mở. Lần 3: bài tự nộp. <span id="tnTom"></span></div>`);
+      veTinhTrangTN(); giuManHinh();
+      const cu = +API.LS.get(KHOA_VP) || 0;                       // lần trước rời trang mà chưa báo được
+      if (cu && Date.now() - cu > 3000) baoViPham(); else API.LS.set(KHOA_VP, null);   // tải lại trang nhanh thì không tính
+      if (r.khoa) moKhoa();
+    }
     if (Object.keys(BAN).length) gui();
     window.addEventListener("beforeunload", e => { if (!daNop && Object.keys(BAN).length) { e.preventDefault(); e.returnValue = ""; } });
   })();

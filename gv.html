@@ -76,6 +76,7 @@
           <label class="f chk"><span><input name="moNgay" type="checkbox" checked> Mở cho học sinh ngay</span></label>
           <label class="f chk"><span><input name="tronCau" type="checkbox" checked> Đảo thứ tự câu</span></label>
           <label class="f chk"><span><input name="tronPA" type="checkbox" checked> Đảo phương án A–D</span></label>
+          <label class="f chk" title="Rời màn hình làm bài lần 1: cảnh báo. Lần 2: khoá, chờ thầy mở trong bảng Theo dõi. Lần 3: tự nộp."><span><input name="thiNghiem" type="checkbox" checked> Thi nghiêm (rời màn hình: cảnh báo → khoá → tự nộp)</span></label>
         </form>
 
         <h4 style="margin:18px 0 6px">Ma trận</h4>
@@ -498,7 +499,7 @@
   async function taiBai() {
     try { dsBai = (await goi("gv.dsBai")).bai; } catch (e) { return bao(esc(e.message), "red"); }
     $("#tBai tbody").innerHTML = dsBai.length ? dsBai.map(b => `<tr class="${baiGS === b.maBai ? "sel" : ""}">
-      <td><b>${esc(b.ten)}</b><br><span class="small muted">${esc(b.mon)} ${b.lop} · tạo ${ngay(b.taoLuc)}${b.trangThai === "hen" ? " · mở " + ngay(b.moLuc) : ""}${b.dongLuc ? " · đóng " + ngay(b.dongLuc) : ""}${b.tuyChon && (!b.tuyChon.tronCau || !b.tuyChon.tronPA) ? " · " + [!b.tuyChon.tronCau && "không đảo câu", !b.tuyChon.tronPA && "không đảo phương án"].filter(Boolean).join(", ") : ""}</span></td>
+      <td><b>${esc(b.ten)}</b><br><span class="small muted">${esc(b.mon)} ${b.lop} · tạo ${ngay(b.taoLuc)}${b.trangThai === "hen" ? " · mở " + ngay(b.moLuc) : ""}${b.dongLuc ? " · đóng " + ngay(b.dongLuc) : ""}${b.tuyChon && (!b.tuyChon.tronCau || !b.tuyChon.tronPA || !b.tuyChon.thiNghiem) ? " · " + [!b.tuyChon.tronCau && "không đảo câu", !b.tuyChon.tronPA && "không đảo phương án", !b.tuyChon.thiNghiem && "không thi nghiêm"].filter(Boolean).join(", ") : ""}</span></td>
       <td>${esc(b.tenLop)}</td><td class="num">${b.soCau}</td><td class="num">${b.thoiGian}</td>
       <td><span class="tt ${b.trangThai}">${TT_BAI[b.trangThai] || b.trangThai}</span>${b.congBo ? ' <span class="tt ok">đã công bố</span>' : ""}</td>
       <td class="num">${b.daVao} / ${b.daNop}</td>
@@ -534,14 +535,18 @@
     $("#gsTom").innerHTML = `<span class="tt nop">${n("nop")} đã nộp</span> <span class="tt lam">${n("lam")} đang làm</span> <span class="tt chua">${n("chua")} chưa vào</span>
       ${diem.length ? ` · điểm trung bình <b>${(diem.reduce((a, b) => a + b, 0) / diem.length).toFixed(2).replace(".", ",")}</b>` : ""}
       · kết quả ${bai.ketQuaMo ? "<b>đã mở</b> cho học sinh" : "chưa mở (mở khi cả lớp nộp xong, khi đóng bài, hoặc khi thầy bấm Công bố)"}
-      ${hs.some(h => h.viPham) ? `<br>⚠ Vi phạm khi thi: ${hs.filter(h => h.viPham).map(h => `<b>${esc(h.hoTen)}</b> (${h.viPham} lần)`).join(", ")}` : ""}`;
-    $("#tGS tbody").innerHTML = hs.map((h, i) => `<tr><td>${i + 1}</td><td>${esc(h.hoTen)}</td><td><span class="tt ${h.trangThai}">${TT[h.trangThai]}</span></td>
+      ${hs.some(h => h.khoa) ? `<div class="note red" style="margin:8px 0 4px">🔒 Đang khoá chờ thầy mở: ${hs.filter(h => h.khoa).map(h => `<b>${esc(h.hoTen)}</b>`).join(", ")}. <button class="btn sm green" id="btnMoKhoaHet">Mở khoá tất cả</button></div>` : ""}
+      ${hs.some(h => h.viPham) ? `<br>⚠ Rời màn hình khi thi: ${hs.filter(h => h.viPham).map(h => `<b>${esc(h.hoTen)}</b> (${h.viPham} lần)`).join(", ")}` : ""}`;
+    $("#tGS tbody").innerHTML = hs.map((h, i) => `<tr><td>${i + 1}</td><td>${esc(h.hoTen)}</td><td><span class="tt ${h.trangThai}">${TT[h.trangThai]}</span>${h.khoa ? ` <button class="btn sm green" data-mo-khoa="${esc(h.id)}" title="Em này rời màn hình lần 2">🔓 Mở khoá</button>` : ""}</td>
       <td class="num">${h.trangThai === "chua" ? "" : h.soLam + "/" + bai.soCau}</td><td class="small">${h.batDau ? ngay(h.batDau) : ""}</td><td class="small">${h.nopLuc ? ngay(h.nopLuc) : ""}</td>
       <td class="num">${h.viPham ? `<span class="tt khoa">${h.viPham}</span>` : ""}</td>
       <td class="num"><b>${h.diem == null ? "" : String(h.diem).replace(".", ",")}</b></td></tr>`).join("") || `<tr><td colspan="8" class="muted">Lớp chưa có học sinh đã duyệt.</td></tr>`;
+    const moKhoa = (btn, ids) => cho(btn, async () => { try { const r = await goi("gv.moKhoaThi", { maBai: bai.maBai, hsId: ids }); bao(`Đã mở khoá cho ${r.n} em.`, "green"); giamSat(); } catch (e) { bao(esc(e.message), "red"); } });
+    $$("[data-mo-khoa]").forEach(b => b.onclick = () => moKhoa(b, [b.dataset.moKhoa]));
+    if ($("#btnMoKhoaHet")) $("#btnMoKhoaHet").onclick = () => moKhoa($("#btnMoKhoaHet"), hs.filter(h => h.khoa).map(h => h.id));
     $("#gsLuc").textContent = "cập nhật " + new Date().toLocaleTimeString("vi-VN");
     taiBai().catch(() => { });                                        // số vào / nộp trong danh sách bài cũng cập nhật theo
-    if (bai.trangThai === "mo") henGS = setTimeout(giamSat, 20000);
+    if (bai.trangThai === "mo") henGS = setTimeout(giamSat, hs.some(h => h.khoa) ? 8000 : 20000);   // có em đang chờ mở khoá: cập nhật nhanh hơn
   }
   $("#btnGS").onclick = giamSat;
   const csvQ = v => '"' + String(v == null ? "" : v).replace(/"/g, '""') + '"';
@@ -667,7 +672,7 @@
     if ($$("#tMX input.over").length) return ($("#taoLoi").textContent = "Có ô vượt quá số câu trong ngân hàng (ô đỏ).");
     cho(e.target, async () => {
       try {
-        const r = await goi("gv.taoBai", { ten: f.ten.value, maLop: f.maLop.value, mon: f.mon.value, lop: +f.lop.value, thoiGian: +f.thoiGian.value, dongLuc: f.dongLuc.value ? new Date(f.dongLuc.value).toISOString() : "", moLuc: f.moLuc.value ? new Date(f.moLuc.value).toISOString() : "", moNgay: f.moNgay.checked, tronCau: f.tronCau.checked, tronPA: f.tronPA.checked, maTran: M });
+        const r = await goi("gv.taoBai", { ten: f.ten.value, maLop: f.maLop.value, mon: f.mon.value, lop: +f.lop.value, thoiGian: +f.thoiGian.value, dongLuc: f.dongLuc.value ? new Date(f.dongLuc.value).toISOString() : "", moLuc: f.moLuc.value ? new Date(f.moLuc.value).toISOString() : "", moNgay: f.moNgay.checked, tronCau: f.tronCau.checked, tronPA: f.tronPA.checked, thiNghiem: f.thiNghiem.checked, maTran: M });
         bao(`Đã tạo bài <b>${esc(f.ten.value)}</b>${f.moLuc.value ? `, tự mở lúc ${ngay(new Date(f.moLuc.value).toISOString())}` : f.moNgay.checked ? ", học sinh lớp đó đã thấy bài khi đăng nhập" : ". Bấm “Mở bài” khi muốn cho học sinh làm"}.`, "green");
         $("#cTao").classList.add("hidden"); f.ten.value = ""; await taiBai(); moGS(r.maBai);
       } catch (err) { $("#taoLoi").textContent = err.message; }

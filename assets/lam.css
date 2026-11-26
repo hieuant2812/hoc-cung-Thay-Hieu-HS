@@ -96,3 +96,10 @@ main{padding-top:14px}
 .th-giao .thanh i{display:block;height:100%;background:var(--blue)}
 .th-giao.xong .thanh i{background:var(--green)}
 .th-giao .tien{font:800 16px var(--font-h);color:var(--green)}
+
+/* ===== thi nghiêm ===== */
+.tn-note{font-size:13.5px}
+.man-khoa{position:fixed;inset:0;z-index:1000;background:rgba(15,23,42,.82);display:grid;place-items:center;padding:16px}
+.man-khoa .card{max-width:420px;text-align:center}
+.man-khoa .o-khoa{font-size:54px;line-height:1.2;margin-bottom:8px}
+.man-khoa h3{color:#c21e57}
