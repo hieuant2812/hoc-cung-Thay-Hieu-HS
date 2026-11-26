@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quản lí · Học cùng Thầy Hiếu</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/fonts.css"><link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/hs.css">
+<script src="config.js"></script><script src="assets/api.js"></script>
+<script src="assets/lib/jszip.min.js"></script><script src="assets/nhd/core.js"></script><script src="assets/nhd/store.js"></script>
+</head>
+<body>
+<header class="top"><div class="wrap mid in">
+  <a class="logo" href="gv.html"><span class="mk">H</span><span><b>Học cùng <span>Thầy Hiếu</span></b><small>Trang quản lí của giáo viên</small></span></a>
+  <nav class="nav hidden" id="nav"><a href="./">Trang học sinh</a><a href="#" id="btnThoat">Đăng xuất</a></nav>
+</div></header>
+
+<main><div class="wrap mid">
+  <div id="thongBao"></div>
+
+  <section id="vDN" class="hidden">
+    <form id="fDN" class="card form" style="max-width:420px;margin:20px auto">
+      <h3>Giáo viên đăng nhập</h3>
+      <label class="f">Khoá giáo viên (KHOA_GV trong Apps Script)<input name="khoa" type="password" autocomplete="current-password" required></label>
+      <div class="loi" role="alert"></div>
+      <button class="btn blue full" type="submit">Vào trang quản lí</button>
+    </form>
+  </section>
+
+  <section id="vQL" class="hidden">
+    <div class="tabs lg" role="tablist">
+      <button data-tab="lop" role="tab" aria-selected="true">👥 Lớp học</button>
+      <button data-tab="nh" role="tab" aria-selected="false">📚 Ngân hàng đề</button>
+    </div>
+
+    <!-- ===== lớp học ===== -->
+    <div class="pane on" data-pane="lop">
+      <div class="card">
+        <form id="fLop" class="row left">
+          <label class="f" style="flex:1;min-width:180px">Tạo lớp mới<input name="tenLop" type="text" placeholder="VD: 12A1" required></label>
+          <button class="btn green" type="submit" style="align-self:end">＋ Tạo lớp</button>
+        </form>
+        <p class="small muted" style="margin:8px 0 0">Mỗi lớp có một <b>mã lớp</b> 6 kí tự. Thầy đưa mã cho học sinh để các em tự tạo tài khoản, rồi duyệt ở bảng bên dưới.</p>
+        <div class="tbl-wrap" style="margin-top:12px"><table class="tbl" id="tLop"><thead><tr><th>Lớp</th><th>Mã lớp</th><th class="num">Học sinh</th><th class="num">Chờ duyệt</th><th></th></tr></thead><tbody></tbody></table></div>
+      </div>
+
+      <div class="card hidden" id="cHS" style="margin-top:18px">
+        <h3 id="hsTieuDe">Học sinh</h3>
+        <div class="toolbar">
+          <button class="btn sm green" id="btnDuyetHet">✓ Duyệt tất cả đang chờ</button>
+          <button class="btn sm ghost" id="btnDuyet">Duyệt / mở khoá mục đã chọn</button>
+          <button class="btn sm ghost" id="btnKhoa">Khoá mục đã chọn</button>
+          <button class="btn sm ghost" id="btnXoa">Xoá mục đã chọn</button>
+          <span class="sp"></span>
+          <button class="btn sm ghost" id="btnDongLop"></button>
+        </div>
+        <div id="mkTam"></div>
+        <div class="tbl-wrap"><table class="tbl" id="tHS"><thead><tr><th><input type="checkbox" id="chonHet" aria-label="Chọn tất cả"></th><th>Họ và tên</th><th>Tên đăng nhập</th><th>Trạng thái</th><th>Đăng nhập gần nhất</th><th></th></tr></thead><tbody></tbody></table></div>
+      </div>
+    </div>
+
+    <!-- ===== ngân hàng đề ===== -->
+    <div class="pane" data-pane="nh">
+      <div class="card">
+        <h3>Nạp ngân hàng đề (LaTeX)</h3>
+        <p class="small muted" style="margin-top:0">Cùng định dạng với trang Ra đề: <code>\cauTN</code>, <code>\cauDS</code>, <code>\cauTLN</code>, mã câu dạng <code>T10-C1-B1-D01-NB-001</code>. Câu trùng mã sẽ được ghi đè bằng bản mới. Ngân hàng nằm trong Trang tính của thầy, học sinh không xem được.</p>
+        <div class="row left" style="margin-bottom:12px">
+          <label class="f">Môn<select id="selMon"><option>Toán</option><option>Vật lí</option><option>Hoá học</option><option>KHTN</option></select></label>
+          <label class="f">Lớp (khi file không ghi rõ)<select id="selLop"><option value="">Tự nhận</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option></select></label>
+        </div>
+        <div class="drop" id="drop">
+          <div class="ico">📥</div><b>Kéo thả file .tex, .zip hoặc cả thư mục vào đây</b>
+          <span class="small muted">hoặc</span>
+          <div class="row" style="justify-content:center;margin-top:8px">
+            <label class="btn sm ghost">Chọn file<input type="file" id="inFile" accept=".tex,.zip" multiple hidden></label>
+            <label class="btn sm ghost">Chọn thư mục<input type="file" id="inDir" webkitdirectory hidden></label>
+          </div>
+        </div>
+        <div id="ketQuaDoc"></div>
+        <div class="prog hidden" id="prog"><i></i></div>
+      </div>
+
+      <div class="card" style="margin-top:18px">
+        <div class="row" style="justify-content:space-between"><h3 style="margin:0">Ngân hàng trên máy chủ</h3><button class="btn sm ghost" id="btnTaiNH">⟳ Tải lại</button></div>
+        <div class="tbl-wrap" style="margin-top:12px"><table class="tbl" id="tNH"><thead><tr><th>Môn</th><th class="num">Lớp</th><th class="num">Tổng</th><th class="num">TN</th><th class="num">Đ/S</th><th class="num">TLN</th><th class="num">NB</th><th class="num">TH</th><th class="num">VD</th><th class="num">VDC</th><th></th></tr></thead><tbody></tbody></table></div>
+      </div>
+    </div>
+  </section>
+</div></main>
+
+<footer class="foot"><div class="wrap"><div class="dev" id="chanTrang"></div></div></footer>
+
+<script>
+(function () {
+  "use strict";
+  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+  const P = API.phien("gv"), esc = API.esc;
+  $("#chanTrang").textContent = (window.SITE || {}).chanTrang || "";
+  const bao = (html, kieu) => { $("#thongBao").innerHTML = html ? `<div class="note ${kieu || "blue"}">${html}</div>` : ""; };
+  const ngay = s => { if (!s) return "—"; const d = new Date(s); return isNaN(d) ? "—" : d.toLocaleString("vi-VN", { dateStyle: "short", timeStyle: "short" }); };
+  async function cho(btn, fn) { const t = btn.textContent; btn.disabled = true; btn.textContent = "Đang xử lí…"; try { return await fn(); } finally { btn.disabled = false; btn.textContent = t; } }
+  async function goi(action, data) {
+    try { return await P.goi(action, data); }
+    catch (e) { if (e.ma === "het-phien") { P.token = null; moDN(); } throw e; }
+  }
+
+  function moDN() { $("#vQL").classList.add("hidden"); $("#nav").classList.add("hidden"); $("#vDN").classList.remove("hidden"); }
+  function moQL() { $("#vDN").classList.add("hidden"); $("#vQL").classList.remove("hidden"); $("#nav").classList.remove("hidden"); taiLop(); }
+
+  $("#fDN").onsubmit = async e => {
+    e.preventDefault(); const f = e.target; f.querySelector(".loi").textContent = "";
+    await cho(f.querySelector("button"), async () => {
+      try { const r = await API.goi("gv.dangNhap", { khoa: f.khoa.value }); P.token = r.token; f.reset(); bao(""); moQL(); }
+      catch (err) { f.querySelector(".loi").textContent = err.message; }
+    });
+  };
+  $("#btnThoat").onclick = e => { e.preventDefault(); P.token = null; moDN(); };
+
+  $$("[data-tab]").forEach(b => b.onclick = () => {
+    $$("[data-tab]").forEach(x => x.setAttribute("aria-selected", String(x === b)));
+    $$("[data-pane]").forEach(p => p.classList.toggle("on", p.dataset.pane === b.dataset.tab));
+    if (b.dataset.tab === "nh") taiNH();
+  });
+
+  /* ================= lớp học ================= */
+  let dsLop = [], lopChon = null, dsHS = [];
+  async function taiLop() {
+    try { dsLop = (await goi("gv.dsLop")).lop; } catch (e) { return bao(esc(e.message), "red"); }
+    $("#tLop tbody").innerHTML = dsLop.length ? dsLop.map(l => `<tr data-ma="${esc(l.maLop)}" class="${lopChon === l.maLop ? "sel" : ""}">
+      <td><b>${esc(l.tenLop)}</b>${l.dong ? ' <span class="tt khoa">đã đóng</span>' : ""}</td><td><span class="ma">${esc(l.maLop)}</span></td>
+      <td class="num">${l.soHS}</td><td class="num">${l.choDuyet ? `<span class="tt cho">${l.choDuyet}</span>` : 0}</td>
+      <td><button class="btn sm ghost" data-xem="${esc(l.maLop)}">Xem học sinh</button></td></tr>`).join("")
+      : `<tr><td colspan="5" class="muted">Chưa có lớp nào. Thầy tạo lớp ở ô phía trên.</td></tr>`;
+    $$("[data-xem]").forEach(b => b.onclick = () => { lopChon = b.dataset.xem; $("#mkTam").innerHTML = ""; taiLop(); });
+    if (lopChon) xemLop(lopChon, true);
+  }
+  $("#fLop").onsubmit = async e => {
+    e.preventDefault(); const f = e.target;
+    await cho(f.querySelector("button"), async () => {
+      try { const r = await goi("gv.taoLop", { tenLop: f.tenLop.value }); f.reset(); lopChon = r.maLop; bao(`Đã tạo lớp <b>${esc(r.tenLop)}</b>, mã lớp <span class="ma">${esc(r.maLop)}</span>. Thầy gửi mã này cho học sinh.`, "green"); taiLop(); }
+      catch (err) { bao(esc(err.message), "red"); }
+    });
+  };
+
+  async function xemLop(ma, giuThongBao) {
+    lopChon = ma; const l = dsLop.find(x => x.maLop === ma) || { tenLop: ma };
+    $$("#tLop tbody tr").forEach(tr => tr.classList.toggle("sel", tr.dataset.ma === ma));
+    $("#cHS").classList.remove("hidden");
+    $("#hsTieuDe").innerHTML = `Học sinh lớp ${esc(l.tenLop)} <span class="ma">${esc(ma)}</span>`;
+    $("#btnDongLop").textContent = l.dong ? "Mở lại lớp (cho đăng kí)" : "Đóng lớp (ngừng đăng kí)";
+    if (!giuThongBao) $("#mkTam").innerHTML = "";
+    try { dsHS = (await goi("gv.dsHS", { maLop: ma })).hs; } catch (e) { return bao(esc(e.message), "red"); }
+    const TT = { cho: "chờ duyệt", ok: "đã duyệt", khoa: "đã khoá" };
+    dsHS.sort((a, b) => (a.trangThai === "cho" ? 0 : 1) - (b.trangThai === "cho" ? 0 : 1) || a.hoTen.split(" ").pop().localeCompare(b.hoTen.split(" ").pop(), "vi"));
+    $("#tHS tbody").innerHTML = dsHS.length ? dsHS.map(h => `<tr>
+      <td><input type="checkbox" class="chon" value="${esc(h.id)}" aria-label="Chọn ${esc(h.hoTen)}"></td>
+      <td>${esc(h.hoTen)}</td><td>${esc(h.tenDN)}</td><td><span class="tt ${esc(h.trangThai)}">${TT[h.trangThai] || esc(h.trangThai)}</span></td>
+      <td class="small">${ngay(h.dangNhapCuoi)}</td>
+      <td><button class="btn sm ghost" data-mk="${esc(h.id)}">Đặt lại mật khẩu</button></td></tr>`).join("")
+      : `<tr><td colspan="6" class="muted">Chưa có em nào đăng kí. Học sinh vào trang học sinh → Tạo tài khoản → nhập mã lớp.</td></tr>`;
+    $("#chonHet").checked = false;
+    $$("[data-mk]").forEach(b => b.onclick = () => cho(b, async () => {
+      try { const r = await goi("gv.datLaiMatKhau", { id: b.dataset.mk }); $("#mkTam").innerHTML = `<div class="note green">Mật khẩu tạm của <b>${esc(r.tenDN)}</b>: <span class="ma">${esc(r.matKhauTam)}</span>. Em đăng nhập rồi vào <b>Đổi mật khẩu</b> để đặt mật khẩu mới.</div>`; }
+      catch (err) { bao(esc(err.message), "red"); }
+    }));
+  }
+  $("#chonHet").onchange = e => $$(".chon").forEach(c => c.checked = e.target.checked);
+  const daChon = () => $$(".chon:checked").map(c => c.value);
+  async function doiTT(btn, ids, tt) {
+    if (!ids.length) return bao("Thầy chưa chọn học sinh nào.", "");
+    if (tt === "xoa" && !confirm(`Xoá hẳn ${ids.length} tài khoản? Không khôi phục được.`)) return;
+    await cho(btn, async () => {
+      try { const r = await goi("gv.doiTrangThai", { ids, trangThai: tt }); bao(`Đã cập nhật ${r.n} học sinh.`, "green"); await taiLop(); }
+      catch (err) { bao(esc(err.message), "red"); }
+    });
+  }
+  $("#btnDuyetHet").onclick = e => doiTT(e.target, dsHS.filter(h => h.trangThai === "cho").map(h => h.id), "ok");
+  $("#btnDuyet").onclick = e => doiTT(e.target, daChon(), "ok");
+  $("#btnKhoa").onclick = e => doiTT(e.target, daChon(), "khoa");
+  $("#btnXoa").onclick = e => doiTT(e.target, daChon(), "xoa");
+  $("#btnDongLop").onclick = e => cho(e.target, async () => {
+    const l = dsLop.find(x => x.maLop === lopChon); if (!l) return;
+    try { await goi("gv.dongLop", { maLop: l.maLop, dong: !l.dong }); await taiLop(); } catch (err) { bao(esc(err.message), "red"); }
+  });
+
+  /* ================= ngân hàng đề ================= */
+  let docDuoc = null;
+  async function nhanFile(src) {
+    const kq = $("#ketQuaDoc"); kq.innerHTML = `<p class="muted">Đang đọc file…</p>`;
+    let files;
+    try { files = await NHD.Store.collect(src); } catch (e) { kq.innerHTML = `<div class="note red">${esc(e.message)}</div>`; return; }
+    if (!files.length) { kq.innerHTML = `<div class="note">Không thấy file .tex nào.</div>`; return; }
+    const lopHint = $("#selLop").value;
+    const qs = [], dang = {}, loi = [];
+    files.forEach(f => { const r = NHD.parseBank(f.text, f.name, lopHint); qs.push(...r.questions); Object.assign(dang, r.dang); loi.push(...r.errors); });
+    const khongLop = qs.filter(q => !q.lop);
+    const theoLop = {}; qs.filter(q => q.lop).forEach(q => theoLop[q.lop] = (theoLop[q.lop] || 0) + 1);
+    docDuoc = { qs: qs.filter(q => q.lop), dang };
+    kq.innerHTML = `<div class="note ${loi.length ? "" : "green"}">Đọc ${files.length} file: <b>${docDuoc.qs.length}</b> câu hợp lệ
+      (${Object.entries(theoLop).map(([l, n]) => `lớp ${l}: ${n}`).join(", ") || "—"})${loi.length ? `, <b>${loi.length}</b> câu lỗi bị bỏ qua` : ""}${khongLop.length ? `, <b>${khongLop.length}</b> câu không rõ lớp (chọn ô Lớp rồi nạp lại)` : ""}.</div>
+      ${loi.length ? `<details><summary class="small">Xem các câu lỗi</summary><div class="loglist">${loi.slice(0, 200).map(x => esc(`${x.file} · ${x.id}: ${x.msg}`)).join("<br>")}</div></details>` : ""}
+      ${docDuoc.qs.length ? `<div class="row" style="margin-top:10px"><button class="btn blue" id="btnDay">Đưa ${docDuoc.qs.length} câu lên máy chủ (môn ${esc($("#selMon").value)})</button></div>` : ""}`;
+    const b = $("#btnDay"); if (b) b.onclick = () => dayLen(b);
+  }
+  async function dayLen(btn) {
+    const mon = $("#selMon").value, all = docDuoc.qs, GOI = 200;
+    const prog = $("#prog"), bar = prog.querySelector("i"); prog.classList.remove("hidden"); bar.style.width = "0";
+    let moi = 0, capNhat = 0;
+    await cho(btn, async () => {
+      try {
+        for (let i = 0; i < all.length; i += GOI) {
+          const goiCau = all.slice(i, i + GOI).map(q => ({ id: q.id, loai: q.loai, muc: q.muc, lop: q.lop, chuong: q.chuong, bai: q.bai, dangSo: q.dangSo, dkey: q.dkey, de: q.de, pa: q.pa, y: q.y, da: q.da, loigiai: q.loigiai, file: q.file }));
+          const dangGoi = {}; goiCau.forEach(q => { const k = q.lop + "|" + q.dkey; if (docDuoc.dang[k]) dangGoi[k] = docDuoc.dang[k]; });
+          const r = await goi("gv.napCau", { mon, questions: goiCau, dang: dangGoi });
+          moi += r.moi; capNhat += r.capNhat;
+          bar.style.width = Math.round(100 * Math.min(all.length, i + GOI) / all.length) + "%";
+        }
+        bao(`Đã đưa lên máy chủ: <b>${moi}</b> câu mới, <b>${capNhat}</b> câu cập nhật.`, "green");
+        $("#ketQuaDoc").innerHTML = ""; docDuoc = null; taiNH();
+      } catch (err) { bao(`Dừng giữa chừng (${moi + capNhat} câu đã lên): ${esc(err.message)}. Thầy bấm nạp lại, câu đã có sẽ được ghi đè, không bị trùng.`, "red"); }
+    });
+    setTimeout(() => prog.classList.add("hidden"), 1200);
+  }
+  const drop = $("#drop");
+  drop.ondragover = e => { e.preventDefault(); drop.classList.add("over"); };
+  drop.ondragleave = () => drop.classList.remove("over");
+  drop.ondrop = e => { e.preventDefault(); drop.classList.remove("over"); nhanFile(e.dataTransfer); };
+  $("#inFile").onchange = e => { nhanFile(e.target.files); e.target.value = ""; };
+  $("#inDir").onchange = e => { nhanFile(e.target.files); e.target.value = ""; };
+
+  async function taiNH() {
+    let ds;
+    try { ds = (await goi("gv.thongKeNH")).nganHang; } catch (e) { return bao(esc(e.message), "red"); }
+    $("#tNH tbody").innerHTML = ds.length ? ds.map(d => `<tr><td>${esc(d.mon)}</td><td class="num">${d.lop}</td><td class="num"><b>${d.tong}</b></td>
+      ${["TN", "DS", "TLN", "NB", "TH", "VD", "VDC"].map(k => `<td class="num">${d[k] || 0}</td>`).join("")}
+      <td><button class="btn sm ghost" data-xoa-mon="${esc(d.mon)}" data-xoa-lop="${d.lop}">Xoá</button></td></tr>`).join("")
+      : `<tr><td colspan="11" class="muted">Chưa có câu nào. Thầy nạp file ở trên.</td></tr>`;
+    $$("[data-xoa-mon]").forEach(b => b.onclick = () => {
+      if (!confirm(`Xoá toàn bộ câu ${b.dataset.xoaMon} lớp ${b.dataset.xoaLop} trên máy chủ?`)) return;
+      cho(b, async () => { try { const r = await goi("gv.xoaNganHang", { mon: b.dataset.xoaMon, lop: +b.dataset.xoaLop }); bao(`Đã xoá ${r.n} câu.`, "green"); taiNH(); } catch (err) { bao(esc(err.message), "red"); } });
+    });
+  }
+  $("#btnTaiNH").onclick = taiNH;
+
+  if (!API.url()) bao("Web chưa được nối với máy chủ. Thầy dán địa chỉ /exec vào <code>config.js</code> (HUONG-DAN.md, mục 2).", "red");
+  P.token ? moQL() : moDN();
+})();
+</script>
+</body>
+</html>
