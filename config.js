@@ -7,7 +7,7 @@ window.SITE = {
 
   /* Địa chỉ ứng dụng web Apps Script (đuôi /exec) — dán vào giữa hai dấu ngoặc kép.
      Xem HUONG-DAN.md, mục 2. Địa chỉ này công khai cũng không sao: khoá giáo viên không nằm ở đây. */
-  mayChu: "https://script.google.com/macros/s/AKfycbx-ZcZHMhs42XV_LiNjJugxmA63CtWdtvy9tQkEdnBv4vAufLQmQP3W--IWwUgmPNSl/exec",
+  mayChu: "https://script.google.com/macros/s/AKfycbyNUNV3AfluOXgWvZ7IxXUUApH1KwtghaoS-zbFhI1hVWqo2K3aoc4lgArX7HLECbPg/exec",
 
   /* Web của giáo viên (bản cũ) — dùng cho đường dẫn sang mô phỏng, sổ tay trong lúc chờ phần Tự học mới */
   webGV: "https://hieuant2812.github.io/hoc-cung-thay-hieu/"
