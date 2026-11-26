@@ -29,7 +29,7 @@ Thầy làm một lần, khoảng 15 phút.
 
 > URL `/exec` để công khai không sao: không có khoá giáo viên thì không làm được gì ngoài đăng kí/đăng nhập học sinh.
 
-**Khi Claude gửi bản `Code.gs` mới:** dán đè, bấm Lưu, rồi **Triển khai → Quản lý các bản triển khai → ✏️ → Phiên bản: Phiên bản mới → Triển khai**. Làm như vậy thì URL `/exec` giữ nguyên, không phải sửa `config.js`.
+**Khi Claude gửi bản `Code.gs` mới:** dán đè, **sửa lại dòng `KHOA_GV`** như cũ, bấm Lưu, chạy lại **`caiDat`** một lần (để tạo trang mới nếu có, dữ liệu cũ giữ nguyên), rồi **Triển khai → Quản lý các bản triển khai → ✏️ → Phiên bản: Phiên bản mới → Triển khai**. Làm như vậy thì URL `/exec` giữ nguyên, không phải sửa `config.js`.
 
 ## 3. Bật GitHub Pages
 
@@ -57,6 +57,22 @@ Thầy làm một lần, khoảng 15 phút.
 4. Câu trùng mã được ghi đè bằng bản mới, nên nạp lại cả bộ cũng không bị trùng. Nếu mạng rớt giữa chừng, thầy nạp lại là được.
 
 > Ngân hàng dùng chung cho cả **tự học** và **kiểm tra** (thầy chọn ngày 26/11/2026). Đừng tải file `.tex`/`.zip` của ngân hàng lên kho GitHub này — kho để công khai.
+
+**Ra bài kiểm tra**
+1. Thẻ **Bài kiểm tra** → **＋ Tạo bài mới**. Nhập tên bài, chọn lớp, môn, khối và thời gian làm bài.
+2. Bấm **Tải cấu trúc ngân hàng**, tick các chương cần kiểm tra.
+3. Nhập số câu trắc nghiệm, đúng/sai, trả lời ngắn và tỉ lệ mức độ → **✨ Gợi ý ma trận**. Thầy sửa từng ô nếu muốn; số nhỏ dưới mỗi ô là số câu đang có trong ngân hàng, ô đỏ là xin nhiều hơn số đang có.
+4. Bấm **Tạo bài kiểm tra**. Mỗi em nhận một đề riêng: cùng dạng và mức độ ở mỗi ô, câu hỏi khác nhau, thứ tự câu và phương án được trộn.
+5. Bỏ tick *Mở cho học sinh ngay* nếu muốn tạo trước; đến giờ thì bấm **Mở bài**.
+
+**Trong giờ kiểm tra**
+- Bấm **Theo dõi** để xem ai chưa vào, đang làm (đã làm bao nhiêu câu), đã nộp. Bảng tự cập nhật 20 giây một lần.
+- Bài làm của học sinh được giữ trong máy và gửi lên theo lô, nên mạng chập chờn không mất bài. Hết giờ, máy tự nộp; nếu điện thoại tắt hẳn, máy chủ tự chấm các câu đã gửi sau khi hết giờ 2 phút.
+
+**Sau giờ kiểm tra**
+- Học sinh thấy điểm, đáp án và lời giải khi **cả lớp đã nộp**, khi thầy bấm **Đóng bài**, hoặc khi thầy bấm **Công bố kết quả** (bấm lại để thu hồi).
+- **⬇ Tải bảng điểm** cho file mở được bằng Excel hoặc Google Trang tính.
+- Điểm theo thang 2025 rồi quy về thang 10: trắc nghiệm 0,25; đúng/sai 0,1 – 0,25 – 0,5 – 1 theo số ý đúng; trả lời ngắn 0,5 (môn Toán).
 
 ## 5. Giới hạn cần biết
 

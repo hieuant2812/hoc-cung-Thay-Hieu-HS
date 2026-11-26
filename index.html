@@ -49,6 +49,10 @@
   <!-- ===== đã đăng nhập ===== -->
   <section id="vNha" class="hidden">
     <div class="hero sm toan"><span class="badge" id="nhaLop">Lớp</span><h1 id="nhaTen">Chào em</h1><p>Em chọn việc muốn làm hôm nay.</p></div>
+    <div class="card" id="cBai" style="margin-top:18px">
+      <div class="row" style="justify-content:space-between"><h3 style="margin:0">📝 Bài kiểm tra</h3><button class="btn sm ghost" id="btnTaiBai">⟳ Tải lại</button></div>
+      <div id="dsBai" class="ds-bai"><p class="muted small">Đang tải…</p></div>
+    </div>
     <div class="home-grid">
       <a class="big mp" id="oTuHoc" href="#">
         <div class="ill ico">📘</div>
@@ -56,11 +60,11 @@
         <p>Luyện tập theo dạng, sổ tay kiến thức, mô phỏng. Làm câu nào chấm câu đó, có lời giải.</p>
         <span class="go">Đang chuẩn bị · tạm thời mở trang tự học cũ →</span>
       </a>
-      <a class="big rd" id="oKiemTra" href="#" aria-disabled="true">
+      <a class="big rd" id="oKiemTra" href="#cBai">
         <div class="ill ico">📝</div>
         <h2>Kiểm tra</h2>
-        <p>Vào phòng kiểm tra thầy mở, mỗi em một đề riêng. Kết quả và lời giải hiện khi cả lớp đã nộp.</p>
-        <span class="go">Sắp có</span>
+        <p>Vào bài kiểm tra thầy mở, mỗi em một đề riêng. Kết quả và lời giải hiện khi cả lớp đã nộp.</p>
+        <span class="go">Xem các bài ở trên ↑</span>
       </a>
     </div>
   </section>
@@ -107,11 +111,29 @@
     $("#nhaLop").textContent = "Lớp " + (hs.tenLop || hs.maLop) + " · " + hs.tenDN;
     $("#oTuHoc").href = (S.webGV || "#") + "luyentap.html";
     API.LS.set("hs-ho-so", JSON.stringify(hs));
+    taiBai();
   }
+
+  /* danh sách bài kiểm tra của lớp */
+  async function taiBai() {
+    const el = $("#dsBai");
+    let r;
+    try { r = await P.goi("hs.dsBai"); }
+    catch (e) { el.innerHTML = `<p class="small" style="color:#d11a45">${API.esc(e.message)}</p>`; return; }
+    const ngay = s => s ? new Date(s).toLocaleString("vi-VN", { dateStyle: "short", timeStyle: "short" }) : "";
+    el.innerHTML = r.bai.length ? r.bai.map(b => {
+      let nut;
+      if (b.cuaEm === "nop") nut = b.diem != null ? `<a class="btn sm blue" href="lam.html?bai=${encodeURIComponent(b.maBai)}&xem=1">Điểm ${String(b.diem).replace(".", ",")} · xem bài</a>` : `<a class="btn sm ghost" href="lam.html?bai=${encodeURIComponent(b.maBai)}&xem=1">Đã nộp · chờ kết quả</a>`;
+      else if (b.trangThai !== "mo") nut = `<span class="tt dong">đã đóng</span>`;
+      else nut = `<a class="btn sm ${b.cuaEm === "lam" ? "coral" : "green"}" href="lam.html?bai=${encodeURIComponent(b.maBai)}">${b.cuaEm === "lam" ? "Làm tiếp" : "Vào làm bài"}</a>`;
+      return `<div class="bai-dong"><div><b>${API.esc(b.ten)}</b><br><span class="small muted">${b.soCau} câu · ${b.thoiGian} phút${b.dongLuc ? " · đóng lúc " + ngay(b.dongLuc) : ""}</span></div>${nut}</div>`;
+    }).join("") : `<p class="muted small" style="margin:8px 0 0">Hiện chưa có bài kiểm tra nào. Khi thầy mở bài, bài sẽ hiện ở đây.</p>`;
+  }
+  $("#btnTaiBai").onclick = taiBai;
 
   $("#tabDN").onclick = () => moCong("dn");
   $("#tabDK").onclick = () => moCong("dk");
-  $("#oKiemTra").onclick = e => { e.preventDefault(); bao("Phần kiểm tra đang được xây dựng. Khi thầy mở phòng kiểm tra, em sẽ thấy ở đây."); };
+  $("#oKiemTra").onclick = e => { e.preventDefault(); $("#cBai").scrollIntoView({ behavior: "smooth" }); taiBai(); };
 
   $("#fDN").onsubmit = async e => {
     e.preventDefault(); const f = e.target; loiForm(f);

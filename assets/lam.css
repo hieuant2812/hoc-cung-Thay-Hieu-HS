@@ -1,0 +1,59 @@
+/* lam.css — trang làm bài và xem kết quả (điện thoại trước) */
+body.lam{background:#f7f8fc}
+body.lam::before{display:none}
+.lam-top{position:sticky;top:0;z-index:30;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 4px 14px -10px rgba(0,0,0,.25)}
+.lam-top .in{display:flex;align-items:center;gap:10px;height:58px}
+.lam-top .ve{font-size:22px;text-decoration:none;color:var(--ink);width:36px;height:36px;display:grid;place-items:center;border-radius:10px}
+.lam-top .ve:hover{background:var(--bg2)}
+.lam-top .ten{flex:1;min-width:0;line-height:1.25}
+.lam-top .ten b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:15.5px}
+.lam-top .ten small{font-size:12px;color:var(--muted)}
+.lam-top .ten small.canh{color:#c2401c;font-weight:600}
+.dongho{font:800 22px/1 var(--font-h);font-variant-numeric:tabular-nums;padding:6px 12px;border-radius:12px;background:#eef4ff;color:#1f4fc7;min-width:76px;text-align:center}
+.dongho:empty{display:none}
+.dongho.gap{background:#fff0d2;color:#946200}
+.dongho.rat-gap{background:#ffe3ec;color:#c21e57;animation:nhay 1s infinite}
+@keyframes nhay{50%{opacity:.55}}
+main{padding-top:14px}
+
+.ex{font-size:16.5px;line-height:1.6}
+.ex .phan{font:700 17px var(--font-h);margin:22px 0 10px;color:var(--muted)}
+.cau{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:0 0 14px;scroll-margin-top:72px}
+.cau .q{margin:0}
+.cau .opts{display:grid;gap:4px 12px;margin-top:6px}
+.cau .opts.c4{grid-template-columns:1fr 1fr}.cau .opts.c2{grid-template-columns:1fr 1fr}.cau .opts.c1{grid-template-columns:1fr}
+@media (max-width:480px){.cau .opts.c2{grid-template-columns:1fr}}
+.cau .ds-row{display:flex;gap:6px;padding-left:4px}
+.cau .qside{display:grid;grid-template-columns:1fr auto;gap:8px 12px}
+@media (max-width:520px){.cau .qside{grid-template-columns:1fr}.cau .qside .qf{text-align:center}}
+.cau .tikz-wrap{max-width:100%;overflow-x:auto}
+.cau .katex-display{overflow-x:auto;overflow-y:hidden}
+
+.chon4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+.chon4 button,.chonDS button{font:700 17px var(--font);border:2px solid var(--line);background:#fff;color:var(--ink);border-radius:12px;padding:10px 0;cursor:pointer;min-height:46px}
+.chon4 button[aria-pressed=true]{background:var(--blue);border-color:var(--blue);color:#fff}
+.chonDS{display:grid;gap:8px;margin-top:12px}
+.chonDS .dsr{display:grid;grid-template-columns:28px 1fr 1fr;gap:8px;align-items:center}
+.chonDS button{font-size:15px;padding:8px 0;min-height:42px}
+.chonDS button[data-v="Đ"][aria-pressed=true]{background:var(--green);border-color:var(--green);color:#fff}
+.chonDS button[data-v="S"][aria-pressed=true]{background:var(--coral);border-color:var(--coral);color:#fff}
+.tln{display:flex;gap:10px;align-items:center;margin-top:12px;font-weight:600}
+.tln input{flex:1;font:600 18px var(--font);padding:10px 12px;border:2px solid var(--line);border-radius:12px;max-width:220px}
+.tln input:focus{border-color:var(--blue);outline:none}
+
+.lam-nav{position:fixed;left:0;right:0;bottom:0;z-index:30;background:#fff;border-top:1px solid var(--line);display:flex;gap:6px;overflow-x:auto;padding:8px 12px calc(8px + env(safe-area-inset-bottom))}
+.lam-nav a{flex:none;width:36px;height:36px;display:grid;place-items:center;border-radius:10px;border:1.5px solid var(--line);text-decoration:none;color:var(--ink);font:700 14px var(--font)}
+.lam-nav a.xong{background:var(--blue);border-color:var(--blue);color:#fff}
+.lam-nav a.doi{background:#fff0d2;border-color:#f0c766}
+
+.diem-to{display:flex;align-items:baseline;justify-content:center;gap:10px;background:linear-gradient(120deg,#2f6bff,#5aa2ff 60%,#2fd3c0);color:#fff;border-radius:20px;padding:20px;margin-bottom:8px}
+.diem-to span{font-weight:600}
+.diem-to b{font:800 54px/1 var(--font-h)}
+.cau.kq{border-left:5px solid var(--line)}
+.cau.kq.dung{border-left-color:var(--green)}.cau.kq.mot-phan{border-left-color:var(--sun)}.cau.kq.sai{border-left-color:var(--pink)}
+.cau.kq .opt.right{background:#e6f6ea;border-radius:6px;padding:0 4px}
+.cau.kq .sol{margin-top:10px;border-left:3px solid #c9d6f3;padding-left:10px;color:#333}
+.cau.kq .sol .lb{font-weight:700;font-style:italic}
+.cau.kq .ans{font-weight:700;color:#0b6b2e}
+.kq-dong{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:10px;padding-top:8px;border-top:1px dashed var(--line);font-size:14.5px}
+.kq-dong .d{margin-left:auto;font-weight:700}
