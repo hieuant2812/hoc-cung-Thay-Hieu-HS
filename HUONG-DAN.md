@@ -99,6 +99,16 @@ Thầy làm một lần, khoảng 15 phút.
 - Trang chính có ô **📈 Bài đã làm**: biểu đồ điểm các lần (kèm đường trung bình lớp), cho biết tăng hay giảm so với lần trước, bấm tên bài để xem lại bài làm và lời giải.
 - **⏱ Thi thử THPT** (trong trang Tự học): em tự tạo một đề theo cấu trúc thi tốt nghiệp (12 trắc nghiệm, 4 đúng/sai, 6 trả lời ngắn, 90 phút), câu lấy từ ngân hàng chung, nộp là có điểm và lời giải. Mỗi ngày tối đa 3 lần. Bài thi thử không hiện trong danh sách bài kiểm tra của thầy.
 
+**Thông báo lớp:** thẻ **Lớp học** → ô *📢 Thông báo lớp*: gõ nội dung, chọn lớp (hoặc tất cả các lớp) và số ngày hiện. Học sinh thấy ở đầu trang chính. Hết hạn thì tự ẩn; thầy xoá được bất kì lúc nào.
+
+**Bảng xếp hạng (tuỳ chọn):** ở bảng lớp, cột *Xếp hạng* bấm **Đang tắt** để bật cho lớp đó. Học sinh lớp đó thấy top 10 tự học của tuần (từ thứ Hai) trong trang Tự học, xếp theo chuỗi ngày rồi số câu đúng, và biết mình đứng thứ mấy. Mặc định tắt.
+
+**Sao lưu hằng tuần**
+1. Trong Apps Script, ở ô chọn hàm chọn **`batSaoLuuHangTuan`** → **▷ Chạy**. Google hỏi thêm quyền Google Drive: *Xem xét quyền → chọn tài khoản → Nâng cao → Đi tới… → Cho phép*.
+2. Máy sao lưu ngay một bản và từ đó tự sao lưu lúc 22 giờ tối Chủ nhật hằng tuần, vào thư mục **Sao lưu web học sinh** trên Drive của thầy, giữ 8 bản gần nhất.
+3. Trang quản lí (thẻ Lớp học, ô *💾 Sao lưu dữ liệu*) cho biết lần sao lưu gần nhất; có nút **Sao lưu ngay** trước những việc lớn như xoá ngân hàng.
+4. Khôi phục: mở bản sao trong thư mục đó, *Tệp → Tạo bản sao*, rồi dán mã `Code.gs` vào bản này và triển khai lại (hoặc chép lại trang tính cần dùng vào Trang tính đang chạy).
+
 **Câu nói hay mỗi ngày:** cuối mỗi trang có một câu về việc học của danh nhân, đổi theo ngày. Thầy thêm, bớt câu trong file `assets/loihay.js`.
 
 ## 5. Giới hạn cần biết

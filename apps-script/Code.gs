@@ -13,7 +13,7 @@
 /* ĐỔI DÒNG NÀY thành mật khẩu riêng của thầy (ít nhất 8 kí tự). */
 const KHOA_GV = "doi-mat-khau-nay";
 
-const PHIEN_BAN = "2026.11.27";
+const PHIEN_BAN = "2026.11.27-3";
 const HS_HAN_PHIEN_NGAY = 30;     // học sinh đăng nhập một lần dùng 30 ngày
 const GV_HAN_PHIEN_GIO = 12;      // giáo viên: 12 giờ
 const SO_LAN_SAI_TOI_DA = 5;      // sai mật khẩu 5 lần thì khoá 10 phút
@@ -22,7 +22,7 @@ const VONG_BAM = 200;             // số vòng băm mật khẩu
 
 /* Cấu trúc các trang tính. Cột đầu tiên là khoá. */
 const BANG = {
-  Lop: ["maLop", "tenLop", "khoi", "taoLuc", "dong"],
+  Lop: ["maLop", "tenLop", "khoi", "taoLuc", "dong", "bxh"],
   TaiKhoan: ["id", "tenDN", "hoTen", "maLop", "salt", "hash", "trangThai", "taoLuc", "lanSai", "khoaDen", "dangNhapCuoi", "pv"],
   CauHoi: ["k", "mon", "lop", "id", "loai", "muc", "chuong", "bai", "dangSo", "dkey", "de", "pa", "y", "da", "loigiai", "file", "capNhat"],
   Dang: ["k", "mon", "lop", "dkey", "ten"],
@@ -34,7 +34,8 @@ const BANG = {
   DeThi: ["k", "maBai", "hsId", "cau", "traLoi", "batDau", "hanNop", "luuLuc", "nopLuc", "trangThai", "diem", "chiTiet", "viPham", "khoa"],
   TuHoc: ["hsId", "ngay", "dang", "soLoi", "homNay", "tongDung", "tongLam", "capNhat"],
   GiaoTuHoc: ["maGiao", "ten", "maLop", "mon", "lop", "dkeys", "muc", "soCauDung", "hanNop", "taoLuc"],
-  TienDoGiao: ["k", "maGiao", "hsId", "dung", "lam", "ks", "xongLuc", "capNhat"]
+  TienDoGiao: ["k", "maGiao", "hsId", "dung", "lam", "ks", "xongLuc", "capNhat"],
+  ThongBao: ["ma", "maLop", "noiDung", "taoLuc", "hetHan"]
 };
 const MUC = ["NB", "TH", "VD", "VDC"];
 const LOAI = ["TN", "DS", "TLN"];
@@ -154,7 +155,7 @@ const VIEC = {
     const hs = docHet("TaiKhoan");
     const dem = {};
     hs.forEach(function (o) { const d = dem[o.maLop] = dem[o.maLop] || { tong: 0, cho: 0 }; d.tong++; if (o.trangThai === "cho") d.cho++; });
-    return { lop: docHet("Lop").map(function (o) { return { maLop: o.maLop, tenLop: o.tenLop, khoi: +o.khoi || 0, dong: o.dong === "1", soHS: (dem[o.maLop] || {}).tong || 0, choDuyet: (dem[o.maLop] || {}).cho || 0 }; }) };
+    return { lop: docHet("Lop").map(function (o) { return { maLop: o.maLop, tenLop: o.tenLop, khoi: +o.khoi || 0, dong: o.dong === "1", bxh: o.bxh === "1", soHS: (dem[o.maLop] || {}).tong || 0, choDuyet: (dem[o.maLop] || {}).cho || 0 }; }) };
   },
 
   "gv.taoLop": function (yc) {
@@ -392,7 +393,7 @@ Object.assign(VIEC, {
       const d = cua[o.maBai], mo = d && d.trangThai === "nop" && ketQuaDaMo(o);
       return { maBai: o.maBai, ten: o.ten, soCau: +o.soCau, thoiGian: +o.thoiGian, dongLuc: o.dongLuc, moLuc: o.moLuc, thiThu: !!o.chuHS, trangThai: trangThaiBai(o), cuaEm: d ? d.trangThai : "chua", hanNop: d ? d.hanNop : "", diem: mo ? +d.diem : null };
     });
-    return { bai: bai, giao: giaoCuaHS(tk), bayGio: bayGio() };
+    return { bai: bai, giao: giaoCuaHS(tk), thongBao: thongBaoCuaLop(tk.o.maLop), bayGio: bayGio() };
   },
 
   /* vào làm bài: lần đầu thì sinh đề riêng cho em, các lần sau trả lại đúng đề cũ và câu đã làm */
@@ -915,7 +916,7 @@ Object.assign(VIEC, {
       homNay: { d: hn, dung: (t.ngay[hn] || [0, 0])[0], lam: (t.ngay[hn] || [0, 0])[1], mucTieu: MUC_TIEU_NGAY },
       chuoi: chuoiNgay(t.ngay), tongDung: t.tongDung, tongLam: t.tongLam,
       soLoi: { tong: soLoiKeys.length, denHan: soLoiKeys.filter(function (k) { return t.soLoi[k][1] <= hn; }).length },
-      lich: lich, giao: giaoCuaHS(tk)
+      lich: lich, giao: giaoCuaHS(tk), bxh: lopHS && lopHS.o.bxh === "1" ? bangXepHang(tk) : null
     };
   },
 
@@ -1180,5 +1181,98 @@ Object.assign(VIEC, {
       them("BaiKT", { maBai: ma, ten: "Thi thử THPT · " + mon + " " + lop, maLop: tk.o.maLop, mon: mon, lop: lop, maTran: JSON.stringify(M), soCau: so, thoiGian: thoiGian, dongLuc: "", trangThai: "mo", congBo: "1", taoLuc: bayGio(), moLuc: "", tuyChon: JSON.stringify({ tronCau: true, tronPA: true }), chuHS: tk.o.id });
       return { maBai: ma, soCau: so, thoiGian: thoiGian };
     });
+  }
+});
+
+/* ============================== sao lưu, thông báo lớp, bảng xếp hạng ============================== */
+const THU_MUC_SAO_LUU = "Sao lưu web học sinh";
+const GIU_BAN_SAO_LUU = 8;        // giữ 8 bản gần nhất (khoảng 2 tháng nếu sao lưu mỗi tuần)
+
+/* chép cả Trang tính vào thư mục "Sao lưu web học sinh" trên Drive của thầy; bản cũ quá 8 bản thì bỏ vào thùng rác */
+function saoLuu() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const it = DriveApp.getFoldersByName(THU_MUC_SAO_LUU);
+  const thuMuc = it.hasNext() ? it.next() : DriveApp.createFolder(THU_MUC_SAO_LUU);
+  const dau = ss.getName() + " - sao lưu ";
+  const ten = dau + new Date(Date.now() + 7 * 3600000).toISOString().slice(0, 16).replace("T", " ");
+  DriveApp.getFileById(ss.getId()).makeCopy(ten, thuMuc);
+  const ban = [], fi = thuMuc.getFiles();
+  while (fi.hasNext()) { const f = fi.next(); if (f.getName().indexOf(dau) === 0) ban.push(f); }
+  ban.sort(function (a, b) { return b.getDateCreated() - a.getDateCreated(); });
+  ban.slice(GIU_BAN_SAO_LUU).forEach(function (f) { f.setTrashed(true); });
+  PropertiesService.getScriptProperties().setProperty("SAO_LUU_CUOI", bayGio());
+  ghiNhatKy("he-thong", "sao-luu", ten);
+  return "Đã sao lưu: " + ten;
+}
+/* thầy chạy hàm này MỘT LẦN trong Apps Script: hẹn sao lưu tự động 22 giờ tối Chủ nhật hằng tuần, và sao lưu ngay một bản */
+function batSaoLuuHangTuan() {
+  ScriptApp.getProjectTriggers().forEach(function (t) { if (t.getHandlerFunction() === "saoLuu") ScriptApp.deleteTrigger(t); });
+  ScriptApp.newTrigger("saoLuu").timeBased().onWeekDay(ScriptApp.WeekDay.SUNDAY).atHour(22).inTimezone("Asia/Ho_Chi_Minh").create();
+  return saoLuu() + ". Từ nay máy tự sao lưu lúc 22 giờ tối Chủ nhật hằng tuần.";
+}
+
+function thongBaoCuaLop(maLop) {
+  const now = bayGio();
+  return docHet("ThongBao").filter(function (o) { return (o.maLop === maLop || o.maLop === "*") && (!o.hetHan || o.hetHan > now); })
+    .reverse().slice(0, 5).map(function (o) { return { ma: o.ma, noiDung: o.noiDung, taoLuc: o.taoLuc }; });
+}
+/* bảng xếp hạng tuần (thứ Hai tới hôm nay) của lớp: chuỗi dài nhất trong tuần, rồi số ngày đạt, rồi số câu đúng */
+function dauTuan() { const hn = ngayVN(); const t = new Date(hn + "T00:00:00Z").getUTCDay(); return congNgay(hn, -((t + 6) % 7)); }
+function bangXepHang(tk) {
+  const tu = dauTuan();
+  const th = {}; docHet("TuHoc").forEach(function (o) { th[o.hsId] = o; });
+  const ds = docCot("TaiKhoan", ["id", "hoTen", "maLop", "trangThai"]).filter(function (o) { return o.maLop === tk.o.maLop && o.trangThai === "ok"; }).map(function (o) {
+    const c = chuoiNgay(docJSON((th[o.id] || {}).ngay, {}), tu, "");
+    return { id: o.id, hoTen: o.hoTen, chuoi: c.daiNhat, ngay: c.soNgayDat, dung: c.dung };
+  }).sort(function (a, b) { return b.chuoi - a.chuoi || b.ngay - a.ngay || b.dung - a.dung || a.hoTen.localeCompare(b.hoTen); });
+  let hang = 0, truoc = "";
+  ds.forEach(function (x, i) { const k = x.chuoi + "|" + x.ngay + "|" + x.dung; if (k !== truoc) hang = i + 1; truoc = k; x.hang = hang; });
+  const em = ds.filter(function (x) { return x.id === tk.o.id; })[0];
+  return { tu: tu, top: ds.filter(function (x) { return x.dung > 0; }).slice(0, 10).map(function (x) { return { hang: x.hang, hoTen: x.hoTen, chuoi: x.chuoi, ngay: x.ngay, dung: x.dung, laEm: x.id === tk.o.id }; }), em: em ? { hang: em.hang, chuoi: em.chuoi, ngay: em.ngay, dung: em.dung, tong: ds.length } : null };
+}
+
+Object.assign(VIEC, {
+  "gv.heThong": function (yc) {
+    canGV(yc);
+    const p = PropertiesService.getScriptProperties();
+    let hen = false;
+    try { hen = ScriptApp.getProjectTriggers().some(function (t) { return t.getHandlerFunction() === "saoLuu"; }); } catch (e) { }
+    return { saoLuuCuoi: p.getProperty("SAO_LUU_CUOI") || "", henSaoLuu: hen, phienBan: PHIEN_BAN };
+  },
+  "gv.saoLuu": function (yc) {
+    canGV(yc);
+    try { return { kq: saoLuu(), luc: bayGio() }; }
+    catch (e) { throw loi("Chưa sao lưu được: thầy cần chạy hàm batSaoLuuHangTuan một lần trong Apps Script để cấp quyền Drive. (" + e.message + ")"); }
+  },
+  "gv.caiLop": function (yc) {
+    canGV(yc);
+    const lop = timDong("Lop", chuanMaLop(yc.maLop));
+    if (!lop) throw loi("Không tìm thấy lớp.");
+    suaDong("Lop", lop.hang, { bxh: yc.bxh ? "1" : "0" });
+    return {};
+  },
+  "gv.thongBao.tao": function (yc) {
+    canGV(yc);
+    const maLop = yc.maLop === "*" ? "*" : chuanMaLop(yc.maLop);
+    if (maLop !== "*" && !timDong("Lop", maLop)) throw loi("Không tìm thấy lớp.");
+    const noiDung = String(yc.noiDung || "").normalize("NFC").replace(/[<>]/g, "").trim().slice(0, 600);
+    if (!noiDung) throw loi("Thầy nhập nội dung thông báo.");
+    const ngay = Math.max(0, Math.min(90, Math.round(+yc.soNgay || 0)));
+    return khoa(function () {
+      let ma; do { ma = "N" + maNgauNhien(6); } while (timDong("ThongBao", ma));
+      them("ThongBao", { ma: ma, maLop: maLop, noiDung: noiDung, taoLuc: bayGio(), hetHan: ngay ? new Date(Date.now() + ngay * 86400000).toISOString() : "" });
+      return { ma: ma };
+    });
+  },
+  "gv.thongBao.ds": function (yc) {
+    canGV(yc);
+    const lop = {}; docHet("Lop").forEach(function (o) { lop[o.maLop] = o.tenLop; });
+    const now = bayGio();
+    return { thongBao: docHet("ThongBao").reverse().map(function (o) { return { ma: o.ma, maLop: o.maLop, tenLop: o.maLop === "*" ? "Tất cả các lớp" : lop[o.maLop] || o.maLop, noiDung: o.noiDung, taoLuc: o.taoLuc, hetHan: o.hetHan, conHan: !o.hetHan || o.hetHan > now }; }) };
+  },
+  "gv.thongBao.xoa": function (yc) {
+    canGV(yc);
+    const ma = String(yc.ma || "");
+    return khoa(function () { return { n: xoaTheo("ThongBao", function (o) { return o.ma === ma; }) }; });
   }
 });
