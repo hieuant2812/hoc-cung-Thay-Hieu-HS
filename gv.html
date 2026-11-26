@@ -7,7 +7,7 @@
 <link rel="icon" href="assets/favicon.svg">
 <link rel="stylesheet" href="assets/fonts.css"><link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/hs.css">
 <script src="config.js"></script><script src="assets/api.js"></script>
-<script src="assets/lib/jszip.min.js"></script><script src="assets/nhd/core.js"></script><script src="assets/nhd/store.js"></script>
+<script src="assets/lib/jszip.min.js"></script><script src="assets/nhd/core.js"></script><script src="assets/nhd/store.js"></script><script src="assets/nhd/gen.js"></script>
 </head>
 <body>
 <header class="top"><div class="wrap mid in">
@@ -30,7 +30,59 @@
   <section id="vQL" class="hidden">
     <div class="tabs lg" role="tablist">
       <button data-tab="lop" role="tab" aria-selected="true">👥 Lớp học</button>
+      <button data-tab="kt" role="tab" aria-selected="false">📝 Bài kiểm tra</button>
       <button data-tab="nh" role="tab" aria-selected="false">📚 Ngân hàng đề</button>
+    </div>
+
+    <!-- ===== bài kiểm tra ===== -->
+    <div class="pane" data-pane="kt">
+      <div class="card">
+        <div class="row" style="justify-content:space-between"><h3 style="margin:0">Các bài kiểm tra</h3><div class="row"><button class="btn sm ghost" id="btnTaiBai">⟳ Tải lại</button><button class="btn sm green" id="btnMoTao">＋ Tạo bài mới</button></div></div>
+        <div class="tbl-wrap" style="margin-top:12px"><table class="tbl" id="tBai"><thead><tr><th>Bài</th><th>Lớp</th><th class="num">Câu</th><th class="num">Phút</th><th>Trạng thái</th><th class="num">Vào / nộp</th><th></th></tr></thead><tbody></tbody></table></div>
+      </div>
+
+      <div class="card hidden" id="cGS" style="margin-top:18px">
+        <div class="row" style="justify-content:space-between"><h3 style="margin:0" id="gsTieuDe">Theo dõi</h3>
+          <div class="row"><span class="small muted" id="gsLuc"></span><button class="btn sm ghost" id="btnGS">⟳</button><button class="btn sm ghost" id="btnCSV">⬇ Tải bảng điểm (Excel/CSV)</button></div></div>
+        <div id="gsTom" class="small" style="margin:8px 0"></div>
+        <div class="tbl-wrap"><table class="tbl" id="tGS"><thead><tr><th>#</th><th>Họ và tên</th><th>Trạng thái</th><th class="num">Đã làm</th><th>Vào lúc</th><th>Nộp lúc</th><th class="num">Điểm</th></tr></thead><tbody></tbody></table></div>
+      </div>
+
+      <div class="card hidden" id="cTao" style="margin-top:18px">
+        <h3>Tạo bài kiểm tra từ ma trận</h3>
+        <p class="small muted" style="margin-top:0">Mỗi học sinh nhận một đề riêng: cùng dạng, cùng mức độ ở mỗi ô của ma trận, câu hỏi khác nhau, thứ tự câu và phương án được trộn.</p>
+        <form id="fBai" class="grid-form">
+          <label class="f" style="grid-column:span 2">Tên bài<input name="ten" type="text" required placeholder="VD: Kiểm tra 15 phút chương 1"></label>
+          <label class="f">Lớp<select name="maLop" required></select></label>
+          <label class="f">Môn<select name="mon"><option>Toán</option><option>Vật lí</option><option>Hoá học</option><option>KHTN</option></select></label>
+          <label class="f">Khối (ngân hàng)<select name="lop"><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option selected>12</option></select></label>
+          <label class="f">Thời gian (phút)<input name="thoiGian" type="number" min="5" max="180" value="45" required></label>
+          <label class="f">Đóng bài lúc (không bắt buộc)<input name="dongLuc" type="datetime-local"></label>
+          <label class="f chk"><span><input name="moNgay" type="checkbox" checked> Mở cho học sinh ngay</span></label>
+        </form>
+
+        <h4 style="margin:18px 0 6px">Ma trận</h4>
+        <div class="row left">
+          <button class="btn sm ghost" id="btnNapCT">Tải cấu trúc ngân hàng</button>
+          <span class="small muted" id="ctTom"></span>
+        </div>
+        <div id="ctChuong" class="chips" style="margin-top:10px"></div>
+        <div class="row left hidden" id="ctGoiY">
+          <label class="f">Số câu TN<input id="nTN" type="number" min="0" max="40" value="12" style="width:80px"></label>
+          <label class="f">Đúng/Sai<input id="nDS" type="number" min="0" max="10" value="4" style="width:80px"></label>
+          <label class="f">Trả lời ngắn<input id="nTLN" type="number" min="0" max="10" value="6" style="width:80px"></label>
+          <label class="f">% NB<input id="pNB" type="number" min="0" max="100" value="40" style="width:70px"></label>
+          <label class="f">% TH<input id="pTH" type="number" min="0" max="100" value="30" style="width:70px"></label>
+          <label class="f">% VD<input id="pVD" type="number" min="0" max="100" value="20" style="width:70px"></label>
+          <label class="f">% VDC<input id="pVDC" type="number" min="0" max="100" value="10" style="width:70px"></label>
+          <button class="btn sm violet" id="btnGoiY" style="align-self:end">✨ Gợi ý ma trận</button>
+          <button class="btn sm ghost" id="btnXoaMT" style="align-self:end">Xoá ma trận</button>
+        </div>
+        <div class="mx-wrap hidden" id="mxWrap" style="margin-top:12px"><table class="mx" id="tMX"></table></div>
+        <div id="mxTom" class="small" style="margin-top:8px"></div>
+        <div class="loi" id="taoLoi" style="margin-top:8px"></div>
+        <div class="row" style="margin-top:12px"><button class="btn ghost" id="btnHuyTao">Đóng</button><button class="btn green" id="btnTaoBai">Tạo bài kiểm tra</button></div>
+      </div>
     </div>
 
     <!-- ===== lớp học ===== -->
@@ -120,6 +172,7 @@
     $$("[data-tab]").forEach(x => x.setAttribute("aria-selected", String(x === b)));
     $$("[data-pane]").forEach(p => p.classList.toggle("on", p.dataset.pane === b.dataset.tab));
     if (b.dataset.tab === "nh") taiNH();
+    if (b.dataset.tab === "kt") { taiBai(); if (baiGS) giamSat(); }
   });
 
   /* ================= lớp học ================= */
@@ -241,6 +294,153 @@
     });
   }
   $("#btnTaiNH").onclick = taiNH;
+
+  /* ================= bài kiểm tra ================= */
+  const MUC = ["NB", "TH", "VD", "VDC"], LOAI = ["TN", "DS", "TLN"], TEN_LOAI = { TN: "Trắc nghiệm", DS: "Đúng/Sai", TLN: "Trả lời ngắn" };
+  const TT_BAI = { nhap: "chưa mở", mo: "đang mở", dong: "đã đóng" };
+  let dsBai = [], baiGS = null, henGS = null, ct = null, M = {};
+  async function taiBai() {
+    try { dsBai = (await goi("gv.dsBai")).bai; } catch (e) { return bao(esc(e.message), "red"); }
+    $("#tBai tbody").innerHTML = dsBai.length ? dsBai.map(b => `<tr class="${baiGS === b.maBai ? "sel" : ""}">
+      <td><b>${esc(b.ten)}</b><br><span class="small muted">${esc(b.mon)} ${b.lop} · tạo ${ngay(b.taoLuc)}${b.dongLuc ? " · đóng " + ngay(b.dongLuc) : ""}</span></td>
+      <td>${esc(b.tenLop)}</td><td class="num">${b.soCau}</td><td class="num">${b.thoiGian}</td>
+      <td><span class="tt ${b.trangThai}">${TT_BAI[b.trangThai] || b.trangThai}</span>${b.congBo ? ' <span class="tt ok">đã công bố</span>' : ""}</td>
+      <td class="num">${b.daVao} / ${b.daNop}</td>
+      <td class="row" style="justify-content:flex-start;flex-wrap:nowrap">
+        <button class="btn sm ghost" data-gs="${b.maBai}">Theo dõi</button>
+        ${b.trangThai === "mo" ? `<button class="btn sm ghost" data-tt="dong" data-bai="${b.maBai}">Đóng bài</button>` : `<button class="btn sm ghost" data-tt="mo" data-bai="${b.maBai}">Mở bài</button>`}
+        <button class="btn sm ghost" data-cb="${b.congBo ? 0 : 1}" data-bai="${b.maBai}">${b.congBo ? "Thu hồi kết quả" : "Công bố kết quả"}</button>
+        <button class="btn sm ghost" data-xoa-bai="${b.maBai}" title="Xoá bài và mọi bài làm">🗑</button></td></tr>`).join("")
+      : `<tr><td colspan="7" class="muted">Chưa có bài kiểm tra nào. Bấm “Tạo bài mới”.</td></tr>`;
+    $$("[data-gs]").forEach(b => b.onclick = () => moGS(b.dataset.gs));
+    $$("[data-tt]").forEach(b => b.onclick = () => cho(b, async () => { try { await goi("gv.suaBai", { maBai: b.dataset.bai, trangThai: b.dataset.tt }); await taiBai(); if (baiGS) giamSat(); } catch (e) { bao(esc(e.message), "red"); } }));
+    $$("[data-cb]").forEach(b => b.onclick = () => cho(b, async () => { try { await goi("gv.suaBai", { maBai: b.dataset.bai, congBo: b.dataset.cb === "1" }); await taiBai(); if (baiGS) giamSat(); } catch (e) { bao(esc(e.message), "red"); } }));
+    $$("[data-xoa-bai]").forEach(b => b.onclick = () => {
+      if (!confirm("Xoá bài kiểm tra này và toàn bộ bài làm, điểm của học sinh? Không khôi phục được.")) return;
+      cho(b, async () => { try { await goi("gv.xoaBai", { maBai: b.dataset.xoaBai }); if (baiGS === b.dataset.xoaBai) { baiGS = null; $("#cGS").classList.add("hidden"); } taiBai(); } catch (e) { bao(esc(e.message), "red"); } });
+    });
+  }
+  $("#btnTaiBai").onclick = taiBai;
+
+  /* theo dõi: tự tải lại mỗi 20 giây khi đang mở */
+  let gsDuLieu = null;
+  function moGS(ma) { baiGS = ma; $("#cGS").classList.remove("hidden"); $$("#tBai tbody tr").forEach(tr => tr.classList.toggle("sel", !!tr.querySelector(`[data-gs="${ma}"]`))); giamSat(); }
+  async function giamSat() {
+    clearTimeout(henGS);
+    if (!baiGS || $("[data-pane=kt]").classList.contains("on") === false) return;
+    try { gsDuLieu = await goi("gv.giamSat", { maBai: baiGS }); } catch (e) { bao(esc(e.message), "red"); return; }
+    const { bai, hs } = gsDuLieu;
+    const TT = { chua: "chưa vào", lam: "đang làm", nop: "đã nộp" };
+    hs.sort((a, b) => a.hoTen.split(" ").pop().localeCompare(b.hoTen.split(" ").pop(), "vi") || a.hoTen.localeCompare(b.hoTen, "vi"));
+    $("#gsTieuDe").textContent = "Theo dõi: " + bai.ten;
+    const n = k => hs.filter(h => h.trangThai === k).length;
+    const diem = hs.filter(h => h.diem != null).map(h => h.diem);
+    $("#gsTom").innerHTML = `<span class="tt nop">${n("nop")} đã nộp</span> <span class="tt lam">${n("lam")} đang làm</span> <span class="tt chua">${n("chua")} chưa vào</span>
+      ${diem.length ? ` · điểm trung bình <b>${(diem.reduce((a, b) => a + b, 0) / diem.length).toFixed(2).replace(".", ",")}</b>` : ""}
+      · kết quả ${bai.ketQuaMo ? "<b>đã mở</b> cho học sinh" : "chưa mở (mở khi cả lớp nộp xong, khi đóng bài, hoặc khi thầy bấm Công bố)"}`;
+    $("#tGS tbody").innerHTML = hs.map((h, i) => `<tr><td>${i + 1}</td><td>${esc(h.hoTen)}</td><td><span class="tt ${h.trangThai}">${TT[h.trangThai]}</span></td>
+      <td class="num">${h.trangThai === "chua" ? "" : h.soLam + "/" + bai.soCau}</td><td class="small">${h.batDau ? ngay(h.batDau) : ""}</td><td class="small">${h.nopLuc ? ngay(h.nopLuc) : ""}</td>
+      <td class="num"><b>${h.diem == null ? "" : String(h.diem).replace(".", ",")}</b></td></tr>`).join("") || `<tr><td colspan="7" class="muted">Lớp chưa có học sinh đã duyệt.</td></tr>`;
+    $("#gsLuc").textContent = "cập nhật " + new Date().toLocaleTimeString("vi-VN");
+    taiBai().catch(() => { });                                        // số vào / nộp trong danh sách bài cũng cập nhật theo
+    if (bai.trangThai === "mo") henGS = setTimeout(giamSat, 20000);
+  }
+  $("#btnGS").onclick = giamSat;
+  $("#btnCSV").onclick = () => {
+    if (!gsDuLieu) return;
+    const q = s => '"' + String(s == null ? "" : s).replace(/"/g, '""') + '"';
+    const dong = [["STT", "Họ và tên", "Tên đăng nhập", "Trạng thái", "Số câu đã làm", "Vào lúc", "Nộp lúc", "Điểm"]].concat(gsDuLieu.hs.map((h, i) => [i + 1, h.hoTen, h.tenDN, ({ chua: "chưa vào", lam: "đang làm", nop: "đã nộp" })[h.trangThai] || h.trangThai, h.soLam, ngay(h.batDau), ngay(h.nopLuc), h.diem == null ? "" : String(h.diem).replace(".", ",")]));
+    const blob = new Blob(["﻿" + dong.map(r => r.map(q).join(";")).join("\r\n")], { type: "text/csv;charset=utf-8" });
+    const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "Diem_" + gsDuLieu.bai.ten.replace(/[^\p{L}\p{N}]+/gu, "_") + ".csv"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  };
+
+  /* ---- tạo bài ---- */
+  $("#btnMoTao").onclick = () => {
+    $("#cTao").classList.remove("hidden");
+    $("#fBai").maLop.innerHTML = dsLop.map(l => `<option value="${esc(l.maLop)}">${esc(l.tenLop)}</option>`).join("") || `<option value="">(chưa có lớp)</option>`;
+    const kh = (dsLop[0] || {}).tenLop; if (kh && /^\d+/.test(kh)) $("#fBai").lop.value = String(+kh.match(/^\d+/)[0]);
+    $("#cTao").scrollIntoView({ behavior: "smooth" });
+  };
+  $("#btnHuyTao").onclick = () => $("#cTao").classList.add("hidden");
+  $("#fBai").maLop.onchange = e => { const l = dsLop.find(x => x.maLop === e.target.value); if (l && /^\d+/.test(l.tenLop)) { $("#fBai").lop.value = String(+l.tenLop.match(/^\d+/)[0]); ct = null; veCT(); } };
+  $("#fBai").lop.onchange = () => { ct = null; veCT(); };
+  $("#fBai").mon.onchange = () => { ct = null; veCT(); };
+
+  $("#btnNapCT").onclick = e => cho(e.target, async () => {
+    const f = $("#fBai");
+    try { ct = (await goi("gv.cauTrucNH", { mon: f.mon.value, lop: +f.lop.value })).dang; } catch (err) { return bao(esc(err.message), "red"); }
+    M = {}; veCT();
+  });
+  function veCT() {
+    if (!ct) { $("#ctTom").textContent = ""; $("#ctChuong").innerHTML = ""; $("#ctGoiY").classList.add("hidden"); $("#mxWrap").classList.add("hidden"); $("#mxTom").innerHTML = ""; return; }
+    const f = $("#fBai");
+    $("#ctTom").textContent = ct.length ? `${f.mon.value} ${f.lop.value}: ${ct.length} dạng, ${ct.reduce((a, d) => a + d.n, 0)} câu.` : `Ngân hàng ${f.mon.value} ${f.lop.value} chưa có câu nào.`;
+    const chs = [...new Set(ct.map(d => d.chuong))].sort((a, b) => a - b);
+    $("#ctChuong").innerHTML = chs.map(c => `<label class="chip"><input type="checkbox" class="chChon" value="${c}"> Chương ${c}</label>`).join("");
+    $("#ctGoiY").classList.toggle("hidden", !ct.length);
+    $$(".chChon").forEach(c => c.onchange = veMX);
+    veMX();
+  }
+  const chuongChon = () => $$(".chChon:checked").map(c => +c.value);
+  function veMX() {
+    const chs = chuongChon();
+    const ds = (ct || []).filter(d => chs.includes(d.chuong) || M[d.dkey]);
+    $("#mxWrap").classList.toggle("hidden", !ds.length);
+    if (!ds.length) { $("#mxTom").innerHTML = ct && ct.length ? "Thầy tích chọn chương để hiện các dạng." : ""; return; }
+    let h = `<thead><tr><th rowspan="2">Dạng</th>${LOAI.map((L, i) => `<th colspan="4" class="p${i + 1}">${TEN_LOAI[L]}</th>`).join("")}</tr><tr>${LOAI.map((L, i) => MUC.map(m => `<th class="p${i + 1}">${m}</th>`).join("")).join("")}</tr></thead><tbody>`;
+    let ch = 0;
+    ds.forEach(d => {
+      if (d.chuong !== ch) { ch = d.chuong; h += `<tr><td class="dang" colspan="13"><b>Chương ${ch}</b></td></tr>`; }
+      h += `<tr><td class="dang">${esc(d.ten || "Dạng " + d.so)} <small>${esc(d.dkey)}</small></td>`;
+      LOAI.forEach(L => MUC.forEach(m => {
+        const co = d.c[L + "|" + m] || 0, v = ((M[d.dkey] || {})[L] || {})[m] || 0;
+        h += co ? `<td><input type="number" min="0" max="${co}" value="${v || ""}" data-dk="${esc(d.dkey)}" data-l="${L}" data-m="${m}" class="${v > co ? "over" : ""}"><span class="co">/${co}</span></td>` : `<td class="na">–</td>`;
+      }));
+      h += `</tr>`;
+    });
+    $("#tMX").innerHTML = h + `</tbody><tfoot><tr id="mxTong"></tr></tfoot>`;
+    $$("#tMX input").forEach(inp => inp.oninput = () => {
+      const { dk, l, m } = inp.dataset, v = Math.max(0, Math.round(+inp.value || 0));
+      M[dk] = M[dk] || {}; M[dk][l] = M[dk][l] || {};
+      if (v) M[dk][l][m] = v; else delete M[dk][l][m];
+      inp.classList.toggle("over", v > +inp.max);
+      tongMX();
+    });
+    tongMX();
+  }
+  function tongMX() {
+    const t = { TN: 0, DS: 0, TLN: 0 }, lv = { NB: 0, TH: 0, VD: 0, VDC: 0 }, o = {};
+    Object.values(M).forEach(x => LOAI.forEach(L => MUC.forEach(m => { const n = ((x || {})[L] || {})[m] || 0; t[L] += n; lv[m] += n; o[L + m] = (o[L + m] || 0) + n; })));
+    const tr = $("#mxTong"); if (tr) tr.innerHTML = `<td class="dang">Tổng</td>` + LOAI.map(L => MUC.map(m => `<td>${o[L + m] || ""}</td>`).join("")).join("");
+    const n = t.TN + t.DS + t.TLN;
+    const toan = /^To/.test($("#fBai").mon.value);
+    const raw = t.TN * 0.25 + t.DS * 1 + t.TLN * (toan ? 0.5 : 0.25);
+    $("#mxTom").innerHTML = n ? `<b>${n}</b> câu: ${t.TN} trắc nghiệm, ${t.DS} đúng/sai, ${t.TLN} trả lời ngắn · NB ${lv.NB}, TH ${lv.TH}, VD ${lv.VD}, VDC ${lv.VDC} · thang gốc ${String(raw).replace(".", ",")} điểm, quy về thang 10.` : "Ma trận chưa có câu nào: thầy gõ số câu vào các ô, hoặc bấm Gợi ý ma trận.";
+  }
+  $("#btnGoiY").onclick = () => {
+    const chs = chuongChon();
+    if (!chs.length) return ($("#mxTom").textContent = "Thầy tích chọn ít nhất một chương trước.");
+    const dang = {}; ct.forEach(d => dang[d.dkey] = Object.assign({}, d));
+    const idx = { dang, levels: MUC.filter(m => ct.some(d => LOAI.some(L => d.c[L + "|" + m]))) };
+    const scope = ct.filter(d => chs.includes(d.chuong)).map(d => d.dkey);
+    const num = id => Math.max(0, +$(id).value || 0);
+    const r = NHD.Gen.suggest(idx, scope, { TN: num("#nTN"), DS: num("#nDS"), TLN: num("#nTLN") }, { NB: num("#pNB"), TH: num("#pTH"), VD: num("#pVD"), VDC: num("#pVDC") }, Date.now());
+    M = r.M; veMX();
+    if (r.short.length) $("#mxTom").innerHTML += `<div class="note">Ngân hàng không đủ câu cho: ${esc(r.short.join(", "))}. Thầy chỉnh tay hoặc giảm số câu.</div>`;
+  };
+  $("#btnXoaMT").onclick = () => { M = {}; veMX(); };
+  $("#btnTaoBai").onclick = e => {
+    const f = $("#fBai"); $("#taoLoi").textContent = "";
+    if (!f.reportValidity()) return;
+    if ($$("#tMX input.over").length) return ($("#taoLoi").textContent = "Có ô vượt quá số câu trong ngân hàng (ô đỏ).");
+    cho(e.target, async () => {
+      try {
+        const r = await goi("gv.taoBai", { ten: f.ten.value, maLop: f.maLop.value, mon: f.mon.value, lop: +f.lop.value, thoiGian: +f.thoiGian.value, dongLuc: f.dongLuc.value ? new Date(f.dongLuc.value).toISOString() : "", moNgay: f.moNgay.checked, maTran: M });
+        bao(`Đã tạo bài <b>${esc(f.ten.value)}</b>${f.moNgay.checked ? ", học sinh lớp đó đã thấy bài khi đăng nhập" : ". Bấm “Mở bài” khi muốn cho học sinh làm"}.`, "green");
+        $("#cTao").classList.add("hidden"); f.ten.value = ""; await taiBai(); moGS(r.maBai);
+      } catch (err) { $("#taoLoi").textContent = err.message; }
+    });
+  };
 
   if (!API.url()) bao("Web chưa được nối với máy chủ. Thầy dán địa chỉ /exec vào <code>config.js</code> (HUONG-DAN.md, mục 2).", "red");
   P.token ? moQL() : moDN();

@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Làm bài · Học cùng Thầy Hiếu</title>
+<meta name="theme-color" content="#3b7bff">
+<link rel="icon" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/fonts.css"><link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/hs.css"><link rel="stylesheet" href="assets/lam.css">
+<script src="config.js"></script><script src="assets/api.js"></script>
+<script src="assets/katex/katex.min.js"></script><script src="assets/nhd/core.js"></script><script src="assets/hinhtudong.js"></script>
+</head>
+<body class="lam">
+<header class="lam-top">
+  <div class="wrap narrow in">
+    <a href="./" class="ve" id="btnVe" aria-label="Về trang chính">←</a>
+    <div class="ten"><b id="tenBai">Đang tải…</b><small id="trangThaiLuu"></small></div>
+    <div class="dongho" id="dongHo" aria-live="polite"></div>
+  </div>
+</header>
+
+<main><div class="wrap narrow">
+  <div id="thongBao"></div>
+  <div id="deBai" class="ex"></div>
+  <div id="ketQua" class="ex"></div>
+  <div class="row hidden" id="hangNop" style="margin:18px 0 90px;justify-content:center"><button class="btn green full" id="btnNop">Nộp bài</button></div>
+</div></main>
+
+<nav class="lam-nav hidden" id="dieuHuong" aria-label="Chuyển nhanh tới câu"></nav>
+
+<dialog id="dNop" class="card">
+  <h3>Nộp bài?</h3>
+  <p id="nopTom"></p>
+  <div class="row"><button class="btn ghost" id="btnHuyNop">Làm tiếp</button><button class="btn green" id="btnChacNop">Nộp bài</button></div>
+</dialog>
+
+<script>
+(function () {
+  "use strict";
+  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+  const P = API.phien("hs"), esc = API.esc;
+  const maBai = new URLSearchParams(location.search).get("bai") || "";
+  const hoSo = (() => { try { return JSON.parse(API.LS.get("hs-ho-so") || "{}"); } catch (e) { return {}; } })();
+  const KHOA_LUU = "bl-" + maBai + "-" + (hoSo.id || "");
+  const bao = (html, kieu) => { $("#thongBao").innerHTML = html ? `<div class="note ${kieu || "blue"}">${html}</div>` : ""; };
+  const NHAN = { TN: "Phần I · Trắc nghiệm nhiều lựa chọn", DS: "Phần II · Đúng / Sai", TLN: "Phần III · Trả lời ngắn" };
+
+  let DE = null, A = {}, BAN = {}, lechGio = 0, hanNop = 0, daNop = false, dangGui = false, henGui = null, henDongHo = null;
+
+  /* ---------- lưu trong máy: không mất câu đã làm khi rớt mạng, tắt trình duyệt ---------- */
+  function luuMay() { API.LS.set(KHOA_LUU, JSON.stringify({ A, BAN })); }
+  function docMay() { try { const x = JSON.parse(API.LS.get(KHOA_LUU) || "null"); if (x) { A = Object.assign(A, x.A || {}); BAN = x.BAN || {}; } } catch (e) { } }
+  function trangThaiLuu() {
+    const n = Object.keys(BAN).length;
+    $("#trangThaiLuu").textContent = daNop ? "Đã nộp" : n ? (navigator.onLine === false ? `⚠ Mất mạng · ${n} câu chờ gửi (đã giữ trong máy)` : `⏳ ${n} câu chờ gửi…`) : "☁ Đã lưu lên máy chủ";
+    $("#trangThaiLuu").className = n && navigator.onLine === false ? "canh" : "";
+  }
+
+  /* ---------- gửi theo lô ---------- */
+  async function gui(nop) {
+    if (dangGui && !nop) return;
+    const goiDi = Object.assign({}, nop ? A : BAN);
+    if (!nop && !Object.keys(goiDi).length) return;
+    dangGui = true;
+    try {
+      await P.goi("hs.luuBai", { maBai, traLoi: goiDi, nop: !!nop }, { thuLai: nop ? 4 : 1 });
+      Object.keys(goiDi).forEach(k => { if (BAN[k] === goiDi[k]) delete BAN[k]; });
+      luuMay();
+      return true;
+    } catch (e) {
+      if (e.ma === "da-nop") { daNop = true; API.LS.set(KHOA_LUU, null); return "da-nop"; }
+      if (e.ma === "het-phien") { bao("Phiên đăng nhập đã hết. Câu trả lời vẫn được giữ trong máy: em <a href='./'>đăng nhập lại</a> rồi vào lại bài.", "red"); }
+      return false;
+    } finally { dangGui = false; trangThaiLuu(); }
+  }
+  function henLich() { clearInterval(henGui); henGui = setInterval(() => gui(), 15000); }
+  window.addEventListener("online", () => { trangThaiLuu(); gui(); });
+  window.addEventListener("offline", trangThaiLuu);
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden" && !daNop) gui(); });
+
+  function chon(i, v) {
+    if (daNop) return;
+    A[i] = v; BAN[i] = v; luuMay(); trangThaiLuu(); danhDau(i);
+  }
+
+  /* ---------- vẽ đề ---------- */
+  function veDe() {
+    $("#tenBai").textContent = DE.bai.ten;
+    let h = "", loai = "";
+    DE.cau.forEach((c, n) => {
+      if (c.loai !== loai) { loai = c.loai; h += `<h3 class="phan">${NHAN[loai]}</h3>`; }
+      const item = { q: { loai: c.loai, de: c.de, pa: c.pa, y: c.y, k: "c" + c.i }, order: [0, 1, 2, 3] };
+      h += `<section class="cau" id="cau${c.i}" data-i="${c.i}" data-loai="${c.loai}">${NHD.renderQuestion(item, n + 1, "exam", { hinh: true })}`;
+      if (c.loai === "TN") h += `<div class="chon4">${"ABCD".split("").map(L => `<button type="button" data-v="${L}">${L}</button>`).join("")}</div>`;
+      if (c.loai === "DS") h += `<div class="chonDS">${"abcd".split("").map((y, p) => `<div class="dsr"><b>${y})</b><button type="button" data-p="${p}" data-v="Đ">Đúng</button><button type="button" data-p="${p}" data-v="S">Sai</button></div>`).join("")}</div>`;
+      if (c.loai === "TLN") h += `<label class="tln">Đáp số: <input type="text" inputmode="decimal" autocomplete="off" maxlength="12" placeholder="VD: -2,5"></label>`;
+      h += `</section>`;
+    });
+    $("#deBai").innerHTML = h;
+    $("#dieuHuong").innerHTML = DE.cau.map((c, n) => `<a href="#cau${c.i}" data-i="${c.i}">${n + 1}</a>`).join("");
+    $("#dieuHuong").classList.remove("hidden"); $("#hangNop").classList.remove("hidden");
+    $$("#deBai .cau").forEach(sec => {
+      const i = +sec.dataset.i, L = sec.dataset.loai;
+      if (L === "TN") sec.querySelectorAll(".chon4 button").forEach(b => b.onclick = () => chon(i, A[i] === b.dataset.v ? "" : b.dataset.v));
+      if (L === "DS") sec.querySelectorAll(".chonDS button").forEach(b => b.onclick = () => {
+        const cu = (A[i] || "____").padEnd(4, "_").split(""), p = +b.dataset.p;
+        cu[p] = cu[p] === b.dataset.v ? "_" : b.dataset.v; chon(i, cu.join(""));
+      });
+      if (L === "TLN") { const inp = sec.querySelector("input"); inp.oninput = () => chon(i, inp.value.trim()); }
+      danhDau(i);
+    });
+  }
+  function danhDau(i) {
+    const sec = $("#cau" + i); if (!sec) return;
+    const v = A[i] || "";
+    if (sec.dataset.loai === "TN") sec.querySelectorAll(".chon4 button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === v)));
+    if (sec.dataset.loai === "DS") sec.querySelectorAll(".chonDS button").forEach(b => b.setAttribute("aria-pressed", String(v.charAt(+b.dataset.p) === b.dataset.v)));
+    if (sec.dataset.loai === "TLN") { const inp = sec.querySelector("input"); if (document.activeElement !== inp) inp.value = v; }
+    const xong = sec.dataset.loai === "DS" ? /^[ĐS]{4}$/.test(v) : !!v;
+    const motPhan = sec.dataset.loai === "DS" && /[ĐS]/.test(v) && !xong;
+    const a = $(`#dieuHuong [data-i="${i}"]`); if (a) { a.classList.toggle("xong", xong); a.classList.toggle("doi", motPhan); }
+  }
+
+  /* ---------- đồng hồ ---------- */
+  function dongHo() {
+    clearTimeout(henDongHo);
+    if (daNop) return;
+    const con = Math.max(0, hanNop - (Date.now() + lechGio));
+    const p = Math.floor(con / 60000), g = Math.floor(con / 1000) % 60;
+    const el = $("#dongHo"); el.textContent = `${p}:${String(g).padStart(2, "0")}`;
+    el.classList.toggle("gap", con < 5 * 60000); el.classList.toggle("rat-gap", con < 60000);
+    if (con <= 0) return nop(true);
+    henDongHo = setTimeout(dongHo, 1000 - ((Date.now() + lechGio) % 1000) + 10);
+  }
+
+  /* ---------- nộp ---------- */
+  $("#btnNop").onclick = () => {
+    const chua = DE.cau.filter(c => { const v = A[c.i] || ""; return c.loai === "DS" ? !/^[ĐS]{4}$/.test(v) : !v; }).length;
+    $("#nopTom").innerHTML = chua ? `Em còn <b>${chua}</b> câu chưa làm xong. Nộp rồi thì không sửa được nữa.` : "Em đã làm đủ các câu. Nộp rồi thì không sửa được nữa.";
+    $("#dNop").showModal();
+  };
+  $("#btnHuyNop").onclick = () => $("#dNop").close();
+  $("#btnChacNop").onclick = () => { $("#dNop").close(); nop(false); };
+  async function nop(hetGio) {
+    if (daNop) return;
+    $("#btnNop").disabled = true; clearTimeout(henDongHo);
+    bao(hetGio ? "⏰ Hết giờ. Đang nộp bài…" : "Đang nộp bài…");
+    let r = await gui(true);
+    for (let lan = 0; !r && lan < 20; lan++) {                       // mất mạng: thử lại mỗi 10 giây, câu đã làm vẫn giữ trong máy
+      bao(`Chưa gửi được (mạng yếu). Máy sẽ tự thử lại… Em <b>đừng tắt trang</b>. Câu đã làm vẫn được giữ trong máy.`, "red");
+      await API.sleep(10000); r = await gui(true);
+    }
+    if (!r) { $("#btnNop").disabled = false; return bao("Vẫn chưa nộp được. Em kiểm tra mạng rồi bấm Nộp bài lần nữa. Nếu đã hết giờ, máy chủ sẽ tự chấm các câu đã gửi trước đó.", "red"); }
+    daNop = true; API.LS.set(KHOA_LUU, null); trangThaiLuu();
+    $("#deBai").innerHTML = ""; $("#dieuHuong").classList.add("hidden"); $("#hangNop").classList.add("hidden"); $("#dongHo").textContent = "";
+    xemKetQua();
+  }
+
+  /* ---------- kết quả: mở khi cả lớp đã nộp ---------- */
+  let henKQ = null;
+  async function xemKetQua() {
+    clearTimeout(henKQ);
+    let r;
+    try { r = await P.goi("hs.ketQua", { maBai }); }
+    catch (e) { bao(esc(e.message), "red"); henKQ = setTimeout(xemKetQua, 30000); return; }
+    if (r.cho) {
+      bao(`✅ Em đã nộp bài. Điểm và lời giải sẽ hiện khi cả lớp nộp xong (đã nộp <b>${r.daNop}/${r.tong}</b>). Trang tự cập nhật, em cũng có thể quay lại sau.`, "green");
+      henKQ = setTimeout(xemKetQua, 30000); return;
+    }
+    bao("");
+    $("#tenBai").textContent = r.bai.ten; $("#trangThaiLuu").textContent = "Kết quả";
+    const day = s => String(s).replace(".", ",");
+    let h = `<div class="diem-to"><span>Điểm của em</span><b>${day(r.diem)}</b><small>/ 10</small></div>`, loai = "";
+    r.cau.forEach((c, n) => {
+      if (c.loai !== loai) { loai = c.loai; h += `<h3 class="phan">${NHAN[loai]}</h3>`; }
+      const item = { q: c.q, order: c.order.length ? c.order : [0, 1, 2, 3] };
+      const dapAn = c.q.loai ? NHD.keyOf(item) : "";
+      const em = c.traLoi ? (c.loai === "DS" ? c.traLoi.split("").map(x => x === "_" ? "–" : x).join(" ") : c.traLoi) : "(bỏ trống)";
+      const lop = c.diem >= c.toiDa ? "dung" : c.diem > 0 ? "mot-phan" : "sai";
+      h += `<section class="cau kq ${lop}">${c.q.loai ? NHD.renderQuestion(item, n + 1, "key", { sol: true, hinh: true }) : "(Câu hỏi đã bị xoá)"}
+        <div class="kq-dong"><span>Em chọn: <b>${esc(em)}</b></span><span>Đáp án: <b>${c.loai === "DS" ? esc(dapAn.split("").join(" ")) : c.loai === "TLN" ? NHD.texToHtml(String(dapAn)) : esc(dapAn)}</b></span><span class="d">${day(c.diem)} / ${day(c.toiDa)} đ</span></div></section>`;
+    });
+    $("#ketQua").innerHTML = h;
+  }
+
+  /* ---------- khởi động ---------- */
+  (async function () {
+    if (!P.token) { location.replace("./"); return; }
+    if (!maBai) { bao("Thiếu mã bài.", "red"); return; }
+    if (new URLSearchParams(location.search).get("xem")) { daNop = true; return xemKetQua(); }
+    let r;
+    try { r = await P.goi("hs.vaoBai", { maBai }); }
+    catch (e) {
+      if (e.ma === "da-nop") { daNop = true; API.LS.set(KHOA_LUU, null); return xemKetQua(); }
+      $("#tenBai").textContent = "Không vào được bài";
+      return bao(esc(e.message) + ` <a href="./">Về trang chính</a>`, "red");
+    }
+    DE = r; A = Object.assign({}, r.traLoi || {});
+    docMay();                                   // câu làm lúc mất mạng (chưa gửi) đè lên bản trên máy chủ
+    lechGio = new Date(r.bayGio).getTime() - Date.now();
+    hanNop = new Date(r.hanNop).getTime();
+    veDe(); trangThaiLuu(); dongHo(); henLich();
+    if (Object.keys(BAN).length) gui();
+    window.addEventListener("beforeunload", e => { if (!daNop && Object.keys(BAN).length) { e.preventDefault(); e.returnValue = ""; } });
+  })();
+})();
+</script>
+</body>
+</html>

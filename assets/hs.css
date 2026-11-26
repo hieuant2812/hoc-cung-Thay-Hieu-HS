@@ -31,3 +31,18 @@ table.tbl tr.sel{background:#eef4ff}
 .toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:12px 0}
 .toolbar .sp{flex:1}
 .loglist{max-height:220px;overflow:auto;font:12.5px/1.5 ui-monospace,Menlo,monospace;background:#fbf6ee;border-radius:10px;padding:8px 10px;margin-top:10px}
+.grid-form{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.grid-form input[type=datetime-local]{font:inherit;border:1.5px solid var(--line);border-radius:10px;padding:7px 10px}
+label.f.chk{align-self:end;color:var(--ink);font-weight:600}
+.chips label.chip{cursor:pointer;display:inline-flex;gap:6px;align-items:center;padding:5px 12px}
+table.mx td.dang{text-align:left;white-space:normal;min-width:220px;max-width:340px}
+table.mx td.dang small{color:var(--muted);font-family:ui-monospace,Menlo,monospace}
+table.mx input{width:44px;padding:3px 4px;text-align:center;font-size:13.5px;border-radius:7px}
+table.mx input.over{border-color:#d11a45;background:#fff0f4}
+table.mx .co{display:block;font-size:10.5px;color:var(--muted);line-height:1.1}
+table.mx td.na{color:#c9c2b5}
+table.mx tfoot td{font-weight:700}
+.tt.mo{background:#e0f6e7;color:#1b7a3c}.tt.nhap{background:#eef2f8;color:#55607a}.tt.dong{background:#ffe3ec;color:#c21e57}.tt.lam{background:#e3edff;color:#1f4fc7}.tt.nop{background:#e0f6e7;color:#1b7a3c}.tt.chua{background:#eef2f8;color:#55607a}
+.ds-bai{display:grid;gap:8px;margin-top:10px}
+.bai-dong{display:flex;gap:12px;align-items:center;justify-content:space-between;border:1px solid var(--line2);border-radius:12px;padding:10px 12px;background:#fffdf9}
+.bai-dong .btn{flex:none}
