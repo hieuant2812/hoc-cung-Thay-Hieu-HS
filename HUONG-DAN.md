@@ -95,6 +95,14 @@ Thầy làm một lần, khoảng 15 phút.
 - Ô **Mở bài lúc**: bài tự mở đúng giờ (học sinh thấy “mở lúc …” nhưng chưa vào được). Bấm **Mở ngay** nếu muốn mở sớm. Ô **Đóng bài lúc** để tự đóng.
 - **Đảo thứ tự câu** và **Đảo phương án A–D** bật sẵn; bỏ tick nếu thầy muốn mọi em cùng thứ tự (mỗi em vẫn nhận câu khác nhau theo ma trận).
 
+**Thi nghiêm (chống rời màn hình)**
+- Ô **Thi nghiêm** bật sẵn khi tạo bài. Học sinh rời khỏi màn hình làm bài (chuyển ứng dụng, mở tab khác, tắt màn hình, rời trang) thì:
+  - **Lần 1:** hiện cảnh báo.
+  - **Lần 2:** bài bị **khoá**, em không làm tiếp được. Trong bảng **Theo dõi** thầy thấy ô đỏ “🔒 Đang khoá chờ thầy mở” kèm nút **🔓 Mở khoá** (hoặc **Mở khoá tất cả**). Thầy bấm thì vài giây sau máy em tự mở lại.
+  - **Lần 3:** bài **tự nộp** với các câu đã làm.
+- Đồng hồ vẫn chạy khi bị khoá; hết giờ thì bài tự nộp như thường. Rời màn hình dưới 1 giây (thông báo hệ thống) hoặc tải lại trang nhanh không bị tính. Trang làm bài giữ màn hình điện thoại luôn sáng để máy không tự tắt màn hình giữa giờ.
+- Số lần rời màn hình ghi ở cột *Vi phạm* trong bảng Theo dõi và file bảng điểm. Bỏ tick nếu bài làm ở nhà, không cần nghiêm. Thi thử THPT học sinh tự tạo không áp dụng.
+
 **Học sinh xem lại bài, so sánh điểm, thi thử**
 - Trang chính có ô **📈 Bài đã làm**: biểu đồ điểm các lần (kèm đường trung bình lớp), cho biết tăng hay giảm so với lần trước, bấm tên bài để xem lại bài làm và lời giải.
 - **⏱ Thi thử THPT** (trong trang Tự học): em tự tạo một đề theo cấu trúc thi tốt nghiệp (12 trắc nghiệm, 4 đúng/sai, 6 trả lời ngắn, 90 phút), câu lấy từ ngân hàng chung, nộp là có điểm và lời giải. Mỗi ngày tối đa 3 lần. Bài thi thử không hiện trong danh sách bài kiểm tra của thầy.
