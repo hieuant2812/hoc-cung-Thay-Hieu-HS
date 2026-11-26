@@ -7,7 +7,7 @@
 <link rel="icon" href="assets/favicon.svg">
 <link rel="stylesheet" href="assets/fonts.css"><link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/hs.css"><link rel="stylesheet" href="assets/lam.css">
 <script src="config.js"></script><script src="assets/api.js"></script>
-<script src="assets/katex/katex.min.js"></script><script src="assets/nhd/core.js"></script><script src="assets/hinhtudong.js"></script>
+<script src="assets/katex/katex.min.js"></script><script src="assets/nhd/core.js"></script><script src="assets/hinhtudong.js"></script><script src="assets/cauhoi.js"></script>
 </head>
 <body class="lam">
 <header class="lam-top">
@@ -42,7 +42,7 @@
   const hoSo = (() => { try { return JSON.parse(API.LS.get("hs-ho-so") || "{}"); } catch (e) { return {}; } })();
   const KHOA_LUU = "bl-" + maBai + "-" + (hoSo.id || "");
   const bao = (html, kieu) => { $("#thongBao").innerHTML = html ? `<div class="note ${kieu || "blue"}">${html}</div>` : ""; };
-  const NHAN = { TN: "Phần I · Trắc nghiệm nhiều lựa chọn", DS: "Phần II · Đúng / Sai", TLN: "Phần III · Trả lời ngắn" };
+  const NHAN = CH.NHAN;
 
   let DE = null, A = {}, BAN = {}, lechGio = 0, hanNop = 0, daNop = false, dangGui = false, henGui = null, henDongHo = null;
 
@@ -88,36 +88,18 @@
     let h = "", loai = "";
     DE.cau.forEach((c, n) => {
       if (c.loai !== loai) { loai = c.loai; h += `<h3 class="phan">${NHAN[loai]}</h3>`; }
-      const item = { q: { loai: c.loai, de: c.de, pa: c.pa, y: c.y, k: "c" + c.i }, order: [0, 1, 2, 3] };
-      h += `<section class="cau" id="cau${c.i}" data-i="${c.i}" data-loai="${c.loai}">${NHD.renderQuestion(item, n + 1, "exam", { hinh: true })}`;
-      if (c.loai === "TN") h += `<div class="chon4">${"ABCD".split("").map(L => `<button type="button" data-v="${L}">${L}</button>`).join("")}</div>`;
-      if (c.loai === "DS") h += `<div class="chonDS">${"abcd".split("").map((y, p) => `<div class="dsr"><b>${y})</b><button type="button" data-p="${p}" data-v="Đ">Đúng</button><button type="button" data-p="${p}" data-v="S">Sai</button></div>`).join("")}</div>`;
-      if (c.loai === "TLN") h += `<label class="tln">Đáp số: <input type="text" inputmode="decimal" autocomplete="off" maxlength="12" placeholder="VD: -2,5"></label>`;
-      h += `</section>`;
+      h += CH.veCau(c, n + 1);
     });
     $("#deBai").innerHTML = h;
     $("#dieuHuong").innerHTML = DE.cau.map((c, n) => `<a href="#cau${c.i}" data-i="${c.i}">${n + 1}</a>`).join("");
     $("#dieuHuong").classList.remove("hidden"); $("#hangNop").classList.remove("hidden");
-    $$("#deBai .cau").forEach(sec => {
-      const i = +sec.dataset.i, L = sec.dataset.loai;
-      if (L === "TN") sec.querySelectorAll(".chon4 button").forEach(b => b.onclick = () => chon(i, A[i] === b.dataset.v ? "" : b.dataset.v));
-      if (L === "DS") sec.querySelectorAll(".chonDS button").forEach(b => b.onclick = () => {
-        const cu = (A[i] || "____").padEnd(4, "_").split(""), p = +b.dataset.p;
-        cu[p] = cu[p] === b.dataset.v ? "_" : b.dataset.v; chon(i, cu.join(""));
-      });
-      if (L === "TLN") { const inp = sec.querySelector("input"); inp.oninput = () => chon(i, inp.value.trim()); }
-      danhDau(i);
-    });
+    CH.gan($("#deBai"), i => A[i], chon);
+    DE.cau.forEach(c => danhDau(c.i));
   }
   function danhDau(i) {
     const sec = $("#cau" + i); if (!sec) return;
-    const v = A[i] || "";
-    if (sec.dataset.loai === "TN") sec.querySelectorAll(".chon4 button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === v)));
-    if (sec.dataset.loai === "DS") sec.querySelectorAll(".chonDS button").forEach(b => b.setAttribute("aria-pressed", String(v.charAt(+b.dataset.p) === b.dataset.v)));
-    if (sec.dataset.loai === "TLN") { const inp = sec.querySelector("input"); if (document.activeElement !== inp) inp.value = v; }
-    const xong = sec.dataset.loai === "DS" ? /^[ĐS]{4}$/.test(v) : !!v;
-    const motPhan = sec.dataset.loai === "DS" && /[ĐS]/.test(v) && !xong;
-    const a = $(`#dieuHuong [data-i="${i}"]`); if (a) { a.classList.toggle("xong", xong); a.classList.toggle("doi", motPhan); }
+    const t = CH.danhDau(sec, A[i]);
+    const a = $(`#dieuHuong [data-i="${i}"]`); if (a) { a.classList.toggle("xong", t.xong); a.classList.toggle("doi", t.motPhan); }
   }
 
   /* ---------- đồng hồ ---------- */
@@ -134,7 +116,7 @@
 
   /* ---------- nộp ---------- */
   $("#btnNop").onclick = () => {
-    const chua = DE.cau.filter(c => { const v = A[c.i] || ""; return c.loai === "DS" ? !/^[ĐS]{4}$/.test(v) : !v; }).length;
+    const chua = DE.cau.filter(c => !CH.daLam(c.loai, A[c.i])).length;
     $("#nopTom").innerHTML = chua ? `Em còn <b>${chua}</b> câu chưa làm xong. Nộp rồi thì không sửa được nữa.` : "Em đã làm đủ các câu. Nộp rồi thì không sửa được nữa.";
     $("#dNop").showModal();
   };
@@ -168,16 +150,10 @@
     }
     bao("");
     $("#tenBai").textContent = r.bai.ten; $("#trangThaiLuu").textContent = "Kết quả";
-    const day = s => String(s).replace(".", ",");
-    let h = `<div class="diem-to"><span>Điểm của em</span><b>${day(r.diem)}</b><small>/ 10</small></div>`, loai = "";
+    let h = `<div class="diem-to"><span>Điểm của em</span><b>${CH.day(r.diem)}</b><small>/ 10</small></div>`, loai = "";
     r.cau.forEach((c, n) => {
       if (c.loai !== loai) { loai = c.loai; h += `<h3 class="phan">${NHAN[loai]}</h3>`; }
-      const item = { q: c.q, order: c.order.length ? c.order : [0, 1, 2, 3] };
-      const dapAn = c.q.loai ? NHD.keyOf(item) : "";
-      const em = c.traLoi ? (c.loai === "DS" ? c.traLoi.split("").map(x => x === "_" ? "–" : x).join(" ") : c.traLoi) : "(bỏ trống)";
-      const lop = c.diem >= c.toiDa ? "dung" : c.diem > 0 ? "mot-phan" : "sai";
-      h += `<section class="cau kq ${lop}">${c.q.loai ? NHD.renderQuestion(item, n + 1, "key", { sol: true, hinh: true }) : "(Câu hỏi đã bị xoá)"}
-        <div class="kq-dong"><span>Em chọn: <b>${esc(em)}</b></span><span>Đáp án: <b>${c.loai === "DS" ? esc(dapAn.split("").join(" ")) : c.loai === "TLN" ? NHD.texToHtml(String(dapAn)) : esc(dapAn)}</b></span><span class="d">${day(c.diem)} / ${day(c.toiDa)} đ</span></div></section>`;
+      h += CH.veKetQua(c, n + 1);
     });
     $("#ketQua").innerHTML = h;
   }

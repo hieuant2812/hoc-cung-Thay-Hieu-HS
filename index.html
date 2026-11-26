@@ -7,7 +7,7 @@
 <link rel="icon" href="assets/favicon.svg"><link rel="apple-touch-icon" href="assets/icon-180.png">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="assets/fonts.css"><link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/hs.css">
-<script src="config.js"></script><script src="assets/api.js"></script>
+<script src="config.js"></script><script src="assets/api.js"></script><script src="assets/loihay.js" defer></script>
 </head>
 <body>
 <header class="top"><div class="wrap in">
@@ -57,8 +57,8 @@
       <a class="big mp" id="oTuHoc" href="#">
         <div class="ill ico">📘</div>
         <h2>Tự học</h2>
-        <p>Luyện tập theo dạng, sổ tay kiến thức, mô phỏng. Làm câu nào chấm câu đó, có lời giải.</p>
-        <span class="go">Đang chuẩn bị · tạm thời mở trang tự học cũ →</span>
+        <p>Luyện theo dạng, sổ lỗi sai tự ôn lại, gợi ý theo điểm yếu. Mỗi ngày làm đúng 5 câu để giữ chuỗi 🔥.</p>
+        <span class="go">Vào tự học →</span>
       </a>
       <a class="big rd" id="oKiemTra" href="#cBai">
         <div class="ill ico">📝</div>
@@ -109,7 +109,7 @@
     $("#vCong").classList.add("hidden"); $("#vNha").classList.remove("hidden"); $("#nav").classList.remove("hidden");
     $("#nhaTen").textContent = "Chào " + (hs.hoTen.split(" ").pop() || hs.hoTen) + "!";
     $("#nhaLop").textContent = "Lớp " + (hs.tenLop || hs.maLop) + " · " + hs.tenDN;
-    $("#oTuHoc").href = (S.webGV || "#") + "luyentap.html";
+    $("#oTuHoc").href = "tuhoc.html";
     API.LS.set("hs-ho-so", JSON.stringify(hs));
     taiBai();
   }
