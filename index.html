@@ -49,9 +49,14 @@
   <!-- ===== đã đăng nhập ===== -->
   <section id="vNha" class="hidden">
     <div class="hero sm toan"><span class="badge" id="nhaLop">Lớp</span><h1 id="nhaTen">Chào em</h1><p>Em chọn việc muốn làm hôm nay.</p></div>
+    <div class="nhac-giao" id="nhacGiao"></div>
     <div class="card" id="cBai" style="margin-top:18px">
       <div class="row" style="justify-content:space-between"><h3 style="margin:0">📝 Bài kiểm tra</h3><button class="btn sm ghost" id="btnTaiBai">⟳ Tải lại</button></div>
       <div id="dsBai" class="ds-bai"><p class="muted small">Đang tải…</p></div>
+    </div>
+    <div class="card" id="cLS" style="margin-top:18px">
+      <div class="row" style="justify-content:space-between"><h3 style="margin:0">📈 Bài đã làm</h3><a class="btn sm violet" href="tuhoc.html#thithu">⏱ Thi thử THPT</a></div>
+      <div id="dsLS"><p class="muted small">Đang tải…</p></div>
     </div>
     <div class="home-grid">
       <a class="big mp" id="oTuHoc" href="#">
@@ -111,7 +116,7 @@
     $("#nhaLop").textContent = "Lớp " + (hs.tenLop || hs.maLop) + " · " + hs.tenDN;
     $("#oTuHoc").href = "tuhoc.html";
     API.LS.set("hs-ho-so", JSON.stringify(hs));
-    taiBai();
+    taiBai(); taiLS();
   }
 
   /* danh sách bài kiểm tra của lớp */
@@ -124,10 +129,40 @@
     el.innerHTML = r.bai.length ? r.bai.map(b => {
       let nut;
       if (b.cuaEm === "nop") nut = b.diem != null ? `<a class="btn sm blue" href="lam.html?bai=${encodeURIComponent(b.maBai)}&xem=1">Điểm ${String(b.diem).replace(".", ",")} · xem bài</a>` : `<a class="btn sm ghost" href="lam.html?bai=${encodeURIComponent(b.maBai)}&xem=1">Đã nộp · chờ kết quả</a>`;
+      else if (b.trangThai === "hen") nut = `<span class="tt hen">mở lúc ${ngay(b.moLuc)}</span>`;
       else if (b.trangThai !== "mo") nut = `<span class="tt dong">đã đóng</span>`;
       else nut = `<a class="btn sm ${b.cuaEm === "lam" ? "coral" : "green"}" href="lam.html?bai=${encodeURIComponent(b.maBai)}">${b.cuaEm === "lam" ? "Làm tiếp" : "Vào làm bài"}</a>`;
-      return `<div class="bai-dong"><div><b>${API.esc(b.ten)}</b><br><span class="small muted">${b.soCau} câu · ${b.thoiGian} phút${b.dongLuc ? " · đóng lúc " + ngay(b.dongLuc) : ""}</span></div>${nut}</div>`;
+      return `<div class="bai-dong"><div><b>${b.thiThu ? "⏱ " : ""}${API.esc(b.ten)}</b><br><span class="small muted">${b.soCau} câu · ${b.thoiGian} phút${b.dongLuc ? " · đóng lúc " + ngay(b.dongLuc) : ""}</span></div>${nut}</div>`;
     }).join("") : `<p class="muted small" style="margin:8px 0 0">Hiện chưa có bài kiểm tra nào. Khi thầy mở bài, bài sẽ hiện ở đây.</p>`;
+    // nhắc bài tự học thầy giao
+    const conLai = han => { const ms = new Date(han) - Date.now(); if (ms < 0) return "đã quá hạn"; const h = Math.floor(ms / 3600000); return h < 24 ? `còn ${h} giờ` : `còn ${Math.floor(h / 24)} ngày`; };
+    $("#nhacGiao").innerHTML = (r.giao || []).filter(g => !g.xong).map(g => `<a href="tuhoc.html?giao=${encodeURIComponent(g.maGiao)}" class="${g.quaHan || new Date(g.hanNop) - Date.now() < 86400000 ? "qua" : ""}">
+      <span><b>📌 ${API.esc(g.ten)}</b><small>Bài tự học thầy giao · hạn ${ngay(g.hanNop)} (${conLai(g.hanNop)})</small></span><span class="tien">${g.dung}/${g.soCauDung}</span></a>`).join("");
+  }
+
+  /* bài đã làm: biểu đồ điểm các lần, so với trung bình lớp */
+  async function taiLS() {
+    let r; try { r = await P.goi("hs.lichSu"); } catch (e) { $("#dsLS").innerHTML = ""; return; }
+    const ds = r.bai, coDiem = ds.filter(b => b.diem != null);
+    if (!ds.length) { $("#dsLS").innerHTML = `<p class="muted small" style="margin:8px 0 0">Em chưa nộp bài nào. Thử một đề thi thử để làm quen nhé.</p>`; return; }
+    const day = x => String(x).replace(".", ",");
+    let svg = "";
+    if (coDiem.length >= 2) {
+      const W = 360, H = 170, L = 22, R = 10, T = 10, B = 22, n = coDiem.length;
+      const x = i => L + (n === 1 ? 0 : i * (W - L - R) / (n - 1)), y = d => T + (10 - d) * (H - T - B) / 10;
+      let g = [0, 5, 10].map(v => `<line class="luoi" x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}"/><text x="2" y="${y(v) + 4}">${v}</text>`).join("");
+      const lop = coDiem.map((b, i) => b.tbLop != null ? [x(i), y(b.tbLop)] : null).filter(Boolean);
+      if (lop.length >= 2) g += `<polyline class="lop" points="${lop.map(p => p.join(",")).join(" ")}"/>`;
+      g += `<polyline class="em" points="${coDiem.map((b, i) => x(i) + "," + y(b.diem)).join(" ")}"/>`;
+      g += coDiem.map((b, i) => `<circle class="em${b.thiThu ? " tt" : ""}" cx="${x(i)}" cy="${y(b.diem)}" r="5"><title>${API.esc(b.ten)}: ${day(b.diem)}</title></circle><text x="${x(i)}" y="${H - 8}" text-anchor="middle">${i + 1}</text>`).join("");
+      svg = `<svg class="bieu-do" viewBox="0 0 ${W} ${H}" role="img" aria-label="Điểm các lần làm bài">${g}</svg>
+        <p class="small muted" style="margin:2px 0 0">Đường xanh: điểm của em${lop.length >= 2 ? " · nét đứt: trung bình lớp" : ""}${coDiem.some(b => b.thiThu) ? " · chấm tím: thi thử" : ""}.</p>`;
+      const a = coDiem[n - 1].diem, b0 = coDiem[n - 2].diem;
+      svg += `<p class="small" style="margin:6px 0 0">So với lần trước: <b>${a > b0 ? "▲ tăng " + day(Math.round((a - b0) * 100) / 100) : a < b0 ? "▼ giảm " + day(Math.round((b0 - a) * 100) / 100) : "bằng"}</b> điểm.</p>`;
+    }
+    const ngay = s => s ? new Date(s).toLocaleDateString("vi-VN") : "";
+    $("#dsLS").innerHTML = svg + `<table class="ls-bang">${ds.slice().reverse().slice(0, 12).map((b, i) => `<tr><td>${ds.length - i}. ${b.thiThu ? "⏱ " : ""}<a href="lam.html?bai=${encodeURIComponent(b.maBai)}&xem=1">${API.esc(b.ten)}</a><br><span class="small muted">${ngay(b.nopLuc)}</span></td>
+      <td class="num">${b.diem == null ? '<span class="small muted">chờ kết quả</span>' : `<b>${day(b.diem)}</b>`}${b.tbLop != null ? `<br><span class="small muted">lớp ${day(b.tbLop)}</span>` : ""}</td></tr>`).join("")}</table>`;
   }
   $("#btnTaiBai").onclick = taiBai;
 

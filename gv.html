@@ -71,8 +71,11 @@
           <label class="f">Môn<select name="mon"><option>Toán</option><option>Vật lí</option><option>Hoá học</option><option>KHTN</option></select></label>
           <label class="f">Khối (ngân hàng)<select name="lop"><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option selected>12</option></select></label>
           <label class="f">Thời gian (phút)<input name="thoiGian" type="number" min="5" max="180" value="45" required></label>
+          <label class="f">Mở bài lúc (để trống: theo ô bên phải)<input name="moLuc" type="datetime-local"></label>
           <label class="f">Đóng bài lúc (không bắt buộc)<input name="dongLuc" type="datetime-local"></label>
           <label class="f chk"><span><input name="moNgay" type="checkbox" checked> Mở cho học sinh ngay</span></label>
+          <label class="f chk"><span><input name="tronCau" type="checkbox" checked> Đảo thứ tự câu</span></label>
+          <label class="f chk"><span><input name="tronPA" type="checkbox" checked> Đảo phương án A–D</span></label>
         </form>
 
         <h4 style="margin:18px 0 6px">Ma trận</h4>
@@ -119,6 +122,24 @@
         </div>
         <div id="thTom" class="small" style="margin:10px 0"></div>
         <div class="tbl-wrap"><table class="tbl" id="tTH"><thead><tr><th>Hạng</th><th>Họ và tên</th><th class="num">Chuỗi dài nhất</th><th class="num">Số ngày đạt</th><th class="num">Câu đúng / đã làm</th><th class="num">Chuỗi hiện tại</th><th class="num">Sổ lỗi</th><th>Học gần nhất</th></tr></thead><tbody></tbody></table></div>
+      </div>
+
+      <div class="card" style="margin-top:18px">
+        <div class="row" style="justify-content:space-between"><h3 style="margin:0">Bài tự học thầy giao</h3><button class="btn sm green" id="btnMoGiao">＋ Giao bài mới</button></div>
+        <p class="small muted" style="margin:6px 0 10px">Em nào làm đúng đủ số câu trong các dạng thầy chọn trước hạn là xong. Học sinh thấy nhắc ở trang chính; quá hạn mà chưa xong, tên em hiện ở cột “Chưa xong”.</p>
+        <form id="fGiao" class="grid-form hidden" style="margin-bottom:12px">
+          <label class="f" style="grid-column:span 2">Tên bài<input name="ten" type="text" required placeholder="VD: Ôn cực trị trước kiểm tra"></label>
+          <label class="f">Lớp<select name="maLop" required></select></label>
+          <label class="f">Môn<select name="mon"><option>Toán</option><option>Vật lí</option><option>Hoá học</option><option>KHTN</option></select></label>
+          <label class="f">Khối (ngân hàng)<select name="lop"><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option selected>12</option></select></label>
+          <label class="f">Mức<select name="muc"><option value="">Mọi mức</option><option value="NB">Nhận biết</option><option value="TH">Thông hiểu</option><option value="VD">Vận dụng</option><option value="VDC">Vận dụng cao</option></select></label>
+          <label class="f">Số câu đúng cần đạt<input name="soCauDung" type="number" min="1" max="100" value="10" required></label>
+          <label class="f">Hạn nộp<input name="hanNop" type="datetime-local" required></label>
+          <div style="grid-column:1/-1"><button class="btn sm ghost" type="button" id="btnGiaoDang">Tải các dạng</button> <span class="small muted" id="giaoTom"></span><div id="giaoDang" class="chips" style="margin-top:8px"></div></div>
+          <div class="loi" id="giaoLoi" style="grid-column:1/-1"></div>
+          <div class="row" style="grid-column:1/-1"><button class="btn ghost" type="button" id="btnHuyGiao">Đóng</button><button class="btn green" type="submit">Giao bài</button></div>
+        </form>
+        <div class="tbl-wrap"><table class="tbl" id="tGiao"><thead><tr><th>Bài</th><th>Lớp</th><th>Hạn nộp</th><th class="num">Xong / đang / chưa</th><th>Chưa xong</th><th></th></tr></thead><tbody></tbody></table></div>
       </div>
     </div>
 
@@ -194,7 +215,7 @@
   }
 
   function moDN() { $("#vQL").classList.add("hidden"); $("#nav").classList.add("hidden"); $("#vDN").classList.remove("hidden"); }
-  function moQL() { $("#vDN").classList.add("hidden"); $("#vQL").classList.remove("hidden"); $("#nav").classList.remove("hidden"); taiLop(); }
+  function moQL() { $("#vDN").classList.add("hidden"); $("#vQL").classList.remove("hidden"); $("#nav").classList.remove("hidden"); taiLop(); nhacGiaoQuaHan(); }
 
   $("#fDN").onsubmit = async e => {
     e.preventDefault(); const f = e.target; f.querySelector(".loi").textContent = "";
@@ -350,7 +371,7 @@
     $("#thLop").innerHTML = dsLop.map(l => `<option value="${esc(l.maLop)}">${esc(l.tenLop)}</option>`).join("") || `<option value="">(chưa có lớp)</option>`;
     if (cu) $("#thLop").value = cu; else if (lopChon) $("#thLop").value = lopChon;
     if (!$("#thTu").value) { const k = khoang("tuan"); $("#thTu").value = k[0]; $("#thDen").value = k[1]; }
-    xemTH();
+    xemTH(); taiGiao();
   }
   $$("[data-khoang]").forEach(b => b.onclick = () => { const k = khoang(b.dataset.khoang); $("#thTu").value = k[0]; $("#thDen").value = k[1]; xemTH(); });
   $("#btnTH").onclick = () => xemTH();
@@ -375,20 +396,68 @@
       .concat(thDuLieu.hs.map(h => [h.hang, h.hoTen, h.tenDN, h.chuoiDaiNhat, h.soNgayDat, h.dung, h.lam, h.chuoiHienTai, h.soLoi, h.ngayCuoi])));
   };
 
+  /* ---- giao bài tự học ---- */
+  let dsGiao = [];
+  async function taiGiao() {
+    try { dsGiao = (await goi("gv.giao.ds")).giao; } catch (e) { return bao(esc(e.message), "red"); }
+    $("#tGiao tbody").innerHTML = dsGiao.length ? dsGiao.map(gx => {
+      const n = t => gx.hs.filter(h => h.trangThai === t).length, chua = gx.hs.filter(h => h.trangThai !== "xong");
+      return `<tr class="${gx.quaHan && chua.length ? "canh" : ""}"><td><b>${esc(gx.ten)}</b><br><span class="small muted">${esc(gx.mon)} ${gx.lop} · ${gx.dkeys.length} dạng${gx.muc ? " · mức " + gx.muc : ""} · đúng ${gx.soCauDung} câu</span></td>
+        <td>${esc(gx.tenLop)}</td><td class="small">${ngay(gx.hanNop)}${gx.quaHan ? ' <span class="tt khoa">quá hạn</span>' : ""}</td>
+        <td class="num">${n("xong")} / ${n("dang")} / ${n("chua")}</td>
+        <td class="small">${chua.length ? chua.map(h => esc(h.hoTen) + (h.dung ? ` (${h.dung})` : "")).join(", ") : "—"}</td>
+        <td><button class="btn sm ghost" data-xoa-giao="${gx.maGiao}" title="Xoá bài giao">🗑</button></td></tr>`;
+    }).join("") : `<tr><td colspan="6" class="muted">Chưa giao bài tự học nào.</td></tr>`;
+    $$("[data-xoa-giao]").forEach(b => b.onclick = () => { if (confirm("Xoá bài tự học đã giao này?")) cho(b, async () => { try { await goi("gv.giao.xoa", { maGiao: b.dataset.xoaGiao }); taiGiao(); } catch (e) { bao(esc(e.message), "red"); } }); });
+    return dsGiao;
+  }
+  /* vào trang quản lí: báo các bài giao đã quá hạn mà còn em chưa xong */
+  async function nhacGiaoQuaHan() {
+    const ds = await taiGiao(); if (!ds) return;
+    const qh = ds.filter(gx => gx.quaHan && gx.hs.some(h => h.trangThai !== "xong"));
+    if (qh.length) bao("📌 Bài tự học đã quá hạn còn em chưa xong:<br>" + qh.slice(0, 5).map(gx => `<b>${esc(gx.ten)}</b> (${esc(gx.tenLop)}): ${gx.hs.filter(h => h.trangThai !== "xong").map(h => esc(h.hoTen)).join(", ")}`).join("<br>") + `<br><span class="small">Xem ở thẻ 🔥 Tự học.</span>`, "red");
+  }
+  $("#btnMoGiao").onclick = () => {
+    const f = $("#fGiao"); f.classList.remove("hidden");
+    f.maLop.innerHTML = dsLop.map(l => `<option value="${esc(l.maLop)}">${esc(l.tenLop)}</option>`).join("") || `<option value="">(chưa có lớp)</option>`;
+    f.maLop.value = $("#thLop").value || f.maLop.value;
+    const l = dsLop.find(x => x.maLop === f.maLop.value); if (l && l.khoi) f.lop.value = String(l.khoi);
+    if (!f.hanNop.value) { const d = new Date(Date.now() + 7 * 86400000); d.setHours(21, 0, 0, 0); f.hanNop.value = iso(d) + "T21:00"; }
+  };
+  $("#btnHuyGiao").onclick = () => $("#fGiao").classList.add("hidden");
+  $("#btnGiaoDang").onclick = () => cho($("#btnGiaoDang"), async () => {
+    const f = $("#fGiao");
+    let r; try { r = await goi("gv.cauTrucNH", { mon: f.mon.value, lop: +f.lop.value }); } catch (e) { return ($("#giaoLoi").textContent = e.message); }
+    $("#giaoTom").textContent = r.dang.length ? `${r.dang.length} dạng. Tick các dạng giao cho học sinh.` : "Ngân hàng chưa có câu cho môn, khối này.";
+    $("#giaoDang").innerHTML = r.dang.map(d => `<label class="chip"><input type="checkbox" class="giaoD" value="${esc(d.dkey)}"> C${d.chuong} · ${esc(d.ten || d.dkey)} <small class="muted">(${d.n})</small></label>`).join("");
+  });
+  $("#fGiao").onsubmit = e => {
+    e.preventDefault(); const f = e.target; $("#giaoLoi").textContent = "";
+    const dkeys = $$(".giaoD:checked").map(c => c.value);
+    if (!dkeys.length) return ($("#giaoLoi").textContent = "Thầy bấm “Tải các dạng” rồi tick ít nhất một dạng.");
+    cho(f.querySelector("[type=submit]"), async () => {
+      try {
+        await goi("gv.giao.tao", { ten: f.ten.value, maLop: f.maLop.value, mon: f.mon.value, lop: +f.lop.value, muc: f.muc.value, soCauDung: +f.soCauDung.value, hanNop: new Date(f.hanNop.value).toISOString(), dkeys });
+        bao(`Đã giao bài <b>${esc(f.ten.value)}</b>. Học sinh lớp đó thấy nhắc ở trang chính.`, "green");
+        f.classList.add("hidden"); f.ten.value = ""; taiGiao();
+      } catch (err) { $("#giaoLoi").textContent = err.message; }
+    });
+  };
+
   /* ================= bài kiểm tra ================= */
   const MUC = ["NB", "TH", "VD", "VDC"], LOAI = ["TN", "DS", "TLN"], TEN_LOAI = { TN: "Trắc nghiệm", DS: "Đúng/Sai", TLN: "Trả lời ngắn" };
-  const TT_BAI = { nhap: "chưa mở", mo: "đang mở", dong: "đã đóng" };
+  const TT_BAI = { nhap: "chưa mở", mo: "đang mở", dong: "đã đóng", hen: "hẹn giờ mở" };
   let dsBai = [], baiGS = null, henGS = null, ct = null, M = {};
   async function taiBai() {
     try { dsBai = (await goi("gv.dsBai")).bai; } catch (e) { return bao(esc(e.message), "red"); }
     $("#tBai tbody").innerHTML = dsBai.length ? dsBai.map(b => `<tr class="${baiGS === b.maBai ? "sel" : ""}">
-      <td><b>${esc(b.ten)}</b><br><span class="small muted">${esc(b.mon)} ${b.lop} · tạo ${ngay(b.taoLuc)}${b.dongLuc ? " · đóng " + ngay(b.dongLuc) : ""}</span></td>
+      <td><b>${esc(b.ten)}</b><br><span class="small muted">${esc(b.mon)} ${b.lop} · tạo ${ngay(b.taoLuc)}${b.trangThai === "hen" ? " · mở " + ngay(b.moLuc) : ""}${b.dongLuc ? " · đóng " + ngay(b.dongLuc) : ""}${b.tuyChon && (!b.tuyChon.tronCau || !b.tuyChon.tronPA) ? " · " + [!b.tuyChon.tronCau && "không đảo câu", !b.tuyChon.tronPA && "không đảo phương án"].filter(Boolean).join(", ") : ""}</span></td>
       <td>${esc(b.tenLop)}</td><td class="num">${b.soCau}</td><td class="num">${b.thoiGian}</td>
       <td><span class="tt ${b.trangThai}">${TT_BAI[b.trangThai] || b.trangThai}</span>${b.congBo ? ' <span class="tt ok">đã công bố</span>' : ""}</td>
       <td class="num">${b.daVao} / ${b.daNop}</td>
       <td class="row" style="justify-content:flex-start;flex-wrap:nowrap">
         <button class="btn sm ghost" data-gs="${b.maBai}">Theo dõi</button>
-        ${b.trangThai === "mo" ? `<button class="btn sm ghost" data-tt="dong" data-bai="${b.maBai}">Đóng bài</button>` : `<button class="btn sm ghost" data-tt="mo" data-bai="${b.maBai}">Mở bài</button>`}
+        ${b.trangThai === "mo" ? `<button class="btn sm ghost" data-tt="dong" data-bai="${b.maBai}">Đóng bài</button>` : `<button class="btn sm ghost" data-tt="mo" data-bai="${b.maBai}">${b.trangThai === "hen" ? "Mở ngay" : "Mở bài"}</button>`}
         <button class="btn sm ghost" data-cb="${b.congBo ? 0 : 1}" data-bai="${b.maBai}">${b.congBo ? "Thu hồi kết quả" : "Công bố kết quả"}</button>
         <button class="btn sm ghost" data-xoa-bai="${b.maBai}" title="Xoá bài và mọi bài làm">🗑</button></td></tr>`).join("")
       : `<tr><td colspan="7" class="muted">Chưa có bài kiểm tra nào. Bấm “Tạo bài mới”.</td></tr>`;
@@ -551,8 +620,8 @@
     if ($$("#tMX input.over").length) return ($("#taoLoi").textContent = "Có ô vượt quá số câu trong ngân hàng (ô đỏ).");
     cho(e.target, async () => {
       try {
-        const r = await goi("gv.taoBai", { ten: f.ten.value, maLop: f.maLop.value, mon: f.mon.value, lop: +f.lop.value, thoiGian: +f.thoiGian.value, dongLuc: f.dongLuc.value ? new Date(f.dongLuc.value).toISOString() : "", moNgay: f.moNgay.checked, maTran: M });
-        bao(`Đã tạo bài <b>${esc(f.ten.value)}</b>${f.moNgay.checked ? ", học sinh lớp đó đã thấy bài khi đăng nhập" : ". Bấm “Mở bài” khi muốn cho học sinh làm"}.`, "green");
+        const r = await goi("gv.taoBai", { ten: f.ten.value, maLop: f.maLop.value, mon: f.mon.value, lop: +f.lop.value, thoiGian: +f.thoiGian.value, dongLuc: f.dongLuc.value ? new Date(f.dongLuc.value).toISOString() : "", moLuc: f.moLuc.value ? new Date(f.moLuc.value).toISOString() : "", moNgay: f.moNgay.checked, tronCau: f.tronCau.checked, tronPA: f.tronPA.checked, maTran: M });
+        bao(`Đã tạo bài <b>${esc(f.ten.value)}</b>${f.moLuc.value ? `, tự mở lúc ${ngay(new Date(f.moLuc.value).toISOString())}` : f.moNgay.checked ? ", học sinh lớp đó đã thấy bài khi đăng nhập" : ". Bấm “Mở bài” khi muốn cho học sinh làm"}.`, "green");
         $("#cTao").classList.add("hidden"); f.ten.value = ""; await taiBai(); moGS(r.maBai);
       } catch (err) { $("#taoLoi").textContent = err.message; }
     });

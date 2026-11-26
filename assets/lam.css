@@ -87,3 +87,12 @@ main{padding-top:14px}
 .th-luyen{margin-top:10px;gap:10px;flex-wrap:wrap}
 .th-nhan{font-size:12.5px;font-weight:600;color:var(--muted);margin-bottom:4px}
 .th-kq .note{margin-top:10px}
+.th-giao{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0;border-top:1px dashed var(--line)}
+.th-giao:first-child{border-top:0}
+.th-giao>div{flex:1;min-width:0}
+.th-giao small{display:block;font-size:12.5px;color:var(--muted)}
+.th-giao.qua small{color:#c21e57}
+.th-giao .thanh{display:block;height:7px;border-radius:9px;background:#eef2f8;overflow:hidden;margin-top:5px}
+.th-giao .thanh i{display:block;height:100%;background:var(--blue)}
+.th-giao.xong .thanh i{background:var(--green)}
+.th-giao .tien{font:800 16px var(--font-h);color:var(--green)}
