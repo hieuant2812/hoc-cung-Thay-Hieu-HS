@@ -13,7 +13,7 @@
 /* ĐỔI DÒNG NÀY thành mật khẩu riêng của thầy (ít nhất 8 kí tự). */
 const KHOA_GV = "doi-mat-khau-nay";
 
-const PHIEN_BAN = "2026.11.28-1";
+const PHIEN_BAN = "2026.11.28-2";
 const HS_HAN_PHIEN_NGAY = 30;     // học sinh đăng nhập một lần dùng 30 ngày
 const GV_HAN_PHIEN_GIO = 12;      // giáo viên: 12 giờ
 const SO_LAN_SAI_TOI_DA = 5;      // sai mật khẩu 5 lần thì khoá 10 phút
@@ -163,6 +163,8 @@ const VIEC = {
     const tenLop = chuanTen(yc.tenLop).toUpperCase();
     if (!tenLop) throw loi("Thầy nhập tên lớp, ví dụ 12A1.");
     return khoa(function () {
+      const trung = docHet("Lop").filter(function (o) { return o.tenLop === tenLop && o.dong !== "1"; })[0];
+      if (trung) throw loi("Đã có lớp " + tenLop + " (mã " + trung.maLop + "). Hai lớp trùng tên dễ làm học sinh vào nhầm lớp. Thầy đặt tên khác, ví dụ " + tenLop + "-2.");
       let ma;
       do { ma = maNgauNhien(6); } while (timDong("Lop", ma));
       them("Lop", { maLop: ma, tenLop: tenLop, khoi: +(String(tenLop).match(/^\d{1,2}/) || [0])[0] || 0, taoLuc: bayGio(), dong: "0" });
@@ -207,6 +209,20 @@ const VIEC = {
       xoa.reverse().forEach(function (h) { sh.deleteRow(h); });
       ghiNhatKy("gv", "trang-thai-" + tt, ids.join(","));
       return { n: n };
+    });
+  },
+
+  /* chuyển học sinh sang lớp khác (VD em đăng kí nhầm vào lớp cũ đã đóng) */
+  "gv.chuyenLop": function (yc) {
+    canGV(yc);
+    const ids = (yc.ids || []).map(String), maLop = chuanMaLop(yc.maLop);
+    const lop = timDong("Lop", maLop);
+    if (!lop) throw loi("Không tìm thấy lớp " + maLop + ".");
+    return khoa(function () {
+      let n = 0;
+      ids.forEach(function (id) { const t = timDong("TaiKhoan", id); if (t && t.o.maLop !== maLop) { suaDong("TaiKhoan", t.hang, { maLop: maLop }); n++; } });
+      ghiNhatKy("gv", "chuyen-lop", maLop + ": " + ids.join(","));
+      return { n: n, tenLop: lop.o.tenLop };
     });
   },
 

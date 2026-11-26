@@ -162,6 +162,7 @@
           <button class="btn sm ghost" id="btnDuyet">Duyệt / mở khoá mục đã chọn</button>
           <button class="btn sm ghost" id="btnKhoa">Khoá mục đã chọn</button>
           <button class="btn sm ghost" id="btnXoa">Xoá mục đã chọn</button>
+          <select id="selChuyen" aria-label="Lớp chuyển đến" style="max-width:170px"></select><button class="btn sm ghost" id="btnChuyen">Chuyển mục đã chọn sang lớp này</button>
           <span class="sp"></span>
           <button class="btn sm ghost" id="btnDongLop"></button>
         </div>
@@ -283,6 +284,7 @@
     $$("#tLop tbody tr").forEach(tr => tr.classList.toggle("sel", tr.dataset.ma === ma));
     $("#cHS").classList.remove("hidden");
     $("#hsTieuDe").innerHTML = `Học sinh lớp ${esc(l.tenLop)} <span class="ma">${esc(ma)}</span>`;
+    $("#selChuyen").innerHTML = `<option value="">Chuyển sang lớp…</option>` + dsLop.filter(x => x.maLop !== ma && !x.dong).map(x => `<option value="${esc(x.maLop)}">${esc(x.tenLop)} (${esc(x.maLop)})</option>`).join("");
     $("#btnDongLop").textContent = l.dong ? "Mở lại lớp (cho đăng kí)" : "Đóng lớp (ngừng đăng kí)";
     if (!giuThongBao) $("#mkTam").innerHTML = "";
     try { dsHS = (await goi("gv.dsHS", { maLop: ma })).hs; } catch (e) { return bao(esc(e.message), "red"); }
@@ -314,6 +316,12 @@
   $("#btnDuyet").onclick = e => doiTT(e.target, daChon(), "ok");
   $("#btnKhoa").onclick = e => doiTT(e.target, daChon(), "khoa");
   $("#btnXoa").onclick = e => doiTT(e.target, daChon(), "xoa");
+  $("#btnChuyen").onclick = e => {
+    const ids = daChon(), ma = $("#selChuyen").value;
+    if (!ids.length) return bao("Thầy chưa chọn học sinh nào.", "");
+    if (!ma) return bao("Thầy chọn lớp chuyển đến.", "");
+    cho(e.target, async () => { try { const r = await goi("gv.chuyenLop", { ids, maLop: ma }); bao(`Đã chuyển ${r.n} học sinh sang lớp <b>${esc(r.tenLop)}</b>. Các em tải lại trang là thấy bài của lớp mới.`, "green"); await taiLop(); } catch (err) { bao(esc(err.message), "red"); } });
+  };
   $("#btnDongLop").onclick = e => cho(e.target, async () => {
     const l = dsLop.find(x => x.maLop === lopChon); if (!l) return;
     try { await goi("gv.dongLop", { maLop: l.maLop, dong: !l.dong }); await taiLop(); } catch (err) { bao(esc(err.message), "red"); }
@@ -500,7 +508,7 @@
     try { dsBai = (await goi("gv.dsBai")).bai; } catch (e) { return bao(esc(e.message), "red"); }
     $("#tBai tbody").innerHTML = dsBai.length ? dsBai.map(b => `<tr class="${baiGS === b.maBai ? "sel" : ""}">
       <td><b>${esc(b.ten)}</b><br><span class="small muted">${esc(b.mon)} ${b.lop} · tạo ${ngay(b.taoLuc)}${b.trangThai === "hen" ? " · mở " + ngay(b.moLuc) : ""}${b.dongLuc ? " · đóng " + ngay(b.dongLuc) : ""}${b.tuyChon && (!b.tuyChon.tronCau || !b.tuyChon.tronPA || !b.tuyChon.thiNghiem) ? " · " + [!b.tuyChon.tronCau && "không đảo câu", !b.tuyChon.tronPA && "không đảo phương án", !b.tuyChon.thiNghiem && "không thi nghiêm"].filter(Boolean).join(", ") : ""}</span></td>
-      <td>${esc(b.tenLop)}</td><td class="num">${b.soCau}</td><td class="num">${b.thoiGian}</td>
+      <td>${esc(b.tenLop)}<br><span class="small muted">mã ${esc(b.maLop)}</span></td><td class="num">${b.soCau}</td><td class="num">${b.thoiGian}</td>
       <td><span class="tt ${b.trangThai}">${TT_BAI[b.trangThai] || b.trangThai}</span>${b.congBo ? ' <span class="tt ok">đã công bố</span>' : ""}</td>
       <td class="num">${b.daVao} / ${b.daNop}</td>
       <td class="row" style="justify-content:flex-start;flex-wrap:nowrap">
