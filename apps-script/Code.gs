@@ -212,6 +212,20 @@ const VIEC = {
     });
   },
 
+  /* chuyển học sinh sang lớp khác (VD em đăng kí nhầm vào lớp cũ đã đóng) */
+  "gv.chuyenLop": function (yc) {
+    canGV(yc);
+    const ids = (yc.ids || []).map(String), maLop = chuanMaLop(yc.maLop);
+    const lop = timDong("Lop", maLop);
+    if (!lop) throw loi("Không tìm thấy lớp " + maLop + ".");
+    return khoa(function () {
+      let n = 0;
+      ids.forEach(function (id) { const t = timDong("TaiKhoan", id); if (t && t.o.maLop !== maLop) { suaDong("TaiKhoan", t.hang, { maLop: maLop }); n++; } });
+      ghiNhatKy("gv", "chuyen-lop", maLop + ": " + ids.join(","));
+      return { n: n, tenLop: lop.o.tenLop };
+    });
+  },
+
   "gv.datLaiMatKhau": function (yc) {
     canGV(yc);
     const tk = timDong("TaiKhoan", String(yc.id || ""));
