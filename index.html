@@ -114,7 +114,7 @@
   function moNha(hs) {
     $("#vCong").classList.add("hidden"); $("#vNha").classList.remove("hidden"); $("#nav").classList.remove("hidden");
     $("#nhaTen").textContent = "Chào " + (hs.hoTen.split(" ").pop() || hs.hoTen) + "!";
-    $("#nhaLop").textContent = "Lớp " + (hs.tenLop || hs.maLop) + " · " + hs.tenDN;
+    $("#nhaLop").textContent = "Lớp " + (hs.tenLop || hs.maLop) + " (mã " + hs.maLop + ") · " + hs.tenDN;
     $("#oTuHoc").href = "tuhoc.html";
     API.LS.set("hs-ho-so", JSON.stringify(hs));
     taiBai(); taiLS();
@@ -134,7 +134,7 @@
       else if (b.trangThai !== "mo") nut = `<span class="tt dong">đã đóng</span>`;
       else nut = `<a class="btn sm ${b.cuaEm === "lam" ? "coral" : "green"}" href="lam.html?bai=${encodeURIComponent(b.maBai)}">${b.cuaEm === "lam" ? "Làm tiếp" : "Vào làm bài"}</a>`;
       return `<div class="bai-dong"><div><b>${b.thiThu ? "⏱ " : ""}${API.esc(b.ten)}</b><br><span class="small muted">${b.soCau} câu · ${b.thoiGian} phút${b.dongLuc ? " · đóng lúc " + ngay(b.dongLuc) : ""}</span></div>${nut}</div>`;
-    }).join("") : `<p class="muted small" style="margin:8px 0 0">Hiện chưa có bài kiểm tra nào. Khi thầy mở bài, bài sẽ hiện ở đây.</p>`;
+    }).join("") : `<p class="muted small" style="margin:8px 0 0">Hiện chưa có bài kiểm tra nào cho lớp mã <b>${API.esc((JSON.parse(API.LS.get("hs-ho-so") || "{}").maLop) || "")}</b>. Khi thầy mở bài, bài sẽ hiện ở đây. Nếu thầy báo đã mở mà em không thấy, em đưa thầy xem mã lớp này.</p>`;
     // thông báo của thầy
     $("#thongBaoLop").innerHTML = (r.thongBao || []).map(t => `<div class="tbl-lop"><b>📢 Thầy nhắn</b> <span class="small muted">${ngay(t.taoLuc)}</span><p>${API.esc(t.noiDung)}</p></div>`).join("");
     // nhắc bài tự học thầy giao
