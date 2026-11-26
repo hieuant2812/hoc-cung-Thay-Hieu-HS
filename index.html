@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Học sinh · Học cùng Thầy Hiếu</title>
+<meta name="theme-color" content="#3b7bff">
+<link rel="icon" href="assets/favicon.svg"><link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="assets/fonts.css"><link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/hs.css">
+<script src="config.js"></script><script src="assets/api.js"></script>
+</head>
+<body>
+<header class="top"><div class="wrap in">
+  <a class="logo" href="./"><span class="mk">H</span><span><b>Học cùng <span>Thầy Hiếu</span></b><small>Góc học sinh</small></span></a>
+  <nav class="nav hidden" id="nav"><a href="#" id="btnDoiMK">Đổi mật khẩu</a><a href="#" id="btnThoat">Đăng xuất</a></nav>
+</div></header>
+
+<main><div class="wrap narrow">
+  <div id="thongBao"></div>
+
+  <!-- ===== chưa đăng nhập ===== -->
+  <section id="vCong" class="hidden">
+    <div class="hero sm toan"><span class="badge">Toán THCS · THPT</span><h1>Chào em!</h1><p>Đăng nhập để tự học và làm bài kiểm tra thầy giao.</p></div>
+    <div class="tabs lg" role="tablist">
+      <button id="tabDN" role="tab" aria-selected="true">Đăng nhập</button>
+      <button id="tabDK" role="tab" aria-selected="false">Tạo tài khoản</button>
+    </div>
+
+    <form id="fDN" class="card form" autocomplete="on">
+      <label class="f">Tên đăng nhập<input name="tenDN" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" required></label>
+      <label class="f">Mật khẩu<input name="matKhau" type="password" autocomplete="current-password" required></label>
+      <div class="loi" role="alert"></div>
+      <button class="btn blue full" type="submit">Đăng nhập</button>
+      <p class="small muted">Quên mật khẩu? Em nhờ thầy đặt lại, thầy sẽ đưa em mật khẩu tạm.</p>
+    </form>
+
+    <form id="fDK" class="card form hidden" autocomplete="on">
+      <label class="f">Mã lớp (thầy cho, 6 kí tự)<input name="maLop" type="text" autocapitalize="characters" maxlength="8" spellcheck="false" required placeholder="VD: K7M2QX"></label>
+      <label class="f">Họ và tên<input name="hoTen" type="text" autocomplete="name" required placeholder="VD: Nguyễn Văn An"></label>
+      <label class="f">Tên đăng nhập<input name="tenDN" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" required placeholder="chữ không dấu, số, dấu chấm: an.nguyen12"></label>
+      <label class="f">Mật khẩu (ít nhất 8 kí tự)<input name="matKhau" type="password" autocomplete="new-password" minlength="8" required></label>
+      <label class="f">Nhập lại mật khẩu<input name="matKhau2" type="password" autocomplete="new-password" minlength="8" required></label>
+      <div class="loi" role="alert"></div>
+      <button class="btn green full" type="submit">Tạo tài khoản</button>
+      <p class="small muted">Sau khi tạo, em chờ thầy duyệt rồi mới đăng nhập được.</p>
+    </form>
+  </section>
+
+  <!-- ===== đã đăng nhập ===== -->
+  <section id="vNha" class="hidden">
+    <div class="hero sm toan"><span class="badge" id="nhaLop">Lớp</span><h1 id="nhaTen">Chào em</h1><p>Em chọn việc muốn làm hôm nay.</p></div>
+    <div class="home-grid">
+      <a class="big mp" id="oTuHoc" href="#">
+        <div class="ill ico">📘</div>
+        <h2>Tự học</h2>
+        <p>Luyện tập theo dạng, sổ tay kiến thức, mô phỏng. Làm câu nào chấm câu đó, có lời giải.</p>
+        <span class="go">Đang chuẩn bị · tạm thời mở trang tự học cũ →</span>
+      </a>
+      <a class="big rd" id="oKiemTra" href="#" aria-disabled="true">
+        <div class="ill ico">📝</div>
+        <h2>Kiểm tra</h2>
+        <p>Vào phòng kiểm tra thầy mở, mỗi em một đề riêng. Kết quả và lời giải hiện khi cả lớp đã nộp.</p>
+        <span class="go">Sắp có</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== đổi mật khẩu ===== -->
+  <dialog id="dMK" class="card">
+    <form id="fMK" class="form" method="dialog">
+      <h3>Đổi mật khẩu</h3>
+      <label class="f">Mật khẩu hiện tại<input name="matKhauCu" type="password" autocomplete="current-password" required></label>
+      <label class="f">Mật khẩu mới (ít nhất 8 kí tự)<input name="matKhauMoi" type="password" autocomplete="new-password" minlength="8" required></label>
+      <label class="f">Nhập lại mật khẩu mới<input name="matKhauMoi2" type="password" autocomplete="new-password" minlength="8" required></label>
+      <div class="loi" role="alert"></div>
+      <div class="row"><button class="btn ghost" value="huy" formnovalidate>Huỷ</button><button class="btn blue" value="ok">Lưu</button></div>
+    </form>
+  </dialog>
+</div></main>
+
+<footer class="foot"><div class="wrap"><div class="slogan" id="slogan"></div><div class="dev" id="chanTrang"></div></div></footer>
+
+<script>
+(function () {
+  "use strict";
+  const $ = s => document.querySelector(s);
+  const P = API.phien("hs");
+  const S = window.SITE || {};
+  $("#slogan").textContent = S.khauHieu || ""; $("#chanTrang").textContent = S.chanTrang || "";
+
+  function bao(html, kieu) { $("#thongBao").innerHTML = html ? `<div class="note ${kieu || "blue"}">${html}</div>` : ""; }
+  function loiForm(f, msg) { f.querySelector(".loi").textContent = msg || ""; }
+  async function cho(btn, fn) {
+    const t = btn.textContent; btn.disabled = true; btn.textContent = "Đang xử lí…";
+    try { return await fn(); } finally { btn.disabled = false; btn.textContent = t; }
+  }
+
+  function moCong(tab) {
+    $("#vNha").classList.add("hidden"); $("#nav").classList.add("hidden"); $("#vCong").classList.remove("hidden");
+    const dk = tab === "dk";
+    $("#tabDN").setAttribute("aria-selected", String(!dk)); $("#tabDK").setAttribute("aria-selected", String(dk));
+    $("#fDN").classList.toggle("hidden", dk); $("#fDK").classList.toggle("hidden", !dk);
+  }
+  function moNha(hs) {
+    $("#vCong").classList.add("hidden"); $("#vNha").classList.remove("hidden"); $("#nav").classList.remove("hidden");
+    $("#nhaTen").textContent = "Chào " + (hs.hoTen.split(" ").pop() || hs.hoTen) + "!";
+    $("#nhaLop").textContent = "Lớp " + (hs.tenLop || hs.maLop) + " · " + hs.tenDN;
+    $("#oTuHoc").href = (S.webGV || "#") + "luyentap.html";
+    API.LS.set("hs-ho-so", JSON.stringify(hs));
+  }
+
+  $("#tabDN").onclick = () => moCong("dn");
+  $("#tabDK").onclick = () => moCong("dk");
+  $("#oKiemTra").onclick = e => { e.preventDefault(); bao("Phần kiểm tra đang được xây dựng. Khi thầy mở phòng kiểm tra, em sẽ thấy ở đây."); };
+
+  $("#fDN").onsubmit = async e => {
+    e.preventDefault(); const f = e.target; loiForm(f);
+    await cho(f.querySelector("button[type=submit]"), async () => {
+      try {
+        const r = await API.goi("hs.dangNhap", { tenDN: f.tenDN.value, matKhau: f.matKhau.value });
+        P.token = r.token; f.reset(); bao(""); moNha(r.hs);
+      } catch (err) { loiForm(f, err.message); }
+    });
+  };
+
+  $("#fDK").onsubmit = async e => {
+    e.preventDefault(); const f = e.target; loiForm(f);
+    if (f.matKhau.value !== f.matKhau2.value) return loiForm(f, "Hai lần nhập mật khẩu chưa giống nhau.");
+    await cho(f.querySelector("button[type=submit]"), async () => {
+      try {
+        const r = await API.goi("hs.dangKi", { maLop: f.maLop.value, hoTen: f.hoTen.value, tenDN: f.tenDN.value, matKhau: f.matKhau.value });
+        const ten = f.tenDN.value.trim().toLowerCase();
+        f.reset(); moCong("dn"); $("#fDN").tenDN.value = ten;
+        bao(`Đã tạo tài khoản <b>${API.esc(ten)}</b> trong lớp <b>${API.esc(r.tenLop)}</b>. Em chờ thầy duyệt rồi đăng nhập nhé.`, "green");
+      } catch (err) { loiForm(f, err.message); }
+    });
+  };
+
+  $("#btnThoat").onclick = e => { e.preventDefault(); P.token = null; API.LS.set("hs-ho-so", null); bao(""); moCong("dn"); };
+  $("#btnDoiMK").onclick = e => { e.preventDefault(); const f = $("#fMK"); f.reset(); loiForm(f); $("#dMK").showModal(); };
+  $("#fMK").onsubmit = async e => {
+    const f = e.target;
+    if (e.submitter && e.submitter.value === "huy") return;
+    e.preventDefault(); loiForm(f);
+    if (f.matKhauMoi.value !== f.matKhauMoi2.value) return loiForm(f, "Hai lần nhập mật khẩu mới chưa giống nhau.");
+    await cho(e.submitter || f.querySelector("button[value=ok]"), async () => {
+      try {
+        const r = await P.goi("hs.doiMatKhau", { matKhauCu: f.matKhauCu.value, matKhauMoi: f.matKhauMoi.value });
+        P.token = r.token; $("#dMK").close(); bao("Đã đổi mật khẩu.", "green");
+      } catch (err) { loiForm(f, err.message); }
+    });
+  };
+
+  /* khởi động: có phiên cũ thì vào thẳng, kiểm tra lại với máy chủ ở nền */
+  (async function () {
+    if (!API.url()) { bao("Web chưa được nối với máy chủ. Thầy xem <b>HUONG-DAN.md</b>, mục 2.", "red"); }
+    if (!P.token) return moCong("dn");
+    try { const cu = JSON.parse(API.LS.get("hs-ho-so") || "null"); if (cu) moNha(cu); } catch (e) { }
+    try { const r = await P.goi("hs.toi"); moNha(r.hs); }
+    catch (err) {
+      if (err.ma === "mat-mang") return bao("Đang không có mạng. Một số chức năng cần mạng để dùng.", "");
+      P.token = null; API.LS.set("hs-ho-so", null); moCong("dn"); bao(API.esc(err.message), "");
+    }
+  })();
+})();
+</script>
+</body>
+</html>
