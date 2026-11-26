@@ -58,3 +58,19 @@ table.mx tfoot td{font-weight:700}
 #cTK h4{margin:16px 0 6px}
 .tl{font-weight:700;padding:1px 8px;border-radius:999px}
 .tl.yeu{background:#ffe3ec;color:#c21e57}.tl.kha{background:#fff0d2;color:#946200}.tl.tot{background:#e0f6e7;color:#1b7a3c}
+.tt.hen{background:#efe7ff;color:#6a3fd6}
+.tbl tr.canh td{background:#fff5f7}
+
+/* trang chính: nhắc bài giao, lịch sử điểm */
+.nhac-giao{display:grid;gap:8px;margin-top:14px}
+.nhac-giao a{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;border-radius:14px;background:#fff8e6;border:1px solid #f3d58a;color:var(--ink);text-decoration:none}
+.nhac-giao a.qua{background:#fff0f4;border-color:#f6a8bf}
+.nhac-giao a small{display:block;color:var(--muted);font-size:12.5px}
+.nhac-giao .tien{font:800 16px var(--font-h);white-space:nowrap}
+.bieu-do{width:100%;height:auto;display:block;margin-top:8px}
+.bieu-do .luoi{stroke:#e9eef8}.bieu-do .em{fill:none;stroke:var(--blue);stroke-width:2.5}.bieu-do .lop{fill:none;stroke:#b4bdd0;stroke-width:2;stroke-dasharray:5 4}
+.bieu-do circle.em{fill:var(--blue);stroke:#fff;stroke-width:2}.bieu-do circle.tt{fill:var(--violet)}
+.bieu-do text{font:600 11px var(--font);fill:var(--muted)}
+.ls-bang{width:100%;border-collapse:collapse;font-size:14px;margin-top:10px}
+.ls-bang td{padding:6px 4px;border-top:1px solid var(--line)}
+.ls-bang td.num{text-align:right;white-space:nowrap}

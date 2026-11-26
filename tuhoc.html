@@ -24,6 +24,10 @@
 
   <!-- ===== tổng quan ===== -->
   <section id="vTong" class="hidden">
+    <div class="card hidden" id="cGiao" style="margin-bottom:14px">
+      <h3 style="margin:0 0 6px">📌 Bài thầy giao</h3>
+      <div id="dsGiao"></div>
+    </div>
     <div class="card th-hom-nay">
       <div class="th-vong">
         <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" class="nen"/><circle cx="60" cy="60" r="52" class="dat" id="vongDat"/></svg>
@@ -62,6 +66,14 @@
         <label class="f">Mức<select id="selMuc"><option value="">Mọi mức</option><option value="NB">Nhận biết</option><option value="TH">Thông hiểu</option><option value="VD">Vận dụng</option><option value="VDC">Vận dụng cao</option></select></label>
         <label class="f">Số câu<select id="selSo"><option>5</option><option>10</option></select></label>
         <button class="btn blue" id="btnLuyen" style="align-self:end">Bắt đầu luyện</button>
+      </div>
+    </div>
+    <div class="card" id="thithu" style="margin-top:14px">
+      <h3 style="margin:0 0 4px">⏱ Thi thử THPT</h3>
+      <p class="small muted" style="margin:0 0 10px">Đề theo cấu trúc thi tốt nghiệp: 12 câu trắc nghiệm, 4 câu đúng/sai, 6 câu trả lời ngắn, 90 phút. Mỗi lần một đề khác, nộp là có điểm và lời giải. Mỗi ngày tối đa 3 lần.</p>
+      <div class="row left" style="gap:10px;flex-wrap:wrap">
+        <label class="f">Đề lớp<select id="selTT"></select></label>
+        <button class="btn violet" id="btnThiThu" style="align-self:end">Bắt đầu thi thử</button>
       </div>
     </div>
     <p class="small muted" style="text-align:center;margin:16px 0 0" id="linkCu"></p>
@@ -136,6 +148,17 @@
     // gợi ý
     $("#dsGoiY").innerHTML = r.goiY.length ? `<ul>${r.goiY.map(g => `<li><b>${esc(g.ten || g.dkey)}</b> · ${g.lyDo === "yeu" ? `em mới đúng ${phanTram(g.tiLe)} (${g.lam} câu)` : "em chưa luyện dạng này"}</li>`).join("")}</ul>` : `<p class="muted">Em đang làm tốt mọi dạng đã luyện. Thử dạng mới ở phần dưới nhé.</p>`;
     $("#btnGoiY").disabled = !r.goiY.length;
+    // bài thầy giao
+    const ngayGio = x => new Date(x).toLocaleString("vi-VN", { dateStyle: "short", timeStyle: "short" });
+    $("#cGiao").classList.toggle("hidden", !(r.giao || []).length);
+    $("#dsGiao").innerHTML = (r.giao || []).map(g => `<div class="th-giao${g.xong ? " xong" : g.quaHan ? " qua" : ""}"><div><b>${esc(g.ten)}</b><small>${g.xong ? "✓ Đã xong" : `Làm đúng ${g.soCauDung} câu · hạn ${ngayGio(g.hanNop)}${g.quaHan ? " · đã quá hạn" : ""}`}</small>
+      <span class="thanh"><i style="width:${Math.min(100, Math.round(g.dung / g.soCauDung * 100))}%"></i></span></div>
+      ${g.xong ? `<span class="tien">${g.soCauDung}/${g.soCauDung}</span>` : `<button class="btn sm blue" data-giao="${esc(g.maGiao)}">Làm ${g.dung}/${g.soCauDung}</button>`}</div>`).join("");
+    $$("[data-giao]").forEach(b => b.onclick = () => batDau({ cheDo: "giao", maGiao: b.dataset.giao, n: 5 }, b));
+    // thi thử: các khối có trong ngân hàng
+    const khoi = [...new Set(r.nganHang.filter(x => x.mon === r.mon).map(x => x.lop))];
+    $("#selTT").innerHTML = khoi.map(k => `<option value="${k}">${esc(r.mon)} ${k}</option>`).join("") || `<option value="">(chưa có ngân hàng)</option>`;
+    $("#selTT").value = String(khoi.indexOf(12) >= 0 ? 12 : r.lop);
     // dạng theo chương
     let h = "", ch = -1;
     r.dang.forEach(d => {
@@ -162,7 +185,7 @@
   }
   function veLuot() {
     xem("#vLuyen"); scrollTo(0, 0);
-    $("#tieuDe").textContent = L.yc.cheDo === "loi" ? "Ôn sổ lỗi" : L.yc.cheDo === "goiy" ? "Luyện theo gợi ý" : "Luyện theo chủ đề";
+    $("#tieuDe").textContent = L.yc.cheDo === "loi" ? "Ôn sổ lỗi" : L.yc.cheDo === "goiy" ? "Luyện theo gợi ý" : L.yc.cheDo === "giao" ? "Bài thầy giao" : "Luyện theo chủ đề";
     $("#deLuyen").innerHTML = L.cau.map((c, n) => CH.veCau(c, n + 1, `<div class="th-nhan">${esc(c.dang || "")}${c.muc ? ` · ${TEN_MUC[c.muc] || c.muc}` : ""}</div>`)).join("");
     CH.gan($("#deLuyen"), i => L.A[i], (i, v) => { L.A[i] = v; luuLuot(); CH.danhDau($("#cau" + i), v); });
     L.cau.forEach(c => CH.danhDau($("#cau" + c.i), L.A[c.i]));
@@ -187,15 +210,25 @@
       <div class="note ${dat ? "green" : "blue"}">Hôm nay: <b>${r.homNay.dung}/${r.homNay.mucTieu}</b> câu đúng ${dat ? "· đã đạt mục tiêu ✓" : ""} · chuỗi 🔥 <b>${r.chuoi.hienTai}</b> ngày
       ${tinh < lam.length ? `<br><span class="small">${lam.length - tinh} câu em đã làm trước đó trong hôm nay nên không tính thêm.</span>` : ""}
       ${r.cau.some(c => c.thuoc) ? `<br><span class="small">🎉 ${r.cau.filter(c => c.thuoc).length} câu đã thuộc, được gỡ khỏi sổ lỗi.</span>` : ""}
-      ${r.cau.some(c => !c.dung && !c.boTrong) ? `<br><span class="small">Câu sai được ghi vào sổ lỗi, ngày mai em làm lại nhé.</span>` : ""}</div>`;
+      ${r.cau.some(c => !c.dung && !c.boTrong) ? `<br><span class="small">Câu sai được ghi vào sổ lỗi, ngày mai em làm lại nhé.</span>` : ""}</div>
+      ${r.giao ? `<div class="note ${r.giao.xong ? "green" : "blue"}">📌 ${esc(r.giao.ten)}: đúng <b>${Math.min(r.giao.dung, r.giao.soCauDung)}/${r.giao.soCauDung}</b> câu${r.giao.xong ? " · đã xong ✓" : ""}</div>` : ""}`;
+    if (r.giao && r.giao.xong) luotCuoi = null;
     $("#kqCau").innerHTML = r.cau.map((c, n) => CH.veKetQua(c, n + 1)).join("");
     veTienDo(r.homNay, r.chuoi);
     $("#tieuDe").textContent = "Kết quả lượt luyện";
   }
-  $("#btnTiep").onclick = () => batDau(Object.assign({}, luotCuoi), $("#btnTiep"));
+  $("#btnTiep").onclick = () => luotCuoi ? batDau(Object.assign({}, luotCuoi), $("#btnTiep")) : taiTong();
   $("#btnVeTong").onclick = () => { $("#tieuDe").textContent = "Tự học"; taiTong(); };
 
   $("#btnOnLoi").onclick = () => batDau({ cheDo: "loi", n: 5 }, $("#btnOnLoi"));
+  $("#btnThiThu").onclick = async () => {
+    const b = $("#btnThiThu"); if (!$("#selTT").value) return;
+    b.disabled = true; b.textContent = "Đang tạo đề…";
+    try {
+      const r = await goi("hs.thiThu.tao", { mon: TQ.mon, lop: +$("#selTT").value });
+      location.href = "lam.html?bai=" + encodeURIComponent(r.maBai);
+    } catch (e) { bao(esc(e.message), "red"); b.disabled = false; b.textContent = "Bắt đầu thi thử"; }
+  };
   $("#btnGoiY").onclick = () => batDau({ cheDo: "goiy", mon: TQ.mon, lop: TQ.lop, n: 5 }, $("#btnGoiY"));
   $("#btnLuyen").onclick = () => {
     const dkeys = $$(".chonD:checked").map(c => c.value);
@@ -206,7 +239,10 @@
   /* ---------- khởi động ---------- */
   if (!P.token) { location.replace("./"); return; }
   try { L = JSON.parse(API.LS.get(KHOA_LUOT) || "null"); } catch (e) { L = null; }
-  if (L && L.phien) { veLuot(); bao("Em đang làm dở lượt này, làm tiếp nhé.", "blue"); } else taiTong();
+  const giaoURL = new URLSearchParams(location.search).get("giao");
+  if (L && L.phien) { veLuot(); bao("Em đang làm dở lượt này, làm tiếp nhé.", "blue"); }
+  else if (giaoURL) { history.replaceState(null, "", "tuhoc.html"); taiTong(); batDau({ cheDo: "giao", maGiao: giaoURL, n: 5 }, $("#btnLuyen")); }
+  else taiTong().then(() => { if (location.hash === "#thithu") $("#thithu").scrollIntoView(); });
 })();
 </script>
 </body>

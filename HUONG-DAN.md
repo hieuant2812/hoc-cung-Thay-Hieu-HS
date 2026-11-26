@@ -85,6 +85,20 @@ Thầy làm một lần, khoảng 15 phút.
 - **Chuỗi ngày 🔥**: mỗi ngày làm đúng ít nhất 5 câu khác nhau là đạt (giờ Việt Nam). Mỗi câu chỉ tính lần đầu trong ngày, nên làm lại câu cũ không cộng thêm.
 - Thẻ **🔥 Tự học** ở trang quản lí: chọn lớp và khoảng ngày (Tuần này, Tháng này, Học kì I, Học kì II hoặc tự chọn). Bảng xếp theo **chuỗi dài nhất trong khoảng đó**, em đứng đầu có 🏆 để thầy cộng điểm thưởng. Tải được ra Excel.
 
+**Giao bài tự học có hạn**
+1. Thẻ **🔥 Tự học** → **＋ Giao bài mới**: đặt tên, chọn lớp, môn, khối, mức (không bắt buộc), số câu đúng cần đạt, hạn nộp.
+2. Bấm **Tải các dạng**, tick các dạng muốn giao → **Giao bài**.
+3. Học sinh thấy ô 📌 nhắc ở trang chính (đỏ khi còn dưới 1 ngày hoặc đã quá hạn), bấm vào là làm ngay. Mỗi câu đúng chỉ tính một lần cho bài giao.
+4. Bảng *Bài tự học thầy giao* ghi số em xong / đang làm / chưa làm và **tên các em chưa xong**. Khi thầy vào trang quản lí, bài nào đã quá hạn mà còn em chưa xong sẽ được báo ngay ở đầu trang.
+
+**Hẹn giờ mở phòng thi, đảo câu**
+- Ô **Mở bài lúc**: bài tự mở đúng giờ (học sinh thấy “mở lúc …” nhưng chưa vào được). Bấm **Mở ngay** nếu muốn mở sớm. Ô **Đóng bài lúc** để tự đóng.
+- **Đảo thứ tự câu** và **Đảo phương án A–D** bật sẵn; bỏ tick nếu thầy muốn mọi em cùng thứ tự (mỗi em vẫn nhận câu khác nhau theo ma trận).
+
+**Học sinh xem lại bài, so sánh điểm, thi thử**
+- Trang chính có ô **📈 Bài đã làm**: biểu đồ điểm các lần (kèm đường trung bình lớp), cho biết tăng hay giảm so với lần trước, bấm tên bài để xem lại bài làm và lời giải.
+- **⏱ Thi thử THPT** (trong trang Tự học): em tự tạo một đề theo cấu trúc thi tốt nghiệp (12 trắc nghiệm, 4 đúng/sai, 6 trả lời ngắn, 90 phút), câu lấy từ ngân hàng chung, nộp là có điểm và lời giải. Mỗi ngày tối đa 3 lần. Bài thi thử không hiện trong danh sách bài kiểm tra của thầy.
+
 **Câu nói hay mỗi ngày:** cuối mỗi trang có một câu về việc học của danh nhân, đổi theo ngày. Thầy thêm, bớt câu trong file `assets/loihay.js`.
 
 ## 5. Giới hạn cần biết
