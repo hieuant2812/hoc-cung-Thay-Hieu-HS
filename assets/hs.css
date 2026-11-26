@@ -74,3 +74,7 @@ table.mx tfoot td{font-weight:700}
 .ls-bang{width:100%;border-collapse:collapse;font-size:14px;margin-top:10px}
 .ls-bang td{padding:6px 4px;border-top:1px solid var(--line)}
 .ls-bang td.num{text-align:right;white-space:nowrap}
+.thong-bao-lop{display:grid;gap:8px;margin-top:14px}
+.tbl-lop{padding:12px 14px;border-radius:14px;background:#eef4ff;border:1px solid #c9d8fb}
+.tbl-lop p{margin:4px 0 0;white-space:pre-line}
+.ls-bang tr.la-em td{background:#eef4ff;font-weight:700}

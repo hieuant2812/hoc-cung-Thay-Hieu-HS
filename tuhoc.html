@@ -46,6 +46,12 @@
       <p class="small muted" style="margin:8px 0 0">Ô xanh đậm: ngày em làm đúng đủ 5 câu. Mỗi câu chỉ được tính lần đầu trong ngày.</p>
     </div>
 
+    <div class="card hidden" id="cBXH" style="margin-top:14px">
+      <h3 style="margin:0 0 4px">🏆 Bảng xếp hạng tuần</h3>
+      <p class="small muted" style="margin:0 0 8px" id="bxhTom"></p>
+      <table class="ls-bang" id="tBXH"></table>
+    </div>
+
     <div class="th-nut">
       <button class="btn coral full" id="btnOnLoi">📕 Ôn sổ lỗi</button>
       <button class="btn violet full" id="btnGoiY">✨ Làm 5 câu gợi ý</button>
@@ -148,6 +154,12 @@
     // gợi ý
     $("#dsGoiY").innerHTML = r.goiY.length ? `<ul>${r.goiY.map(g => `<li><b>${esc(g.ten || g.dkey)}</b> · ${g.lyDo === "yeu" ? `em mới đúng ${phanTram(g.tiLe)} (${g.lam} câu)` : "em chưa luyện dạng này"}</li>`).join("")}</ul>` : `<p class="muted">Em đang làm tốt mọi dạng đã luyện. Thử dạng mới ở phần dưới nhé.</p>`;
     $("#btnGoiY").disabled = !r.goiY.length;
+    // bảng xếp hạng (thầy bật cho lớp)
+    $("#cBXH").classList.toggle("hidden", !r.bxh);
+    if (r.bxh) {
+      $("#bxhTom").textContent = `Từ thứ Hai ${r.bxh.tu.split("-").reverse().join("/")} · xếp theo chuỗi ngày đạt 5 câu đúng, rồi số câu đúng` + (r.bxh.em ? ` · em đứng thứ ${r.bxh.em.hang}/${r.bxh.em.tong}` : "");
+      $("#tBXH").innerHTML = r.bxh.top.length ? r.bxh.top.map(x => `<tr class="${x.laEm ? "la-em" : ""}"><td>${x.hang <= 3 ? ["🥇", "🥈", "🥉"][x.hang - 1] : x.hang + "."} ${esc(x.hoTen)}${x.laEm ? " (em)" : ""}</td><td class="num">🔥${x.chuoi} · ${x.dung} câu</td></tr>`).join("") : `<tr><td class="muted small">Tuần này chưa ai luyện. Em mở hàng nhé!</td></tr>`;
+    }
     // bài thầy giao
     const ngayGio = x => new Date(x).toLocaleString("vi-VN", { dateStyle: "short", timeStyle: "short" });
     $("#cGiao").classList.toggle("hidden", !(r.giao || []).length);

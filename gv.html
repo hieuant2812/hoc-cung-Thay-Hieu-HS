@@ -151,7 +151,7 @@
           <button class="btn green" type="submit" style="align-self:end">＋ Tạo lớp</button>
         </form>
         <p class="small muted" style="margin:8px 0 0">Mỗi lớp có một <b>mã lớp</b> 6 kí tự. Thầy đưa mã cho học sinh để các em tự tạo tài khoản, rồi duyệt ở bảng bên dưới.</p>
-        <div class="tbl-wrap" style="margin-top:12px"><table class="tbl" id="tLop"><thead><tr><th>Lớp</th><th>Mã lớp</th><th class="num">Học sinh</th><th class="num">Chờ duyệt</th><th></th></tr></thead><tbody></tbody></table></div>
+        <div class="tbl-wrap" style="margin-top:12px"><table class="tbl" id="tLop"><thead><tr><th>Lớp</th><th>Mã lớp</th><th class="num">Học sinh</th><th class="num">Chờ duyệt</th><th title="Bảng xếp hạng tự học tuần cho học sinh xem">Xếp hạng</th><th></th></tr></thead><tbody></tbody></table></div>
       </div>
 
       <div class="card hidden" id="cHS" style="margin-top:18px">
@@ -166,6 +166,24 @@
         </div>
         <div id="mkTam"></div>
         <div class="tbl-wrap"><table class="tbl" id="tHS"><thead><tr><th><input type="checkbox" id="chonHet" aria-label="Chọn tất cả"></th><th>Họ và tên</th><th>Tên đăng nhập</th><th>Trạng thái</th><th>Đăng nhập gần nhất</th><th></th></tr></thead><tbody></tbody></table></div>
+      </div>
+
+      <div class="card" style="margin-top:18px">
+        <h3 style="margin-top:0">📢 Thông báo lớp</h3>
+        <form id="fTB" class="grid-form">
+          <label class="f" style="grid-column:1/-1">Nội dung (hiện ở đầu trang chính của học sinh)<textarea name="noiDung" rows="2" maxlength="600" required placeholder="VD: Thứ Sáu kiểm tra 15 phút chương 1, các em ôn dạng 1 và 2."></textarea></label>
+          <label class="f">Gửi cho<select name="maLop"></select></label>
+          <label class="f">Hiện trong<select name="soNgay"><option value="1">1 ngày</option><option value="3">3 ngày</option><option value="7" selected>7 ngày</option><option value="30">30 ngày</option><option value="0">Đến khi thầy xoá</option></select></label>
+          <button class="btn blue" type="submit" style="align-self:end">Đăng thông báo</button>
+        </form>
+        <div class="tbl-wrap" style="margin-top:12px"><table class="tbl" id="tTB"><thead><tr><th>Nội dung</th><th>Lớp</th><th>Đăng lúc</th><th>Hết hạn</th><th></th></tr></thead><tbody></tbody></table></div>
+      </div>
+
+      <div class="card" style="margin-top:18px">
+        <h3 style="margin-top:0">💾 Sao lưu dữ liệu</h3>
+        <p class="small" id="slTom">Đang kiểm tra…</p>
+        <p class="small muted">Bản sao Trang tính nằm trong thư mục <b>Sao lưu web học sinh</b> trên Google Drive của thầy, giữ 8 bản gần nhất. Để bật sao lưu tự động 22 giờ tối Chủ nhật hằng tuần: trong Apps Script chọn hàm <b>batSaoLuuHangTuan</b> rồi bấm ▷ Chạy một lần (Google hỏi thêm quyền Drive, thầy cho phép).</p>
+        <button class="btn sm ghost" id="btnSaoLuu">Sao lưu ngay</button>
       </div>
     </div>
 
@@ -215,7 +233,7 @@
   }
 
   function moDN() { $("#vQL").classList.add("hidden"); $("#nav").classList.add("hidden"); $("#vDN").classList.remove("hidden"); }
-  function moQL() { $("#vDN").classList.add("hidden"); $("#vQL").classList.remove("hidden"); $("#nav").classList.remove("hidden"); taiLop(); nhacGiaoQuaHan(); }
+  function moQL() { $("#vDN").classList.add("hidden"); $("#vQL").classList.remove("hidden"); $("#nav").classList.remove("hidden"); taiLop(); nhacGiaoQuaHan(); taiTB(); taiHeThong(); }
 
   $("#fDN").onsubmit = async e => {
     e.preventDefault(); const f = e.target; f.querySelector(".loi").textContent = "";
@@ -241,9 +259,14 @@
     $("#tLop tbody").innerHTML = dsLop.length ? dsLop.map(l => `<tr data-ma="${esc(l.maLop)}" class="${lopChon === l.maLop ? "sel" : ""}">
       <td><b>${esc(l.tenLop)}</b>${l.dong ? ' <span class="tt khoa">đã đóng</span>' : ""}</td><td><span class="ma">${esc(l.maLop)}</span></td>
       <td class="num">${l.soHS}</td><td class="num">${l.choDuyet ? `<span class="tt cho">${l.choDuyet}</span>` : 0}</td>
+      <td><button class="btn sm ${l.bxh ? "green" : "ghost"}" data-bxh="${esc(l.maLop)}" data-bat="${l.bxh ? 0 : 1}" title="Cho học sinh lớp này xem bảng xếp hạng tự học tuần">${l.bxh ? "Đang bật" : "Đang tắt"}</button></td>
       <td><button class="btn sm ghost" data-xem="${esc(l.maLop)}">Xem học sinh</button></td></tr>`).join("")
-      : `<tr><td colspan="5" class="muted">Chưa có lớp nào. Thầy tạo lớp ở ô phía trên.</td></tr>`;
+      : `<tr><td colspan="6" class="muted">Chưa có lớp nào. Thầy tạo lớp ở ô phía trên.</td></tr>`;
     $$("[data-xem]").forEach(b => b.onclick = () => { lopChon = b.dataset.xem; $("#mkTam").innerHTML = ""; taiLop(); });
+    $$("[data-bxh]").forEach(b => b.onclick = () => cho(b, async () => { try { await goi("gv.caiLop", { maLop: b.dataset.bxh, bxh: b.dataset.bat === "1" }); taiLop(); } catch (e) { bao(esc(e.message), "red"); } }));
+    const cu = $("#fTB").maLop.value;
+    $("#fTB").maLop.innerHTML = `<option value="*">Tất cả các lớp</option>` + dsLop.map(l => `<option value="${esc(l.maLop)}">${esc(l.tenLop)}</option>`).join("");
+    if (cu) $("#fTB").maLop.value = cu;
     if (lopChon) xemLop(lopChon, true);
   }
   $("#fLop").onsubmit = async e => {
@@ -353,6 +376,30 @@
     });
   }
   $("#btnTaiNH").onclick = taiNH;
+
+  /* ---- thông báo lớp ---- */
+  async function taiTB() {
+    let r; try { r = await goi("gv.thongBao.ds"); } catch (e) { return; }
+    $("#tTB tbody").innerHTML = r.thongBao.length ? r.thongBao.map(t => `<tr class="${t.conHan ? "" : "muted"}"><td>${esc(t.noiDung)}</td><td>${esc(t.tenLop)}</td><td class="small">${ngay(t.taoLuc)}</td>
+      <td class="small">${t.hetHan ? (t.conHan ? ngay(t.hetHan) : "đã hết hạn") : "không"}</td><td><button class="btn sm ghost" data-xoa-tb="${t.ma}" title="Xoá">🗑</button></td></tr>`).join("")
+      : `<tr><td colspan="5" class="muted">Chưa có thông báo nào.</td></tr>`;
+    $$("[data-xoa-tb]").forEach(b => b.onclick = () => cho(b, async () => { try { await goi("gv.thongBao.xoa", { ma: b.dataset.xoaTb }); taiTB(); } catch (e) { bao(esc(e.message), "red"); } }));
+  }
+  $("#fTB").onsubmit = e => {
+    e.preventDefault(); const f = e.target;
+    cho(f.querySelector("[type=submit]"), async () => {
+      try { await goi("gv.thongBao.tao", { maLop: f.maLop.value, noiDung: f.noiDung.value, soNgay: +f.soNgay.value }); f.noiDung.value = ""; bao("Đã đăng thông báo.", "green"); taiTB(); }
+      catch (err) { bao(esc(err.message), "red"); }
+    });
+  };
+  /* ---- sao lưu ---- */
+  async function taiHeThong() {
+    let r; try { r = await goi("gv.heThong"); } catch (e) { return; }
+    $("#slTom").innerHTML = (r.saoLuuCuoi ? `Lần sao lưu gần nhất: <b>${ngay(r.saoLuuCuoi)}</b>.` : "Chưa sao lưu lần nào.") + (r.henSaoLuu ? " Tự động sao lưu: <b>đang bật</b> (22 giờ tối Chủ nhật)." : ` Tự động sao lưu: <b style="color:#c21e57">chưa bật</b>.`) + ` <span class="muted">Máy chủ bản ${esc(r.phienBan)}.</span>`;
+  }
+  $("#btnSaoLuu").onclick = () => cho($("#btnSaoLuu"), async () => {
+    try { const r = await goi("gv.saoLuu"); bao(esc(r.kq), "green"); taiHeThong(); } catch (e) { bao(esc(e.message), "red"); }
+  });
 
   /* ================= tự học: chuyên cần ================= */
   const iso = d => new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
