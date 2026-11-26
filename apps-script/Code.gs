@@ -13,7 +13,7 @@
 /* ĐỔI DÒNG NÀY thành mật khẩu riêng của thầy (ít nhất 8 kí tự). */
 const KHOA_GV = "doi-mat-khau-nay";
 
-const PHIEN_BAN = "2026.11.26";
+const PHIEN_BAN = "2026.11.27";
 const HS_HAN_PHIEN_NGAY = 30;     // học sinh đăng nhập một lần dùng 30 ngày
 const GV_HAN_PHIEN_GIO = 12;      // giáo viên: 12 giờ
 const SO_LAN_SAI_TOI_DA = 5;      // sai mật khẩu 5 lần thì khoá 10 phút
@@ -31,13 +31,14 @@ const BANG = {
   BaiKT: ["maBai", "ten", "maLop", "mon", "lop", "maTran", "soCau", "thoiGian", "dongLuc", "trangThai", "congBo", "taoLuc"],
   /* đề của từng học sinh: cau = [{k, loai, order}] ; traLoi = {"0": "B", "1": "ĐSĐS", "2": "2,5"} ; trangThai: lam | nop.
      Thêm cột mới thì luôn thêm ở CUỐI để dữ liệu cũ không lệch cột. */
-  DeThi: ["k", "maBai", "hsId", "cau", "traLoi", "batDau", "hanNop", "luuLuc", "nopLuc", "trangThai", "diem", "chiTiet", "viPham", "khoa"]
+  DeThi: ["k", "maBai", "hsId", "cau", "traLoi", "batDau", "hanNop", "luuLuc", "nopLuc", "trangThai", "diem", "chiTiet", "viPham", "khoa"],
+  TuHoc: ["hsId", "ngay", "dang", "soLoi", "homNay", "tongDung", "tongLam", "capNhat"]
 };
 const MUC = ["NB", "TH", "VD", "VDC"];
 const LOAI = ["TN", "DS", "TLN"];
 const PHUT_AN_HAN = 2;            // nhận bài muộn tối đa 2 phút sau giờ nộp (mạng chậm)
 /* Các cột lưu dạng số; mọi cột khác lưu dạng chữ (có dấu ' phía trước để Trang tính không tự đổi "2,5" thành số hay "=..." thành công thức). */
-const COT_SO = { lop: 1, chuong: 1, bai: 1, dangSo: 1, lanSai: 1, pv: 1, khoi: 1, soCau: 1, thoiGian: 1, diem: 1, viPham: 1 };
+const COT_SO = { lop: 1, chuong: 1, bai: 1, dangSo: 1, lanSai: 1, pv: 1, khoi: 1, soCau: 1, thoiGian: 1, diem: 1, viPham: 1, tongDung: 1, tongLam: 1 };
 
 /* ============================== cài đặt ============================== */
 function caiDat() {
@@ -367,7 +368,7 @@ Object.assign(VIEC, {
     const hs = docHet("TaiKhoan").filter(function (o) { return o.maLop === b.o.maLop && (o.trangThai === "ok" || de[o.id]); }).map(function (o) {
       const d = de[o.id];
       let soLam = 0; if (d) { try { soLam = Object.keys(JSON.parse(d.traLoi || "{}")).filter(function (k) { return String(JSON.parse(d.traLoi)[k]).trim() !== ""; }).length; } catch (e) { } }
-      return { id: o.id, hoTen: o.hoTen, tenDN: o.tenDN, trangThai: d ? d.trangThai : "chua", soLam: soLam, batDau: d ? d.batDau : "", nopLuc: d ? d.nopLuc : "", diem: d && d.trangThai === "nop" ? +d.diem : null, luuLuc: d ? d.luuLuc : "" };
+      return { id: o.id, hoTen: o.hoTen, tenDN: o.tenDN, trangThai: d ? d.trangThai : "chua", soLam: soLam, batDau: d ? d.batDau : "", nopLuc: d ? d.nopLuc : "", diem: d && d.trangThai === "nop" ? +d.diem : null, luuLuc: d ? d.luuLuc : "", viPham: d ? +d.viPham || 0 : 0 };
     });
     return { bai: { maBai: b.o.maBai, ten: b.o.ten, soCau: +b.o.soCau, trangThai: trangThaiBai(b.o), congBo: b.o.congBo === "1", ketQuaMo: ketQuaDaMo(b.o) }, hs: hs, bayGio: bayGio() };
   },
@@ -555,19 +556,24 @@ function cham(d) {
   const toan = /^To[aá]n/i.test(bai.mon);
   let diem = 0, toiDa = 0;
   const ct = cau.map(function (c, i) {
-    const x = q[c.k], t = String(tl[i] == null ? "" : tl[i]).trim();
-    let m = 0, s = 0;
-    if (c.loai === "TN") { m = 0.25; if (x && t && "ABCD".indexOf(t) === c.order.indexOf(0)) s = m; }
-    else if (c.loai === "DS") {
-      m = 1;
-      if (x && t.length === 4) { let dung = 0; c.order.forEach(function (j, p) { const chon = t.charAt(p); if (chon === "Đ" || chon === "S") if ((chon === "Đ") === !!x.y[j].d) dung++; }); s = [0, 0.1, 0.25, 0.5, 1][dung]; }
-    } else { m = toan ? 0.5 : 0.25; if (x && dungTLN(t, x.da)) s = m; }
-    diem += s; toiDa += m;
-    return { d: s, m: m };
+    const r = chamCau(q[c.k], c, tl[i], toan);
+    diem += r.d; toiDa += r.m;
+    return { d: r.d, m: r.m };
   });
   const thang10 = toiDa ? Math.round(diem / toiDa * 1000) / 100 : 0;
   suaDong("DeThi", d.hang, { trangThai: "nop", nopLuc: bayGio(), diem: thang10, chiTiet: JSON.stringify(ct) });
   d.o.trangThai = "nop"; d.o.diem = thang10;
+}
+/* chấm một câu theo thang 2025: d = điểm đạt, m = điểm tối đa, dung = đúng trọn vẹn */
+function chamCau(x, c, traLoi, toan) {
+  const t = String(traLoi == null ? "" : traLoi).trim();
+  let m = 0, s = 0;
+  if (c.loai === "TN") { m = 0.25; if (x && t && "ABCD".indexOf(t) === c.order.indexOf(0)) s = m; }
+  else if (c.loai === "DS") {
+    m = 1;
+    if (x && x.y && t.length === 4) { let dung = 0; c.order.forEach(function (j, p) { const chon = t.charAt(p); if (chon === "Đ" || chon === "S") if ((chon === "Đ") === !!x.y[j].d) dung++; }); s = [0, 0.1, 0.25, 0.5, 1][dung]; }
+  } else { m = toan ? 0.5 : 0.25; if (x && dungTLN(t, x.da)) s = m; }
+  return { d: s, m: m, dung: s === m && m > 0 };
 }
 /* bài quá giờ mà chưa nộp (em tắt máy, mất mạng): tự nộp những câu đã lưu */
 function chamQuaHan(maBai, dongHet) {
@@ -669,7 +675,13 @@ function bayGio() { return new Date().toISOString(); }
 
 /* ============================== đọc ghi trang tính ============================== */
 function trang(ten) {
-  const sh = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(ten);
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sh = ss.getSheetByName(ten);
+  if (!sh && BANG[ten]) {                       // bản mới thêm bảng: tự tạo, thầy không phải chạy lại caiDat
+    sh = ss.insertSheet(ten);
+    sh.getRange(1, 1, 1, BANG[ten].length).setValues([BANG[ten]]).setFontWeight("bold");
+    sh.setFrozenRows(1);
+  }
   if (!sh) throw loi("Máy chủ chưa chạy caiDat() (thiếu trang " + ten + ").");
   return sh;
 }
@@ -752,3 +764,240 @@ function xoaTheo(ten, dk) {
 function ghiNhatKy(ai, viec, chiTiet) {
   try { trang("NhatKy").appendRow([o2c("luc", bayGio()), o2c("ai", ai), o2c("viec", viec), o2c("chiTiet", String(chiTiet || "").slice(0, 1000))]); } catch (e) { }
 }
+
+/* ============================== thống kê bài kiểm tra ============================== */
+Object.assign(VIEC, {
+  /* tỉ lệ đúng theo từng câu, từng dạng, từng mức; dạng yếu của từng em (để viết nhận xét) */
+  "gv.thongKeBai": function (yc) {
+    canGV(yc);
+    const b = timDong("BaiKT", String(yc.maBai || ""));
+    if (!b) throw loi("Không tìm thấy bài kiểm tra.");
+    chamQuaHan(b.o.maBai, trangThaiBai(b.o) === "dong");
+    const bai = docHet("DeThi").filter(function (o) { return o.maBai === b.o.maBai && o.trangThai === "nop"; });
+    const theoK = {}, cuaHS = {};
+    bai.forEach(function (o) {
+      let cau, ct; try { cau = JSON.parse(o.cau); ct = JSON.parse(o.chiTiet || "[]"); } catch (e) { return; }
+      cuaHS[o.hsId] = [];
+      cau.forEach(function (c, i) {
+        const r = ct[i] || { d: 0, m: 0 };
+        const t = theoK[c.k] = theoK[c.k] || { k: c.k, loai: c.loai, lam: 0, d: 0, m: 0, dung: 0 };
+        t.lam++; t.d += r.d; t.m += r.m; if (r.m && r.d >= r.m) t.dung++;
+        cuaHS[o.hsId].push([c.k, r.d, r.m]);
+      });
+    });
+    const q = docCauTheoKhoa(Object.keys(theoK));
+    const tenDang = {};
+    docHet("Dang").forEach(function (o) { if (o.mon === b.o.mon && +o.lop === +b.o.lop) tenDang[o.dkey] = o.ten; });
+    const gom = function (khoaCua) {
+      const g = {};
+      Object.keys(theoK).forEach(function (k) {
+        const t = theoK[k], x = q[k] || {}, kk = khoaCua(t, x);
+        const a = g[kk] = g[kk] || { khoa: kk, lam: 0, d: 0, m: 0, soCau: 0 };
+        a.lam += t.lam; a.d += t.d; a.m += t.m; a.soCau++;
+      });
+      return Object.keys(g).map(function (kk) { const a = g[kk]; a.tiLe = a.m ? Math.round(a.d / a.m * 1000) / 1000 : 0; delete a.d; delete a.m; return a; });
+    };
+    const cau = Object.keys(theoK).map(function (k) {
+      const t = theoK[k], x = q[k] || {};
+      return { k: k, id: x.id || k.split("|").pop(), loai: t.loai, muc: x.muc || "", dkey: x.dkey || "", tenDang: tenDang[x.dkey] || "", de: String(x.de || "").slice(0, 600), lam: t.lam, dung: t.dung, tiLe: t.m ? Math.round(t.d / t.m * 1000) / 1000 : 0 };
+    }).sort(function (a, b) { return a.tiLe - b.tiLe || b.lam - a.lam; });
+    const dang = gom(function (t, x) { return x.dkey || "?"; }).map(function (a) { a.ten = tenDang[a.khoa] || ""; return a; }).sort(function (a, b) { return a.tiLe - b.tiLe; });
+    const muc = gom(function (t, x) { return x.muc || "?"; }).sort(function (a, b) { return MUC.indexOf(a.khoa) - MUC.indexOf(b.khoa); });
+    const loai = gom(function (t) { return t.loai; }).sort(function (a, b) { return LOAI.indexOf(a.khoa) - LOAI.indexOf(b.khoa); });
+    // dạng yếu (< 50%) và dạng vững (≥ 80%) của từng em
+    const hs = {};
+    Object.keys(cuaHS).forEach(function (id) {
+      const g = {};
+      cuaHS[id].forEach(function (r) { const dk = (q[r[0]] || {}).dkey || "?"; const a = g[dk] = g[dk] || [0, 0]; a[0] += r[1]; a[1] += r[2]; });
+      const yeu = [], vung = [];
+      Object.keys(g).forEach(function (dk) { if (!g[dk][1]) return; const tl = g[dk][0] / g[dk][1]; const ten = tenDang[dk] || dk; if (tl < 0.5) yeu.push(ten); else if (tl >= 0.8) vung.push(ten); });
+      hs[id] = { yeu: yeu, vung: vung };
+    });
+    return { bai: { maBai: b.o.maBai, ten: b.o.ten }, soBai: bai.length, cau: cau, dang: dang, muc: muc, loai: loai, hs: hs };
+  }
+});
+
+/* ============================== tự học ============================== */
+const MUC_TIEU_NGAY = 5;          // mỗi ngày làm đúng 5 câu (khác nhau) là giữ chuỗi
+const LICH_ON = [1, 3, 7, 14];    // câu sai: hẹn làm lại sau 1 ngày; đúng thì giãn ra 3, 7, 14 ngày; đúng 3 lần là thuộc
+const SO_LOI_TOI_DA = 400;
+
+function ngayVN(t) { return new Date((t == null ? Date.now() : t) + 7 * 3600000).toISOString().slice(0, 10); }
+function congNgay(d, n) { const x = new Date(d + "T00:00:00Z"); x.setUTCDate(x.getUTCDate() + n); return x.toISOString().slice(0, 10); }
+function docJSON(s, macDinh) { try { return s ? JSON.parse(s) : macDinh; } catch (e) { return macDinh; } }
+function docTuHoc(hsId) {
+  const r = timDong("TuHoc", hsId), o = r ? r.o : {};
+  const t = { hang: r ? r.hang : 0, hsId: hsId, ngay: docJSON(o.ngay, {}), dang: docJSON(o.dang, {}), soLoi: docJSON(o.soLoi, {}), homNay: docJSON(o.homNay, {}), tongDung: +o.tongDung || 0, tongLam: +o.tongLam || 0 };
+  const hn = ngayVN();
+  if (t.homNay.d !== hn) t.homNay = { d: hn, ks: {}, p: [] };
+  return t;
+}
+function ghiTuHoc(t) {
+  const o = { hsId: t.hsId, ngay: JSON.stringify(t.ngay), dang: JSON.stringify(t.dang), soLoi: JSON.stringify(t.soLoi), homNay: JSON.stringify(t.homNay), tongDung: t.tongDung, tongLam: t.tongLam, capNhat: bayGio() };
+  if (t.hang) trang("TuHoc").getRange(t.hang, 1, 1, BANG.TuHoc.length).setValues([oThanhHang("TuHoc", o)]);
+  else them("TuHoc", o);
+}
+/* chuỗi ngày đạt mục tiêu: hiện tại (tính tới hôm nay, hoặc hôm qua nếu hôm nay chưa đủ) và dài nhất */
+function chuoiNgay(ngay, tu, den) {
+  const dat = function (d) { return ngay[d] && ngay[d][0] >= MUC_TIEU_NGAY; };
+  const hn = ngayVN();
+  let hienTai = 0, d = dat(hn) ? hn : congNgay(hn, -1);
+  while (dat(d)) { hienTai++; d = congNgay(d, -1); }
+  const ds = Object.keys(ngay).filter(function (x) { return dat(x) && (!tu || x >= tu) && (!den || x <= den); }).sort();
+  let daiNhat = 0, dang = 0, truoc = "";
+  ds.forEach(function (x) { dang = truoc && congNgay(truoc, 1) === x ? dang + 1 : 1; if (dang > daiNhat) daiNhat = dang; truoc = x; });
+  let dung = 0, lam = 0;
+  Object.keys(ngay).forEach(function (x) { if ((!tu || x >= tu) && (!den || x <= den)) { dung += ngay[x][0]; lam += ngay[x][1]; } });
+  return { hienTai: hienTai, daiNhat: daiNhat, soNgayDat: ds.length, dung: dung, lam: lam };
+}
+/* dạng của một bộ ngân hàng (môn – lớp) kèm số câu */
+function dangCuaNH(mon, lop) {
+  const dang = {};
+  docCot("CauHoi", ["mon", "lop", "chuong", "bai", "dangSo", "dkey"]).forEach(function (o) {
+    if (o.mon !== mon || +o.lop !== +lop || !o.dkey) return;
+    const d = dang[o.dkey] = dang[o.dkey] || { dkey: o.dkey, chuong: +o.chuong, bai: +o.bai, so: +o.dangSo, ten: "", n: 0 };
+    d.n++;
+  });
+  docHet("Dang").forEach(function (o) { if (o.mon === mon && +o.lop === +lop && dang[o.dkey]) dang[o.dkey].ten = o.ten; });
+  return Object.keys(dang).map(function (k) { return dang[k]; }).sort(function (a, b) { return a.chuong - b.chuong || a.bai - b.bai || a.so - b.so; });
+}
+/* gợi ý: dạng em làm sai nhiều nhất (đã làm ít nhất 3 câu), rồi tới dạng chưa làm bao giờ */
+function goiYDang(t, mon, lop, ds) {
+  const diem = ds.map(function (d) {
+    const s = t.dang[mon + "|" + lop + "|" + d.dkey] || [0, 0];
+    return { dkey: d.dkey, ten: d.ten, dung: s[0], lam: s[1], tiLe: s[1] ? s[0] / s[1] : null, moi: !s[1] };
+  });
+  const yeu = diem.filter(function (x) { return x.lam >= 3 && x.tiLe < 0.7; }).sort(function (a, b) { return a.tiLe - b.tiLe; });
+  const moi = diem.filter(function (x) { return x.moi; });
+  return yeu.concat(moi).slice(0, 3).map(function (x) { return { dkey: x.dkey, ten: x.ten, tiLe: x.tiLe, lam: x.lam, lyDo: x.moi ? "chua-lam" : "yeu" }; });
+}
+
+Object.assign(VIEC, {
+  /* trang tự học: tiến độ hôm nay, chuỗi ngày, sổ lỗi, các dạng có trong ngân hàng, gợi ý */
+  "hs.tuHoc": function (yc) {
+    const tk = canHS(yc);
+    const lopHS = timDong("Lop", tk.o.maLop), khoi = lopHS ? +lopHS.o.khoi || 0 : 0;
+    const t = docTuHoc(tk.o.id), hn = ngayVN();
+    const nh = {};
+    docCot("CauHoi", ["mon", "lop"]).forEach(function (o) { const k = o.mon + "|" + o.lop; nh[k] = nh[k] || { mon: o.mon, lop: +o.lop, n: 0 }; nh[k].n++; });
+    const dsNH = Object.keys(nh).map(function (k) { return nh[k]; }).sort(function (a, b) { return a.mon.localeCompare(b.mon) || a.lop - b.lop; });
+    let mon = chuanTen(yc.mon), lop = +yc.lop || 0;
+    if (!nh[mon + "|" + lop]) {
+      const hop = dsNH.filter(function (x) { return x.lop === khoi; });
+      const c = hop.filter(function (x) { return /^To[aá]n/i.test(x.mon); })[0] || hop[0] || dsNH[0];
+      mon = c ? c.mon : ""; lop = c ? c.lop : 0;
+    }
+    const ds = mon ? dangCuaNH(mon, lop) : [];
+    ds.forEach(function (d) { const s = t.dang[mon + "|" + lop + "|" + d.dkey] || [0, 0]; d.dung = s[0]; d.lam = s[1]; });
+    const lich = [];
+    for (let i = 34; i >= 0; i--) { const d = congNgay(hn, -i); lich.push({ d: d, dung: (t.ngay[d] || [0])[0] }); }
+    const soLoiKeys = Object.keys(t.soLoi);
+    return {
+      mon: mon, lop: lop, khoi: khoi, nganHang: dsNH, dang: ds, goiY: goiYDang(t, mon, lop, ds),
+      homNay: { d: hn, dung: (t.ngay[hn] || [0, 0])[0], lam: (t.ngay[hn] || [0, 0])[1], mucTieu: MUC_TIEU_NGAY },
+      chuoi: chuoiNgay(t.ngay), tongDung: t.tongDung, tongLam: t.tongLam,
+      soLoi: { tong: soLoiKeys.length, denHan: soLoiKeys.filter(function (k) { return t.soLoi[k][1] <= hn; }).length },
+      lich: lich
+    };
+  },
+
+  /* lấy một lượt câu luyện: cheDo = dang (các dạng em chọn) | goiy | loi (sổ lỗi) | tron */
+  "hs.tuHoc.lay": function (yc) {
+    const tk = canHS(yc);
+    const t = docTuHoc(tk.o.id), hn = ngayVN();
+    const n = Math.max(1, Math.min(10, Math.round(+yc.n || MUC_TIEU_NGAY)));
+    const mon = chuanTen(yc.mon), lop = +yc.lop || 0, cheDo = String(yc.cheDo || "dang");
+    const R = rng(bamSo("luyen|" + tk.o.id + "|" + Date.now()));
+    let chon = [];
+    if (cheDo === "loi") {
+      const ks = Object.keys(t.soLoi).sort(function (a, b) { return t.soLoi[a][1] < t.soLoi[b][1] ? -1 : t.soLoi[a][1] > t.soLoi[b][1] ? 1 : 0; });
+      const denHan = ks.filter(function (k) { return t.soLoi[k][1] <= hn; });
+      chon = (denHan.length ? denHan : ks).slice(0, n);
+      if (!chon.length) throw loi("Sổ lỗi của em đang trống. Giỏi lắm!", "trong");
+    } else {
+      if (!mon || !lop) throw loi("Em chọn môn và lớp trước nhé.");
+      let dks = null;
+      if (cheDo === "dang") { dks = {}; (yc.dkeys || []).slice(0, 60).forEach(function (d) { dks[String(d)] = 1; }); if (!Object.keys(dks).length) throw loi("Em chọn ít nhất một dạng."); }
+      if (cheDo === "goiy") { dks = {}; goiYDang(t, mon, lop, dangCuaNH(mon, lop)).forEach(function (g) { dks[g.dkey] = 1; }); }
+      const muc = MUC.indexOf(yc.muc) >= 0 ? yc.muc : "";
+      const pool = docCot("CauHoi", ["k", "mon", "lop", "muc", "dkey"]).filter(function (o) {
+        return o.mon === mon && +o.lop === lop && (!dks || dks[o.dkey]) && (!muc || o.muc === muc);
+      }).map(function (o) { return o.k; });
+      if (!pool.length) throw loi("Chưa có câu nào cho lựa chọn này.");
+      const chuaLam = pool.filter(function (k) { return !t.homNay.ks[k]; });
+      chon = tron(chuaLam.length >= n ? chuaLam : pool, R).slice(0, n);
+    }
+    const q = docCauTheoKhoa(chon);
+    const cau = chon.filter(function (k) { return q[k]; }).map(function (k) {
+      const x = q[k];
+      return { k: k, loai: x.loai, order: x.loai === "TN" ? tron([0, 1, 2, 3], R) : x.loai === "DS" ? [0, 1, 2, 3] : [] };
+    });
+    if (!cau.length) throw loi("Các câu này đã bị xoá khỏi ngân hàng.");
+    const phien = taoToken({ r: "luyen", u: tk.o.id, id: ngauNhien(10), c: cau.map(function (c) { return [c.k, c.order.join("")]; }) }, 12);
+    const tenDang = {};
+    docHet("Dang").forEach(function (o) { tenDang[o.mon + "|" + o.lop + "|" + o.dkey] = o.ten; });
+    return {
+      phien: phien,
+      cau: cau.map(function (c, i) { const x = q[c.k], o = deChoHS(x, c, i); o.muc = x.muc; o.dang = tenDang[x.mon + "|" + x.lop + "|" + x.dkey] || ""; return o; })
+    };
+  },
+
+  /* nộp một lượt: chấm, trả lời giải; tính vào tiến độ (mỗi câu chỉ tính lần đầu trong ngày) và sổ lỗi */
+  "hs.tuHoc.nop": function (yc) {
+    const tk = canHS(yc);
+    const tt = docToken(yc.phien);
+    if (!tt || tt.r !== "luyen" || tt.u !== tk.o.id) throw loi("Lượt luyện này đã quá hạn. Em bấm lấy câu mới nhé.", "het-luot");
+    const cau = tt.c.map(function (a) { return { k: a[0], order: a[1] ? a[1].split("").map(Number) : [] }; });
+    const q = docCauTheoKhoa(cau.map(function (c) { return c.k; }));
+    const tl = yc.traLoi || {};
+    return khoa(function () {
+      const t = docTuHoc(tk.o.id), hn = t.homNay.d;
+      if (t.homNay.p.indexOf(tt.id) >= 0) throw loi("Lượt này em đã nộp rồi.", "da-nop");
+      t.homNay.p.push(tt.id); if (t.homNay.p.length > 60) t.homNay.p = t.homNay.p.slice(-60);
+      const ng = t.ngay[hn] = t.ngay[hn] || [0, 0];
+      const kq = cau.map(function (c, i) {
+        const x = q[c.k];
+        if (!x) return { i: i, loai: "", q: null, traLoi: "", d: 0, m: 0, dung: false };
+        c.loai = x.loai;
+        const tra = String(tl[i] == null ? "" : tl[i]).trim().slice(0, 40);
+        const r = chamCau(x, c, tra, /^To[aá]n/i.test(x.mon));
+        const o = { i: i, loai: x.loai, order: c.order, traLoi: tra, d: r.d, m: r.m, dung: r.dung, q: { loai: x.loai, de: x.de, pa: x.pa, y: x.y, da: x.da, loigiai: x.loigiai, id: x.id } };
+        if (!tra || (x.loai === "DS" && !/[ĐS]/.test(tra))) { o.boTrong = true; return o; }
+        if (!t.homNay.ks[c.k]) {                    // lần đầu trong ngày: tính vào tiến độ
+          t.homNay.ks[c.k] = 1; o.tinh = true;
+          ng[1]++; t.tongLam++; if (r.dung) { ng[0]++; t.tongDung++; }
+          const dk = x.mon + "|" + x.lop + "|" + x.dkey, s = t.dang[dk] = t.dang[dk] || [0, 0];
+          s[1]++; if (r.dung) s[0]++;
+        }
+        if (!r.dung) t.soLoi[c.k] = [0, congNgay(hn, LICH_ON[0])];
+        else if (t.soLoi[c.k] && t.soLoi[c.k][1] <= hn) {
+          const lan = t.soLoi[c.k][0] + 1;
+          if (lan >= 3) { delete t.soLoi[c.k]; o.thuoc = true; } else t.soLoi[c.k] = [lan, congNgay(hn, LICH_ON[lan])];
+        }
+        return o;
+      });
+      const ks = Object.keys(t.soLoi);
+      if (ks.length > SO_LOI_TOI_DA) ks.slice(0, ks.length - SO_LOI_TOI_DA).forEach(function (k) { delete t.soLoi[k]; });
+      const han = congNgay(hn, -400);
+      Object.keys(t.ngay).forEach(function (d) { if (d < han) delete t.ngay[d]; });
+      ghiTuHoc(t);
+      return { cau: kq, homNay: { d: hn, dung: ng[0], lam: ng[1], mucTieu: MUC_TIEU_NGAY }, chuoi: chuoiNgay(t.ngay), soLoi: { tong: Object.keys(t.soLoi).length, denHan: Object.keys(t.soLoi).filter(function (k) { return t.soLoi[k][1] <= hn; }).length } };
+    });
+  },
+
+  /* giáo viên: chuyên cần tự học của một lớp trong một khoảng ngày (tuần, tháng, học kì) */
+  "gv.tuHoc": function (yc) {
+    canGV(yc);
+    const maLop = chuanMaLop(yc.maLop);
+    const re = /^\d{4}-\d{2}-\d{2}$/;
+    const tu = re.test(yc.tu) ? yc.tu : "", den = re.test(yc.den) ? yc.den : "";
+    const th = {}; docHet("TuHoc").forEach(function (o) { th[o.hsId] = o; });
+    const hs = docHet("TaiKhoan").filter(function (o) { return o.maLop === maLop && o.trangThai === "ok"; }).map(function (o) {
+      const x = th[o.id] || {}, ngay = docJSON(x.ngay, {});
+      const k = chuoiNgay(ngay, tu, den), hn = chuoiNgay(ngay);
+      const cuoi = Object.keys(ngay).sort().pop() || "";
+      return { id: o.id, hoTen: o.hoTen, tenDN: o.tenDN, chuoiDaiNhat: k.daiNhat, soNgayDat: k.soNgayDat, dung: k.dung, lam: k.lam, chuoiHienTai: hn.hienTai, soLoi: Object.keys(docJSON(x.soLoi, {})).length, ngayCuoi: cuoi };
+    });
+    return { hs: hs, tu: tu, den: den, homNay: ngayVN(), mucTieu: MUC_TIEU_NGAY };
+  }
+});

@@ -46,3 +46,15 @@ table.mx tfoot td{font-weight:700}
 .ds-bai{display:grid;gap:8px;margin-top:10px}
 .bai-dong{display:flex;gap:12px;align-items:center;justify-content:space-between;border:1px solid var(--line2);border-radius:12px;padding:10px 12px;background:#fffdf9}
 .bai-dong .btn{flex:none}
+
+/* câu nói hay mỗi ngày (cuối trang) */
+.foot .loi-hay{margin:0 auto 12px;max-width:680px;text-align:center}
+.foot .loi-hay blockquote{margin:0;font-style:italic;font-size:15px;line-height:1.55;color:var(--ink)}
+.foot .loi-hay figcaption{margin-top:4px;font-size:13px;font-weight:600;color:var(--muted)}
+
+/* thống kê bài kiểm tra */
+.tk-luoi{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:700px){.tk-luoi{grid-template-columns:1fr}}
+#cTK h4{margin:16px 0 6px}
+.tl{font-weight:700;padding:1px 8px;border-radius:999px}
+.tl.yeu{background:#ffe3ec;color:#c21e57}.tl.kha{background:#fff0d2;color:#946200}.tl.tot{background:#e0f6e7;color:#1b7a3c}

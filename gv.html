@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex">
 <link rel="icon" href="assets/favicon.svg">
 <link rel="stylesheet" href="assets/fonts.css"><link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/hs.css">
-<script src="config.js"></script><script src="assets/api.js"></script>
+<script src="config.js"></script><script src="assets/api.js"></script><script src="assets/loihay.js" defer></script>
 <script src="assets/lib/jszip.min.js"></script><script src="assets/nhd/core.js"></script><script src="assets/nhd/store.js"></script><script src="assets/nhd/gen.js"></script>
 </head>
 <body>
@@ -32,6 +32,7 @@
       <button data-tab="lop" role="tab" aria-selected="true">👥 Lớp học</button>
       <button data-tab="kt" role="tab" aria-selected="false">📝 Bài kiểm tra</button>
       <button data-tab="nh" role="tab" aria-selected="false">📚 Ngân hàng đề</button>
+      <button data-tab="th" role="tab" aria-selected="false">🔥 Tự học</button>
     </div>
 
     <!-- ===== bài kiểm tra ===== -->
@@ -43,9 +44,22 @@
 
       <div class="card hidden" id="cGS" style="margin-top:18px">
         <div class="row" style="justify-content:space-between"><h3 style="margin:0" id="gsTieuDe">Theo dõi</h3>
-          <div class="row"><span class="small muted" id="gsLuc"></span><button class="btn sm ghost" id="btnGS">⟳</button><button class="btn sm ghost" id="btnCSV">⬇ Tải bảng điểm (Excel/CSV)</button></div></div>
+          <div class="row"><span class="small muted" id="gsLuc"></span><button class="btn sm ghost" id="btnGS">⟳</button><button class="btn sm ghost" id="btnTK">📊 Thống kê câu</button><button class="btn sm ghost" id="btnCSV">⬇ Bảng điểm và nhận xét (Excel)</button></div></div>
         <div id="gsTom" class="small" style="margin:8px 0"></div>
-        <div class="tbl-wrap"><table class="tbl" id="tGS"><thead><tr><th>#</th><th>Họ và tên</th><th>Trạng thái</th><th class="num">Đã làm</th><th>Vào lúc</th><th>Nộp lúc</th><th class="num">Điểm</th></tr></thead><tbody></tbody></table></div>
+        <div class="tbl-wrap"><table class="tbl" id="tGS"><thead><tr><th>#</th><th>Họ và tên</th><th>Trạng thái</th><th class="num">Đã làm</th><th>Vào lúc</th><th>Nộp lúc</th><th class="num">Vi phạm</th><th class="num">Điểm</th></tr></thead><tbody></tbody></table></div>
+      </div>
+
+      <div class="card hidden" id="cTK" style="margin-top:18px">
+        <div class="row" style="justify-content:space-between"><h3 style="margin:0" id="tkTieuDe">Thống kê</h3><button class="btn sm ghost" id="btnDongTK">Đóng</button></div>
+        <p class="small muted" style="margin:6px 0 10px">Tỉ lệ = điểm lớp đạt được / điểm tối đa của các câu đó. Dưới 50% tô đỏ: phần lớp còn yếu, nên dạy lại.</p>
+        <div class="tk-luoi">
+          <div><h4>Theo phần</h4><table class="tbl" id="tkLoai"></table></div>
+          <div><h4>Theo mức độ</h4><table class="tbl" id="tkMuc"></table></div>
+        </div>
+        <h4>Theo dạng (chuẩn kiến thức)</h4>
+        <div class="tbl-wrap"><table class="tbl" id="tkDang"></table></div>
+        <h4>Từng câu (yếu nhất ở trên)</h4>
+        <div class="tbl-wrap"><table class="tbl" id="tkCau"></table></div>
       </div>
 
       <div class="card hidden" id="cTao" style="margin-top:18px">
@@ -82,6 +96,29 @@
         <div id="mxTom" class="small" style="margin-top:8px"></div>
         <div class="loi" id="taoLoi" style="margin-top:8px"></div>
         <div class="row" style="margin-top:12px"><button class="btn ghost" id="btnHuyTao">Đóng</button><button class="btn green" id="btnTaoBai">Tạo bài kiểm tra</button></div>
+      </div>
+    </div>
+
+    <!-- ===== tự học ===== -->
+    <div class="pane" data-pane="th">
+      <div class="card">
+        <h3 style="margin-top:0">Chuyên cần tự học</h3>
+        <p class="small muted" style="margin-top:0">Mỗi ngày em làm đúng ít nhất 5 câu (khác nhau) là đạt. Chuỗi là số ngày đạt liên tiếp. Em có chuỗi dài nhất trong khoảng thời gian thầy chọn được xếp đầu để thầy cộng điểm thưởng.</p>
+        <div class="row left" style="flex-wrap:wrap;gap:10px">
+          <label class="f">Lớp<select id="thLop"></select></label>
+          <label class="f">Từ ngày<input type="date" id="thTu"></label>
+          <label class="f">Đến ngày<input type="date" id="thDen"></label>
+          <div class="row" style="align-self:end;gap:6px">
+            <button class="btn sm ghost" data-khoang="tuan">Tuần này</button>
+            <button class="btn sm ghost" data-khoang="thang">Tháng này</button>
+            <button class="btn sm ghost" data-khoang="hk1">Học kì I</button>
+            <button class="btn sm ghost" data-khoang="hk2">Học kì II</button>
+          </div>
+          <button class="btn sm blue" id="btnTH" style="align-self:end">Xem</button>
+          <button class="btn sm ghost" id="btnTHCSV" style="align-self:end">⬇ Tải (Excel)</button>
+        </div>
+        <div id="thTom" class="small" style="margin:10px 0"></div>
+        <div class="tbl-wrap"><table class="tbl" id="tTH"><thead><tr><th>Hạng</th><th>Họ và tên</th><th class="num">Chuỗi dài nhất</th><th class="num">Số ngày đạt</th><th class="num">Câu đúng / đã làm</th><th class="num">Chuỗi hiện tại</th><th class="num">Sổ lỗi</th><th>Học gần nhất</th></tr></thead><tbody></tbody></table></div>
       </div>
     </div>
 
@@ -173,6 +210,7 @@
     $$("[data-pane]").forEach(p => p.classList.toggle("on", p.dataset.pane === b.dataset.tab));
     if (b.dataset.tab === "nh") taiNH();
     if (b.dataset.tab === "kt") { taiBai(); if (baiGS) giamSat(); }
+    if (b.dataset.tab === "th") moTH();
   });
 
   /* ================= lớp học ================= */
@@ -295,6 +333,48 @@
   }
   $("#btnTaiNH").onclick = taiNH;
 
+  /* ================= tự học: chuyên cần ================= */
+  const iso = d => new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+  function khoang(loai) {
+    const n = new Date(), y = n.getFullYear(), m = n.getMonth();
+    if (loai === "tuan") { const t2 = new Date(n); t2.setDate(n.getDate() - ((n.getDay() + 6) % 7)); const cn = new Date(t2); cn.setDate(t2.getDate() + 6); return [iso(t2), iso(cn)]; }
+    if (loai === "thang") return [iso(new Date(y, m, 1)), iso(new Date(y, m + 1, 0))];
+    const namHoc = m >= 7 ? y : y - 1;                       // năm học bắt đầu tháng 9
+    if (loai === "hk1") return [namHoc + "-09-01", (namHoc + 1) + "-01-15"];
+    return [(namHoc + 1) + "-01-16", (namHoc + 1) + "-05-31"];
+  }
+  let thDuLieu = null;
+  async function moTH() {
+    if (!dsLop.length) { try { dsLop = (await goi("gv.dsLop")).lop; } catch (e) { return bao(esc(e.message), "red"); } }
+    const cu = $("#thLop").value;
+    $("#thLop").innerHTML = dsLop.map(l => `<option value="${esc(l.maLop)}">${esc(l.tenLop)}</option>`).join("") || `<option value="">(chưa có lớp)</option>`;
+    if (cu) $("#thLop").value = cu; else if (lopChon) $("#thLop").value = lopChon;
+    if (!$("#thTu").value) { const k = khoang("tuan"); $("#thTu").value = k[0]; $("#thDen").value = k[1]; }
+    xemTH();
+  }
+  $$("[data-khoang]").forEach(b => b.onclick = () => { const k = khoang(b.dataset.khoang); $("#thTu").value = k[0]; $("#thDen").value = k[1]; xemTH(); });
+  $("#btnTH").onclick = () => xemTH();
+  async function xemTH() {
+    if (!$("#thLop").value) return;
+    try { thDuLieu = await goi("gv.tuHoc", { maLop: $("#thLop").value, tu: $("#thTu").value, den: $("#thDen").value }); } catch (e) { return bao(esc(e.message), "red"); }
+    const hs = thDuLieu.hs.sort((a, b) => b.chuoiDaiNhat - a.chuoiDaiNhat || b.soNgayDat - a.soNgayDat || b.dung - a.dung || a.hoTen.localeCompare(b.hoTen, "vi"));
+    let hang = 0, truoc = null;
+    hs.forEach((h, i) => { const k = h.chuoiDaiNhat + "|" + h.soNgayDat + "|" + h.dung; if (k !== truoc) hang = i + 1; truoc = k; h.hang = h.chuoiDaiNhat ? hang : ""; });
+    const dau = hs.filter(h => h.hang === 1);
+    const dmy = s => s ? s.split("-").reverse().join("/") : "";
+    $("#thTom").innerHTML = `Từ ${dmy(thDuLieu.tu)} đến ${dmy(thDuLieu.den)} · ${hs.filter(h => h.soNgayDat).length}/${hs.length} em có ngày đạt mục tiêu`
+      + (dau.length ? ` · 🏆 Chuỗi cao nhất: ${dau.map(h => `<b>${esc(h.hoTen)}</b>`).join(", ")} (${dau[0].chuoiDaiNhat} ngày)` : "");
+    $("#tTH tbody").innerHTML = hs.map(h => `<tr class="${h.hang === 1 ? "sel" : ""}"><td>${h.hang === 1 ? "🏆 1" : h.hang}</td><td>${esc(h.hoTen)}</td><td class="num"><b>${h.chuoiDaiNhat}</b></td><td class="num">${h.soNgayDat}</td>
+      <td class="num">${h.dung} / ${h.lam}</td><td class="num">${h.chuoiHienTai ? "🔥" + h.chuoiHienTai : 0}</td><td class="num">${h.soLoi}</td><td class="small">${dmy(h.ngayCuoi) || "chưa học"}</td></tr>`).join("")
+      || `<tr><td colspan="8" class="muted">Lớp chưa có học sinh đã duyệt.</td></tr>`;
+  }
+  $("#btnTHCSV").onclick = () => {
+    if (!thDuLieu) return;
+    const tenLop = ($("#thLop").selectedOptions[0] || {}).textContent || "";
+    taiCSV(`TuHoc_${tenLop}_${thDuLieu.tu}_${thDuLieu.den}`, [["Hạng", "Họ và tên", "Tên đăng nhập", "Chuỗi dài nhất", "Số ngày đạt", "Câu đúng", "Câu đã làm", "Chuỗi hiện tại", "Sổ lỗi", "Học gần nhất"]]
+      .concat(thDuLieu.hs.map(h => [h.hang, h.hoTen, h.tenDN, h.chuoiDaiNhat, h.soNgayDat, h.dung, h.lam, h.chuoiHienTai, h.soLoi, h.ngayCuoi])));
+  };
+
   /* ================= bài kiểm tra ================= */
   const MUC = ["NB", "TH", "VD", "VDC"], LOAI = ["TN", "DS", "TLN"], TEN_LOAI = { TN: "Trắc nghiệm", DS: "Đúng/Sai", TLN: "Trả lời ngắn" };
   const TT_BAI = { nhap: "chưa mở", mo: "đang mở", dong: "đã đóng" };
@@ -337,22 +417,58 @@
     const diem = hs.filter(h => h.diem != null).map(h => h.diem);
     $("#gsTom").innerHTML = `<span class="tt nop">${n("nop")} đã nộp</span> <span class="tt lam">${n("lam")} đang làm</span> <span class="tt chua">${n("chua")} chưa vào</span>
       ${diem.length ? ` · điểm trung bình <b>${(diem.reduce((a, b) => a + b, 0) / diem.length).toFixed(2).replace(".", ",")}</b>` : ""}
-      · kết quả ${bai.ketQuaMo ? "<b>đã mở</b> cho học sinh" : "chưa mở (mở khi cả lớp nộp xong, khi đóng bài, hoặc khi thầy bấm Công bố)"}`;
+      · kết quả ${bai.ketQuaMo ? "<b>đã mở</b> cho học sinh" : "chưa mở (mở khi cả lớp nộp xong, khi đóng bài, hoặc khi thầy bấm Công bố)"}
+      ${hs.some(h => h.viPham) ? `<br>⚠ Vi phạm khi thi: ${hs.filter(h => h.viPham).map(h => `<b>${esc(h.hoTen)}</b> (${h.viPham} lần)`).join(", ")}` : ""}`;
     $("#tGS tbody").innerHTML = hs.map((h, i) => `<tr><td>${i + 1}</td><td>${esc(h.hoTen)}</td><td><span class="tt ${h.trangThai}">${TT[h.trangThai]}</span></td>
       <td class="num">${h.trangThai === "chua" ? "" : h.soLam + "/" + bai.soCau}</td><td class="small">${h.batDau ? ngay(h.batDau) : ""}</td><td class="small">${h.nopLuc ? ngay(h.nopLuc) : ""}</td>
-      <td class="num"><b>${h.diem == null ? "" : String(h.diem).replace(".", ",")}</b></td></tr>`).join("") || `<tr><td colspan="7" class="muted">Lớp chưa có học sinh đã duyệt.</td></tr>`;
+      <td class="num">${h.viPham ? `<span class="tt khoa">${h.viPham}</span>` : ""}</td>
+      <td class="num"><b>${h.diem == null ? "" : String(h.diem).replace(".", ",")}</b></td></tr>`).join("") || `<tr><td colspan="8" class="muted">Lớp chưa có học sinh đã duyệt.</td></tr>`;
     $("#gsLuc").textContent = "cập nhật " + new Date().toLocaleTimeString("vi-VN");
     taiBai().catch(() => { });                                        // số vào / nộp trong danh sách bài cũng cập nhật theo
     if (bai.trangThai === "mo") henGS = setTimeout(giamSat, 20000);
   }
   $("#btnGS").onclick = giamSat;
-  $("#btnCSV").onclick = () => {
+  const csvQ = v => '"' + String(v == null ? "" : v).replace(/"/g, '""') + '"';
+  function taiCSV(ten, dong) {
+    const blob = new Blob(["\ufeff" + dong.map(r => r.map(csvQ).join(";")).join("\r\n")], { type: "text/csv;charset=utf-8" });
+    const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = ten.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[đĐ]/g, "d").replace(/[^A-Za-z0-9]+/g, "_") + ".csv"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  }
+  /* nhận xét tự động: mức điểm + dạng cần ôn + vi phạm; thầy sửa thêm trong Excel nếu muốn */
+  function nhanXet(h, tk) {
+    if (h.trangThai !== "nop") return h.trangThai === "lam" ? "Chưa nộp bài." : "Không tham gia kiểm tra.";
+    const d = h.diem, x = (tk && tk.hs[h.id]) || { yeu: [], vung: [] };
+    let s = d >= 9 ? "Xuất sắc." : d >= 8 ? "Làm bài tốt." : d >= 6.5 ? "Khá." : d >= 5 ? "Đạt, cần cố gắng thêm." : "Chưa đạt, cần ôn tập lại.";
+    if (x.vung.length) s += " Nắm vững: " + x.vung.slice(0, 3).join("; ") + ".";
+    if (x.yeu.length) s += " Cần ôn: " + x.yeu.slice(0, 3).join("; ") + ".";
+    if (h.viPham) s += ` Vi phạm khi thi ${h.viPham} lần.`;
+    return s;
+  }
+  $("#btnCSV").onclick = () => cho($("#btnCSV"), async () => {
     if (!gsDuLieu) return;
-    const q = s => '"' + String(s == null ? "" : s).replace(/"/g, '""') + '"';
-    const dong = [["STT", "Họ và tên", "Tên đăng nhập", "Trạng thái", "Số câu đã làm", "Vào lúc", "Nộp lúc", "Điểm"]].concat(gsDuLieu.hs.map((h, i) => [i + 1, h.hoTen, h.tenDN, ({ chua: "chưa vào", lam: "đang làm", nop: "đã nộp" })[h.trangThai] || h.trangThai, h.soLam, ngay(h.batDau), ngay(h.nopLuc), h.diem == null ? "" : String(h.diem).replace(".", ",")]));
-    const blob = new Blob(["﻿" + dong.map(r => r.map(q).join(";")).join("\r\n")], { type: "text/csv;charset=utf-8" });
-    const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "Diem_" + gsDuLieu.bai.ten.replace(/[^\p{L}\p{N}]+/gu, "_") + ".csv"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
-  };
+    let tk = null; try { tk = await goi("gv.thongKeBai", { maBai: baiGS }); } catch (e) { }
+    const TT = { chua: "chưa vào", lam: "đang làm", nop: "đã nộp" };
+    const dong = [["STT", "Họ và tên", "Tên đăng nhập", "Trạng thái", "Số câu đã làm", "Vào lúc", "Nộp lúc", "Vi phạm", "Điểm", "Nhận xét"]]
+      .concat(gsDuLieu.hs.map((h, i) => [i + 1, h.hoTen, h.tenDN, TT[h.trangThai] || h.trangThai, h.soLam, ngay(h.batDau), ngay(h.nopLuc), h.viPham || 0, h.diem == null ? "" : String(h.diem).replace(".", ","), nhanXet(h, tk)]));
+    const vp = gsDuLieu.hs.filter(h => h.viPham);
+    if (vp.length) { dong.push([]); dong.push(["Danh sách vi phạm khi thi"]); vp.forEach(h => dong.push(["", h.hoTen, h.tenDN, "", "", "", "", h.viPham])); }
+    taiCSV("Diem_" + gsDuLieu.bai.ten, dong);
+  });
+
+  /* thống kê theo câu, dạng, mức */
+  const tiLeO = x => `<td class="num"><span class="tl ${x < 0.5 ? "yeu" : x < 0.8 ? "kha" : "tot"}">${Math.round(x * 100)}%</span></td>`;
+  $("#btnTK").onclick = () => cho($("#btnTK"), async () => {
+    let r; try { r = await goi("gv.thongKeBai", { maBai: baiGS }); } catch (e) { return bao(esc(e.message), "red"); }
+    $("#cTK").classList.remove("hidden");
+    $("#tkTieuDe").textContent = `Thống kê: ${r.bai.ten} (${r.soBai} bài đã nộp)`;
+    if (!r.soBai) { ["#tkLoai", "#tkMuc", "#tkDang", "#tkCau"].forEach(t => $(t).innerHTML = `<tr><td class="muted">Chưa có bài nộp.</td></tr>`); return; }
+    const TEN_MUC = { NB: "Nhận biết", TH: "Thông hiểu", VD: "Vận dụng", VDC: "Vận dụng cao" };
+    $("#tkLoai").innerHTML = `<thead><tr><th>Phần</th><th class="num">Số câu</th><th class="num">Tỉ lệ</th></tr></thead><tbody>${r.loai.map(x => `<tr><td>${TEN_LOAI[x.khoa] || x.khoa}</td><td class="num">${x.soCau}</td>${tiLeO(x.tiLe)}</tr>`).join("")}</tbody>`;
+    $("#tkMuc").innerHTML = `<thead><tr><th>Mức</th><th class="num">Số câu</th><th class="num">Tỉ lệ</th></tr></thead><tbody>${r.muc.map(x => `<tr><td>${TEN_MUC[x.khoa] || x.khoa}</td><td class="num">${x.soCau}</td>${tiLeO(x.tiLe)}</tr>`).join("")}</tbody>`;
+    $("#tkDang").innerHTML = `<thead><tr><th>Dạng</th><th>Mã</th><th class="num">Số câu khác nhau</th><th class="num">Lượt làm</th><th class="num">Tỉ lệ</th></tr></thead><tbody>${r.dang.map(x => `<tr><td>${esc(x.ten || "")}</td><td class="small muted">${esc(x.khoa)}</td><td class="num">${x.soCau}</td><td class="num">${x.lam}</td>${tiLeO(x.tiLe)}</tr>`).join("")}</tbody>`;
+    $("#tkCau").innerHTML = `<thead><tr><th>Mã câu</th><th>Dạng</th><th>Mức</th><th>Phần</th><th class="num">Số em làm</th><th class="num">Đúng trọn</th><th class="num">Tỉ lệ</th></tr></thead><tbody>${r.cau.map(x => `<tr title="${esc(x.de)}"><td class="small">${esc(x.id)}</td><td>${esc(x.tenDang || x.dkey)}</td><td>${x.muc}</td><td>${TEN_LOAI[x.loai] || x.loai}</td><td class="num">${x.lam}</td><td class="num">${x.dung}</td>${tiLeO(x.tiLe)}</tr>`).join("")}</tbody>`;
+    $("#cTK").scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+  $("#btnDongTK").onclick = () => $("#cTK").classList.add("hidden");
 
   /* ---- tạo bài ---- */
   $("#btnMoTao").onclick = () => {

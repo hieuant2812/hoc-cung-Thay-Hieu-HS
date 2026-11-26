@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tự học · Học cùng Thầy Hiếu</title>
+<meta name="theme-color" content="#3b7bff">
+<link rel="icon" href="assets/favicon.svg"><link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="assets/fonts.css"><link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/hs.css"><link rel="stylesheet" href="assets/lam.css">
+<script src="config.js"></script><script src="assets/api.js"></script><script src="assets/loihay.js" defer></script>
+<script src="assets/katex/katex.min.js"></script><script src="assets/nhd/core.js"></script><script src="assets/hinhtudong.js"></script><script src="assets/cauhoi.js"></script>
+</head>
+<body class="lam">
+<header class="lam-top">
+  <div class="wrap narrow in">
+    <a href="./" class="ve" id="btnVe" aria-label="Về trang chính">←</a>
+    <div class="ten"><b id="tieuDe">Tự học</b><small id="phuDe">Mỗi ngày làm đúng 5 câu để giữ chuỗi 🔥</small></div>
+    <div class="chuoi-nho" id="chuoiNho" title="Chuỗi ngày học"></div>
+  </div>
+</header>
+
+<main><div class="wrap narrow">
+  <div id="thongBao"></div>
+
+  <!-- ===== tổng quan ===== -->
+  <section id="vTong" class="hidden">
+    <div class="card th-hom-nay">
+      <div class="th-vong">
+        <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" class="nen"/><circle cx="60" cy="60" r="52" class="dat" id="vongDat"/></svg>
+        <div class="so"><b id="soHomNay">0</b><small>/ <span id="mucTieu">5</span> câu đúng</small></div>
+      </div>
+      <div class="th-chuoi">
+        <div class="lua" id="chuoiTo">🔥 0</div>
+        <div class="small muted" id="chuoiChu">ngày liên tiếp</div>
+        <div class="small" id="chuoiDai"></div>
+        <div class="small muted" id="tongCau"></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3 style="margin:0 0 8px">35 ngày gần đây</h3>
+      <div class="th-lich" id="lich"></div>
+      <p class="small muted" style="margin:8px 0 0">Ô xanh đậm: ngày em làm đúng đủ 5 câu. Mỗi câu chỉ được tính lần đầu trong ngày.</p>
+    </div>
+
+    <div class="th-nut">
+      <button class="btn coral full" id="btnOnLoi">📕 Ôn sổ lỗi</button>
+      <button class="btn violet full" id="btnGoiY">✨ Làm 5 câu gợi ý</button>
+    </div>
+
+    <div class="card" id="cGoiY" style="margin-top:14px">
+      <h3 style="margin:0 0 6px">Gợi ý cho em</h3>
+      <div id="dsGoiY" class="small"></div>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <div class="row" style="justify-content:space-between;align-items:center">
+        <h3 style="margin:0">Luyện theo chủ đề</h3>
+        <select id="selNH" aria-label="Môn và lớp"></select>
+      </div>
+      <div id="dsDang" class="th-dang"></div>
+      <div class="row left th-luyen">
+        <label class="f">Mức<select id="selMuc"><option value="">Mọi mức</option><option value="NB">Nhận biết</option><option value="TH">Thông hiểu</option><option value="VD">Vận dụng</option><option value="VDC">Vận dụng cao</option></select></label>
+        <label class="f">Số câu<select id="selSo"><option>5</option><option>10</option></select></label>
+        <button class="btn blue" id="btnLuyen" style="align-self:end">Bắt đầu luyện</button>
+      </div>
+    </div>
+    <p class="small muted" style="text-align:center;margin:16px 0 0" id="linkCu"></p>
+  </section>
+
+  <!-- ===== đang luyện ===== -->
+  <section id="vLuyen" class="hidden">
+    <div id="deLuyen" class="ex"></div>
+    <div class="row" id="hangNop" style="margin:18px 0 30px;justify-content:center"><button class="btn green full" id="btnNop">Nộp và xem lời giải</button></div>
+  </section>
+
+  <!-- ===== kết quả lượt ===== -->
+  <section id="vKQ" class="hidden">
+    <div class="th-kq" id="kqTom"></div>
+    <div id="kqCau" class="ex"></div>
+    <div class="th-nut" style="margin-bottom:30px">
+      <button class="btn blue full" id="btnTiep">Làm tiếp 5 câu</button>
+      <button class="btn ghost full" id="btnVeTong">Về trang tự học</button>
+    </div>
+  </section>
+</div></main>
+
+<footer class="foot"><div class="wrap"><div class="dev" id="chanTrang"></div></div></footer>
+
+<script>
+(function () {
+  "use strict";
+  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+  const P = API.phien("hs"), esc = API.esc, S = window.SITE || {};
+  $("#chanTrang").textContent = S.chanTrang || "";
+  const hoSo = (() => { try { return JSON.parse(API.LS.get("hs-ho-so") || "{}"); } catch (e) { return {}; } })();
+  const KHOA_LUOT = "th-luot-" + (hoSo.id || "");
+  const bao = (html, kieu) => { $("#thongBao").innerHTML = html ? `<div class="note ${kieu || "blue"}">${html}</div>` : ""; };
+  const TEN_MUC = { NB: "Nhận biết", TH: "Thông hiểu", VD: "Vận dụng", VDC: "Vận dụng cao" };
+  const xem = id => ["#vTong", "#vLuyen", "#vKQ"].forEach(v => $(v).classList.toggle("hidden", v !== id));
+  const phanTram = x => x == null ? "" : Math.round(x * 100) + "%";
+  if (S.webGV) $("#linkCu").innerHTML = `Sổ tay kiến thức, mô phỏng: <a href="${esc(S.webGV)}" target="_blank" rel="noopener">mở trang tự học cũ ↗</a>`;
+
+  async function goi(action, data) {
+    try { return await P.goi(action, data, { thuLai: 2 }); }
+    catch (e) { if (e.ma === "het-phien") { location.replace("./"); } throw e; }
+  }
+
+  /* ---------- tổng quan ---------- */
+  let TQ = null, chonNH = API.LS.get("th-nh") || "", luotCuoi = null;
+  function veTienDo(homNay, chuoi) {
+    const dat = Math.min(homNay.dung, homNay.mucTieu);
+    $("#soHomNay").textContent = homNay.dung; $("#mucTieu").textContent = homNay.mucTieu;
+    const C = 2 * Math.PI * 52;
+    $("#vongDat").style.strokeDasharray = `${C * dat / homNay.mucTieu} ${C}`; $("#vongDat").style.opacity = dat ? 1 : 0;
+    $(".th-vong").classList.toggle("xong", homNay.dung >= homNay.mucTieu);
+    $("#chuoiTo").textContent = "🔥 " + chuoi.hienTai;
+    $("#chuoiChu").textContent = chuoi.hienTai ? "ngày liên tiếp" : "chưa có chuỗi, hôm nay bắt đầu nhé";
+    $("#chuoiDai").innerHTML = `Kỉ lục của em: <b>${chuoi.daiNhat}</b> ngày`;
+    $("#chuoiNho").textContent = chuoi.hienTai ? "🔥" + chuoi.hienTai : "";
+    $("#phuDe").textContent = homNay.dung >= homNay.mucTieu ? "Hôm nay em đã đạt mục tiêu ✓" : `Còn ${homNay.mucTieu - homNay.dung} câu đúng nữa là đạt mục tiêu hôm nay`;
+  }
+  async function taiTong() {
+    xem("#vTong");
+    const [mon, lop] = chonNH ? chonNH.split("|") : ["", ""];
+    let r;
+    try { r = await goi("hs.tuHoc", { mon, lop }); } catch (e) { return bao(esc(e.message), "red"); }
+    TQ = r; bao("");
+    veTienDo(r.homNay, r.chuoi);
+    $("#tongCau").textContent = r.tongLam ? `Đã làm ${r.tongLam} câu, đúng ${r.tongDung} câu` : "";
+    $("#lich").innerHTML = r.lich.map(x => `<i class="${x.dung >= r.homNay.mucTieu ? "dat" : x.dung ? "co" : ""}${x.d === r.homNay.d ? " nay" : ""}" title="${x.d.split("-").reverse().join("/")}: ${x.dung} câu đúng"></i>`).join("");
+    $("#btnOnLoi").textContent = r.soLoi.tong ? `📕 Ôn sổ lỗi · ${r.soLoi.denHan ? r.soLoi.denHan + " câu đến hạn" : r.soLoi.tong + " câu"}` : "📕 Sổ lỗi trống";
+    $("#btnOnLoi").disabled = !r.soLoi.tong;
+    // ngân hàng
+    $("#selNH").innerHTML = r.nganHang.map(x => `<option value="${esc(x.mon + "|" + x.lop)}">${esc(x.mon)} ${x.lop}</option>`).join("") || `<option value="">(chưa có ngân hàng)</option>`;
+    $("#selNH").value = r.mon + "|" + r.lop;
+    // gợi ý
+    $("#dsGoiY").innerHTML = r.goiY.length ? `<ul>${r.goiY.map(g => `<li><b>${esc(g.ten || g.dkey)}</b> · ${g.lyDo === "yeu" ? `em mới đúng ${phanTram(g.tiLe)} (${g.lam} câu)` : "em chưa luyện dạng này"}</li>`).join("")}</ul>` : `<p class="muted">Em đang làm tốt mọi dạng đã luyện. Thử dạng mới ở phần dưới nhé.</p>`;
+    $("#btnGoiY").disabled = !r.goiY.length;
+    // dạng theo chương
+    let h = "", ch = -1;
+    r.dang.forEach(d => {
+      if (d.chuong !== ch) { if (ch !== -1) h += `</div>`; ch = d.chuong; h += `<div class="th-chuong"><label class="th-ch"><input type="checkbox" class="chonCh" data-ch="${ch}"> <b>Chương ${ch}</b></label>`; }
+      const tl = d.lam ? d.dung / d.lam : null;
+      h += `<label class="th-d"><input type="checkbox" class="chonD" value="${esc(d.dkey)}" data-ch="${ch}"><span class="ten">${esc(d.ten || d.dkey)}<small>${d.n} câu${d.lam ? ` · đúng ${d.dung}/${d.lam}` : ""}</small></span><span class="thanh" title="${d.lam ? phanTram(tl) : "chưa làm"}"><i style="width:${tl == null ? 0 : Math.round(tl * 100)}%" class="${tl == null ? "" : tl >= 0.8 ? "tot" : tl >= 0.5 ? "kha" : "yeu"}"></i></span></label>`;
+    });
+    if (ch !== -1) h += `</div>`;
+    $("#dsDang").innerHTML = h || `<p class="muted small">Thầy chưa nạp ngân hàng cho lớp này.</p>`;
+    $$(".chonCh").forEach(c => c.onchange = () => $$(`.chonD[data-ch="${c.dataset.ch}"]`).forEach(x => x.checked = c.checked));
+  }
+  $("#selNH").onchange = () => { chonNH = $("#selNH").value; API.LS.set("th-nh", chonNH); taiTong(); };
+
+  /* ---------- một lượt luyện ---------- */
+  let L = null;            // { phien, cau, A, yc }
+  const luuLuot = () => API.LS.set(KHOA_LUOT, L ? JSON.stringify(L) : null);
+  async function batDau(yc, nut) {
+    const t = nut.textContent; nut.disabled = true; nut.textContent = "Đang lấy câu…";
+    try {
+      const r = await goi("hs.tuHoc.lay", yc);
+      L = { phien: r.phien, cau: r.cau, A: {}, yc }; luuLuot(); veLuot(); bao("");
+    } catch (e) { bao(esc(e.message), e.ma === "trong" ? "green" : "red"); }
+    finally { nut.disabled = false; nut.textContent = t; }
+  }
+  function veLuot() {
+    xem("#vLuyen"); scrollTo(0, 0);
+    $("#tieuDe").textContent = L.yc.cheDo === "loi" ? "Ôn sổ lỗi" : L.yc.cheDo === "goiy" ? "Luyện theo gợi ý" : "Luyện theo chủ đề";
+    $("#deLuyen").innerHTML = L.cau.map((c, n) => CH.veCau(c, n + 1, `<div class="th-nhan">${esc(c.dang || "")}${c.muc ? ` · ${TEN_MUC[c.muc] || c.muc}` : ""}</div>`)).join("");
+    CH.gan($("#deLuyen"), i => L.A[i], (i, v) => { L.A[i] = v; luuLuot(); CH.danhDau($("#cau" + i), v); });
+    L.cau.forEach(c => CH.danhDau($("#cau" + c.i), L.A[c.i]));
+  }
+  $("#btnNop").onclick = async () => {
+    const chua = L.cau.filter(c => !CH.daLam(c.loai, L.A[c.i])).length;
+    if (chua && !confirm(`Em còn ${chua} câu chưa làm. Câu bỏ trống không được tính. Nộp luôn?`)) return;
+    const b = $("#btnNop"); b.disabled = true; b.textContent = "Đang chấm…";
+    try {
+      const r = await goi("hs.tuHoc.nop", { phien: L.phien, traLoi: L.A });
+      luotCuoi = L.yc; L = null; luuLuot(); veKQ(r);
+    } catch (e) {
+      if (e.ma === "da-nop" || e.ma === "het-luot") { L = null; luuLuot(); bao(esc(e.message), "red"); taiTong(); }
+      else bao(esc(e.message) + " Câu trả lời vẫn được giữ trong máy, em bấm nộp lại nhé.", "red");
+    } finally { b.disabled = false; b.textContent = "Nộp và xem lời giải"; }
+  };
+  function veKQ(r) {
+    xem("#vKQ"); scrollTo(0, 0);
+    const lam = r.cau.filter(c => !c.boTrong), dung = r.cau.filter(c => c.dung).length, tinh = r.cau.filter(c => c.tinh).length;
+    const dat = r.homNay.dung >= r.homNay.mucTieu;
+    $("#kqTom").innerHTML = `<div class="diem-to"><span>Em đúng</span><b>${dung}/${r.cau.length}</b><small>câu</small></div>
+      <div class="note ${dat ? "green" : "blue"}">Hôm nay: <b>${r.homNay.dung}/${r.homNay.mucTieu}</b> câu đúng ${dat ? "· đã đạt mục tiêu ✓" : ""} · chuỗi 🔥 <b>${r.chuoi.hienTai}</b> ngày
+      ${tinh < lam.length ? `<br><span class="small">${lam.length - tinh} câu em đã làm trước đó trong hôm nay nên không tính thêm.</span>` : ""}
+      ${r.cau.some(c => c.thuoc) ? `<br><span class="small">🎉 ${r.cau.filter(c => c.thuoc).length} câu đã thuộc, được gỡ khỏi sổ lỗi.</span>` : ""}
+      ${r.cau.some(c => !c.dung && !c.boTrong) ? `<br><span class="small">Câu sai được ghi vào sổ lỗi, ngày mai em làm lại nhé.</span>` : ""}</div>`;
+    $("#kqCau").innerHTML = r.cau.map((c, n) => CH.veKetQua(c, n + 1)).join("");
+    veTienDo(r.homNay, r.chuoi);
+    $("#tieuDe").textContent = "Kết quả lượt luyện";
+  }
+  $("#btnTiep").onclick = () => batDau(Object.assign({}, luotCuoi), $("#btnTiep"));
+  $("#btnVeTong").onclick = () => { $("#tieuDe").textContent = "Tự học"; taiTong(); };
+
+  $("#btnOnLoi").onclick = () => batDau({ cheDo: "loi", n: 5 }, $("#btnOnLoi"));
+  $("#btnGoiY").onclick = () => batDau({ cheDo: "goiy", mon: TQ.mon, lop: TQ.lop, n: 5 }, $("#btnGoiY"));
+  $("#btnLuyen").onclick = () => {
+    const dkeys = $$(".chonD:checked").map(c => c.value);
+    if (!dkeys.length) return bao("Em tick chọn ít nhất một dạng trong danh sách nhé.", "red");
+    batDau({ cheDo: "dang", mon: TQ.mon, lop: TQ.lop, dkeys, muc: $("#selMuc").value, n: +$("#selSo").value }, $("#btnLuyen"));
+  };
+
+  /* ---------- khởi động ---------- */
+  if (!P.token) { location.replace("./"); return; }
+  try { L = JSON.parse(API.LS.get(KHOA_LUOT) || "null"); } catch (e) { L = null; }
+  if (L && L.phien) { veLuot(); bao("Em đang làm dở lượt này, làm tiếp nhé.", "blue"); } else taiTong();
+})();
+</script>
+</body>
+</html>

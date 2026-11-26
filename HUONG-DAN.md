@@ -29,7 +29,7 @@ Thầy làm một lần, khoảng 15 phút.
 
 > URL `/exec` để công khai không sao: không có khoá giáo viên thì không làm được gì ngoài đăng kí/đăng nhập học sinh.
 
-**Khi Claude gửi bản `Code.gs` mới:** dán đè, **sửa lại dòng `KHOA_GV`** như cũ, bấm Lưu, chạy lại **`caiDat`** một lần (để tạo trang mới nếu có, dữ liệu cũ giữ nguyên), rồi **Triển khai → Quản lý các bản triển khai → ✏️ → Phiên bản: Phiên bản mới → Triển khai**. Làm như vậy thì URL `/exec` giữ nguyên, không phải sửa `config.js`.
+**Khi Claude gửi bản `Code.gs` mới:** dán đè, **sửa lại dòng `KHOA_GV`** như cũ, bấm Lưu (từ bản 2026.11.27, trang mới trong Trang tính tự được tạo, không cần chạy lại `caiDat`), rồi **Triển khai → Quản lý các bản triển khai → ✏️ → Phiên bản: Phiên bản mới → Triển khai**. Làm như vậy thì URL `/exec` giữ nguyên, không phải sửa `config.js`.
 
 ## 3. Bật GitHub Pages
 
@@ -73,6 +73,19 @@ Thầy làm một lần, khoảng 15 phút.
 - Học sinh thấy điểm, đáp án và lời giải khi **cả lớp đã nộp**, khi thầy bấm **Đóng bài**, hoặc khi thầy bấm **Công bố kết quả** (bấm lại để thu hồi).
 - **⬇ Tải bảng điểm** cho file mở được bằng Excel hoặc Google Trang tính.
 - Điểm theo thang 2025 rồi quy về thang 10: trắc nghiệm 0,25; đúng/sai 0,1 – 0,25 – 0,5 – 1 theo số ý đúng; trả lời ngắn 0,5 (môn Toán).
+
+**Xem lớp yếu ở đâu (thống kê)**
+- Ở bảng **Theo dõi**, bấm **📊 Thống kê câu**. Web cho tỉ lệ đúng theo phần (TN, Đ/S, trả lời ngắn), theo mức độ, theo dạng (chuẩn kiến thức) và từng câu, câu yếu nhất ở trên. Ô đỏ (dưới 50%) là phần nên dạy lại.
+- **⬇ Bảng điểm và nhận xét** tải file Excel có cột *Vi phạm* và *Nhận xét* viết sẵn cho từng em (mức điểm, dạng nắm vững, dạng cần ôn, số lần vi phạm), cuối file có danh sách em vi phạm. Thầy sửa nhận xét ngay trong Excel nếu muốn.
+
+**Tự học của học sinh**
+- Ở trang học sinh, ô **Tự học** mở trang luyện tập: em chọn dạng theo chương, chọn mức, làm 5 hoặc 10 câu, nộp là có đáp án và lời giải.
+- Câu sai tự vào **sổ lỗi**. Ngày hôm sau em làm lại; đúng thì câu được hẹn lại sau 3 ngày, rồi 7 ngày; đúng 3 lần liền là thuộc, câu rời sổ lỗi.
+- **Gợi ý** chọn dạng em làm sai nhiều nhất (đã làm ít nhất 3 câu, đúng dưới 70%), rồi tới dạng em chưa luyện.
+- **Chuỗi ngày 🔥**: mỗi ngày làm đúng ít nhất 5 câu khác nhau là đạt (giờ Việt Nam). Mỗi câu chỉ tính lần đầu trong ngày, nên làm lại câu cũ không cộng thêm.
+- Thẻ **🔥 Tự học** ở trang quản lí: chọn lớp và khoảng ngày (Tuần này, Tháng này, Học kì I, Học kì II hoặc tự chọn). Bảng xếp theo **chuỗi dài nhất trong khoảng đó**, em đứng đầu có 🏆 để thầy cộng điểm thưởng. Tải được ra Excel.
+
+**Câu nói hay mỗi ngày:** cuối mỗi trang có một câu về việc học của danh nhân, đổi theo ngày. Thầy thêm, bớt câu trong file `assets/loihay.js`.
 
 ## 5. Giới hạn cần biết
 
