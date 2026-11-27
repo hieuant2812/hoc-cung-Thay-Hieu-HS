@@ -78,3 +78,9 @@ table.mx tfoot td{font-weight:700}
 .tbl-lop{padding:12px 14px;border-radius:14px;background:#eef4ff;border:1px solid #c9d8fb}
 .tbl-lop p{margin:4px 0 0;white-space:pre-line}
 .ls-bang tr.la-em td{background:#eef4ff;font-weight:700}
+/* học thêm: sổ tay, mô phỏng, tài liệu, vào thi trên lớp */
+.hoc-them{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:18px 0 6px}
+.hoc-them a{display:grid;grid-template-columns:auto 1fr;column-gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 12px;text-decoration:none;color:var(--ink)}
+.hoc-them a:hover{border-color:var(--teal)}
+.hoc-them i{grid-row:span 2;font-style:normal;font-size:26px}
+.hoc-them b{font-size:15px}.hoc-them small{color:var(--muted);font-size:12.5px;line-height:1.3}
