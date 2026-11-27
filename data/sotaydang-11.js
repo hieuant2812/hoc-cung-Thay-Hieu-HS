@@ -1368,4 +1368,101 @@ Object.assign(D, {
    ] }
  ] }
 });
+/* ---------- Chương VIII · Các quy tắc tính xác suất ---------- */
+Object.assign(D, {
+"C8-B28-D34": {
+ pp: [
+  R`**Biến cố hợp** $A\cup B$: "$A$ hoặc $B$ xảy ra" (ít nhất một trong hai). **Biến cố giao** $AB$ (hay $A\cap B$): "cả $A$ và $B$ cùng xảy ra".`,
+  R`**Xung khắc:** $A$, $B$ không thể cùng xảy ra ($AB=\varnothing$). **Biến cố đối** $\overline A$: "$A$ không xảy ra".`,
+  R`**Độc lập:** việc $A$ xảy ra hay không không làm thay đổi xác suất của $B$ (và ngược lại). Thường gặp: các lần thử lặp lại độc lập (tung đồng xu nhiều lần, lấy có hoàn lại, hai người làm việc riêng rẽ). Nếu $A$, $B$ độc lập thì các cặp $\overline A$ và $B$, $A$ và $\overline B$, $\overline A$ và $\overline B$ cũng độc lập.`,
+  R`**Diễn đạt bằng kí hiệu:** "ít nhất một" là hợp; "cả hai" là giao; "không ... nào" là giao các biến cố đối; "chỉ $A$" là $A\overline B$.`
+ ],
+ luuY: [
+  R`Nhầm "xung khắc" với "độc lập".`,
+  R`Lấy không hoàn lại nhưng coi các lần lấy là độc lập.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Gieo một con xúc xắc. $A$: "số chấm chẵn", $B$: "số chấm không nhỏ hơn $4$", $C$: "xuất hiện mặt $1$ chấm". Mô tả $A\cup B$, $AB$; hỏi $A$ và $C$ có xung khắc không?`,
+   giai: [
+    R`$A=\{2;4;6\}$, $B=\{4;5;6\}$, $C=\{1\}$.`,
+    R`$A\cup B=\{2;4;5;6\}$; $AB=\{4;6\}$.`,
+    R`$AC=\varnothing$ nên $A$ và $C$ xung khắc.`
+   ] },
+ { muc: "TH", de: R`Hai xạ thủ bắn mỗi người một viên vào bia. Gọi $A$: "người thứ nhất bắn trúng", $B$: "người thứ hai bắn trúng". Biểu diễn theo $A$, $B$ các biến cố: a) ít nhất một người bắn trúng; b) cả hai đều trượt; c) chỉ người thứ nhất bắn trúng; d) đúng một người bắn trúng.`,
+   giai: [
+    R`a) $A\cup B$.`,
+    R`b) $\overline A\,\overline B$.`,
+    R`c) $A\overline B$.`,
+    R`d) $A\overline B\cup\overline AB$ (hai biến cố này xung khắc).`
+   ] },
+ { muc: "TH", de: R`Xét xem hai biến cố sau có độc lập không: a) Tung một đồng xu hai lần; $A$: "lần $1$ sấp", $B$: "lần $2$ sấp". b) Hộp có $3$ bi đỏ, $2$ bi xanh, lấy lần lượt $2$ bi **không hoàn lại**; $A$: "lần $1$ đỏ", $B$: "lần $2$ đỏ".`,
+   giai: [
+    R`a) Kết quả lần $1$ không ảnh hưởng lần $2$: $A$, $B$ độc lập. Kiểm tra: $P(AB)=\dfrac14=\dfrac12\cdot\dfrac12=P(A)P(B)$.`,
+    R`b) Nếu lần $1$ đỏ, lần $2$ đỏ với xác suất $\dfrac24$; nếu lần $1$ xanh, xác suất là $\dfrac34$. Xác suất của $B$ phụ thuộc vào $A$: **không** độc lập.`
+   ] }
+ ] },
+"C8-B29-D35": {
+ pp: [
+  R`**Công thức cộng:** $P(A\cup B)=P(A)+P(B)-P(AB)$.`,
+  R`Nếu $A$, $B$ **xung khắc**: $P(A\cup B)=P(A)+P(B)$.`,
+  R`**Biến cố đối:** $P(\overline A)=1-P(A)$. Dùng khi đề hỏi "ít nhất một": thường tính phần bù "không ... nào" dễ hơn.`
+ ],
+ luuY: [
+  R`Cộng $P(A)+P(B)$ khi $A$, $B$ không xung khắc (đếm trùng phần giao).`
+ ],
+ vd: [
+ { muc: "NB", de: R`Lớp có $40$ học sinh: $20$ em thích bóng đá, $15$ em thích cầu lông, $8$ em thích cả hai. Chọn ngẫu nhiên một em. Tính xác suất em đó thích ít nhất một trong hai môn.`,
+   giai: [
+    R`$P(A)=\dfrac{20}{40}$, $P(B)=\dfrac{15}{40}$, $P(AB)=\dfrac8{40}$.`,
+    R`$P(A\cup B)=\dfrac{20+15-8}{40}=\dfrac{27}{40}$.`
+   ] },
+ { muc: "TH", de: R`Hộp có $5$ bi đỏ, $4$ bi xanh, $3$ bi vàng. Lấy ngẫu nhiên một viên. Tính xác suất lấy được bi đỏ hoặc bi xanh.`,
+   giai: [
+    R`"Lấy được bi đỏ" và "lấy được bi xanh" xung khắc.`,
+    R`$P=\dfrac5{12}+\dfrac4{12}=\dfrac9{12}=\dfrac34$.`
+   ] },
+ { muc: "TH", de: R`Chọn ngẫu nhiên một số nguyên từ $1$ đến $30$. Tính xác suất số đó chia hết cho $2$ hoặc cho $3$.`,
+   giai: [
+    R`$A$: "chia hết cho $2$": $15$ số. $B$: "chia hết cho $3$": $10$ số. $AB$: "chia hết cho $6$": $5$ số.`,
+    R`$P(A\cup B)=\dfrac{15+10-5}{30}=\dfrac{20}{30}=\dfrac23$.`
+   ] },
+ { muc: "VD", de: R`Gieo hai con xúc xắc cân đối. Tính xác suất có ít nhất một con xuất hiện mặt $6$ chấm.`,
+   giai: [
+    R`**Cách 1 (biến cố đối).** "Không con nào ra mặt $6$" có xác suất $\dfrac56\cdot\dfrac56=\dfrac{25}{36}$. Vậy $P=1-\dfrac{25}{36}=\dfrac{11}{36}$.`,
+    R`**Cách 2 (công thức cộng).** $P(A\cup B)=\dfrac16+\dfrac16-\dfrac1{36}=\dfrac{11}{36}$ ✓.`
+   ] }
+ ] },
+"C8-B30-D36": {
+ pp: [
+  R`**Công thức nhân cho hai biến cố độc lập:** $P(AB)=P(A)\cdot P(B)$. Mở rộng cho nhiều biến cố độc lập.`,
+  R`**Các bài "đúng $k$ lần", "ít nhất một lần":** tách thành các trường hợp xung khắc, mỗi trường hợp là tích các xác suất; "ít nhất một" $=1-$ "không lần nào".`,
+  R`**Hệ thống nối tiếp** (hoạt động khi mọi bộ phận hoạt động): nhân các độ tin cậy. **Song song** (hoạt động khi ít nhất một bộ phận hoạt động): $1-$ tích các xác suất hỏng.`
+ ],
+ luuY: [
+  R`Dùng $P(AB)=P(A)P(B)$ khi $A$, $B$ không độc lập.`,
+  R`Tính "đúng một người" mà quên một trong hai trường hợp.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Hai xạ thủ bắn độc lập với xác suất trúng lần lượt $0{,}8$ và $0{,}7$. Tính xác suất cả hai cùng bắn trúng.`,
+   giai: [
+    R`$P(AB)=0{,}8\cdot0{,}7=0{,}56$.`
+   ] },
+ { muc: "TH", de: R`Với hai xạ thủ trên, tính xác suất: a) có ít nhất một người bắn trúng; b) có đúng một người bắn trúng.`,
+   giai: [
+    R`a) Cả hai trượt: $0{,}2\cdot0{,}3=0{,}06$. Ít nhất một người trúng: $1-0{,}06=0{,}94$.`,
+    R`b) $P(A\overline B)+P(\overline AB)=0{,}8\cdot0{,}3+0{,}2\cdot0{,}7=0{,}24+0{,}14=0{,}38$.`
+   ] },
+ { muc: "VD", de: R`Một học sinh làm $4$ câu trắc nghiệm, mỗi câu có $4$ phương án và chỉ $1$ phương án đúng; học sinh chọn ngẫu nhiên. Tính xác suất: a) đúng cả $4$ câu; b) đúng ít nhất một câu.`,
+   giai: [
+    R`Mỗi câu đúng với xác suất $\dfrac14$, sai với xác suất $\dfrac34$; các câu độc lập.`,
+    R`a) $\left(\dfrac14\right)^4=\dfrac1{256}$.`,
+    R`b) $1-\left(\dfrac34\right)^4=1-\dfrac{81}{256}=\dfrac{175}{256}\approx0{,}684$.`
+   ] },
+ { muc: "VD", de: R`Một hệ thống gồm hai bộ phận hoạt động độc lập, độ tin cậy (xác suất hoạt động tốt) lần lượt $0{,}9$ và $0{,}95$. Tính xác suất hệ thống hoạt động nếu hai bộ phận mắc a) nối tiếp; b) song song.`,
+   giai: [
+    R`a) Nối tiếp: cả hai phải hoạt động. $P=0{,}9\cdot0{,}95=0{,}855$.`,
+    R`b) Song song: chỉ hỏng khi cả hai cùng hỏng, xác suất $0{,}1\cdot0{,}05=0{,}005$. $P=1-0{,}005=0{,}995$.`
+   ] }
+ ] }
+});
 })(window);
