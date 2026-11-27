@@ -320,4 +320,127 @@ Object.assign(D, {
    ] }
  ] }
 });
+/* ---------- Chương II · Dãy số, cấp số cộng, cấp số nhân ---------- */
+Object.assign(D, {
+"C2-B5-D09": {
+ pp: [
+  R`**Cách cho dãy số:** bằng công thức số hạng tổng quát $u_n=f(n)$ (thay $n$ để tính), bằng hệ thức truy hồi (tính lần lượt từ số hạng đầu), hoặc bằng mô tả.`,
+  R`**Tăng, giảm:** xét hiệu $u_{n+1}-u_n$. Luôn dương: dãy tăng; luôn âm: dãy giảm. Nếu $u_n>0$ với mọi $n$, có thể xét thương $\dfrac{u_{n+1}}{u_n}$ so với $1$.`,
+  R`**Bị chặn:** bị chặn trên nếu có $M$ để $u_n\le M$ với mọi $n$; bị chặn dưới nếu có $m$ để $u_n\ge m$; bị chặn nếu vừa bị chặn trên vừa bị chặn dưới.`,
+  R`Mẹo: với phân thức, tách phần nguyên (ví dụ $\dfrac{2n-1}{n+1}=2-\dfrac3{n+1}$) để thấy ngay tính tăng giảm và giới hạn chặn.`
+ ],
+ luuY: [
+  R`Chỉ kiểm tra vài số hạng đầu rồi kết luận dãy tăng: phải chứng minh với mọi $n$.`,
+  R`Tìm số hạng thứ $k$ có giá trị cho trước nhưng không kiểm tra $k$ nguyên dương.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Cho dãy số $u_n=\dfrac{2n-1}{n+1}$. Tính $u_1$, $u_2$, $u_3$. Số $\dfrac74$ là số hạng thứ mấy?`,
+   giai: [
+    R`$u_1=\dfrac12$, $u_2=\dfrac33=1$, $u_3=\dfrac54$.`,
+    R`$\dfrac{2k-1}{k+1}=\dfrac74\Leftrightarrow8k-4=7k+7\Leftrightarrow k=11$ (nguyên dương, nhận).`,
+    R`Thử lại: $u_{11}=\dfrac{21}{12}=\dfrac74$ ✓. Đó là số hạng thứ $11$.`
+   ] },
+ { muc: "TH", de: R`Cho dãy số $u_1=2$, $u_{n+1}=2u_n-1$. Tính $5$ số hạng đầu và dự đoán công thức $u_n$.`,
+   giai: [
+    R`$u_2=2\cdot2-1=3$; $u_3=5$; $u_4=9$; $u_5=17$.`,
+    R`Nhận xét: $u_n-1$ lần lượt là $1,2,4,8,16$, tức $2^{n-1}$.`,
+    R`Dự đoán $u_n=2^{n-1}+1$. (Thử với truy hồi: $2(2^{n-1}+1)-1=2^n+1=u_{n+1}$ ✓.)`
+   ] },
+ { muc: "TH", de: R`Xét tính tăng, giảm và bị chặn của dãy $u_n=\dfrac{2n-1}{n+1}$.`,
+   giai: [
+    R`Tách: $u_n=\dfrac{2(n+1)-3}{n+1}=2-\dfrac3{n+1}$.`,
+    R`$u_{n+1}-u_n=\dfrac3{n+1}-\dfrac3{n+2}=\dfrac{3}{(n+1)(n+2)}>0$ với mọi $n\ge1$: dãy **tăng**.`,
+    R`Vì dãy tăng nên $u_n\ge u_1=\dfrac12$; vì $\dfrac3{n+1}>0$ nên $u_n<2$. Vậy $\dfrac12\le u_n<2$: dãy **bị chặn**.`
+   ] },
+ { muc: "VD", de: R`Chứng minh dãy $u_n=\dfrac{n}{3^n}$ là dãy giảm và bị chặn.`,
+   giai: [
+    R`$u_n>0$ với mọi $n$. Xét thương: $\dfrac{u_{n+1}}{u_n}=\dfrac{n+1}{3^{n+1}}\cdot\dfrac{3^n}{n}=\dfrac{n+1}{3n}$.`,
+    R`$\dfrac{n+1}{3n}<1\Leftrightarrow n+1<3n\Leftrightarrow n>\dfrac12$, đúng với mọi $n\ge1$. Vậy $u_{n+1}<u_n$: dãy giảm.`,
+    R`Dãy giảm nên $u_n\le u_1=\dfrac13$; lại có $u_n>0$. Vậy $0<u_n\le\dfrac13$: dãy bị chặn.`
+   ] }
+ ] },
+"C2-B6-D10": {
+ pp: [
+  R`**Cấp số cộng** (CSC) công sai $d$: $u_{n+1}=u_n+d$. Số hạng tổng quát $u_n=u_1+(n-1)d$.`,
+  R`**Tổng $n$ số hạng đầu:** $S_n=\dfrac{n(u_1+u_n)}2=\dfrac{n\,[2u_1+(n-1)d]}2$.`,
+  R`**Ba số $a,b,c$ theo thứ tự lập CSC** $\Leftrightarrow a+c=2b$.`,
+  R`Bài toán cho hai số hạng: viết mỗi số hạng theo $u_1$ và $d$, giải hệ hai ẩn.`,
+  R`Bài toán thực tế: "mỗi lần tăng (giảm) thêm một lượng không đổi" là dấu hiệu của CSC.`
+ ],
+ luuY: [
+  R`Viết $u_n=u_1+nd$ (phải là $(n-1)d$).`,
+  R`Nhầm số hạng cuối với số số hạng khi tính tổng.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Cho CSC có $u_1=3$, $d=4$. Tính $u_{10}$ và $S_{10}$.`,
+   giai: [
+    R`$u_{10}=3+9\cdot4=39$.`,
+    R`$S_{10}=\dfrac{10\,(3+39)}2=210$.`
+   ] },
+ { muc: "TH", de: R`Cho CSC có $u_3=7$, $u_8=22$. Tìm $u_1$, $d$ và tính $S_{20}$.`,
+   giai: [
+    R`$\begin{cases}u_1+2d=7\\u_1+7d=22\end{cases}$. Trừ vế: $5d=15\Rightarrow d=3$, suy ra $u_1=1$.`,
+    R`$u_{20}=1+19\cdot3=58$; $S_{20}=\dfrac{20\,(1+58)}2=590$.`
+   ] },
+ { muc: "TH", de: R`Tìm $x$ để ba số $x-1$, $x+3$, $3x+1$ theo thứ tự lập thành cấp số cộng.`,
+   giai: [
+    R`Điều kiện: $(x-1)+(3x+1)=2(x+3)\Leftrightarrow4x=2x+6\Leftrightarrow x=3$.`,
+    R`Thử lại: ba số $2,6,10$ có công sai $4$ ✓.`
+   ] },
+ { muc: "VD", de: R`Một hội trường có $20$ hàng ghế. Hàng đầu có $15$ ghế, mỗi hàng sau nhiều hơn hàng trước $2$ ghế. Hỏi hàng cuối có bao nhiêu ghế và cả hội trường có bao nhiêu ghế?`,
+   giai: [
+    R`Số ghế các hàng lập CSC với $u_1=15$, $d=2$.`,
+    R`Hàng cuối: $u_{20}=15+19\cdot2=53$ ghế.`,
+    R`Tổng: $S_{20}=\dfrac{20\,(15+53)}2=680$ ghế.`
+   ] },
+ { muc: "VD", de: R`Tổng của bao nhiêu số lẻ đầu tiên $1+3+5+\dots$ bằng $225$?`,
+   giai: [
+    R`Các số lẻ lập CSC $u_1=1$, $d=2$. $S_n=\dfrac{n\,[2+(n-1)\cdot2]}2=n^2$.`,
+    R`$n^2=225\Leftrightarrow n=15$ ($n>0$).`,
+    R`**Kết luận.** $15$ số lẻ đầu tiên (từ $1$ đến $29$).`
+   ] }
+ ] },
+"C2-B7-D11": {
+ pp: [
+  R`**Cấp số nhân** (CSN) công bội $q$: $u_{n+1}=u_n\cdot q$. Số hạng tổng quát $u_n=u_1\cdot q^{n-1}$.`,
+  R`**Tổng $n$ số hạng đầu** ($q\ne1$): $S_n=\dfrac{u_1(1-q^n)}{1-q}$. Nếu $q=1$ thì $S_n=nu_1$.`,
+  R`**Ba số $a,b,c$ theo thứ tự lập CSN** $\Leftrightarrow b^2=ac$.`,
+  R`Bài toán cho hai số hạng: chia hai phương trình để khử $u_1$, tìm $q$.`,
+  R`Bài toán thực tế: "mỗi lần tăng (giảm) theo cùng một tỉ lệ phần trăm" (lãi kép, dân số, phân rã) là CSN với $q=1\pm r$.`
+ ],
+ luuY: [
+  R`Viết $u_n=u_1q^n$ (phải là $q^{n-1}$).`,
+  R`Từ $b^2=ac$ quên nghiệm âm $b=-\sqrt{ac}$.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Cho CSN có $u_1=2$, $q=3$. Tính $u_5$ và $S_5$.`,
+   giai: [
+    R`$u_5=2\cdot3^4=162$.`,
+    R`$S_5=\dfrac{2\,(1-3^5)}{1-3}=\dfrac{2\cdot(-242)}{-2}=242$.`
+   ] },
+ { muc: "TH", de: R`Cho CSN có $u_2=6$, $u_5=162$. Tìm $u_1$, $q$ và tính $S_6$.`,
+   giai: [
+    R`$\begin{cases}u_1q=6\\u_1q^4=162\end{cases}$. Chia vế: $q^3=27\Rightarrow q=3$, $u_1=2$.`,
+    R`$S_6=\dfrac{2\,(1-3^6)}{1-3}=3^6-1=728$.`
+   ] },
+ { muc: "TH", de: R`Tìm $x$ để ba số $2$, $x$, $18$ theo thứ tự lập thành cấp số nhân.`,
+   giai: [
+    R`$x^2=2\cdot18=36\Leftrightarrow x=6$ hoặc $x=-6$.`,
+    R`Thử: $2,6,18$ ($q=3$) và $2,-6,18$ ($q=-3$) ✓.`
+   ] },
+ { muc: "VD", de: R`Gửi tiết kiệm $100$ triệu đồng với lãi suất $6\%$/năm, lãi nhập gốc mỗi năm (lãi kép). Sau $5$ năm, số tiền cả gốc lẫn lãi là bao nhiêu (làm tròn đến hàng phần trăm triệu đồng)?`,
+   giai: [
+    R`Số tiền sau mỗi năm gấp $1{,}06$ lần năm trước: lập CSN với $u_0=100$, $q=1{,}06$.`,
+    R`Sau $n$ năm: $A_n=100\cdot1{,}06^n$.`,
+    R`$A_5=100\cdot1{,}06^5\approx100\cdot1{,}338226\approx133{,}82$ (triệu đồng).`
+   ] },
+ { muc: "VD", de: R`Thả một quả bóng từ độ cao $10$ m. Mỗi lần chạm đất, bóng nảy lên bằng một nửa độ cao trước đó. Tính độ cao lần nảy thứ $5$ và tổng quãng đường bóng đi được đến lúc chạm đất lần thứ $5$.`,
+   giai: [
+    R`Độ cao các lần nảy lập CSN: $u_1=5$, $q=\dfrac12$. Lần nảy thứ $5$: $u_5=5\cdot\left(\dfrac12\right)^4=0{,}3125$ m.`,
+    R`Đến lần chạm đất thứ $5$: rơi $10$ m, rồi bốn lần nảy lên và rơi xuống ($u_1$ đến $u_4$), mỗi lần đi hai chiều.`,
+    R`$u_1+u_2+u_3+u_4=\dfrac{5\left(1-\frac1{16}\right)}{1-\frac12}=9{,}375$.`,
+    R`Quãng đường: $10+2\cdot9{,}375=28{,}75$ (m).`
+   ] }
+ ] }
+});
 })(window);
