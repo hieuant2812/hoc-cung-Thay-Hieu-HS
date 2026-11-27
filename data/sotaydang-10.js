@@ -21,22 +21,38 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Câu nào sau đây là mệnh đề? Nếu là mệnh đề, cho biết đúng hay sai. a) "Hà Nội là thủ đô của Việt Nam." b) "Hôm nay trời đẹp quá!" c) "$2+3=6$." d) "$x+1>3$."`,
    giai: [
-    R`a) Là mệnh đề, **đúng**.`,
-    R`b) Câu cảm thán: **không** là mệnh đề.`,
-    R`c) Là mệnh đề, **sai** (vì $2+3=5$).`,
-    R`d) Chưa xác định đúng sai khi chưa biết $x$: là **mệnh đề chứa biến**.`
+    R`**Phân tích.** Muốn biết một câu có phải mệnh đề không, ta tự hỏi: câu này có khẳng định một điều gì đó để ta nói được là **đúng** hoặc **sai** không? Câu hỏi, câu cảm thán, câu cảm nhận thì không.`,
+    R`**Bước 1.** Câu a) khẳng định một sự kiện có thật: Hà Nội đúng là thủ đô của Việt Nam. Đây là mệnh đề **đúng**.`,
+    R`**Bước 2.** Câu b) là câu cảm thán (có dấu "!"), thể hiện cảm xúc của người nói, mỗi người có thể thấy khác nhau. Nên b) **không** là mệnh đề.`,
+    R`**Bước 3.** Câu c) khẳng định $2+3=6$. Ta tính được $2+3=5\ne6$, nên đây là mệnh đề **sai**. Chú ý: sai vẫn là mệnh đề.`,
+    R`**Bước 4.** Câu d) chứa biến $x$ chưa biết giá trị: với $x=5$ thì $6>3$ đúng, với $x=0$ thì $1>3$ sai. Chưa khẳng định được đúng hay sai nên d) là **mệnh đề chứa biến**.`,
+    R`**Kết luận.** a) mệnh đề đúng; b) không là mệnh đề; c) mệnh đề sai; d) mệnh đề chứa biến.`
    ] },
  { muc: "TH", de: R`Cho mệnh đề chứa biến $P(n)$: "$n^2+1$ chia hết cho $5$" ($n\in\mathbb N$). Xét tính đúng sai của $P(2)$, $P(3)$, $P(4)$.`,
    giai: [
-    R`$P(2)$: $2^2+1=5$ chia hết cho $5$: đúng.`,
-    R`$P(3)$: $3^2+1=10$ chia hết cho $5$: đúng.`,
-    R`$P(4)$: $4^2+1=17$ không chia hết cho $5$: sai.`
+    R`**Phân tích.** $P(n)$ là mệnh đề chứa biến. Thay $n$ bằng một số cụ thể ta được một mệnh đề, rồi tính toán để biết đúng hay sai.`,
+    R`**Bước 1.** Với $n=2$: $n^2+1=4+1=5$. Vì $5$ chia hết cho $5$ nên $P(2)$ **đúng**.`,
+    R`**Bước 2.** Với $n=3$: $n^2+1=9+1=10=5\cdot2$, chia hết cho $5$. Vậy $P(3)$ **đúng**.`,
+    R`**Bước 3.** Với $n=4$: $n^2+1=16+1=17$. Vì $17=5\cdot3+2$ (dư $2$) nên không chia hết cho $5$. Vậy $P(4)$ **sai**.`,
+    R`**Kết luận.** $P(2)$, $P(3)$ đúng; $P(4)$ sai.`,
+    R`**Nhận xét.** Cùng một mệnh đề chứa biến, giá trị này cho mệnh đề đúng, giá trị khác cho mệnh đề sai. Đó là lí do $P(n)$ "chưa phải" mệnh đề.`
    ] },
  { muc: "TH", de: R`Xét tính đúng sai: a) "$\sqrt2$ là số hữu tỉ." b) "Tổng ba góc trong một tam giác bằng $180^\circ$." c) "$17$ là số nguyên tố."`,
    giai: [
-    R`a) Sai: $\sqrt2$ là số vô tỉ.`,
-    R`b) Đúng (định lí tổng ba góc).`,
-    R`c) Đúng: $17$ chỉ có hai ước là $1$ và $17$.`
+    R`**Phân tích.** Cả ba câu đều là mệnh đề. Để xét đúng sai, ta dựa vào **định nghĩa** hoặc **định lí** đã học.`,
+    R`**Bước 1.** a) $\sqrt2$ là số vô tỉ (đã học ở lớp 9: $\sqrt2=1{,}41421\ldots$ là số thập phân vô hạn không tuần hoàn). Vậy "$\sqrt2$ là số hữu tỉ" là mệnh đề **sai**.`,
+    R`**Bước 2.** b) Theo định lí tổng ba góc trong tam giác, tổng luôn bằng $180^\circ$. Mệnh đề **đúng**.`,
+    R`**Bước 3.** c) Số nguyên tố là số tự nhiên lớn hơn $1$ chỉ có hai ước là $1$ và chính nó. Kiểm tra $17$ không chia hết cho $2$, $3$ (vì $4^2=16<17<25=5^2$ nên chỉ cần thử đến $4$). Vậy $17$ là số nguyên tố, mệnh đề **đúng**.`,
+    R`**Kết luận.** a) sai; b) đúng; c) đúng.`,
+    R`**Nhận xét.** Để kiểm tra $n$ có nguyên tố không, chỉ cần thử chia cho các số nguyên tố không vượt quá $\sqrt n$.`
+   ] },
+ { muc: "VD", de: R`Cho mệnh đề chứa biến $Q(x)$: "$x^2-3x+2=0$". Tìm tất cả các giá trị thực của $x$ để $Q(x)$ là mệnh đề đúng.`,
+   giai: [
+    R`**Phân tích.** $Q(x)$ đúng khi và chỉ khi $x$ là nghiệm của phương trình $x^2-3x+2=0$. Vậy ta chỉ cần giải phương trình.`,
+    R`**Bước 1.** Phân tích thành nhân tử: $x^2-3x+2=x^2-x-2x+2=x(x-1)-2(x-1)=(x-1)(x-2)$.`,
+    R`**Bước 2.** $(x-1)(x-2)=0\iff x=1$ hoặc $x=2$.`,
+    R`**Kết luận.** $Q(x)$ đúng khi $x=1$ hoặc $x=2$; với mọi giá trị khác, $Q(x)$ sai.`,
+    R`**Thử lại.** $Q(1)$: $1-3+2=0$ đúng; $Q(2)$: $4-6+2=0$ đúng.`
    ] }
  ] },
 "C1-B1-D02": {
@@ -53,22 +69,36 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Phát biểu mệnh đề phủ định của "$5$ là số chẵn" và cho biết tính đúng sai.`,
    giai: [
-    R`Phủ định: "$5$ không phải là số chẵn". Mệnh đề này **đúng** (mệnh đề ban đầu sai).`
+    R`**Phân tích.** Mệnh đề phủ định của $P$ là "không phải $P$", luôn có tính đúng sai **ngược** với $P$.`,
+    R`**Bước 1.** Thêm "không" vào: phủ định là "$5$ không phải là số chẵn".`,
+    R`**Bước 2.** Xét mệnh đề gốc: $5=2\cdot2+1$ là số lẻ, nên "$5$ là số chẵn" **sai**.`,
+    R`**Kết luận.** Mệnh đề phủ định "$5$ không phải là số chẵn" là mệnh đề **đúng**.`
    ] },
  { muc: "TH", de: R`Phủ định mệnh đề "$\forall x\in\mathbb R,\ x^2+1>0$" và xét tính đúng sai của mệnh đề phủ định.`,
    giai: [
-    R`Phủ định: "$\exists x\in\mathbb R,\ x^2+1\le0$".`,
-    R`Vì $x^2\ge0$ nên $x^2+1\ge1>0$ với mọi $x$: mệnh đề ban đầu đúng, mệnh đề phủ định **sai**.`
+    R`**Phân tích.** Phủ định mệnh đề có kí hiệu $\forall$ theo quy tắc: đổi $\forall$ thành $\exists$, và phủ định phần tính chất phía sau.`,
+    R`**Bước 1.** Đổi lượng từ: "$\forall x\in\mathbb R$" thành "$\exists x\in\mathbb R$".`,
+    R`**Bước 2.** Phủ định tính chất: "$x^2+1>0$" thành "$x^2+1\le0$" (phủ định của $>$ là $\le$, không phải $<$).`,
+    R`**Bước 3.** Mệnh đề phủ định: "$\exists x\in\mathbb R,\ x^2+1\le0$".`,
+    R`**Bước 4.** Xét đúng sai: với mọi $x$ thực, $x^2\ge0$ nên $x^2+1\ge1>0$. Vậy mệnh đề gốc **đúng**, do đó mệnh đề phủ định **sai**.`,
+    R`**Kết luận.** $\overline P$: "$\exists x\in\mathbb R,\ x^2+1\le0$", là mệnh đề sai.`
    ] },
  { muc: "TH", de: R`Phủ định mệnh đề "$\exists n\in\mathbb N,\ n^2=2$" và xét tính đúng sai.`,
    giai: [
-    R`Phủ định: "$\forall n\in\mathbb N,\ n^2\ne2$".`,
-    R`$1^2=1$, $2^2=4$, các số lớn hơn cho bình phương lớn hơn $4$: không có số tự nhiên nào bình phương bằng $2$. Mệnh đề phủ định **đúng**.`
+    R`**Phân tích.** Phủ định mệnh đề có $\exists$: đổi $\exists$ thành $\forall$ và phủ định tính chất.`,
+    R`**Bước 1.** Đổi "$\exists n\in\mathbb N$" thành "$\forall n\in\mathbb N$"; phủ định "$n^2=2$" thành "$n^2\ne2$".`,
+    R`**Bước 2.** Mệnh đề phủ định: "$\forall n\in\mathbb N,\ n^2\ne2$".`,
+    R`**Bước 3.** Xét đúng sai: $0^2=0$, $1^2=1$, $2^2=4$, và với $n\ge2$ thì $n^2\ge4$. Không có số tự nhiên nào có bình phương bằng $2$.`,
+    R`**Kết luận.** Mệnh đề phủ định **đúng** (và mệnh đề gốc sai).`
    ] },
  { muc: "VD", de: R`Phát biểu bằng lời mệnh đề phủ định của "Mọi số nguyên tố đều là số lẻ". Mệnh đề nào đúng?`,
    giai: [
-    R`Phủ định: "Có ít nhất một số nguyên tố không phải là số lẻ".`,
-    R`Số $2$ là số nguyên tố chẵn, nên mệnh đề phủ định **đúng**, mệnh đề ban đầu sai.`
+    R`**Phân tích.** "Mọi ... đều ..." là câu có lượng từ $\forall$. Phủ định của nó là "**có ít nhất một** ... **không** ...".`,
+    R`**Bước 1.** Viết lại bằng kí hiệu: "$\forall p$ nguyên tố, $p$ là số lẻ".`,
+    R`**Bước 2.** Phủ định: "$\exists p$ nguyên tố, $p$ không là số lẻ", tức là "Có ít nhất một số nguyên tố không phải là số lẻ".`,
+    R`**Bước 3.** Tìm ví dụ: số $2$ là số nguyên tố (chỉ có ước $1$ và $2$) và $2$ là số chẵn.`,
+    R`**Kết luận.** Mệnh đề phủ định **đúng**, mệnh đề "Mọi số nguyên tố đều là số lẻ" **sai**.`,
+    R`**Nhận xét.** Muốn bác bỏ một câu "mọi ... đều ...", chỉ cần **một phản ví dụ**.`
    ] }
  ] },
 "C1-B1-D03": {
@@ -85,24 +115,37 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Xét tính đúng sai của mệnh đề "Nếu tam giác $ABC$ đều thì tam giác $ABC$ cân" và mệnh đề đảo của nó.`,
    giai: [
-    R`Tam giác đều có ba cạnh bằng nhau nên có hai cạnh bằng nhau: là tam giác cân. Mệnh đề **đúng**.`,
-    R`Mệnh đề đảo: "Nếu tam giác $ABC$ cân thì tam giác $ABC$ đều". Sai: tam giác có ba cạnh $2,2,3$ cân nhưng không đều.`
+    R`**Phân tích.** $P$: "tam giác $ABC$ đều", $Q$: "tam giác $ABC$ cân". Xét $P\Rightarrow Q$ rồi xét mệnh đề đảo $Q\Rightarrow P$.`,
+    R`**Bước 1.** Tam giác đều có $AB=BC=CA$, nên chắc chắn có hai cạnh bằng nhau. Theo định nghĩa, nó là tam giác cân. Vậy $P\Rightarrow Q$ **đúng**.`,
+    R`**Bước 2.** Mệnh đề đảo $Q\Rightarrow P$: "Nếu tam giác $ABC$ cân thì tam giác $ABC$ đều".`,
+    R`**Bước 3.** Tìm phản ví dụ: tam giác có ba cạnh $2$, $2$, $3$ là tam giác cân (hai cạnh bằng $2$) nhưng không đều. Vậy mệnh đề đảo **sai**.`,
+    R`**Kết luận.** Mệnh đề đúng, mệnh đề đảo sai.`,
+    R`**Nhận xét.** Mệnh đề đúng **chưa chắc** có mệnh đề đảo đúng.`
    ] },
  { muc: "TH", de: R`Phát biểu định lí "Nếu $a$ và $b$ cùng chia hết cho $3$ thì $a+b$ chia hết cho $3$" bằng thuật ngữ điều kiện cần, điều kiện đủ.`,
    giai: [
-    R`"$a$ và $b$ cùng chia hết cho $3$ là **điều kiện đủ** để $a+b$ chia hết cho $3$."`,
-    R`"$a+b$ chia hết cho $3$ là **điều kiện cần** để $a$ và $b$ cùng chia hết cho $3$."`
+    R`**Phân tích.** Định lí dạng $P\Rightarrow Q$ đúng thì: $P$ là **điều kiện đủ** để có $Q$, còn $Q$ là **điều kiện cần** để có $P$.`,
+    R`**Bước 1.** Xác định: $P$: "$a$ và $b$ cùng chia hết cho $3$"; $Q$: "$a+b$ chia hết cho $3$".`,
+    R`**Bước 2.** Phát biểu theo điều kiện đủ: "$a$ và $b$ cùng chia hết cho $3$ là **điều kiện đủ** để $a+b$ chia hết cho $3$."`,
+    R`**Bước 3.** Phát biểu theo điều kiện cần: "$a+b$ chia hết cho $3$ là **điều kiện cần** để $a$ và $b$ cùng chia hết cho $3$."`,
+    R`**Nhận xét.** Mẹo nhớ: đứng **trước** dấu $\Rightarrow$ là điều kiện **đủ**, đứng **sau** là điều kiện **cần**. Chú ý $Q$ không đủ để có $P$: $a=1$, $b=2$ có $a+b=3$ chia hết cho $3$ nhưng $a$, $b$ không chia hết cho $3$.`
    ] },
  { muc: "TH", de: R`Xét tính đúng sai của "$x>2\Rightarrow x^2>4$" và mệnh đề đảo của nó.`,
    giai: [
-    R`Nếu $x>2$ thì $x^2>2x>4$: mệnh đề **đúng**.`,
-    R`Mệnh đề đảo "$x^2>4\Rightarrow x>2$": sai, phản ví dụ $x=-3$ có $x^2=9>4$ nhưng $x<2$.`
+    R`**Phân tích.** Xét $P\Rightarrow Q$ với $P$: "$x>2$", $Q$: "$x^2>4$". Để chứng minh đúng: lấy $P$ đúng rồi suy ra $Q$. Để chỉ ra sai: tìm một phản ví dụ.`,
+    R`**Bước 1.** Giả sử $x>2$. Khi đó $x>0$, nhân hai vế của $x>2$ với $x$ được $x^2>2x$; mà $2x>4$. Suy ra $x^2>4$. Vậy mệnh đề **đúng**.`,
+    R`**Bước 2.** Mệnh đề đảo: "$x^2>4\Rightarrow x>2$".`,
+    R`**Bước 3.** Chọn $x=-3$: $x^2=9>4$ (giả thiết đúng) nhưng $-3<2$ (kết luận sai). Vậy mệnh đề đảo **sai**.`,
+    R`**Kết luận.** Mệnh đề đúng, mệnh đề đảo sai.`,
+    R`**Nhận xét.** Thực ra $x^2>4\iff x>2$ hoặc $x<-2$; quên trường hợp số âm là sai lầm hay gặp.`
    ] },
  { muc: "VD", de: R`Phát biểu mệnh đề tương đương từ định lí Pythagore và định lí đảo, dùng thuật ngữ "điều kiện cần và đủ".`,
    giai: [
-    R`Định lí Pythagore: tam giác $ABC$ vuông tại $A$ $\Rightarrow AB^2+AC^2=BC^2$. Định lí đảo: $AB^2+AC^2=BC^2\Rightarrow$ tam giác vuông tại $A$. Cả hai đều đúng.`,
-    R`Vậy: "Tam giác $ABC$ vuông tại $A$ $\Leftrightarrow AB^2+AC^2=BC^2$".`,
-    R`Phát biểu: "Điều kiện cần và đủ để tam giác $ABC$ vuông tại $A$ là $AB^2+AC^2=BC^2$."`
+    R`**Phân tích.** Mệnh đề tương đương $P\Leftrightarrow Q$ đúng khi cả $P\Rightarrow Q$ và $Q\Rightarrow P$ đều đúng. Định lí Pythagore và định lí đảo cho ta đúng hai chiều đó.`,
+    R`**Bước 1.** Định lí Pythagore: "Tam giác $ABC$ vuông tại $A$ $\Rightarrow AB^2+AC^2=BC^2$" (đúng).`,
+    R`**Bước 2.** Định lí đảo: "$AB^2+AC^2=BC^2\Rightarrow$ tam giác $ABC$ vuông tại $A$" (đúng).`,
+    R`**Bước 3.** Gộp hai chiều: "Tam giác $ABC$ vuông tại $A$ $\Leftrightarrow AB^2+AC^2=BC^2$".`,
+    R`**Kết luận.** "Điều kiện cần và đủ để tam giác $ABC$ vuông tại $A$ là $AB^2+AC^2=BC^2$."`
    ] }
  ] },
 "C1-B2-D04": {
@@ -118,23 +161,37 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Liệt kê các phần tử và tìm số phần tử của $A=\{x\in\mathbb N\mid x<5\}$.`,
    giai: [
-    R`$A=\{0;1;2;3;4\}$, có $5$ phần tử.`
+    R`**Phân tích.** $A$ cho bởi tính chất: $x$ là số tự nhiên và $x<5$. Ta liệt kê các số tự nhiên thoả mãn, nhớ $\mathbb N$ bắt đầu từ $0$.`,
+    R`**Bước 1.** Các số tự nhiên nhỏ hơn $5$: $0$, $1$, $2$, $3$, $4$.`,
+    R`**Bước 2.** $A=\{0;1;2;3;4\}$.`,
+    R`**Kết luận.** $A$ có $5$ phần tử.`,
+    R`**Nhận xét.** Nếu đề cho $x\in\mathbb N^*$ thì bỏ số $0$, khi đó chỉ còn $4$ phần tử.`
    ] },
  { muc: "TH", de: R`Liệt kê các phần tử của $B=\{x\in\mathbb R\mid x^2-3x+2=0\}$ và $C=\{x\in\mathbb Z\mid|x|\le2\}$.`,
    giai: [
-    R`$x^2-3x+2=0\Leftrightarrow x=1$ hoặc $x=2$. $B=\{1;2\}$.`,
-    R`$|x|\le2\Leftrightarrow-2\le x\le2$, với $x$ nguyên: $C=\{-2;-1;0;1;2\}$.`
+    R`**Phân tích.** Đổi từ tính chất sang liệt kê: giải điều kiện, rồi giữ lại những giá trị thuộc đúng tập số đề yêu cầu.`,
+    R`**Bước 1.** Giải $x^2-3x+2=0$: $(x-1)(x-2)=0\iff x=1$ hoặc $x=2$. Cả hai đều là số thực nên $B=\{1;2\}$.`,
+    R`**Bước 2.** Giải $|x|\le2\iff-2\le x\le2$.`,
+    R`**Bước 3.** Giữ các số **nguyên** trong đoạn $[-2;2]$: $-2,-1,0,1,2$. Vậy $C=\{-2;-1;0;1;2\}$.`,
+    R`**Kết luận.** $B=\{1;2\}$; $C=\{-2;-1;0;1;2\}$.`
    ] },
  { muc: "TH", de: R`Liệt kê tất cả các tập con của $\{a;b;c\}$.`,
    giai: [
-    R`Không phần tử: $\varnothing$. Một phần tử: $\{a\}$, $\{b\}$, $\{c\}$.`,
-    R`Hai phần tử: $\{a;b\}$, $\{a;c\}$, $\{b;c\}$. Ba phần tử: $\{a;b;c\}$.`,
-    R`Tổng cộng $8=2^3$ tập con.`
+    R`**Phân tích.** Liệt kê tập con theo số phần tử ($0$, $1$, $2$, $3$ phần tử) để không sót, không trùng.`,
+    R`**Bước 1.** Tập con có $0$ phần tử: $\varnothing$ (tập rỗng là tập con của mọi tập).`,
+    R`**Bước 2.** Có $1$ phần tử: $\{a\}$, $\{b\}$, $\{c\}$.`,
+    R`**Bước 3.** Có $2$ phần tử: $\{a;b\}$, $\{a;c\}$, $\{b;c\}$.`,
+    R`**Bước 4.** Có $3$ phần tử: $\{a;b;c\}$ (mọi tập là tập con của chính nó).`,
+    R`**Kết luận.** Có $1+3+3+1=8$ tập con.`,
+    R`**Thử lại.** Công thức: tập có $n$ phần tử có $2^n$ tập con, $2^3=8$, khớp.`
    ] },
  { muc: "VD", de: R`Cho $A=\{x\in\mathbb R\mid(x-1)(x^2-4)=0\}$ và $B=\{-2;1;2\}$. Chứng minh $A=B$.`,
    giai: [
-    R`$(x-1)(x^2-4)=0\Leftrightarrow x=1$ hoặc $x^2=4\Leftrightarrow x\in\{1;-2;2\}$.`,
-    R`Vậy $A=\{-2;1;2\}$: mọi phần tử của $A$ thuộc $B$ và ngược lại, nên $A=B$.`
+    R`**Phân tích.** Hai tập bằng nhau khi chúng có cùng các phần tử. Ta liệt kê các phần tử của $A$ rồi so với $B$.`,
+    R`**Bước 1.** Giải $(x-1)(x^2-4)=0$: tích bằng $0$ khi một thừa số bằng $0$.`,
+    R`**Bước 2.** $x-1=0\iff x=1$; $x^2-4=0\iff x^2=4\iff x=2$ hoặc $x=-2$.`,
+    R`**Bước 3.** Vậy $A=\{-2;1;2\}$.`,
+    R`**Kết luận.** Mọi phần tử của $A$ đều thuộc $B$ ($A\subset B$) và mọi phần tử của $B$ đều thuộc $A$ ($B\subset A$), nên $A=B$.`
    ] }
  ] },
 "C1-B2-D05": {
@@ -150,20 +207,29 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Cho $A=\{1;2;3;4;5\}$, $B=\{2;4;6;8\}$. Tìm $A\cap B$, $A\cup B$, $A\setminus B$, $B\setminus A$.`,
    giai: [
-    R`$A\cap B=\{2;4\}$.`,
-    R`$A\cup B=\{1;2;3;4;5;6;8\}$.`,
-    R`$A\setminus B=\{1;3;5\}$; $B\setminus A=\{6;8\}$.`
+    R`**Phân tích.** Lần lượt xét từng phần tử: thuộc cả hai tập thì vào giao; thuộc ít nhất một tập thì vào hợp; thuộc $A$ mà không thuộc $B$ thì vào $A\setminus B$.`,
+    R`**Bước 1.** Phần tử chung của $A$ và $B$: $2$ và $4$. Vậy $A\cap B=\{2;4\}$.`,
+    R`**Bước 2.** Gộp tất cả, mỗi phần tử viết một lần: $A\cup B=\{1;2;3;4;5;6;8\}$.`,
+    R`**Bước 3.** Lấy $A$ bỏ đi các phần tử chung $2$, $4$: $A\setminus B=\{1;3;5\}$.`,
+    R`**Bước 4.** Lấy $B$ bỏ đi $2$, $4$: $B\setminus A=\{6;8\}$.`,
+    R`**Thử lại.** $n(A\cup B)=n(A)+n(B)-n(A\cap B)=5+4-2=7$, khớp với $7$ phần tử ở Bước 2.`
    ] },
  { muc: "TH", de: R`Cho $E=\{x\in\mathbb N\mid1\le x\le9\}$, $A=\{x\in E\mid x\text{ chia hết cho }3\}$. Tìm $C_EA$.`,
    giai: [
-    R`$E=\{1;2;\dots;9\}$, $A=\{3;6;9\}$.`,
-    R`$C_EA=E\setminus A=\{1;2;4;5;7;8\}$.`
+    R`**Phân tích.** Phần bù của $A$ trong $E$ là các phần tử của $E$ không thuộc $A$. Cần liệt kê $E$ và $A$ trước.`,
+    R`**Bước 1.** $E=\{1;2;3;4;5;6;7;8;9\}$.`,
+    R`**Bước 2.** Các số trong $E$ chia hết cho $3$: $A=\{3;6;9\}$.`,
+    R`**Bước 3.** Bỏ $3$, $6$, $9$ khỏi $E$.`,
+    R`**Kết luận.** $C_EA=\{1;2;4;5;7;8\}$ (các số từ $1$ đến $9$ **không** chia hết cho $3$).`
    ] },
  { muc: "VD", de: R`Cho $A=\{1;2;3\}$. Có bao nhiêu tập hợp $X$ thoả mãn $A\cup X=\{1;2;3;4\}$?`,
    giai: [
-    R`$X\subset\{1;2;3;4\}$ (vì $X\subset A\cup X$) và $4\in X$ (vì $4\notin A$).`,
-    R`Vậy $X=\{4\}\cup Y$ với $Y$ là một tập con bất kì của $\{1;2;3\}$; ngược lại mọi tập như vậy đều thoả mãn.`,
-    R`Số tập $Y$ là $2^3=8$, nên có $8$ tập $X$.`
+    R`**Phân tích.** Tìm xem $X$ **bắt buộc** chứa gì và **được phép** chứa gì, rồi đếm số cách chọn phần còn tự do.`,
+    R`**Bước 1.** Vì $X\subset A\cup X=\{1;2;3;4\}$ nên $X$ chỉ gồm các số trong $\{1;2;3;4\}$.`,
+    R`**Bước 2.** Số $4$ thuộc $A\cup X$ nhưng không thuộc $A$, nên bắt buộc $4\in X$.`,
+    R`**Bước 3.** Các số $1$, $2$, $3$ đã có trong $A$, nên $X$ chứa hay không đều được. Vậy $X=\{4\}\cup Y$ với $Y$ là tập con bất kì của $\{1;2;3\}$.`,
+    R`**Bước 4.** Số tập con $Y$ của tập $3$ phần tử là $2^3=8$.`,
+    R`**Kết luận.** Có $8$ tập $X$.`
    ] }
  ] },
 "C1-B2-D06": {
@@ -178,10 +244,12 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Cho $A=[-1;3)$, $B=(0;5]$. Tìm $A\cap B$, $A\cup B$, $A\setminus B$, $B\setminus A$.`,
    giai: [
-    R`$A\cap B=(0;3)$: số $0$ không thuộc $B$, số $3$ không thuộc $A$.`,
-    R`$A\cup B=[-1;5]$.`,
-    R`$A\setminus B=[-1;0]$ (số $0$ thuộc $A$, không thuộc $B$ nên được lấy).`,
-    R`$B\setminus A=[3;5]$ (số $3$ thuộc $B$, không thuộc $A$).`
+    R`**Phân tích.** Biểu diễn $A$, $B$ trên cùng một trục số (hình dưới), đọc kết quả. Với mỗi đầu mút, hỏi: nó có thuộc tập kết quả không, để chọn ngoặc vuông hay tròn.`,
+    R`**Bước 1.** Giao: phần hai đoạn chồng lên nhau là từ $0$ đến $3$. Số $0\notin B$, số $3\notin A$, nên cả hai đầu mút bị loại: $A\cap B=(0;3)$.`,
+    R`**Bước 2.** Hợp: gộp lại phủ từ $-1$ đến $5$. Số $-1\in A$ và $5\in B$ nên lấy cả hai: $A\cup B=[-1;5]$.`,
+    R`**Bước 3.** $A\setminus B$: phần của $A$ nằm ngoài $B$ là từ $-1$ đến $0$. Số $0\in A$ nhưng $0\notin B$ nên **được lấy**: $A\setminus B=[-1;0]$.`,
+    R`**Bước 4.** $B\setminus A$: phần của $B$ nằm ngoài $A$ là từ $3$ đến $5$. Số $3\in B$, $3\notin A$ nên lấy: $B\setminus A=[3;5]$.`,
+    R`**Kết luận.** $A\cap B=(0;3)$; $A\cup B=[-1;5]$; $A\setminus B=[-1;0]$; $B\setminus A=[3;5]$.`
    ],
    hinh: R`\begin{tikzpicture}[scale=0.9]
 \draw[->] (-2,0)--(6,0);
@@ -194,13 +262,21 @@ Object.assign(D, {
    chuThich: R`Phần chung của hai đoạn màu là $(0;3)$.` },
  { muc: "TH", de: R`Tìm phần bù của $A=[-1;3)$ trong $\mathbb R$.`,
    giai: [
-    R`$C_{\mathbb R}A=\mathbb R\setminus A=(-\infty;-1)\cup[3;+\infty)$.`
+    R`**Phân tích.** $C_{\mathbb R}A=\mathbb R\setminus A$: các số thực không thuộc $A$, tức là phần trục số còn lại khi bỏ đi $[-1;3)$.`,
+    R`**Bước 1.** Phần bên trái $A$: các số nhỏ hơn $-1$. Số $-1\in A$ nên không lấy: $(-\infty;-1)$.`,
+    R`**Bước 2.** Phần bên phải $A$: các số từ $3$ trở lên. Số $3\notin A$ nên **lấy**: $[3;+\infty)$.`,
+    R`**Kết luận.** $C_{\mathbb R}A=(-\infty;-1)\cup[3;+\infty)$.`,
+    R`**Nhận xét.** Lấy phần bù thì ngoặc ở mỗi đầu mút **đổi loại**: $[$ thành $)$, $)$ thành $[$.`
    ] },
  { muc: "VD", de: R`Cho $A=[m;m+2]$, $B=(1;4)$. Tìm $m$ để a) $A\subset B$; b) $A\cap B=\varnothing$.`,
    giai: [
-    R`a) $A\subset B\Leftrightarrow1<m$ và $m+2<4\Leftrightarrow1<m<2$.`,
-    R`b) $A\cap B=\varnothing\Leftrightarrow$ $A$ nằm bên trái $B$: $m+2\le1\Leftrightarrow m\le-1$; hoặc $A$ nằm bên phải $B$: $m\ge4$.`,
-    R`**Kết luận.** a) $1<m<2$; b) $m\le-1$ hoặc $m\ge4$.`
+    R`**Phân tích.** $A=[m;m+2]$ là một đoạn dài $2$ trượt trên trục số theo $m$. Ta so sánh hai đầu mút của $A$ với hai đầu mút của $B=(1;4)$.`,
+    R`**Bước 1.** a) $A\subset B$ khi cả đoạn $A$ nằm trong khoảng mở $(1;4)$: đầu trái $m>1$ (không được bằng $1$ vì $1\notin B$) và đầu phải $m+2<4$.`,
+    R`**Bước 2.** Giải: $m>1$ và $m<2$, tức là $1<m<2$.`,
+    R`**Bước 3.** b) $A\cap B=\varnothing$ khi $A$ nằm hẳn bên trái $B$: $m+2\le1\iff m\le-1$ (được bằng vì $1\notin B$).`,
+    R`**Bước 4.** Hoặc $A$ nằm hẳn bên phải $B$: $m\ge4$ (được bằng vì $4\notin B$).`,
+    R`**Kết luận.** a) $1<m<2$; b) $m\le-1$ hoặc $m\ge4$.`,
+    R`**Thử lại.** $m=1{,}5$: $A=[1{,}5;3{,}5]\subset(1;4)$ đúng. $m=-1$: $A=[-1;1]$ chỉ chạm $1$ mà $1\notin B$ nên không giao, đúng.`
    ] }
  ] },
 "C1-B2-D07": {
@@ -216,9 +292,13 @@ Object.assign(D, {
  vd: [
  { muc: "TH", de: R`Lớp có $40$ học sinh: $25$ em thích Toán, $20$ em thích Văn, $10$ em thích cả hai môn. Hỏi bao nhiêu em thích ít nhất một môn, bao nhiêu em không thích môn nào, bao nhiêu em chỉ thích Toán?`,
    giai: [
-    R`Thích ít nhất một môn: $25+20-10=35$ em.`,
-    R`Không thích môn nào: $40-35=5$ em.`,
-    R`Chỉ thích Toán: $25-10=15$ em.`
+    R`**Phân tích.** Gọi $T$, $V$ là tập học sinh thích Toán, thích Văn. Biết $n(T)=25$, $n(V)=20$, $n(T\cap V)=10$. Vẽ biểu đồ Ven và điền số từ **phần chung** ra ngoài.`,
+    R`**Bước 1.** Phần chung (thích cả hai): $10$ em.`,
+    R`**Bước 2.** Chỉ thích Toán $=n(T)-n(T\cap V)=25-10=15$ em; chỉ thích Văn $=20-10=10$ em.`,
+    R`**Bước 3.** Thích ít nhất một môn: $n(T\cup V)=15+10+10=35$ em (cũng bằng $25+20-10$).`,
+    R`**Bước 4.** Không thích môn nào $=40-35=5$ em.`,
+    R`**Kết luận.** $35$ em thích ít nhất một môn, $5$ em không thích môn nào, $15$ em chỉ thích Toán.`,
+    R`**Thử lại.** Cộng bốn ô của biểu đồ: $15+10+10+5=40$, đúng sĩ số.`
    ],
    hinh: R`\begin{tikzpicture}[scale=0.9]
 \draw (-2.4,-1.9) rectangle (4.6,1.9);
@@ -229,9 +309,22 @@ Object.assign(D, {
    chuThich: R`Điền $10$ vào phần chung trước, rồi $25-10=15$, $20-10=10$, phần ngoài $40-35=5$.` },
  { muc: "VD", de: R`Lớp có $45$ học sinh. Có $25$ em chơi bóng đá, $18$ em chơi cầu lông, $20$ em bơi; $7$ em chơi bóng đá và cầu lông, $8$ em chơi bóng đá và bơi, $6$ em chơi cầu lông và bơi, $3$ em chơi cả ba môn. Hỏi có bao nhiêu em không chơi môn nào, bao nhiêu em chỉ chơi bóng đá?`,
    giai: [
-    R`Số em chơi ít nhất một môn: $25+18+20-7-8-6+3=45$.`,
-    R`Không chơi môn nào: $45-45=0$ em.`,
-    R`Chỉ chơi bóng đá: $25-7-8+3=13$ em (trừ hai phần chung, nhưng phần cả ba bị trừ hai lần nên cộng lại $3$).`
+    R`**Phân tích.** Ba tập $B$ (bóng đá), $C$ (cầu lông), $S$ (bơi). Dùng công thức ba tập, hoặc điền biểu đồ Ven từ trong ra ngoài.`,
+    R`**Bước 1.** Công thức: $n(B\cup C\cup S)=25+18+20-7-8-6+3=45$.`,
+    R`**Bước 2.** Không chơi môn nào $=45-45=0$ em.`,
+    R`**Bước 3.** Điền biểu đồ: ô giữa (cả ba) là $3$. Chỉ bóng đá và cầu lông: $7-3=4$; chỉ bóng đá và bơi: $8-3=5$.`,
+    R`**Bước 4.** Chỉ chơi bóng đá $=25-4-5-3=13$ em.`,
+    R`**Kết luận.** Không có em nào không chơi môn nào; có $13$ em chỉ chơi bóng đá.`,
+    R`**Nhận xét.** Viết gọn $25-7-8+3$: trừ hai phần chung thì phần "cả ba" bị trừ hai lần, nên phải cộng lại một lần.`
+   ] },
+ { muc: "VD", de: R`Trong một nhóm $30$ học sinh, mỗi em biết ít nhất một trong hai ngoại ngữ Anh, Pháp. Có $24$ em biết tiếng Anh, $12$ em biết tiếng Pháp. Hỏi có bao nhiêu em biết cả hai thứ tiếng, bao nhiêu em chỉ biết tiếng Anh?`,
+   giai: [
+    R`**Phân tích.** Gọi $A$, $P$ là tập em biết tiếng Anh, tiếng Pháp. "Mỗi em biết ít nhất một" nghĩa là $n(A\cup P)=30$. Ẩn cần tìm là $n(A\cap P)$.`,
+    R`**Bước 1.** Công thức: $n(A\cup P)=n(A)+n(P)-n(A\cap P)$.`,
+    R`**Bước 2.** Thay số: $30=24+12-n(A\cap P)$, suy ra $n(A\cap P)=36-30=6$.`,
+    R`**Bước 3.** Chỉ biết tiếng Anh $=24-6=18$ em.`,
+    R`**Kết luận.** $6$ em biết cả hai thứ tiếng; $18$ em chỉ biết tiếng Anh.`,
+    R`**Thử lại.** Chỉ Pháp $=12-6=6$. Tổng $18+6+6=30$, đúng.`
    ] }
  ] }
 });
