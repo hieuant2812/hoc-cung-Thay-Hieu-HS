@@ -20,7 +20,11 @@
     let loiCuoi;
     for (let i = 0; i <= lan; i++) {
       try {
-        const r = await fetch(u, { method: "POST", body, redirect: "follow" });
+        const ctl = typeof AbortController === "function" ? new AbortController() : null;
+        const hen = ctl ? setTimeout(() => ctl.abort(), opt.choToiDa || 45000) : null;   // máy chủ không trả lời: báo lỗi thay vì chờ mãi
+        let r;
+        try { r = await fetch(u, { method: "POST", body, redirect: "follow", signal: ctl ? ctl.signal : undefined }); }
+        finally { clearTimeout(hen); }
         if (!r.ok) throw new Error("HTTP " + r.status);
         const j = await r.json();
         if (!j.ok) throw new LoiMayChu(j.loi || "Có lỗi xảy ra.", j.ma);
