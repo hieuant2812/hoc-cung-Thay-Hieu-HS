@@ -124,3 +124,9 @@ Thầy làm một lần, khoảng 15 phút.
 - Apps Script trả lời mỗi yêu cầu trong khoảng 1–3 giây. Web đã được thiết kế để gửi ít lần và gửi theo lô; 50 học sinh cùng lúc là trong khả năng.
 - Mọi việc quan trọng (đăng kí, xoá, đặt lại mật khẩu, lỗi máy chủ) được ghi vào trang `NhatKy` của Trang tính.
 - Thầy có thể sao lưu bằng *Tệp → Tạo bản sao* của Trang tính.
+
+**Xoá lớp tạo nhầm, chuyển lớp, đặt lại mật khẩu**
+- Thẻ **👥 Lớp học** → bấm **Xem học sinh** ở lớp cần làm.
+- **Đặt lại mật khẩu:** bấm **Đặt lại mật khẩu** ở dòng của em đó. Thầy đưa em mật khẩu tạm hiện ra; em đăng nhập rồi vào *Đổi mật khẩu*.
+- **Chuyển lớp:** tick các em → chọn lớp ở ô *Chuyển sang lớp…* → **Chuyển mục đã chọn sang lớp này**.
+- **Xoá lớp:** bấm **🗑 Xoá lớp**. Chỉ xoá được khi lớp không còn học sinh, bài kiểm tra hay bài tự học giao (chuyển hoặc xoá các mục đó trước), để không mất điểm của các em.

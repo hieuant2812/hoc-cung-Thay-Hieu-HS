@@ -165,6 +165,7 @@
           <select id="selChuyen" aria-label="Lớp chuyển đến" style="max-width:170px"></select><button class="btn sm ghost" id="btnChuyen">Chuyển mục đã chọn sang lớp này</button>
           <span class="sp"></span>
           <button class="btn sm ghost" id="btnDongLop"></button>
+          <button class="btn sm ghost" id="btnXoaLop" title="Chỉ xoá được lớp không còn học sinh và bài kiểm tra">🗑 Xoá lớp</button>
         </div>
         <div id="mkTam"></div>
         <div class="tbl-wrap"><table class="tbl" id="tHS"><thead><tr><th><input type="checkbox" id="chonHet" aria-label="Chọn tất cả"></th><th>Họ và tên</th><th>Tên đăng nhập</th><th>Trạng thái</th><th>Đăng nhập gần nhất</th><th></th></tr></thead><tbody></tbody></table></div>
@@ -321,6 +322,14 @@
     if (!ids.length) return bao("Thầy chưa chọn học sinh nào.", "");
     if (!ma) return bao("Thầy chọn lớp chuyển đến.", "");
     cho(e.target, async () => { try { const r = await goi("gv.chuyenLop", { ids, maLop: ma }); bao(`Đã chuyển ${r.n} học sinh sang lớp <b>${esc(r.tenLop)}</b>. Các em tải lại trang là thấy bài của lớp mới.`, "green"); await taiLop(); } catch (err) { bao(esc(err.message), "red"); } });
+  };
+  $("#btnXoaLop").onclick = e => {
+    const l = dsLop.find(x => x.maLop === lopChon); if (!l) return;
+    if (!confirm(`Xoá hẳn lớp ${l.tenLop} (mã ${l.maLop})? Chỉ xoá được khi lớp không còn học sinh và bài kiểm tra.`)) return;
+    cho(e.target, async () => {
+      try { const r = await goi("gv.xoaLop", { maLop: l.maLop }); lopChon = null; $("#cHS").classList.add("hidden"); bao(`Đã xoá lớp <b>${esc(r.tenLop)}</b>.`, "green"); await taiLop(); }
+      catch (err) { bao(esc(err.message), "red"); }
+    });
   };
   $("#btnDongLop").onclick = e => cho(e.target, async () => {
     const l = dsLop.find(x => x.maLop === lopChon); if (!l) return;
