@@ -742,4 +742,179 @@ Object.assign(D, {
    ] }
  ] }
 });
+/* ---------- Chương V · Giới hạn. Hàm số liên tục ---------- */
+Object.assign(D, {
+"C5-B15-D19": {
+ pp: [
+  R`**Giới hạn cơ bản:** $\lim\dfrac1{n^k}=0$ ($k>0$); $\lim q^n=0$ khi $|q|<1$; $\lim c=c$.`,
+  R`**Phân thức theo $n$:** chia cả tử và mẫu cho $n^k$ với $k$ là bậc cao nhất của mẫu, rồi dùng $\lim\dfrac1{n^k}=0$.`,
+  R`**Biểu thức chứa căn dạng $\infty-\infty$:** nhân và chia với biểu thức liên hợp.`,
+  R`**Biểu thức chứa luỹ thừa $a^n$:** chia cả tử và mẫu cho luỹ thừa có cơ số lớn nhất.`,
+  R`**Cấp số nhân lùi vô hạn** ($|q|<1$): $S=u_1+u_1q+u_1q^2+\dots=\dfrac{u_1}{1-q}$. Dùng để đổi số thập phân vô hạn tuần hoàn ra phân số.`
+ ],
+ luuY: [
+  R`Viết $\lim(\sqrt{n^2+n}-n)=\infty-\infty=0$: sai, dạng này phải nhân liên hợp.`,
+  R`Dùng công thức $\dfrac{u_1}{1-q}$ khi $|q|\ge1$.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Tính $\lim\dfrac{3n^2+n-1}{2n^2+5}$.`,
+   giai: [
+    R`Chia tử và mẫu cho $n^2$: $\dfrac{3+\frac1n-\frac1{n^2}}{2+\frac5{n^2}}$.`,
+    R`Khi $n\to+\infty$: $\dfrac1n\to0$, $\dfrac1{n^2}\to0$. Giới hạn bằng $\dfrac32$.`
+   ] },
+ { muc: "TH", de: R`Tính $\lim\left(\sqrt{n^2+n}-n\right)$.`,
+   giai: [
+    R`Nhân liên hợp: $\sqrt{n^2+n}-n=\dfrac{(n^2+n)-n^2}{\sqrt{n^2+n}+n}=\dfrac{n}{\sqrt{n^2+n}+n}$.`,
+    R`Chia tử và mẫu cho $n$: $\dfrac{1}{\sqrt{1+\frac1n}+1}\to\dfrac1{1+1}=\dfrac12$.`
+   ] },
+ { muc: "TH", de: R`Tính $\lim\dfrac{2^n+3^n}{3^{n+1}-2^n}$.`,
+   giai: [
+    R`Chia tử và mẫu cho $3^n$ (cơ số lớn nhất): $\dfrac{\left(\frac23\right)^n+1}{3-\left(\frac23\right)^n}$.`,
+    R`$\left(\frac23\right)^n\to0$, nên giới hạn bằng $\dfrac{0+1}{3-0}=\dfrac13$.`
+   ] },
+ { muc: "VD", de: R`Tính tổng $S=1+\dfrac13+\dfrac19+\dots$ và viết số $0{,}272727\dots$ dưới dạng phân số.`,
+   giai: [
+    R`$S$ là tổng CSN lùi vô hạn với $u_1=1$, $q=\dfrac13$: $S=\dfrac{1}{1-\frac13}=\dfrac32$.`,
+    R`$0{,}2727\ldots=0{,}27+0{,}0027+0{,}000027+\dots$: CSN lùi vô hạn với $u_1=0{,}27$, $q=0{,}01$.`,
+    R`$=\dfrac{0{,}27}{1-0{,}01}=\dfrac{0{,}27}{0{,}99}=\dfrac{27}{99}=\dfrac3{11}$.`
+   ] },
+ { muc: "VD", de: R`Thả một quả bóng từ độ cao $10$ m; mỗi lần chạm đất bóng nảy lên bằng một nửa độ cao trước đó, cứ như vậy mãi. Tính tổng quãng đường bóng đi được.`,
+   giai: [
+    R`Lần rơi đầu: $10$ m. Sau đó mỗi lần nảy lên rồi rơi xuống cùng một độ cao $h_k$, với $h_1=5$, $q=\dfrac12$.`,
+    R`Tổng các độ cao nảy: $\dfrac{5}{1-\frac12}=10$ m.`,
+    R`Tổng quãng đường: $10+2\cdot10=30$ (m).`
+   ] }
+ ] },
+"C5-B16-D20": {
+ pp: [
+  R`**Thay trực tiếp:** nếu $f$ là hàm đa thức, phân thức, căn thức... xác định tại $x_0$ thì $\lim\limits_{x\to x_0}f(x)=f(x_0)$.`,
+  R`**Dạng $\dfrac00$:** phân tích tử và mẫu thành nhân tử có chung $(x-x_0)$ rồi rút gọn; nếu có căn thì nhân liên hợp.`,
+  R`**Khi $x\to\pm\infty$:** chia tử và mẫu cho $x^k$ ($k$ là bậc cao nhất của mẫu). Chú ý $\sqrt{x^2}=|x|$: khi $x\to-\infty$ thì $\sqrt{x^2}=-x$.`
+ ],
+ luuY: [
+  R`Thay $x_0$ vào được $\dfrac00$ rồi kết luận giới hạn bằng $0$ hoặc không tồn tại.`,
+  R`Khi $x\to-\infty$ đưa $x$ ra ngoài căn mà quên dấu trừ.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Tính $\lim\limits_{x\to2}(x^2+3x-1)$.`,
+   giai: [
+    R`Hàm đa thức nên thay trực tiếp: $2^2+3\cdot2-1=9$.`
+   ] },
+ { muc: "TH", de: R`Tính $\lim\limits_{x\to1}\dfrac{x^2-3x+2}{x-1}$.`,
+   giai: [
+    R`Thay $x=1$ được $\dfrac00$. Phân tích: $x^2-3x+2=(x-1)(x-2)$.`,
+    R`Với $x\ne1$: $\dfrac{(x-1)(x-2)}{x-1}=x-2$.`,
+    R`$\lim\limits_{x\to1}(x-2)=-1$.`
+   ] },
+ { muc: "TH", de: R`Tính $\lim\limits_{x\to0}\dfrac{\sqrt{x+4}-2}{x}$.`,
+   giai: [
+    R`Dạng $\dfrac00$, có căn: nhân tử và mẫu với $\sqrt{x+4}+2$.`,
+    R`$\dfrac{(x+4)-4}{x\left(\sqrt{x+4}+2\right)}=\dfrac{1}{\sqrt{x+4}+2}$ (với $x\ne0$).`,
+    R`Giới hạn bằng $\dfrac1{2+2}=\dfrac14$.`
+   ] },
+ { muc: "VD", de: R`Tính $\lim\limits_{x\to+\infty}\dfrac{2x^2-x+1}{x^2+3}$ và $\lim\limits_{x\to-\infty}\dfrac{\sqrt{x^2+1}}{x-1}$.`,
+   giai: [
+    R`Chia cho $x^2$: $\dfrac{2-\frac1x+\frac1{x^2}}{1+\frac3{x^2}}\to2$.`,
+    R`Khi $x<0$: $\sqrt{x^2+1}=|x|\sqrt{1+\frac1{x^2}}=-x\sqrt{1+\frac1{x^2}}$.`,
+    R`$\dfrac{-x\sqrt{1+\frac1{x^2}}}{x\left(1-\frac1x\right)}=\dfrac{-\sqrt{1+\frac1{x^2}}}{1-\frac1x}\to-1$.`
+   ] },
+ { muc: "VD", de: R`Chi phí trung bình để sản xuất mỗi sản phẩm khi làm $x$ sản phẩm là $C(x)=\dfrac{200+5x}{x}$ (nghìn đồng). Tính $\lim\limits_{x\to+\infty}C(x)$ và nêu ý nghĩa.`,
+   giai: [
+    R`$C(x)=\dfrac{200}x+5\to0+5=5$.`,
+    R`**Ý nghĩa.** Khi sản xuất rất nhiều sản phẩm, chi phí trung bình mỗi sản phẩm tiến gần đến $5$ nghìn đồng (chi phí cố định $200$ nghìn được chia nhỏ dần).`
+   ] }
+ ] },
+"C5-B16-D21": {
+ pp: [
+  R`**Giới hạn một phía:** $\lim\limits_{x\to x_0^+}$ (với $x>x_0$), $\lim\limits_{x\to x_0^-}$ (với $x<x_0$). Hàm có nhiều công thức: mỗi phía dùng công thức của phía đó.`,
+  R`$\lim\limits_{x\to x_0}f(x)=L\Leftrightarrow\lim\limits_{x\to x_0^+}f(x)=\lim\limits_{x\to x_0^-}f(x)=L$.`,
+  R`**Giới hạn vô cực dạng $\dfrac{L}{0}$** ($L\ne0$): xét dấu của mẫu khi $x$ dần tới $x_0$ từ phía đang xét; cùng dấu với $L$ thì $+\infty$, trái dấu thì $-\infty$.`,
+  R`**Đa thức khi $x\to\pm\infty$:** có cùng giới hạn với hạng tử bậc cao nhất.`
+ ],
+ luuY: [
+  R`Xét dấu mẫu sai khi $x\to x_0^-$ (ví dụ $x\to2^-$ thì $x-2<0$).`
+ ],
+ vd: [
+ { muc: "NB", de: R`Cho $f(x)=\begin{cases}2x&\text{khi }x<1\\x+2&\text{khi }x\ge1\end{cases}$. Tính các giới hạn một phía tại $x=1$. Hàm số có giới hạn tại $x=1$ không?`,
+   giai: [
+    R`$\lim\limits_{x\to1^-}f(x)=\lim\limits_{x\to1^-}2x=2$.`,
+    R`$\lim\limits_{x\to1^+}f(x)=\lim\limits_{x\to1^+}(x+2)=3$.`,
+    R`$2\ne3$ nên hàm số **không** có giới hạn tại $x=1$ (đồ thị bị "nhảy").`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=0.9,>=stealth]
+\draw[->] (-1,0)--(3,0) node[below]{$x$};
+\draw[->] (0,-1.2)--(0,5) node[left]{$y$};
+\draw[thick,blue] (-0.6,-1.2)--(1,2);
+\draw[thick,blue] (1,3)--(2.5,4.5);
+\draw[blue] (1,2) circle (2.5pt);
+\fill[blue] (1,3) circle (2.5pt);
+\draw[dashed] (1,0)--(1,3); \draw[dashed] (0,2)--(1,2); \draw[dashed] (0,3)--(1,3);
+\node[below] at (1,0){$1$}; \node[left] at (0,2){$2$}; \node[left] at (0,3){$3$};
+\node[below right] at (0,0){$O$};
+\end{tikzpicture}`,
+   chuThich: R`Bên trái $x=1$ đồ thị tiến tới độ cao $2$, bên phải bắt đầu từ độ cao $3$.` },
+ { muc: "TH", de: R`Tính $\lim\limits_{x\to2^+}\dfrac{x+1}{x-2}$ và $\lim\limits_{x\to2^-}\dfrac{x+1}{x-2}$.`,
+   giai: [
+    R`Tử: $x+1\to3>0$. Mẫu: $x-2\to0$.`,
+    R`Khi $x\to2^+$: $x-2>0$, nên giới hạn là $+\infty$.`,
+    R`Khi $x\to2^-$: $x-2<0$, nên giới hạn là $-\infty$.`
+   ] },
+ { muc: "TH", de: R`Tính $\lim\limits_{x\to+\infty}(x^3-2x^2+1)$ và $\lim\limits_{x\to-\infty}(x^3-2x^2+1)$.`,
+   giai: [
+    R`$x^3-2x^2+1=x^3\left(1-\dfrac2x+\dfrac1{x^3}\right)$, trong ngoặc dần tới $1$.`,
+    R`$x\to+\infty$: $x^3\to+\infty$, giới hạn là $+\infty$. $x\to-\infty$: $x^3\to-\infty$, giới hạn là $-\infty$.`
+   ] },
+ { muc: "VD", de: R`Tìm $m$ để hàm số $f(x)=\begin{cases}x^2+m&\text{khi }x<1\\2x+1&\text{khi }x\ge1\end{cases}$ có giới hạn tại $x=1$.`,
+   giai: [
+    R`$\lim\limits_{x\to1^-}f(x)=1+m$; $\lim\limits_{x\to1^+}f(x)=3$.`,
+    R`Có giới hạn $\Leftrightarrow1+m=3\Leftrightarrow m=2$.`
+   ] }
+ ] },
+"C5-B17-D22": {
+ pp: [
+  R`$f$ **liên tục tại $x_0$** $\Leftrightarrow$ $f$ xác định tại $x_0$ và $\lim\limits_{x\to x_0}f(x)=f(x_0)$.`,
+  R`Hàm đa thức, phân thức, lượng giác, căn thức liên tục trên từng khoảng của tập xác định. Hàm nhiều công thức: chỉ cần kiểm tra tại các điểm "nối".`,
+  R`**Tìm tham số để liên tục:** tính giới hạn (hoặc hai giới hạn một phía) tại điểm nối, cho bằng giá trị hàm số tại đó.`,
+  R`**Chứng minh phương trình có nghiệm:** nếu $f$ liên tục trên $[a;b]$ và $f(a)\cdot f(b)<0$ thì phương trình $f(x)=0$ có ít nhất một nghiệm trong $(a;b)$.`
+ ],
+ luuY: [
+  R`Quên kiểm tra $f$ xác định tại $x_0$, hoặc chỉ tính một phía.`,
+  R`Dùng định lí nghiệm khi hàm không liên tục trên đoạn (ví dụ có mẫu bằng $0$ trong đoạn).`
+ ],
+ vd: [
+ { muc: "TH", de: R`Xét tính liên tục tại $x=2$ của $f(x)=\begin{cases}\dfrac{x^2-4}{x-2}&\text{khi }x\ne2\\4&\text{khi }x=2\end{cases}$.`,
+   giai: [
+    R`$f(2)=4$.`,
+    R`$\lim\limits_{x\to2}\dfrac{(x-2)(x+2)}{x-2}=\lim\limits_{x\to2}(x+2)=4$.`,
+    R`Giới hạn bằng $f(2)$ nên $f$ liên tục tại $x=2$.`
+   ] },
+ { muc: "TH", de: R`Tìm $m$ để $f(x)=\begin{cases}\dfrac{x^2-1}{x-1}&\text{khi }x\ne1\\m&\text{khi }x=1\end{cases}$ liên tục tại $x=1$.`,
+   giai: [
+    R`$\lim\limits_{x\to1}\dfrac{(x-1)(x+1)}{x-1}=\lim\limits_{x\to1}(x+1)=2$.`,
+    R`Liên tục tại $1\Leftrightarrow f(1)=2\Leftrightarrow m=2$.`
+   ] },
+ { muc: "VD", de: R`Chứng minh phương trình $x^3-3x+1=0$ có đúng ba nghiệm phân biệt thuộc khoảng $(-2;2)$.`,
+   giai: [
+    R`$f(x)=x^3-3x+1$ là đa thức nên liên tục trên $\mathbb R$.`,
+    R`$f(-2)=-1$, $f(0)=1$, $f(1)=-1$, $f(2)=3$.`,
+    R`$f(-2)f(0)<0$: có nghiệm trong $(-2;0)$; $f(0)f(1)<0$: có nghiệm trong $(0;1)$; $f(1)f(2)<0$: có nghiệm trong $(1;2)$. Ba khoảng rời nhau nên có ít nhất ba nghiệm phân biệt.`,
+    R`Phương trình bậc ba có không quá ba nghiệm, nên có **đúng ba** nghiệm phân biệt trong $(-2;2)$.`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=0.8,>=stealth]
+\draw[->] (-2.6,0)--(2.7,0) node[below]{$x$};
+\draw[->] (0,-1.8)--(0,3.6) node[left]{$y$};
+\draw[thick,blue,domain=-2.1:2.05,samples=100] plot(\x,{\x*\x*\x-3*\x+1});
+\fill (-2,-1) circle (2pt); \fill (0,1) circle (2pt); \fill (1,-1) circle (2pt); \fill (2,3) circle (2pt);
+\draw[dashed] (-2,0)--(-2,-1); \draw[dashed] (1,0)--(1,-1); \draw[dashed] (2,0)--(2,3);
+\node[above left] at (-2,0){$-2$}; \node[above] at (1,0){$1$}; \node[below right] at (2,0){$2$};
+\node[below left] at (0,0){$O$};
+\end{tikzpicture}`,
+   chuThich: R`Đồ thị đổi dấu ba lần nên cắt trục hoành tại ba điểm.` },
+ { muc: "NB", de: R`Hàm số $f(x)=\dfrac{1}{x-1}$ liên tục trên những khoảng nào?`,
+   giai: [
+    R`Tập xác định $D=\mathbb R\setminus\{1\}$. Hàm phân thức liên tục trên từng khoảng của tập xác định.`,
+    R`**Kết luận.** $f$ liên tục trên $(-\infty;1)$ và $(1;+\infty)$.`
+   ] }
+ ] }
+});
 })(window);
