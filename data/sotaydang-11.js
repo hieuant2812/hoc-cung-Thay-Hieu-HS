@@ -1465,4 +1465,186 @@ Object.assign(D, {
    ] }
  ] }
 });
+/* ---------- Chương IX · Đạo hàm ---------- */
+Object.assign(D, {
+"C9-B31-D37": {
+ pp: [
+  R`**Định nghĩa:** $f'(x_0)=\lim\limits_{x\to x_0}\dfrac{f(x)-f(x_0)}{x-x_0}$ (nếu giới hạn tồn tại, hữu hạn).`,
+  R`**Cách tính bằng định nghĩa:** lập tỉ số $\dfrac{f(x)-f(x_0)}{x-x_0}$, rút gọn để khử dạng $\dfrac00$, rồi tính giới hạn.`,
+  R`**Ý nghĩa hình học:** $f'(x_0)$ là hệ số góc của tiếp tuyến của đồ thị tại điểm $(x_0;f(x_0))$.`,
+  R`**Ý nghĩa vật lí:** nếu $s(t)$ là quãng đường (toạ độ) thì $v(t_0)=s'(t_0)$ là vận tốc tức thời tại thời điểm $t_0$.`
+ ],
+ luuY: [
+  R`Thay $x_0$ vào ngay tỉ số được $\dfrac00$ rồi kết luận không có đạo hàm.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Dùng định nghĩa, tính đạo hàm của $f(x)=x^2$ tại $x_0=3$.`,
+   giai: [
+    R`$\dfrac{f(x)-f(3)}{x-3}=\dfrac{x^2-9}{x-3}=x+3$ (với $x\ne3$).`,
+    R`$f'(3)=\lim\limits_{x\to3}(x+3)=6$.`
+   ] },
+ { muc: "TH", de: R`Dùng định nghĩa, tính đạo hàm của $f(x)=\dfrac1x$ tại $x_0=2$.`,
+   giai: [
+    R`$f(x)-f(2)=\dfrac1x-\dfrac12=\dfrac{2-x}{2x}$.`,
+    R`$\dfrac{f(x)-f(2)}{x-2}=\dfrac{2-x}{2x(x-2)}=-\dfrac1{2x}$ (với $x\ne2$).`,
+    R`$f'(2)=\lim\limits_{x\to2}\left(-\dfrac1{2x}\right)=-\dfrac14$.`
+   ] },
+ { muc: "TH", de: R`Một vật rơi tự do có quãng đường $s(t)=5t^2$ (m), $t$ tính bằng giây. Tính vận tốc tức thời của vật tại $t=2$.`,
+   giai: [
+    R`$\dfrac{s(t)-s(2)}{t-2}=\dfrac{5t^2-20}{t-2}=5(t+2)$ (với $t\ne2$).`,
+    R`$v(2)=s'(2)=\lim\limits_{t\to2}5(t+2)=20$ (m/s).`
+   ] },
+ { muc: "VD", de: R`Tìm hệ số góc của tiếp tuyến của đồ thị $y=x^3$ tại điểm có hoành độ $x_0=1$.`,
+   giai: [
+    R`$\dfrac{x^3-1}{x-1}=x^2+x+1$ (với $x\ne1$).`,
+    R`$y'(1)=\lim\limits_{x\to1}(x^2+x+1)=3$. Hệ số góc tiếp tuyến bằng $3$.`
+   ] }
+ ] },
+"C9-B32-D38": {
+ pp: [
+  R`**Bảng đạo hàm:** $(c)'=0$; $(x^n)'=nx^{n-1}$; $\left(\dfrac1x\right)'=-\dfrac1{x^2}$; $(\sqrt x)'=\dfrac1{2\sqrt x}$.`,
+  R`**Quy tắc:** $(u\pm v)'=u'\pm v'$; $(uv)'=u'v+uv'$; $(ku)'=ku'$; $\left(\dfrac uv\right)'=\dfrac{u'v-uv'}{v^2}$.`,
+  R`**Hàm hợp:** $(u^n)'=n\,u^{n-1}\cdot u'$; $(\sqrt u)'=\dfrac{u'}{2\sqrt u}$; $\left(\dfrac1u\right)'=-\dfrac{u'}{u^2}$.`,
+  R`Với phân thức bậc nhất trên bậc nhất: $\left(\dfrac{ax+b}{cx+d}\right)'=\dfrac{ad-bc}{(cx+d)^2}$.`
+ ],
+ luuY: [
+  R`$(uv)'\ne u'v'$; $\left(\dfrac uv\right)'$ có dấu **trừ** ở tử theo thứ tự $u'v-uv'$.`,
+  R`Quên nhân $u'$ khi đạo hàm hàm hợp.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Tính đạo hàm của $y=x^3-2x^2+5x-1$.`,
+   giai: [
+    R`$y'=3x^2-4x+5$.`
+   ] },
+ { muc: "TH", de: R`Tính đạo hàm của $y=\dfrac{2x+1}{x-1}$.`,
+   giai: [
+    R`$y'=\dfrac{(2x+1)'(x-1)-(2x+1)(x-1)'}{(x-1)^2}=\dfrac{2(x-1)-(2x+1)}{(x-1)^2}$.`,
+    R`$=\dfrac{-3}{(x-1)^2}$. (Kiểm tra bằng công thức nhanh: $ad-bc=2\cdot(-1)-1\cdot1=-3$ ✓.)`
+   ] },
+ { muc: "TH", de: R`Tính đạo hàm của $y=\sqrt{x^2+1}$.`,
+   giai: [
+    R`$u=x^2+1$, $u'=2x$.`,
+    R`$y'=\dfrac{2x}{2\sqrt{x^2+1}}=\dfrac{x}{\sqrt{x^2+1}}$.`
+   ] },
+ { muc: "VD", de: R`Tính đạo hàm của $y=(x^2-3x)^5$.`,
+   giai: [
+    R`$u=x^2-3x$, $u'=2x-3$.`,
+    R`$y'=5(x^2-3x)^4\cdot(2x-3)$.`
+   ] },
+ { muc: "VD", de: R`Tính đạo hàm của $y=x\sqrt{1-x}$ trên $(-\infty;1)$.`,
+   giai: [
+    R`$y'=(x)'\sqrt{1-x}+x\left(\sqrt{1-x}\right)'=\sqrt{1-x}+x\cdot\dfrac{-1}{2\sqrt{1-x}}$.`,
+    R`Quy đồng: $y'=\dfrac{2(1-x)-x}{2\sqrt{1-x}}=\dfrac{2-3x}{2\sqrt{1-x}}$.`
+   ] }
+ ] },
+"C9-B32-D39": {
+ pp: [
+  R`**Lượng giác:** $(\sin x)'=\cos x$; $(\cos x)'=-\sin x$; $(\tan x)'=\dfrac1{\cos^2x}$; $(\cot x)'=-\dfrac1{\sin^2x}$.`,
+  R`**Mũ, lôgarit:** $(e^x)'=e^x$; $(a^x)'=a^x\ln a$; $(\ln x)'=\dfrac1x$; $(\log_ax)'=\dfrac1{x\ln a}$.`,
+  R`**Hàm hợp:** $(\sin u)'=u'\cos u$; $(\cos u)'=-u'\sin u$; $(\tan u)'=\dfrac{u'}{\cos^2u}$; $(e^u)'=u'e^u$; $(a^u)'=u'a^u\ln a$; $(\ln u)'=\dfrac{u'}u$.`
+ ],
+ luuY: [
+  R`Sai dấu: $(\cos x)'=-\sin x$.`,
+  R`$(a^x)'$ phải **nhân** $\ln a$ (khác với nguyên hàm phải chia).`
+ ],
+ vd: [
+ { muc: "NB", de: R`Tính đạo hàm của $y=2\sin x-3\cos x$.`,
+   giai: [
+    R`$y'=2\cos x-3(-\sin x)=2\cos x+3\sin x$.`
+   ] },
+ { muc: "TH", de: R`Tính đạo hàm của $y=\sin\left(3x-\dfrac\pi4\right)$ và $y=\cos^2x$.`,
+   giai: [
+    R`$y=\sin u$ với $u=3x-\dfrac\pi4$, $u'=3$: $y'=3\cos\left(3x-\dfrac\pi4\right)$.`,
+    R`$y=u^2$ với $u=\cos x$: $y'=2\cos x\cdot(-\sin x)=-2\sin x\cos x=-\sin2x$.`
+   ] },
+ { muc: "TH", de: R`Tính đạo hàm của $y=e^{2x+1}$ và $y=\ln(x^2+1)$.`,
+   giai: [
+    R`$y'=(2x+1)'e^{2x+1}=2e^{2x+1}$.`,
+    R`$y'=\dfrac{(x^2+1)'}{x^2+1}=\dfrac{2x}{x^2+1}$.`
+   ] },
+ { muc: "VD", de: R`Tính đạo hàm của $y=x\,e^x$ và $y=\log_2(3x)$ (với $x>0$).`,
+   giai: [
+    R`$y'=1\cdot e^x+x\,e^x=(x+1)e^x$.`,
+    R`$y'=\dfrac{(3x)'}{3x\ln2}=\dfrac{3}{3x\ln2}=\dfrac1{x\ln2}$.`
+   ] },
+ { muc: "VD", de: R`Tính đạo hàm của $y=\tan(x^2)$.`,
+   giai: [
+    R`$u=x^2$, $u'=2x$: $y'=\dfrac{2x}{\cos^2(x^2)}$.`
+   ] }
+ ] },
+"C9-B32-D40": {
+ pp: [
+  R`**Tiếp tuyến tại $M(x_0;y_0)$** thuộc đồ thị $y=f(x)$: $y=f'(x_0)(x-x_0)+y_0$.`,
+  R`**Biết hoành độ $x_0$:** tính $y_0=f(x_0)$ và $f'(x_0)$. **Biết tung độ $y_0$:** giải $f(x_0)=y_0$ tìm $x_0$.`,
+  R`**Biết hệ số góc $k$:** giải $f'(x_0)=k$ tìm $x_0$. Tiếp tuyến song song với $y=ax+b$: $k=a$ (loại trường hợp trùng); vuông góc với $y=ax+b$ ($a\ne0$): $k=-\dfrac1a$.`
+ ],
+ luuY: [
+  R`Viết $y=f'(x)(x-x_0)+y_0$ (phải thay số $f'(x_0)$).`,
+  R`Bài "song song" quên kiểm tra tiếp tuyến tìm được có trùng với đường thẳng đã cho không.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Viết phương trình tiếp tuyến của đồ thị $y=x^3-3x+1$ tại điểm có hoành độ $x_0=2$.`,
+   giai: [
+    R`$y_0=8-6+1=3$. $y'=3x^2-3$, $y'(2)=9$.`,
+    R`Tiếp tuyến: $y=9(x-2)+3\Leftrightarrow y=9x-15$.`
+   ] },
+ { muc: "TH", de: R`Viết phương trình tiếp tuyến của đồ thị $y=x^2-4x+3$, biết tiếp tuyến song song với đường thẳng $y=2x+5$.`,
+   giai: [
+    R`Hệ số góc $k=2$: $y'(x_0)=2x_0-4=2\Leftrightarrow x_0=3$; $y_0=9-12+3=0$.`,
+    R`Tiếp tuyến: $y=2(x-3)+0=2x-6$. Khác $y=2x+5$ nên thoả mãn.`
+   ] },
+ { muc: "VD", de: R`Viết phương trình tiếp tuyến của đồ thị $y=\dfrac{2x+1}{x-1}$ tại giao điểm của đồ thị với trục tung.`,
+   giai: [
+    R`Giao với trục tung: $x_0=0$, $y_0=\dfrac{1}{-1}=-1$.`,
+    R`$y'=\dfrac{-3}{(x-1)^2}$, $y'(0)=-3$.`,
+    R`Tiếp tuyến: $y=-3(x-0)-1\Leftrightarrow y=-3x-1$.`
+   ] },
+ { muc: "TH", de: R`Viết phương trình tiếp tuyến của parabol $y=x^2$ tại điểm $M(1;1)$ và vẽ hình.`,
+   giai: [
+    R`$y'=2x$, $y'(1)=2$.`,
+    R`Tiếp tuyến: $y=2(x-1)+1\Leftrightarrow y=2x-1$.`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=0.9,>=stealth]
+\draw[->] (-2,0)--(2.6,0) node[below]{$x$};
+\draw[->] (0,-1.6)--(0,4.4) node[left]{$y$};
+\draw[thick,blue,domain=-2:2,samples=80] plot(\x,{\x*\x});
+\draw[thick,red] (-0.3,-1.6)--(2.5,4);
+\fill (1,1) circle (2pt) node[below right]{$M(1;1)$};
+\node[below left] at (0,0){$O$};
+\node[right] at (2.5,4){$y=2x-1$};
+\end{tikzpicture}`,
+   chuThich: R`Tiếp tuyến (đỏ) chạm parabol tại đúng một điểm $M$.` }
+ ] },
+"C9-B33-D41": {
+ pp: [
+  R`**Đạo hàm cấp hai:** $f''(x)=\big(f'(x)\big)'$. Tính $f'$ trước, rồi đạo hàm thêm một lần.`,
+  R`**Ý nghĩa cơ học:** nếu $s(t)$ là phương trình chuyển động thì $v(t)=s'(t)$ là vận tốc, $a(t)=v'(t)=s''(t)$ là **gia tốc tức thời**.`
+ ],
+ luuY: [
+  R`Đạo hàm cấp hai không phải là bình phương của đạo hàm cấp một.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Tính $y''$ của $y=x^4-3x^2+2$.`,
+   giai: [
+    R`$y'=4x^3-6x$.`,
+    R`$y''=12x^2-6$.`
+   ] },
+ { muc: "TH", de: R`Cho $y=\sin2x$. Chứng minh $y''+4y=0$.`,
+   giai: [
+    R`$y'=2\cos2x$; $y''=2\cdot(-2\sin2x)=-4\sin2x$.`,
+    R`$y''+4y=-4\sin2x+4\sin2x=0$.`
+   ] },
+ { muc: "TH", de: R`Tính đạo hàm cấp hai của $y=\ln x$ và $y=e^{-x}$.`,
+   giai: [
+    R`$y=\ln x$: $y'=\dfrac1x$, $y''=-\dfrac1{x^2}$.`,
+    R`$y=e^{-x}$: $y'=-e^{-x}$, $y''=e^{-x}$.`
+   ] },
+ { muc: "VD", de: R`Một chất điểm chuyển động theo phương trình $s(t)=t^3-6t^2+9t$ (m), $t$ tính bằng giây. Tính vận tốc và gia tốc tại $t=3$. Tại thời điểm gia tốc bằng $0$, vận tốc là bao nhiêu?`,
+   giai: [
+    R`$v(t)=s'(t)=3t^2-12t+9$; $a(t)=v'(t)=6t-12$.`,
+    R`Tại $t=3$: $v(3)=27-36+9=0$ (m/s), $a(3)=6$ (m/s²).`,
+    R`$a(t)=0\Leftrightarrow t=2$; $v(2)=12-24+9=-3$ (m/s) (chất điểm đang chuyển động theo chiều âm).`
+   ] }
+ ] }
+});
 })(window);
