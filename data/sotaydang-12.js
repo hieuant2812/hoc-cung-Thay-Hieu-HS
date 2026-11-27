@@ -3091,26 +3091,34 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Gieo một con xúc xắc cân đối. Gọi $A$: "số chấm là số chẵn", $B$: "số chấm lớn hơn $3$". Tính $P(A\mid B)$.`,
    giai: [
-    R`$B=\{4;5;6\}$, $n(B)=3$.`,
-    R`$AB=\{4;6\}$, $n(AB)=2$.`,
-    R`$P(A\mid B)=\dfrac{n(AB)}{n(B)}=\dfrac23$.`
+    R`**Phân tích.** $P(A\mid B)$ là xác suất của $A$ **khi đã biết $B$ xảy ra**: không gian mẫu thu hẹp lại thành $B$. Với các kết quả đồng khả năng, $P(A\mid B)=\dfrac{n(AB)}{n(B)}$.`,
+    R`**Bước 1.** $B=\{4;5;6\}$, $n(B)=3$.`,
+    R`**Bước 2.** $AB=\{4;6\}$, $n(AB)=2$.`,
+    R`**Bước 3.** $P(A\mid B)=\dfrac{n(AB)}{n(B)}=\dfrac23$.`,
+    R`**Nhận xét.** Không có điều kiện thì $P(A)=\dfrac12$; biết số chấm lớn hơn $3$ thì xác suất chẵn tăng lên $\dfrac23$.`
    ] },
  { muc: "TH", de: R`Một hộp có $5$ viên bi đỏ và $3$ viên bi xanh. Lấy lần lượt hai viên, không hoàn lại. Biết lần thứ nhất lấy được bi đỏ, tính xác suất lần thứ hai cũng lấy được bi đỏ.`,
    giai: [
-    R`Sau khi lấy một bi đỏ, hộp còn $4$ đỏ và $3$ xanh, tổng $7$ viên.`,
-    R`Xác suất cần tìm: $P=\dfrac47$.`
+    R`**Phân tích.** "Biết lần thứ nhất lấy được bi đỏ" là điều kiện. Cập nhật lại hộp sau lần lấy thứ nhất, rồi tính xác suất lần hai trên hộp mới.`,
+    R`**Bước 1.** Sau khi lấy một bi đỏ, hộp còn $4$ đỏ và $3$ xanh, tổng $7$ viên.`,
+    R`**Bước 2.** Xác suất cần tìm: $P=\dfrac47$.`,
+    R`**Kết luận.** Xác suất lần thứ hai cũng được bi đỏ là $\dfrac47$.`
    ] },
  { muc: "TH", de: R`Cho $P(A)=0{,}6$, $P(B)=0{,}4$, $P(A\cup B)=0{,}7$. Tính $P(A\mid B)$ và $P(B\mid A)$.`,
    giai: [
-    R`$P(AB)=P(A)+P(B)-P(A\cup B)=0{,}6+0{,}4-0{,}7=0{,}3$.`,
-    R`$P(A\mid B)=\dfrac{0{,}3}{0{,}4}=0{,}75$.`,
-    R`$P(B\mid A)=\dfrac{0{,}3}{0{,}6}=0{,}5$. (Hai kết quả khác nhau.)`
+    R`**Phân tích.** Dùng công thức $P(A\mid B)=\dfrac{P(AB)}{P(B)}$. Chưa có $P(AB)$ nên tìm từ công thức cộng xác suất.`,
+    R`**Bước 1.** $P(AB)=P(A)+P(B)-P(A\cup B)=0{,}6+0{,}4-0{,}7=0{,}3$.`,
+    R`**Bước 2.** $P(A\mid B)=\dfrac{0{,}3}{0{,}4}=0{,}75$.`,
+    R`**Bước 3.** $P(B\mid A)=\dfrac{0{,}3}{0{,}6}=0{,}5$. (Hai kết quả khác nhau.)`,
+    R`**Kết luận.** $P(A\mid B)=0{,}75$; $P(B\mid A)=0{,}5$.`
    ] },
  { muc: "VD", de: R`Gieo hai con xúc xắc cân đối. Biết tổng số chấm bằng $8$, tính xác suất có ít nhất một con xuất hiện mặt $6$ chấm.`,
    giai: [
-    R`$B$: "tổng bằng $8$" $=\{(2;6),(3;5),(4;4),(5;3),(6;2)\}$, $n(B)=5$.`,
-    R`Trong $B$, các kết quả có mặt $6$: $(2;6)$, $(6;2)$, nên $n(AB)=2$.`,
-    R`$P(A\mid B)=\dfrac25$.`
+    R`**Phân tích.** Liệt kê các kết quả của biến cố điều kiện $B$ ("tổng bằng $8$"), rồi đếm trong đó các kết quả thuận lợi cho $A$.`,
+    R`**Bước 1.** $B$: "tổng bằng $8$" $=\{(2;6),(3;5),(4;4),(5;3),(6;2)\}$, $n(B)=5$.`,
+    R`**Bước 2.** Trong $B$, các kết quả có mặt $6$: $(2;6)$, $(6;2)$, nên $n(AB)=2$.`,
+    R`**Bước 3.** $P(A\mid B)=\dfrac25$.`,
+    R`**Kết luận.** $P(A\mid B)=\dfrac25$.`
    ] }
  ] },
 "C6-B18-D02": {
@@ -3128,23 +3136,28 @@ Object.assign(D, {
 $$\begin{array}{|c|c|c|c|}\hline &\text{Thích Toán}&\text{Không thích}&\text{Tổng}\\\hline \text{Nam}&60&40&100\\\hline \text{Nữ}&50&50&100\\\hline \text{Tổng}&110&90&200\\\hline\end{array}$$
 Chọn ngẫu nhiên một học sinh. Tính xác suất học sinh đó thích Toán, biết đó là nam; và xác suất học sinh đó là nam, biết học sinh đó thích Toán.`,
    giai: [
-    R`Gọi $T$: "thích Toán", $N$: "là nam". $n(N)=100$, $n(TN)=60$.`,
-    R`$P(T\mid N)=\dfrac{60}{100}=0{,}6$.`,
-    R`$n(T)=110$, nên $P(N\mid T)=\dfrac{60}{110}=\dfrac6{11}\approx0{,}545$.`
+    R`**Phân tích.** Với bảng thống kê, $P(A\mid B)$ là **tỉ lệ của $A$ trong dòng (hoặc cột) $B$**. Đọc đúng dòng hoặc cột ứng với điều kiện.`,
+    R`**Bước 1.** Gọi $T$: "thích Toán", $N$: "là nam". $n(N)=100$, $n(TN)=60$.`,
+    R`**Bước 2.** $P(T\mid N)=\dfrac{60}{100}=0{,}6$.`,
+    R`**Bước 3.** $n(T)=110$, nên $P(N\mid T)=\dfrac{60}{110}=\dfrac6{11}\approx0{,}545$.`,
+    R`**Kết luận.** $P(T\mid N)=0{,}6$; $P(N\mid T)=\dfrac6{11}\approx0{,}545$.`
    ] },
  { muc: "TH", de: R`Với bảng ở ví dụ 1, hai biến cố "thích Toán" và "là nam" có độc lập không?`,
    giai: [
-    R`$P(T)=\dfrac{110}{200}=0{,}55$; $P(T\mid N)=0{,}6$.`,
-    R`$P(T\mid N)\ne P(T)$, nên $T$ và $N$ **không** độc lập.`,
-    R`Cách khác: $P(TN)=\dfrac{60}{200}=0{,}3$, còn $P(T)\cdot P(N)=0{,}55\cdot0{,}5=0{,}275\ne0{,}3$.`
+    R`**Phân tích.** $A$, $B$ độc lập khi $P(A\mid B)=P(A)$, tương đương $P(AB)=P(A)\cdot P(B)$. So sánh hai số đó.`,
+    R`**Bước 1.** $P(T)=\dfrac{110}{200}=0{,}55$; $P(T\mid N)=0{,}6$.`,
+    R`**Bước 2.** $P(T\mid N)\ne P(T)$, nên $T$ và $N$ **không** độc lập.`,
+    R`**Bước 3.** Cách khác: $P(TN)=\dfrac{60}{200}=0{,}3$, còn $P(T)\cdot P(N)=0{,}55\cdot0{,}5=0{,}275\ne0{,}3$.`,
+    R`**Kết luận.** Hai biến cố "thích Toán" và "là nam" **không** độc lập.`
    ] },
  { muc: "VD", de: R`Một khảo sát khác có bảng sau ($x$ chưa biết):
 $$\begin{array}{|c|c|c|}\hline &\text{Thích}&\text{Không thích}\\\hline \text{Nam}&30&20\\\hline \text{Nữ}&x&30\\\hline\end{array}$$
 Tìm $x$ để hai biến cố "thích" và "là nam" độc lập.`,
    giai: [
-    R`Độc lập khi tỉ lệ "thích" ở nam bằng tỉ lệ "thích" ở nữ: $\dfrac{30}{50}=\dfrac{x}{x+30}$.`,
-    R`$0{,}6(x+30)=x\Leftrightarrow0{,}6x+18=x\Leftrightarrow0{,}4x=18\Leftrightarrow x=45$.`,
-    R`Thử lại: tổng $125$ người, $75$ người thích; $P(\text{thích})=\dfrac{75}{125}=0{,}6=P(\text{thích}\mid\text{nam})$ ✓.`
+    R`**Phân tích.** Độc lập nghĩa là tỉ lệ "thích" không phụ thuộc giới tính: tỉ lệ ở nam bằng tỉ lệ ở nữ. Lập phương trình theo $x$.`,
+    R`**Bước 1.** Độc lập khi tỉ lệ "thích" ở nam bằng tỉ lệ "thích" ở nữ: $\dfrac{30}{50}=\dfrac{x}{x+30}$.`,
+    R`**Bước 2.** $0{,}6(x+30)=x\Leftrightarrow0{,}6x+18=x\Leftrightarrow0{,}4x=18\Leftrightarrow x=45$.`,
+    R`**Thử lại.** tổng $125$ người, $75$ người thích; $P(\text{thích})=\dfrac{75}{125}=0{,}6=P(\text{thích}\mid\text{nam})$ ✓.`
    ] }
  ] },
 "C6-B18-D03": {
@@ -3160,22 +3173,39 @@ Tìm $x$ để hai biến cố "thích" và "là nam" độc lập.`,
  vd: [
  { muc: "TH", de: R`Hộp có $6$ bi đỏ và $4$ bi xanh. Lấy lần lượt hai viên không hoàn lại. Tính xác suất cả hai viên đều đỏ.`,
    giai: [
-    R`$A$: "lần 1 đỏ", $B$: "lần 2 đỏ". $P(A)=\dfrac6{10}$.`,
-    R`Biết lần 1 đỏ, còn $5$ đỏ trong $9$ viên: $P(B\mid A)=\dfrac59$.`,
-    R`$P(AB)=\dfrac6{10}\cdot\dfrac59=\dfrac{30}{90}=\dfrac13$.`
+    R`**Phân tích.** Lấy lần lượt không hoàn lại: dùng **công thức nhân** $P(AB)=P(A)\cdot P(B\mid A)$, với $P(B\mid A)$ tính trên hộp sau lần lấy thứ nhất.`,
+    R`**Bước 1.** $A$: "lần 1 đỏ", $B$: "lần 2 đỏ". $P(A)=\dfrac6{10}$.`,
+    R`**Bước 2.** Biết lần 1 đỏ, còn $5$ đỏ trong $9$ viên: $P(B\mid A)=\dfrac59$.`,
+    R`**Bước 3.** $P(AB)=\dfrac6{10}\cdot\dfrac59=\dfrac{30}{90}=\dfrac13$.`,
+    R`**Kết luận.** Xác suất cả hai viên đều đỏ là $\dfrac13$.`
    ] },
  { muc: "TH", de: R`Xác suất một học sinh làm bài tập về nhà là $0{,}8$. Nếu đã làm bài tập thì xác suất đạt điểm giỏi trong bài kiểm tra là $0{,}7$. Tính xác suất học sinh đó làm bài tập và đạt điểm giỏi.`,
    giai: [
-    R`$P(L)=0{,}8$, $P(G\mid L)=0{,}7$.`,
-    R`$P(LG)=0{,}8\cdot0{,}7=0{,}56$.`
+    R`**Phân tích.** "Làm bài tập và đạt giỏi" là giao của hai biến cố; đề cho $P(L)$ và xác suất có điều kiện $P(G\mid L)$, nên dùng công thức nhân.`,
+    R`**Bước 1.** $P(L)=0{,}8$, $P(G\mid L)=0{,}7$.`,
+    R`**Bước 2.** $P(LG)=0{,}8\cdot0{,}7=0{,}56$.`,
+    R`**Kết luận.** Xác suất cần tìm là $0{,}56$.`
    ] },
  { muc: "VD", de: R`Một lớp có $60\%$ học sinh nữ. Tỉ lệ đeo kính ở học sinh nữ là $30\%$, ở học sinh nam là $20\%$. Chọn ngẫu nhiên một học sinh. Vẽ sơ đồ hình cây và tính xác suất chọn được: a) học sinh nữ đeo kính; b) học sinh nam không đeo kính.`,
    giai: [
-    R`Gọi $F$: "nữ", $K$: "đeo kính". $P(F)=0{,}6$, $P(\overline F)=0{,}4$; $P(K\mid F)=0{,}3$, $P(K\mid\overline F)=0{,}2$.`,
-    R`a) $P(FK)=0{,}6\cdot0{,}3=0{,}18$.`,
-    R`b) $P(\overline K\mid\overline F)=1-0{,}2=0{,}8$, nên $P(\overline F\,\overline K)=0{,}4\cdot0{,}8=0{,}32$.`
+    R`**Phân tích.** Bài có hai tầng phân loại (giới tính, rồi đeo kính): vẽ **sơ đồ hình cây**, mỗi nhánh ghi xác suất; xác suất của một đường đi bằng tích các xác suất trên nhánh.`,
+    R`**Bước 1.** Gọi $F$: "nữ", $K$: "đeo kính". $P(F)=0{,}6$, $P(\overline F)=0{,}4$; $P(K\mid F)=0{,}3$, $P(K\mid\overline F)=0{,}2$.`,
+    R`**Bước 2.** a) $P(FK)=0{,}6\cdot0{,}3=0{,}18$.`,
+    R`**Bước 3.** b) $P(\overline K\mid\overline F)=1-0{,}2=0{,}8$, nên $P(\overline F\,\overline K)=0{,}4\cdot0{,}8=0{,}32$.`,
+    R`**Kết luận.** a) $0{,}18$; b) $0{,}32$.`
    ],
-   hinh: CAY(["K", R`\overline K`], "F", R`\overline F`, "0{,}6", "0{,}4", ["0{,}3", "0{,}7"], "0{,}2", "0{,}8"),
+   hinh: R`\begin{tikzpicture}[scale=1]
+\draw (0,0)--(2.6,1.3) node[midway,above]{$0{,}6$};
+\draw (0,0)--(2.6,-1.3) node[midway,below]{$0{,}4$};
+\draw (3.2,1.3)--(5.8,2) node[midway,above]{$0{,}3$};
+\draw (3.2,1.3)--(5.8,0.6) node[midway,below]{$0{,}7$};
+\draw (3.2,-1.3)--(5.8,-0.6) node[midway,above]{$0{,}2$};
+\draw (3.2,-1.3)--(5.8,-2) node[midway,below]{$0{,}8$};
+\fill (0,0) circle (2pt);
+\node at (2.9,1.3){$F$}; \node at (2.9,-1.3){$\overline F$};
+\node[right] at (5.8,2){$K$}; \node[right] at (5.8,0.6){$\overline K$};
+\node[right] at (5.8,-0.6){$K$}; \node[right] at (5.8,-2){$\overline K$};
+\end{tikzpicture}`,
    chuThich: R`Mỗi đường đi từ gốc đến ngọn: nhân các số trên nhánh.` }
  ] },
 "C6-B19-D01": {
@@ -3190,21 +3220,39 @@ Tìm $x$ để hai biến cố "thích" và "là nam" độc lập.`,
  vd: [
  { muc: "TH", de: R`Với lớp học ở dạng trước ($60\%$ nữ; nữ đeo kính $30\%$, nam đeo kính $20\%$), tính xác suất chọn ngẫu nhiên được một học sinh đeo kính.`,
    giai: [
-    R`$P(K)=P(F)P(K\mid F)+P(\overline F)P(K\mid\overline F)$.`,
-    R`$=0{,}6\cdot0{,}3+0{,}4\cdot0{,}2=0{,}18+0{,}08=0{,}26$.`
+    R`**Phân tích.** Học sinh đeo kính có thể là nữ hoặc nam: hai trường hợp rời nhau, phủ hết. Dùng **công thức xác suất toàn phần** $P(K)=P(F)P(K\mid F)+P(\overline F)P(K\mid\overline F)$.`,
+    R`**Bước 1.** $P(K)=P(F)P(K\mid F)+P(\overline F)P(K\mid\overline F)$.`,
+    R`**Bước 2.** $=0{,}6\cdot0{,}3+0{,}4\cdot0{,}2=0{,}18+0{,}08=0{,}26$.`,
+    R`**Kết luận.** $P(K)=0{,}26$.`
    ] },
  { muc: "TH", de: R`Một nhà máy có hai máy. Máy I làm ra $60\%$ sản phẩm, tỉ lệ phế phẩm $2\%$; máy II làm ra $40\%$ sản phẩm, tỉ lệ phế phẩm $3\%$. Lấy ngẫu nhiên một sản phẩm. Tính xác suất đó là phế phẩm.`,
    giai: [
-    R`Gọi $M$: "do máy I làm", $H$: "là phế phẩm". $P(M)=0{,}6$, $P(H\mid M)=0{,}02$; $P(\overline M)=0{,}4$, $P(H\mid\overline M)=0{,}03$.`,
-    R`$P(H)=0{,}6\cdot0{,}02+0{,}4\cdot0{,}03=0{,}012+0{,}012=0{,}024$.`
+    R`**Phân tích.** Phế phẩm có thể do máy I hoặc máy II làm ra; cộng xác suất theo từng máy (xác suất toàn phần).`,
+    R`**Bước 1.** Gọi $M$: "do máy I làm", $H$: "là phế phẩm". $P(M)=0{,}6$, $P(H\mid M)=0{,}02$; $P(\overline M)=0{,}4$, $P(H\mid\overline M)=0{,}03$.`,
+    R`**Bước 2.** $P(H)=0{,}6\cdot0{,}02+0{,}4\cdot0{,}03=0{,}012+0{,}012=0{,}024$.`,
+    R`**Kết luận.** Xác suất lấy được phế phẩm là $0{,}024$.`
    ] },
  { muc: "VD", de: R`Hộp I có $3$ bi đỏ, $2$ bi xanh; hộp II có $4$ bi đỏ, $4$ bi xanh. Lấy ngẫu nhiên một bi từ hộp I bỏ vào hộp II, rồi lấy ngẫu nhiên một bi từ hộp II. Tính xác suất bi lấy ra từ hộp II là bi đỏ.`,
    giai: [
-    R`Gọi $B$: "bi chuyển sang là đỏ", $A$: "bi lấy từ hộp II là đỏ". $P(B)=\dfrac35$, $P(\overline B)=\dfrac25$.`,
-    R`Nếu chuyển bi đỏ, hộp II có $5$ đỏ, $4$ xanh: $P(A\mid B)=\dfrac59$. Nếu chuyển bi xanh, hộp II có $4$ đỏ, $5$ xanh: $P(A\mid\overline B)=\dfrac49$.`,
-    R`$P(A)=\dfrac35\cdot\dfrac59+\dfrac25\cdot\dfrac49=\dfrac{15}{45}+\dfrac8{45}=\dfrac{23}{45}$.`
+    R`**Phân tích.** Kết quả lần lấy thứ hai phụ thuộc bi chuyển sang là đỏ hay xanh. Chia hai trường hợp, tính hộp II sau khi chuyển, rồi dùng xác suất toàn phần.`,
+    R`**Bước 1.** Gọi $B$: "bi chuyển sang là đỏ", $A$: "bi lấy từ hộp II là đỏ". $P(B)=\dfrac35$, $P(\overline B)=\dfrac25$.`,
+    R`**Bước 2.** Nếu chuyển bi đỏ, hộp II có $5$ đỏ, $4$ xanh: $P(A\mid B)=\dfrac59$. Nếu chuyển bi xanh, hộp II có $4$ đỏ, $5$ xanh: $P(A\mid\overline B)=\dfrac49$.`,
+    R`**Bước 3.** $P(A)=\dfrac35\cdot\dfrac59+\dfrac25\cdot\dfrac49=\dfrac{15}{45}+\dfrac8{45}=\dfrac{23}{45}$.`,
+    R`**Kết luận.** $P(A)=\dfrac{23}{45}$.`,
+    R`**Nhận xét.** Nếu bi chuyển sang là đỏ thì hộp II có $5$ đỏ, $4$ xanh nên $P(A\mid B)=\dfrac59$; là xanh thì $4$ đỏ, $5$ xanh nên $P(A\mid\overline B)=\dfrac49$.`
    ],
-   hinh: CAY(["A", R`\overline A`], "B", R`\overline B`, R`\tfrac35`, R`\tfrac25`, [R`\tfrac59`, R`\tfrac49`], R`\tfrac49`, R`\tfrac59`),
+   hinh: R`\begin{tikzpicture}[scale=1]
+\draw (0,0)--(2.6,1.3) node[midway,above]{$\tfrac35$};
+\draw (0,0)--(2.6,-1.3) node[midway,below]{$\tfrac25$};
+\draw (3.2,1.3)--(5.8,2) node[midway,above]{$\tfrac59$};
+\draw (3.2,1.3)--(5.8,0.6) node[midway,below]{$\tfrac49$};
+\draw (3.2,-1.3)--(5.8,-0.6) node[midway,above]{$\tfrac49$};
+\draw (3.2,-1.3)--(5.8,-2) node[midway,below]{$\tfrac59$};
+\fill (0,0) circle (2pt);
+\node at (2.9,1.3){$B$}; \node at (2.9,-1.3){$\overline B$};
+\node[right] at (5.8,2){$A$}; \node[right] at (5.8,0.6){$\overline A$};
+\node[right] at (5.8,-0.6){$A$}; \node[right] at (5.8,-2){$\overline A$};
+\end{tikzpicture}`,
    chuThich: R`$P(A)$ là tổng hai đường đi kết thúc ở $A$.` }
  ] },
 "C6-B19-D02": {
@@ -3220,19 +3268,24 @@ Tìm $x$ để hai biến cố "thích" và "là nam" độc lập.`,
  vd: [
  { muc: "TH", de: R`Với nhà máy ở dạng trước, lấy được một phế phẩm. Tính xác suất phế phẩm đó do máy I làm ra.`,
    giai: [
-    R`$P(H)=0{,}024$ (đã tính).`,
-    R`$P(M\mid H)=\dfrac{P(M)P(H\mid M)}{P(H)}=\dfrac{0{,}012}{0{,}024}=0{,}5$.`
+    R`**Phân tích.** Biết kết quả (lấy được phế phẩm), hỏi **nguyên nhân** (máy nào làm ra): dùng **công thức Bayes** $P(M\mid H)=\dfrac{P(M)P(H\mid M)}{P(H)}$.`,
+    R`**Bước 1.** $P(H)=0{,}024$ (đã tính).`,
+    R`**Bước 2.** $P(M\mid H)=\dfrac{P(M)P(H\mid M)}{P(H)}=\dfrac{0{,}012}{0{,}024}=0{,}5$.`,
+    R`**Kết luận.** Xác suất phế phẩm do máy I làm ra là $0{,}5$.`
    ] },
  { muc: "TH", de: R`Với lớp học ở dạng trước, chọn được một học sinh đeo kính. Tính xác suất học sinh đó là nữ.`,
    giai: [
-    R`$P(K)=0{,}26$, $P(FK)=0{,}18$.`,
-    R`$P(F\mid K)=\dfrac{0{,}18}{0{,}26}=\dfrac9{13}\approx0{,}692$.`
+    R`**Phân tích.** Biết học sinh đeo kính, hỏi xác suất là nữ: lại là bài toán Bayes, dùng $P(K)$ đã tính bằng xác suất toàn phần.`,
+    R`**Bước 1.** $P(K)=0{,}26$, $P(FK)=0{,}18$.`,
+    R`**Bước 2.** $P(F\mid K)=\dfrac{0{,}18}{0{,}26}=\dfrac9{13}\approx0{,}692$.`,
+    R`**Kết luận.** $P(F\mid K)=\dfrac9{13}\approx0{,}692$.`
    ] },
  { muc: "VD", de: R`Một bệnh có tỉ lệ mắc trong cộng đồng là $1\%$. Xét nghiệm cho kết quả dương tính ở $95\%$ người mắc bệnh và cho dương tính (nhầm) ở $5\%$ người không mắc bệnh. Một người xét nghiệm dương tính. Tính xác suất người đó thật sự mắc bệnh.`,
    giai: [
-    R`$B$: "mắc bệnh", $D$: "dương tính". $P(B)=0{,}01$, $P(D\mid B)=0{,}95$; $P(\overline B)=0{,}99$, $P(D\mid\overline B)=0{,}05$.`,
-    R`Toàn phần: $P(D)=0{,}01\cdot0{,}95+0{,}99\cdot0{,}05=0{,}0095+0{,}0495=0{,}059$.`,
-    R`Bayes: $P(B\mid D)=\dfrac{0{,}0095}{0{,}059}=\dfrac{19}{118}\approx0{,}161$.`,
+    R`**Phân tích.** Hỏi "dương tính thì xác suất thật sự mắc bệnh": tính $P(D)$ bằng xác suất toàn phần, rồi dùng Bayes tính $P(B\mid D)$.`,
+    R`**Bước 1.** $B$: "mắc bệnh", $D$: "dương tính". $P(B)=0{,}01$, $P(D\mid B)=0{,}95$; $P(\overline B)=0{,}99$, $P(D\mid\overline B)=0{,}05$.`,
+    R`**Bước 2.** Toàn phần: $P(D)=0{,}01\cdot0{,}95+0{,}99\cdot0{,}05=0{,}0095+0{,}0495=0{,}059$.`,
+    R`**Bước 3.** Bayes: $P(B\mid D)=\dfrac{0{,}0095}{0{,}059}=\dfrac{19}{118}\approx0{,}161$.`,
     R`**Nhận xét.** Chỉ khoảng $16\%$: vì bệnh hiếm, phần lớn người dương tính lại là người khoẻ bị xét nghiệm nhầm. Vì vậy cần xét nghiệm lại.`
    ] }
  ] },
@@ -3249,21 +3302,27 @@ Tìm $x$ để hai biến cố "thích" và "là nam" độc lập.`,
  vd: [
  { muc: "VD", de: R`Trong hộp thư, $30\%$ thư là thư rác. Từ "khuyến mãi" xuất hiện trong $40\%$ thư rác và $5\%$ thư thường. a) Tính xác suất một thư có từ "khuyến mãi". b) Một thư có từ "khuyến mãi", tính xác suất đó là thư rác.`,
    giai: [
-    R`$R$: "thư rác", $K$: "có từ khuyến mãi". $P(R)=0{,}3$, $P(K\mid R)=0{,}4$; $P(\overline R)=0{,}7$, $P(K\mid\overline R)=0{,}05$.`,
-    R`a) $P(K)=0{,}3\cdot0{,}4+0{,}7\cdot0{,}05=0{,}12+0{,}035=0{,}155$.`,
-    R`b) $P(R\mid K)=\dfrac{0{,}12}{0{,}155}=\dfrac{24}{31}\approx0{,}774$.`
+    R`**Phân tích.** Câu a) dùng xác suất toàn phần; câu b) "biết thư có từ khuyến mãi, hỏi là thư rác": dùng Bayes với $P(K)$ vừa tính.`,
+    R`**Bước 1.** $R$: "thư rác", $K$: "có từ khuyến mãi". $P(R)=0{,}3$, $P(K\mid R)=0{,}4$; $P(\overline R)=0{,}7$, $P(K\mid\overline R)=0{,}05$.`,
+    R`**Bước 2.** a) $P(K)=0{,}3\cdot0{,}4+0{,}7\cdot0{,}05=0{,}12+0{,}035=0{,}155$.`,
+    R`**Bước 3.** b) $P(R\mid K)=\dfrac{0{,}12}{0{,}155}=\dfrac{24}{31}\approx0{,}774$.`,
+    R`**Kết luận.** a) $P(K)=0{,}155$; b) $P(R\mid K)\approx0{,}774$.`
    ] },
  { muc: "VD", de: R`Một túi có hai đồng xu: một đồng cân đối và một đồng có cả hai mặt đều là mặt sấp. Lấy ngẫu nhiên một đồng và tung, được mặt sấp. Tính xác suất đồng xu đã lấy là đồng hai mặt sấp.`,
    giai: [
-    R`$H$: "lấy đồng hai mặt sấp", $S$: "tung được mặt sấp". $P(H)=P(\overline H)=\dfrac12$; $P(S\mid H)=1$, $P(S\mid\overline H)=\dfrac12$.`,
-    R`$P(S)=\dfrac12\cdot1+\dfrac12\cdot\dfrac12=\dfrac34$.`,
-    R`$P(H\mid S)=\dfrac{\frac12}{\frac34}=\dfrac23$.`
+    R`**Phân tích.** Hai giả thuyết: lấy đồng cân đối hoặc đồng hai mặt sấp. Tính xác suất được mặt sấp theo từng giả thuyết, rồi dùng Bayes.`,
+    R`**Bước 1.** $H$: "lấy đồng hai mặt sấp", $S$: "tung được mặt sấp". $P(H)=P(\overline H)=\dfrac12$; $P(S\mid H)=1$, $P(S\mid\overline H)=\dfrac12$.`,
+    R`**Bước 2.** $P(S)=\dfrac12\cdot1+\dfrac12\cdot\dfrac12=\dfrac34$.`,
+    R`**Bước 3.** $P(H\mid S)=\dfrac{\frac12}{\frac34}=\dfrac23$.`,
+    R`**Kết luận.** Xác suất đồng xu đã lấy là đồng hai mặt sấp bằng $\dfrac23$.`
    ] },
  { muc: "VD", de: R`Một học sinh thi chứng chỉ: xác suất đỗ ở lần thi thứ nhất là $0{,}7$; nếu trượt lần đầu thì được thi lại và xác suất đỗ lần thi lại là $0{,}6$. a) Tính xác suất học sinh đó đỗ. b) Biết học sinh đã đỗ, tính xác suất học sinh đỗ ngay lần đầu.`,
    giai: [
-    R`$A_1$: "đỗ lần 1", $D$: "đỗ". $P(A_1)=0{,}7$, $P(D\mid A_1)=1$; $P(\overline{A_1})=0{,}3$, $P(D\mid\overline{A_1})=0{,}6$.`,
-    R`a) $P(D)=0{,}7\cdot1+0{,}3\cdot0{,}6=0{,}7+0{,}18=0{,}88$.`,
-    R`b) $P(A_1\mid D)=\dfrac{0{,}7}{0{,}88}=\dfrac{35}{44}\approx0{,}795$.`
+    R`**Phân tích.** Đỗ có hai cách: đỗ ngay lần $1$, hoặc trượt lần $1$ rồi đỗ lần thi lại. Câu b) biết đã đỗ, hỏi đỗ ngay lần đầu: dùng Bayes.`,
+    R`**Bước 1.** $A_1$: "đỗ lần 1", $D$: "đỗ". $P(A_1)=0{,}7$, $P(D\mid A_1)=1$; $P(\overline{A_1})=0{,}3$, $P(D\mid\overline{A_1})=0{,}6$.`,
+    R`**Bước 2.** a) $P(D)=0{,}7\cdot1+0{,}3\cdot0{,}6=0{,}7+0{,}18=0{,}88$.`,
+    R`**Bước 3.** b) $P(A_1\mid D)=\dfrac{0{,}7}{0{,}88}=\dfrac{35}{44}\approx0{,}795$.`,
+    R`**Kết luận.** a) $P(D)=0{,}88$; b) $P(A_1\mid D)\approx0{,}795$.`
    ] }
  ] }
 });
