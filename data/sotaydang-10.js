@@ -235,4 +235,167 @@ Object.assign(D, {
    ] }
  ] }
 });
+/* ---------- Chương II · Bất phương trình và hệ bất phương trình bậc nhất hai ẩn ---------- */
+const MIEN = R`\begin{tikzpicture}[scale=0.75,>=stealth]
+\fill[blue!15] (0,0)--(2,0)--(3,1)--(0,4)--cycle;
+\draw[->] (-1,0)--(5,0) node[below]{$x$};
+\draw[->] (0,-1)--(0,5) node[left]{$y$};
+\draw[thick] (-0.5,4.5)--(4.5,-0.5);
+\draw[thick] (1,-1)--(4.5,2.5);
+\fill (0,0) circle (2pt); \fill (2,0) circle (2pt); \fill (3,1) circle (2pt); \fill (0,4) circle (2pt);
+\node[below left] at (0,0){$O$}; \node[below right] at (2,0){$A(2;0)$}; \node[right] at (3.25,1){$B(3;1)$}; \node[left] at (0,4){$C(0;4)$};
+\node[right] at (4.5,-0.7){$x+y=4$}; \node[right] at (4.5,2.5){$x-y=2$};
+\end{tikzpicture}`;
+Object.assign(D, {
+"C2-B3-D08": {
+ pp: [
+  R`**Bất phương trình bậc nhất hai ẩn** có dạng $ax+by<c$ (hoặc $>$, $\le$, $\ge$), trong đó $a$, $b$ không đồng thời bằng $0$.`,
+  R`Cặp số $(x_0;y_0)$ là **nghiệm** nếu $ax_0+by_0<c$ là mệnh đề đúng. Kiểm tra: thay toạ độ vào, tính rồi so sánh.`,
+  R`Điểm $M(x_0;y_0)$ thuộc miền nghiệm $\Leftrightarrow$ $(x_0;y_0)$ là nghiệm.`,
+  R`**Bài thực tế:** gọi ẩn (số lượng), viết điều kiện về tiền, thời gian, nguyên liệu... thành bất phương trình.`
+ ],
+ luuY: [
+  R`Nhận nhầm $x^2+y\le2$ hay $xy>1$ là bất phương trình bậc nhất hai ẩn.`,
+  R`Quên dấu bằng khi đề có "không quá", "tối đa" ($\le$) hay "ít nhất" ($\ge$).`
+ ],
+ vd: [
+ { muc: "NB", de: R`Trong các bất phương trình sau, bất phương trình nào là bậc nhất hai ẩn? a) $2x-3y>1$; b) $x^2+y\le2$; c) $xy>1$; d) $3x\ge0$.`,
+   giai: [
+    R`a) Có dạng $ax+by>c$ với $a=2$, $b=-3$: **có**.`,
+    R`b) Có $x^2$: không. c) Có tích $xy$: không.`,
+    R`d) $3x+0\cdot y\ge0$, $a=3\ne0$: **có**.`
+   ] },
+ { muc: "TH", de: R`Các cặp số $(1;-1)$ và $(0;0)$ có là nghiệm của bất phương trình $2x-3y>1$ không?`,
+   giai: [
+    R`$(1;-1)$: $2\cdot1-3\cdot(-1)=5>1$: **là** nghiệm.`,
+    R`$(0;0)$: $0>1$ sai: **không** là nghiệm.`
+   ] },
+ { muc: "TH", de: R`Bạn An có $200$ nghìn đồng, muốn mua $x$ chiếc bút (giá $5$ nghìn/chiếc) và $y$ quyển vở (giá $8$ nghìn/quyển). Viết bất phương trình biểu thị điều kiện; An có mua được $10$ bút và $15$ vở không? $20$ bút và $15$ vở thì sao?`,
+   giai: [
+    R`Số tiền không vượt quá $200$: $5x+8y\le200$ ($x,y\in\mathbb N$).`,
+    R`$(10;15)$: $50+120=170\le200$: mua được.`,
+    R`$(20;15)$: $100+120=220>200$: không mua được.`
+   ] }
+ ] },
+"C2-B3-D09": {
+ pp: [
+  R`**Bước 1.** Vẽ đường thẳng $d:ax+by=c$ (lấy hai điểm, thường là giao với hai trục).`,
+  R`**Bước 2.** Lấy một điểm không thuộc $d$ (thường là $O(0;0)$; nếu $d$ qua $O$ thì lấy $(1;0)$ hoặc $(0;1)$), thay vào bất phương trình.`,
+  R`**Bước 3.** Đúng: miền nghiệm là nửa mặt phẳng bờ $d$ **chứa** điểm đó; sai: nửa mặt phẳng **không chứa** điểm đó. Dấu $<$, $>$ thì không kể bờ (vẽ nét đứt); $\le$, $\ge$ thì kể cả bờ.`,
+  R`**Từ hình vẽ ra bất phương trình:** viết phương trình bờ qua hai điểm đã biết; thay một điểm thuộc miền để chọn dấu.`
+ ],
+ luuY: [
+  R`Gạch nhầm phần là miền nghiệm (SGK tô màu hoặc để trống miền nghiệm: đọc kĩ chú thích).`
+ ],
+ vd: [
+ { muc: "TH", de: R`Biểu diễn miền nghiệm của bất phương trình $x+2y\le4$.`,
+   giai: [
+    R`Vẽ $d:x+2y=4$ qua $(4;0)$ và $(0;2)$.`,
+    R`Thay $O(0;0)$: $0\le4$ đúng.`,
+    R`Miền nghiệm là nửa mặt phẳng bờ $d$ chứa $O$, kể cả đường thẳng $d$ (phần tô màu).`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=0.8,>=stealth]
+\fill[blue!15] (-1,-1)--(5,-1)--(5,-0.5)--(-1,2.5)--cycle;
+\draw[->] (-1,0)--(5.2,0) node[below]{$x$};
+\draw[->] (0,-1)--(0,3) node[left]{$y$};
+\draw[thick] (-1,2.5)--(5,-0.5);
+\node[below] at (4,0){$4$}; \node[left] at (0,2){$2$}; \node[below left] at (0,0){$O$};
+\node[above] at (3.2,1.1){$x+2y=4$};
+\end{tikzpicture}` },
+ { muc: "TH", de: R`Biểu diễn miền nghiệm của bất phương trình $2x-y>0$.`,
+   giai: [
+    R`Đường thẳng $d:2x-y=0$ đi qua $O$ và $(1;2)$, nên không lấy $O$ để thử.`,
+    R`Thay $(1;0)$: $2>0$ đúng.`,
+    R`Miền nghiệm là nửa mặt phẳng bờ $d$ chứa điểm $(1;0)$, **không** kể đường thẳng $d$ (vẽ nét đứt).`
+   ] },
+ { muc: "VD", de: R`Miền nghiệm (kể cả bờ) của một bất phương trình là nửa mặt phẳng có bờ đi qua $(2;0)$ và $(0;3)$, **không** chứa gốc toạ độ. Tìm bất phương trình đó.`,
+   giai: [
+    R`Đường thẳng qua $(2;0)$, $(0;3)$: $\dfrac x2+\dfrac y3=1\Leftrightarrow3x+2y=6$.`,
+    R`Thay $O$ vào $3x+2y$: $0<6$. Miền nghiệm không chứa $O$ nên có dấu ngược lại, kể cả bờ: $3x+2y\ge6$.`
+   ] }
+ ] },
+"C2-B4-D10": {
+ pp: [
+  R`**Nghiệm của hệ**: cặp số thoả mãn **tất cả** các bất phương trình trong hệ.`,
+  R`**Miền nghiệm của hệ**: phần giao các miền nghiệm của từng bất phương trình. Vẽ lần lượt từng đường bờ, xác định từng nửa mặt phẳng rồi lấy phần chung.`,
+  R`Miền nghiệm thường là một đa giác; tìm các đỉnh bằng cách giải hệ hai phương trình đường bờ.`,
+  R`**Diện tích** đa giác: chia thành tam giác, hình thang, hoặc lấy hình chữ nhật bao trừ đi các phần thừa.`
+ ],
+ luuY: [
+  R`Quên các điều kiện $x\ge0$, $y\ge0$ khi chúng có trong hệ.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Cho hệ $\begin{cases}x\ge0\\y\ge0\\x+y\le4\\x-y\le2\end{cases}$. Các cặp số $(1;1)$, $(3;2)$ có là nghiệm của hệ không?`,
+   giai: [
+    R`$(1;1)$: $1\ge0$, $1\ge0$, $2\le4$, $0\le2$: thoả mãn cả bốn, **là** nghiệm.`,
+    R`$(3;2)$: $3+2=5>4$: **không** là nghiệm.`
+   ] },
+ { muc: "TH", de: R`Biểu diễn miền nghiệm của hệ ở ví dụ 1, tìm các đỉnh và tính diện tích miền nghiệm.`,
+   giai: [
+    R`Vẽ bốn đường bờ: $x=0$, $y=0$, $x+y=4$, $x-y=2$. Thử $O$: $0\le4$, $0\le2$ đúng, nên miền nghiệm nằm phía chứa $O$ của hai đường xiên, trong góc phần tư thứ nhất.`,
+    R`Các đỉnh: $O(0;0)$; $A(2;0)$ (giao $y=0$ và $x-y=2$); $B(3;1)$ (giải $x+y=4$, $x-y=2$); $C(0;4)$.`,
+    R`Diện tích tứ giác $OABC$ = tam giác $OAB$ + tam giác $OBC$: $\dfrac12\cdot2\cdot1+\dfrac12\cdot4\cdot3=1+6=7$.`
+   ],
+   hinh: MIEN,
+   chuThich: R`Miền nghiệm là tứ giác $OABC$ (tô màu).` }
+ ] },
+"C2-B4-D11": {
+ pp: [
+  R`**Định lí:** giá trị lớn nhất, nhỏ nhất của $F=ax+by$ trên miền nghiệm là một đa giác đạt được tại **các đỉnh** của đa giác.`,
+  R`**Bước 1.** Vẽ miền nghiệm, tìm toạ độ các đỉnh. **Bước 2.** Tính $F$ tại từng đỉnh. **Bước 3.** So sánh, chọn lớn nhất và nhỏ nhất.`
+ ],
+ luuY: [
+  R`Bỏ sót một đỉnh (ví dụ đỉnh $O$).`
+ ],
+ vd: [
+ { muc: "TH", de: R`Trên miền nghiệm $OABC$ ở dạng trước ($O(0;0)$, $A(2;0)$, $B(3;1)$, $C(0;4)$), tìm GTLN, GTNN của $F=2x+y$.`,
+   giai: [
+    R`$F(O)=0$; $F(A)=4$; $F(B)=7$; $F(C)=4$.`,
+    R`$\max F=7$ tại $B(3;1)$; $\min F=0$ tại $O(0;0)$.`
+   ],
+   hinh: MIEN },
+ { muc: "VD", de: R`Trên cùng miền nghiệm đó, tìm GTLN, GTNN của $F=x-2y$.`,
+   giai: [
+    R`$F(O)=0$; $F(A)=2$; $F(B)=3-2=1$; $F(C)=-8$.`,
+    R`$\max F=2$ tại $A(2;0)$; $\min F=-8$ tại $C(0;4)$.`
+   ] }
+ ] },
+"C2-B4-D12": {
+ pp: [
+  R`**Bước 1.** Gọi ẩn $x$, $y$ (số lượng hai loại), ghi điều kiện $x\ge0$, $y\ge0$.`,
+  R`**Bước 2.** Lập bảng số liệu; viết các ràng buộc (thời gian máy, nguyên liệu, tiền...) thành hệ bất phương trình.`,
+  R`**Bước 3.** Viết biểu thức cần tối ưu $F=ax+by$ (lợi nhuận, chi phí).`,
+  R`**Bước 4.** Vẽ miền nghiệm, tìm các đỉnh, tính $F$ tại các đỉnh, kết luận.`
+ ],
+ luuY: [
+  R`Viết ngược chiều ràng buộc ("không vượt quá" là $\le$, "ít nhất" là $\ge$).`
+ ],
+ vd: [
+ { muc: "VD", de: R`Một xưởng làm hai loại sản phẩm I và II. Mỗi sản phẩm I cần $2$ giờ trên máy A và $1$ giờ trên máy B, lãi $40$ nghìn đồng; mỗi sản phẩm II cần $1$ giờ trên máy A và $1$ giờ trên máy B, lãi $30$ nghìn đồng. Mỗi ngày máy A làm tối đa $10$ giờ, máy B tối đa $6$ giờ. Cần làm bao nhiêu sản phẩm mỗi loại để lãi lớn nhất?`,
+   giai: [
+    R`Gọi $x$, $y$ là số sản phẩm I, II mỗi ngày ($x,y\ge0$).`,
+    R`Ràng buộc: máy A: $2x+y\le10$; máy B: $x+y\le6$. Lãi: $F=40x+30y$.`,
+    R`Miền nghiệm là tứ giác có đỉnh $O(0;0)$, $(5;0)$, $(4;2)$ (giải $2x+y=10$, $x+y=6$), $(0;6)$.`,
+    R`$F(O)=0$; $F(5;0)=200$; $F(4;2)=160+60=220$; $F(0;6)=180$.`,
+    R`**Kết luận.** Làm $4$ sản phẩm I và $2$ sản phẩm II, lãi lớn nhất $220$ nghìn đồng.`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=0.55,>=stealth]
+\fill[blue!15] (0,0)--(5,0)--(4,2)--(0,6)--cycle;
+\draw[->] (-0.8,0)--(7.5,0) node[below]{$x$};
+\draw[->] (0,-0.8)--(0,10.8) node[left]{$y$};
+\draw[thick] (-0.2,10.4)--(5.4,-0.8); \draw[thick] (-0.5,6.5)--(6.8,-0.8);
+\fill (5,0) circle (3pt); \fill (4,2) circle (3pt); \fill (0,6) circle (3pt);
+\node[below] at (5,-0.1){$5$}; \node[right] at (4.3,2.1){$(4;2)$}; \node[left] at (0,6){$6$}; \node[left] at (0,10){$10$};
+\node[right] at (1.4,7.6){$2x+y=10$}; \node[right] at (6.8,-0.6){$x+y=6$};
+\node[below left] at (0,0){$O$};
+\end{tikzpicture}` },
+ { muc: "VD", de: R`Một người cần ít nhất $6$ đơn vị chất A và $8$ đơn vị chất B mỗi ngày. Mỗi kg thức ăn X chứa $2$ đơn vị A, $1$ đơn vị B, giá $3$ nghìn đồng; mỗi kg thức ăn Y chứa $1$ đơn vị A, $2$ đơn vị B, giá $2$ nghìn đồng. Cần mua bao nhiêu kg mỗi loại để chi phí ít nhất?`,
+   giai: [
+    R`Gọi $x$, $y$ là số kg X, Y ($x,y\ge0$). Ràng buộc: $2x+y\ge6$; $x+2y\ge8$. Chi phí $F=3x+2y$.`,
+    R`Miền nghiệm không bị chặn, có các đỉnh $(0;6)$, $\left(\dfrac43;\dfrac{10}3\right)$ (giải $2x+y=6$, $x+2y=8$), $(8;0)$.`,
+    R`$F(0;6)=12$; $F\left(\frac43;\frac{10}3\right)=4+\dfrac{20}3=\dfrac{32}3\approx10{,}67$; $F(8;0)=24$.`,
+    R`Vì $x,y\ge0$ và các hệ số của $F$ dương, $F$ chỉ lớn lên khi đi xa các đỉnh, nên GTNN đạt tại một đỉnh. **Kết luận.** Mua $\dfrac43$ kg X và $\dfrac{10}3$ kg Y, chi phí ít nhất $\dfrac{32}3\approx10{,}67$ nghìn đồng.`
+   ] }
+ ] }
+});
 })(window);
