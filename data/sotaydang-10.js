@@ -1138,4 +1138,347 @@ Object.assign(D, {
    ] }
  ] }
 });
+/* ---------- Chương VI · Hàm số, đồ thị và ứng dụng ---------- */
+Object.assign(D, {
+"C6-B15-D33": {
+ pp: [
+  R`**Tập xác định** $D$ là tập các giá trị $x$ làm biểu thức $f(x)$ có nghĩa.`,
+  R`Điều kiện thường gặp: $\dfrac{A}{B}$ cần $B\ne0$; $\sqrt A$ cần $A\ge0$; $\dfrac{A}{\sqrt B}$ cần $B>0$.`,
+  R`Có nhiều điều kiện thì lấy **giao**; viết kết quả dưới dạng khoảng, đoạn, hoặc $\mathbb R\setminus\{\dots\}$.`
+ ],
+ luuY: [
+  R`Với $\dfrac1{\sqrt{B}}$ quên bỏ dấu bằng: phải $B>0$, không phải $B\ge0$.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Tìm tập xác định của $y=\dfrac{2x+1}{x-3}$.`,
+   giai: [ R`Điều kiện $x-3\ne0\iff x\ne3$. Vậy $D=\mathbb R\setminus\{3\}$.` ] },
+ { muc: "NB", de: R`Tìm tập xác định của $y=\sqrt{4-2x}$.`,
+   giai: [ R`Điều kiện $4-2x\ge0\iff x\le2$. Vậy $D=(-\infty;2]$.` ] },
+ { muc: "TH", de: R`Tìm tập xác định của $y=\sqrt{x+1}+\dfrac1{x-2}$.`,
+   giai: [ R`Điều kiện $\begin{cases}x+1\ge0\\x-2\ne0\end{cases}\iff\begin{cases}x\ge-1\\x\ne2\end{cases}$.`, R`$D=[-1;+\infty)\setminus\{2\}$.` ] },
+ { muc: "VD", de: R`Tìm $m$ để hàm số $y=\sqrt{x-m+1}$ xác định trên $[2;+\infty)$.`,
+   giai: [
+    R`Hàm số xác định khi $x\ge m-1$: $D=[m-1;+\infty)$.`,
+    R`Cần $[2;+\infty)\subset[m-1;+\infty)\iff m-1\le2\iff m\le3$.`
+   ] }
+ ] },
+"C6-B15-D34": {
+ pp: [
+  R`**Giá trị** của hàm số tại $x_0$: thay $x=x_0$ vào công thức, tính $f(x_0)$.`,
+  R`**Điểm $M(x_0;y_0)$ thuộc đồ thị** $y=f(x)$ $\iff x_0\in D$ và $y_0=f(x_0)$.`,
+  R`**Hàm cho bởi nhiều công thức** (giá cước, tiền điện...): xác định $x$ thuộc khoảng nào rồi dùng đúng công thức của khoảng đó.`
+ ],
+ luuY: [
+  R`Bài giá cước bậc thang: mỗi khoảng chỉ tính phần vượt quá mốc trước, không nhân cả $x$ với đơn giá bậc cao.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Cho $f(x)=x^2-3x+2$. Tính $f(0)$, $f(-1)$, $f(2)$.`,
+   giai: [ R`$f(0)=2$; $f(-1)=1+3+2=6$; $f(2)=4-6+2=0$.` ] },
+ { muc: "TH", de: R`Điểm nào thuộc đồ thị $y=2x^2-1$: $A(1;1)$, $B(-1;3)$, $C(0;-1)$?`,
+   giai: [
+    R`$A$: $2\cdot1-1=1$ đúng: $A$ thuộc đồ thị.`,
+    R`$B$: $2\cdot1-1=1\ne3$: $B$ không thuộc.`,
+    R`$C$: $0-1=-1$ đúng: $C$ thuộc đồ thị.`
+   ] },
+ { muc: "VD", de: R`Giá cước taxi: $1$ km đầu $12\,000$ đồng; từ trên $1$ km đến $30$ km: $10\,000$ đồng/km; trên $30$ km: $8\,000$ đồng/km. Viết hàm số tính tiền $f(x)$ theo số km $x$ và tính tiền đi $20$ km, $40$ km.`,
+   giai: [
+    R`$f(x)=\begin{cases}12\,000x&\text{khi }0<x\le1\\12\,000+10\,000(x-1)&\text{khi }1<x\le30\\302\,000+8\,000(x-30)&\text{khi }x>30\end{cases}$ (vì $f(30)=12\,000+290\,000=302\,000$).`,
+    R`$f(20)=12\,000+10\,000\cdot19=202\,000$ đồng.`,
+    R`$f(40)=302\,000+8\,000\cdot10=382\,000$ đồng.`
+   ] }
+ ] },
+"C6-B15-D35": {
+ pp: [
+  R`$f$ **đồng biến** trên $K$ nếu $x_1<x_2\Rightarrow f(x_1)<f(x_2)$; **nghịch biến** nếu $x_1<x_2\Rightarrow f(x_1)>f(x_2)$.`,
+  R`**Cách xét:** với $x_1\ne x_2$ thuộc $K$, xét dấu $T=\dfrac{f(x_2)-f(x_1)}{x_2-x_1}$: $T>0$ thì đồng biến, $T<0$ thì nghịch biến.`,
+  R`**Đọc đồ thị:** đi từ trái sang phải, đồ thị đi lên là đồng biến, đi xuống là nghịch biến.`,
+  R`Hàm bậc nhất $y=ax+b$: đồng biến trên $\mathbb R$ khi $a>0$, nghịch biến khi $a<0$.`
+ ],
+ luuY: [
+  R`Nói "$y=\dfrac1x$ nghịch biến trên $\mathbb R\setminus\{0\}$" là sai; chỉ nói nghịch biến trên từng khoảng $(-\infty;0)$ và $(0;+\infty)$.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Hàm số $y=-3x+5$ đồng biến hay nghịch biến trên $\mathbb R$?`,
+   giai: [ R`$a=-3<0$ nên hàm số nghịch biến trên $\mathbb R$.` ] },
+ { muc: "TH", de: R`Xét tính đơn điệu của $y=x^2$ trên $(0;+\infty)$ và $(-\infty;0)$.`,
+   giai: [
+    R`$T=\dfrac{x_2^2-x_1^2}{x_2-x_1}=x_1+x_2$.`,
+    R`Trên $(0;+\infty)$: $x_1+x_2>0$, đồng biến. Trên $(-\infty;0)$: $x_1+x_2<0$, nghịch biến.`
+   ] },
+ { muc: "TH", de: R`Chứng minh $y=\dfrac1x$ nghịch biến trên $(0;+\infty)$.`,
+   giai: [
+    R`$f(x_2)-f(x_1)=\dfrac1{x_2}-\dfrac1{x_1}=\dfrac{x_1-x_2}{x_1x_2}$, nên $T=-\dfrac1{x_1x_2}$.`,
+    R`$x_1,x_2>0$ nên $T<0$: hàm số nghịch biến trên $(0;+\infty)$.`
+   ] },
+ { muc: "VD", de: R`Tìm $m$ để $y=(m-2)x+1$ đồng biến trên $\mathbb R$.`,
+   giai: [ R`Hàm bậc nhất đồng biến khi hệ số $a=m-2>0\iff m>2$.` ] }
+ ] },
+"C6-B16-D36": {
+ pp: [
+  R`$y=ax^2+bx+c$ ($a\ne0$) có đồ thị là parabol, **đỉnh** $I\left(-\dfrac b{2a};-\dfrac\Delta{4a}\right)$, **trục đối xứng** $x=-\dfrac b{2a}$.`,
+  R`$a>0$: bề lõm hướng lên; nghịch biến trên $\left(-\infty;-\dfrac b{2a}\right)$, đồng biến trên $\left(-\dfrac b{2a};+\infty\right)$; GTNN là $-\dfrac\Delta{4a}$.`,
+  R`$a<0$: bề lõm hướng xuống; đồng biến rồi nghịch biến; GTLN là $-\dfrac\Delta{4a}$.`,
+  R`**GTLN, GTNN trên đoạn $[\alpha;\beta]$:** so sánh $f(\alpha)$, $f(\beta)$ và $f$ tại đỉnh (nếu hoành độ đỉnh thuộc đoạn).`,
+  R`**Vẽ:** đỉnh, trục đối xứng, giao điểm với $Oy$ $(0;c)$, với $Ox$ (nếu có), thêm một cặp điểm đối xứng.`
+ ],
+ luuY: [
+  R`Tung độ đỉnh nên tính bằng cách thay hoành độ đỉnh vào hàm số (ít nhầm dấu hơn công thức $-\frac\Delta{4a}$).`
+ ],
+ vd: [
+ { muc: "NB", de: R`Cho $y=x^2-4x+3$. Tìm đỉnh, trục đối xứng, lập bảng biến thiên và vẽ đồ thị.`,
+   giai: [
+    R`$x_I=-\dfrac{-4}{2}=2$; $y_I=4-8+3=-1$. Đỉnh $I(2;-1)$, trục $x=2$.`,
+    R`$a=1>0$: Bảng biến thiên:
+\begin{center}\begin{tikzpicture}
+\tkzTabInit[lgt=1.2,espcl=2.4]{$x$/0.8,$y$/2}{$-\infty$,$2$,$+\infty$}
+\tkzTabVar{+/$+\infty$,-/$-1$,+/$+\infty$}
+\end{tikzpicture}\end{center}`,
+    R`Giao $Oy$: $(0;3)$; giao $Ox$: $x^2-4x+3=0\iff x=1$ hoặc $x=3$. Điểm đối xứng với $(0;3)$ qua trục là $(4;3)$.`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=0.7,>=stealth]
+\draw[->] (-1,0)--(5,0) node[below]{$x$}; \draw[->] (0,-1.8)--(0,4.5) node[left]{$y$};
+\draw[thick,smooth,samples=100,domain=-0.3:4.3,blue] plot(\x,{\x*\x-4*\x+3});
+\draw[dashed] (2,-1)--(2,4); \fill (2,-1) circle (2pt); \fill (1,0) circle (2pt); \fill (3,0) circle (2pt); \fill (0,3) circle (2pt); \fill (4,3) circle (2pt);
+\node[below right] at (2,-1){$I(2;-1)$}; \node[above left] at (1,0){$1$}; \node[above right] at (3,0){$3$}; \node[left] at (0,3){$3$};
+\node[below left] at (0,0){$O$}; \node[right] at (2,3.8){$x=2$};
+\end{tikzpicture}` },
+ { muc: "TH", de: R`Cho $y=-2x^2+4x+1$. Tìm khoảng đồng biến, nghịch biến và giá trị lớn nhất.`,
+   giai: [
+    R`$x_I=-\dfrac4{2\cdot(-2)}=1$; $y_I=-2+4+1=3$.`,
+    R`$a=-2<0$: Bảng biến thiên:
+\begin{center}\begin{tikzpicture}
+\tkzTabInit[lgt=1.2,espcl=2.4]{$x$/0.8,$y$/2}{$-\infty$,$1$,$+\infty$}
+\tkzTabVar{-/$-\infty$,+/$3$,-/$-\infty$}
+\end{tikzpicture}\end{center}`,
+    R`Đồng biến trên $(-\infty;1)$, nghịch biến trên $(1;+\infty)$; GTLN bằng $3$ khi $x=1$.`
+   ] },
+ { muc: "VD", de: R`Tìm GTLN, GTNN của $y=x^2-4x+3$ trên đoạn $[0;3]$ và trên đoạn $[3;5]$.`,
+   giai: [
+    R`Trên $[0;3]$: hoành độ đỉnh $2\in[0;3]$. $f(2)=-1$, $f(0)=3$, $f(3)=0$. GTNN $=-1$ (tại $x=2$), GTLN $=3$ (tại $x=0$).`,
+    R`Trên $[3;5]$: hàm đồng biến (vì $3>2$). GTNN $=f(3)=0$, GTLN $=f(5)=25-20+3=8$.`
+   ] }
+ ] },
+"C6-B16-D37": {
+ pp: [
+  R`**Xác định parabol** $y=ax^2+bx+c$: mỗi dữ kiện cho một phương trình theo $a$, $b$, $c$: đi qua điểm $(x_0;y_0)$; đỉnh $I(x_I;y_I)$ cho $-\dfrac b{2a}=x_I$ và $f(x_I)=y_I$; trục đối xứng...`,
+  R`**Dấu từ đồ thị:** bề lõm lên thì $a>0$, xuống thì $a<0$; giao $Oy$ tại $(0;c)$ nên $c$ cùng dấu tung độ giao điểm.`,
+  R`Dấu $b$: từ $x_I=-\dfrac b{2a}$. Đỉnh bên phải $Oy$ ($x_I>0$) thì $a$, $b$ **trái dấu**; bên trái thì **cùng dấu**.`
+ ],
+ luuY: [
+  R`Kết luận dấu $b$ chỉ từ vị trí đỉnh mà quên xét dấu $a$.`
+ ],
+ vd: [
+ { muc: "TH", de: R`Tìm parabol $y=ax^2+bx+c$ đi qua $A(0;-1)$, $B(1;2)$, $C(-1;0)$.`,
+   giai: [
+    R`Qua $A$: $c=-1$. Qua $B$: $a+b-1=2\iff a+b=3$. Qua $C$: $a-b-1=0\iff a-b=1$.`,
+    R`Giải: $a=2$, $b=1$. Vậy $y=2x^2+x-1$.`
+   ] },
+ { muc: "TH", de: R`Tìm $a$, $b$ để parabol $y=ax^2+bx+2$ có đỉnh $I(1;0)$.`,
+   giai: [
+    R`$-\dfrac b{2a}=1\iff b=-2a$. Đỉnh thuộc parabol: $a+b+2=0$.`,
+    R`Thay $b=-2a$: $-a+2=0\iff a=2$, $b=-4$. Vậy $y=2x^2-4x+2=2(x-1)^2$.`
+   ] },
+ { muc: "VD", de: R`Parabol $y=ax^2+bx+c$ có dạng như hình (bề lõm hướng xuống, cắt $Oy$ phía trên $O$, đỉnh nằm bên phải $Oy$). Xác định dấu $a$, $b$, $c$.`,
+   giai: [
+    R`Bề lõm hướng xuống: $a<0$.`,
+    R`Cắt $Oy$ tại điểm có tung độ dương: $c>0$.`,
+    R`Đỉnh bên phải: $-\dfrac b{2a}>0$; vì $a<0$ nên $b>0$.`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=0.8,>=stealth]
+\draw[->] (-1.5,0)--(3.5,0) node[below]{$x$}; \draw[->] (0,-1.5)--(0,2.8) node[left]{$y$};
+\draw[thick,smooth,samples=100,domain=-0.8:2.8,blue] plot(\x,{-\x*\x+2*\x+1});
+\fill (1,2) circle (2pt); \fill (0,1) circle (2pt); \draw[dashed] (1,2)--(1,0);
+\node[above] at (1,2){$I$}; \node[left] at (0,1){$c$}; \node[below left] at (0,0){$O$};
+\end{tikzpicture}`, chuThich: R`Đồ thị minh hoạ: $y=-x^2+2x+1$ ($a=-1<0$, $b=2>0$, $c=1>0$).` }
+ ] },
+"C6-B16-D38": {
+ pp: [
+  R`**Bước 1.** Chọn hệ trục thuận tiện (thường đặt đỉnh hoặc tâm đối xứng trên $Oy$).`,
+  R`**Bước 2.** Lập hàm bậc hai từ dữ kiện (điểm đã biết, công thức chuyển động $h(t)=-\dfrac12gt^2+v_0t+h_0$, diện tích, doanh thu...).`,
+  R`**Bước 3.** Giá trị lớn nhất, nhỏ nhất đạt tại **đỉnh**; thời điểm chạm đất là nghiệm dương của $h(t)=0$.`,
+  R`**Bước 4.** Đối chiếu điều kiện thực tế (thời gian, độ dài dương...) và trả lời có đơn vị.`
+ ],
+ luuY: [
+  R`Lấy cả nghiệm âm của thời gian, độ dài.`
+ ],
+ vd: [
+ { muc: "VD", de: R`Một cổng hình parabol có chiều cao $8$ m, khoảng cách hai chân cổng $8$ m. Tính chiều cao của cổng tại điểm cách trục đối xứng $2$ m.`,
+   giai: [
+    R`Đặt hệ trục: hai chân $(-4;0)$, $(4;0)$, đỉnh $(0;8)$. Parabol $y=ax^2+8$.`,
+    R`Qua $(4;0)$: $16a+8=0\iff a=-\dfrac12$. Vậy $y=-\dfrac12x^2+8$.`,
+    R`Tại $x=2$: $y=-2+8=6$ m.`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=0.4,>=stealth]
+\draw[->] (-5.5,0)--(5.5,0) node[below]{$x$}; \draw[->] (0,-0.5)--(0,10.5) node[left]{$y$};
+\draw[thick,smooth,samples=100,domain=-4:4,blue] plot(\x,{-0.5*\x*\x+8});
+\draw[dashed] (2,0)--(2,6); \fill (2,6) circle (3pt);
+\node[below] at (-4,0){$-4$}; \node[below] at (4,0){$4$}; \node[above left] at (0,8){$8$}; \node[right] at (2.1,6.3){$(2;6)$};
+\end{tikzpicture}` },
+ { muc: "VD", de: R`Một quả bóng được ném lên, độ cao $h(t)=-5t^2+20t+1$ (m) sau $t$ giây. Tìm độ cao lớn nhất và thời điểm bóng chạm đất.`,
+   giai: [
+    R`Đỉnh: $t=-\dfrac{20}{2\cdot(-5)}=2$; $h(2)=-20+40+1=21$ m. Độ cao lớn nhất $21$ m tại $t=2$ s.`,
+    R`Chạm đất: $-5t^2+20t+1=0\iff5t^2-20t-1=0$; $t=\dfrac{20\pm\sqrt{420}}{10}$.`,
+    R`Lấy nghiệm dương: $t=\dfrac{20+\sqrt{420}}{10}\approx4{,}05$ s.`
+   ] },
+ { muc: "VD", de: R`Dùng $40$ m lưới rào một mảnh vườn hình chữ nhật, một cạnh tựa vào bức tường (không cần rào). Tìm kích thước để diện tích lớn nhất.`,
+   giai: [
+    R`Gọi $x$ (m) là cạnh vuông góc với tường ($0<x<20$); cạnh song song tường dài $40-2x$.`,
+    R`$S=x(40-2x)=-2x^2+40x$; đỉnh tại $x=-\dfrac{40}{2\cdot(-2)}=10$.`,
+    R`$S_{\max}=10\cdot20=200$ m² khi hai cạnh vuông góc tường $10$ m, cạnh song song tường $20$ m.`
+   ] }
+ ] },
+"C6-B17-D39": {
+ pp: [
+  R`$f(x)=ax^2+bx+c$, $\Delta=b^2-4ac$.`,
+  R`$\Delta<0$: $f(x)$ **cùng dấu** $a$ với mọi $x$.`,
+  R`$\Delta=0$: $f(x)$ cùng dấu $a$ với mọi $x\ne-\dfrac b{2a}$, bằng $0$ tại $x=-\dfrac b{2a}$.`,
+  R`$\Delta>0$, hai nghiệm $x_1<x_2$: **"trong trái, ngoài cùng"**: trái dấu $a$ khi $x_1<x<x_2$, cùng dấu $a$ khi $x<x_1$ hoặc $x>x_2$.`,
+  R`**Tích, thương:** tìm nghiệm của từng nhân tử (tử, mẫu), xếp vào một bảng xét dấu, nhân dấu theo cột; nghiệm của mẫu ghi $\|$ (không xác định).`
+ ],
+ luuY: [
+  R`Quên rằng "trong trái ngoài cùng" là so với dấu của $a$, không phải luôn "trong âm ngoài dương".`
+ ],
+ vd: [
+ { muc: "NB", de: R`Xét dấu $f(x)=x^2-5x+6$.`,
+   giai: [
+    R`$f(x)=0\iff x=2$ hoặc $x=3$; $a=1>0$.`,
+    R`Bảng xét dấu:
+\begin{center}\begin{tikzpicture}
+\tkzTabInit[lgt=1.4,espcl=2]{$x$/0.8,$f(x)$/0.8}{$-\infty$,$2$,$3$,$+\infty$}
+\tkzTabLine{,+,0,-,0,+,}
+\end{tikzpicture}\end{center}`,
+    R`$f(x)>0$ khi $x<2$ hoặc $x>3$; $f(x)<0$ khi $2<x<3$.`
+   ] },
+ { muc: "NB", de: R`Xét dấu $f(x)=-x^2+2x-3$.`,
+   giai: [ R`$\Delta'=1-3=-2<0$, $a=-1<0$: $f(x)<0$ với mọi $x\in\mathbb R$.` ] },
+ { muc: "TH", de: R`Xét dấu $f(x)=4x^2-4x+1$.`,
+   giai: [ R`$\Delta'=4-4=0$; $f(x)=(2x-1)^2$. Vậy $f(x)>0$ với mọi $x\ne\dfrac12$ và $f\left(\dfrac12\right)=0$.` ] },
+ { muc: "VD", de: R`Xét dấu $g(x)=\dfrac{x^2-4}{x^2-4x+3}$.`,
+   giai: [
+    R`Tử $=0\iff x=\pm2$; mẫu $=0\iff x=1$ hoặc $x=3$ (tại đó $g$ không xác định).`,
+    R`Xét dấu từng nhân tử rồi lấy thương:
+\begin{center}\begin{tikzpicture}
+\tkzTabInit[lgt=3.6,espcl=1.5]{$x$/0.8,$x^2-4$/0.8,$x^2-4x+3$/0.8,$g(x)$/0.8}{$-\infty$,$-2$,$1$,$2$,$3$,$+\infty$}
+\tkzTabLine{,+,0,-,t,-,0,+,t,+,}
+\tkzTabLine{,+,t,+,0,-,t,-,0,+,}
+\tkzTabLine{,+,0,-,d,+,0,-,d,+,}
+\end{tikzpicture}\end{center}`,
+    R`$g(x)>0$ trên $(-\infty;-2)\cup(1;2)\cup(3;+\infty)$; $g(x)<0$ trên $(-2;1)\cup(2;3)$.`
+   ] }
+ ] },
+"C6-B17-D40": {
+ pp: [
+  R`**Bước 1.** Đưa về dạng $f(x)>0$ ($\ge,<,\le$) với $f$ là tam thức bậc hai.`,
+  R`**Bước 2.** Tìm nghiệm, xét dấu $f(x)$ ("trong trái, ngoài cùng").`,
+  R`**Bước 3.** Chọn các khoảng phù hợp; có dấu "$=$" thì lấy cả nghiệm (đoạn đóng).`,
+  R`**Hệ:** giải từng bất phương trình rồi lấy giao (vẽ trên trục số).`,
+  R`**$f(x)>0$ với mọi $x$** $\iff a>0$ và $\Delta<0$; **$f(x)\ge0$ với mọi $x$** $\iff a>0$ và $\Delta\le0$.`
+ ],
+ luuY: [
+  R`Chia hai vế cho số âm mà quên đổi chiều.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Giải $x^2-3x-4<0$.`,
+   giai: [ R`Nghiệm $x=-1$, $x=4$; $a>0$ nên âm ở giữa hai nghiệm.`, R`Tập nghiệm $S=(-1;4)$.` ] },
+ { muc: "TH", de: R`Giải $-2x^2+3x+5\ge0$.`,
+   giai: [ R`Nhân $-1$, đổi chiều: $2x^2-3x-5\le0$. Nghiệm $x=-1$, $x=\dfrac52$.`, R`$S=\left[-1;\dfrac52\right]$.` ] },
+ { muc: "TH", de: R`Giải hệ $\begin{cases}x^2-4x+3>0\\x^2-6x+8\le0\end{cases}$.`,
+   giai: [
+    R`$x^2-4x+3>0\iff x<1$ hoặc $x>3$.`,
+    R`$x^2-6x+8\le0\iff2\le x\le4$.`,
+    R`Giao: $S=(3;4]$.`
+   ] },
+ { muc: "VD", de: R`Tìm tập xác định của $y=\sqrt{-x^2+x+6}$.`,
+   giai: [ R`Điều kiện $-x^2+x+6\ge0\iff x^2-x-6\le0\iff-2\le x\le3$.`, R`$D=[-2;3]$.` ] },
+ { muc: "VD", de: R`Tìm $m$ để $x^2-2mx+m+2>0$ với mọi $x\in\mathbb R$.`,
+   giai: [
+    R`$a=1>0$, cần $\Delta'=m^2-(m+2)<0\iff m^2-m-2<0$.`,
+    R`$m^2-m-2=0\iff m=-1$ hoặc $m=2$; nên $-1<m<2$.`
+   ] }
+ ] },
+"C6-B17-D41": {
+ pp: [
+  R`**Bước 1.** Gọi ẩn, ghi điều kiện thực tế ($x>0$, $x$ nguyên...).`,
+  R`**Bước 2.** Lập bất phương trình bậc hai từ yêu cầu ("có lãi" là $P>0$, "không thấp hơn" là $\ge$, "không quá" là $\le$...).`,
+  R`**Bước 3.** Giải, giao với điều kiện thực tế, trả lời có đơn vị.`
+ ],
+ luuY: [
+  R`Quên giao với điều kiện thực tế (ví dụ bề rộng viền phải dương).`
+ ],
+ vd: [
+ { muc: "VD", de: R`Bóng ném lên có độ cao $h(t)=-5t^2+20t+1$ (m). Trong khoảng thời gian nào bóng ở độ cao ít nhất $16$ m?`,
+   giai: [
+    R`$-5t^2+20t+1\ge16\iff-5t^2+20t-15\ge0\iff t^2-4t+3\le0$.`,
+    R`$\iff1\le t\le3$. Bóng ở độ cao từ $16$ m trở lên từ giây thứ $1$ đến giây thứ $3$ (trong $2$ giây).`
+   ] },
+ { muc: "VD", de: R`Lợi nhuận khi sản xuất $x$ sản phẩm là $P(x)=-x^2+200x-7500$ (nghìn đồng). Sản xuất bao nhiêu sản phẩm thì có lãi?`,
+   giai: [
+    R`Có lãi $\iff P(x)>0\iff x^2-200x+7500<0$.`,
+    R`$x^2-200x+7500=0\iff x=50$ hoặc $x=150$; nên $50<x<150$.`,
+    R`Vậy sản xuất từ $51$ đến $149$ sản phẩm thì có lãi.`
+   ] },
+ { muc: "VD", de: R`Một tấm ảnh $20\times30$ cm được lồng vào khung có viền rộng đều $x$ cm. Tìm $x$ để diện tích cả khung không vượt quá $1000$ cm².`,
+   giai: [
+    R`Kích thước cả khung $(20+2x)\times(30+2x)$, điều kiện $x>0$.`,
+    R`$(20+2x)(30+2x)\le1000\iff4x^2+100x-400\le0\iff x^2+25x-100\le0$.`,
+    R`Nghiệm $x=\dfrac{-25\pm\sqrt{1025}}2$; nên $\dfrac{-25-5\sqrt{41}}2\le x\le\dfrac{-25+5\sqrt{41}}2\approx3{,}51$.`,
+    R`Kết hợp $x>0$: $0<x\le\dfrac{-25+5\sqrt{41}}2\approx3{,}51$ cm.`
+   ] }
+ ] },
+"C6-B18-D42": {
+ pp: [
+  R`$\sqrt{f(x)}=\sqrt{g(x)}\iff\begin{cases}g(x)\ge0\\f(x)=g(x)\end{cases}$ (chọn biểu thức đơn giản hơn để đặt điều kiện $\ge0$).`,
+  R`**Cách làm:** bình phương hai vế, giải phương trình $f(x)=g(x)$, rồi **thử lại** điều kiện để loại nghiệm ngoại lai.`
+ ],
+ luuY: [
+  R`Quên kiểm tra điều kiện, giữ cả nghiệm làm biểu thức dưới căn âm.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Giải $\sqrt{2x-3}=\sqrt{x+1}$.`,
+   giai: [ R`Bình phương: $2x-3=x+1\iff x=4$.`, R`Thử lại: $2\cdot4-3=5\ge0$. Vậy $x=4$.` ] },
+ { muc: "TH", de: R`Giải $\sqrt{x^2-3x+1}=\sqrt{x-2}$.`,
+   giai: [
+    R`Điều kiện $x-2\ge0\iff x\ge2$.`,
+    R`Bình phương: $x^2-3x+1=x-2\iff x^2-4x+3=0\iff x=1$ hoặc $x=3$.`,
+    R`$x=1$ không thoả $x\ge2$; $x=3$ thoả. Vậy $x=3$.`
+   ] },
+ { muc: "TH", de: R`Giải $\sqrt{x^2+x-1}=\sqrt{2x+1}$.`,
+   giai: [
+    R`Điều kiện $2x+1\ge0\iff x\ge-\dfrac12$.`,
+    R`$x^2+x-1=2x+1\iff x^2-x-2=0\iff x=-1$ hoặc $x=2$.`,
+    R`Loại $x=-1$ (khi đó $2x+1=-1<0$). Vậy $x=2$.`
+   ] }
+ ] },
+"C6-B18-D43": {
+ pp: [
+  R`$\sqrt{f(x)}=g(x)\iff\begin{cases}g(x)\ge0\\f(x)=g^2(x)\end{cases}$.`,
+  R`**Cách làm:** đặt điều kiện $g(x)\ge0$, bình phương, giải phương trình bậc hai, đối chiếu điều kiện.`,
+  R`**Thực tế:** độ dài cạnh huyền, quãng đường đi chéo thường có dạng $\sqrt{x^2+a^2}$; lập phương trình rồi giải như trên.`
+ ],
+ luuY: [
+  R`Quên điều kiện $g(x)\ge0$ (vế phải không âm) nên nhận cả nghiệm sai.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Giải $\sqrt{x+2}=x$.`,
+   giai: [ R`Điều kiện $x\ge0$. Bình phương: $x+2=x^2\iff x^2-x-2=0\iff x=2$ hoặc $x=-1$.`, R`Loại $x=-1$. Vậy $x=2$.` ] },
+ { muc: "TH", de: R`Giải $\sqrt{2x+7}=x+2$.`,
+   giai: [
+    R`Điều kiện $x\ge-2$. Bình phương: $2x+7=x^2+4x+4\iff x^2+2x-3=0\iff x=1$ hoặc $x=-3$.`,
+    R`Loại $x=-3$. Vậy $x=1$ (thử lại: $\sqrt9=3=1+2$).`
+   ] },
+ { muc: "VD", de: R`Điểm $A$ cách bờ sông thẳng $3$ km, $H$ là hình chiếu của $A$ trên bờ. Điểm $B$ trên bờ cách $H$ $5$ km. Tìm điểm $M$ trên đoạn $HB$ sao cho $AM=MB$.`,
+   giai: [
+    R`Đặt $HM=x$ ($0\le x\le5$): $AM=\sqrt{x^2+9}$, $MB=5-x$.`,
+    R`$\sqrt{x^2+9}=5-x$ (vế phải $\ge0$ vì $x\le5$). Bình phương: $x^2+9=25-10x+x^2\iff x=1{,}6$.`,
+    R`Vậy $M$ cách $H$ $1{,}6$ km (khi đó $AM=MB=3{,}4$ km).`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=0.8]
+\draw[thick] (-0.5,0)--(5.5,0);
+\draw (0,0)--(0,3)--(1.6,0); \draw (0,0.25)--(0.25,0.25)--(0.25,0);
+\fill (0,3) circle (2pt); \fill (1.6,0) circle (2pt); \fill (5,0) circle (2pt);
+\node[above] at (0,3){$A$}; \node[below] at (0,0){$H$}; \node[below] at (1.6,0){$M$}; \node[below] at (5,0){$B$};
+\node[left] at (0,1.5){$3$}; \node[below] at (0.8,0){$x$};
+\end{tikzpicture}` }
+ ] }
+});
 })(window);
