@@ -323,7 +323,7 @@
       const n = x.nd, dau = `<div class="t"><div class="so">${i + 1}</div><div><span>Dạng ${i + 1} · ${esc(x.dkey)}</span><h4>${tex(x.ten)}</h4></div></div>`;
       if (!n) return `<div class="dg">${dau}<div class="c"><p class="muted">Lời giải mẫu của dạng này đang được biên soạn.</p>${nutLuyen(lop, x.dkey)}</div></div>`;
       const vd = (n.vd || []).map((v, j) => `<div class="vdm"><div class="vdt"><b class="lb">Ví dụ ${j + 1}.</b>${v.muc ? ` <em class="muc m-${esc(v.muc)}">${MUC[v.muc] || esc(v.muc)}</em>` : ""}</div>
-          <div class="de">${texL(v.de)}</div>
+          <div class="de">${texL(v.de)}</div>${v.hinhDe ? `<figure class="hnv">${texL(v.hinhDe)}</figure>` : ""}
           <button class="lgbtn">👁 Xem lời giải</button><div class="lg hidden"><b>Lời giải</b><ol>${(v.giai || []).map(g => `<li>${texL(g)}</li>`).join("")}</ol>
           ${v.hinh ? `<figure class="hnv">${texL(v.hinh)}${v.chuThich ? `<figcaption>${texL(v.chuThich)}</figcaption>` : ""}</figure>` : ""}</div></div>`).join("");
       return `<div class="dg">${dau}<div class="c">
