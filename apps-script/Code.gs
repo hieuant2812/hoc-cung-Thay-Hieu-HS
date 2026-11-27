@@ -657,7 +657,7 @@ function gopTraLoi(d, moi) {
   Object.keys(moi || {}).forEach(function (k) { const i = +k; if (i >= 0 && i < n) tl[i] = String(moi[k] == null ? "" : moi[k]).slice(0, 40); });
   return tl;
 }
-function chuanSo(s) { return String(s == null ? "" : s).replace(/\$/g, "").replace(/\s+/g, "").replace(/,/g, ".").replace(/^\+/, "").toLowerCase(); }
+function chuanSo(s) { return String(s == null ? "" : s).replace(/[\u2212\u2012\u2013\u2014\uFE63\uFF0D]/g, "-").replace(/\$/g, "").replace(/\s+/g, "").replace(/,/g, ".").replace(/^\+/, "").toLowerCase(); }
 function dungTLN(tra, da) {
   const a = chuanSo(tra), b = chuanSo(da);
   if (!a) return false;

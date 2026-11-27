@@ -103,3 +103,5 @@ main{padding-top:14px}
 .man-khoa .card{max-width:420px;text-align:center}
 .man-khoa .o-khoa{font-size:54px;line-height:1.2;margin-bottom:8px}
 .man-khoa h3{color:#c21e57}
+.tln label{display:flex;gap:10px;align-items:center;flex:1;white-space:nowrap}
+.tln .dau-tru{min-width:44px;font-size:18px;font-weight:800}
