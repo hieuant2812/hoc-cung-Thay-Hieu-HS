@@ -1198,29 +1198,41 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Tính $A=8^{\frac23}-27^{-\frac13}$.`,
    giai: [
-    R`$8^{\frac23}=\left(2^3\right)^{\frac23}=2^2=4$.`,
-    R`$27^{-\frac13}=\left(3^3\right)^{-\frac13}=3^{-1}=\dfrac13$.`,
-    R`$A=4-\dfrac13=\dfrac{11}3$.`
+    R`**Phân tích.** Viết mỗi cơ số thành luỹ thừa của số nguyên tố ($8=2^3$, $27=3^3$), rồi dùng $\left(a^m\right)^n=a^{mn}$ để số mũ trở thành số nguyên.`,
+    R`**Bước 1.** $8^{\frac23}=\left(2^3\right)^{\frac23}=2^2=4$.`,
+    R`**Bước 2.** $27^{-\frac13}=\left(3^3\right)^{-\frac13}=3^{-1}=\dfrac13$.`,
+    R`**Bước 3.** $A=4-\dfrac13=\dfrac{11}3$.`,
+    R`**Kết luận.** $A=\dfrac{11}3$.`
    ] },
  { muc: "TH", de: R`Rút gọn $P=\dfrac{a^{\frac13}\cdot\sqrt a}{\sqrt[6]a}$ với $a>0$.`,
    giai: [
-    R`$\sqrt a=a^{\frac12}$, $\sqrt[6]a=a^{\frac16}$.`,
-    R`$P=a^{\frac13+\frac12-\frac16}=a^{\frac{2+3-1}6}=a^{\frac23}$.`
+    R`**Phân tích.** Đổi mọi căn về luỹ thừa với số mũ hữu tỉ ($\sqrt[n]a=a^{\frac1n}$), rồi dùng quy tắc: nhân thì **cộng** số mũ, chia thì **trừ** số mũ.`,
+    R`**Bước 1.** $\sqrt a=a^{\frac12}$, $\sqrt[6]a=a^{\frac16}$.`,
+    R`**Bước 2.** $P=a^{\frac13+\frac12-\frac16}=a^{\frac{2+3-1}6}=a^{\frac23}$.`,
+    R`**Kết luận.** $P=a^{\frac23}$.`,
+    R`**Thử lại.** Với $a=64$: $\dfrac{4\cdot8}2=16$ và $64^{\frac23}=16$ ✓.`
    ] },
  { muc: "TH", de: R`So sánh: a) $3^{\sqrt2}$ và $3^{1{,}4}$; b) $(0{,}5)^{\sqrt3}$ và $(0{,}5)^{1{,}7}$.`,
    giai: [
-    R`a) $\sqrt2\approx1{,}414>1{,}4$ và cơ số $3>1$, nên $3^{\sqrt2}>3^{1{,}4}$.`,
-    R`b) $\sqrt3\approx1{,}732>1{,}7$ nhưng cơ số $0<0{,}5<1$, nên $(0{,}5)^{\sqrt3}<(0{,}5)^{1{,}7}$.`
+    R`**Phân tích.** Hai luỹ thừa cùng cơ số: so sánh số mũ, rồi xét cơ số. Cơ số $>1$ thì giữ chiều; cơ số trong $(0;1)$ thì **đổi chiều**.`,
+    R`**Bước 1.** a) $\sqrt2\approx1{,}414>1{,}4$ và cơ số $3>1$, nên $3^{\sqrt2}>3^{1{,}4}$.`,
+    R`**Bước 2.** b) $\sqrt3\approx1{,}732>1{,}7$ nhưng cơ số $0<0{,}5<1$, nên $(0{,}5)^{\sqrt3}<(0{,}5)^{1{,}7}$.`,
+    R`**Kết luận.** a) $3^{\sqrt2}>3^{1{,}4}$; b) $(0{,}5)^{\sqrt3}<(0{,}5)^{1{,}7}$.`
    ] },
  { muc: "VD", de: R`Gửi tiết kiệm $50$ triệu đồng, lãi suất $0{,}5\%$/tháng, lãi nhập gốc hằng tháng. Sau $24$ tháng có bao nhiêu tiền (làm tròn đến hàng phần trăm triệu đồng)?`,
    giai: [
-    R`$P=50$, $r=0{,}005$, $n=24$.`,
-    R`$A=50\cdot(1{,}005)^{24}\approx50\cdot1{,}12716\approx56{,}36$ (triệu đồng).`
+    R`**Phân tích.** Lãi nhập gốc hằng tháng: sau $n$ kì số tiền là $A=P(1+r)^n$, với $r$ là lãi suất **một kì** (tháng).`,
+    R`**Bước 1.** $P=50$, $r=0{,}005$, $n=24$.`,
+    R`**Bước 2.** $A=50\cdot(1{,}005)^{24}\approx50\cdot1{,}12716\approx56{,}36$ (triệu đồng).`,
+    R`**Kết luận.** Sau $24$ tháng có khoảng $56{,}36$ triệu đồng.`
    ] },
  { muc: "VD", de: R`Số vi khuẩn sau $t$ giờ là $N(t)=500\cdot2^{\frac t3}$. Sau $12$ giờ có bao nhiêu vi khuẩn? Sau bao lâu số vi khuẩn gấp $8$ lần ban đầu?`,
    giai: [
-    R`$N(12)=500\cdot2^{4}=8000$ (con).`,
-    R`Gấp $8$ lần: $2^{\frac t3}=8=2^3\Leftrightarrow\dfrac t3=3\Leftrightarrow t=9$ (giờ).`
+    R`**Phân tích.** Câu đầu chỉ cần thay $t=12$. Câu sau: "gấp $8$ lần ban đầu" nghĩa là $N(t)=8\cdot500$, đưa về phương trình mũ cùng cơ số $2$.`,
+    R`**Bước 1.** $N(12)=500\cdot2^{4}=8000$ (con).`,
+    R`**Bước 2.** Gấp $8$ lần: $2^{\frac t3}=8=2^3\Leftrightarrow\dfrac t3=3\Leftrightarrow t=9$ (giờ).`,
+    R`**Kết luận.** Sau $12$ giờ có $8000$ vi khuẩn; sau $9$ giờ số vi khuẩn gấp $8$ lần ban đầu.`,
+    R`**Thử lại.** $N(9)=500\cdot2^3=4000=8\cdot500$ ✓.`
    ] }
  ] },
 "C6-B19-D24": {
@@ -1237,27 +1249,37 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Tính $\log_232$, $\log_3\dfrac19$, $\log_{\frac12}8$.`,
    giai: [
-    R`$32=2^5$ nên $\log_232=5$.`,
-    R`$\dfrac19=3^{-2}$ nên $\log_3\dfrac19=-2$.`,
-    R`$8=2^3=\left(\dfrac12\right)^{-3}$ nên $\log_{\frac12}8=-3$.`
+    R`**Phân tích.** $\log_ab=c\Leftrightarrow a^c=b$. Viết số cần lấy lôgarit thành **luỹ thừa của cơ số**; số mũ chính là kết quả.`,
+    R`**Bước 1.** $32=2^5$ nên $\log_232=5$.`,
+    R`**Bước 2.** $\dfrac19=3^{-2}$ nên $\log_3\dfrac19=-2$.`,
+    R`**Bước 3.** $8=2^3=\left(\dfrac12\right)^{-3}$ nên $\log_{\frac12}8=-3$.`,
+    R`**Kết luận.** $\log_232=5$, $\log_3\dfrac19=-2$, $\log_{\frac12}8=-3$.`,
+    R`**Thử lại.** $\left(\dfrac12\right)^{-3}=2^3=8$ ✓.`
    ] },
  { muc: "TH", de: R`Tính $A=\log_212-\log_23+\log_2\sqrt2$.`,
    giai: [
-    R`$\log_212-\log_23=\log_2\dfrac{12}3=\log_24=2$.`,
-    R`$\log_2\sqrt2=\log_22^{\frac12}=\dfrac12$.`,
-    R`$A=2+\dfrac12=\dfrac52$.`
+    R`**Phân tích.** Hiệu hai lôgarit cùng cơ số là lôgarit của thương: gộp $\log_212-\log_23$ trước, được số đẹp. Số hạng còn lại viết $\sqrt2=2^{\frac12}$.`,
+    R`**Bước 1.** $\log_212-\log_23=\log_2\dfrac{12}3=\log_24=2$.`,
+    R`**Bước 2.** $\log_2\sqrt2=\log_22^{\frac12}=\dfrac12$.`,
+    R`**Bước 3.** $A=2+\dfrac12=\dfrac52$.`,
+    R`**Kết luận.** $A=\dfrac52$.`
    ] },
  { muc: "TH", de: R`Cho $\log_23=a$. Tính $\log_218$, $\log_32$ và $\log_618$ theo $a$.`,
    giai: [
-    R`$\log_218=\log_2(2\cdot3^2)=1+2\log_23=1+2a$.`,
-    R`$\log_32=\dfrac1{\log_23}=\dfrac1a$.`,
-    R`$\log_618=\dfrac{\log_218}{\log_26}=\dfrac{1+2a}{\log_2(2\cdot3)}=\dfrac{1+2a}{1+a}$.`
+    R`**Phân tích.** Phân tích các số $18$, $6$ thành tích của $2$ và $3$, rồi dùng $\log(xy)=\log x+\log y$. Cơ số khác $2$ thì **đổi về cơ số $2$**.`,
+    R`**Bước 1.** $\log_218=\log_2(2\cdot3^2)=1+2\log_23=1+2a$.`,
+    R`**Bước 2.** $\log_32=\dfrac1{\log_23}=\dfrac1a$.`,
+    R`**Bước 3.** $\log_618=\dfrac{\log_218}{\log_26}=\dfrac{1+2a}{\log_2(2\cdot3)}=\dfrac{1+2a}{1+a}$.`,
+    R`**Kết luận.** $\log_218=1+2a$, $\log_32=\dfrac1a$, $\log_618=\dfrac{1+2a}{1+a}$.`,
+    R`**Thử lại.** $a=\log_23\approx1{,}585$: $\dfrac{1+2a}{1+a}\approx\dfrac{4{,}17}{2{,}585}\approx1{,}613$, máy tính cho $\log_618\approx1{,}613$ ✓.`
    ] },
  { muc: "VD", de: R`a) Một dung dịch có nồng độ $[\text{H}^+]=10^{-3}$ mol/L. Tính pH. b) Một dung dịch có pH $=5{,}5$. Tính $[\text{H}^+]$. c) Biên độ trận động đất A gấp $100$ lần trận B. Độ Richter của A lớn hơn của B bao nhiêu?`,
    giai: [
-    R`a) $\text{pH}=-\log10^{-3}=3$.`,
-    R`b) $-\log[\text{H}^+]=5{,}5\Leftrightarrow[\text{H}^+]=10^{-5{,}5}\approx3{,}16\cdot10^{-6}$ (mol/L).`,
-    R`c) $M_A-M_B=\log\dfrac{A_A}{A_0}-\log\dfrac{A_B}{A_0}=\log\dfrac{A_A}{A_B}=\log100=2$ (độ).`
+    R`**Phân tích.** Dùng định nghĩa $\text{pH}=-\log[\text{H}^+]$ và $M=\log\dfrac A{A_0}$. Câu c) hiệu hai lôgarit là lôgarit của thương, $A_0$ tự triệt tiêu.`,
+    R`**Bước 1.** a) $\text{pH}=-\log10^{-3}=3$.`,
+    R`**Bước 2.** b) $-\log[\text{H}^+]=5{,}5\Leftrightarrow[\text{H}^+]=10^{-5{,}5}\approx3{,}16\cdot10^{-6}$ (mol/L).`,
+    R`**Bước 3.** c) $M_A-M_B=\log\dfrac{A_A}{A_0}-\log\dfrac{A_B}{A_0}=\log\dfrac{A_A}{A_B}=\log100=2$ (độ).`,
+    R`**Kết luận.** a) pH $=3$; b) $[\text{H}^+]\approx3{,}16\cdot10^{-6}$ mol/L; c) lớn hơn $2$ độ Richter.`
    ] }
  ] },
 "C6-B20-D25": {
@@ -1274,24 +1296,31 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Trong các hàm số $y=\left(\dfrac\pi4\right)^x$, $y=\left(\sqrt3\right)^x$, $y=\log_{0{,}5}x$, $y=\log_{\frac e2}x$, hàm số nào đồng biến trên tập xác định?`,
    giai: [
-    R`$\dfrac\pi4\approx0{,}785<1$: nghịch biến. $\sqrt3>1$: đồng biến.`,
-    R`$0{,}5<1$: nghịch biến. $\dfrac e2\approx1{,}36>1$: đồng biến.`,
+    R`**Phân tích.** Hàm $y=a^x$ và $y=\log_ax$ **đồng biến khi $a>1$**, nghịch biến khi $0<a<1$. Chỉ cần ước lượng từng cơ số so với $1$.`,
+    R`**Bước 1.** $\dfrac\pi4\approx0{,}785<1$: nghịch biến. $\sqrt3>1$: đồng biến.`,
+    R`**Bước 2.** $0{,}5<1$: nghịch biến. $\dfrac e2\approx1{,}36>1$: đồng biến.`,
     R`**Kết luận.** $y=\left(\sqrt3\right)^x$ và $y=\log_{\frac e2}x$.`
    ] },
  { muc: "TH", de: R`Tìm tập xác định của $y=\log_2(x^2-4x+3)$.`,
    giai: [
-    R`Điều kiện $x^2-4x+3>0\Leftrightarrow(x-1)(x-3)>0\Leftrightarrow x<1$ hoặc $x>3$.`,
-    R`$D=(-\infty;1)\cup(3;+\infty)$.`
+    R`**Phân tích.** $\log_af(x)$ xác định khi $f(x)>0$ (dương **ngặt**). Giải bất phương trình bậc hai bằng phân tích nhân tử và xét dấu.`,
+    R`**Bước 1.** Điều kiện $x^2-4x+3>0\Leftrightarrow(x-1)(x-3)>0\Leftrightarrow x<1$ hoặc $x>3$.`,
+    R`**Bước 2.** $D=(-\infty;1)\cup(3;+\infty)$.`,
+    R`**Kết luận.** $D=(-\infty;1)\cup(3;+\infty)$.`
    ] },
  { muc: "TH", de: R`Tìm tập xác định của $y=\log_3(4-x)+\sqrt{x-1}$.`,
    giai: [
-    R`Điều kiện: $4-x>0$ và $x-1\ge0$, tức $x<4$ và $x\ge1$.`,
-    R`$D=[1;4)$.`
+    R`**Phân tích.** Có hai biểu thức: lôgarit cần $4-x>0$, căn bậc hai cần $x-1\ge0$. Lấy **giao** hai điều kiện.`,
+    R`**Bước 1.** Điều kiện: $4-x>0$ và $x-1\ge0$, tức $x<4$ và $x\ge1$.`,
+    R`**Bước 2.** $D=[1;4)$.`,
+    R`**Kết luận.** $D=[1;4)$.`,
+    R`**Nhận xét.** $x=1$ được lấy (căn bằng $0$ vẫn xác định), còn $x=4$ bị loại vì $\log_30$ không xác định.`
    ] },
  { muc: "VD", de: R`Vẽ đồ thị các hàm số $y=2^x$ và $y=\log_2x$ trên cùng một hệ trục. Nhận xét.`,
    giai: [
-    R`Bảng giá trị $y=2^x$: $x=-1,0,1,2$ cho $y=\dfrac12,1,2,4$.`,
-    R`Bảng giá trị $y=\log_2x$: $x=\dfrac12,1,2,4$ cho $y=-1,0,1,2$ (đổi chỗ $x$, $y$ của bảng trên).`,
+    R`**Phân tích.** $y=\log_2x$ là hàm ngược của $y=2^x$: bảng giá trị của nó có được bằng cách **đổi chỗ** $x$ và $y$. Vì vậy hai đồ thị đối xứng qua đường $y=x$.`,
+    R`**Bước 1.** Bảng giá trị $y=2^x$: $x=-1,0,1,2$ cho $y=\dfrac12,1,2,4$.`,
+    R`**Bước 2.** Bảng giá trị $y=\log_2x$: $x=\dfrac12,1,2,4$ cho $y=-1,0,1,2$ (đổi chỗ $x$, $y$ của bảng trên).`,
     R`**Nhận xét.** Cả hai hàm đồng biến (cơ số $2>1$); hai đồ thị đối xứng nhau qua đường thẳng $y=x$; $y=2^x$ luôn nằm trên trục hoành, $y=\log_2x$ luôn nằm bên phải trục tung.`
    ],
    hinh: R`\begin{tikzpicture}[scale=0.8,>=stealth]
@@ -1308,8 +1337,10 @@ Object.assign(D, {
    chuThich: R`Đồ thị $y=2^x$ (xanh) và $y=\log_2x$ (đỏ) đối xứng qua đường $y=x$ (nét đứt).` },
  { muc: "TH", de: R`So sánh $\log_{0{,}3}5$ và $\log_{0{,}3}7$.`,
    giai: [
-    R`Cơ số $0<0{,}3<1$ nên hàm $y=\log_{0{,}3}x$ nghịch biến.`,
-    R`$5<7$ nên $\log_{0{,}3}5>\log_{0{,}3}7$.`
+    R`**Phân tích.** Cùng cơ số $0{,}3<1$: hàm lôgarit nghịch biến, số lớn hơn cho lôgarit nhỏ hơn.`,
+    R`**Bước 1.** Cơ số $0<0{,}3<1$ nên hàm $y=\log_{0{,}3}x$ nghịch biến.`,
+    R`**Bước 2.** $5<7$ nên $\log_{0{,}3}5>\log_{0{,}3}7$.`,
+    R`**Kết luận.** $\log_{0{,}3}5>\log_{0{,}3}7$.`
    ] }
  ] },
 "C6-B21-D26": {
@@ -1326,30 +1357,44 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Giải phương trình $2^{x+1}=8$.`,
    giai: [
-    R`$8=2^3$: $2^{x+1}=2^3\Leftrightarrow x+1=3\Leftrightarrow x=2$.`
+    R`**Phân tích.** Đưa hai vế về **cùng cơ số** ($8=2^3$); khi đó hai luỹ thừa bằng nhau thì số mũ bằng nhau.`,
+    R`**Bước 1.** Viết $8=2^3$: phương trình thành $2^{x+1}=2^3$.`,
+    R`**Bước 2.** Cùng cơ số $2$ nên $x+1=3\Leftrightarrow x=2$.`,
+    R`**Kết luận.** $x=2$.`,
+    R`**Thử lại.** $2^{2+1}=2^3=8$ ✓.`
    ] },
  { muc: "TH", de: R`Giải phương trình $9^x-4\cdot3^x+3=0$.`,
    giai: [
-    R`$9^x=(3^x)^2$. Đặt $t=3^x>0$: $t^2-4t+3=0\Leftrightarrow t=1$ hoặc $t=3$ (đều dương).`,
-    R`$3^x=1\Leftrightarrow x=0$; $3^x=3\Leftrightarrow x=1$.`,
-    R`**Kết quả.** $x\in\{0;1\}$.`
+    R`**Phân tích.** $9^x=(3^x)^2$ nên phương trình là bậc hai theo $3^x$. Đặt $t=3^x$ với điều kiện $t>0$, giải rồi loại $t\le0$.`,
+    R`**Bước 1.** $9^x=(3^x)^2$. Đặt $t=3^x>0$: $t^2-4t+3=0\Leftrightarrow t=1$ hoặc $t=3$ (đều dương).`,
+    R`**Bước 2.** $3^x=1\Leftrightarrow x=0$; $3^x=3\Leftrightarrow x=1$.`,
+    R`**Kết quả.** $x\in\{0;1\}$.`,
+    R`**Thử lại.** $x=1$: $9-12+3=0$ ✓; $x=0$: $1-4+3=0$ ✓.`
    ] },
  { muc: "TH", de: R`Giải phương trình $\log_2(x-1)=3$.`,
    giai: [
-    R`Điều kiện $x>1$.`,
-    R`$x-1=2^3=8\Leftrightarrow x=9$ (thoả mãn).`
+    R`**Phân tích.** $\log_af(x)=b\Leftrightarrow f(x)=a^b$. Đặt điều kiện để lôgarit xác định trước, giải xong đối chiếu.`,
+    R`**Bước 1.** Điều kiện $x>1$.`,
+    R`**Bước 2.** $x-1=2^3=8\Leftrightarrow x=9$ (thoả mãn).`,
+    R`**Kết luận.** $x=9$.`,
+    R`**Thử lại.** $\log_2(9-1)=\log_28=3$ ✓.`
    ] },
  { muc: "VD", de: R`Giải phương trình $\log_2x+\log_2(x-2)=3$.`,
    giai: [
-    R`Điều kiện: $x>0$ và $x>2$, tức $x>2$.`,
-    R`$\log_2[x(x-2)]=3\Leftrightarrow x^2-2x=8\Leftrightarrow x^2-2x-8=0\Leftrightarrow x=4$ hoặc $x=-2$.`,
-    R`Đối chiếu điều kiện: loại $x=-2$. **Kết quả.** $x=4$.`
+    R`**Phân tích.** Tổng hai lôgarit cùng cơ số: gộp thành lôgarit của tích, đưa về phương trình bậc hai. Điều kiện phải đặt **trước khi gộp**, vì sau khi gộp miền xác định rộng hơn.`,
+    R`**Bước 1.** Điều kiện: $x>0$ và $x>2$, tức $x>2$.`,
+    R`**Bước 2.** $\log_2[x(x-2)]=3\Leftrightarrow x^2-2x=8\Leftrightarrow x^2-2x-8=0\Leftrightarrow x=4$ hoặc $x=-2$.`,
+    R`**Bước 3.** Đối chiếu điều kiện: loại $x=-2$. **Kết quả.** $x=4$.`,
+    R`**Thử lại.** $\log_24+\log_22=2+1=3$ ✓. (Nếu không đặt điều kiện, sẽ nhận nhầm $x=-2$, khi đó $\log_2(-2)$ không xác định.)`
    ] },
  { muc: "VD", de: R`Dân số một tỉnh là $90$ vạn người, tăng đều $1\%$ mỗi năm. Sau ít nhất bao nhiêu năm dân số đạt $100$ vạn người?`,
    giai: [
-    R`Sau $n$ năm: $90\cdot1{,}01^n$. Cần $90\cdot1{,}01^n=100\Leftrightarrow1{,}01^n=\dfrac{10}9$.`,
-    R`$n=\log_{1{,}01}\dfrac{10}9=\dfrac{\ln\frac{10}9}{\ln1{,}01}\approx10{,}59$.`,
-    R`$n$ là số nguyên nên cần ít nhất $11$ năm.`
+    R`**Phân tích.** Tăng đều $1\%$ mỗi năm nên dân số sau $n$ năm là $90\cdot1{,}01^n$. Đưa về phương trình mũ, lấy lôgarit để tìm $n$, rồi làm tròn **lên** vì $n$ nguyên.`,
+    R`**Bước 1.** Sau $n$ năm: $90\cdot1{,}01^n$. Cần $90\cdot1{,}01^n=100\Leftrightarrow1{,}01^n=\dfrac{10}9$.`,
+    R`**Bước 2.** $n=\log_{1{,}01}\dfrac{10}9=\dfrac{\ln\frac{10}9}{\ln1{,}01}\approx10{,}59$.`,
+    R`**Bước 3.** $n$ là số nguyên nên cần ít nhất $11$ năm.`,
+    R`**Kết luận.** Sau ít nhất $11$ năm.`,
+    R`**Thử lại.** $90\cdot1{,}01^{10}\approx99{,}4<100$ và $90\cdot1{,}01^{11}\approx100{,}4>100$ ✓.`
    ] }
  ] },
 "C6-B21-D27": {
@@ -1366,28 +1411,40 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Giải bất phương trình $2^x>8$.`,
    giai: [
-    R`$2^x>2^3$, cơ số $2>1$ nên $x>3$.`
+    R`**Phân tích.** Đưa hai vế về cùng cơ số $2$ rồi so sánh số mũ. Cơ số $2>1$ nên **giữ nguyên chiều** bất đẳng thức.`,
+    R`**Bước 1.** $8=2^3$, nên bất phương trình là $2^x>2^3$.`,
+    R`**Bước 2.** Hàm $y=2^x$ đồng biến (cơ số $2>1$), nên $2^x>2^3\Leftrightarrow x>3$.`,
+    R`**Kết luận.** Tập nghiệm $S=(3;+\infty)$.`,
+    R`**Thử lại.** $x=4$: $2^4=16>8$ ✓; $x=3$: $2^3=8$, không lớn hơn $8$, đúng là bị loại ✓.`
    ] },
  { muc: "TH", de: R`Giải bất phương trình $\left(\dfrac13\right)^{x-1}\ge9$.`,
    giai: [
-    R`$9=\left(\dfrac13\right)^{-2}$, nên bất phương trình là $\left(\dfrac13\right)^{x-1}\ge\left(\dfrac13\right)^{-2}$.`,
-    R`Cơ số $\dfrac13<1$, đổi chiều: $x-1\le-2\Leftrightarrow x\le-1$.`
+    R`**Phân tích.** Viết $9$ thành luỹ thừa của cơ số $\dfrac13$. Cơ số nhỏ hơn $1$ nên khi so sánh số mũ phải **đổi chiều**.`,
+    R`**Bước 1.** $9=\left(\dfrac13\right)^{-2}$, nên bất phương trình là $\left(\dfrac13\right)^{x-1}\ge\left(\dfrac13\right)^{-2}$.`,
+    R`**Bước 2.** Cơ số $\dfrac13<1$, đổi chiều: $x-1\le-2\Leftrightarrow x\le-1$.`,
+    R`**Kết luận.** Tập nghiệm $S=(-\infty;-1]$.`,
+    R`**Thử lại.** $x=-1$: $\left(\dfrac13\right)^{-2}=9\ge9$ ✓.`
    ] },
  { muc: "TH", de: R`Giải bất phương trình $\log_2(x-3)<2$.`,
    giai: [
-    R`Cơ số $2>1$: $0<x-3<2^2\Leftrightarrow3<x<7$.`,
-    R`Tập nghiệm $S=(3;7)$.`
+    R`**Phân tích.** Bất phương trình lôgarit: vừa cần điều kiện $x-3>0$, vừa so sánh $x-3$ với $2^2$. Cơ số $2>1$ nên giữ chiều.`,
+    R`**Bước 1.** Cơ số $2>1$: $0<x-3<2^2\Leftrightarrow3<x<7$.`,
+    R`**Bước 2.** Tập nghiệm $S=(3;7)$.`,
+    R`**Kết luận.** $S=(3;7)$.`
    ] },
  { muc: "VD", de: R`Giải bất phương trình $\log_{0{,}5}(2x-1)\ge\log_{0{,}5}(x+2)$.`,
    giai: [
-    R`Cơ số $0<0{,}5<1$ nên bất phương trình $\Leftrightarrow0<2x-1\le x+2$.`,
-    R`$2x-1>0\Leftrightarrow x>\dfrac12$; $2x-1\le x+2\Leftrightarrow x\le3$.`,
-    R`Tập nghiệm $S=\left(\dfrac12;3\right]$.`
+    R`**Phân tích.** Cùng cơ số $0{,}5<1$: bỏ lôgarit thì **đổi chiều**. Điều kiện chỉ cần cho biểu thức nhỏ hơn ($2x-1>0$), vì khi đó $x+2\ge2x-1>0$ tự động đúng.`,
+    R`**Bước 1.** Cơ số $0<0{,}5<1$ nên bất phương trình $\Leftrightarrow0<2x-1\le x+2$.`,
+    R`**Bước 2.** $2x-1>0\Leftrightarrow x>\dfrac12$; $2x-1\le x+2\Leftrightarrow x\le3$.`,
+    R`**Bước 3.** Tập nghiệm $S=\left(\dfrac12;3\right]$.`,
+    R`**Kết luận.** $S=\left(\dfrac12;3\right]$.`
    ] },
  { muc: "VD", de: R`Gửi $100$ triệu đồng với lãi suất $7\%$/năm, lãi nhập gốc. Sau ít nhất bao nhiêu năm số tiền vượt $150$ triệu đồng?`,
    giai: [
-    R`Cần $100\cdot1{,}07^n>150\Leftrightarrow1{,}07^n>1{,}5\Leftrightarrow n>\log_{1{,}07}1{,}5=\dfrac{\ln1{,}5}{\ln1{,}07}\approx5{,}99$.`,
-    R`Số nguyên nhỏ nhất là $n=6$. Kiểm tra: $1{,}07^5\approx1{,}403<1{,}5$; $1{,}07^6\approx1{,}501>1{,}5$ ✓.`,
+    R`**Phân tích.** Số tiền sau $n$ năm là $100\cdot1{,}07^n$. "Vượt $150$" là bất phương trình mũ; lấy lôgarit, rồi chọn số nguyên nhỏ nhất thoả mãn.`,
+    R`**Bước 1.** Cần $100\cdot1{,}07^n>150\Leftrightarrow1{,}07^n>1{,}5\Leftrightarrow n>\log_{1{,}07}1{,}5=\dfrac{\ln1{,}5}{\ln1{,}07}\approx5{,}99$.`,
+    R`**Bước 2.** Số nguyên nhỏ nhất là $n=6$. Kiểm tra: $1{,}07^5\approx1{,}403<1{,}5$; $1{,}07^6\approx1{,}501>1{,}5$ ✓.`,
     R`**Kết luận.** Sau ít nhất $6$ năm.`
    ] }
  ] }
