@@ -113,6 +113,7 @@
   const hoSo = (() => { try { return JSON.parse(API.LS.get("hs-ho-so") || "{}"); } catch (e) { return {}; } })();
   const KHOA_LUOT = "th-luot-" + (hoSo.id || "");
   const bao = (html, kieu) => { $("#thongBao").innerHTML = html ? `<div class="note ${kieu || "blue"}">${html}</div>` : ""; };
+  window.addEventListener("unhandledrejection", e => bao("Lỗi: " + esc((e.reason && e.reason.message) || e.reason) + ". Em chụp màn hình gửi thầy nhé.", "red"));
   const TEN_MUC = { NB: "Nhận biết", TH: "Thông hiểu", VD: "Vận dụng", VDC: "Vận dụng cao" };
   const xem = id => ["#vTong", "#vLuyen", "#vKQ"].forEach(v => $(v).classList.toggle("hidden", v !== id));
   const phanTram = x => x == null ? "" : Math.round(x * 100) + "%";
@@ -141,7 +142,17 @@
     xem("#vTong");
     const [mon, lop] = chonNH ? chonNH.split("|") : ["", ""];
     let r;
-    try { r = await goi("hs.tuHoc", { mon, lop }); } catch (e) { return bao(esc(e.message), "red"); }
+    if (!TQ) { bao("⏳ Đang tải dữ liệu tự học…"); $("#dsDang").innerHTML = `<p class="muted small">Đang tải…</p>`; }
+    try { r = await goi("hs.tuHoc", { mon, lop }); }
+    catch (e) {
+      $("#dsDang").innerHTML = "";
+      bao(`${esc(e.message)} <button class="btn sm ghost" id="btnThuLai">Thử lại</button>`, "red");
+      $("#btnThuLai").onclick = taiTong;
+      return;
+    }
+    try { veTong(r); } catch (e) { bao("Lỗi hiển thị trang: " + esc(e.message) + ". Em chụp màn hình gửi thầy nhé.", "red"); }
+  }
+  function veTong(r) {
     TQ = r; bao("");
     veTienDo(r.homNay, r.chuoi);
     $("#tongCau").textContent = r.tongLam ? `Đã làm ${r.tongLam} câu, đúng ${r.tongDung} câu` : "";
