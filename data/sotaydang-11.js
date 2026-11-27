@@ -707,25 +707,39 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Cho hình chóp $S.ABCD$ có đáy là hình bình hành tâm $O$. Tìm giao tuyến của $(SAC)$ và $(SBD)$.`,
    giai: [
-    R`$S$ là điểm chung thứ nhất.`,
-    R`$O=AC\cap BD$, mà $AC\subset(SAC)$, $BD\subset(SBD)$, nên $O$ là điểm chung thứ hai.`,
+    R`**Phân tích.** Muốn tìm giao tuyến của hai mặt phẳng, tìm **hai điểm chung**. $S$ hiển nhiên chung; điểm chung thứ hai thường là giao điểm của hai đường thẳng nằm trong cùng mặt đáy, mỗi đường thuộc một mặt phẳng.`,
+    R`**Bước 1.** $S$ là điểm chung thứ nhất.`,
+    R`**Bước 2.** $O=AC\cap BD$, mà $AC\subset(SAC)$, $BD\subset(SBD)$, nên $O$ là điểm chung thứ hai.`,
     R`**Kết luận.** $(SAC)\cap(SBD)=SO$.`
    ] },
  { muc: "TH", de: R`Cho hình chóp $S.ABCD$ có đáy là tứ giác $ABCD$ với $AB$ và $CD$ không song song. Tìm giao tuyến của $(SAB)$ và $(SCD)$.`,
    giai: [
-    R`$S$ là một điểm chung.`,
-    R`$AB$, $CD$ cùng nằm trong $(ABCD)$ và không song song, nên chúng cắt nhau tại $I$. $I\in AB\subset(SAB)$ và $I\in CD\subset(SCD)$: $I$ là điểm chung thứ hai.`,
+    R`**Phân tích.** Vẫn tìm hai điểm chung. Trong mặt đáy, $AB$ thuộc $(SAB)$, $CD$ thuộc $(SCD)$; hai đường này không song song nên cắt nhau, và giao điểm đó là điểm chung thứ hai.`,
+    R`**Bước 1.** $S$ là một điểm chung.`,
+    R`**Bước 2.** $AB$, $CD$ cùng nằm trong $(ABCD)$ và không song song, nên chúng cắt nhau tại $I$. $I\in AB\subset(SAB)$ và $I\in CD\subset(SCD)$: $I$ là điểm chung thứ hai.`,
     R`**Kết luận.** $(SAB)\cap(SCD)=SI$.`
    ] },
  { muc: "VD", de: R`Cho hình chóp $S.ABCD$ có đáy là hình bình hành tâm $O$, $M$ là trung điểm $SC$. Tìm giao điểm $G$ của $AM$ với mặt phẳng $(SBD)$. Tính tỉ số $\dfrac{SG}{SO}$.`,
    giai: [
-    R`Chọn mặt phẳng phụ chứa $AM$ là $(SAC)$.`,
-    R`$(SAC)\cap(SBD)=SO$ (ví dụ 1).`,
-    R`Trong $(SAC)$, $AM$ cắt $SO$ tại $G$. Vì $G\in SO\subset(SBD)$ nên $G=AM\cap(SBD)$.`,
-    R`Trong tam giác $SAC$: $SO$ là trung tuyến (vì $O$ là trung điểm $AC$), $AM$ cũng là trung tuyến. Vậy $G$ là trọng tâm tam giác $SAC$, suy ra $\dfrac{SG}{SO}=\dfrac23$.`
+    R`**Phân tích.** Tìm giao điểm của đường thẳng $AM$ với mặt phẳng $(SBD)$: chọn **mặt phẳng phụ** chứa $AM$, tìm giao tuyến của nó với $(SBD)$; giao điểm của $AM$ với giao tuyến đó là điểm cần tìm.`,
+    R`**Bước 1.** Chọn mặt phẳng phụ chứa $AM$ là $(SAC)$.`,
+    R`**Bước 2.** $(SAC)\cap(SBD)=SO$ (ví dụ 1).`,
+    R`**Bước 3.** Trong $(SAC)$, $AM$ cắt $SO$ tại $G$. Vì $G\in SO\subset(SBD)$ nên $G=AM\cap(SBD)$.`,
+    R`**Bước 4.** Trong tam giác $SAC$: $SO$ là trung tuyến (vì $O$ là trung điểm $AC$), $AM$ cũng là trung tuyến. Vậy $G$ là trọng tâm tam giác $SAC$, suy ra $\dfrac{SG}{SO}=\dfrac23$.`,
+    R`**Kết luận.** $G=AM\cap SO$ là trọng tâm tam giác $SAC$ và $\dfrac{SG}{SO}=\dfrac23$.`
    ],
    hinh: R`\begin{tikzpicture}[scale=1]
-` + CHOP + R`
+\draw[thick] (0,0)--(3,0)--(4,1.3);
+\draw[dashed] (4,1.3)--(1,1.3)--(0,0);
+\draw[thick] (1.6,3.8)--(0,0);
+\draw[thick] (1.6,3.8)--(3,0);
+\draw[thick] (1.6,3.8)--(4,1.3);
+\draw[dashed] (1.6,3.8)--(1,1.3);
+\node[above] at (1.6,3.8){$S$};
+\node[below left] at (0,0){$A$};
+\node[below right] at (3,0){$B$};
+\node[right] at (4,1.3){$C$};
+\node[above left] at (1,1.3){$D$};
 \draw[dashed] (0,0)--(4,1.3); \draw[dashed] (3,0)--(1,1.3);
 \draw[dashed] (1.6,3.8)--(2,0.65);
 \draw[dashed,red] (0,0)--(2.8,2.55);
@@ -736,13 +750,24 @@ Object.assign(D, {
    chuThich: R`$G$ là giao điểm của hai trung tuyến $AM$ và $SO$ của tam giác $SAC$.` },
  { muc: "VD", de: R`Cho hình chóp $S.ABCD$ có đáy là hình bình hành, $M$ là trung điểm $SA$. Tìm thiết diện của hình chóp cắt bởi mặt phẳng $(MCD)$. Thiết diện là hình gì?`,
    giai: [
-    R`$(MCD)$ và $(SAB)$ có điểm chung $M$; lại có $CD\subset(MCD)$, $AB\subset(SAB)$, $CD\parallel AB$.`,
-    R`Nên giao tuyến của chúng là đường thẳng qua $M$ song song với $AB$, cắt $SB$ tại $N$. Vì $M$ là trung điểm $SA$ nên $N$ là trung điểm $SB$ (đường trung bình).`,
-    R`Các đoạn giao tuyến với các mặt: $MN$ (mặt $SAB$), $NC$ (mặt $SBC$), $CD$ (đáy), $DM$ (mặt $SAD$).`,
+    R`**Phân tích.** Thiết diện là đa giác tạo bởi các **đoạn giao tuyến** của $(MCD)$ với các mặt của hình chóp. Mặt $(SAB)$ chứa $AB\parallel CD$ nên giao tuyến với $(SAB)$ song song với $AB$.`,
+    R`**Bước 1.** $(MCD)$ và $(SAB)$ có điểm chung $M$; lại có $CD\subset(MCD)$, $AB\subset(SAB)$, $CD\parallel AB$.`,
+    R`**Bước 2.** Nên giao tuyến của chúng là đường thẳng qua $M$ song song với $AB$, cắt $SB$ tại $N$. Vì $M$ là trung điểm $SA$ nên $N$ là trung điểm $SB$ (đường trung bình).`,
+    R`**Bước 3.** Các đoạn giao tuyến với các mặt: $MN$ (mặt $SAB$), $NC$ (mặt $SBC$), $CD$ (đáy), $DM$ (mặt $SAD$).`,
     R`**Thiết diện** là tứ giác $MNCD$ có $MN\parallel CD$ (cùng song song $AB$) và $MN=\dfrac12AB=\dfrac12CD$: đó là **hình thang**.`
    ],
    hinh: R`\begin{tikzpicture}[scale=1]
-` + CHOP + R`
+\draw[thick] (0,0)--(3,0)--(4,1.3);
+\draw[dashed] (4,1.3)--(1,1.3)--(0,0);
+\draw[thick] (1.6,3.8)--(0,0);
+\draw[thick] (1.6,3.8)--(3,0);
+\draw[thick] (1.6,3.8)--(4,1.3);
+\draw[dashed] (1.6,3.8)--(1,1.3);
+\node[above] at (1.6,3.8){$S$};
+\node[below left] at (0,0){$A$};
+\node[below right] at (3,0){$B$};
+\node[right] at (4,1.3){$C$};
+\node[above left] at (1,1.3){$D$};
 \fill[blue!15] (0.8,1.9)--(2.3,1.9)--(4,1.3)--(1,1.3)--cycle;
 \draw[thick,blue] (0.8,1.9)--(2.3,1.9)--(4,1.3);
 \draw[dashed,blue] (4,1.3)--(1,1.3)--(0.8,1.9);
@@ -764,30 +789,54 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Cho hình chóp $S.ABCD$ có đáy là hình bình hành. Tìm giao tuyến của $(SAB)$ và $(SCD)$.`,
    giai: [
-    R`$S$ là điểm chung của hai mặt phẳng.`,
-    R`$AB\subset(SAB)$, $CD\subset(SCD)$ và $AB\parallel CD$.`,
-    R`Theo định lí về giao tuyến: $(SAB)\cap(SCD)$ là đường thẳng $d$ qua $S$ và song song với $AB$ (và $CD$).`
+    R`**Phân tích.** Hai mặt phẳng có một điểm chung $S$ và lần lượt chứa hai đường thẳng **song song** $AB$, $CD$. Khi đó giao tuyến đi qua $S$ và song song với hai đường thẳng đó, không cần tìm điểm chung thứ hai.`,
+    R`**Bước 1.** $S$ là điểm chung của hai mặt phẳng.`,
+    R`**Bước 2.** $AB\subset(SAB)$, $CD\subset(SCD)$ và $AB\parallel CD$.`,
+    R`**Bước 3.** Theo định lí về giao tuyến: $(SAB)\cap(SCD)$ là đường thẳng $d$ qua $S$ và song song với $AB$ (và $CD$).`,
+    R`**Kết luận.** $(SAB)\cap(SCD)$ là đường thẳng qua $S$, song song với $AB$ và $CD$.`
    ],
    hinh: R`\begin{tikzpicture}[scale=1]
-` + CHOP + R`
+\draw[thick] (0,0)--(3,0)--(4,1.3);
+\draw[dashed] (4,1.3)--(1,1.3)--(0,0);
+\draw[thick] (1.6,3.8)--(0,0);
+\draw[thick] (1.6,3.8)--(3,0);
+\draw[thick] (1.6,3.8)--(4,1.3);
+\draw[dashed] (1.6,3.8)--(1,1.3);
+\node[above] at (1.6,3.8){$S$};
+\node[below left] at (0,0){$A$};
+\node[below right] at (3,0){$B$};
+\node[right] at (4,1.3){$C$};
+\node[above left] at (1,1.3){$D$};
 \draw[thick,red] (0.1,3.8)--(3.1,3.8) node[right]{$d$};
 \end{tikzpicture}` },
  { muc: "TH", de: R`Cho tứ diện $ABCD$. Gọi $M$, $N$, $P$, $Q$ lần lượt là trung điểm $AB$, $BC$, $CD$, $DA$. Chứng minh $MNPQ$ là hình bình hành.`,
    giai: [
-    R`Trong tam giác $ABC$: $MN$ là đường trung bình nên $MN\parallel AC$ và $MN=\dfrac12AC$.`,
-    R`Trong tam giác $ACD$: $QP$ là đường trung bình nên $QP\parallel AC$ và $QP=\dfrac12AC$.`,
-    R`Suy ra $MN\parallel QP$ và $MN=QP$: tứ giác $MNPQ$ là hình bình hành.`
+    R`**Phân tích.** Trung điểm các cạnh gợi ý **đường trung bình**. Chứng minh một cặp cạnh đối của $MNPQ$ vừa song song vừa bằng nhau (cùng song song và bằng nửa $AC$).`,
+    R`**Bước 1.** Trong tam giác $ABC$: $MN$ là đường trung bình nên $MN\parallel AC$ và $MN=\dfrac12AC$.`,
+    R`**Bước 2.** Trong tam giác $ACD$: $QP$ là đường trung bình nên $QP\parallel AC$ và $QP=\dfrac12AC$.`,
+    R`**Bước 3.** Suy ra $MN\parallel QP$ và $MN=QP$: tứ giác $MNPQ$ là hình bình hành.`,
+    R`**Kết luận.** $MNPQ$ là hình bình hành.`,
+    R`**Nhận xét.** Làm tương tự với $BD$ cũng được $MQ\parallel NP\parallel BD$.`
    ],
    hinh: R`\begin{tikzpicture}[scale=1]
-` + TUDIEN + R`
+\draw[thick] (4,0)--(1.8,3.6)--(0,0);
+\draw[dashed] (0,0)--(4,0);
+\draw[thick] (4,0)--(2.6,-1.2)--(0,0);
+\draw[thick] (2.6,-1.2)--(1.8,3.6);
+\node[above] at (1.8,3.6){$A$};
+\node[left] at (0,0){$B$};
+\node[below] at (2.6,-1.2){$C$};
+\node[right] at (4,0){$D$};
 \draw[blue,thick] (0.9,1.8)--(1.3,-0.6)--(3.3,-0.6)--(2.9,1.8)--cycle;
 \node[left] at (0.9,1.8){$M$}; \node[below] at (1.3,-0.6){$N$}; \node[below right] at (3.3,-0.6){$P$}; \node[right] at (2.9,1.8){$Q$};
 \end{tikzpicture}` },
  { muc: "TH", de: R`Cho tứ diện $ABCD$. Chứng minh $AB$ và $CD$ chéo nhau.`,
    giai: [
-    R`Giả sử $AB$ và $CD$ không chéo nhau, tức là chúng cùng nằm trong một mặt phẳng $(P)$.`,
-    R`Khi đó bốn điểm $A$, $B$, $C$, $D$ cùng thuộc $(P)$, mâu thuẫn với việc $ABCD$ là tứ diện (bốn đỉnh không đồng phẳng).`,
-    R`Vậy $AB$ và $CD$ chéo nhau.`
+    R`**Phân tích.** Hai đường thẳng chéo nhau khi chúng **không cùng nằm trong một mặt phẳng**. Chứng minh bằng phản chứng: giả sử đồng phẳng rồi dẫn tới mâu thuẫn.`,
+    R`**Bước 1.** Giả sử $AB$ và $CD$ không chéo nhau, tức là chúng cùng nằm trong một mặt phẳng $(P)$.`,
+    R`**Bước 2.** Khi đó bốn điểm $A$, $B$, $C$, $D$ cùng thuộc $(P)$, mâu thuẫn với việc $ABCD$ là tứ diện (bốn đỉnh không đồng phẳng).`,
+    R`**Bước 3.** Vậy $AB$ và $CD$ chéo nhau.`,
+    R`**Kết luận.** $AB$ và $CD$ chéo nhau. Tương tự, mọi cặp cạnh đối của tứ diện đều chéo nhau.`
    ] }
  ] },
 "C4-B12-D16": {
@@ -802,21 +851,27 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Cho hình chóp $S.ABCD$ có đáy là hình bình hành. Chứng minh $CD\parallel(SAB)$.`,
    giai: [
-    R`$CD\not\subset(SAB)$ (vì $C\notin(SAB)$).`,
-    R`$CD\parallel AB$ và $AB\subset(SAB)$.`,
-    R`Vậy $CD\parallel(SAB)$.`
+    R`**Phân tích.** Đường thẳng $a$ song song với $(P)$ khi $a$ **không nằm trong** $(P)$ và $a$ **song song với một đường thẳng nằm trong** $(P)$. Kiểm tra đủ cả hai ý.`,
+    R`**Bước 1.** $CD\not\subset(SAB)$ (vì $C\notin(SAB)$).`,
+    R`**Bước 2.** $CD\parallel AB$ và $AB\subset(SAB)$.`,
+    R`**Bước 3.** Vậy $CD\parallel(SAB)$.`,
+    R`**Kết luận.** $CD\parallel(SAB)$.`
    ] },
  { muc: "TH", de: R`Cho hình chóp $S.ABCD$ đáy hình bình hành; $M$, $N$ lần lượt là trung điểm $SA$, $SB$. Chứng minh $MN\parallel(ABCD)$ và $MN\parallel(SCD)$.`,
    giai: [
-    R`$MN$ là đường trung bình của tam giác $SAB$ nên $MN\parallel AB$.`,
-    R`$AB\subset(ABCD)$, $MN\not\subset(ABCD)$ nên $MN\parallel(ABCD)$.`,
-    R`$MN\parallel AB\parallel CD$ và $CD\subset(SCD)$; $MN\not\subset(SCD)$ (vì $M\notin(SCD)$). Vậy $MN\parallel(SCD)$.`
+    R`**Phân tích.** $MN$ là đường trung bình nên $MN\parallel AB$. Tìm trong mỗi mặt phẳng một đường thẳng song song với $MN$: trong $(ABCD)$ là $AB$, trong $(SCD)$ là $CD$.`,
+    R`**Bước 1.** $MN$ là đường trung bình của tam giác $SAB$ nên $MN\parallel AB$.`,
+    R`**Bước 2.** $AB\subset(ABCD)$, $MN\not\subset(ABCD)$ nên $MN\parallel(ABCD)$.`,
+    R`**Bước 3.** $MN\parallel AB\parallel CD$ và $CD\subset(SCD)$; $MN\not\subset(SCD)$ (vì $M\notin(SCD)$). Vậy $MN\parallel(SCD)$.`,
+    R`**Kết luận.** $MN\parallel(ABCD)$ và $MN\parallel(SCD)$.`
    ] },
  { muc: "VD", de: R`Cho tứ diện $ABCD$; $G_1$, $G_2$ lần lượt là trọng tâm các tam giác $ACD$ và $BCD$. Chứng minh $G_1G_2\parallel(ABC)$ và tính $\dfrac{G_1G_2}{AB}$.`,
    giai: [
-    R`Gọi $M$ là trung điểm $CD$. Vì $G_1$, $G_2$ là trọng tâm nên $G_1\in AM$, $G_2\in BM$ và $\dfrac{MG_1}{MA}=\dfrac{MG_2}{MB}=\dfrac13$.`,
-    R`Trong tam giác $MAB$, theo định lí Thalès đảo: $G_1G_2\parallel AB$ và $\dfrac{G_1G_2}{AB}=\dfrac13$.`,
-    R`$AB\subset(ABC)$ và $G_1G_2\not\subset(ABC)$ nên $G_1G_2\parallel(ABC)$.`
+    R`**Phân tích.** Trọng tâm nằm trên trung tuyến và chia nó theo tỉ số $2:1$. Hai trung tuyến $AM$, $BM$ chung điểm $M$ (trung điểm $CD$), nên dùng **Thalès đảo** trong tam giác $MAB$.`,
+    R`**Bước 1.** Gọi $M$ là trung điểm $CD$. Vì $G_1$, $G_2$ là trọng tâm nên $G_1\in AM$, $G_2\in BM$ và $\dfrac{MG_1}{MA}=\dfrac{MG_2}{MB}=\dfrac13$.`,
+    R`**Bước 2.** Trong tam giác $MAB$, theo định lí Thalès đảo: $G_1G_2\parallel AB$ và $\dfrac{G_1G_2}{AB}=\dfrac13$.`,
+    R`**Bước 3.** $AB\subset(ABC)$ và $G_1G_2\not\subset(ABC)$ nên $G_1G_2\parallel(ABC)$.`,
+    R`**Kết luận.** $G_1G_2\parallel(ABC)$ và $\dfrac{G_1G_2}{AB}=\dfrac13$.`
    ] }
  ] },
 "C4-B13-D17": {
@@ -832,27 +887,47 @@ Object.assign(D, {
  vd: [
  { muc: "TH", de: R`Cho hình chóp $S.ABCD$ đáy hình bình hành; $M$, $N$, $P$ lần lượt là trung điểm $SA$, $SB$, $SD$. Chứng minh $(MNP)\parallel(ABCD)$.`,
    giai: [
-    R`$MN$ là đường trung bình tam giác $SAB$: $MN\parallel AB$, nên $MN\parallel(ABCD)$.`,
-    R`$MP$ là đường trung bình tam giác $SAD$: $MP\parallel AD$, nên $MP\parallel(ABCD)$.`,
-    R`$MN$ và $MP$ cắt nhau tại $M$, cùng nằm trong $(MNP)$. Vậy $(MNP)\parallel(ABCD)$.`
+    R`**Phân tích.** Hai mặt phẳng song song khi một mặt chứa **hai đường thẳng cắt nhau** cùng song song với mặt kia. Trong $(MNP)$ chọn $MN$ và $MP$ (đường trung bình).`,
+    R`**Bước 1.** $MN$ là đường trung bình tam giác $SAB$: $MN\parallel AB$, nên $MN\parallel(ABCD)$.`,
+    R`**Bước 2.** $MP$ là đường trung bình tam giác $SAD$: $MP\parallel AD$, nên $MP\parallel(ABCD)$.`,
+    R`**Bước 3.** $MN$ và $MP$ cắt nhau tại $M$, cùng nằm trong $(MNP)$. Vậy $(MNP)\parallel(ABCD)$.`,
+    R`**Kết luận.** $(MNP)\parallel(ABCD)$.`
    ] },
  { muc: "TH", de: R`Cho hình hộp $ABCD.A'B'C'D'$. Chứng minh $(BDA')\parallel(B'D'C)$.`,
    giai: [
-    R`$BDD'B'$ là hình bình hành (vì $BB'\parallel DD'$, $BB'=DD'$), nên $BD\parallel B'D'$; suy ra $BD\parallel(B'D'C)$.`,
-    R`$A'BCD'$ là hình bình hành (vì $A'D'\parallel BC$, $A'D'=BC$), nên $A'B\parallel D'C$; suy ra $A'B\parallel(B'D'C)$.`,
-    R`$BD$ và $A'B$ cắt nhau tại $B$ và nằm trong $(BDA')$. Vậy $(BDA')\parallel(B'D'C)$.`
+    R`**Phân tích.** Trong $(BDA')$ chọn hai đường cắt nhau $BD$ và $A'B$; chứng minh mỗi đường song song với một đường của $(B'D'C)$ bằng các hình bình hành có trong hình hộp.`,
+    R`**Bước 1.** $BDD'B'$ là hình bình hành (vì $BB'\parallel DD'$, $BB'=DD'$), nên $BD\parallel B'D'$; suy ra $BD\parallel(B'D'C)$.`,
+    R`**Bước 2.** $A'BCD'$ là hình bình hành (vì $A'D'\parallel BC$, $A'D'=BC$), nên $A'B\parallel D'C$; suy ra $A'B\parallel(B'D'C)$.`,
+    R`**Bước 3.** $BD$ và $A'B$ cắt nhau tại $B$ và nằm trong $(BDA')$. Vậy $(BDA')\parallel(B'D'C)$.`,
+    R`**Kết luận.** $(BDA')\parallel(B'D'C)$.`
    ],
    hinh: R`\begin{tikzpicture}[scale=1]
-` + HOP11 + R`
+\draw[thick] (0,0)--(3,0)--(4,1.2);
+\draw[dashed] (4,1.2)--(1,1.2)--(0,0);
+\draw[thick] (0,2.5)--(3,2.5)--(4,3.7)--(1,3.7)--cycle;
+\draw[thick] (0,0)--(0,2.5);
+\draw[thick] (3,0)--(3,2.5);
+\draw[thick] (4,1.2)--(4,3.7);
+\draw[dashed] (1,1.2)--(1,3.7);
+\node[below left] at (0,0){$A$};
+\node[below right] at (3,0){$B$};
+\node[right] at (4,1.2){$C$};
+\node[above left] at (1,1.2){$D$};
+\node[left] at (0,2.5){$A'$};
+\node[above left] at (3,2.5){$B'$};
+\node[above right] at (4,3.7){$C'$};
+\node[above left] at (1,3.7){$D'$};
 \draw[red,thick,dashed] (3,0)--(1,1.2); \draw[red,thick] (3,0)--(0,2.5); \draw[red,dashed,thick] (1,1.2)--(0,2.5);
 \draw[blue,thick] (3,2.5)--(1,3.7); \draw[blue,thick] (3,2.5)--(4,1.2); \draw[blue,thick] (1,3.7)--(4,1.2);
 \end{tikzpicture}`,
    chuThich: R`Tam giác $BDA'$ (đỏ) và tam giác $B'D'C$ (xanh) nằm trên hai mặt phẳng song song.` },
  { muc: "VD", de: R`Cho hình lăng trụ $ABC.A'B'C'$. Gọi $G$, $G'$ lần lượt là trọng tâm tam giác $ABC$ và $A'B'C'$. Chứng minh $GG'\parallel AA'$ và $GG'=AA'$.`,
    giai: [
-    R`Gọi $M$, $M'$ là trung điểm $BC$, $B'C'$. $BCC'B'$ là hình bình hành nên $MM'\parallel BB'\parallel AA'$ và $MM'=AA'$. Do đó $AMM'A'$ là hình bình hành, $AM=A'M'$ và $AM\parallel A'M'$.`,
-    R`$G\in AM$ với $AG=\dfrac23AM$; $G'\in A'M'$ với $A'G'=\dfrac23A'M'$. Vậy $AG\parallel A'G'$ và $AG=A'G'$.`,
-    R`Tứ giác $AGG'A'$ là hình bình hành, suy ra $GG'\parallel AA'$ và $GG'=AA'$.`
+    R`**Phân tích.** Muốn có $GG'\parallel AA'$ và $GG'=AA'$, chứng minh $AGG'A'$ là **hình bình hành**: cần $AG\parallel A'G'$ và $AG=A'G'$. Đi qua trung điểm $M$, $M'$ của $BC$, $B'C'$.`,
+    R`**Bước 1.** Gọi $M$, $M'$ là trung điểm $BC$, $B'C'$. $BCC'B'$ là hình bình hành nên $MM'\parallel BB'\parallel AA'$ và $MM'=AA'$. Do đó $AMM'A'$ là hình bình hành, $AM=A'M'$ và $AM\parallel A'M'$.`,
+    R`**Bước 2.** $G\in AM$ với $AG=\dfrac23AM$; $G'\in A'M'$ với $A'G'=\dfrac23A'M'$. Vậy $AG\parallel A'G'$ và $AG=A'G'$.`,
+    R`**Bước 3.** Tứ giác $AGG'A'$ là hình bình hành, suy ra $GG'\parallel AA'$ và $GG'=AA'$.`,
+    R`**Kết luận.** $GG'\parallel AA'$ và $GG'=AA'$.`
    ] }
  ] },
 "C4-B14-D18": {
@@ -868,20 +943,25 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Hình nào sau đây có thể là hình biểu diễn của một hình vuông? **A.** Hình thang không là hình bình hành. **B.** Hình bình hành. **C.** Tứ giác bất kì. **D.** Tam giác.`,
    giai: [
-    R`Hình vuông có hai cặp cạnh đối song song. Phép chiếu song song biến hai đường song song thành hai đường song song, nên hình biểu diễn phải có hai cặp cạnh đối song song: là hình bình hành.`,
+    R`**Phân tích.** Phép chiếu song song **giữ tính song song** của hai đường thẳng, nhưng không giữ góc và độ dài. Xét xem hình vuông còn giữ được tính chất nào.`,
+    R`**Bước 1.** Hình vuông có hai cặp cạnh đối song song. Phép chiếu song song biến hai đường song song thành hai đường song song, nên hình biểu diễn phải có hai cặp cạnh đối song song: là hình bình hành.`,
     R`**Kết luận.** Chọn **B**.`
    ] },
  { muc: "TH", de: R`Tam giác $ABC$ có trung tuyến $AM$ và trọng tâm $G$. Qua phép chiếu song song, $A,B,C,M,G$ có hình chiếu lần lượt là $A',B',C',M',G'$ (tam giác $A'B'C'$ không suy biến). Chứng minh $M'$ là trung điểm $B'C'$ và $G'$ là trọng tâm tam giác $A'B'C'$.`,
    giai: [
-    R`$M$ là trung điểm $BC$: $\dfrac{MB}{MC}=1$. Phép chiếu song song giữ tỉ số trên cùng một đường thẳng nên $\dfrac{M'B'}{M'C'}=1$: $M'$ là trung điểm $B'C'$.`,
-    R`$G\in AM$ với $\dfrac{AG}{AM}=\dfrac23$, nên $G'\in A'M'$ với $\dfrac{A'G'}{A'M'}=\dfrac23$.`,
-    R`$A'M'$ là trung tuyến của tam giác $A'B'C'$ và $G'$ chia nó theo tỉ số $\dfrac23$ từ đỉnh: $G'$ là trọng tâm tam giác $A'B'C'$.`
+    R`**Phân tích.** Phép chiếu song song **giữ tỉ số độ dài** của hai đoạn thẳng nằm trên cùng một đường thẳng. Trung điểm và trọng tâm đều được xác định bằng tỉ số như vậy.`,
+    R`**Bước 1.** $M$ là trung điểm $BC$: $\dfrac{MB}{MC}=1$. Phép chiếu song song giữ tỉ số trên cùng một đường thẳng nên $\dfrac{M'B'}{M'C'}=1$: $M'$ là trung điểm $B'C'$.`,
+    R`**Bước 2.** $G\in AM$ với $\dfrac{AG}{AM}=\dfrac23$, nên $G'\in A'M'$ với $\dfrac{A'G'}{A'M'}=\dfrac23$.`,
+    R`**Bước 3.** $A'M'$ là trung tuyến của tam giác $A'B'C'$ và $G'$ chia nó theo tỉ số $\dfrac23$ từ đỉnh: $G'$ là trọng tâm tam giác $A'B'C'$.`,
+    R`**Kết luận.** $M'$ là trung điểm $B'C'$ và $G'$ là trọng tâm tam giác $A'B'C'$.`
    ] },
  { muc: "TH", de: R`Mỗi khẳng định sau đúng hay sai đối với phép chiếu song song? a) Hình chiếu của hai đường thẳng cắt nhau luôn là hai đường thẳng cắt nhau. b) Hình chiếu của một góc vuông là một góc vuông. c) Hình chiếu của trung điểm một đoạn thẳng là trung điểm của hình chiếu đoạn thẳng đó.`,
    giai: [
-    R`a) **Sai.** Nếu mặt phẳng chứa hai đường thẳng đó song song với phương chiếu thì cả hai có cùng một hình chiếu (trùng nhau).`,
-    R`b) **Sai.** Phép chiếu song song không giữ góc (ví dụ hình vuông có thể biểu diễn bằng hình bình hành không có góc vuông).`,
-    R`c) **Đúng.** Phép chiếu song song giữ tỉ số độ dài trên cùng một đường thẳng.`
+    R`**Phân tích.** Nhớ ba tính chất phép chiếu song song giữ được: thẳng hàng, song song, tỉ số trên cùng một đường thẳng. Điều gì không thuộc ba tính chất đó thì tìm phản ví dụ.`,
+    R`**Bước 1.** a) **Sai.** Nếu mặt phẳng chứa hai đường thẳng đó song song với phương chiếu thì cả hai có cùng một hình chiếu (trùng nhau).`,
+    R`**Bước 2.** b) **Sai.** Phép chiếu song song không giữ góc (ví dụ hình vuông có thể biểu diễn bằng hình bình hành không có góc vuông).`,
+    R`**Bước 3.** c) **Đúng.** Phép chiếu song song giữ tỉ số độ dài trên cùng một đường thẳng.`,
+    R`**Kết luận.** a) Sai; b) Sai; c) Đúng.`
    ] }
  ] }
 });
