@@ -13,7 +13,7 @@
 /* ĐỔI DÒNG NÀY thành mật khẩu riêng của thầy (ít nhất 8 kí tự). */
 const KHOA_GV = "doi-mat-khau-nay";
 
-const PHIEN_BAN = "2026.11.28-2";
+const PHIEN_BAN = "2026.11.28-3";
 const HS_HAN_PHIEN_NGAY = 30;     // học sinh đăng nhập một lần dùng 30 ngày
 const GV_HAN_PHIEN_GIO = 12;      // giáo viên: 12 giờ
 const SO_LAN_SAI_TOI_DA = 5;      // sai mật khẩu 5 lần thì khoá 10 phút
@@ -209,6 +209,25 @@ const VIEC = {
       xoa.reverse().forEach(function (h) { sh.deleteRow(h); });
       ghiNhatKy("gv", "trang-thai-" + tt, ids.join(","));
       return { n: n };
+    });
+  },
+
+  /* xoá lớp tạo nhầm: chỉ xoá được khi lớp không còn học sinh, bài kiểm tra hay bài giao (tránh mất dữ liệu) */
+  "gv.xoaLop": function (yc) {
+    canGV(yc);
+    const ma = chuanMaLop(yc.maLop);
+    return khoa(function () {
+      const lop = timDong("Lop", ma);
+      if (!lop) throw loi("Không tìm thấy lớp.");
+      const hs = docCot("TaiKhoan", ["maLop"]).filter(function (o) { return o.maLop === ma; }).length;
+      const bai = docCot("BaiKT", ["maLop", "chuHS"]).filter(function (o) { return o.maLop === ma && !o.chuHS; }).length;
+      const giao = docCot("GiaoTuHoc", ["maLop"]).filter(function (o) { return o.maLop === ma; }).length;
+      if (hs || bai || giao) throw loi("Lớp " + lop.o.tenLop + " còn " + [hs && hs + " học sinh", bai && bai + " bài kiểm tra", giao && giao + " bài tự học giao"].filter(Boolean).join(", ") + ". Thầy chuyển hoặc xoá các mục đó trước, rồi mới xoá lớp.");
+      xoaTheo("Lop", function (o) { return o.maLop === ma; });
+      xoaTheo("ThongBao", function (o) { return o.maLop === ma; });
+      xoaTheo("BaiKT", function (o) { return o.maLop === ma; });           // chỉ còn bài thi thử của học sinh (đã không còn học sinh)
+      ghiNhatKy("gv", "xoa-lop", ma + " " + lop.o.tenLop);
+      return { tenLop: lop.o.tenLop };
     });
   },
 
