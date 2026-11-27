@@ -2674,11 +2674,18 @@ Object.assign(D, {
  ],
  vd: [
  { muc: "NB", de: R`Gieo một con xúc xắc. Mô tả không gian mẫu và biến cố $A$: "Số chấm là số chẵn".`,
-   giai: [ R`$\Omega=\{1;2;3;4;5;6\}$, $n(\Omega)=6$.`, R`$A=\{2;4;6\}$, $n(A)=3$.` ] },
+   giai: [
+    R`**Phân tích.** Không gian mẫu $\Omega$ là tập **tất cả** kết quả có thể của phép thử. Biến cố là một tập con của $\Omega$, gồm các kết quả làm biến cố xảy ra.`,
+    R`**Bước 1.** $\Omega=\{1;2;3;4;5;6\}$, $n(\Omega)=6$.`,
+    R`**Bước 2.** $A=\{2;4;6\}$, $n(A)=3$.`,
+    R`**Kết luận.** $n(\Omega)=6$, $n(A)=3$.`
+   ] },
  { muc: "TH", de: R`Gieo hai đồng xu. Mô tả $\Omega$, biến cố $A$: "Có ít nhất một mặt sấp" và $\bar A$.`,
    giai: [
-    R`Sơ đồ cây cho $\Omega=\{SS;SN;NS;NN\}$, $n(\Omega)=4$.`,
-    R`$A=\{SS;SN;NS\}$; $\bar A=\{NN\}$ (cả hai mặt ngửa).`
+    R`**Phân tích.** Phép thử gồm hai bước (đồng xu thứ nhất, thứ hai): vẽ **sơ đồ cây** để liệt kê không sót. Biến cố đối $\bar A$ gồm các kết quả **không** thuộc $A$.`,
+    R`**Bước 1.** Sơ đồ cây cho $\Omega=\{SS;SN;NS;NN\}$, $n(\Omega)=4$.`,
+    R`**Bước 2.** $A=\{SS;SN;NS\}$; $\bar A=\{NN\}$ (cả hai mặt ngửa).`,
+    R`**Kết luận.** $n(\Omega)=4$; $A$ có $3$ kết quả; $\bar A=\{NN\}$.`
    ],
    hinh: R`\begin{tikzpicture}[scale=0.8]
 \fill (0,0) circle (2pt);
@@ -2690,11 +2697,18 @@ Object.assign(D, {
 \node at (2,2){Lần 1}; \node at (4,2.1){Lần 2}; \node at (6,2.1){Kết quả};
 \end{tikzpicture}` },
  { muc: "TH", de: R`Gieo hai con xúc xắc. Tính $n(\Omega)$ và liệt kê biến cố $B$: "Tổng số chấm bằng $7$".`,
-   giai: [ R`$n(\Omega)=6\cdot6=36$.`, R`$B=\{(1;6),(2;5),(3;4),(4;3),(5;2),(6;1)\}$, $n(B)=6$.` ] },
+   giai: [
+    R`**Phân tích.** Mỗi kết quả là một cặp có thứ tự (số chấm con thứ nhất; con thứ hai). Liệt kê các cặp có tổng bằng $7$ bằng cách cho con thứ nhất chạy từ $1$ đến $6$.`,
+    R`**Bước 1.** $n(\Omega)=6\cdot6=36$.`,
+    R`**Bước 2.** $B=\{(1;6),(2;5),(3;4),(4;3),(5;2),(6;1)\}$, $n(B)=6$.`,
+    R`**Kết luận.** $n(\Omega)=36$, $n(B)=6$.`
+   ] },
  { muc: "VD", de: R`Một hộp có $5$ bi đỏ và $3$ bi xanh. Lấy ngẫu nhiên $2$ bi. Tính $n(\Omega)$ và số kết quả thuận lợi cho biến cố $A$: "Hai bi cùng màu".`,
    giai: [
-    R`$n(\Omega)=C_8^2=28$.`,
-    R`Cùng đỏ: $C_5^2=10$; cùng xanh: $C_3^2=3$. $n(A)=10+3=13$.`
+    R`**Phân tích.** Lấy $2$ bi cùng lúc, không thứ tự: $n(\Omega)$ là số tổ hợp. "Cùng màu" gồm hai trường hợp rời nhau (cùng đỏ, cùng xanh), dùng quy tắc cộng.`,
+    R`**Bước 1.** $n(\Omega)=C_8^2=28$.`,
+    R`**Bước 2.** Cùng đỏ: $C_5^2=10$; cùng xanh: $C_3^2=3$. $n(A)=10+3=13$.`,
+    R`**Kết luận.** $n(\Omega)=28$, $n(A)=13$.`
    ] }
  ] },
 "C9-B26-D62": {
@@ -2708,18 +2722,35 @@ Object.assign(D, {
  ],
  vd: [
  { muc: "NB", de: R`Gieo một con xúc xắc. Tính xác suất được mặt có số chấm chẵn.`,
-   giai: [ R`$n(\Omega)=6$, $n(A)=3$: $P(A)=\dfrac36=\dfrac12$.` ] },
+   giai: [
+    R`**Phân tích.** Các mặt xúc xắc đồng khả năng nên dùng **định nghĩa cổ điển** $P(A)=\dfrac{n(A)}{n(\Omega)}$: đếm kết quả thuận lợi chia cho tất cả kết quả.`,
+    R`**Bước 1.** $\Omega=\{1;2;\dots;6\}$, $n(\Omega)=6$.`,
+    R`**Bước 2.** $A$: "số chấm chẵn" $=\{2;4;6\}$, $n(A)=3$.`,
+    R`**Bước 3.** $P(A)=\dfrac36=\dfrac12$.`,
+    R`**Kết luận.** $P(A)=\dfrac12$.`
+   ] },
  { muc: "TH", de: R`Gieo hai con xúc xắc. Tính xác suất a) tổng số chấm bằng $7$; b) tổng số chấm không nhỏ hơn $10$.`,
    giai: [
-    R`a) $n(A)=6$ (xem dạng trên): $P=\dfrac6{36}=\dfrac16$.`,
-    R`b) Tổng $\ge10$: $(4;6),(6;4),(5;5),(5;6),(6;5),(6;6)$: $6$ kết quả, $P=\dfrac16$.`
+    R`**Phân tích.** $n(\Omega)=36$. Đếm kết quả thuận lợi bằng cách liệt kê các cặp; "không nhỏ hơn $10$" nghĩa là tổng $\ge10$, gồm $10$, $11$, $12$.`,
+    R`**Bước 1.** a) $n(A)=6$ (xem dạng trên): $P=\dfrac6{36}=\dfrac16$.`,
+    R`**Bước 2.** b) Tổng $\ge10$: $(4;6),(6;4),(5;5),(5;6),(6;5),(6;6)$: $6$ kết quả, $P=\dfrac16$.`,
+    R`**Kết luận.** a) $\dfrac16$; b) $\dfrac16$.`
    ] },
  { muc: "TH", de: R`Gieo ba đồng xu. Tính xác suất có ít nhất hai mặt sấp.`,
-   giai: [ R`$n(\Omega)=2^3=8$. Thuận lợi: $SSN$, $SNS$, $NSS$, $SSS$: $4$ kết quả.`, R`$P=\dfrac48=\dfrac12$.` ] },
+   giai: [
+    R`**Phân tích.** $n(\Omega)=2^3=8$. "Ít nhất hai mặt sấp" gồm đúng hai sấp hoặc ba sấp: liệt kê đủ.`,
+    R`**Bước 1.** $n(\Omega)=2^3=8$. Thuận lợi: $SSN$, $SNS$, $NSS$, $SSS$: $4$ kết quả.`,
+    R`**Bước 2.** $P=\dfrac48=\dfrac12$.`,
+    R`**Kết luận.** Xác suất cần tìm là $\dfrac12$.`,
+    R`**Nhận xét.** Biến cố đối "nhiều nhất một mặt sấp" cũng có $4$ kết quả, đúng là đối xứng.`
+   ] },
  { muc: "VD", de: R`Rút ngẫu nhiên một thẻ từ $20$ thẻ đánh số $1$ đến $20$. Tính xác suất số trên thẻ chia hết cho $3$ hoặc $5$.`,
    giai: [
-    R`Chia hết cho $3$: $3,6,\dots,18$: $6$ số. Chia hết cho $5$: $5,10,15,20$: $4$ số. Chia hết cho cả hai: $15$: $1$ số.`,
-    R`$n(A)=6+4-1=9$, $P(A)=\dfrac9{20}$.`
+    R`**Phân tích.** "Chia hết cho $3$ **hoặc** $5$": đếm riêng mỗi loại, rồi trừ phần **đếm hai lần** (số chia hết cho cả $3$ và $5$, tức cho $15$).`,
+    R`**Bước 1.** Chia hết cho $3$: $3,6,\dots,18$: $6$ số. Chia hết cho $5$: $5,10,15,20$: $4$ số. Chia hết cho cả hai: $15$: $1$ số.`,
+    R`**Bước 2.** $n(A)=6+4-1=9$, $P(A)=\dfrac9{20}$.`,
+    R`**Kết luận.** $P(A)=\dfrac9{20}$.`,
+    R`**Thử lại.** Liệt kê: $3,5,6,9,10,12,15,18,20$, đúng $9$ số ✓.`
    ] }
  ] },
 "C9-B27-D63": {
@@ -2733,13 +2764,34 @@ Object.assign(D, {
  ],
  vd: [
  { muc: "TH", de: R`Hộp có $5$ bi đỏ, $3$ bi xanh, lấy ngẫu nhiên $2$ bi. Tính xác suất a) hai bi đỏ; b) hai bi cùng màu.`,
-   giai: [ R`$n(\Omega)=C_8^2=28$.`, R`a) $P=\dfrac{C_5^2}{28}=\dfrac{10}{28}=\dfrac5{14}$.`, R`b) $P=\dfrac{10+3}{28}=\dfrac{13}{28}$.` ] },
+   giai: [
+    R`**Phân tích.** Lấy cùng lúc nên dùng **tổ hợp** cho cả $n(\Omega)$ và $n(A)$. Câu b) gồm hai trường hợp rời nhau: cùng đỏ, cùng xanh.`,
+    R`**Bước 1.** $n(\Omega)=C_8^2=28$.`,
+    R`**Bước 2.** a) $P=\dfrac{C_5^2}{28}=\dfrac{10}{28}=\dfrac5{14}$.`,
+    R`**Bước 3.** b) $P=\dfrac{10+3}{28}=\dfrac{13}{28}$.`,
+    R`**Kết luận.** a) $\dfrac5{14}$; b) $\dfrac{13}{28}$.`
+   ] },
  { muc: "TH", de: R`Lớp có $20$ nam, $15$ nữ. Chọn ngẫu nhiên $3$ bạn. Tính xác suất cả $3$ bạn đều là nữ.`,
-   giai: [ R`$n(\Omega)=C_{35}^3=6545$; $n(A)=C_{15}^3=455$.`, R`$P=\dfrac{455}{6545}=\dfrac{13}{187}\approx0{,}07$.` ] },
+   giai: [
+    R`**Phân tích.** Chọn $3$ bạn không thứ tự: $n(\Omega)=C_{35}^3$. "Cả $3$ đều nữ" là chọn $3$ trong $15$ nữ.`,
+    R`**Bước 1.** $n(\Omega)=C_{35}^3=6545$; $n(A)=C_{15}^3=455$.`,
+    R`**Bước 2.** $P=\dfrac{455}{6545}=\dfrac{13}{187}\approx0{,}07$.`,
+    R`**Kết luận.** $P=\dfrac{13}{187}\approx0{,}07$.`
+   ] },
  { muc: "VD", de: R`Chọn ngẫu nhiên $4$ người từ $6$ nam và $5$ nữ. Tính xác suất chọn được đúng $2$ nữ.`,
-   giai: [ R`$n(\Omega)=C_{11}^4=330$; $n(A)=C_5^2\cdot C_6^2=150$.`, R`$P=\dfrac{150}{330}=\dfrac5{11}$.` ] },
+   giai: [
+    R`**Phân tích.** "Đúng $2$ nữ" nghĩa là $2$ nữ và $2$ nam: chọn từng nhóm rồi nhân.`,
+    R`**Bước 1.** $n(\Omega)=C_{11}^4=330$; $n(A)=C_5^2\cdot C_6^2=150$.`,
+    R`**Bước 2.** $P=\dfrac{150}{330}=\dfrac5{11}$.`,
+    R`**Kết luận.** $P=\dfrac5{11}$.`
+   ] },
  { muc: "VD", de: R`Xếp ngẫu nhiên $5$ nam và $4$ nữ thành một hàng ngang. Tính xác suất $4$ nữ đứng cạnh nhau.`,
-   giai: [ R`$n(\Omega)=9!=362\,880$. Buộc $4$ nữ thành một khối: $n(A)=6!\cdot4!=17\,280$.`, R`$P=\dfrac{17\,280}{362\,880}=\dfrac1{21}$.` ] }
+   giai: [
+    R`**Phân tích.** $n(\Omega)$ là số cách xếp $9$ người. Để $4$ nữ đứng cạnh nhau, buộc họ thành một khối, xếp khối với $5$ nam, rồi xếp bên trong khối.`,
+    R`**Bước 1.** $n(\Omega)=9!=362\,880$. Buộc $4$ nữ thành một khối: $n(A)=6!\cdot4!=17\,280$.`,
+    R`**Bước 2.** $P=\dfrac{17\,280}{362\,880}=\dfrac1{21}$.`,
+    R`**Kết luận.** $P=\dfrac1{21}$.`
+   ] }
  ] },
 "C9-B27-D64": {
  pp: [
@@ -2752,15 +2804,33 @@ Object.assign(D, {
  ],
  vd: [
  { muc: "TH", de: R`Gieo hai con xúc xắc. Tính xác suất có ít nhất một mặt $6$ chấm.`,
-   giai: [ R`$\bar A$: "không có mặt $6$": mỗi con có $5$ khả năng, $n(\bar A)=25$.`, R`$P(A)=1-\dfrac{25}{36}=\dfrac{11}{36}$.` ] },
+   giai: [
+    R`**Phân tích.** "Ít nhất một" có nhiều trường hợp; biến cố đối "**không có** mặt $6$" chỉ là một trường hợp, dễ đếm. Dùng $P(A)=1-P(\bar A)$.`,
+    R`**Bước 1.** $\bar A$: "không có mặt $6$": mỗi con có $5$ khả năng, $n(\bar A)=25$.`,
+    R`**Bước 2.** $P(A)=1-\dfrac{25}{36}=\dfrac{11}{36}$.`,
+    R`**Kết luận.** $P(A)=\dfrac{11}{36}$.`
+   ] },
  { muc: "TH", de: R`Chọn ngẫu nhiên $4$ người từ $6$ nam và $5$ nữ. Tính xác suất có ít nhất $1$ nữ.`,
-   giai: [ R`$\bar A$: "cả $4$ đều nam": $C_6^4=15$. $n(\Omega)=330$.`, R`$P(A)=1-\dfrac{15}{330}=1-\dfrac1{22}=\dfrac{21}{22}$.` ] },
+   giai: [
+    R`**Phân tích.** Đếm trực tiếp phải chia $4$ trường hợp ($1,2,3,4$ nữ). Biến cố đối "không có nữ" chỉ một trường hợp: cả $4$ đều nam.`,
+    R`**Bước 1.** $\bar A$: "cả $4$ đều nam": $C_6^4=15$. $n(\Omega)=330$.`,
+    R`**Bước 2.** $P(A)=1-\dfrac{15}{330}=1-\dfrac1{22}=\dfrac{21}{22}$.`,
+    R`**Kết luận.** $P(A)=\dfrac{21}{22}$.`
+   ] },
  { muc: "VD", de: R`Gieo một đồng xu $5$ lần. Tính xác suất có ít nhất một lần xuất hiện mặt ngửa.`,
-   giai: [ R`$n(\Omega)=2^5=32$. $\bar A$: "cả $5$ lần đều sấp": $1$ kết quả.`, R`$P(A)=1-\dfrac1{32}=\dfrac{31}{32}$.` ] },
+   giai: [
+    R`**Phân tích.** Biến cố đối "không lần nào ngửa" chỉ có đúng một kết quả: cả $5$ lần đều sấp.`,
+    R`**Bước 1.** $n(\Omega)=2^5=32$. $\bar A$: "cả $5$ lần đều sấp": $1$ kết quả.`,
+    R`**Bước 2.** $P(A)=1-\dfrac1{32}=\dfrac{31}{32}$.`,
+    R`**Kết luận.** $P(A)=\dfrac{31}{32}$.`
+   ] },
  { muc: "VD", de: R`Lớp có $35$ học sinh, trong đó $5$ bạn chưa làm bài tập. Thầy gọi ngẫu nhiên $3$ bạn kiểm tra. Tính xác suất có ít nhất một bạn chưa làm bài.`,
    giai: [
-    R`$n(\Omega)=C_{35}^3=6545$. $\bar A$: "cả $3$ bạn đều đã làm bài": $C_{30}^3=4060$.`,
-    R`$P(A)=1-\dfrac{4060}{6545}=\dfrac{2485}{6545}=\dfrac{71}{187}\approx0{,}38$.`
+    R`**Phân tích.** Biến cố đối "**cả $3$** bạn đều đã làm bài": chọn $3$ trong $30$ bạn đã làm.`,
+    R`**Bước 1.** $n(\Omega)=C_{35}^3=6545$. $\bar A$: "cả $3$ bạn đều đã làm bài": $C_{30}^3=4060$.`,
+    R`**Bước 2.** $P(A)=1-\dfrac{4060}{6545}=\dfrac{2485}{6545}=\dfrac{71}{187}\approx0{,}38$.`,
+    R`**Kết luận.** $P(A)=\dfrac{71}{187}\approx0{,}38$.`,
+    R`**Nhận xét.** Chỉ $5/35$ bạn chưa làm bài, nhưng gọi $3$ bạn thì gần $40\%$ khả năng gặp ít nhất một bạn.`
    ] }
  ] }
 });
