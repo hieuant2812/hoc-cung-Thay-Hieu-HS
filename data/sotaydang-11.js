@@ -1127,4 +1127,245 @@ Object.assign(D, {
    ] }
  ] }
 });
+/* ---------- Chương VII · Quan hệ vuông góc trong không gian ---------- */
+const CHOPV = R`\draw[thick] (0,0)--(2.5,0)--(3.5,1.2);
+\draw[dashed] (3.5,1.2)--(1,1.2)--(0,0);
+\draw[thick] (0,3)--(0,0);
+\draw[thick] (0,3)--(2.5,0);
+\draw[thick] (0,3)--(3.5,1.2);
+\draw[dashed] (0,3)--(1,1.2);
+\node[above] at (0,3){$S$};
+\node[below left] at (0,0){$A$};
+\node[below right] at (2.5,0){$B$};
+\node[right] at (3.5,1.2){$C$};
+\node[above right] at (1,1.2){$D$};`;
+Object.assign(D, {
+"C7-B22-D28": {
+ pp: [
+  R`**Góc giữa hai đường thẳng** $a$, $b$ trong không gian: lấy $a'\parallel a$ sao cho $a'$ cắt $b$; góc giữa $a$ và $b$ bằng góc giữa $a'$ và $b$, thuộc $[0^\circ;90^\circ]$.`,
+  R`Cách làm: dời một đường thẳng song song (dùng hình bình hành, đường trung bình) để hai đường cắt nhau, rồi tính góc trong một tam giác (định lí côsin, tam giác đặc biệt).`,
+  R`$a\perp b$ khi góc giữa chúng bằng $90^\circ$. Hai đường vuông góc có thể chéo nhau.`
+ ],
+ luuY: [
+  R`Định lí côsin cho góc tù ($\cos<0$) mà lấy luôn làm góc giữa hai đường thẳng: phải lấy góc bù.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Cho hình lập phương $ABCD.A'B'C'D'$. Tính góc giữa $AB$ và $B'C'$; góc giữa $AC$ và $A'D'$.`,
+   giai: [
+    R`$B'C'\parallel BC$ nên góc $(AB,B'C')=(AB,BC)=90^\circ$.`,
+    R`$A'D'\parallel AD$ nên góc $(AC,A'D')=(AC,AD)=\widehat{CAD}=45^\circ$ (đường chéo hình vuông).`
+   ] },
+ { muc: "TH", de: R`Cho hình lập phương $ABCD.A'B'C'D'$. Tính góc giữa $A'C'$ và $BD$; góc giữa $AB'$ và $BC'$.`,
+   giai: [
+    R`$A'C'\parallel AC$ và $AC\perp BD$ (hai đường chéo hình vuông), nên góc $(A'C',BD)=90^\circ$.`,
+    R`$BC'\parallel AD'$ (vì $ABC'D'$ là hình bình hành), nên góc $(AB',BC')=(AB',AD')=\widehat{B'AD'}$.`,
+    R`$AB'$, $AD'$, $B'D'$ đều là đường chéo của các mặt hình vuông nên bằng nhau: tam giác $AB'D'$ đều. Góc cần tìm bằng $60^\circ$.`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=1]
+` + HOP11 + R`
+\draw[thick,red] (0,0)--(3,2.5); \draw[thick,blue,dashed] (0,0)--(1,3.7); \draw[thick] (3,2.5)--(1,3.7);
+\end{tikzpicture}`,
+   chuThich: R`Tam giác $AB'D'$ có ba cạnh là ba đường chéo mặt, nên là tam giác đều.` },
+ { muc: "VD", de: R`Cho tứ diện $ABCD$ có $AB=CD=2a$. Gọi $M$, $N$ lần lượt là trung điểm $BC$, $AD$, biết $MN=a\sqrt3$. Tính góc giữa $AB$ và $CD$.`,
+   giai: [
+    R`Gọi $P$ là trung điểm $AC$. $PM$ là đường trung bình tam giác $ABC$: $PM\parallel AB$, $PM=a$. $PN$ là đường trung bình tam giác $ACD$: $PN\parallel CD$, $PN=a$.`,
+    R`Góc $(AB,CD)=(PM,PN)$.`,
+    R`Trong tam giác $PMN$: $\cos\widehat{MPN}=\dfrac{a^2+a^2-3a^2}{2\cdot a\cdot a}=-\dfrac12$, nên $\widehat{MPN}=120^\circ$.`,
+    R`Góc giữa hai đường thẳng không quá $90^\circ$: $(AB,CD)=180^\circ-120^\circ=60^\circ$.`
+   ] }
+ ] },
+"C7-B23-D29": {
+ pp: [
+  R`**Điều kiện:** nếu $d$ vuông góc với hai đường thẳng **cắt nhau** nằm trong $(P)$ thì $d\perp(P)$.`,
+  R`**Tính chất:** $d\perp(P)$ thì $d$ vuông góc với mọi đường thẳng nằm trong $(P)$. Dùng để chứng minh hai đường thẳng vuông góc: chứng minh đường này vuông góc với một mặt phẳng chứa đường kia.`,
+  R`**Mô hình hay gặp:** hình chóp có $SA\perp$ đáy. Khi đó $SA$ vuông góc với mọi đường trong đáy; nếu đáy là hình vuông/chữ nhật thì $BC\perp(SAB)$, $CD\perp(SAD)$, $BD\perp(SAC)$ (đáy hình vuông).`
+ ],
+ luuY: [
+  R`Chỉ chứng minh $d$ vuông góc với **một** đường thẳng trong $(P)$, hoặc với hai đường song song.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Cho hình chóp $S.ABCD$ có đáy là hình vuông, $SA\perp(ABCD)$. Chứng minh $BC\perp(SAB)$.`,
+   giai: [
+    R`$BC\perp AB$ (hai cạnh kề của hình vuông).`,
+    R`$SA\perp(ABCD)$, $BC\subset(ABCD)$ nên $BC\perp SA$.`,
+    R`$AB$ và $SA$ cắt nhau tại $A$, cùng nằm trong $(SAB)$. Vậy $BC\perp(SAB)$.`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=1]
+` + CHOPV + R`
+\end{tikzpicture}` },
+ { muc: "TH", de: R`Với hình chóp ở ví dụ 1, chứng minh $BD\perp(SAC)$, từ đó suy ra $BD\perp SC$.`,
+   giai: [
+    R`$BD\perp AC$ (hai đường chéo hình vuông) và $BD\perp SA$ (vì $SA\perp$ đáy).`,
+    R`$AC$, $SA$ cắt nhau tại $A$ trong $(SAC)$, nên $BD\perp(SAC)$.`,
+    R`$SC\subset(SAC)$, nên $BD\perp SC$.`
+   ] },
+ { muc: "VD", de: R`Với hình chóp ở ví dụ 1, gọi $AH$ là đường cao của tam giác $SAB$ ($H\in SB$). Chứng minh $AH\perp SC$.`,
+   giai: [
+    R`Theo ví dụ 1, $BC\perp(SAB)$, mà $AH\subset(SAB)$ nên $AH\perp BC$.`,
+    R`Lại có $AH\perp SB$. $SB$, $BC$ cắt nhau tại $B$ trong $(SBC)$, nên $AH\perp(SBC)$.`,
+    R`$SC\subset(SBC)$, suy ra $AH\perp SC$.`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=1]
+` + CHOPV + R`
+\draw[thick,red] (0,0)--(1.15,1.62);
+\fill[red] (1.15,1.62) circle (1.5pt) node[above right]{$H$};
+\end{tikzpicture}` },
+ { muc: "TH", de: R`Cho tứ diện $OABC$ có $OA$, $OB$, $OC$ đôi một vuông góc. Chứng minh $OA\perp BC$.`,
+   giai: [
+    R`$OA\perp OB$ và $OA\perp OC$; $OB$, $OC$ cắt nhau tại $O$ nên $OA\perp(OBC)$.`,
+    R`$BC\subset(OBC)$ nên $OA\perp BC$.`
+   ] }
+ ] },
+"C7-B24-D30": {
+ pp: [
+  R`**Góc giữa đường thẳng $d$ và mặt phẳng $(P)$** (khi $d$ không vuông góc với $(P)$): bằng góc giữa $d$ và hình chiếu vuông góc $d'$ của nó trên $(P)$.`,
+  R`**Cách tìm hình chiếu:** $d$ cắt $(P)$ tại $O$; lấy điểm $M\in d$, tìm hình chiếu $H$ của $M$ trên $(P)$ (thường có sẵn đường vuông góc). Góc cần tìm là $\widehat{MOH}$, tính trong tam giác vuông $MHO$: $\tan=\dfrac{MH}{OH}$, $\sin=\dfrac{MH}{MO}$.`,
+  R`Hình chóp có $SA\perp$ đáy: góc giữa $SX$ (với $X$ trong đáy) và đáy là $\widehat{SXA}$.`
+ ],
+ luuY: [
+  R`Lấy nhầm góc giữa $d$ và một đường bất kì trong $(P)$, không phải hình chiếu.`
+ ],
+ vd: [
+ { muc: "TH", de: R`Cho hình chóp $S.ABCD$ có đáy là hình vuông cạnh $a$, $SA\perp(ABCD)$, $SA=a\sqrt2$. Tính góc giữa $SC$ và mặt phẳng đáy.`,
+   giai: [
+    R`$SA\perp$ đáy nên hình chiếu của $SC$ trên đáy là $AC$. Góc cần tìm là $\widehat{SCA}$.`,
+    R`$AC=a\sqrt2$ (đường chéo hình vuông). Tam giác $SAC$ vuông tại $A$: $\tan\widehat{SCA}=\dfrac{SA}{AC}=\dfrac{a\sqrt2}{a\sqrt2}=1$.`,
+    R`**Kết luận.** Góc giữa $SC$ và đáy bằng $45^\circ$.`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=1]
+` + CHOPV + R`
+\draw[dashed,red] (0,0)--(3.5,1.2); \draw[thick,red] (0,3)--(3.5,1.2);
+\end{tikzpicture}`,
+   chuThich: R`Góc giữa $SC$ và đáy là góc $\widehat{SCA}$ ($AC$ là hình chiếu của $SC$).` },
+ { muc: "TH", de: R`Với hình chóp ở ví dụ 1, tính góc giữa $SB$ và đáy (làm tròn đến hàng phần mười của độ).`,
+   giai: [
+    R`Hình chiếu của $SB$ trên đáy là $AB$; góc cần tìm là $\widehat{SBA}$.`,
+    R`$\tan\widehat{SBA}=\dfrac{SA}{AB}=\dfrac{a\sqrt2}{a}=\sqrt2$, nên $\widehat{SBA}\approx54{,}7^\circ$.`
+   ] },
+ { muc: "VD", de: R`Với hình chóp ở ví dụ 1, tính góc giữa $SC$ và mặt phẳng $(SAB)$.`,
+   giai: [
+    R`$BC\perp(SAB)$ (chứng minh như dạng trước), nên hình chiếu của $C$ trên $(SAB)$ là $B$; hình chiếu của $SC$ là $SB$. Góc cần tìm là $\widehat{CSB}$.`,
+    R`$SB=\sqrt{SA^2+AB^2}=\sqrt{2a^2+a^2}=a\sqrt3$.`,
+    R`Tam giác $SBC$ vuông tại $B$: $\tan\widehat{CSB}=\dfrac{BC}{SB}=\dfrac{a}{a\sqrt3}=\dfrac1{\sqrt3}$, nên góc bằng $30^\circ$.`
+   ] }
+ ] },
+"C7-B25-D31": {
+ pp: [
+  R`**Hai mặt phẳng vuông góc:** nếu $(P)$ chứa một đường thẳng vuông góc với $(Q)$ thì $(P)\perp(Q)$.`,
+  R`**Góc nhị diện** $[P,d,Q]$: lấy điểm $O$ trên cạnh $d$, kẻ $Ox\subset(P)$, $Oy\subset(Q)$ cùng vuông góc với $d$; góc $\widehat{xOy}$ là góc phẳng nhị diện.`,
+  R`**Góc giữa mặt bên $(SBC)$ và đáy** của hình chóp có hình chiếu của đỉnh là $H$: kẻ $HK\perp BC$ ($K\in BC$); khi đó $SK\perp BC$ và góc cần tìm là $\widehat{SKH}$.`,
+  R`Hình chóp đều: $H$ là tâm đáy; $K$ là trung điểm cạnh đáy.`
+ ],
+ luuY: [
+  R`Lấy góc giữa hai đường không cùng vuông góc với giao tuyến.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Cho hình chóp $S.ABCD$ đáy hình vuông, $SA\perp(ABCD)$. Chứng minh $(SAB)\perp(ABCD)$ và $(SBC)\perp(SAB)$.`,
+   giai: [
+    R`$(SAB)$ chứa $SA$ mà $SA\perp(ABCD)$, nên $(SAB)\perp(ABCD)$.`,
+    R`$BC\perp(SAB)$ (vì $BC\perp AB$, $BC\perp SA$), mà $BC\subset(SBC)$, nên $(SBC)\perp(SAB)$.`
+   ] },
+ { muc: "TH", de: R`Với hình chóp trên, cạnh đáy $a$, $SA=a\sqrt3$. Tính số đo góc nhị diện $[S,BC,A]$.`,
+   giai: [
+    R`$AB\perp BC$ và $SB\perp BC$ (vì $BC\perp(SAB)$). Vậy góc phẳng nhị diện là $\widehat{SBA}$.`,
+    R`$\tan\widehat{SBA}=\dfrac{SA}{AB}=\sqrt3$, nên $\widehat{SBA}=60^\circ$.`
+   ] },
+ { muc: "VD", de: R`Cho hình chóp tứ giác đều $S.ABCD$ có cạnh đáy $a$, chiều cao $SO=\dfrac a2$. Tính góc giữa mặt bên $(SCD)$ và mặt đáy.`,
+   giai: [
+    R`$O$ là tâm hình vuông $ABCD$. Gọi $M$ là trung điểm $CD$: $OM\perp CD$ và $OM=\dfrac a2$.`,
+    R`$SO\perp$ đáy, $OM\perp CD$ nên $SM\perp CD$ (tam giác $SCD$ cân tại $S$). Góc cần tìm là $\widehat{SMO}$.`,
+    R`$\tan\widehat{SMO}=\dfrac{SO}{OM}=\dfrac{a/2}{a/2}=1$, nên góc bằng $45^\circ$.`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=1]
+\draw[thick] (0,0)--(3,0)--(4,1.2);
+\draw[dashed] (4,1.2)--(1,1.2)--(0,0);
+\draw[thick] (2,3.4)--(0,0); \draw[thick] (2,3.4)--(3,0); \draw[thick] (2,3.4)--(4,1.2); \draw[dashed] (2,3.4)--(1,1.2);
+\draw[dashed] (0,0)--(4,1.2); \draw[dashed] (3,0)--(1,1.2);
+\draw[dashed,red] (2,3.4)--(2,0.6)--(2.5,1.2); \draw[red,dashed,thick] (2,3.4)--(2.5,1.2);
+\fill (2,0.6) circle (1.5pt) node[below]{$O$}; \fill (2.5,1.2) circle (1.5pt) node[above right]{$M$};
+\node[above] at (2,3.4){$S$}; \node[below left] at (0,0){$A$}; \node[below right] at (3,0){$B$}; \node[right] at (4,1.2){$C$}; \node[above left] at (1,1.2){$D$};
+\end{tikzpicture}`,
+   chuThich: R`Góc giữa $(SCD)$ và đáy là $\widehat{SMO}$.` }
+ ] },
+"C7-B26-D32": {
+ pp: [
+  R`**Khoảng cách từ điểm $M$ đến mặt phẳng $(P)$** là $MH$, với $H$ là hình chiếu vuông góc của $M$ trên $(P)$.`,
+  R`**Kĩ thuật với hình chóp có $SA\perp$ đáy:** $d\big(A,(SBC)\big)=AH$ với $AH\perp SB$ (đáy vuông tại $B$). Trong tam giác $SAB$ vuông tại $A$: $\dfrac1{AH^2}=\dfrac1{SA^2}+\dfrac1{AB^2}$.`,
+  R`**Đường thẳng song song với mặt phẳng / hai mặt phẳng song song:** khoảng cách bằng khoảng cách từ một điểm bất kì trên đường (mặt) này đến mặt kia. Chọn điểm "dễ tính" (thường là chân đường cao).`,
+  R`**Hai đường thẳng chéo nhau $a$, $b$:** nếu $(P)\supset b$ và $(P)\parallel a$ thì $d(a,b)=d\big(a,(P)\big)$.`,
+  R`**Tứ diện vuông** $OABC$ ($OA,OB,OC$ đôi một vuông góc): $\dfrac1{d^2}=\dfrac1{OA^2}+\dfrac1{OB^2}+\dfrac1{OC^2}$ với $d=d\big(O,(ABC)\big)$.`
+ ],
+ luuY: [
+  R`Nhầm $d\big(A,(SBC)\big)$ với $AB$ hoặc $AS$.`,
+  R`Quên chứng minh $AH\perp(SBC)$ trước khi kết luận.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Cho hình chóp $S.ABCD$ đáy hình vuông cạnh $a$, $SA\perp(ABCD)$. Tính $d\big(B,(SAD)\big)$.`,
+   giai: [
+    R`$BA\perp AD$ và $BA\perp SA$ nên $BA\perp(SAD)$.`,
+    R`Vậy $A$ là hình chiếu của $B$ trên $(SAD)$, $d\big(B,(SAD)\big)=BA=a$.`
+   ] },
+ { muc: "TH", de: R`Với hình chóp trên và $SA=a$, tính $d\big(A,(SBC)\big)$.`,
+   giai: [
+    R`Kẻ $AH\perp SB$ ($H\in SB$). Ta có $BC\perp(SAB)$ nên $BC\perp AH$. Vậy $AH\perp(SBC)$ và $d\big(A,(SBC)\big)=AH$.`,
+    R`$\dfrac1{AH^2}=\dfrac1{SA^2}+\dfrac1{AB^2}=\dfrac1{a^2}+\dfrac1{a^2}=\dfrac2{a^2}$.`,
+    R`$AH=\dfrac{a}{\sqrt2}=\dfrac{a\sqrt2}2$.`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=1]
+` + CHOPV + R`
+\draw[thick,red] (0,0)--(1.25,1.5);
+\fill[red] (1.25,1.5) circle (1.5pt) node[above right]{$H$};
+\end{tikzpicture}` },
+ { muc: "VD", de: R`Với hình chóp ở ví dụ 2, tính khoảng cách giữa hai đường thẳng chéo nhau $AD$ và $SB$.`,
+   giai: [
+    R`$AD\parallel BC$ và $BC\subset(SBC)$ nên $AD\parallel(SBC)$; mặt phẳng $(SBC)$ chứa $SB$.`,
+    R`Do đó $d(AD,SB)=d\big(AD,(SBC)\big)=d\big(A,(SBC)\big)$.`,
+    R`Theo ví dụ 2: $d(AD,SB)=\dfrac{a\sqrt2}2$.`
+   ] },
+ { muc: "VD", de: R`Cho tứ diện $OABC$ có $OA$, $OB$, $OC$ đôi một vuông góc và $OA=OB=OC=a$. Tính khoảng cách từ $O$ đến $(ABC)$.`,
+   giai: [
+    R`Áp dụng công thức tứ diện vuông: $\dfrac1{d^2}=\dfrac1{a^2}+\dfrac1{a^2}+\dfrac1{a^2}=\dfrac3{a^2}$.`,
+    R`$d=\dfrac a{\sqrt3}=\dfrac{a\sqrt3}3$.`,
+    R`(Giải thích công thức: kẻ $OK\perp BC$, $OH\perp AK$; khi đó $OH\perp(ABC)$ và $\dfrac1{OH^2}=\dfrac1{OA^2}+\dfrac1{OK^2}=\dfrac1{OA^2}+\dfrac1{OB^2}+\dfrac1{OC^2}$.)`
+   ] }
+ ] },
+"C7-B27-D33": {
+ pp: [
+  R`**Khối chóp:** $V=\dfrac13B\cdot h$ ($B$: diện tích đáy, $h$: chiều cao). **Khối lăng trụ:** $V=B\cdot h$. **Khối hộp chữ nhật:** $V=abc$; **lập phương:** $V=a^3$.`,
+  R`**Tìm chiều cao:** cạnh bên vuông góc với đáy (chính là chiều cao); hình chóp đều thì chân đường cao là tâm đáy, dùng Pythagore $h=\sqrt{\text{cạnh bên}^2-R^2}$ ($R$: bán kính đường tròn ngoại tiếp đáy).`,
+  R`**Diện tích hay dùng:** tam giác đều cạnh $a$: $\dfrac{a^2\sqrt3}4$; hình vuông: $a^2$.`,
+  R`**Tỉ số thể tích** (cùng đỉnh $S$, $A',B',C'$ nằm trên $SA,SB,SC$): $\dfrac{V_{S.A'B'C'}}{V_{S.ABC}}=\dfrac{SA'}{SA}\cdot\dfrac{SB'}{SB}\cdot\dfrac{SC'}{SC}$.`
+ ],
+ luuY: [
+  R`Quên hệ số $\dfrac13$ của khối chóp (hoặc thêm $\dfrac13$ cho lăng trụ).`,
+  R`Lấy cạnh bên làm chiều cao khi cạnh bên không vuông góc với đáy.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Cho hình chóp $S.ABCD$ đáy hình vuông cạnh $a$, $SA\perp(ABCD)$, $SA=a\sqrt3$. Tính thể tích khối chóp.`,
+   giai: [
+    R`$B=a^2$, $h=SA=a\sqrt3$.`,
+    R`$V=\dfrac13\cdot a^2\cdot a\sqrt3=\dfrac{a^3\sqrt3}3$.`
+   ] },
+ { muc: "TH", de: R`Cho lăng trụ đứng $ABC.A'B'C'$ có đáy là tam giác đều cạnh $a$, $AA'=2a$. Tính thể tích khối lăng trụ.`,
+   giai: [
+    R`$B=\dfrac{a^2\sqrt3}4$; lăng trụ đứng nên $h=AA'=2a$.`,
+    R`$V=\dfrac{a^2\sqrt3}4\cdot2a=\dfrac{a^3\sqrt3}2$.`
+   ] },
+ { muc: "VD", de: R`Cho hình chóp tứ giác đều $S.ABCD$ có cạnh đáy $a$, cạnh bên $a\sqrt2$. Tính thể tích khối chóp.`,
+   giai: [
+    R`$O$ là tâm hình vuông, $SO\perp$ đáy; $OA=\dfrac{AC}2=\dfrac{a\sqrt2}2$.`,
+    R`$SO=\sqrt{SA^2-OA^2}=\sqrt{2a^2-\dfrac{a^2}2}=\sqrt{\dfrac{3a^2}2}=\dfrac{a\sqrt6}2$.`,
+    R`$V=\dfrac13\cdot a^2\cdot\dfrac{a\sqrt6}2=\dfrac{a^3\sqrt6}6$.`
+   ] },
+ { muc: "VD", de: R`Cho hình chóp $S.ABC$; $M$, $N$ lần lượt là trung điểm $SB$, $SC$. Tính tỉ số thể tích của khối chóp $S.AMN$ và khối chóp $S.ABC$.`,
+   giai: [
+    R`$\dfrac{V_{S.AMN}}{V_{S.ABC}}=\dfrac{SA}{SA}\cdot\dfrac{SM}{SB}\cdot\dfrac{SN}{SC}=1\cdot\dfrac12\cdot\dfrac12=\dfrac14$.`
+   ] },
+ { muc: "VD", de: R`Một kim tự tháp có dạng hình chóp tứ giác đều, cạnh đáy $230$ m, chiều cao $147$ m. Tính thể tích của kim tự tháp.`,
+   giai: [
+    R`$B=230^2=52\,900$ (m²), $h=147$ m.`,
+    R`$V=\dfrac13\cdot52\,900\cdot147=52\,900\cdot49=2\,592\,100$ (m³).`
+   ] }
+ ] }
+});
 })(window);
