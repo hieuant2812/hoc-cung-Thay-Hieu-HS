@@ -1481,4 +1481,313 @@ Object.assign(D, {
 \end{tikzpicture}` }
  ] }
 });
+/* ---------- Chương VII · Phương pháp toạ độ trong mặt phẳng ---------- */
+Object.assign(D, {
+"C7-B19-D44": {
+ pp: [
+  R`Đường thẳng $\Delta:\ ax+by+c=0$ có **vectơ pháp tuyến** $\vec n=(a;b)$, **vectơ chỉ phương** $\vec u=(-b;a)$ hoặc $(b;-a)$.`,
+  R`Phương trình tham số $\begin{cases}x=x_0+u_1t\\y=y_0+u_2t\end{cases}$ cho ngay $\vec u=(u_1;u_2)$ và điểm $(x_0;y_0)$.`,
+  R`**Hệ số góc:** $k=-\dfrac ab$ ($b\ne0$); nếu $\vec u=(u_1;u_2)$ với $u_1\ne0$ thì $k=\dfrac{u_2}{u_1}$.`,
+  R`$\vec n$ và $\vec u$ luôn vuông góc: từ cái này suy ra cái kia bằng cách đổi chỗ hai toạ độ và đổi dấu một toạ độ.`
+ ],
+ luuY: [
+  R`Lấy nhầm $(a;b)$ làm vectơ chỉ phương của $ax+by+c=0$.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Cho $d:\ 2x-3y+5=0$. Tìm một vectơ pháp tuyến, một vectơ chỉ phương và hệ số góc của $d$.`,
+   giai: [ R`$\vec n=(2;-3)$; $\vec u=(3;2)$; $k=-\dfrac2{-3}=\dfrac23$.` ] },
+ { muc: "TH", de: R`Cho $d:\ \begin{cases}x=1+2t\\y=3-t\end{cases}$. Tìm vectơ chỉ phương, vectơ pháp tuyến và hệ số góc.`,
+   giai: [ R`$\vec u=(2;-1)$; $\vec n=(1;2)$; $k=\dfrac{-1}2$.` ] },
+ { muc: "TH", de: R`Tìm vectơ chỉ phương, vectơ pháp tuyến và hệ số góc của đường thẳng $AB$ với $A(1;2)$, $B(4;8)$.`,
+   giai: [ R`$\overrightarrow{AB}=(3;6)$, chọn $\vec u=(1;2)$.`, R`$\vec n=(2;-1)$; $k=\dfrac21=2$.` ] }
+ ] },
+"C7-B19-D45": {
+ pp: [
+  R`**Qua $M(x_0;y_0)$, có pháp tuyến $\vec n=(a;b)$:** $a(x-x_0)+b(y-y_0)=0$.`,
+  R`**Qua $M$, có chỉ phương $\vec u=(u_1;u_2)$:** tham số $x=x_0+u_1t$, $y=y_0+u_2t$; hoặc đổi $\vec u$ thành $\vec n$ để viết dạng tổng quát.`,
+  R`**Qua hai điểm $A$, $B$:** $\vec u=\overrightarrow{AB}$. **Đoạn chắn** qua $(a;0)$, $(0;b)$: $\dfrac xa+\dfrac yb=1$.`,
+  R`**Song song** với $ax+by+c=0$: dạng $ax+by+c'=0$; **vuông góc**: dạng $bx-ay+c'=0$; thay toạ độ điểm đã biết để tìm $c'$.`,
+  R`**Trong tam giác:** đường cao từ $A$ có $\vec n=\overrightarrow{BC}$; trung tuyến đi qua $A$ và trung điểm $BC$; trung trực $BC$ qua trung điểm $BC$, có $\vec n=\overrightarrow{BC}$.`
+ ],
+ luuY: [
+  R`Đường song song với $d$ phải có $c'\ne c$ (khác $d$).`
+ ],
+ vd: [
+ { muc: "NB", de: R`Viết phương trình đường thẳng qua $A(1;-2)$ có vectơ pháp tuyến $\vec n=(3;4)$.`,
+   giai: [ R`$3(x-1)+4(y+2)=0\iff3x+4y+5=0$.` ] },
+ { muc: "TH", de: R`Viết phương trình tham số và tổng quát của đường thẳng $AB$ với $A(1;2)$, $B(3;-2)$.`,
+   giai: [
+    R`$\overrightarrow{AB}=(2;-4)$, chọn $\vec u=(1;-2)$: tham số $\begin{cases}x=1+t\\y=2-2t\end{cases}$.`,
+    R`$\vec n=(2;1)$: $2(x-1)+(y-2)=0\iff2x+y-4=0$ (thử $B$: $6-2-4=0$).`
+   ] },
+ { muc: "TH", de: R`Cho $d:\ x-2y+3=0$, $M(2;1)$. Viết phương trình đường thẳng qua $M$ và a) song song với $d$; b) vuông góc với $d$.`,
+   giai: [
+    R`a) Dạng $x-2y+c=0$; qua $M$: $2-2+c=0\iff c=0$. Vậy $x-2y=0$.`,
+    R`b) Dạng $2x+y+c=0$; qua $M$: $4+1+c=0\iff c=-5$. Vậy $2x+y-5=0$.`
+   ] },
+ { muc: "VD", de: R`Cho tam giác $ABC$ với $A(1;4)$, $B(-1;0)$, $C(3;2)$. Viết phương trình đường cao $AH$, trung tuyến $AM$, đường trung trực của $BC$.`,
+   giai: [
+    R`$\overrightarrow{BC}=(4;2)$, chọn $\vec n=(2;1)$. Đường cao $AH$: $2(x-1)+(y-4)=0\iff2x+y-6=0$.`,
+    R`Trung điểm $BC$: $M(1;1)$. $\overrightarrow{AM}=(0;-3)$: trung tuyến $AM$ là $x=1$, tức $x-1=0$.`,
+    R`Trung trực $BC$ qua $M(1;1)$, pháp tuyến $(2;1)$: $2x+y-3=0$.`
+   ] },
+ { muc: "TH", de: R`Viết phương trình đường thẳng qua $A(3;0)$ và $B(0;-2)$.`,
+   giai: [ R`Đoạn chắn: $\dfrac x3+\dfrac y{-2}=1\iff2x-3y-6=0$.` ] }
+ ] },
+"C7-B20-D46": {
+ pp: [
+  R`Xét $d_1:\ a_1x+b_1y+c_1=0$, $d_2:\ a_2x+b_2y+c_2=0$; giải hệ hai phương trình.`,
+  R`Hệ có **một nghiệm**: cắt nhau (nghiệm là toạ độ giao điểm); **vô nghiệm**: song song; **vô số nghiệm**: trùng nhau.`,
+  R`Nhanh (khi $a_2,b_2,c_2\ne0$): $\dfrac{a_1}{a_2}\ne\dfrac{b_1}{b_2}$: cắt; $\dfrac{a_1}{a_2}=\dfrac{b_1}{b_2}\ne\dfrac{c_1}{c_2}$: song song; cả ba bằng nhau: trùng.`,
+  R`Một đường cho dạng tham số: thay $x$, $y$ theo $t$ vào đường kia, xét số nghiệm $t$.`
+ ],
+ luuY: [
+  R`So sánh tỉ số khi có hệ số bằng $0$: nên giải hệ trực tiếp.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Xét vị trí tương đối của $d_1:\ x-2y+1=0$ và $d_2:\ -2x+4y+3=0$.`,
+   giai: [ R`$\dfrac1{-2}=\dfrac{-2}4\ne\dfrac13$: hai đường thẳng **song song**.` ] },
+ { muc: "TH", de: R`Xét vị trí tương đối và tìm giao điểm (nếu có) của $d_1:\ 2x+y-4=0$, $d_2:\ x-y+1=0$.`,
+   giai: [ R`$\dfrac21\ne\dfrac1{-1}$: cắt nhau.`, R`Cộng hai phương trình: $3x-3=0\iff x=1$, $y=2$. Giao điểm $(1;2)$.` ] },
+ { muc: "TH", de: R`Tìm $m$ để $d_1:\ x+my-1=0$ song song với $d_2:\ 2x+4y+3=0$.`,
+   giai: [ R`Cần $\dfrac12=\dfrac m4\ne\dfrac{-1}3$: $m=2$ (và $\frac12\ne-\frac13$ đúng).` ] },
+ { muc: "VD", de: R`Xét vị trí tương đối của $d:\ \begin{cases}x=1+t\\y=2+3t\end{cases}$ và $\Delta:\ 3x-y+5=0$.`,
+   giai: [
+    R`Thay vào $\Delta$: $3(1+t)-(2+3t)+5=0\iff6=0$: vô nghiệm.`,
+    R`Vậy $d\parallel\Delta$.`
+   ] }
+ ] },
+"C7-B20-D47": {
+ pp: [
+  R`Góc giữa hai đường thẳng $\varphi\in[0^\circ;90^\circ]$: $$\cos\varphi=\dfrac{|a_1a_2+b_1b_2|}{\sqrt{a_1^2+b_1^2}\cdot\sqrt{a_2^2+b_2^2}}$$ (dùng hai vectơ pháp tuyến, hoặc hai vectơ chỉ phương).`,
+  R`$d_1\perp d_2\iff a_1a_2+b_1b_2=0$.`
+ ],
+ luuY: [
+  R`Quên dấu giá trị tuyệt đối nên được góc tù; góc giữa hai đường thẳng không vượt quá $90^\circ$.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Tính góc giữa $d_1:\ x-y+1=0$ và $d_2:\ y-2=0$.`,
+   giai: [ R`$\vec n_1=(1;-1)$, $\vec n_2=(0;1)$: $\cos\varphi=\dfrac{|0-1|}{\sqrt2\cdot1}=\dfrac{\sqrt2}2$.`, R`$\varphi=45^\circ$.` ] },
+ { muc: "TH", de: R`Tính góc giữa $d_1:\ 2x+y-1=0$ và $d_2:\ x-3y+2=0$.`,
+   giai: [ R`$\cos\varphi=\dfrac{|2-3|}{\sqrt5\cdot\sqrt{10}}=\dfrac1{\sqrt{50}}\approx0{,}141$.`, R`$\varphi\approx81{,}87^\circ$.` ] },
+ { muc: "TH", de: R`Chứng minh $d_1:\ x+2y=0$ và $d_2:\ 2x-y+3=0$ vuông góc.`,
+   giai: [ R`$\vec n_1\cdot\vec n_2=1\cdot2+2\cdot(-1)=0$: $d_1\perp d_2$.` ] },
+ { muc: "VD", de: R`Tìm $m$ để $d:\ mx+y-1=0$ tạo với $\Delta:\ x-y=0$ một góc $45^\circ$.`,
+   giai: [
+    R`$\cos45^\circ=\dfrac{|m-1|}{\sqrt{m^2+1}\cdot\sqrt2}\iff|m-1|=\sqrt{m^2+1}$.`,
+    R`Bình phương: $m^2-2m+1=m^2+1\iff m=0$.`,
+    R`Vậy $m=0$ ($d:\ y=1$ nằm ngang, tạo với đường $y=x$ góc $45^\circ$).`
+   ] }
+ ] },
+"C7-B20-D48": {
+ pp: [
+  R`$d(M,\Delta)=\dfrac{|ax_0+by_0+c|}{\sqrt{a^2+b^2}}$ với $M(x_0;y_0)$, $\Delta:\ ax+by+c=0$.`,
+  R`**Hai đường song song:** lấy một điểm trên đường này, tính khoảng cách tới đường kia.`,
+  R`**Diện tích tam giác:** $S=\dfrac12\cdot BC\cdot d(A,BC)$.`,
+  R`**Tìm điểm theo khoảng cách:** gọi toạ độ theo một tham số, lập phương trình chứa giá trị tuyệt đối, xét hai trường hợp.`
+ ],
+ luuY: [
+  R`Đường thẳng cho dạng tham số phải đổi về dạng tổng quát trước khi dùng công thức.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Tính khoảng cách từ $M(1;2)$ đến $\Delta:\ 3x+4y-1=0$.`,
+   giai: [ R`$d=\dfrac{|3+8-1|}{\sqrt{9+16}}=\dfrac{10}5=2$.` ] },
+ { muc: "TH", de: R`Tính khoảng cách giữa hai đường song song $3x-4y+1=0$ và $3x-4y-9=0$.`,
+   giai: [ R`Điểm $A(1;1)$ thuộc đường thứ nhất ($3-4+1=0$).`, R`$d=\dfrac{|3-4-9|}5=2$.` ] },
+ { muc: "TH", de: R`Tính diện tích tam giác $A(1;4)$, $B(-1;0)$, $C(3;2)$.`,
+   giai: [
+    R`$\overrightarrow{BC}=(4;2)$, $BC=2\sqrt5$. Đường $BC$: pháp tuyến $(1;-2)$, qua $B$: $x-2y+1=0$.`,
+    R`$d(A,BC)=\dfrac{|1-8+1|}{\sqrt5}=\dfrac6{\sqrt5}$.`,
+    R`$S=\dfrac12\cdot2\sqrt5\cdot\dfrac6{\sqrt5}=6$.`
+   ] },
+ { muc: "VD", de: R`Tìm điểm $M$ trên trục $Ox$ cách $\Delta:\ 3x+4y-6=0$ một khoảng bằng $3$.`,
+   giai: [
+    R`$M(m;0)$: $\dfrac{|3m-6|}5=3\iff|3m-6|=15$.`,
+    R`$3m-6=15\iff m=7$; $3m-6=-15\iff m=-3$.`,
+    R`Vậy $M(7;0)$ hoặc $M(-3;0)$.`
+   ] }
+ ] },
+"C7-B21-D49": {
+ pp: [
+  R`**Dạng chính tắc:** $(x-a)^2+(y-b)^2=R^2$: tâm $I(a;b)$, bán kính $R$.`,
+  R`**Dạng khai triển:** $x^2+y^2-2ax-2by+c=0$ là đường tròn $\iff a^2+b^2-c>0$; khi đó tâm $I(a;b)$, $R=\sqrt{a^2+b^2-c}$.`,
+  R`**Nhận dạng:** hệ số của $x^2$, $y^2$ phải **bằng nhau** (chia cho hệ số đó để về $1$), **không có** số hạng $xy$, và $a^2+b^2-c>0$.`
+ ],
+ luuY: [
+  R`Đọc tâm sai dấu: $x^2+y^2-4x+6y-3=0$ có tâm $(2;-3)$, không phải $(-2;3)$.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Tìm tâm và bán kính của $(x-1)^2+(y+2)^2=9$.`,
+   giai: [ R`$I(1;-2)$, $R=3$.` ] },
+ { muc: "TH", de: R`Tìm tâm và bán kính của $x^2+y^2-4x+6y-3=0$.`,
+   giai: [ R`$-2a=-4\Rightarrow a=2$; $-2b=6\Rightarrow b=-3$; $c=-3$.`, R`$R=\sqrt{4+9+3}=4$; tâm $I(2;-3)$.` ] },
+ { muc: "TH", de: R`Phương trình nào là phương trình đường tròn? a) $x^2+y^2-2x+4y+6=0$; b) $2x^2+2y^2-4x+8y-2=0$; c) $x^2+2y^2-1=0$.`,
+   giai: [
+    R`a) $a=1$, $b=-2$, $c=6$: $1+4-6=-1<0$: không phải.`,
+    R`b) Chia $2$: $x^2+y^2-2x+4y-1=0$; $1+4+1=6>0$: là đường tròn tâm $(1;-2)$, $R=\sqrt6$.`,
+    R`c) Hệ số $x^2$, $y^2$ khác nhau: không phải.`
+   ] },
+ { muc: "VD", de: R`Tìm $m$ để $x^2+y^2-2mx+2y+m+1=0$ là phương trình đường tròn.`,
+   giai: [
+    R`$a=m$, $b=-1$, $c=m+1$. Cần $m^2+1-(m+1)>0\iff m^2-m>0$.`,
+    R`$\iff m<0$ hoặc $m>1$.`
+   ] }
+ ] },
+"C7-B21-D50": {
+ pp: [
+  R`Muốn viết phương trình đường tròn, tìm **tâm** $I$ và **bán kính** $R$.`,
+  R`**Đường kính $AB$:** tâm là trung điểm $AB$, $R=\dfrac{AB}2$.`,
+  R`**Tâm $I$, tiếp xúc $\Delta$:** $R=d(I,\Delta)$.`,
+  R`**Qua ba điểm:** dùng dạng $x^2+y^2-2ax-2by+c=0$, thay ba điểm được hệ ba ẩn $a$, $b$, $c$.`
+ ],
+ luuY: [
+  R`Viết $R$ thay cho $R^2$ ở vế phải.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Viết phương trình đường tròn tâm $I(1;-2)$, bán kính $3$.`,
+   giai: [ R`$(x-1)^2+(y+2)^2=9$.` ] },
+ { muc: "TH", de: R`Viết phương trình đường tròn đường kính $AB$ với $A(1;1)$, $B(5;3)$.`,
+   giai: [ R`Tâm $I(3;2)$; $AB=\sqrt{16+4}=2\sqrt5$, $R=\sqrt5$.`, R`$(x-3)^2+(y-2)^2=5$.` ] },
+ { muc: "TH", de: R`Viết phương trình đường tròn tâm $I(2;1)$ tiếp xúc với $\Delta:\ 3x-4y+3=0$.`,
+   giai: [ R`$R=d(I,\Delta)=\dfrac{|6-4+3|}5=1$.`, R`$(x-2)^2+(y-1)^2=1$.` ] },
+ { muc: "VD", de: R`Viết phương trình đường tròn đi qua $A(1;2)$, $B(5;2)$, $C(1;-3)$.`,
+   giai: [
+    R`Dạng $x^2+y^2-2ax-2by+c=0$. Thay $A$, $B$, $C$: $\begin{cases}-2a-4b+c=-5\\-10a-4b+c=-29\\-2a+6b+c=-10\end{cases}$.`,
+    R`Trừ phương trình (1) khỏi (2): $-8a=-24\iff a=3$. Trừ (1) khỏi (3): $10b=-5\iff b=-\dfrac12$.`,
+    R`$c=-5+2a+4b=-5+6-2=-1$. $R^2=9+\dfrac14+1=\dfrac{41}4$.`,
+    R`Phương trình: $(x-3)^2+\left(y+\dfrac12\right)^2=\dfrac{41}4$.`,
+    R`(Kiểm tra: $\overrightarrow{AB}\cdot\overrightarrow{AC}=0$ nên tam giác vuông tại $A$, tâm là trung điểm $BC$, đúng $(3;-\frac12)$.)`
+   ] }
+ ] },
+"C7-B21-D51": {
+ pp: [
+  R`**Vị trí đường thẳng $\Delta$ và đường tròn $(I;R)$:** tính $d=d(I,\Delta)$. $d>R$: không cắt; $d=R$: tiếp xúc; $d<R$: cắt tại hai điểm, dây cung dài $2\sqrt{R^2-d^2}$.`,
+  R`**Tiếp tuyến tại $M\in(C)$:** đi qua $M$, pháp tuyến $\overrightarrow{IM}$.`,
+  R`**Tiếp tuyến song song / vuông góc với đường cho trước:** viết dạng có tham số $c$, giải $d(I,\Delta)=R$.`
+ ],
+ luuY: [
+  R`Quên trường hợp thứ hai của $|\dots|=R$: thường có **hai** tiếp tuyến song song với một phương.`
+ ],
+ vd: [
+ { muc: "TH", de: R`Viết phương trình tiếp tuyến của $(C):\ (x-1)^2+(y-2)^2=25$ tại $M(4;6)$.`,
+   giai: [
+    R`Kiểm tra $M\in(C)$: $9+16=25$. $\overrightarrow{IM}=(3;4)$.`,
+    R`Tiếp tuyến: $3(x-4)+4(y-6)=0\iff3x+4y-36=0$.`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=0.35,>=stealth]
+\draw[->] (-5,0)--(9,0) node[below]{$x$}; \draw[->] (0,-4)--(0,10) node[left]{$y$};
+\draw[thick,blue] (1,2) circle (5);
+\draw[thick,red] (-0.5,9.375)--(8.5,2.625);
+\draw (1,2)--(4,6); \fill (1,2) circle (2.5pt); \fill (4,6) circle (2.5pt);
+\node[below] at (1,2){$I$}; \node[above right] at (4,6){$M$};
+\end{tikzpicture}` },
+ { muc: "TH", de: R`Xét vị trí tương đối của $\Delta:\ 3x+4y+4=0$ và $(C):\ (x-1)^2+(y-2)^2=25$.`,
+   giai: [ R`$d(I,\Delta)=\dfrac{|3+8+4|}5=3<5=R$: $\Delta$ cắt $(C)$ tại hai điểm.` ] },
+ { muc: "VD", de: R`Viết phương trình tiếp tuyến của $(C):\ x^2+y^2=4$ song song với $\Delta:\ 3x-4y+1=0$.`,
+   giai: [
+    R`Tiếp tuyến dạng $3x-4y+c=0$ ($c\ne1$). Tâm $O$, $R=2$.`,
+    R`$\dfrac{|c|}5=2\iff c=\pm10$.`,
+    R`Hai tiếp tuyến: $3x-4y+10=0$ và $3x-4y-10=0$.`
+   ] },
+ { muc: "VD", de: R`Một trạm phát sóng đặt tại $I(2;3)$ phủ sóng bán kính $5$ km. Con đường thẳng có phương trình $3x+4y-8=0$. Đường có đi qua vùng phủ sóng không? Đoạn đường có sóng dài bao nhiêu?`,
+   giai: [
+    R`$d(I,\Delta)=\dfrac{|6+12-8|}5=2<5$: đường đi qua vùng phủ sóng.`,
+    R`Độ dài dây cung: $2\sqrt{5^2-2^2}=2\sqrt{21}\approx9{,}17$ km.`
+   ] }
+ ] },
+"C7-B22-D52": {
+ pp: [
+  R`**Elip** là tập điểm $M$ có $MF_1+MF_2=2a$ (không đổi, $2a>F_1F_2=2c$).`,
+  R`**Phương trình chính tắc:** $\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=1$ với $a>b>0$, $b^2=a^2-c^2$.`,
+  R`Tiêu điểm $F_1(-c;0)$, $F_2(c;0)$; đỉnh $(\pm a;0)$, $(0;\pm b)$; trục lớn $2a$, trục nhỏ $2b$, tiêu cự $2c$.`
+ ],
+ luuY: [
+  R`Nhầm $c^2=a^2+b^2$ (đó là của hypebol); với elip $c^2=a^2-b^2$.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Cho elip $\dfrac{x^2}{25}+\dfrac{y^2}9=1$. Tìm tiêu điểm, các đỉnh, độ dài các trục.`,
+   giai: [
+    R`$a=5$, $b=3$, $c=\sqrt{25-9}=4$. Tiêu điểm $F_1(-4;0)$, $F_2(4;0)$.`,
+    R`Đỉnh $(\pm5;0)$, $(0;\pm3)$. Trục lớn $10$, trục nhỏ $6$, tiêu cự $8$.`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=0.5,>=stealth]
+\draw[->] (-6.5,0)--(6.5,0) node[below]{$x$}; \draw[->] (0,-4)--(0,5) node[left]{$y$};
+\draw[thick,blue] (0,0) ellipse (5 and 3);
+\fill (-4,0) circle (2.5pt); \fill (4,0) circle (2.5pt);
+\node[below] at (-4,0){$F_1$}; \node[below] at (4,0){$F_2$};
+\node[below left] at (-5,0){$-5$}; \node[below right] at (5,0){$5$}; \node[above right] at (0,3){$3$}; \node[below right] at (0,-3){$-3$};
+\end{tikzpicture}` },
+ { muc: "TH", de: R`Viết phương trình chính tắc của elip đi qua $M(0;2)$ và có một tiêu điểm $F_2(\sqrt5;0)$.`,
+   giai: [ R`$M(0;2)$ là đỉnh trên trục nhỏ: $b=2$. $c=\sqrt5$, nên $a^2=b^2+c^2=9$.`, R`$\dfrac{x^2}9+\dfrac{y^2}4=1$.` ] },
+ { muc: "VD", de: R`Điểm $M$ thuộc elip $\dfrac{x^2}{25}+\dfrac{y^2}9=1$ có $MF_1=3$. Tính $MF_2$.`,
+   giai: [ R`$MF_1+MF_2=2a=10$ nên $MF_2=7$.` ] },
+ { muc: "VD", de: R`Một cổng có dạng nửa elip rộng $8$ m, cao $3$ m. Tính chiều cao của cổng tại điểm cách tâm $2$ m.`,
+   giai: [
+    R`Chọn hệ trục: nửa elip $\dfrac{x^2}{16}+\dfrac{y^2}9=1$, $y\ge0$ ($a=4$, $b=3$).`,
+    R`Tại $x=2$: $y^2=9\left(1-\dfrac4{16}\right)=\dfrac{27}4$, $y=\dfrac{3\sqrt3}2\approx2{,}60$ m.`
+   ] }
+ ] },
+"C7-B22-D53": {
+ pp: [
+  R`**Hypebol** là tập điểm $M$ có $|MF_1-MF_2|=2a$ (không đổi, $0<2a<2c$).`,
+  R`**Phương trình chính tắc:** $\dfrac{x^2}{a^2}-\dfrac{y^2}{b^2}=1$ với $a,b>0$, $c^2=a^2+b^2$.`,
+  R`Tiêu điểm $(\pm c;0)$; đỉnh $(\pm a;0)$; tiệm cận $y=\pm\dfrac bax$.`
+ ],
+ luuY: [
+  R`Bài cho $MF_1$, tìm $MF_2$: có thể được **hai** đáp số ($MF_1-MF_2=\pm2a$), cần kiểm tra $MF_2\ge c-a$.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Cho hypebol $\dfrac{x^2}{16}-\dfrac{y^2}9=1$. Tìm tiêu điểm, đỉnh, tiệm cận.`,
+   giai: [ R`$a=4$, $b=3$, $c=\sqrt{16+9}=5$. Tiêu điểm $(\pm5;0)$, đỉnh $(\pm4;0)$.`, R`Tiệm cận $y=\pm\dfrac34x$.` ],
+   hinh: R`\begin{tikzpicture}[scale=0.4,>=stealth]
+\draw[->] (-8,0)--(8,0) node[below]{$x$}; \draw[->] (0,-5.5)--(0,5.5) node[left]{$y$};
+\draw[dashed,gray] (-7.5,-5.625)--(7.5,5.625); \draw[dashed,gray] (-7.5,5.625)--(7.5,-5.625);
+\draw[thick,blue,smooth,samples=200,domain=4:7.5] plot(\x,{0.75*sqrt(\x*\x-16)});
+\draw[thick,blue,smooth,samples=200,domain=4:7.5] plot(\x,{-0.75*sqrt(\x*\x-16)});
+\draw[thick,blue,smooth,samples=200,domain=-7.5:-4] plot(\x,{0.75*sqrt(\x*\x-16)});
+\draw[thick,blue,smooth,samples=200,domain=-7.5:-4] plot(\x,{-0.75*sqrt(\x*\x-16)});
+\fill (-5,0) circle (2.5pt); \fill (5,0) circle (2.5pt);
+\node[below] at (-5.4,0){$F_1$}; \node[below] at (5.4,0){$F_2$}; \node[below left] at (0,0){$O$};
+\end{tikzpicture}` },
+ { muc: "TH", de: R`Viết phương trình chính tắc của hypebol có tiêu điểm $(\pm5;0)$ và đỉnh $(\pm3;0)$.`,
+   giai: [ R`$c=5$, $a=3$, $b^2=c^2-a^2=16$.`, R`$\dfrac{x^2}9-\dfrac{y^2}{16}=1$.` ] },
+ { muc: "VD", de: R`Điểm $M$ thuộc hypebol $\dfrac{x^2}{16}-\dfrac{y^2}9=1$ có $MF_1=10$. Tính $MF_2$.`,
+   giai: [
+    R`$|MF_1-MF_2|=2a=8$ nên $MF_2=2$ hoặc $MF_2=18$.`,
+    R`Cả hai đều $\ge c-a=1$, nên đều nhận: $MF_2=2$ (nhánh phải, $M$ có hoành độ $4{,}8$) hoặc $MF_2=18$ (nhánh trái, hoành độ $-11{,}2$).`
+   ] }
+ ] },
+"C7-B22-D54": {
+ pp: [
+  R`**Parabol** là tập điểm $M$ cách đều tiêu điểm $F$ và đường chuẩn $\Delta$.`,
+  R`**Phương trình chính tắc:** $y^2=2px$ ($p>0$): tiêu điểm $F\left(\dfrac p2;0\right)$, đường chuẩn $x=-\dfrac p2$; với $M(x;y)$ thuộc parabol: $MF=x+\dfrac p2$.`,
+  R`**Nhận dạng ba conic:** $\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=1$ là elip; $\dfrac{x^2}{a^2}-\dfrac{y^2}{b^2}=1$ là hypebol; $y^2=2px$ là parabol (đưa về dạng chính tắc trước khi nhận dạng).`
+ ],
+ luuY: [
+  R`Nhầm tiêu điểm của $y^2=8x$ là $(8;0)$ hay $(4;0)$: phải tính $2p=8\Rightarrow p=4$, $F(2;0)$.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Tìm tiêu điểm và đường chuẩn của parabol $y^2=8x$.`,
+   giai: [ R`$2p=8\Rightarrow p=4$: $F(2;0)$, đường chuẩn $x=-2$.` ],
+   hinh: R`\begin{tikzpicture}[scale=0.5,>=stealth]
+\draw[->] (-5.5,0)--(6,0) node[below]{$x$}; \draw[->] (0,-6)--(0,6) node[left]{$y$};
+\draw[thick,blue,smooth,samples=200,domain=0:4.5] plot(\x,{sqrt(8*\x)});
+\draw[thick,blue,smooth,samples=200,domain=0:4.5] plot(\x,{-sqrt(8*\x)});
+\draw[thick,red] (-2,-5.5)--(-2,5.5); \fill (2,0) circle (2.5pt);
+\node[below] at (2,0){$F$}; \node[left] at (-2,4.5){$x=-2$}; \node[below left] at (0,0){$O$};
+\end{tikzpicture}` },
+ { muc: "TH", de: R`Viết phương trình chính tắc của parabol có tiêu điểm $F(3;0)$.`,
+   giai: [ R`$\dfrac p2=3\Rightarrow p=6$: $y^2=12x$.` ] },
+ { muc: "TH", de: R`Tìm điểm $M$ trên parabol $y^2=8x$ sao cho $MF=5$.`,
+   giai: [ R`$MF=x+2=5\Rightarrow x=3$; $y^2=24\Rightarrow y=\pm2\sqrt6$.`, R`$M(3;2\sqrt6)$ hoặc $M(3;-2\sqrt6)$.` ] },
+ { muc: "VD", de: R`Một chảo ăng-ten (đèn pha) có mặt cắt là parabol, đường kính miệng $40$ cm, sâu $10$ cm. Bóng đèn đặt tại tiêu điểm. Tính khoảng cách từ bóng đèn đến đỉnh chảo.`,
+   giai: [
+    R`Đặt đỉnh tại $O$, trục chảo là $Ox$: parabol $y^2=2px$ đi qua $(10;20)$.`,
+    R`$400=20p\Rightarrow p=20$; tiêu điểm $F(10;0)$.`,
+    R`Bóng đèn cách đỉnh $10$ cm.`
+   ] },
+ { muc: "TH", de: R`Nhận dạng: a) $4x^2-9y^2=36$; b) $\dfrac{x^2}9+\dfrac{y^2}4=1$; c) $y^2=6x$.`,
+   giai: [ R`a) Chia $36$: $\dfrac{x^2}9-\dfrac{y^2}4=1$: hypebol.`, R`b) Elip. c) Parabol ($p=3$).` ] }
+ ] }
+});
 })(window);
