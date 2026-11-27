@@ -13,7 +13,7 @@
 /* ĐỔI DÒNG NÀY thành mật khẩu riêng của thầy (ít nhất 8 kí tự). */
 const KHOA_GV = "doi-mat-khau-nay";
 
-const PHIEN_BAN = "2026.11.28-3";
+const PHIEN_BAN = "2026.11.28-4";
 const HS_HAN_PHIEN_NGAY = 30;     // học sinh đăng nhập một lần dùng 30 ngày
 const GV_HAN_PHIEN_GIO = 12;      // giáo viên: 12 giờ
 const SO_LAN_SAI_TOI_DA = 5;      // sai mật khẩu 5 lần thì khoá 10 phút
@@ -392,7 +392,7 @@ Object.assign(VIEC, {
     const ma = String(yc.maBai || "");
     return khoa(function () {
       const n = xoaTheo("BaiKT", function (o) { return o.maBai === ma; });
-      const m = xoaTheo("DeThi", function (o) { return o.maBai === ma; });
+      const m = xoaTheo("DeThi", function (o) { return o.maBai === ma || o.maBai.indexOf(ma + "~") === 0; });
       ghiNhatKy("gv", "xoa-bai", ma + " (" + m + " bài làm)");
       return { n: n, baiLam: m };
     });
@@ -412,6 +412,23 @@ Object.assign(VIEC, {
       return { id: o.id, hoTen: o.hoTen, tenDN: o.tenDN, trangThai: d ? d.trangThai : "chua", soLam: soLam, batDau: d ? d.batDau : "", nopLuc: d ? d.nopLuc : "", diem: d && d.trangThai === "nop" ? +d.diem : null, luuLuc: d ? d.luuLuc : "", viPham: d ? +d.viPham || 0 : 0, khoa: !!(d && d.trangThai === "lam" && d.khoa === "1") };
     });
     return { bai: { maBai: b.o.maBai, ten: b.o.ten, soCau: +b.o.soCau, trangThai: trangThaiBai(b.o), congBo: b.o.congBo === "1", ketQuaMo: ketQuaDaMo(b.o), thiNghiem: thiNghiem(b.o) }, hs: hs, bayGio: bayGio() };
+  },
+
+  /* cho một học sinh làm lại bài: bài làm cũ được cất lại (đổi mã thành maBai~thờiđiểm), em vào lại sẽ nhận đề mới */
+  "gv.choLamLai": function (yc) {
+    canGV(yc);
+    const b = timDong("BaiKT", String(yc.maBai || ""));
+    if (!b) throw loi("Không tìm thấy bài kiểm tra.");
+    if (trangThaiBai(b.o) !== "mo") throw loi("Bài đang không mở. Thầy mở lại bài (hoặc dời giờ đóng) trước, rồi mới cho làm lại.");
+    const id = String(yc.hsId || "");
+    return khoa(function () {
+      const d = timDong("DeThi", b.o.maBai + "|" + id);
+      if (!d) throw loi("Em này chưa vào bài, không cần cho làm lại.");
+      const cu = b.o.maBai + "~" + Date.now();
+      suaDong("DeThi", d.hang, { k: cu + "|" + id, maBai: cu, khoa: "" });
+      ghiNhatKy("gv", "cho-lam-lai", b.o.maBai + " " + id + " (bài cũ: " + d.o.trangThai + ", điểm " + d.o.diem + ", vi phạm " + (+d.o.viPham || 0) + ")");
+      return { cu: { trangThai: d.o.trangThai, diem: d.o.diem, viPham: +d.o.viPham || 0 } };
+    });
   },
 
   /* mở khoá cho học sinh bị khoá vì rời màn hình lần 2 */
@@ -640,7 +657,7 @@ function gopTraLoi(d, moi) {
   Object.keys(moi || {}).forEach(function (k) { const i = +k; if (i >= 0 && i < n) tl[i] = String(moi[k] == null ? "" : moi[k]).slice(0, 40); });
   return tl;
 }
-function chuanSo(s) { return String(s == null ? "" : s).replace(/\$/g, "").replace(/\s+/g, "").replace(/,/g, ".").replace(/^\+/, "").toLowerCase(); }
+function chuanSo(s) { return String(s == null ? "" : s).replace(/[\u2212\u2012\u2013\u2014\uFE63\uFF0D]/g, "-").replace(/\$/g, "").replace(/\s+/g, "").replace(/,/g, ".").replace(/^\+/, "").toLowerCase(); }
 function dungTLN(tra, da) {
   const a = chuanSo(tra), b = chuanSo(da);
   if (!a) return false;

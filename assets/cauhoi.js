@@ -13,7 +13,7 @@
     let h = `<section class="cau" id="cau${c.i}" data-i="${c.i}" data-loai="${c.loai}">${nhan || ""}${NHD.renderQuestion(item, n, "exam", { hinh: true })}`;
     if (c.loai === "TN") h += `<div class="chon4">${"ABCD".split("").map(L => `<button type="button" data-v="${L}">${L}</button>`).join("")}</div>`;
     if (c.loai === "DS") h += `<div class="chonDS">${"abcd".split("").map((y, p) => `<div class="dsr"><b>${y})</b><button type="button" data-p="${p}" data-v="Đ">Đúng</button><button type="button" data-p="${p}" data-v="S">Sai</button></div>`).join("")}</div>`;
-    if (c.loai === "TLN") h += `<label class="tln">Đáp số: <input type="text" inputmode="decimal" autocomplete="off" maxlength="12" placeholder="VD: -2,5"></label>`;
+    if (c.loai === "TLN") h += `<div class="tln"><label>Đáp số: <input type="text" inputmode="decimal" autocomplete="off" maxlength="12" placeholder="VD: -2,5"></label><button type="button" class="btn sm ghost dau-tru" aria-label="Đổi dấu âm / dương" title="Thêm hoặc bỏ dấu trừ">±</button></div>`;
     return h + `</section>`;
   }
   /* gắn nút cho mọi câu trong khung; layA(i) lấy câu trả lời hiện tại, chon(i, v) ghi câu trả lời mới */
@@ -25,7 +25,13 @@
         const cu = (layA(i) || "____").padEnd(4, "_").split(""), p = +b.dataset.p;
         cu[p] = cu[p] === b.dataset.v ? "_" : b.dataset.v; chon(i, cu.join(""));
       });
-      if (L === "TLN") { const inp = sec.querySelector("input"); inp.oninput = () => chon(i, inp.value.trim()); }
+      if (L === "TLN") {
+        const inp = sec.querySelector("input");
+        const chuan = s => s.replace(/[\u2212\u2012\u2013\u2014\uFE63\uFF0D]/g, "-").trim();   // dấu trừ kiểu khác → "-"
+        inp.oninput = () => chon(i, chuan(inp.value));
+        const nut = sec.querySelector(".dau-tru");                       // bàn phím số iPhone không có dấu trừ
+        if (nut) nut.onclick = () => { const v = chuan(inp.value); inp.value = v.charAt(0) === "-" ? v.slice(1) : "-" + v; chon(i, inp.value.trim()); };
+      }
     });
   }
   /* tô nút đã chọn; trả về { xong, motPhan } */
