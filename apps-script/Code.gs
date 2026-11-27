@@ -13,7 +13,7 @@
 /* ĐỔI DÒNG NÀY thành mật khẩu riêng của thầy (ít nhất 8 kí tự). */
 const KHOA_GV = "doi-mat-khau-nay";
 
-const PHIEN_BAN = "2026.11.28-6";
+const PHIEN_BAN = "2026.11.28-7";
 const HS_HAN_PHIEN_NGAY = 30;     // học sinh đăng nhập một lần dùng 30 ngày
 const GV_HAN_PHIEN_GIO = 12;      // giáo viên: 12 giờ
 const SO_LAN_SAI_TOI_DA = 5;      // sai mật khẩu 5 lần thì khoá 10 phút
@@ -35,6 +35,8 @@ const BANG = {
   TuHoc: ["hsId", "ngay", "dang", "soLoi", "homNay", "tongDung", "tongLam", "capNhat"],
   GiaoTuHoc: ["maGiao", "ten", "maLop", "mon", "lop", "dkeys", "muc", "soCauDung", "hanNop", "taoLuc"],
   TienDoGiao: ["k", "maGiao", "hsId", "dung", "lam", "ks", "xongLuc", "capNhat"],
+  /* mỗi lượt tự học đã nộp: giờ vào làm (lúc lấy câu), giờ nộp, số câu đúng; dang = ["mon|lop|dkey", ...] */
+  LuotTuHoc: ["k", "hsId", "maLop", "cheDo", "maGiao", "batDau", "nopLuc", "soCau", "dung", "dang"],
   ThongBao: ["ma", "maLop", "noiDung", "taoLuc", "hetHan"]
 };
 const MUC = ["NB", "TH", "VD", "VDC"];
@@ -1085,7 +1087,7 @@ Object.assign(VIEC, {
       return { k: k, loai: x.loai, order: x.loai === "TN" ? tron([0, 1, 2, 3], R) : x.loai === "DS" ? [0, 1, 2, 3] : [] };
     });
     if (!cau.length) throw loi("Các câu này đã bị xoá khỏi ngân hàng.");
-    const phien = taoToken({ r: "luyen", u: tk.o.id, id: ngauNhien(10), g: giao ? giao.maGiao : "", c: cau.map(function (c) { return [c.k, c.order.join("")]; }) }, 12);
+    const phien = taoToken({ r: "luyen", u: tk.o.id, id: ngauNhien(10), g: giao ? giao.maGiao : "", m: cheDo, b: bayGio(), c: cau.map(function (c) { return [c.k, c.order.join("")]; }) }, 12);
     const tenDang = {};
     docHet("Dang").forEach(function (o) { tenDang[o.mon + "|" + o.lop + "|" + o.dkey] = o.ten; });
     return {
@@ -1133,6 +1135,9 @@ Object.assign(VIEC, {
       const han = congNgay(hn, -400);
       Object.keys(t.ngay).forEach(function (d) { if (d < han) delete t.ngay[d]; });
       ghiTuHoc(t);
+      const dsDang = {}; cau.forEach(function (c) { const x = q[c.k]; if (x) dsDang[x.mon + "|" + x.lop + "|" + x.dkey] = 1; });
+      them("LuotTuHoc", { k: tt.id, hsId: tk.o.id, maLop: tk.o.maLop, cheDo: String(tt.m || (tt.g ? "giao" : "")), maGiao: tt.g || "", batDau: tt.b || "", nopLuc: bayGio(),
+        soCau: kq.filter(function (o) { return o.q; }).length, dung: kq.filter(function (o) { return o.dung; }).length, dang: JSON.stringify(Object.keys(dsDang).slice(0, 20)) });
       const tdGiao = tt.g ? ghiTienDoGiao(tt.g, tk.o.id, kq, cau) : null;
       return { giao: tdGiao, cau: kq, homNay: { d: hn, dung: ng[0], lam: ng[1], mucTieu: MUC_TIEU_NGAY }, chuoi: chuoiNgay(t.ngay), soLoi: { tong: Object.keys(t.soLoi).length, denHan: Object.keys(t.soLoi).filter(function (k) { return t.soLoi[k][1] <= hn; }).length } };
     });
@@ -1152,6 +1157,28 @@ Object.assign(VIEC, {
       return { id: o.id, hoTen: o.hoTen, tenDN: o.tenDN, chuoiDaiNhat: k.daiNhat, soNgayDat: k.soNgayDat, dung: k.dung, lam: k.lam, chuoiHienTai: hn.hienTai, soLoi: Object.keys(docJSON(x.soLoi, {})).length, ngayCuoi: cuoi };
     });
     return { hs: hs, tu: tu, den: den, homNay: ngayVN(), mucTieu: MUC_TIEU_NGAY };
+  },
+
+  /* giáo viên: từng lượt tự học của một lớp (giờ vào làm, giờ nộp, đúng bao nhiêu câu), mới nhất trước */
+  "gv.tuHoc.luot": function (yc) {
+    canGV(yc);
+    const maLop = chuanMaLop(yc.maLop);
+    const re = /^\d{4}-\d{2}-\d{2}$/;
+    const tu = re.test(yc.tu) ? yc.tu : "", den = re.test(yc.den) ? yc.den : "";
+    const ten = {}; docCot("TaiKhoan", ["id", "hoTen", "maLop"]).forEach(function (o) { ten[o.id] = o; });
+    const tenDang = {}; docHet("Dang").forEach(function (o) { tenDang[o.mon + "|" + o.lop + "|" + o.dkey] = o.ten; });
+    const tenGiao = {}; docCot("GiaoTuHoc", ["maGiao", "ten"]).forEach(function (o) { tenGiao[o.maGiao] = o.ten; });
+    const ds = docHet("LuotTuHoc").filter(function (o) {
+      const tk = ten[o.hsId]; if (!tk || tk.maLop !== maLop) return false;     // theo lớp hiện tại của em
+      const d = ngayVN(new Date(o.nopLuc).getTime());
+      return (!tu || d >= tu) && (!den || d <= den);
+    });
+    const tong = ds.length;
+    const luot = ds.reverse().slice(0, 2000).map(function (o) {
+      return { hsId: o.hsId, hoTen: ten[o.hsId].hoTen, cheDo: o.cheDo, giao: tenGiao[o.maGiao] || "", batDau: o.batDau, nopLuc: o.nopLuc, soCau: +o.soCau || 0, dung: +o.dung || 0,
+        dang: docJSON(o.dang, []).map(function (k) { return tenDang[k] || k.split("|")[2]; }) };
+    });
+    return { luot: luot, tong: tong, tu: tu, den: den };
   }
 });
 
