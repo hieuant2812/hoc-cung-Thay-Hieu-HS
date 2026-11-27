@@ -13,7 +13,7 @@
 /* ĐỔI DÒNG NÀY thành mật khẩu riêng của thầy (ít nhất 8 kí tự). */
 const KHOA_GV = "doi-mat-khau-nay";
 
-const PHIEN_BAN = "2026.11.28-4";
+const PHIEN_BAN = "2026.11.28-5";
 const HS_HAN_PHIEN_NGAY = 30;     // học sinh đăng nhập một lần dùng 30 ngày
 const GV_HAN_PHIEN_GIO = 12;      // giáo viên: 12 giờ
 const SO_LAN_SAI_TOI_DA = 5;      // sai mật khẩu 5 lần thì khoá 10 phút
@@ -736,7 +736,9 @@ function docCot(ten, cot) {
 /* ============================== xác thực ============================== */
 function taoToken(tt, gio) {
   tt.exp = Date.now() + gio * 3600000;
-  const than = Utilities.base64EncodeWebSafe(JSON.stringify(tt));
+  // chỉ dùng kí tự ASCII (chữ có dấu như "Toán" viết thành \u....): base64 của Apps Script không mã hoá UTF-8 nên làm hỏng chữ có dấu
+  const json = JSON.stringify(tt).replace(/[\u0080-\uffff]/g, function (c) { return "\\u" + ("000" + c.charCodeAt(0).toString(16)).slice(-4); });
+  const than = Utilities.base64EncodeWebSafe(json);
   return than + "." + kyTen(than);
 }
 function docToken(token) {
