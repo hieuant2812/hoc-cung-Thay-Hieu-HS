@@ -22,23 +22,34 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Đổi $135^\circ$ sang radian và đổi $\dfrac{7\pi}{6}$ sang độ.`,
    giai: [
-    R`$135^\circ=\dfrac{135\pi}{180}=\dfrac{3\pi}4$ rad.`,
-    R`$\dfrac{7\pi}6$ rad $=\dfrac{7\cdot180^\circ}{6}=210^\circ$.`
+    R`**Phân tích.** Hai chiều đổi đều dựa vào một đẳng thức duy nhất $180^\circ=\pi$ rad. Đổi độ sang radian thì **nhân với $\dfrac\pi{180}$**, đổi radian sang độ thì **nhân với $\dfrac{180^\circ}\pi$**.`,
+    R`**Bước 1.** Đổi $135^\circ$ sang radian: $135^\circ=\dfrac{135\pi}{180}$ rad.`,
+    R`**Bước 2.** Rút gọn phân số (chia cả tử và mẫu cho $45$): $\dfrac{135}{180}=\dfrac34$, nên $135^\circ=\dfrac{3\pi}4$ rad.`,
+    R`**Bước 3.** Đổi $\dfrac{7\pi}6$ rad sang độ: thay $\pi$ bằng $180^\circ$, được $\dfrac{7\cdot180^\circ}{6}=7\cdot30^\circ=210^\circ$.`,
+    R`**Kết luận.** $135^\circ=\dfrac{3\pi}4$ rad; $\dfrac{7\pi}6$ rad $=210^\circ$.`,
+    R`**Thử lại.** $\dfrac{3\pi}4\cdot\dfrac{180^\circ}\pi=135^\circ$ ✓.`
    ] },
  { muc: "TH", de: R`Kim phút của một đồng hồ dài $10$ cm. Trong $20$ phút, đầu kim phút vạch nên một cung tròn dài bao nhiêu (làm tròn đến hàng phần trăm)?`,
    giai: [
-    R`$60$ phút kim phút quay một vòng ($2\pi$ rad), nên $20$ phút quay $\dfrac{20}{60}\cdot2\pi=\dfrac{2\pi}3$ rad.`,
-    R`$l=R\alpha=10\cdot\dfrac{2\pi}3=\dfrac{20\pi}3\approx20{,}94$ (cm).`
+    R`**Phân tích.** Độ dài cung $l=R\alpha$ chỉ đúng khi $\alpha$ đo bằng **radian**. Việc đầu tiên là tìm góc (radian) mà kim phút quay được trong $20$ phút.`,
+    R`**Bước 1.** $60$ phút kim phút quay một vòng ($2\pi$ rad), nên $20$ phút quay $\dfrac{20}{60}\cdot2\pi=\dfrac{2\pi}3$ rad.`,
+    R`**Bước 2.** $l=R\alpha=10\cdot\dfrac{2\pi}3=\dfrac{20\pi}3\approx20{,}94$ (cm).`,
+    R`**Kết luận.** Đầu kim phút vạch cung dài khoảng $20{,}94$ cm.`,
+    R`**Nhận xét.** Nếu dùng nhầm số đo độ $120^\circ$ thì được $l=1200$ cm, vô lí: luôn đổi sang radian trước.`
    ] },
  { muc: "TH", de: R`Xác định điểm biểu diễn trên đường tròn lượng giác của các góc $1125^\circ$ và $-765^\circ$.`,
    giai: [
-    R`$1125^\circ=45^\circ+3\cdot360^\circ$, nên có cùng điểm biểu diễn với góc $45^\circ$ (điểm chính giữa cung phần tư thứ nhất).`,
-    R`$-765^\circ=-45^\circ-2\cdot360^\circ$, nên có cùng điểm biểu diễn với góc $-45^\circ$ (điểm chính giữa cung phần tư thứ tư).`
+    R`**Phân tích.** Góc lớn hơn $360^\circ$ (hoặc âm) có cùng điểm biểu diễn với góc sau khi bớt đi (thêm vào) một số vòng $360^\circ$. Chia số đo cho $360$ để biết bớt bao nhiêu vòng.`,
+    R`**Bước 1.** $1125^\circ=45^\circ+3\cdot360^\circ$, nên có cùng điểm biểu diễn với góc $45^\circ$ (điểm chính giữa cung phần tư thứ nhất).`,
+    R`**Bước 2.** $-765^\circ=-45^\circ-2\cdot360^\circ$, nên có cùng điểm biểu diễn với góc $-45^\circ$ (điểm chính giữa cung phần tư thứ tư).`,
+    R`**Kết luận.** Góc $1125^\circ$ biểu diễn bởi cùng điểm với $45^\circ$; góc $-765^\circ$ cùng điểm với $-45^\circ$.`
    ] },
  { muc: "VD", de: R`Biểu diễn trên đường tròn lượng giác các góc $\alpha=\dfrac\pi4+k\dfrac\pi2$ ($k\in\mathbb Z$). Các điểm đó tạo thành hình gì?`,
    giai: [
-    R`Cho $k=0,1,2,3$: $\alpha=\dfrac\pi4,\ \dfrac{3\pi}4,\ \dfrac{5\pi}4,\ \dfrac{7\pi}4$. Với $k=4$ ta được $\dfrac\pi4+2\pi$, trùng điểm với $k=0$; các $k$ khác cũng lặp lại.`,
-    R`Có đúng $4$ điểm, hai điểm liên tiếp cách nhau một góc $\dfrac\pi2$ nên chúng là bốn đỉnh của một **hình vuông** nội tiếp đường tròn lượng giác.`
+    R`**Phân tích.** Họ góc $\alpha+k\dfrac\pi2$ cứ thêm $\dfrac\pi2$ lại sang một điểm mới; sau $4$ lần thì đủ một vòng $2\pi$ và lặp lại. Liệt kê với $k=0,1,2,3$ là đủ.`,
+    R`**Bước 1.** Cho $k=0,1,2,3$: $\alpha=\dfrac\pi4,\ \dfrac{3\pi}4,\ \dfrac{5\pi}4,\ \dfrac{7\pi}4$. Với $k=4$ ta được $\dfrac\pi4+2\pi$, trùng điểm với $k=0$; các $k$ khác cũng lặp lại.`,
+    R`**Bước 2.** Có đúng $4$ điểm, hai điểm liên tiếp cách nhau một góc $\dfrac\pi2$ nên chúng là bốn đỉnh của một **hình vuông** nội tiếp đường tròn lượng giác.`,
+    R`**Kết luận.** Các điểm biểu diễn là bốn đỉnh của một hình vuông nội tiếp đường tròn lượng giác.`
    ],
    hinh: R`\begin{tikzpicture}[scale=1.6,>=stealth]
 \draw[->] (-1.4,0)--(1.5,0) node[below]{$x$};
@@ -67,31 +78,45 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Cho $\sin\alpha=\dfrac35$ với $\dfrac\pi2<\alpha<\pi$. Tính $\cos\alpha$, $\tan\alpha$, $\cot\alpha$.`,
    giai: [
-    R`$\cos^2\alpha=1-\sin^2\alpha=1-\dfrac9{25}=\dfrac{16}{25}$.`,
-    R`Vì $\dfrac\pi2<\alpha<\pi$ (góc phần tư thứ hai) nên $\cos\alpha<0$: $\cos\alpha=-\dfrac45$.`,
-    R`$\tan\alpha=\dfrac{3/5}{-4/5}=-\dfrac34$; $\cot\alpha=-\dfrac43$.`
+    R`**Phân tích.** Biết $\sin\alpha$, tìm $\cos\alpha$ bằng $\sin^2\alpha+\cos^2\alpha=1$. Khai căn được hai giá trị trái dấu, **góc phần tư** chứa $\alpha$ quyết định chọn dấu nào.`,
+    R`**Bước 1.** $\cos^2\alpha=1-\sin^2\alpha=1-\dfrac9{25}=\dfrac{16}{25}$.`,
+    R`**Bước 2.** Vì $\dfrac\pi2<\alpha<\pi$ (góc phần tư thứ hai) nên $\cos\alpha<0$: $\cos\alpha=-\dfrac45$.`,
+    R`**Bước 3.** $\tan\alpha=\dfrac{3/5}{-4/5}=-\dfrac34$; $\cot\alpha=-\dfrac43$.`,
+    R`**Kết luận.** $\cos\alpha=-\dfrac45$, $\tan\alpha=-\dfrac34$, $\cot\alpha=-\dfrac43$.`,
+    R`**Thử lại.** $\left(\dfrac35\right)^2+\left(-\dfrac45\right)^2=\dfrac{9+16}{25}=1$ ✓.`
    ] },
  { muc: "TH", de: R`Cho $\tan\alpha=2$ với $\pi<\alpha<\dfrac{3\pi}2$. Tính $\cos\alpha$, $\sin\alpha$.`,
    giai: [
-    R`$\dfrac1{\cos^2\alpha}=1+\tan^2\alpha=5\Rightarrow\cos^2\alpha=\dfrac15$.`,
-    R`Góc phần tư thứ ba nên $\cos\alpha<0$: $\cos\alpha=-\dfrac1{\sqrt5}$.`,
-    R`$\sin\alpha=\tan\alpha\cdot\cos\alpha=2\cdot\left(-\dfrac1{\sqrt5}\right)=-\dfrac2{\sqrt5}$ (âm, đúng với góc phần tư thứ ba).`
+    R`**Phân tích.** Biết $\tan\alpha$, đi tới $\cos\alpha$ nhanh nhất qua $1+\tan^2\alpha=\dfrac1{\cos^2\alpha}$; sau đó $\sin\alpha=\tan\alpha\cdot\cos\alpha$.`,
+    R`**Bước 1.** $\dfrac1{\cos^2\alpha}=1+\tan^2\alpha=5\Rightarrow\cos^2\alpha=\dfrac15$.`,
+    R`**Bước 2.** Góc phần tư thứ ba nên $\cos\alpha<0$: $\cos\alpha=-\dfrac1{\sqrt5}$.`,
+    R`**Bước 3.** $\sin\alpha=\tan\alpha\cdot\cos\alpha=2\cdot\left(-\dfrac1{\sqrt5}\right)=-\dfrac2{\sqrt5}$ (âm, đúng với góc phần tư thứ ba).`,
+    R`**Kết luận.** $\cos\alpha=-\dfrac{\sqrt5}5$, $\sin\alpha=-\dfrac{2\sqrt5}5$.`,
+    R`**Thử lại.** $\sin^2\alpha+\cos^2\alpha=\dfrac45+\dfrac15=1$ ✓ và $\dfrac{\sin\alpha}{\cos\alpha}=2$ ✓.`
    ] },
  { muc: "TH", de: R`Rút gọn $A=\sin(\pi-x)+\cos\left(\dfrac\pi2-x\right)-\sin(\pi+x)$.`,
    giai: [
-    R`$\sin(\pi-x)=\sin x$ (góc bù); $\cos\left(\dfrac\pi2-x\right)=\sin x$ (góc phụ); $\sin(\pi+x)=-\sin x$ (hơn kém $\pi$).`,
-    R`$A=\sin x+\sin x-(-\sin x)=3\sin x$.`
+    R`**Phân tích.** Nhận ra từng cặp góc có liên quan đặc biệt (bù, phụ, hơn kém $\pi$) rồi đưa hết về $\sin x$.`,
+    R`**Bước 1.** $\sin(\pi-x)=\sin x$ (góc bù); $\cos\left(\dfrac\pi2-x\right)=\sin x$ (góc phụ); $\sin(\pi+x)=-\sin x$ (hơn kém $\pi$).`,
+    R`**Bước 2.** $A=\sin x+\sin x-(-\sin x)=3\sin x$.`,
+    R`**Kết luận.** $A=3\sin x$.`,
+    R`**Thử lại.** Với $x=\dfrac\pi2$: $A=\sin\dfrac\pi2+\cos0-\sin\dfrac{3\pi}2=1+1+1=3=3\sin\dfrac\pi2$ ✓.`
    ] },
  { muc: "VD", de: R`Tính $\sin\dfrac{17\pi}6$, $\cos\left(-\dfrac{11\pi}3\right)$, $\tan\dfrac{13\pi}4$.`,
    giai: [
-    R`$\dfrac{17\pi}6=\dfrac{5\pi}6+2\pi$ nên $\sin\dfrac{17\pi}6=\sin\dfrac{5\pi}6=\sin\dfrac\pi6=\dfrac12$.`,
-    R`$\cos\left(-\dfrac{11\pi}3\right)=\cos\dfrac{11\pi}3$; $\dfrac{11\pi}3=-\dfrac\pi3+4\pi$ nên $\cos\dfrac{11\pi}3=\cos\left(-\dfrac\pi3\right)=\dfrac12$.`,
-    R`$\tan$ có chu kì $\pi$: $\dfrac{13\pi}4=\dfrac\pi4+3\pi$, nên $\tan\dfrac{13\pi}4=\tan\dfrac\pi4=1$.`
+    R`**Phân tích.** Bớt đi bội của chu kì ($2\pi$ với $\sin,\cos$; $\pi$ với $\tan$) để đưa về góc trong một vòng, rồi dùng giá trị của góc đặc biệt.`,
+    R`**Bước 1.** $\dfrac{17\pi}6=\dfrac{5\pi}6+2\pi$ nên $\sin\dfrac{17\pi}6=\sin\dfrac{5\pi}6=\sin\dfrac\pi6=\dfrac12$.`,
+    R`**Bước 2.** $\cos\left(-\dfrac{11\pi}3\right)=\cos\dfrac{11\pi}3$; $\dfrac{11\pi}3=-\dfrac\pi3+4\pi$ nên $\cos\dfrac{11\pi}3=\cos\left(-\dfrac\pi3\right)=\dfrac12$.`,
+    R`**Bước 3.** $\tan$ có chu kì $\pi$: $\dfrac{13\pi}4=\dfrac\pi4+3\pi$, nên $\tan\dfrac{13\pi}4=\tan\dfrac\pi4=1$.`,
+    R`**Kết luận.** $\sin\dfrac{17\pi}6=\dfrac12$; $\cos\left(-\dfrac{11\pi}3\right)=\dfrac12$; $\tan\dfrac{13\pi}4=1$.`
    ] },
  { muc: "VD", de: R`Cho $\tan\alpha=3$. Tính $B=\dfrac{\sin\alpha+\cos\alpha}{\sin\alpha-\cos\alpha}$.`,
    giai: [
-    R`$\tan\alpha=3$ nên $\cos\alpha\ne0$. Chia cả tử và mẫu cho $\cos\alpha$: $B=\dfrac{\tan\alpha+1}{\tan\alpha-1}$.`,
-    R`$B=\dfrac{3+1}{3-1}=2$.`
+    R`**Phân tích.** Tử và mẫu đều là tổng bậc nhất của $\sin\alpha$, $\cos\alpha$: chia cả tử và mẫu cho $\cos\alpha$ để xuất hiện $\tan\alpha$ đã biết.`,
+    R`**Bước 1.** $\tan\alpha=3$ nên $\cos\alpha\ne0$. Chia cả tử và mẫu cho $\cos\alpha$: $B=\dfrac{\tan\alpha+1}{\tan\alpha-1}$.`,
+    R`**Bước 2.** $B=\dfrac{3+1}{3-1}=2$.`,
+    R`**Kết luận.** $B=2$.`,
+    R`**Thử lại.** $\tan\alpha=3$ nghĩa là $\sin\alpha=3\cos\alpha$, nên $B=\dfrac{3\cos\alpha+\cos\alpha}{3\cos\alpha-\cos\alpha}=\dfrac42=2$ ✓.`
    ] }
  ] },
 "C1-B2-D03": {
@@ -108,28 +133,44 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Tính $\cos75^\circ$.`,
    giai: [
-    R`$\cos75^\circ=\cos(45^\circ+30^\circ)=\cos45^\circ\cos30^\circ-\sin45^\circ\sin30^\circ$.`,
-    R`$=\dfrac{\sqrt2}2\cdot\dfrac{\sqrt3}2-\dfrac{\sqrt2}2\cdot\dfrac12=\dfrac{\sqrt6-\sqrt2}4$.`
+    R`**Phân tích.** $75^\circ$ không phải góc đặc biệt nhưng $75^\circ=45^\circ+30^\circ$ là tổng hai góc đặc biệt: dùng công thức cộng của $\cos$ (chú ý dấu **trừ** ở giữa).`,
+    R`**Bước 1.** $\cos75^\circ=\cos(45^\circ+30^\circ)=\cos45^\circ\cos30^\circ-\sin45^\circ\sin30^\circ$.`,
+    R`**Bước 2.** $=\dfrac{\sqrt2}2\cdot\dfrac{\sqrt3}2-\dfrac{\sqrt2}2\cdot\dfrac12=\dfrac{\sqrt6-\sqrt2}4$.`,
+    R`**Kết luận.** $\cos75^\circ=\dfrac{\sqrt6-\sqrt2}4$.`,
+    R`**Thử lại.** $\dfrac{2{,}449-1{,}414}4\approx0{,}259$, khớp với máy tính $\cos75^\circ\approx0{,}259$ ✓.`
    ] },
  { muc: "TH", de: R`Cho $\sin\alpha=\dfrac45$, $0<\alpha<\dfrac\pi2$. Tính $\sin2\alpha$ và $\cos2\alpha$.`,
    giai: [
-    R`$\cos\alpha>0$ nên $\cos\alpha=\sqrt{1-\dfrac{16}{25}}=\dfrac35$.`,
-    R`$\sin2\alpha=2\cdot\dfrac45\cdot\dfrac35=\dfrac{24}{25}$.`,
-    R`$\cos2\alpha=1-2\sin^2\alpha=1-\dfrac{32}{25}=-\dfrac7{25}$.`
+    R`**Phân tích.** Công thức nhân đôi cần cả $\sin\alpha$ và $\cos\alpha$. Tìm $\cos\alpha$ trước (chọn dấu theo góc phần tư), rồi thay vào.`,
+    R`**Bước 1.** $\cos\alpha>0$ nên $\cos\alpha=\sqrt{1-\dfrac{16}{25}}=\dfrac35$.`,
+    R`**Bước 2.** $\sin2\alpha=2\cdot\dfrac45\cdot\dfrac35=\dfrac{24}{25}$.`,
+    R`**Bước 3.** $\cos2\alpha=1-2\sin^2\alpha=1-\dfrac{32}{25}=-\dfrac7{25}$.`,
+    R`**Kết luận.** $\sin2\alpha=\dfrac{24}{25}$, $\cos2\alpha=-\dfrac7{25}$.`,
+    R`**Thử lại.** $\left(\dfrac{24}{25}\right)^2+\left(\dfrac7{25}\right)^2=\dfrac{576+49}{625}=1$ ✓.`
    ] },
  { muc: "TH", de: R`Cho $\tan\alpha=\dfrac12$. Tính $\tan\left(\alpha+\dfrac\pi4\right)$.`,
    giai: [
-    R`$\tan\left(\alpha+\dfrac\pi4\right)=\dfrac{\tan\alpha+1}{1-\tan\alpha\cdot1}=\dfrac{\frac12+1}{1-\frac12}=\dfrac{3/2}{1/2}=3$.`
+    R`**Phân tích.** Góc $\alpha+\dfrac\pi4$ là tổng của hai góc, một góc đã biết $\tan$, góc kia đặc biệt ($\tan\dfrac\pi4=1$): dùng **công thức cộng** của $\tan$.`,
+    R`**Bước 1.** Viết công thức: $\tan\left(\alpha+\dfrac\pi4\right)=\dfrac{\tan\alpha+\tan\frac\pi4}{1-\tan\alpha\tan\frac\pi4}=\dfrac{\tan\alpha+1}{1-\tan\alpha}$.`,
+    R`**Bước 2.** Thay $\tan\alpha=\dfrac12$: tử $=\dfrac12+1=\dfrac32$, mẫu $=1-\dfrac12=\dfrac12$.`,
+    R`**Bước 3.** Chia: $\dfrac{3/2}{1/2}=3$.`,
+    R`**Kết luận.** $\tan\left(\alpha+\dfrac\pi4\right)=3$.`,
+    R`**Nhận xét.** Công thức $\tan\left(\alpha+\dfrac\pi4\right)=\dfrac{1+\tan\alpha}{1-\tan\alpha}$ hay gặp, nên nhớ.`
    ] },
  { muc: "VD", de: R`Rút gọn $C=\dfrac{1-\cos2x}{\sin2x}$ (với $\sin2x\ne0$).`,
    giai: [
-    R`$1-\cos2x=2\sin^2x$; $\sin2x=2\sin x\cos x$.`,
-    R`$C=\dfrac{2\sin^2x}{2\sin x\cos x}=\dfrac{\sin x}{\cos x}=\tan x$.`
+    R`**Phân tích.** Thấy $1-\cos2x$ thì nghĩ đến **hạ bậc** $1-\cos2x=2\sin^2x$; mẫu $\sin2x$ dùng nhân đôi. Sau đó rút gọn nhân tử chung.`,
+    R`**Bước 1.** $1-\cos2x=2\sin^2x$; $\sin2x=2\sin x\cos x$.`,
+    R`**Bước 2.** $C=\dfrac{2\sin^2x}{2\sin x\cos x}=\dfrac{\sin x}{\cos x}=\tan x$.`,
+    R`**Kết luận.** $C=\tan x$.`,
+    R`**Thử lại.** Với $x=\dfrac\pi4$: $C=\dfrac{1-\cos\frac\pi2}{\sin\frac\pi2}=1=\tan\dfrac\pi4$ ✓.`
    ] },
  { muc: "VD", de: R`Tính $\cos^2\dfrac\pi8$ và $\cos\dfrac\pi8$.`,
    giai: [
-    R`Hạ bậc: $\cos^2\dfrac\pi8=\dfrac{1+\cos\frac\pi4}2=\dfrac{1+\frac{\sqrt2}2}2=\dfrac{2+\sqrt2}4$.`,
-    R`Vì $0<\dfrac\pi8<\dfrac\pi2$ nên $\cos\dfrac\pi8>0$: $\cos\dfrac\pi8=\dfrac{\sqrt{2+\sqrt2}}2$.`
+    R`**Phân tích.** $\dfrac\pi8$ là nửa của góc đặc biệt $\dfrac\pi4$: dùng công thức **hạ bậc** $\cos^2a=\dfrac{1+\cos2a}2$ với $a=\dfrac\pi8$.`,
+    R`**Bước 1.** Hạ bậc: $\cos^2\dfrac\pi8=\dfrac{1+\cos\frac\pi4}2=\dfrac{1+\frac{\sqrt2}2}2=\dfrac{2+\sqrt2}4$.`,
+    R`**Bước 2.** Vì $0<\dfrac\pi8<\dfrac\pi2$ nên $\cos\dfrac\pi8>0$: $\cos\dfrac\pi8=\dfrac{\sqrt{2+\sqrt2}}2$.`,
+    R`**Kết luận.** $\cos^2\dfrac\pi8=\dfrac{2+\sqrt2}4$; $\cos\dfrac\pi8=\dfrac{\sqrt{2+\sqrt2}}2\approx0{,}924$.`
    ] }
  ] },
 "C1-B2-D04": {
@@ -145,23 +186,35 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Tính $\cos75^\circ\cos15^\circ$.`,
    giai: [
-    R`$\cos75^\circ\cos15^\circ=\dfrac12[\cos60^\circ+\cos90^\circ]=\dfrac12\left(\dfrac12+0\right)=\dfrac14$.`
+    R`**Phân tích.** Tích hai $\cos$ của các góc không đặc biệt, nhưng tổng và hiệu của chúng ($90^\circ$, $60^\circ$) lại đặc biệt: dùng công thức **tích thành tổng**.`,
+    R`**Bước 1.** Công thức: $\cos a\cos b=\dfrac12[\cos(a-b)+\cos(a+b)]$ với $a=75^\circ$, $b=15^\circ$.`,
+    R`**Bước 2.** $a-b=60^\circ$, $a+b=90^\circ$, nên $\cos75^\circ\cos15^\circ=\dfrac12[\cos60^\circ+\cos90^\circ]$.`,
+    R`**Bước 3.** Thay giá trị: $=\dfrac12\left(\dfrac12+0\right)=\dfrac14$.`,
+    R`**Kết luận.** $\cos75^\circ\cos15^\circ=\dfrac14$.`,
+    R`**Thử lại.** Cách khác: $\cos15^\circ=\sin75^\circ$ nên tích $=\sin75^\circ\cos75^\circ=\dfrac12\sin150^\circ=\dfrac14$ ✓.`
    ] },
  { muc: "TH", de: R`Tính $\sin75^\circ+\sin15^\circ$.`,
    giai: [
-    R`$=2\sin\dfrac{75^\circ+15^\circ}2\cos\dfrac{75^\circ-15^\circ}2=2\sin45^\circ\cos30^\circ$.`,
-    R`$=2\cdot\dfrac{\sqrt2}2\cdot\dfrac{\sqrt3}2=\dfrac{\sqrt6}2$.`
+    R`**Phân tích.** Tổng hai $\sin$ có nửa tổng ($45^\circ$) và nửa hiệu ($30^\circ$) đều đặc biệt: dùng công thức **tổng thành tích**.`,
+    R`**Bước 1.** $=2\sin\dfrac{75^\circ+15^\circ}2\cos\dfrac{75^\circ-15^\circ}2=2\sin45^\circ\cos30^\circ$.`,
+    R`**Bước 2.** $=2\cdot\dfrac{\sqrt2}2\cdot\dfrac{\sqrt3}2=\dfrac{\sqrt6}2$.`,
+    R`**Kết luận.** $\sin75^\circ+\sin15^\circ=\dfrac{\sqrt6}2$.`,
+    R`**Thử lại.** Dùng công thức cộng: $\sin75^\circ=\dfrac{\sqrt6+\sqrt2}4$, $\sin15^\circ=\dfrac{\sqrt6-\sqrt2}4$, tổng bằng $\dfrac{\sqrt6}2$ ✓.`
    ] },
  { muc: "TH", de: R`Rút gọn $E=\dfrac{\sin x+\sin3x}{\cos x+\cos3x}$.`,
    giai: [
-    R`Tử: $\sin3x+\sin x=2\sin2x\cos x$. Mẫu: $\cos3x+\cos x=2\cos2x\cos x$.`,
-    R`$E=\dfrac{2\sin2x\cos x}{2\cos2x\cos x}=\tan2x$ (với các giá trị $x$ làm mẫu khác $0$).`
+    R`**Phân tích.** Ghép $\sin3x$ với $\sin x$, $\cos3x$ với $\cos x$ rồi biến thành tích: tử và mẫu sẽ cùng có nhân tử $2\cos x$ để rút gọn.`,
+    R`**Bước 1.** Tử: $\sin3x+\sin x=2\sin2x\cos x$. Mẫu: $\cos3x+\cos x=2\cos2x\cos x$.`,
+    R`**Bước 2.** $E=\dfrac{2\sin2x\cos x}{2\cos2x\cos x}=\tan2x$ (với các giá trị $x$ làm mẫu khác $0$).`,
+    R`**Kết luận.** $E=\tan2x$.`
    ] },
  { muc: "VD", de: R`Chứng minh $\cos20^\circ\cos40^\circ\cos80^\circ=\dfrac18$.`,
    giai: [
-    R`Gọi $P=\cos20^\circ\cos40^\circ\cos80^\circ$. Nhân hai vế với $\sin20^\circ\ (\ne0)$ và dùng $\sin a\cos a=\dfrac12\sin2a$ liên tiếp:`,
-    R`$P\sin20^\circ=\dfrac12\sin40^\circ\cos40^\circ\cos80^\circ=\dfrac14\sin80^\circ\cos80^\circ=\dfrac18\sin160^\circ$.`,
-    R`$\sin160^\circ=\sin(180^\circ-20^\circ)=\sin20^\circ$, nên $P\sin20^\circ=\dfrac18\sin20^\circ\Rightarrow P=\dfrac18$.`
+    R`**Phân tích.** Tích các $\cos$ của góc **gấp đôi nhau** ($20^\circ,40^\circ,80^\circ$): nhân thêm $\sin$ của góc nhỏ nhất rồi dùng $\sin a\cos a=\dfrac12\sin2a$ liên tiếp.`,
+    R`**Bước 1.** Gọi $P=\cos20^\circ\cos40^\circ\cos80^\circ$. Nhân hai vế với $\sin20^\circ\ (\ne0)$ và dùng $\sin a\cos a=\dfrac12\sin2a$ liên tiếp:`,
+    R`**Bước 2.** $P\sin20^\circ=\dfrac12\sin40^\circ\cos40^\circ\cos80^\circ=\dfrac14\sin80^\circ\cos80^\circ=\dfrac18\sin160^\circ$.`,
+    R`**Bước 3.** $\sin160^\circ=\sin(180^\circ-20^\circ)=\sin20^\circ$, nên $P\sin20^\circ=\dfrac18\sin20^\circ\Rightarrow P=\dfrac18$.`,
+    R`**Kết luận.** $\cos20^\circ\cos40^\circ\cos80^\circ=\dfrac18$ (điều phải chứng minh).`
    ] }
  ] },
 "C1-B3-D05": {
@@ -178,24 +231,33 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Tìm tập xác định của hàm số $y=\tan\left(2x-\dfrac\pi3\right)$.`,
    giai: [
-    R`Điều kiện: $2x-\dfrac\pi3\ne\dfrac\pi2+k\pi\Leftrightarrow2x\ne\dfrac{5\pi}6+k\pi\Leftrightarrow x\ne\dfrac{5\pi}{12}+k\dfrac\pi2$.`,
-    R`$D=\mathbb R\setminus\left\{\dfrac{5\pi}{12}+k\dfrac\pi2\mid k\in\mathbb Z\right\}$.`
+    R`**Phân tích.** $\tan u$ xác định khi $\cos u\ne0$, tức $u\ne\dfrac\pi2+k\pi$. Ở đây $u=2x-\dfrac\pi3$; giải điều kiện theo $x$, nhớ chia cả $k\pi$ cho $2$.`,
+    R`**Bước 1.** Điều kiện: $2x-\dfrac\pi3\ne\dfrac\pi2+k\pi\Leftrightarrow2x\ne\dfrac{5\pi}6+k\pi\Leftrightarrow x\ne\dfrac{5\pi}{12}+k\dfrac\pi2$.`,
+    R`**Bước 2.** $D=\mathbb R\setminus\left\{\dfrac{5\pi}{12}+k\dfrac\pi2\mid k\in\mathbb Z\right\}$.`,
+    R`**Kết luận.** $D=\mathbb R\setminus\left\{\dfrac{5\pi}{12}+k\dfrac\pi2\mid k\in\mathbb Z\right\}$.`
    ] },
  { muc: "TH", de: R`Tìm tập xác định của $y=\dfrac{1}{\sin x-1}$ và $y=\sqrt{1-\cos x}$.`,
    giai: [
-    R`$y=\dfrac1{\sin x-1}$: cần $\sin x\ne1\Leftrightarrow x\ne\dfrac\pi2+k2\pi$. $D=\mathbb R\setminus\left\{\dfrac\pi2+k2\pi\mid k\in\mathbb Z\right\}$.`,
-    R`$y=\sqrt{1-\cos x}$: cần $1-\cos x\ge0$, luôn đúng vì $\cos x\le1$. $D=\mathbb R$.`
+    R`**Phân tích.** Phân thức cần mẫu khác $0$; căn bậc hai cần biểu thức dưới căn không âm. Dùng $-1\le\sin x,\cos x\le1$ để xét từng điều kiện.`,
+    R`**Bước 1.** $y=\dfrac1{\sin x-1}$: cần $\sin x\ne1\Leftrightarrow x\ne\dfrac\pi2+k2\pi$. $D=\mathbb R\setminus\left\{\dfrac\pi2+k2\pi\mid k\in\mathbb Z\right\}$.`,
+    R`**Bước 2.** $y=\sqrt{1-\cos x}$: cần $1-\cos x\ge0$, luôn đúng vì $\cos x\le1$. $D=\mathbb R$.`,
+    R`**Kết luận.** Hàm thứ nhất có $D=\mathbb R\setminus\left\{\dfrac\pi2+k2\pi\right\}$; hàm thứ hai có $D=\mathbb R$.`
    ] },
  { muc: "TH", de: R`Xét tính chẵn, lẻ của: a) $f(x)=x^2\cos x$; b) $g(x)=\sin x+\tan x$; c) $h(x)=\sin x+\cos x$.`,
    giai: [
-    R`a) $D=\mathbb R$ đối xứng; $f(-x)=(-x)^2\cos(-x)=x^2\cos x=f(x)$: hàm chẵn.`,
-    R`b) $D=\mathbb R\setminus\left\{\frac\pi2+k\pi\right\}$ đối xứng; $g(-x)=-\sin x-\tan x=-g(x)$: hàm lẻ.`,
-    R`c) $h\left(\frac\pi4\right)=\sqrt2$, $h\left(-\frac\pi4\right)=-\frac{\sqrt2}2+\frac{\sqrt2}2=0$. Giá trị này khác $h\left(\frac\pi4\right)$ và khác $-h\left(\frac\pi4\right)$: hàm không chẵn, không lẻ.`
+    R`**Phân tích.** Hai việc theo thứ tự: kiểm tra tập xác định **đối xứng**, rồi tính $f(-x)$ và so với $f(x)$, $-f(x)$.`,
+    R`**Bước 1.** a) $D=\mathbb R$ đối xứng; $f(-x)=(-x)^2\cos(-x)=x^2\cos x=f(x)$: hàm chẵn.`,
+    R`**Bước 2.** b) $D=\mathbb R\setminus\left\{\frac\pi2+k\pi\right\}$ đối xứng; $g(-x)=-\sin x-\tan x=-g(x)$: hàm lẻ.`,
+    R`**Bước 3.** c) $h\left(\frac\pi4\right)=\sqrt2$, $h\left(-\frac\pi4\right)=-\frac{\sqrt2}2+\frac{\sqrt2}2=0$. Giá trị này khác $h\left(\frac\pi4\right)$ và khác $-h\left(\frac\pi4\right)$: hàm không chẵn, không lẻ.`,
+    R`**Kết luận.** a) chẵn; b) lẻ; c) không chẵn, không lẻ.`
    ] },
  { muc: "VD", de: R`Tìm chu kì của các hàm số $y=\sin3x$ và $y=\cos\dfrac x2$.`,
    giai: [
-    R`$y=\sin3x$: $T=\dfrac{2\pi}3$. Thật vậy, $\sin\left(3\left(x+\frac{2\pi}3\right)\right)=\sin(3x+2\pi)=\sin3x$.`,
-    R`$y=\cos\dfrac x2$: $T=\dfrac{2\pi}{1/2}=4\pi$. Thật vậy, $\cos\dfrac{x+4\pi}2=\cos\left(\dfrac x2+2\pi\right)=\cos\dfrac x2$.`
+    R`**Phân tích.** Hàm $\sin(ax)$, $\cos(ax)$ có chu kì $T=\dfrac{2\pi}{|a|}$. Tính $T$ rồi kiểm tra lại bằng định nghĩa $f(x+T)=f(x)$.`,
+    R`**Bước 1.** $y=\sin3x$: $T=\dfrac{2\pi}3$. Thật vậy, $\sin\left(3\left(x+\frac{2\pi}3\right)\right)=\sin(3x+2\pi)=\sin3x$.`,
+    R`**Bước 2.** $y=\cos\dfrac x2$: $T=\dfrac{2\pi}{1/2}=4\pi$. Thật vậy, $\cos\dfrac{x+4\pi}2=\cos\left(\dfrac x2+2\pi\right)=\cos\dfrac x2$.`,
+    R`**Kết luận.** Chu kì của $y=\sin3x$ là $\dfrac{2\pi}3$; của $y=\cos\dfrac x2$ là $4\pi$.`,
+    R`**Nhận xét.** Hệ số $a$ càng lớn thì đồ thị "dao động" càng nhanh, chu kì càng ngắn.`
    ] }
  ] },
 "C1-B3-D06": {
@@ -212,27 +274,34 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Tìm GTLN, GTNN của $y=3-2\cos x$.`,
    giai: [
-    R`$-1\le\cos x\le1\Rightarrow-2\le-2\cos x\le2$ (nhân $-2$, đổi chiều) $\Rightarrow1\le y\le5$.`,
-    R`$y=5$ khi $\cos x=-1\Leftrightarrow x=\pi+k2\pi$; $y=1$ khi $\cos x=1\Leftrightarrow x=k2\pi$.`,
+    R`**Phân tích.** Bắt đầu từ $-1\le\cos x\le1$, rồi nhân, cộng dần để dựng lên biểu thức $3-2\cos x$. Khi nhân với số âm phải **đổi chiều** bất đẳng thức.`,
+    R`**Bước 1.** $-1\le\cos x\le1\Rightarrow-2\le-2\cos x\le2$ (nhân $-2$, đổi chiều) $\Rightarrow1\le y\le5$.`,
+    R`**Bước 2.** $y=5$ khi $\cos x=-1\Leftrightarrow x=\pi+k2\pi$; $y=1$ khi $\cos x=1\Leftrightarrow x=k2\pi$.`,
     R`**Kết luận.** $\max y=5$, $\min y=1$.`
    ] },
  { muc: "TH", de: R`Tìm tập giá trị của $y=\sin x+\sqrt3\cos x$.`,
    giai: [
-    R`$y=2\left(\dfrac12\sin x+\dfrac{\sqrt3}2\cos x\right)=2\left(\sin x\cos\dfrac\pi3+\cos x\sin\dfrac\pi3\right)=2\sin\left(x+\dfrac\pi3\right)$.`,
-    R`Vì $-1\le\sin\left(x+\frac\pi3\right)\le1$ nên $-2\le y\le2$. Tập giá trị $[-2;2]$.`,
-    R`Ví dụ $y=2$ khi $x+\dfrac\pi3=\dfrac\pi2$, tức $x=\dfrac\pi6$: thử lại $\dfrac12+\sqrt3\cdot\dfrac{\sqrt3}2=2$ ✓.`
+    R`**Phân tích.** Dạng $a\sin x+b\cos x$: đưa ra ngoài $\sqrt{a^2+b^2}=\sqrt{1+3}=2$, phần trong ngoặc là công thức cộng của $\sin$.`,
+    R`**Bước 1.** $y=2\left(\dfrac12\sin x+\dfrac{\sqrt3}2\cos x\right)=2\left(\sin x\cos\dfrac\pi3+\cos x\sin\dfrac\pi3\right)=2\sin\left(x+\dfrac\pi3\right)$.`,
+    R`**Bước 2.** Vì $-1\le\sin\left(x+\frac\pi3\right)\le1$ nên $-2\le y\le2$. Tập giá trị $[-2;2]$.`,
+    R`**Bước 3.** Ví dụ $y=2$ khi $x+\dfrac\pi3=\dfrac\pi2$, tức $x=\dfrac\pi6$: thử lại $\dfrac12+\sqrt3\cdot\dfrac{\sqrt3}2=2$ ✓.`,
+    R`**Kết luận.** Tập giá trị của hàm số là $[-2;2]$.`
    ] },
  { muc: "VD", de: R`Tìm GTLN, GTNN của $y=\cos^2x-2\sin x$.`,
    giai: [
-    R`$\cos^2x=1-\sin^2x$. Đặt $t=\sin x$, $t\in[-1;1]$: $y=1-t^2-2t=2-(t+1)^2$.`,
-    R`Trên $[-1;1]$: $(t+1)^2$ nhỏ nhất bằng $0$ khi $t=-1$, lớn nhất bằng $4$ khi $t=1$.`,
-    R`$\max y=2$ khi $\sin x=-1\Leftrightarrow x=-\dfrac\pi2+k2\pi$; $\min y=2-4=-2$ khi $\sin x=1\Leftrightarrow x=\dfrac\pi2+k2\pi$.`
+    R`**Phân tích.** Có cả $\cos^2x$ và $\sin x$: đổi $\cos^2x=1-\sin^2x$ để chỉ còn một ẩn $\sin x$, rồi đặt $t=\sin x$ với $t\in[-1;1]$.`,
+    R`**Bước 1.** $\cos^2x=1-\sin^2x$. Đặt $t=\sin x$, $t\in[-1;1]$: $y=1-t^2-2t=2-(t+1)^2$.`,
+    R`**Bước 2.** Trên $[-1;1]$: $(t+1)^2$ nhỏ nhất bằng $0$ khi $t=-1$, lớn nhất bằng $4$ khi $t=1$.`,
+    R`**Bước 3.** $\max y=2$ khi $\sin x=-1\Leftrightarrow x=-\dfrac\pi2+k2\pi$; $\min y=2-4=-2$ khi $\sin x=1\Leftrightarrow x=\dfrac\pi2+k2\pi$.`,
+    R`**Kết luận.** $\max y=2$, $\min y=-2$.`,
+    R`**Thử lại.** $x=-\dfrac\pi2$: $y=0-2\cdot(-1)=2$ ✓; $x=\dfrac\pi2$: $y=0-2=-2$ ✓.`
    ] },
  { muc: "VD", de: R`Độ cao (mét) của một cabin vòng quay so với mặt đất sau $t$ phút là $h(t)=30-25\cos\dfrac{\pi t}{15}$. Cabin lên cao nhất là bao nhiêu mét và lần đầu tiên đạt độ cao đó sau bao nhiêu phút?`,
    giai: [
-    R`$-1\le\cos\dfrac{\pi t}{15}\le1\Rightarrow5\le h(t)\le55$.`,
-    R`$h=55$ khi $\cos\dfrac{\pi t}{15}=-1\Leftrightarrow\dfrac{\pi t}{15}=\pi+k2\pi\Leftrightarrow t=15+30k$.`,
-    R`Lần đầu ($t>0$ nhỏ nhất): $t=15$ phút. **Kết luận.** Cao nhất $55$ m, sau $15$ phút. (Lúc $t=0$, cabin ở thấp nhất $5$ m; một vòng mất $30$ phút.)`
+    R`**Phân tích.** Độ cao lớn nhất khi $-25\cos\dfrac{\pi t}{15}$ lớn nhất, tức $\cos\dfrac{\pi t}{15}=-1$. Sau đó giải phương trình và chọn $t>0$ nhỏ nhất.`,
+    R`**Bước 1.** $-1\le\cos\dfrac{\pi t}{15}\le1\Rightarrow5\le h(t)\le55$.`,
+    R`**Bước 2.** $h=55$ khi $\cos\dfrac{\pi t}{15}=-1\Leftrightarrow\dfrac{\pi t}{15}=\pi+k2\pi\Leftrightarrow t=15+30k$.`,
+    R`**Bước 3.** Lần đầu ($t>0$ nhỏ nhất): $t=15$ phút. **Kết luận.** Cao nhất $55$ m, sau $15$ phút. (Lúc $t=0$, cabin ở thấp nhất $5$ m; một vòng mất $30$ phút.)`
    ],
    hinh: R`\begin{tikzpicture}[xscale=0.1,yscale=0.04,>=stealth]
 \draw[->] (0,0)--(66,0) node[below]{$t$};
@@ -259,24 +328,34 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Giải phương trình $\sin x=\dfrac12$.`,
    giai: [
-    R`$\dfrac12=\sin\dfrac\pi6$, nên $\sin x=\sin\dfrac\pi6$.`,
-    R`$\Leftrightarrow x=\dfrac\pi6+k2\pi$ hoặc $x=\pi-\dfrac\pi6+k2\pi=\dfrac{5\pi}6+k2\pi$ ($k\in\mathbb Z$).`
+    R`**Phân tích.** Tìm góc đặc biệt có $\sin$ bằng $\dfrac12$ (đó là $\dfrac\pi6$), rồi viết **đủ hai họ nghiệm** của phương trình $\sin x=\sin\alpha$.`,
+    R`**Bước 1.** $\dfrac12=\sin\dfrac\pi6$, nên $\sin x=\sin\dfrac\pi6$.`,
+    R`**Bước 2.** $\Leftrightarrow x=\dfrac\pi6+k2\pi$ hoặc $x=\pi-\dfrac\pi6+k2\pi=\dfrac{5\pi}6+k2\pi$ ($k\in\mathbb Z$).`,
+    R`**Kết luận.** $x=\dfrac\pi6+k2\pi$ hoặc $x=\dfrac{5\pi}6+k2\pi$ ($k\in\mathbb Z$).`,
+    R`**Thử lại.** $\sin\dfrac{5\pi}6=\sin\left(\pi-\dfrac\pi6\right)=\dfrac12$ ✓.`
    ] },
  { muc: "TH", de: R`Giải phương trình $\cos\left(2x-\dfrac\pi3\right)=-\dfrac{\sqrt2}2$.`,
    giai: [
-    R`$-\dfrac{\sqrt2}2=\cos\dfrac{3\pi}4$. Phương trình $\Leftrightarrow2x-\dfrac\pi3=\pm\dfrac{3\pi}4+k2\pi$.`,
-    R`$\Leftrightarrow2x=\dfrac\pi3\pm\dfrac{3\pi}4+k2\pi\Leftrightarrow x=\dfrac\pi6\pm\dfrac{3\pi}8+k\pi$.`,
-    R`**Kết quả.** $x=\dfrac{13\pi}{24}+k\pi$ hoặc $x=-\dfrac{5\pi}{24}+k\pi$ ($k\in\mathbb Z$).`
+    R`**Phân tích.** Coi $u=2x-\dfrac\pi3$ là một ẩn: giải $\cos u=-\dfrac{\sqrt2}2$ như phương trình cơ bản, rồi mới tìm $x$.`,
+    R`**Bước 1.** $-\dfrac{\sqrt2}2=\cos\dfrac{3\pi}4$. Phương trình $\Leftrightarrow2x-\dfrac\pi3=\pm\dfrac{3\pi}4+k2\pi$.`,
+    R`**Bước 2.** $\Leftrightarrow2x=\dfrac\pi3\pm\dfrac{3\pi}4+k2\pi\Leftrightarrow x=\dfrac\pi6\pm\dfrac{3\pi}8+k\pi$.`,
+    R`**Kết quả.** $x=\dfrac{13\pi}{24}+k\pi$ hoặc $x=-\dfrac{5\pi}{24}+k\pi$ ($k\in\mathbb Z$).`,
+    R`**Thử lại.** $x=-\dfrac{5\pi}{24}$: $2x-\dfrac\pi3=-\dfrac{5\pi}{12}-\dfrac{4\pi}{12}=-\dfrac{3\pi}4$ và $\cos\left(-\dfrac{3\pi}4\right)=-\dfrac{\sqrt2}2$ ✓.`
    ] },
  { muc: "TH", de: R`Giải phương trình $\sin3x=\sin x$.`,
    giai: [
-    R`$\sin3x=\sin x\Leftrightarrow\left[\begin{array}{l}3x=x+k2\pi\\3x=\pi-x+k2\pi\end{array}\right.\Leftrightarrow\left[\begin{array}{l}x=k\pi\\x=\dfrac\pi4+k\dfrac\pi2\end{array}\right.$ ($k\in\mathbb Z$).`
+    R`**Phân tích.** Hai vế cùng là $\sin$: dùng ngay $\sin u=\sin v\Leftrightarrow u=v+k2\pi$ hoặc $u=\pi-v+k2\pi$, với $u=3x$, $v=x$. Đừng quên họ thứ hai.`,
+    R`**Bước 1.** Họ thứ nhất: $3x=x+k2\pi\Leftrightarrow2x=k2\pi\Leftrightarrow x=k\pi$.`,
+    R`**Bước 2.** Họ thứ hai: $3x=\pi-x+k2\pi\Leftrightarrow4x=\pi+k2\pi\Leftrightarrow x=\dfrac\pi4+k\dfrac\pi2$ (chia cả $k2\pi$ cho $4$).`,
+    R`**Kết luận.** $x=k\pi$ hoặc $x=\dfrac\pi4+k\dfrac\pi2$ ($k\in\mathbb Z$).`,
+    R`**Thử lại.** $x=\dfrac\pi4$: $\sin\dfrac{3\pi}4=\dfrac{\sqrt2}2=\sin\dfrac\pi4$ ✓; $x=\pi$: $\sin3\pi=0=\sin\pi$ ✓.`
    ] },
  { muc: "VD", de: R`Tìm các nghiệm thuộc đoạn $[0;\pi]$ của phương trình $\sin2x=\cos x$.`,
    giai: [
-    R`$\cos x=\sin\left(\dfrac\pi2-x\right)$. Phương trình $\Leftrightarrow\sin2x=\sin\left(\dfrac\pi2-x\right)$.`,
-    R`$2x=\dfrac\pi2-x+k2\pi\Leftrightarrow x=\dfrac\pi6+k\dfrac{2\pi}3$; hoặc $2x=\pi-\dfrac\pi2+x+k2\pi\Leftrightarrow x=\dfrac\pi2+k2\pi$.`,
-    R`Trong $[0;\pi]$: họ thứ nhất cho $x=\dfrac\pi6$ ($k=0$), $x=\dfrac{5\pi}6$ ($k=1$); họ thứ hai cho $x=\dfrac\pi2$.`,
+    R`**Phân tích.** Một vế $\sin$, một vế $\cos$: đổi $\cos x=\sin\left(\dfrac\pi2-x\right)$ để đưa về dạng $\sin u=\sin v$. Giải xong mới chọn nghiệm trong $[0;\pi]$.`,
+    R`**Bước 1.** $\cos x=\sin\left(\dfrac\pi2-x\right)$. Phương trình $\Leftrightarrow\sin2x=\sin\left(\dfrac\pi2-x\right)$.`,
+    R`**Bước 2.** $2x=\dfrac\pi2-x+k2\pi\Leftrightarrow x=\dfrac\pi6+k\dfrac{2\pi}3$; hoặc $2x=\pi-\dfrac\pi2+x+k2\pi\Leftrightarrow x=\dfrac\pi2+k2\pi$.`,
+    R`**Bước 3.** Trong $[0;\pi]$: họ thứ nhất cho $x=\dfrac\pi6$ ($k=0$), $x=\dfrac{5\pi}6$ ($k=1$); họ thứ hai cho $x=\dfrac\pi2$.`,
     R`**Kết quả.** $x\in\left\{\dfrac\pi6;\dfrac\pi2;\dfrac{5\pi}6\right\}$. Thử $x=\dfrac{5\pi}6$: $\sin\dfrac{5\pi}3=-\dfrac{\sqrt3}2=\cos\dfrac{5\pi}6$ ✓.`
    ] }
  ] },
@@ -293,29 +372,43 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Giải phương trình $\tan x=\sqrt3$.`,
    giai: [
-    R`$\sqrt3=\tan\dfrac\pi3$, nên $x=\dfrac\pi3+k\pi$ ($k\in\mathbb Z$).`
+    R`**Phân tích.** Phương trình cơ bản của $\tan$: tìm góc đặc biệt có $\tan$ bằng $\sqrt3$. Nhớ $\tan$ có chu kì $\pi$ nên nghiệm có dạng $\alpha+k\pi$.`,
+    R`**Bước 1.** Điều kiện: $\cos x\ne0\Leftrightarrow x\ne\dfrac\pi2+k\pi$.`,
+    R`**Bước 2.** $\tan\dfrac\pi3=\sqrt3$, nên phương trình $\Leftrightarrow\tan x=\tan\dfrac\pi3\Leftrightarrow x=\dfrac\pi3+k\pi$. Các nghiệm này thoả điều kiện.`,
+    R`**Kết luận.** $x=\dfrac\pi3+k\pi$ ($k\in\mathbb Z$).`,
+    R`**Thử lại.** $x=\dfrac{4\pi}3$ ($k=1$): $\tan\dfrac{4\pi}3=\tan\dfrac\pi3=\sqrt3$ ✓.`
    ] },
  { muc: "TH", de: R`Giải phương trình $\cot\left(x+\dfrac\pi6\right)=-1$.`,
    giai: [
-    R`$-1=\cot\dfrac{3\pi}4$. Phương trình $\Leftrightarrow x+\dfrac\pi6=\dfrac{3\pi}4+k\pi\Leftrightarrow x=\dfrac{7\pi}{12}+k\pi$ ($k\in\mathbb Z$).`
+    R`**Phân tích.** Coi $u=x+\dfrac\pi6$: giải $\cot u=-1$ như phương trình cơ bản, rồi trừ $\dfrac\pi6$ để ra $x$.`,
+    R`**Bước 1.** Điều kiện: $\sin\left(x+\dfrac\pi6\right)\ne0$.`,
+    R`**Bước 2.** $\cot\dfrac{3\pi}4=\dfrac{\cos\frac{3\pi}4}{\sin\frac{3\pi}4}=\dfrac{-\sqrt2/2}{\sqrt2/2}=-1$, nên phương trình $\Leftrightarrow x+\dfrac\pi6=\dfrac{3\pi}4+k\pi$.`,
+    R`**Bước 3.** $x=\dfrac{3\pi}4-\dfrac\pi6+k\pi=\dfrac{9\pi-2\pi}{12}+k\pi=\dfrac{7\pi}{12}+k\pi$. Khi đó $\sin\left(x+\frac\pi6\right)=\sin\left(\frac{3\pi}4+k\pi\right)\ne0$, thoả điều kiện.`,
+    R`**Kết luận.** $x=\dfrac{7\pi}{12}+k\pi$ ($k\in\mathbb Z$).`
    ] },
  { muc: "TH", de: R`Giải phương trình $\sin2x-\cos x=0$.`,
    giai: [
-    R`$2\sin x\cos x-\cos x=0\Leftrightarrow\cos x(2\sin x-1)=0$.`,
-    R`$\cos x=0\Leftrightarrow x=\dfrac\pi2+k\pi$.`,
-    R`$\sin x=\dfrac12\Leftrightarrow x=\dfrac\pi6+k2\pi$ hoặc $x=\dfrac{5\pi}6+k2\pi$.`
+    R`**Phân tích.** Viết $\sin2x=2\sin x\cos x$ thì cả hai số hạng có nhân tử chung $\cos x$: đặt nhân tử chung, đưa về **phương trình tích**. Không chia cho $\cos x$ vì sẽ mất nghiệm.`,
+    R`**Bước 1.** $2\sin x\cos x-\cos x=0\Leftrightarrow\cos x(2\sin x-1)=0$.`,
+    R`**Bước 2.** $\cos x=0\Leftrightarrow x=\dfrac\pi2+k\pi$.`,
+    R`**Bước 3.** $\sin x=\dfrac12\Leftrightarrow x=\dfrac\pi6+k2\pi$ hoặc $x=\dfrac{5\pi}6+k2\pi$.`,
+    R`**Kết luận.** $x=\dfrac\pi2+k\pi$, $x=\dfrac\pi6+k2\pi$ hoặc $x=\dfrac{5\pi}6+k2\pi$ ($k\in\mathbb Z$).`
    ] },
  { muc: "VD", de: R`Giải phương trình $2\sin^2x-3\sin x+1=0$.`,
    giai: [
-    R`Đặt $t=\sin x$, $-1\le t\le1$: $2t^2-3t+1=0\Leftrightarrow t=1$ hoặc $t=\dfrac12$ (đều thoả mãn).`,
-    R`$\sin x=1\Leftrightarrow x=\dfrac\pi2+k2\pi$.`,
-    R`$\sin x=\dfrac12\Leftrightarrow x=\dfrac\pi6+k2\pi$ hoặc $x=\dfrac{5\pi}6+k2\pi$.`
+    R`**Phân tích.** Phương trình bậc hai theo $\sin x$: đặt $t=\sin x$ (điều kiện $-1\le t\le1$), giải bậc hai, loại nghiệm $t$ ngoài $[-1;1]$.`,
+    R`**Bước 1.** Đặt $t=\sin x$, $-1\le t\le1$: $2t^2-3t+1=0\Leftrightarrow t=1$ hoặc $t=\dfrac12$ (đều thoả mãn).`,
+    R`**Bước 2.** $\sin x=1\Leftrightarrow x=\dfrac\pi2+k2\pi$.`,
+    R`**Bước 3.** $\sin x=\dfrac12\Leftrightarrow x=\dfrac\pi6+k2\pi$ hoặc $x=\dfrac{5\pi}6+k2\pi$.`,
+    R`**Kết luận.** $x=\dfrac\pi2+k2\pi$, $x=\dfrac\pi6+k2\pi$ hoặc $x=\dfrac{5\pi}6+k2\pi$ ($k\in\mathbb Z$).`,
+    R`**Thử lại.** $x=\dfrac\pi6$: $2\cdot\dfrac14-3\cdot\dfrac12+1=0$ ✓.`
    ] },
  { muc: "VD", de: R`Giải phương trình $\tan2x=\tan x$.`,
    giai: [
-    R`Điều kiện: $\cos2x\ne0$ và $\cos x\ne0$.`,
-    R`$\tan2x=\tan x\Leftrightarrow2x=x+k\pi\Leftrightarrow x=k\pi$.`,
-    R`Kiểm tra điều kiện: $\cos(k\pi)=\pm1\ne0$, $\cos(2k\pi)=1\ne0$: thoả mãn.`,
+    R`**Phân tích.** Hai vế cùng là $\tan$: $\tan u=\tan v\Leftrightarrow u=v+k\pi$. Có $\tan$ nên **đặt điều kiện trước, đối chiếu sau**.`,
+    R`**Bước 1.** Điều kiện: $\cos2x\ne0$ và $\cos x\ne0$.`,
+    R`**Bước 2.** $\tan2x=\tan x\Leftrightarrow2x=x+k\pi\Leftrightarrow x=k\pi$.`,
+    R`**Bước 3.** Kiểm tra điều kiện: $\cos(k\pi)=\pm1\ne0$, $\cos(2k\pi)=1\ne0$: thoả mãn.`,
     R`**Kết quả.** $x=k\pi$ ($k\in\mathbb Z$).`
    ] }
  ] }
