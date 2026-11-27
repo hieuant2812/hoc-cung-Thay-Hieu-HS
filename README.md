@@ -3,7 +3,9 @@
 Web riêng cho học sinh: tự học và làm bài kiểm tra Toán do giáo viên giao.
 
 - `index.html` — trang học sinh (tạo tài khoản bằng mã lớp, đăng nhập).
-- `gv.html` — trang quản lí của giáo viên (lớp, duyệt học sinh, ngân hàng đề).
+- `gv.html` — chỉ còn chuyển hướng: trang quản lí của giáo viên nay là `quanly.html` ở kho web GV (hoc-cung-thay-hieu).
+- `sotay.html` — Sổ tay kiến thức: lí thuyết, dạng ngân hàng có lời giải đủ bước, nút luyện dạng (`data/sotaydang-*.js`).
+- `mophong.html` — danh sách mô phỏng, mở file ở web GV.
 - `apps-script/Code.gs` — máy chủ chạy trên Google Apps Script, dữ liệu nằm trong Trang tính của giáo viên.
 - `config.js` — địa chỉ máy chủ (`mayChu`) và thông tin hiển thị.
 

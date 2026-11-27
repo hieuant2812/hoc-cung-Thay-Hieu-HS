@@ -3,7 +3,7 @@
 Web này tách riêng khỏi web giáo viên. Nó có hai phần:
 
 - **Trang học sinh** (`index.html`): các em tạo tài khoản bằng mã lớp, đăng nhập, rồi vào Tự học và Kiểm tra.
-- **Trang quản lí** (`gv.html`): thầy tạo lớp, duyệt học sinh, đặt lại mật khẩu và nạp ngân hàng đề.
+- **Trang quản lí** (`quanly.html` trên web GV; địa chỉ `gv.html` cũ tự chuyển sang): thầy tạo lớp, duyệt học sinh, đặt lại mật khẩu và nạp ngân hàng đề.
 
 Dữ liệu (tài khoản, ngân hàng đề, sau này là bài làm) nằm trong **một Trang tính Google của thầy**. Học sinh không mở được Trang tính này; mọi yêu cầu đi qua mã Apps Script, nên đáp án và mật khẩu không lộ ra ngoài.
 
@@ -37,12 +37,12 @@ Thầy làm một lần, khoảng 15 phút.
 2. *Branch*: `main`, thư mục `/ (root)` → **Save**.
 3. Sau 1–2 phút web có địa chỉ `https://hieuant2812.github.io/hoc-cung-Thay-Hieu-HS/`.
    - Trang học sinh: địa chỉ trên.
-   - Trang quản lí: thêm `gv.html` vào cuối.
+   - Trang quản lí: `https://hieuant2812.github.io/hoc-cung-thay-hieu/quanly.html` (web GV). Nếu đổi máy chủ Apps Script, sửa `mayChu` ở `config.js` của **cả hai** kho.
 
 ## 4. Dùng hằng ngày
 
 **Tạo lớp và cho học sinh vào**
-1. Mở `gv.html`, nhập khoá giáo viên.
+1. Mở trang Quản lí lớp (`quanly.html` trên web GV), nhập khoá giáo viên.
 2. Thẻ **Lớp học** → gõ tên lớp (VD `12A1`) → **Tạo lớp**. Web cấp **mã lớp** 6 kí tự.
 3. Gửi học sinh đường dẫn trang học sinh và mã lớp. Các em bấm **Tạo tài khoản**, nhập mã lớp, họ tên, tên đăng nhập, mật khẩu.
 4. Thầy bấm **Xem học sinh** → **Duyệt tất cả đang chờ** (hoặc chọn từng em). Em nào lạ thì chọn rồi **Xoá**.
