@@ -75,6 +75,15 @@
     </div>
   </section>
 
+
+  <!-- ===== học thêm (không cần đăng nhập) ===== -->
+  <nav class="hoc-them" aria-label="Học thêm">
+    <a href="sotay.html"><i>📒</i><b>Sổ tay kiến thức</b><small>Lí thuyết, dạng bài giải đủ bước</small></a>
+    <a href="mophong.html"><i>🧪</i><b>Mô phỏng</b><small>Kéo, thả để hiểu bài</small></a>
+    <a id="lkTaiLieu" href="#" target="_blank" rel="noopener"><i>📄</i><b>Tài liệu</b><small>Đề cương, bài tập theo bài</small></a>
+    <a id="lkVaoThi" href="#" target="_blank" rel="noopener"><i>📱</i><b>Vào thi trên lớp</b><small>Khi thầy mở trò chơi</small></a>
+  </nav>
+
   <!-- ===== đổi mật khẩu ===== -->
   <dialog id="dMK" class="card">
     <form id="fMK" class="form" method="dialog">
@@ -97,6 +106,8 @@
   const P = API.phien("hs");
   const S = window.SITE || {};
   $("#slogan").textContent = S.khauHieu || ""; $("#chanTrang").textContent = S.chanTrang || "";
+  const GV = S.webGV || "https://hieuant2812.github.io/hoc-cung-thay-hieu/";
+  $("#lkTaiLieu").href = GV + "tailieu.html"; $("#lkVaoThi").href = GV + "hs.html";
 
   function bao(html, kieu) { $("#thongBao").innerHTML = html ? `<div class="note ${kieu || "blue"}">${html}</div>` : ""; }
   function loiForm(f, msg) { f.querySelector(".loi").textContent = msg || ""; }
@@ -110,6 +121,12 @@
     const dk = tab === "dk";
     $("#tabDN").setAttribute("aria-selected", String(!dk)); $("#tabDK").setAttribute("aria-selected", String(dk));
     $("#fDN").classList.toggle("hidden", dk); $("#fDK").classList.toggle("hidden", !dk);
+  }
+  /* ?ve=tuhoc.html?... : đăng nhập xong quay lại đúng trang em đang mở (chỉ nhận trang trong web này) */
+  function veTiep() {
+    const ve = new URLSearchParams(location.search).get("ve") || "";
+    if (/^[a-z]+\.html(\?[^\s]*)?$/.test(ve)) { location.replace(ve); return true; }
+    return false;
   }
   function moNha(hs) {
     $("#vCong").classList.add("hidden"); $("#vNha").classList.remove("hidden"); $("#nav").classList.remove("hidden");
@@ -178,7 +195,7 @@
     await cho(f.querySelector("button[type=submit]"), async () => {
       try {
         const r = await API.goi("hs.dangNhap", { tenDN: f.tenDN.value, matKhau: f.matKhau.value });
-        P.token = r.token; f.reset(); bao(""); moNha(r.hs);
+        P.token = r.token; f.reset(); bao(""); API.LS.set("hs-ho-so", JSON.stringify(r.hs)); if (veTiep()) return; moNha(r.hs);
       } catch (err) { loiForm(f, err.message); }
     });
   };
@@ -214,7 +231,8 @@
   /* khởi động: có phiên cũ thì vào thẳng, kiểm tra lại với máy chủ ở nền */
   (async function () {
     if (!API.url()) { bao("Web chưa được nối với máy chủ. Thầy xem <b>HUONG-DAN.md</b>, mục 2.", "red"); }
-    if (!P.token) return moCong("dn");
+    if (!P.token) { if (new URLSearchParams(location.search).get("ve")) bao("Em đăng nhập để luyện dạng đã chọn nhé.", "blue"); return moCong("dn"); }
+    if (veTiep()) return;
     try { const cu = JSON.parse(API.LS.get("hs-ho-so") || "null"); if (cu) moNha(cu); } catch (e) { }
     try { const r = await P.goi("hs.toi"); moNha(r.hs); }
     catch (err) {

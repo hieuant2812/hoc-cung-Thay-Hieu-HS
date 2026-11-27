@@ -117,7 +117,7 @@
   const TEN_MUC = { NB: "Nhận biết", TH: "Thông hiểu", VD: "Vận dụng", VDC: "Vận dụng cao" };
   const xem = id => ["#vTong", "#vLuyen", "#vKQ"].forEach(v => $(v).classList.toggle("hidden", v !== id));
   const phanTram = x => x == null ? "" : Math.round(x * 100) + "%";
-  if (S.webGV) $("#linkCu").innerHTML = `Sổ tay kiến thức, mô phỏng: <a href="${esc(S.webGV)}" target="_blank" rel="noopener">mở trang tự học cũ ↗</a>`;
+  $("#linkCu").innerHTML = `Học lại lí thuyết và lời giải mẫu: <a href="sotay.html">📒 Sổ tay kiến thức</a> · <a href="mophong.html">🧪 Mô phỏng</a>`;
 
   async function goi(action, data) {
     try { return await P.goi(action, data, { thuLai: 2 }); }
@@ -126,6 +126,19 @@
 
   /* ---------- tổng quan ---------- */
   let TQ = null, chonNH = API.LS.get("th-nh") || "", luotCuoi = null;
+  /* mở từ Sổ tay: tuhoc.html?nh=Toán|12&dang=C1-B1-D02 → chọn sẵn môn, lớp và dạng */
+  const QS = new URLSearchParams(location.search);
+  let dangURL = QS.get("dang") || "";
+  if (QS.get("nh")) { chonNH = QS.get("nh"); API.LS.set("th-nh", chonNH); }
+  function chonSan() {
+    if (!dangURL) return;
+    const dk = dangURL; dangURL = ""; history.replaceState(null, "", "tuhoc.html");
+    const o = $$(".chonD").find(c => c.value === dk);
+    if (!o) return bao("Dạng em chọn ở Sổ tay chưa có câu luyện trong ngân hàng của thầy. Em chọn dạng khác bên dưới nhé.", "blue");
+    o.checked = true; const nhan = o.closest(".th-d"); nhan.classList.add("chon-san");
+    bao(`Đã chọn sẵn dạng <b>${esc(nhan.querySelector(".ten").firstChild.textContent)}</b>. Em chọn mức, số câu rồi bấm <b>Bắt đầu luyện</b>.`, "green");
+    nhan.scrollIntoView({ block: "center", behavior: "smooth" });
+  }
   function veTienDo(homNay, chuoi) {
     const dat = Math.min(homNay.dung, homNay.mucTieu);
     $("#soHomNay").textContent = homNay.dung; $("#mucTieu").textContent = homNay.mucTieu;
@@ -150,7 +163,7 @@
       $("#btnThuLai").onclick = taiTong;
       return;
     }
-    try { veTong(r); } catch (e) { bao("Lỗi hiển thị trang: " + esc(e.message) + ". Em chụp màn hình gửi thầy nhé.", "red"); }
+    try { veTong(r); chonSan(); } catch (e) { bao("Lỗi hiển thị trang: " + esc(e.message) + ". Em chụp màn hình gửi thầy nhé.", "red"); }
   }
   function veTong(r) {
     TQ = r; bao("");
@@ -260,7 +273,7 @@
   };
 
   /* ---------- khởi động ---------- */
-  if (!P.token) { location.replace("./"); return; }
+  if (!P.token) { location.replace("./" + (dangURL ? "?ve=" + encodeURIComponent("tuhoc.html" + location.search) : "")); return; }
   try { L = JSON.parse(API.LS.get(KHOA_LUOT) || "null"); } catch (e) { L = null; }
   const giaoURL = new URLSearchParams(location.search).get("giao");
   if (L && L.phien) { veLuot(); bao("Em đang làm dở lượt này, làm tiếp nhé.", "blue"); }

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sổ tay kiến thức · Học cùng Thầy Hiếu</title>
+<meta name="theme-color" content="#10b3a3">
+<link rel="icon" href="assets/favicon.svg"><link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="assets/fonts.css"><link rel="stylesheet" href="assets/katex/katex.min.css"><link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/hs.css">
+<script src="config.js"></script>
+<script src="assets/katex/katex.min.js"></script><script src="assets/nhd/core.js"></script>
+<script src="data/chuongtrinh.js"></script><script src="data/sotay.js"></script><script src="assets/sotay.js?v=4"></script>
+<style>
+.st-sub{display:flex;gap:6px;flex-wrap:wrap;margin:16px 0 14px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:5px;width:max-content;max-width:100%}
+.st-sub button{border:0;background:none;border-radius:10px;padding:8px 14px;font:700 14.5px var(--font);cursor:pointer;color:#556}
+.st-sub button[aria-selected=true]{background:linear-gradient(135deg,#10b3a3,#3b7bff);color:#fff}
+.sotay h2{font:800 22px var(--font-h);margin:18px 0 8px}
+.sotay .mc{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 16px;margin-bottom:10px}
+.sotay .mc h3{margin:0 0 6px;font-size:17px;color:#0b7a6c}
+.sotay .mc ul{margin:0;padding-left:20px;line-height:1.75}
+.toc{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.toc a{background:#e8faf6;color:#0b7a6c;border-radius:10px;padding:4px 10px;text-decoration:none;font-weight:600;font-size:14px}
+.tikz-wrap{position:relative;display:inline-block;vertical-align:middle;margin:2px 0}
+.tikz-wrap svg{display:block;overflow:visible}
+.tikz-lbl{position:absolute;white-space:nowrap;line-height:1.1}
+.tikz-raw{font:12px ui-monospace,monospace;white-space:pre-wrap;background:#fff7e0;border:1px dashed #d9a400;padding:6px;border-radius:6px}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap in">
+  <a class="logo" href="./"><span class="mk">H</span><span><b>Học cùng <span>Thầy Hiếu</span></b><small>Góc học sinh</small></span></a>
+  <nav class="nav"><a href="./">Trang chính</a><a href="tuhoc.html">Tự học</a><a href="mophong.html">Mô phỏng</a></nav>
+</div></header>
+<main class="wrap">
+  <section class="hero sm" style="background:linear-gradient(120deg,#10b3a3,#2fb6e8 55%,#3b7bff);margin-top:16px">
+    <h1>Sổ tay kiến thức</h1>
+    <p>Tóm tắt lí thuyết từng bài, các dạng bài tập có phương pháp và lời giải đầy đủ từng bước, sơ đồ tư duy cuối chương. Học xong một dạng, em bấm 🎯 để luyện trắc nghiệm đúng dạng đó.</p>
+  </section>
+  <div class="st-sub" id="stSub"><button data-s="bai" aria-selected="true">📚 Theo bài học</button><button data-s="nhanh" aria-selected="false">⚡ Tra công thức nhanh</button></div>
+  <div id="stBai"></div>
+  <div id="stNhanh" class="sotay hidden">
+    <div class="row" style="gap:10px;align-items:end;flex-wrap:wrap"><label class="f">Lớp<select id="stLop"></select></label><label class="f" style="flex:1;min-width:220px">Tìm công thức<input type="text" id="stQ" placeholder="VD: đạo hàm, cấp số nhân, khoảng cách…"></label></div>
+    <div class="toc" id="stToc"></div>
+    <div id="stBody"></div>
+  </div>
+</main>
+<footer class="foot"><div class="wrap"><div class="dev" id="chanTrang"></div></div></footer>
+<script>
+(function () {
+  "use strict";
+  const $ = id => document.getElementById(id), S = window.SITE || {};
+  $("chanTrang").textContent = S.chanTrang || "";
+  const LS = { get: (k, d) => { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } }, set: (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { } } };
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  /* tra công thức nhanh (data/sotay.js) */
+  function veNhanh() {
+    const ST = window.SOTAY || {}; const lops = Object.keys(ST);
+    let lop = LS.get("st-nhanh-lop", lops[lops.length - 1]); if (!ST[lop]) lop = lops[0];
+    $("stLop").innerHTML = lops.map(l => `<option value="${l}"${l === lop ? " selected" : ""}>${esc(ST[l].ten || "Lớp " + l)}</option>`).join("");
+    const q = ($("stQ").value || "").toLowerCase().normalize("NFC");
+    const tex = s => String(s).split(/(\$\$[^$]+\$\$|\$[^$]+\$)/).map(p => { const m = p.match(/^\$\$([^$]+)\$\$$|^\$([^$]+)\$$/); if (m) { try { return katex.renderToString(m[1] || m[2], { throwOnError: false, displayMode: !!m[1] }); } catch (e) { return esc(p); } } return esc(p).replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>"); }).join("");
+    const hit = s => !q || s.toLowerCase().normalize("NFC").includes(q);
+    let toc = "", body = "";
+    ((ST[lop] || {}).chuong || []).forEach((c, i) => {
+      const mcs = c.muc.filter(m => hit(c.ten + " " + m.ten + " " + m.ds.join(" "))); if (!mcs.length) return;
+      toc += `<a href="#nh-${i}">${esc(c.ten.replace(/^Chương ([IVX]+)\..*/, "Ch. $1"))}</a>`;
+      body += `<h2 id="nh-${i}">${esc(c.ten)}</h2>` + mcs.map(m => `<div class="mc"><h3>${esc(m.ten)}</h3><ul>${m.ds.map(d => `<li>${tex(d)}</li>`).join("")}</ul></div>`).join("");
+    });
+    $("stToc").innerHTML = toc; $("stBody").innerHTML = body || `<div class="card">Không tìm thấy.</div>`;
+  }
+  $("stLop").onchange = e => { LS.set("st-nhanh-lop", e.target.value); veNhanh(); };
+  $("stQ").oninput = veNhanh;
+  let daMount = false;
+  function chon(v) {
+    LS.set("st-sub", v);
+    document.querySelectorAll("#stSub button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.s === v)));
+    $("stBai").classList.toggle("hidden", v !== "bai"); $("stNhanh").classList.toggle("hidden", v !== "nhanh");
+    if (v === "bai" && !daMount) { daMount = true; SoTayBai.mount($("stBai")); }
+    if (v === "nhanh") veNhanh();
+  }
+  document.querySelectorAll("#stSub button").forEach(b => b.onclick = () => chon(b.dataset.s));
+  chon(/^#st\//.test(location.hash) ? "bai" : LS.get("st-sub", "bai"));
+})();
+</script>
+</body>
+</html>

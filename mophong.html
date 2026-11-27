@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mô phỏng · Học cùng Thầy Hiếu</title>
+<meta name="theme-color" content="#3b7bff">
+<link rel="icon" href="assets/favicon.svg"><link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="assets/fonts.css"><link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/hs.css">
+<script src="config.js"></script>
+<style>
+.mp-loc{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 10px}
+.mp-loc button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:7px 14px;font:700 14.5px var(--font);cursor:pointer;color:#445}
+.mp-loc button[aria-pressed=true]{border-color:var(--teal);background:#e8faf6;color:#0b7a6c}
+.mp-tim{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:10px 14px;font:inherit;margin-bottom:10px}
+.mp-ch{font:800 18px var(--font-h);margin:18px 0 8px}
+.mp-ds{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.mp-o{display:grid;grid-template-rows:auto 1fr;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none;color:var(--ink)}
+.mp-o .anh{aspect-ratio:16/9;background:#eef3fb center/cover no-repeat}
+.mp-o .bd{padding:10px 12px;display:grid;gap:3px}
+.mp-o b{font-size:15.5px}.mp-o small{color:var(--muted);font-size:13px;line-height:1.4}
+.mp-o:hover{border-color:var(--teal)}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap in">
+  <a class="logo" href="./"><span class="mk">H</span><span><b>Học cùng <span>Thầy Hiếu</span></b><small>Góc học sinh</small></span></a>
+  <nav class="nav"><a href="./">Trang chính</a><a href="tuhoc.html">Tự học</a><a href="sotay.html">Sổ tay</a></nav>
+</div></header>
+<main class="wrap">
+  <section class="hero sm" style="background:linear-gradient(120deg,#3b7bff,#8a5cf6);margin-top:16px">
+    <h1>Mô phỏng</h1>
+    <p>Kéo, thả, thay số để tự nhìn ra quy luật. Mỗi mô phỏng mở ở thẻ mới.</p>
+  </section>
+  <div class="mp-loc" id="loc"></div>
+  <input class="mp-tim" id="tim" type="search" placeholder="🔎 Tìm mô phỏng: tiệm cận, xác suất, vectơ…">
+  <div id="ds"><p class="muted">Đang tải danh sách…</p></div>
+</main>
+<footer class="foot"><div class="wrap"><div class="dev" id="chanTrang"></div></div></footer>
+<script>
+(function () {
+  "use strict";
+  /* Mô phỏng nằm ở web của thầy (SITE.webGV): trang này chỉ đọc danh sách data/sims.js ở đó và mở thẳng từng file. */
+  const S = window.SITE || {}, GV = S.webGV || "https://hieuant2812.github.io/hoc-cung-thay-hieu/";
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const bo = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/đ/g, "d");
+  $("chanTrang").textContent = S.chanTrang || "";
+  let loc = "Toán 12"; try { loc = localStorage.getItem("mp-loc") || loc; } catch (e) { }
+  const s = document.createElement("script"); s.src = GV + "data/sims.js";
+  s.onerror = () => { $("ds").innerHTML = `<div class="note red">Không tải được danh sách mô phỏng. Em kiểm tra mạng rồi tải lại trang.</div>`; };
+  s.onload = ve; document.head.appendChild(s);
+  function ve() {
+    const SIMS = window.SIMS || [];
+    const nhom = [...new Set(SIMS.map(x => x.mon + " " + x.lop))].sort((a, b) => (a.startsWith("Toán") ? 0 : 1) - (b.startsWith("Toán") ? 0 : 1) || parseInt(b.replace(/\D+/g, "")) - parseInt(a.replace(/\D+/g, "")) || a.localeCompare(b));
+    if (!nhom.includes(loc)) loc = nhom[0];
+    $("loc").innerHTML = nhom.map(n => `<button type="button" aria-pressed="${n === loc}" data-n="${esc(n)}">${esc(n)}</button>`).join("");
+    $("loc").querySelectorAll("button").forEach(b => b.onclick = () => { loc = b.dataset.n; try { localStorage.setItem("mp-loc", loc); } catch (e) { } ve(); });
+    const q = bo($("tim").value.trim());
+    const ds = q ? SIMS.filter(x => bo(x.code + " " + x.ten + " " + x.mota + " " + x.mon).includes(q)) : SIMS.filter(x => x.mon + " " + x.lop === loc);
+    const gom = {}; ds.forEach(x => (gom[q ? x.mon + " " + x.lop : x.chuong] = gom[q ? x.mon + " " + x.lop : x.chuong] || []).push(x));
+    $("ds").innerHTML = Object.entries(gom).map(([g, xs]) => `<h2 class="mp-ch">${esc(g)}</h2><div class="mp-ds">${xs.map(x => `<a class="mp-o" href="${esc(GV + x.file)}" target="_blank" rel="noopener"><span class="anh" style="background-image:url('${esc(GV + "thumbs/" + x.code + ".jpg")}')"></span><span class="bd"><b>${esc(x.ten)}</b><small>${esc(x.mota)}</small></span></a>`).join("")}</div>`).join("") || `<p class="muted">Không tìm thấy mô phỏng nào.</p>`;
+  }
+  $("tim").oninput = () => { if (window.SIMS) ve(); };
+})();
+</script>
+</body>
+</html>
