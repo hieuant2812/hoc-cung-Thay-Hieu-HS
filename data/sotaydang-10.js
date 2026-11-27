@@ -1940,4 +1940,108 @@ Object.assign(D, {
    ] }
  ] }
 });
+/* ---------- Chương IX · Tính xác suất theo định nghĩa cổ điển ---------- */
+Object.assign(D, {
+"C9-B26-D61": {
+ pp: [
+  R`**Phép thử ngẫu nhiên:** không đoán trước được kết quả. **Không gian mẫu** $\Omega$: tập mọi kết quả có thể; $n(\Omega)$ là số phần tử.`,
+  R`**Biến cố** $A$ là một tập con của $\Omega$; các phần tử của $A$ là kết quả **thuận lợi** cho $A$.`,
+  R`**Biến cố đối** $\bar A=\Omega\setminus A$ (xảy ra khi và chỉ khi $A$ không xảy ra).`,
+  R`Liệt kê bằng bảng (hai xúc xắc: bảng $6\times6$) hoặc sơ đồ cây; khi số phần tử lớn thì **đếm** bằng quy tắc nhân, tổ hợp.`
+ ],
+ luuY: [
+  R`Gieo hai đồng xu: $SN$ và $NS$ là **hai** kết quả khác nhau (nên $n(\Omega)=4$, không phải $3$).`
+ ],
+ vd: [
+ { muc: "NB", de: R`Gieo một con xúc xắc. Mô tả không gian mẫu và biến cố $A$: "Số chấm là số chẵn".`,
+   giai: [ R`$\Omega=\{1;2;3;4;5;6\}$, $n(\Omega)=6$.`, R`$A=\{2;4;6\}$, $n(A)=3$.` ] },
+ { muc: "TH", de: R`Gieo hai đồng xu. Mô tả $\Omega$, biến cố $A$: "Có ít nhất một mặt sấp" và $\bar A$.`,
+   giai: [
+    R`Sơ đồ cây cho $\Omega=\{SS;SN;NS;NN\}$, $n(\Omega)=4$.`,
+    R`$A=\{SS;SN;NS\}$; $\bar A=\{NN\}$ (cả hai mặt ngửa).`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=0.8]
+\fill (0,0) circle (2pt);
+\node at (2,1){$S$}; \node at (2,-1){$N$};
+\node at (4,1.5){$S$}; \node at (4,0.5){$N$}; \node at (4,-0.5){$S$}; \node at (4,-1.5){$N$};
+\draw (0.1,0.05)--(1.7,0.9); \draw (0.1,-0.05)--(1.7,-0.9);
+\draw (2.3,1.1)--(3.7,1.45); \draw (2.3,0.9)--(3.7,0.55); \draw (2.3,-0.9)--(3.7,-0.55); \draw (2.3,-1.1)--(3.7,-1.45);
+\node at (6,1.5){$SS$}; \node at (6,0.5){$SN$}; \node at (6,-0.5){$NS$}; \node at (6,-1.5){$NN$};
+\node at (2,2){Lần 1}; \node at (4,2.1){Lần 2}; \node at (6,2.1){Kết quả};
+\end{tikzpicture}` },
+ { muc: "TH", de: R`Gieo hai con xúc xắc. Tính $n(\Omega)$ và liệt kê biến cố $B$: "Tổng số chấm bằng $7$".`,
+   giai: [ R`$n(\Omega)=6\cdot6=36$.`, R`$B=\{(1;6),(2;5),(3;4),(4;3),(5;2),(6;1)\}$, $n(B)=6$.` ] },
+ { muc: "VD", de: R`Một hộp có $5$ bi đỏ và $3$ bi xanh. Lấy ngẫu nhiên $2$ bi. Tính $n(\Omega)$ và số kết quả thuận lợi cho biến cố $A$: "Hai bi cùng màu".`,
+   giai: [
+    R`$n(\Omega)=C_8^2=28$.`,
+    R`Cùng đỏ: $C_5^2=10$; cùng xanh: $C_3^2=3$. $n(A)=10+3=13$.`
+   ] }
+ ] },
+"C9-B26-D62": {
+ pp: [
+  R`**Định nghĩa cổ điển:** các kết quả đồng khả năng thì $P(A)=\dfrac{n(A)}{n(\Omega)}$.`,
+  R`$0\le P(A)\le1$; $P(\Omega)=1$; $P(\varnothing)=0$.`,
+  R`**Các bước:** mô tả $\Omega$, tính $n(\Omega)$; xác định các kết quả thuận lợi, tính $n(A)$; lấy thương.`
+ ],
+ luuY: [
+  R`Đếm trùng phần tử khi dùng "hoặc" (ví dụ số chia hết cho $3$ hoặc $5$: số $15$ bị đếm hai lần).`
+ ],
+ vd: [
+ { muc: "NB", de: R`Gieo một con xúc xắc. Tính xác suất được mặt có số chấm chẵn.`,
+   giai: [ R`$n(\Omega)=6$, $n(A)=3$: $P(A)=\dfrac36=\dfrac12$.` ] },
+ { muc: "TH", de: R`Gieo hai con xúc xắc. Tính xác suất a) tổng số chấm bằng $7$; b) tổng số chấm không nhỏ hơn $10$.`,
+   giai: [
+    R`a) $n(A)=6$ (xem dạng trên): $P=\dfrac6{36}=\dfrac16$.`,
+    R`b) Tổng $\ge10$: $(4;6),(6;4),(5;5),(5;6),(6;5),(6;6)$: $6$ kết quả, $P=\dfrac16$.`
+   ] },
+ { muc: "TH", de: R`Gieo ba đồng xu. Tính xác suất có ít nhất hai mặt sấp.`,
+   giai: [ R`$n(\Omega)=2^3=8$. Thuận lợi: $SSN$, $SNS$, $NSS$, $SSS$: $4$ kết quả.`, R`$P=\dfrac48=\dfrac12$.` ] },
+ { muc: "VD", de: R`Rút ngẫu nhiên một thẻ từ $20$ thẻ đánh số $1$ đến $20$. Tính xác suất số trên thẻ chia hết cho $3$ hoặc $5$.`,
+   giai: [
+    R`Chia hết cho $3$: $3,6,\dots,18$: $6$ số. Chia hết cho $5$: $5,10,15,20$: $4$ số. Chia hết cho cả hai: $15$: $1$ số.`,
+    R`$n(A)=6+4-1=9$, $P(A)=\dfrac9{20}$.`
+   ] }
+ ] },
+"C9-B27-D63": {
+ pp: [
+  R`Chọn đồng thời $k$ đối tượng từ $n$: $n(\Omega)=C_n^k$; xếp thứ tự: $n(\Omega)=A_n^k$ hoặc $n!$.`,
+  R`Tính $n(A)$ bằng quy tắc nhân, cộng với tổ hợp (chọn bao nhiêu từ mỗi nhóm), cùng cách đếm như $n(\Omega)$.`,
+  R`$P(A)=\dfrac{n(A)}{n(\Omega)}$, rút gọn phân số.`
+ ],
+ luuY: [
+  R`$\Omega$ đếm không thứ tự mà $A$ lại đếm có thứ tự (hoặc ngược lại): phải dùng **cùng một cách đếm**.`
+ ],
+ vd: [
+ { muc: "TH", de: R`Hộp có $5$ bi đỏ, $3$ bi xanh, lấy ngẫu nhiên $2$ bi. Tính xác suất a) hai bi đỏ; b) hai bi cùng màu.`,
+   giai: [ R`$n(\Omega)=C_8^2=28$.`, R`a) $P=\dfrac{C_5^2}{28}=\dfrac{10}{28}=\dfrac5{14}$.`, R`b) $P=\dfrac{10+3}{28}=\dfrac{13}{28}$.` ] },
+ { muc: "TH", de: R`Lớp có $20$ nam, $15$ nữ. Chọn ngẫu nhiên $3$ bạn. Tính xác suất cả $3$ bạn đều là nữ.`,
+   giai: [ R`$n(\Omega)=C_{35}^3=6545$; $n(A)=C_{15}^3=455$.`, R`$P=\dfrac{455}{6545}=\dfrac{13}{187}\approx0{,}07$.` ] },
+ { muc: "VD", de: R`Chọn ngẫu nhiên $4$ người từ $6$ nam và $5$ nữ. Tính xác suất chọn được đúng $2$ nữ.`,
+   giai: [ R`$n(\Omega)=C_{11}^4=330$; $n(A)=C_5^2\cdot C_6^2=150$.`, R`$P=\dfrac{150}{330}=\dfrac5{11}$.` ] },
+ { muc: "VD", de: R`Xếp ngẫu nhiên $5$ nam và $4$ nữ thành một hàng ngang. Tính xác suất $4$ nữ đứng cạnh nhau.`,
+   giai: [ R`$n(\Omega)=9!=362\,880$. Buộc $4$ nữ thành một khối: $n(A)=6!\cdot4!=17\,280$.`, R`$P=\dfrac{17\,280}{362\,880}=\dfrac1{21}$.` ] }
+ ] },
+"C9-B27-D64": {
+ pp: [
+  R`$P(\bar A)=1-P(A)$.`,
+  R`**Dùng khi** đề hỏi "**ít nhất một**", "có ... trở lên": biến cố đối thường là "không có cái nào", dễ đếm hơn nhiều.`,
+  R`**Bài thực tế:** chuyển lời văn thành biến cố, xác định $\Omega$, đếm phần đối rồi lấy $1$ trừ đi.`
+ ],
+ luuY: [
+  R`Đối của "ít nhất một" là "không có cái nào", không phải "đúng một".`
+ ],
+ vd: [
+ { muc: "TH", de: R`Gieo hai con xúc xắc. Tính xác suất có ít nhất một mặt $6$ chấm.`,
+   giai: [ R`$\bar A$: "không có mặt $6$": mỗi con có $5$ khả năng, $n(\bar A)=25$.`, R`$P(A)=1-\dfrac{25}{36}=\dfrac{11}{36}$.` ] },
+ { muc: "TH", de: R`Chọn ngẫu nhiên $4$ người từ $6$ nam và $5$ nữ. Tính xác suất có ít nhất $1$ nữ.`,
+   giai: [ R`$\bar A$: "cả $4$ đều nam": $C_6^4=15$. $n(\Omega)=330$.`, R`$P(A)=1-\dfrac{15}{330}=1-\dfrac1{22}=\dfrac{21}{22}$.` ] },
+ { muc: "VD", de: R`Gieo một đồng xu $5$ lần. Tính xác suất có ít nhất một lần xuất hiện mặt ngửa.`,
+   giai: [ R`$n(\Omega)=2^5=32$. $\bar A$: "cả $5$ lần đều sấp": $1$ kết quả.`, R`$P(A)=1-\dfrac1{32}=\dfrac{31}{32}$.` ] },
+ { muc: "VD", de: R`Lớp có $35$ học sinh, trong đó $5$ bạn chưa làm bài tập. Thầy gọi ngẫu nhiên $3$ bạn kiểm tra. Tính xác suất có ít nhất một bạn chưa làm bài.`,
+   giai: [
+    R`$n(\Omega)=C_{35}^3=6545$. $\bar A$: "cả $3$ bạn đều đã làm bài": $C_{30}^3=4060$.`,
+    R`$P(A)=1-\dfrac{4060}{6545}=\dfrac{2485}{6545}=\dfrac{71}{187}\approx0{,}38$.`
+   ] }
+ ] }
+});
 })(window);
