@@ -1702,4 +1702,539 @@ Object.assign(D, {
    ] }
  ] }
 });
+/* ---------- Chương IV · Nguyên hàm và tích phân ---------- */
+const TRUC = (x0, x1, y0, y1, khongO) => R`\draw[->] (${x0},0)--(${x1},0) node[below]{$x$};
+\draw[->] (0,${y0})--(0,${y1}) node[left]{$y$};
+` + (khongO ? "" : R`
+\node[below left] at (0,0){$O$};`);
+Object.assign(D, {
+"C4-B11-D01": {
+ pp: [
+  R`$F(x)$ là **một nguyên hàm** của $f(x)$ trên khoảng $K$ khi và chỉ khi $F'(x)=f(x)$ với mọi $x\in K$.`,
+  R`Nếu $F(x)$ là một nguyên hàm của $f(x)$ thì mọi nguyên hàm của $f(x)$ đều có dạng $F(x)+C$. Kí hiệu **họ nguyên hàm**: $\displaystyle\int f(x)\,dx=F(x)+C$.`,
+  R`**Cách kiểm tra:** tính đạo hàm $F'(x)$ rồi so sánh với $f(x)$. Bằng nhau thì đúng, khác nhau thì sai.`,
+  R`Hai tính chất cần nhớ: $\left(\displaystyle\int f(x)\,dx\right)'=f(x)$ và $\displaystyle\int f'(x)\,dx=f(x)+C$.`
+ ],
+ luuY: [
+  R`Quên hằng số $C$ khi viết họ nguyên hàm.`,
+  R`Nhầm dấu khi đạo hàm $\cos$: $(\cos x)'=-\sin x$, nên $(-\cos x)'=\sin x$.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Hàm số $F(x)=x^3+2x-5$ có phải là một nguyên hàm của hàm số $f(x)=3x^2+2$ trên $\mathbb R$ không?`,
+   giai: [
+    R`Tính đạo hàm: $F'(x)=3x^2+2-0=3x^2+2$.`,
+    R`Ta thấy $F'(x)=f(x)$ với mọi $x\in\mathbb R$.`,
+    R`**Kết luận.** $F(x)$ là một nguyên hàm của $f(x)$ trên $\mathbb R$.`
+   ] },
+ { muc: "TH", de: R`Chứng minh rằng $F(x)=x\,e^x$ là một nguyên hàm của $f(x)=(x+1)e^x$ trên $\mathbb R$.`,
+   giai: [
+    R`Dùng quy tắc đạo hàm của tích: $F'(x)=(x)'\cdot e^x+x\cdot(e^x)'=1\cdot e^x+x\,e^x$.`,
+    R`Đặt nhân tử chung: $F'(x)=(x+1)e^x=f(x)$ với mọi $x\in\mathbb R$.`,
+    R`Vậy $F(x)$ là một nguyên hàm của $f(x)$ trên $\mathbb R$.`
+   ] },
+ { muc: "TH", de: R`Hàm số nào sau đây là một nguyên hàm của $f(x)=\sin 2x$?
+**A.** $\cos 2x$. **B.** $-\tfrac12\cos 2x$. **C.** $2\cos 2x$. **D.** $\tfrac12\cos 2x$.`,
+   giai: [
+    R`Nhớ công thức $(\cos 2x)'=-\sin 2x\cdot(2x)'=-2\sin 2x$.`,
+    R`Phương án A: $(\cos2x)'=-2\sin2x\ne\sin2x$. Loại.`,
+    R`Phương án B: $\left(-\tfrac12\cos2x\right)'=-\tfrac12\cdot(-2\sin2x)=\sin2x$. Đúng.`,
+    R`Phương án C: $(2\cos2x)'=-4\sin2x$; phương án D: $\left(\tfrac12\cos2x\right)'=-\sin2x$. Đều loại.`,
+    R`**Kết luận.** Chọn **B**.`
+   ] },
+ { muc: "VD", de: R`Tìm các số thực $a$, $b$ để $F(x)=(ax+b)e^x$ là một nguyên hàm của $f(x)=(2x+3)e^x$ trên $\mathbb R$.`,
+   giai: [
+    R`$F'(x)=a\cdot e^x+(ax+b)e^x=(ax+a+b)e^x$.`,
+    R`$F$ là nguyên hàm của $f$ khi $F'(x)=f(x)$ với mọi $x$, tức là $(ax+a+b)e^x=(2x+3)e^x$ với mọi $x$.`,
+    R`Vì $e^x>0$ nên ta đồng nhất hệ số: $a=2$ và $a+b=3$.`,
+    R`Suy ra $a=2$, $b=1$. Thử lại: $F(x)=(2x+1)e^x$ có $F'(x)=2e^x+(2x+1)e^x=(2x+3)e^x$ ✓.`
+   ] }
+ ] },
+"C4-B11-D02": {
+ pp: [
+  R`**Bảng nguyên hàm cơ bản:** $\displaystyle\int x^\alpha dx=\dfrac{x^{\alpha+1}}{\alpha+1}+C\ (\alpha\ne-1)$; $\displaystyle\int\dfrac1x\,dx=\ln|x|+C$; $\displaystyle\int k\,dx=kx+C$.`,
+  R`**Tính chất:** $\displaystyle\int k f(x)\,dx=k\int f(x)\,dx\ (k\ne0)$; $\displaystyle\int[f(x)\pm g(x)]\,dx=\int f(x)\,dx\pm\int g(x)\,dx$.`,
+  R`**Căn thức:** đổi sang luỹ thừa: $\sqrt x=x^{\frac12}$, $\sqrt[3]{x^2}=x^{\frac23}$, $\dfrac1{\sqrt x}=x^{-\frac12}$, $\dfrac1{x^2}=x^{-2}$.`,
+  R`**Phân thức tách được:** chia từng hạng tử của tử số cho mẫu số để được tổng các luỹ thừa của $x$; khai triển nếu tử là hằng đẳng thức.`
+ ],
+ luuY: [
+  R`$\displaystyle\int\dfrac{1}{x^2}dx=-\dfrac1x+C$, không phải $\ln x^2+C$. Chỉ có $\dfrac1x$ (tức $\alpha=-1$) mới cho $\ln|x|$.`,
+  R`Không có quy tắc "nguyên hàm của tích bằng tích các nguyên hàm": $\displaystyle\int f\,g\,dx\ne\int f\,dx\cdot\int g\,dx$.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Tìm $\displaystyle\int(3x^2-4x+5)\,dx$.`,
+   giai: [
+    R`Tách thành từng hạng tử: $\displaystyle\int3x^2dx-\int4x\,dx+\int5\,dx$.`,
+    R`$\displaystyle\int3x^2dx=3\cdot\dfrac{x^3}{3}=x^3$; $\displaystyle\int4x\,dx=4\cdot\dfrac{x^2}{2}=2x^2$; $\displaystyle\int5\,dx=5x$.`,
+    R`**Kết quả.** $\displaystyle\int(3x^2-4x+5)\,dx=x^3-2x^2+5x+C$.`
+   ] },
+ { muc: "TH", de: R`Tìm $\displaystyle\int\left(\sqrt x+\dfrac1{x^2}\right)dx$ trên khoảng $(0;+\infty)$.`,
+   giai: [
+    R`Viết dưới dạng luỹ thừa: $\sqrt x+\dfrac1{x^2}=x^{\frac12}+x^{-2}$.`,
+    R`$\displaystyle\int x^{\frac12}dx=\dfrac{x^{\frac32}}{\frac32}=\dfrac23x^{\frac32}=\dfrac23x\sqrt x$.`,
+    R`$\displaystyle\int x^{-2}dx=\dfrac{x^{-1}}{-1}=-\dfrac1x$.`,
+    R`**Kết quả.** $\displaystyle\int\left(\sqrt x+\dfrac1{x^2}\right)dx=\dfrac23x\sqrt x-\dfrac1x+C$.`
+   ] },
+ { muc: "TH", de: R`Tìm $\displaystyle\int\dfrac{x^2-2x+3}{x}\,dx$ trên khoảng $(0;+\infty)$.`,
+   giai: [
+    R`Chia từng hạng tử cho $x$: $\dfrac{x^2-2x+3}{x}=x-2+\dfrac3x$.`,
+    R`$\displaystyle\int\left(x-2+\dfrac3x\right)dx=\dfrac{x^2}2-2x+3\ln|x|+C$.`,
+    R`Trên $(0;+\infty)$ ta có $|x|=x$. **Kết quả.** $\dfrac{x^2}{2}-2x+3\ln x+C$.`
+   ] },
+ { muc: "VD", de: R`Tìm $\displaystyle\int\dfrac{(x+1)^2}{\sqrt x}\,dx$ trên khoảng $(0;+\infty)$.`,
+   giai: [
+    R`Khai triển tử số: $(x+1)^2=x^2+2x+1$.`,
+    R`Chia từng hạng tử cho $\sqrt x=x^{\frac12}$: $\dfrac{x^2+2x+1}{x^{\frac12}}=x^{\frac32}+2x^{\frac12}+x^{-\frac12}$.`,
+    R`Lấy nguyên hàm từng hạng tử: $\displaystyle\int x^{\frac32}dx=\dfrac25x^{\frac52}$; $\displaystyle\int2x^{\frac12}dx=2\cdot\dfrac23x^{\frac32}=\dfrac43x^{\frac32}$; $\displaystyle\int x^{-\frac12}dx=\dfrac{x^{\frac12}}{\frac12}=2x^{\frac12}$.`,
+    R`**Kết quả.** $\displaystyle\int\dfrac{(x+1)^2}{\sqrt x}dx=\dfrac25x^2\sqrt x+\dfrac43x\sqrt x+2\sqrt x+C$.`,
+    R`Kiểm tra lại bằng đạo hàm: $\left(\dfrac25x^{\frac52}\right)'=x^{\frac32}$, $\left(\dfrac43x^{\frac32}\right)'=2x^{\frac12}$, $\left(2x^{\frac12}\right)'=x^{-\frac12}$ ✓.`
+   ] }
+ ] },
+"C4-B11-D03": {
+ pp: [
+  R`**Hàm số mũ:** $\displaystyle\int e^x dx=e^x+C$; $\displaystyle\int a^x dx=\dfrac{a^x}{\ln a}+C\ (0<a\ne1)$.`,
+  R`**Lượng giác:** $\displaystyle\int\sin x\,dx=-\cos x+C$; $\displaystyle\int\cos x\,dx=\sin x+C$; $\displaystyle\int\dfrac{dx}{\cos^2x}=\tan x+C$; $\displaystyle\int\dfrac{dx}{\sin^2x}=-\cot x+C$.`,
+  R`**Biến đổi trước khi lấy nguyên hàm:** $a^{2x}=(a^2)^x$, $e^{x+1}=e\cdot e^x$; $\sin^2\dfrac x2=\dfrac{1-\cos x}2$, $\cos^2\dfrac x2=\dfrac{1+\cos x}2$; $\tan^2x=\dfrac1{\cos^2x}-1$; $1=\sin^2x+\cos^2x$.`
+ ],
+ luuY: [
+  R`Sai dấu: $\displaystyle\int\sin x\,dx=-\cos x+C$ (có dấu trừ), còn $\displaystyle\int\cos x\,dx=\sin x+C$.`,
+  R`$\displaystyle\int a^x dx$ phải **chia** cho $\ln a$, không phải nhân.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Tìm $\displaystyle\int(2e^x-3\cos x)\,dx$.`,
+   giai: [
+    R`$\displaystyle\int2e^xdx=2e^x$; $\displaystyle\int3\cos x\,dx=3\sin x$.`,
+    R`**Kết quả.** $\displaystyle\int(2e^x-3\cos x)\,dx=2e^x-3\sin x+C$.`
+   ] },
+ { muc: "TH", de: R`Tìm $\displaystyle\int2^{2x+1}dx$.`,
+   giai: [
+    R`Biến đổi: $2^{2x+1}=2\cdot2^{2x}=2\cdot(2^2)^x=2\cdot4^x$.`,
+    R`$\displaystyle\int2\cdot4^xdx=2\cdot\dfrac{4^x}{\ln4}+C$.`,
+    R`Vì $\ln4=2\ln2$ nên $2\cdot\dfrac{4^x}{2\ln2}=\dfrac{4^x}{\ln2}$. **Kết quả.** $\dfrac{4^x}{\ln2}+C$.`
+   ] },
+ { muc: "TH", de: R`Tìm $\displaystyle\int\sin^2\dfrac x2\,dx$.`,
+   giai: [
+    R`Hạ bậc: $\sin^2\dfrac x2=\dfrac{1-\cos x}{2}=\dfrac12-\dfrac12\cos x$.`,
+    R`$\displaystyle\int\left(\dfrac12-\dfrac12\cos x\right)dx=\dfrac x2-\dfrac12\sin x+C$.`
+   ] },
+ { muc: "VD", de: R`Tìm $\displaystyle\int\tan^2x\,dx$ trên khoảng $\left(-\dfrac\pi2;\dfrac\pi2\right)$.`,
+   giai: [
+    R`Ta có $1+\tan^2x=\dfrac1{\cos^2x}$ nên $\tan^2x=\dfrac1{\cos^2x}-1$.`,
+    R`$\displaystyle\int\left(\dfrac1{\cos^2x}-1\right)dx=\tan x-x+C$.`
+   ] },
+ { muc: "VD", de: R`Tìm $\displaystyle\int\dfrac{dx}{\sin^2x\cos^2x}$ trên khoảng $\left(0;\dfrac\pi2\right)$.`,
+   giai: [
+    R`Thay $1=\sin^2x+\cos^2x$ ở tử: $\dfrac{1}{\sin^2x\cos^2x}=\dfrac{\sin^2x+\cos^2x}{\sin^2x\cos^2x}$.`,
+    R`Tách thành hai phân số: $=\dfrac{\sin^2x}{\sin^2x\cos^2x}+\dfrac{\cos^2x}{\sin^2x\cos^2x}=\dfrac1{\cos^2x}+\dfrac1{\sin^2x}$.`,
+    R`**Kết quả.** $\displaystyle\int\dfrac{dx}{\sin^2x\cos^2x}=\tan x-\cot x+C$.`
+   ] }
+ ] },
+"C4-B11-D04": {
+ pp: [
+  R`**Bước 1.** Tìm họ nguyên hàm $F(x)=G(x)+C$.`,
+  R`**Bước 2.** Thay điều kiện $F(x_0)=y_0$ để tìm $C$, rồi viết $F(x)$ cụ thể.`,
+  R`**Bài toán thực tế:** vận tốc là nguyên hàm của gia tốc ($v'(t)=a(t)$), quãng đường (toạ độ) là nguyên hàm của vận tốc ($s'(t)=v(t)$). Biết tốc độ thay đổi $Q'(t)$ thì $Q(t)$ là một nguyên hàm của $Q'(t)$; giá trị ban đầu cho ta $C$.`
+ ],
+ luuY: [
+  R`Quên $+C$, hoặc có $C$ nhưng không dùng điều kiện ban đầu để tìm.`,
+  R`Thay điều kiện vào $f$ thay vì vào $F$.`
+ ],
+ vd: [
+ { muc: "TH", de: R`Biết $F(x)$ là một nguyên hàm của $f(x)=3x^2-2x$ và $F(1)=4$. Tính $F(2)$.`,
+   giai: [
+    R`$F(x)=\displaystyle\int(3x^2-2x)\,dx=x^3-x^2+C$.`,
+    R`$F(1)=1-1+C=C$. Từ $F(1)=4$ suy ra $C=4$, nên $F(x)=x^3-x^2+4$.`,
+    R`$F(2)=8-4+4=8$.`
+   ] },
+ { muc: "TH", de: R`Tìm nguyên hàm $F(x)$ của $f(x)=e^x+2x$ thoả mãn $F(0)=3$.`,
+   giai: [
+    R`$F(x)=e^x+x^2+C$.`,
+    R`$F(0)=e^0+0+C=1+C$. Từ $F(0)=3$ suy ra $C=2$.`,
+    R`**Kết quả.** $F(x)=e^x+x^2+2$.`
+   ] },
+ { muc: "VD", de: R`Một vật chuyển động với gia tốc $a(t)=6t$ (m/s²), trong đó $t$ là thời gian tính bằng giây. Vận tốc ban đầu là $2$ m/s và lúc $t=0$ vật ở vị trí gốc ($s(0)=0$). Tính vận tốc của vật tại $t=3$ và quãng đường vật đi được trong $3$ giây đầu.`,
+   giai: [
+    R`**Vận tốc.** $v(t)=\displaystyle\int6t\,dt=3t^2+C_1$. Từ $v(0)=2$ suy ra $C_1=2$, nên $v(t)=3t^2+2$.`,
+    R`Tại $t=3$: $v(3)=27+2=29$ (m/s).`,
+    R`**Quãng đường.** $s(t)=\displaystyle\int(3t^2+2)\,dt=t^3+2t+C_2$. Từ $s(0)=0$ suy ra $C_2=0$, nên $s(t)=t^3+2t$.`,
+    R`Vì $v(t)>0$ nên vật chỉ đi theo một chiều; quãng đường trong $3$ giây đầu là $s(3)=27+6=33$ (m).`
+   ] },
+ { muc: "VD", de: R`Một quần thể vi khuẩn lúc đầu có $500$ con. Tốc độ tăng số lượng là $N'(t)=300\sqrt t$ (con/giờ), $t$ tính bằng giờ. Sau $4$ giờ quần thể có bao nhiêu con?`,
+   giai: [
+    R`$N(t)=\displaystyle\int300t^{\frac12}dt=300\cdot\dfrac23t^{\frac32}+C=200t\sqrt t+C$.`,
+    R`Lúc đầu $N(0)=500$ nên $C=500$, tức là $N(t)=200t\sqrt t+500$.`,
+    R`$N(4)=200\cdot4\cdot2+500=1600+500=2100$.`,
+    R`**Kết luận.** Sau $4$ giờ có $2100$ con vi khuẩn.`
+   ] }
+ ] },
+"C4-B12-D01": {
+ pp: [
+  R`**Định nghĩa.** Nếu $F$ là một nguyên hàm của $f$ trên $[a;b]$ thì $\displaystyle\int_a^bf(x)\,dx=F(x)\Big|_a^b=F(b)-F(a)$.`,
+  R`**Tính chất:** $\displaystyle\int_a^af=0$; $\displaystyle\int_a^bf=-\int_b^af$; $\displaystyle\int_a^bkf=k\int_a^bf$; $\displaystyle\int_a^b(f\pm g)=\int_a^bf\pm\int_a^bg$.`,
+  R`**Cộng đoạn:** $\displaystyle\int_a^bf(x)\,dx+\int_b^cf(x)\,dx=\int_a^cf(x)\,dx$.`,
+  R`Tích phân không phụ thuộc tên biến: $\displaystyle\int_a^bf(x)\,dx=\int_a^bf(t)\,dt$.`
+ ],
+ luuY: [
+  R`$\displaystyle\int_a^bf\,g\,dx\ne\int_a^bf\,dx\cdot\int_a^bg\,dx$.`,
+  R`Đổi chỗ hai cận thì tích phân đổi dấu. Hằng số $1$ trong biểu thức cũng phải lấy tích phân: $\displaystyle\int_a^b1\,dx=b-a$, không phải $1$.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Cho $\displaystyle\int_0^2f(x)\,dx=3$ và $\displaystyle\int_0^2g(x)\,dx=-1$. Tính $\displaystyle\int_0^2\big[2f(x)-3g(x)+1\big]dx$.`,
+   giai: [
+    R`Tách theo tính chất: $\displaystyle\int_0^2[2f-3g+1]dx=2\int_0^2f\,dx-3\int_0^2g\,dx+\int_0^21\,dx$.`,
+    R`$\displaystyle\int_0^21\,dx=x\Big|_0^2=2$.`,
+    R`Thay số: $2\cdot3-3\cdot(-1)+2=6+3+2=11$.`
+   ] },
+ { muc: "TH", de: R`Cho $\displaystyle\int_1^3f(x)\,dx=5$ và $\displaystyle\int_1^5f(x)\,dx=2$. Tính $\displaystyle\int_3^5f(x)\,dx$.`,
+   giai: [
+    R`Cộng đoạn: $\displaystyle\int_1^5f=\int_1^3f+\int_3^5f$.`,
+    R`Suy ra $\displaystyle\int_3^5f(x)\,dx=2-5=-3$.`
+   ] },
+ { muc: "TH", de: R`Cho $F(x)$ là một nguyên hàm của $f(x)$ trên $\mathbb R$, $F(1)=2$, $F(4)=11$. Tính $\displaystyle\int_1^4f(x)\,dx$ và $\displaystyle\int_4^1f(t)\,dt$.`,
+   giai: [
+    R`Theo định nghĩa: $\displaystyle\int_1^4f(x)\,dx=F(4)-F(1)=11-2=9$.`,
+    R`Đổi biến $x$ thành $t$ không làm thay đổi giá trị; đổi chỗ hai cận thì đổi dấu: $\displaystyle\int_4^1f(t)\,dt=-9$.`
+   ] },
+ { muc: "VD", de: R`Cho hàm số $f$ liên tục trên $\mathbb R$, $\displaystyle\int_0^1f(x)\,dx=2$ và $\displaystyle\int_0^3f(x)\,dx=6$. Tính $I=\displaystyle\int_1^3\big[3f(x)-2x\big]dx$.`,
+   giai: [
+    R`Tìm $\displaystyle\int_1^3f$: vì $\displaystyle\int_0^3f=\int_0^1f+\int_1^3f$ nên $\displaystyle\int_1^3f(x)\,dx=6-2=4$.`,
+    R`$\displaystyle\int_1^32x\,dx=x^2\Big|_1^3=9-1=8$.`,
+    R`$I=3\cdot4-8=4$.`
+   ] }
+ ] },
+"C4-B12-D02": {
+ pp: [
+  R`**Bước 1.** Biến đổi biểu thức dưới dấu tích phân thành tổng các hàm có trong bảng nguyên hàm (khai triển, chia, hạ bậc...).`,
+  R`**Bước 2.** Tìm một nguyên hàm $F(x)$ (không cần $+C$).`,
+  R`**Bước 3.** Tính $F(b)-F(a)$: thay cận trên trừ thay cận dưới. Đặt cả biểu thức thay cận trong ngoặc để không sai dấu.`
+ ],
+ luuY: [
+  R`Thay cận dưới trừ cận trên (ngược dấu).`,
+  R`Máy tính để chế độ độ (D) khi tính tích phân lượng giác; phải để chế độ radian (R).`
+ ],
+ vd: [
+ { muc: "NB", de: R`Tính $\displaystyle\int_1^2(3x^2+2x)\,dx$.`,
+   giai: [
+    R`Một nguyên hàm: $F(x)=x^3+x^2$.`,
+    R`$\displaystyle\int_1^2(3x^2+2x)\,dx=(x^3+x^2)\Big|_1^2=(8+4)-(1+1)=10$.`
+   ] },
+ { muc: "TH", de: R`Tính $\displaystyle\int_0^{\frac\pi2}(2\cos x-\sin x)\,dx$.`,
+   giai: [
+    R`Một nguyên hàm: $\displaystyle\int(2\cos x-\sin x)dx=2\sin x+\cos x$ (vì $\displaystyle\int-\sin x\,dx=\cos x$).`,
+    R`$(2\sin x+\cos x)\Big|_0^{\frac\pi2}=\left(2\cdot1+0\right)-\left(2\cdot0+1\right)=2-1=1$.`
+   ] },
+ { muc: "TH", de: R`Tính $\displaystyle\int_1^e\dfrac{x+1}{x}\,dx$.`,
+   giai: [
+    R`Chia: $\dfrac{x+1}{x}=1+\dfrac1x$.`,
+    R`$\displaystyle\int_1^e\left(1+\dfrac1x\right)dx=(x+\ln x)\Big|_1^e=(e+1)-(1+0)=e$.`
+   ] },
+ { muc: "VD", de: R`Tính $\displaystyle\int_1^4\dfrac{x-1}{\sqrt x}\,dx$.`,
+   giai: [
+    R`Chia từng hạng tử: $\dfrac{x-1}{\sqrt x}=x^{\frac12}-x^{-\frac12}$.`,
+    R`Một nguyên hàm: $F(x)=\dfrac23x^{\frac32}-2x^{\frac12}=\dfrac23x\sqrt x-2\sqrt x$.`,
+    R`$F(4)=\dfrac23\cdot8-4=\dfrac{16}3-4=\dfrac43$; $F(1)=\dfrac23-2=-\dfrac43$.`,
+    R`$\displaystyle\int_1^4\dfrac{x-1}{\sqrt x}dx=\dfrac43-\left(-\dfrac43\right)=\dfrac83$.`
+   ] },
+ { muc: "VD", de: R`Tính $\displaystyle\int_0^1(e^x+2^x)\,dx$.`,
+   giai: [
+    R`Một nguyên hàm: $F(x)=e^x+\dfrac{2^x}{\ln2}$.`,
+    R`$F(1)-F(0)=\left(e+\dfrac2{\ln2}\right)-\left(1+\dfrac1{\ln2}\right)=e-1+\dfrac1{\ln2}$.`,
+    R`Giá trị gần đúng: $\approx2{,}718-1+1{,}443\approx3{,}16$.`
+   ] }
+ ] },
+"C4-B12-D03": {
+ pp: [
+  R`**Trị tuyệt đối** $\displaystyle\int_a^b|g(x)|\,dx$: giải $g(x)=0$, lập bảng xét dấu $g(x)$ trên $[a;b]$; tách tích phân tại các nghiệm; trên khoảng $g\ge0$ thì bỏ dấu giá trị tuyệt đối, trên khoảng $g\le0$ thì thay $|g|=-g$.`,
+  R`**Hàm từng khúc:** tách tích phân tại điểm chuyển công thức, mỗi đoạn dùng đúng công thức của đoạn đó.`,
+  R`**Ý nghĩa hình học:** nếu $f(x)\ge0$ liên tục trên $[a;b]$ thì $\displaystyle\int_a^bf(x)\,dx$ là diện tích hình thang cong giới hạn bởi đồ thị $y=f(x)$, trục $Ox$ và hai đường $x=a$, $x=b$. Có thể dùng diện tích hình quen thuộc (tam giác, hình tròn...) để tính.`
+ ],
+ luuY: [
+  R`$\displaystyle\int_a^b|g(x)|dx\ne\left|\int_a^bg(x)dx\right|$ khi $g$ đổi dấu trên $[a;b]$.`,
+  R`Bỏ dấu giá trị tuyệt đối mà không xét dấu.`
+ ],
+ vd: [
+ { muc: "TH", de: R`Tính $\displaystyle\int_0^3|x-1|\,dx$.`,
+   giai: [
+    R`$x-1=0\Leftrightarrow x=1$. Trên $[0;1]$: $x-1\le0$ nên $|x-1|=1-x$. Trên $[1;3]$: $|x-1|=x-1$.`,
+    R`$\displaystyle\int_0^1(1-x)\,dx=\left(x-\dfrac{x^2}2\right)\Big|_0^1=\dfrac12$.`,
+    R`$\displaystyle\int_1^3(x-1)\,dx=\left(\dfrac{x^2}2-x\right)\Big|_1^3=\left(\dfrac92-3\right)-\left(\dfrac12-1\right)=\dfrac32+\dfrac12=2$.`,
+    R`**Kết quả.** $\displaystyle\int_0^3|x-1|\,dx=\dfrac12+2=\dfrac52$.`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=1,>=stealth]
+\fill[blue!20] (0,0)--(0,1)--(1,0)--(3,2)--(3,0)--cycle;
+\draw[thick,blue] (0,1)--(1,0)--(3.3,2.3);
+${TRUC(-0.6,3.8,-0.4,2.8)}
+\draw[dashed] (3,0)--(3,2);
+\node[below] at (1,0){$1$}; \node[below] at (3,0){$3$};
+\node[left] at (0,1){$1$}; \node[left] at (0,2){$2$}; \draw[dashed] (0,2)--(3,2);
+\end{tikzpicture}`,
+   chuThich: R`Tích phân bằng tổng diện tích hai tam giác tô màu: $\dfrac12\cdot1\cdot1+\dfrac12\cdot2\cdot2=\dfrac52$ (khớp kết quả).` },
+ { muc: "TH", de: R`Tính $\displaystyle\int_{-1}^{2}|x^2-1|\,dx$.`,
+   giai: [
+    R`$x^2-1=0\Leftrightarrow x=\pm1$. Bảng xét dấu trên $[-1;2]$:
+\begin{center}\begin{tikzpicture}
+\tkzTabInit[lgt=2.2,espcl=2.4]{$x$/0.8,$x^2-1$/0.8}{$-1$,$1$,$2$}
+\tkzTabLine{0,-,0,+,}
+\end{tikzpicture}\end{center}`,
+    R`Trên $[-1;1]$: $|x^2-1|=1-x^2$. $\displaystyle\int_{-1}^1(1-x^2)\,dx=\left(x-\dfrac{x^3}3\right)\Big|_{-1}^1=\dfrac23-\left(-\dfrac23\right)=\dfrac43$.`,
+    R`Trên $[1;2]$: $|x^2-1|=x^2-1$. $\displaystyle\int_1^2(x^2-1)\,dx=\left(\dfrac{x^3}3-x\right)\Big|_1^2=\dfrac23-\left(-\dfrac23\right)=\dfrac43$.`,
+    R`**Kết quả.** $\dfrac43+\dfrac43=\dfrac83$.`
+   ] },
+ { muc: "VD", de: R`Cho hàm số $f(x)=\begin{cases}2x&\text{khi }x\le1\\3-x^2&\text{khi }x>1\end{cases}$. Tính $\displaystyle\int_0^2f(x)\,dx$.`,
+   giai: [
+    R`Hàm số liên tục tại $x=1$ vì $2\cdot1=2$ và $3-1^2=2$. Tách tại $x=1$: $\displaystyle\int_0^2f=\int_0^12x\,dx+\int_1^2(3-x^2)\,dx$.`,
+    R`$\displaystyle\int_0^12x\,dx=x^2\Big|_0^1=1$.`,
+    R`$\displaystyle\int_1^2(3-x^2)\,dx=\left(3x-\dfrac{x^3}3\right)\Big|_1^2=\left(6-\dfrac83\right)-\left(3-\dfrac13\right)=\dfrac{10}3-\dfrac83=\dfrac23$.`,
+    R`**Kết quả.** $\displaystyle\int_0^2f(x)\,dx=1+\dfrac23=\dfrac53$.`
+   ] },
+ { muc: "TH", de: R`Dùng ý nghĩa hình học, tính $\displaystyle\int_0^2\sqrt{4-x^2}\,dx$.`,
+   giai: [
+    R`Đặt $y=\sqrt{4-x^2}$ thì $y\ge0$ và $x^2+y^2=4$: đồ thị là nửa trên của đường tròn tâm $O$, bán kính $2$.`,
+    R`Với $0\le x\le2$, hình phẳng dưới đồ thị là một phần tư hình tròn bán kính $2$ (hình dưới).`,
+    R`Tích phân bằng diện tích phần đó: $\dfrac14\pi\cdot2^2=\pi$.`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=1,>=stealth]
+\fill[blue!20] (0,0)--(2,0) arc (0:90:2)--cycle;
+\draw[thick,blue] (2,0) arc (0:90:2);
+${TRUC(-0.5,2.7,-0.4,2.7)}
+\node[below] at (2,0){$2$}; \node[left] at (0,2){$2$};
+\end{tikzpicture}`,
+   chuThich: R`Phần tô màu là một phần tư hình tròn bán kính $2$.` }
+ ] },
+"C4-B12-D04": {
+ pp: [
+  R`**Chuyển động:** nếu $v(t)\ge0$ trên $[a;b]$ thì quãng đường đi được là $s=\displaystyle\int_a^bv(t)\,dt$. Nếu $v$ đổi dấu, quãng đường là $\displaystyle\int_a^b|v(t)|\,dt$, còn độ dịch chuyển là $\displaystyle\int_a^bv(t)\,dt$.`,
+  R`**Lượng thay đổi:** biết tốc độ thay đổi $Q'(t)$ thì lượng thay đổi từ $t=a$ đến $t=b$ là $Q(b)-Q(a)=\displaystyle\int_a^bQ'(t)\,dt$.`,
+  R`Đọc kĩ đơn vị và tìm đúng hai cận (ví dụ thời điểm dừng: $v(t)=0$).`
+ ],
+ luuY: [
+  R`Lấy $\displaystyle\int v\,dt$ khi vận tốc đổi dấu rồi gọi đó là quãng đường.`,
+  R`Tìm sai cận: thời điểm xe dừng phải giải $v(t)=0$.`
+ ],
+ vd: [
+ { muc: "TH", de: R`Một ô tô đang chạy với vận tốc $20$ m/s thì phanh. Từ lúc phanh, ô tô chuyển động chậm dần đều với $v(t)=20-5t$ (m/s). Hỏi từ lúc phanh đến khi dừng, ô tô đi thêm bao nhiêu mét?`,
+   giai: [
+    R`Ô tô dừng khi $v(t)=0\Leftrightarrow20-5t=0\Leftrightarrow t=4$ (giây).`,
+    R`Trên $[0;4]$ ta có $v(t)\ge0$, nên quãng đường là $s=\displaystyle\int_0^4(20-5t)\,dt$.`,
+    R`$s=\left(20t-\dfrac{5t^2}2\right)\Big|_0^4=80-40=40$ (m).`
+   ] },
+ { muc: "TH", de: R`Nước chảy vào một bể với tốc độ $r(t)=2t+10$ (lít/phút), $t$ tính bằng phút. Trong $10$ phút đầu có bao nhiêu lít nước chảy vào bể?`,
+   giai: [
+    R`Lượng nước chảy vào là $\displaystyle\int_0^{10}(2t+10)\,dt$.`,
+    R`$=\left(t^2+10t\right)\Big|_0^{10}=100+100=200$ (lít).`
+   ] },
+ { muc: "VD", de: R`Một chất điểm chuyển động thẳng với vận tốc $v(t)=t^2-4t+3$ (m/s). Tính độ dịch chuyển và quãng đường chất điểm đi được trong khoảng thời gian $0\le t\le3$.`,
+   giai: [
+    R`$v(t)=0\Leftrightarrow t=1$ hoặc $t=3$. Bảng xét dấu:
+\begin{center}\begin{tikzpicture}
+\tkzTabInit[lgt=1.4,espcl=2.4]{$t$/0.8,$v(t)$/0.8}{$0$,$1$,$3$}
+\tkzTabLine{,+,0,-,0}
+\end{tikzpicture}\end{center}`,
+    R`Một nguyên hàm: $F(t)=\dfrac{t^3}3-2t^2+3t$. Ta có $F(0)=0$, $F(1)=\dfrac13-2+3=\dfrac43$, $F(3)=9-18+9=0$.`,
+    R`**Độ dịch chuyển:** $\displaystyle\int_0^3v(t)\,dt=F(3)-F(0)=0$ (chất điểm quay về vị trí ban đầu).`,
+    R`**Quãng đường:** $\displaystyle\int_0^1v\,dt+\left|\int_1^3v\,dt\right|=\dfrac43+\left|0-\dfrac43\right|=\dfrac83$ (m).`
+   ] }
+ ] },
+"C4-B13-D01": {
+ pp: [
+  R`Hình phẳng giới hạn bởi đồ thị $y=f(x)$, trục $Ox$ và hai đường $x=a$, $x=b$ có diện tích $S=\displaystyle\int_a^b|f(x)|\,dx$.`,
+  R`**Bước 1.** Giải $f(x)=0$ để tìm các nghiệm trong $[a;b]$. Nếu đề không cho $x=a$, $x=b$ thì hai cận là nghiệm nhỏ nhất và lớn nhất.`,
+  R`**Bước 2.** Tách tích phân tại các nghiệm. Trên mỗi đoạn $f$ không đổi dấu nên $\displaystyle\int|f|=\left|\int f\right|$.`,
+  R`**Bước 3.** Cộng các kết quả. Vẽ phác đồ thị để thấy phần nào nằm dưới trục $Ox$.`
+ ],
+ luuY: [
+  R`Tính thẳng $\displaystyle\int_a^bf(x)\,dx$ khi $f$ đổi dấu: phần trên và phần dưới trục triệt tiêu nhau, kết quả sai.`,
+  R`Diện tích luôn dương; ra số âm là đã quên dấu giá trị tuyệt đối.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Tính diện tích hình phẳng giới hạn bởi đồ thị $y=x^2$, trục hoành và hai đường thẳng $x=0$, $x=2$.`,
+   giai: [
+    R`Trên $[0;2]$ ta có $x^2\ge0$ nên $S=\displaystyle\int_0^2x^2\,dx$.`,
+    R`$S=\dfrac{x^3}3\Big|_0^2=\dfrac83$.`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=1,>=stealth]
+\fill[blue!20] (0,0) plot[domain=0:2,samples=60](\x,{\x*\x})--(2,0)--cycle;
+\draw[thick,blue,domain=-1.2:2.2,samples=80] plot(\x,{\x*\x});
+${TRUC(-1.5,3,-0.5,5)}
+\draw[dashed] (2,0)--(2,4); \node[below] at (2,0){$2$};
+\node[right] at (2.2,4.6){$y=x^2$};
+\end{tikzpicture}` },
+ { muc: "TH", de: R`Tính diện tích hình phẳng giới hạn bởi đồ thị $y=x^2-2x$ và trục hoành.`,
+   giai: [
+    R`$x^2-2x=0\Leftrightarrow x=0$ hoặc $x=2$. Đề không cho đường thẳng nên hai cận là $0$ và $2$.`,
+    R`Trên $[0;2]$, $x^2-2x\le0$ (đồ thị nằm dưới trục $Ox$). $\displaystyle\int_0^2(x^2-2x)\,dx=\left(\dfrac{x^3}3-x^2\right)\Big|_0^2=\dfrac83-4=-\dfrac43$.`,
+    R`$S=\left|-\dfrac43\right|=\dfrac43$.`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=1.3,>=stealth]
+\fill[blue!20] (0,0) plot[domain=0:2,samples=60](\x,{\x*\x-2*\x})--cycle;
+\draw[thick,blue,domain=-0.6:2.6,samples=80] plot(\x,{\x*\x-2*\x});
+${TRUC(-1,3.2,-1.6,2.2)}
+\node[above left] at (2,0){$2$}; \node[right] at (2.6,1.4){$y=x^2-2x$};
+\end{tikzpicture}`,
+   chuThich: R`Phần tô màu nằm dưới trục $Ox$ nên tích phân âm, diện tích là giá trị tuyệt đối.` },
+ { muc: "VD", de: R`Tính diện tích hình phẳng giới hạn bởi đồ thị $y=x^3-x$ và trục hoành.`,
+   giai: [
+    R`$x^3-x=0\Leftrightarrow x(x-1)(x+1)=0\Leftrightarrow x\in\{-1;0;1\}$.`,
+    R`$S=\left|\displaystyle\int_{-1}^0(x^3-x)\,dx\right|+\left|\int_0^1(x^3-x)\,dx\right|$.`,
+    R`Một nguyên hàm $F(x)=\dfrac{x^4}4-\dfrac{x^2}2$: $F(-1)=F(1)=-\dfrac14$, $F(0)=0$.`,
+    R`$\displaystyle\int_{-1}^0=F(0)-F(-1)=\dfrac14$; $\displaystyle\int_0^1=F(1)-F(0)=-\dfrac14$.`,
+    R`$S=\dfrac14+\dfrac14=\dfrac12$. (Nếu tính thẳng $\displaystyle\int_{-1}^1(x^3-x)dx=0$ là sai.)`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=2,>=stealth]
+\fill[blue!20] (-1,0) plot[domain=-1:1,samples=80](\x,{\x*\x*\x-\x})--cycle;
+\draw[thick,blue,domain=-1.25:1.25,samples=80] plot(\x,{\x*\x*\x-\x});
+${TRUC(-1.6,1.7,-0.8,0.9)}
+\node[below right] at (-1,0){$-1$}; \node[above left] at (1,0){$1$};
+\end{tikzpicture}`,
+   chuThich: R`Hai phần tô màu đối xứng qua $O$, mỗi phần có diện tích $\tfrac14$.` }
+ ] },
+"C4-B13-D02": {
+ pp: [
+  R`Hình phẳng giới hạn bởi hai đồ thị $y=f(x)$, $y=g(x)$ và hai đường $x=a$, $x=b$ có diện tích $S=\displaystyle\int_a^b|f(x)-g(x)|\,dx$.`,
+  R`**Bước 1.** Giải $f(x)=g(x)$ để tìm hoành độ giao điểm (thường cũng là hai cận khi đề không cho $x=a$, $x=b$).`,
+  R`**Bước 2.** Trên mỗi đoạn giữa hai nghiệm liên tiếp, lấy hàm ở trên trừ hàm ở dưới (hoặc lấy giá trị tuyệt đối của tích phân).`,
+  R`Nếu hình phẳng có nhiều "ranh giới" khác nhau (ví dụ một bên là đồ thị, một bên là trục $Ox$), chia hình thành từng phần rồi cộng.`
+ ],
+ luuY: [
+  R`Quên tìm giao điểm và lấy nhầm cận.`,
+  R`Lấy hàm dưới trừ hàm trên mà không lấy giá trị tuyệt đối.`
+ ],
+ vd: [
+ { muc: "TH", de: R`Tính diện tích hình phẳng giới hạn bởi parabol $y=x^2$ và đường thẳng $y=x+2$.`,
+   giai: [
+    R`Hoành độ giao điểm: $x^2=x+2\Leftrightarrow x^2-x-2=0\Leftrightarrow x=-1$ hoặc $x=2$.`,
+    R`Trên $[-1;2]$ đường thẳng nằm trên parabol (thử $x=0$: $2>0$), nên $S=\displaystyle\int_{-1}^2(x+2-x^2)\,dx$.`,
+    R`$S=\left(\dfrac{x^2}2+2x-\dfrac{x^3}3\right)\Big|_{-1}^2=\left(2+4-\dfrac83\right)-\left(\dfrac12-2+\dfrac13\right)=\dfrac{10}3+\dfrac76=\dfrac92$.`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=0.9,>=stealth]
+\fill[blue!20] (-1,1) plot[domain=-1:2,samples=60](\x,{\x*\x})--cycle;
+\draw[thick,blue,domain=-1.6:2.3,samples=80] plot(\x,{\x*\x});
+\draw[thick,red] (-1.8,0.2)--(2.4,4.4);
+${TRUC(-2,3,-0.6,5.6,1)}
+\fill (-1,1) circle (2pt); \fill (2,4) circle (2pt);
+\node[below] at (-1,0){$-1$}; \node[below] at (2,0){$2$};
+\draw[dashed] (-1,0)--(-1,1); \draw[dashed] (2,0)--(2,4);
+\end{tikzpicture}`,
+   chuThich: R`Đường màu đỏ $y=x+2$ nằm trên parabol màu xanh $y=x^2$ giữa hai giao điểm.` },
+ { muc: "TH", de: R`Tính diện tích hình phẳng giới hạn bởi hai đồ thị $y=x^3$ và $y=x$.`,
+   giai: [
+    R`$x^3=x\Leftrightarrow x(x^2-1)=0\Leftrightarrow x\in\{-1;0;1\}$.`,
+    R`$S=\left|\displaystyle\int_{-1}^0(x^3-x)dx\right|+\left|\int_0^1(x^3-x)dx\right|$.`,
+    R`Như ví dụ ở dạng trước: hai tích phân lần lượt bằng $\dfrac14$ và $-\dfrac14$.`,
+    R`$S=\dfrac14+\dfrac14=\dfrac12$.`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=1.8,>=stealth]
+\fill[blue!20] (-1,-1) plot[domain=-1:1,samples=80](\x,{\x*\x*\x})--(1,1)--cycle;
+\draw[thick,blue,domain=-1.15:1.15,samples=80] plot(\x,{\x*\x*\x});
+\draw[thick,red] (-1.2,-1.2)--(1.2,1.2);
+${TRUC(-1.5,1.6,-1.5,1.6,1)}
+\node[right] at (1,0.9){$y=x$}; \node[right] at (-1,-1.45){$y=x^3$};
+\end{tikzpicture}`,
+   chuThich: R`Hai miền tô màu nằm giữa đường thẳng (đỏ) và đường bậc ba (xanh).` },
+ { muc: "VD", de: R`Tính diện tích hình phẳng giới hạn bởi đồ thị $y=\sqrt x$, đường thẳng $y=2-x$ và trục hoành.`,
+   giai: [
+    R`Giao điểm của $y=\sqrt x$ và $y=2-x$: $\sqrt x=2-x$ ($x\le2$) $\Rightarrow x=4-4x+x^2\Leftrightarrow x^2-5x+4=0\Leftrightarrow x=1$ hoặc $x=4$. Loại $x=4$ (vì $x\le2$). Giao điểm $(1;1)$.`,
+    R`$y=\sqrt x$ cắt $Ox$ tại $x=0$; $y=2-x$ cắt $Ox$ tại $x=2$.`,
+    R`Nhìn hình: trên $[0;1]$ hình phẳng nằm dưới $y=\sqrt x$; trên $[1;2]$ nằm dưới $y=2-x$. Chia làm hai phần.`,
+    R`$S=\displaystyle\int_0^1\sqrt x\,dx+\int_1^2(2-x)\,dx=\dfrac23x\sqrt x\Big|_0^1+\left(2x-\dfrac{x^2}2\right)\Big|_1^2=\dfrac23+\left(2-\dfrac32\right)=\dfrac23+\dfrac12=\dfrac76$.`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=1.6,>=stealth]
+\fill[blue!20] (0,0) plot[domain=0:1,samples=60](\x,{sqrt(\x)})--(2,0)--cycle;
+\draw[thick,blue,domain=0:2.4,samples=80] plot(\x,{sqrt(\x)});
+\draw[thick,red] (0.4,1.6)--(2.3,-0.3);
+${TRUC(-0.4,2.7,-0.4,1.9)}
+\fill (1,1) circle (1.5pt); \draw[dashed] (1,0)--(1,1);
+\node[below] at (1,0){$1$}; \node[below left] at (2,0){$2$};
+\node[right] at (2.4,1.55){$y=\sqrt x$}; \node[left] at (0.4,1.6){$y=2-x$};
+\end{tikzpicture}`,
+   chuThich: R`Đường thẳng $x=1$ (nét đứt) chia hình phẳng thành hai phần.` }
+ ] },
+"C4-B13-D03": {
+ pp: [
+  R`**Thể tích vật thể:** cắt vật thể bởi mặt phẳng vuông góc với $Ox$ tại $x$ ($a\le x\le b$), thiết diện có diện tích $S(x)$. Khi đó $V=\displaystyle\int_a^bS(x)\,dx$.`,
+  R`**Khối tròn xoay:** quay hình phẳng giới hạn bởi $y=f(x)$, trục $Ox$, $x=a$, $x=b$ quanh trục $Ox$: thiết diện là hình tròn bán kính $|f(x)|$, nên $V=\pi\displaystyle\int_a^bf^2(x)\,dx$.`,
+  R`Nếu đề không cho $x=a$, $x=b$ thì giải $f(x)=0$ để tìm cận.`
+ ],
+ luuY: [
+  R`Quên $\pi$ hoặc quên bình phương $f(x)$.`,
+  R`Quay hình giữa hai đồ thị $f\ge g\ge0$: $V=\pi\displaystyle\int_a^b(f^2-g^2)\,dx$, không phải $\pi\displaystyle\int_a^b(f-g)^2dx$.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Tính thể tích khối tròn xoay tạo thành khi quay hình phẳng giới hạn bởi $y=\sqrt x$, trục $Ox$ và đường thẳng $x=4$ quanh trục $Ox$.`,
+   giai: [
+    R`$\sqrt x=0\Leftrightarrow x=0$, nên hai cận là $0$ và $4$.`,
+    R`$V=\pi\displaystyle\int_0^4\left(\sqrt x\right)^2dx=\pi\int_0^4x\,dx=\pi\cdot\dfrac{x^2}2\Big|_0^4=8\pi$.`
+   ] },
+ { muc: "TH", de: R`Tính thể tích khối tròn xoay tạo thành khi quay hình phẳng giới hạn bởi $y=2x-x^2$ và trục $Ox$ quanh trục $Ox$.`,
+   giai: [
+    R`$2x-x^2=0\Leftrightarrow x=0$ hoặc $x=2$.`,
+    R`Bình phương: $(2x-x^2)^2=4x^2-4x^3+x^4$.`,
+    R`$V=\pi\displaystyle\int_0^2(4x^2-4x^3+x^4)\,dx=\pi\left(\dfrac{4x^3}3-x^4+\dfrac{x^5}5\right)\Big|_0^2=\pi\left(\dfrac{32}3-16+\dfrac{32}5\right)$.`,
+    R`Quy đồng mẫu $15$: $\dfrac{160-240+96}{15}=\dfrac{16}{15}$. **Kết quả.** $V=\dfrac{16\pi}{15}$.`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=1.4,>=stealth]
+\fill[blue!20] (0,0) plot[domain=0:2,samples=60](\x,{2*\x-\x*\x})--cycle;
+\fill[blue!8] (0,0) plot[domain=0:2,samples=60](\x,{-(2*\x-\x*\x)})--cycle;
+\draw[thick,blue,domain=0:2,samples=60] plot(\x,{2*\x-\x*\x});
+\draw[dashed,blue,domain=0:2,samples=60] plot(\x,{-(2*\x-\x*\x)});
+\draw[dashed] (1,0) ellipse (0.18 and 1);
+${TRUC(-0.4,2.6,-1.2,1.4)}
+\node[below right] at (2,0){$2$};
+\end{tikzpicture}`,
+   chuThich: R`Quay phần tô đậm quanh $Ox$; mỗi lát cắt tại $x$ là hình tròn bán kính $2x-x^2$ (elip nét đứt).` },
+ { muc: "TH", de: R`Một vật thể nằm giữa hai mặt phẳng $x=0$ và $x=3$. Cắt vật thể bởi mặt phẳng vuông góc với $Ox$ tại $x$ ($0\le x\le3$), thiết diện là hình vuông cạnh $\sqrt{9-x^2}$. Tính thể tích vật thể.`,
+   giai: [
+    R`Diện tích thiết diện: $S(x)=\left(\sqrt{9-x^2}\right)^2=9-x^2$.`,
+    R`$V=\displaystyle\int_0^3(9-x^2)\,dx=\left(9x-\dfrac{x^3}3\right)\Big|_0^3=27-9=18$.`
+   ] },
+ { muc: "VD", de: R`Dùng tích phân, chứng minh thể tích khối cầu bán kính $R$ là $V=\dfrac43\pi R^3$.`,
+   giai: [
+    R`Đặt khối cầu tâm $O$. Khối cầu được tạo khi quay nửa hình tròn giới hạn bởi $y=\sqrt{R^2-x^2}$ và trục $Ox$ quanh $Ox$, với $-R\le x\le R$.`,
+    R`$V=\pi\displaystyle\int_{-R}^R\left(R^2-x^2\right)dx=\pi\left(R^2x-\dfrac{x^3}3\right)\Big|_{-R}^R$.`,
+    R`$=\pi\left[\left(R^3-\dfrac{R^3}3\right)-\left(-R^3+\dfrac{R^3}3\right)\right]=\pi\cdot\dfrac{4R^3}3=\dfrac43\pi R^3$.`
+   ] }
+ ] },
+"C4-B13-D04": {
+ pp: [
+  R`**Bước 1.** Gắn hệ trục toạ độ hợp lí (thường lấy trục đối xứng làm trục $Oy$ hoặc trục quay làm trục $Ox$).`,
+  R`**Bước 2.** Viết phương trình đường biên (parabol $y=ax^2+c$, đường thẳng, đường tròn...) từ các số đo đã cho.`,
+  R`**Bước 3.** Dùng công thức diện tích $\displaystyle\int|f-g|$ hoặc thể tích $\pi\displaystyle\int f^2$, rồi đổi đơn vị theo yêu cầu (ví dụ $1\text{ dm}^3=1$ lít).`
+ ],
+ luuY: [
+  R`Đặt hệ trục xong nhưng viết sai phương trình parabol: luôn thử lại bằng các điểm đã biết.`,
+  R`Quên đổi đơn vị hoặc làm tròn quá sớm.`
+ ],
+ vd: [
+ { muc: "VD", de: R`Một cổng có dạng parabol, chiều cao $4$ m, khoảng cách giữa hai chân cổng là $4$ m. Tính diện tích mặt cổng.`,
+   giai: [
+    R`Đặt hệ trục: $Ox$ trùng mặt đất, $Oy$ là trục đối xứng của cổng. Hai chân cổng là $(-2;0)$, $(2;0)$, đỉnh là $(0;4)$.`,
+    R`Parabol có dạng $y=ax^2+4$. Đi qua $(2;0)$: $4a+4=0\Rightarrow a=-1$. Vậy $y=4-x^2$.`,
+    R`$S=\displaystyle\int_{-2}^2(4-x^2)\,dx=\left(4x-\dfrac{x^3}3\right)\Big|_{-2}^2=\left(8-\dfrac83\right)-\left(-8+\dfrac83\right)=\dfrac{32}3\approx10{,}67$ (m²).`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=0.7,>=stealth]
+\fill[blue!20] (-2,0) plot[domain=-2:2,samples=60](\x,{4-\x*\x})--cycle;
+\draw[thick,blue,domain=-2:2,samples=60] plot(\x,{4-\x*\x});
+${TRUC(-3,3,-0.5,5)}
+\node[below] at (-2,0){$-2$}; \node[below] at (2,0){$2$}; \node[above right] at (0,4){$4$};
+\end{tikzpicture}` },
+ { muc: "VD", de: R`Một chậu cây có dạng khối tròn xoay, tạo thành khi quay hình phẳng giới hạn bởi đường thẳng $y=\dfrac x4+1$, trục $Ox$, $x=0$ và $x=4$ quanh trục $Ox$ (đơn vị dm). Chậu chứa được bao nhiêu lít đất (làm tròn đến hàng phần trăm)?`,
+   giai: [
+    R`$V=\pi\displaystyle\int_0^4\left(\dfrac x4+1\right)^2dx=\pi\int_0^4\left(\dfrac{x^2}{16}+\dfrac x2+1\right)dx$.`,
+    R`$=\pi\left(\dfrac{x^3}{48}+\dfrac{x^2}4+x\right)\Big|_0^4=\pi\left(\dfrac{64}{48}+4+4\right)=\pi\left(\dfrac43+8\right)=\dfrac{28\pi}3$ (dm³).`,
+    R`Đổi đơn vị: $1$ dm³ $=1$ lít, nên $V=\dfrac{28\pi}3\approx29{,}32$ lít.`,
+    R`Kiểm tra: chậu là khối nón cụt bán kính đáy $1$ và $2$, cao $4$: $V=\dfrac{\pi\cdot4}3(1^2+1\cdot2+2^2)=\dfrac{28\pi}3$ ✓.`
+   ] },
+ { muc: "VD", de: R`Một mảnh vườn hình elip có trục lớn $8$ m, trục nhỏ $4$ m. Elip có phương trình $\dfrac{x^2}{16}+\dfrac{y^2}4=1$. Tính diện tích mảnh vườn.`,
+   giai: [
+    R`Phần elip ở góc phần tư thứ nhất nằm dưới đồ thị $y=\dfrac12\sqrt{16-x^2}$, $0\le x\le4$. Do đối xứng: $S=4\displaystyle\int_0^4\dfrac12\sqrt{16-x^2}\,dx=2\int_0^4\sqrt{16-x^2}\,dx$.`,
+    R`Theo ý nghĩa hình học, $\displaystyle\int_0^4\sqrt{16-x^2}\,dx$ là diện tích một phần tư hình tròn bán kính $4$: $\dfrac14\pi\cdot16=4\pi$.`,
+    R`$S=2\cdot4\pi=8\pi\approx25{,}13$ (m²). (Khớp công thức $S=\pi ab=\pi\cdot4\cdot2$.)`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=0.6,>=stealth]
+\fill[blue!20] (0,0) ellipse (4 and 2);
+\draw[thick,blue] (0,0) ellipse (4 and 2);
+${TRUC(-4.8,4.9,-2.6,2.8)}
+\node[below right] at (4,0){$4$}; \node[above right] at (0,2){$2$};
+\end{tikzpicture}` }
+ ] }
+});
 })(window);
