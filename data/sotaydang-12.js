@@ -1524,4 +1524,182 @@ Object.assign(D, {
    ] }
  ] }
 });
+/* ---------- Chương III · Các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm ---------- */
+const BANG1 = R`$$\begin{array}{|c|c|c|c|c|c|}\hline \text{Thời gian (phút)}&[0;20)&[20;40)&[40;60)&[60;80)&[80;100)\\\hline \text{Số học sinh}&5&9&12&10&4\\\hline\end{array}$$`;
+const BANG2 = R`$$\begin{array}{|c|c|c|c|c|c|}\hline \text{Cân nặng (kg)}&[40;45)&[45;50)&[50;55)&[55;60)&[60;65)\\\hline \text{Số học sinh}&6&14&18&8&4\\\hline\end{array}$$`;
+const BANGB = R`$$\begin{array}{|c|c|c|c|c|c|}\hline \text{Thời gian (phút)}&[0;20)&[20;40)&[40;60)&[60;80)&[80;100)\\\hline \text{Lớp A}&5&9&12&10&4\\\hline \text{Lớp B}&2&10&18&8&2\\\hline\end{array}$$`;
+Object.assign(D, {
+"C3-B9-D01": {
+ pp: [
+  R`Mẫu ghép nhóm có các nhóm $[a_1;a_2),[a_2;a_3),\dots,[a_k;a_{k+1})$. **Khoảng biến thiên** $R=a_{k+1}-a_1$: lấy đầu mút phải của nhóm cuối trừ đầu mút trái của nhóm đầu (chỉ tính các nhóm có tần số khác $0$).`,
+  R`Đọc bảng hoặc biểu đồ: cột cao bao nhiêu thì tần số bấy nhiêu; tỉ lệ phần trăm của một nhóm bằng tần số chia cỡ mẫu $n$.`
+ ],
+ luuY: [
+  R`Lấy giá trị đại diện (giá trị giữa) của nhóm đầu, nhóm cuối để trừ: sai, phải dùng đầu mút.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Thời gian tập thể dục mỗi ngày của $40$ học sinh lớp A được ghi lại như sau:` + BANG1 + R`Tính khoảng biến thiên của mẫu số liệu.`,
+   giai: [
+    R`Nhóm đầu là $[0;20)$, có đầu mút trái $a_1=0$. Nhóm cuối là $[80;100)$, có đầu mút phải $a_6=100$.`,
+    R`$R=100-0=100$ (phút).`
+   ] },
+ { muc: "TH", de: R`Điểm kiểm tra (thang $50$) của một nhóm học sinh: $[10;15)$: $0$ em; $[15;20)$: $3$ em; $[20;25)$: $7$ em; $[25;30)$: $8$ em; $[30;35)$: $4$ em; $[35;40)$: $2$ em; $[40;45)$: $0$ em. Tính khoảng biến thiên.`,
+   giai: [
+    R`Hai nhóm $[10;15)$ và $[40;45)$ có tần số $0$ nên bỏ đi.`,
+    R`Nhóm đầu có tần số khác $0$ là $[15;20)$, nhóm cuối là $[35;40)$.`,
+    R`$R=40-15=25$ (điểm).`
+   ] },
+ { muc: "TH", de: R`Với bảng số liệu ở ví dụ 1, có bao nhiêu phần trăm học sinh tập thể dục từ $60$ phút trở lên mỗi ngày?`,
+   giai: [
+    R`Số học sinh tập từ $60$ phút trở lên thuộc hai nhóm $[60;80)$ và $[80;100)$: $10+4=14$ em.`,
+    R`Tỉ lệ $\dfrac{14}{40}=0{,}35=35\%$.`
+   ] }
+ ] },
+
+"C3-B9-D02": {
+ pp: [
+  R`Tính cỡ mẫu $n$ và lập **tần số tích luỹ** $C_1, C_2,\dots$ (cộng dồn từ nhóm đầu).`,
+  R`Tứ phân vị thứ $k$ ($k=1,2,3$) nằm trong nhóm đầu tiên $[u_m;u_{m+1})$ có tần số tích luỹ $\ge\dfrac{kn}{4}$. Gọi $n_m$ là tần số nhóm đó, $C$ là tần số tích luỹ của nhóm **ngay trước** nó.`,
+  R`$$Q_k=u_m+\dfrac{\frac{kn}{4}-C}{n_m}\cdot\left(u_{m+1}-u_m\right).$$ Trung vị chính là $Q_2$.`
+ ],
+ luuY: [
+  R`Dùng nhầm tần số tích luỹ của chính nhóm chứa $Q_k$ thay cho nhóm đứng trước.`
+ ],
+ vd: [
+ { muc: "TH", de: R`Với mẫu số liệu thời gian tập thể dục của $40$ học sinh lớp A:` + BANG1 + R`Tìm trung vị $Q_2$.`,
+   giai: [
+    R`$n=40$. Tần số tích luỹ: $5;\ 14;\ 26;\ 36;\ 40$.`,
+    R`$\dfrac{2n}{4}=20$. Nhóm đầu tiên có tần số tích luỹ $\ge20$ là $[40;60)$ (tích luỹ $26$). Vậy $u_m=40$, $n_m=12$, $C=14$, độ dài nhóm $20$.`,
+    R`$Q_2=40+\dfrac{20-14}{12}\cdot20=40+10=50$ (phút).`
+   ] },
+ { muc: "TH", de: R`Với mẫu số liệu ở ví dụ 1, tìm $Q_1$ và $Q_3$.`,
+   giai: [
+    R`$\dfrac n4=10$: nhóm đầu tiên có tích luỹ $\ge10$ là $[20;40)$ (tích luỹ $14$); $C=5$, $n_m=9$. $Q_1=20+\dfrac{10-5}{9}\cdot20=20+\dfrac{100}{9}=\dfrac{280}{9}\approx31{,}11$ (phút).`,
+    R`$\dfrac{3n}4=30$: nhóm đầu tiên có tích luỹ $\ge30$ là $[60;80)$ (tích luỹ $36$); $C=26$, $n_m=10$. $Q_3=60+\dfrac{30-26}{10}\cdot20=60+8=68$ (phút).`
+   ] },
+ { muc: "VD", de: R`Cân nặng của $50$ học sinh được cho trong bảng:` + BANG2 + R`Tìm các tứ phân vị của mẫu số liệu.`,
+   giai: [
+    R`$n=50$. Tần số tích luỹ: $6;\ 20;\ 38;\ 46;\ 50$. Độ dài mỗi nhóm là $5$.`,
+    R`$Q_1$: $\dfrac n4=12{,}5$, thuộc nhóm $[45;50)$ ($C=6$, $n_m=14$): $Q_1=45+\dfrac{12{,}5-6}{14}\cdot5=45+\dfrac{65}{28}=\dfrac{1325}{28}\approx47{,}32$ (kg).`,
+    R`$Q_2$: $\dfrac{2n}4=25$, thuộc nhóm $[50;55)$ ($C=20$, $n_m=18$): $Q_2=50+\dfrac{25-20}{18}\cdot5=50+\dfrac{25}{18}=\dfrac{925}{18}\approx51{,}39$ (kg).`,
+    R`$Q_3$: $\dfrac{3n}4=37{,}5$, thuộc nhóm $[50;55)$: $Q_3=50+\dfrac{37{,}5-20}{18}\cdot5=50+\dfrac{175}{36}=\dfrac{1975}{36}\approx54{,}86$ (kg).`
+   ] }
+ ] },
+
+"C3-B9-D03": {
+ pp: [
+  R`**Khoảng tứ phân vị** $\Delta_Q=Q_3-Q_1$: độ rộng của "nửa giữa" số liệu; càng nhỏ thì phần giữa của mẫu càng tập trung.`,
+  R`**Giá trị ngoại lệ:** giá trị nhỏ hơn $Q_1-1{,}5\Delta_Q$ hoặc lớn hơn $Q_3+1{,}5\Delta_Q$.`,
+  R`So sánh hai mẫu: mẫu nào có $\Delta_Q$ (hoặc khoảng biến thiên) nhỏ hơn thì đồng đều hơn.`
+ ],
+ luuY: [
+  R`So sánh độ phân tán bằng số trung bình: số trung bình không đo độ phân tán.`
+ ],
+ vd: [
+ { muc: "TH", de: R`Với mẫu số liệu thời gian tập thể dục của lớp A ($Q_1=\dfrac{280}{9}$, $Q_3=68$, xem dạng C3-B9-D02), tính khoảng tứ phân vị.`,
+   giai: [
+    R`$\Delta_Q=Q_3-Q_1=68-\dfrac{280}{9}=\dfrac{612-280}{9}=\dfrac{332}{9}\approx36{,}89$ (phút).`
+   ] },
+ { muc: "TH", de: R`Mẫu số liệu của lớp A có giá trị ngoại lệ không?`,
+   giai: [
+    R`$1{,}5\Delta_Q=1{,}5\cdot\dfrac{332}{9}=\dfrac{166}{3}\approx55{,}33$.`,
+    R`$Q_1-1{,}5\Delta_Q\approx31{,}11-55{,}33<0$ và $Q_3+1{,}5\Delta_Q\approx68+55{,}33=123{,}33$.`,
+    R`Mọi số liệu nằm trong $[0;100)$, tức nằm giữa hai ngưỡng trên, nên mẫu không có giá trị ngoại lệ.`
+   ] },
+ { muc: "VD", de: R`Thời gian tập thể dục mỗi ngày của học sinh hai lớp A và B được cho trong bảng:` + BANGB + R`Dựa vào khoảng tứ phân vị, lớp nào có thời gian tập đồng đều hơn?`,
+   giai: [
+    R`Lớp A: $\Delta_Q=\dfrac{332}{9}\approx36{,}89$ (ví dụ 1).`,
+    R`Lớp B: $n=40$, tích luỹ $2;\ 12;\ 30;\ 38;\ 40$. $Q_1$ thuộc $[20;40)$: $Q_1=20+\dfrac{10-2}{10}\cdot20=36$. $Q_3$ thuộc $[40;60)$: $Q_3=40+\dfrac{30-12}{18}\cdot20=60$.`,
+    R`Lớp B: $\Delta_Q=60-36=24$.`,
+    R`**Kết luận.** $24<36{,}89$ nên thời gian tập của lớp B đồng đều hơn lớp A.`
+   ] }
+ ] },
+
+"C3-B10-D01": {
+ pp: [
+  R`Lấy **giá trị đại diện** $x_i$ của mỗi nhóm là trung điểm của nhóm; $n_i$ là tần số, $n$ là cỡ mẫu.`,
+  R`Số trung bình $\overline x=\dfrac{n_1x_1+n_2x_2+\dots+n_kx_k}{n}$.`,
+  R`Phương sai $s^2=\dfrac{n_1x_1^2+\dots+n_kx_k^2}{n}-\overline x^2$ (hoặc $\dfrac1n\sum n_i(x_i-\overline x)^2$). Độ lệch chuẩn $s=\sqrt{s^2}$.`
+ ],
+ luuY: [
+  R`Quên trừ $\overline x^2$, hoặc lấy đầu mút nhóm thay cho giá trị đại diện.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Tính thời gian tập thể dục trung bình của học sinh lớp A:` + BANG1,
+   giai: [
+    R`Giá trị đại diện: $10;\ 30;\ 50;\ 70;\ 90$.`,
+    R`$\overline x=\dfrac{5\cdot10+9\cdot30+12\cdot50+10\cdot70+4\cdot90}{40}=\dfrac{50+270+600+700+360}{40}=\dfrac{1980}{40}=49{,}5$ (phút).`
+   ] },
+ { muc: "TH", de: R`Tính phương sai và độ lệch chuẩn của mẫu số liệu ở ví dụ 1.`,
+   giai: [
+    R`$\sum n_ix_i^2=5\cdot100+9\cdot900+12\cdot2500+10\cdot4900+4\cdot8100=500+8100+30000+49000+32400=120\,000$.`,
+    R`$s^2=\dfrac{120\,000}{40}-49{,}5^2=3000-2450{,}25=549{,}75$.`,
+    R`$s=\sqrt{549{,}75}\approx23{,}45$ (phút).`
+   ] },
+ { muc: "VD", de: R`Tính cân nặng trung bình và độ lệch chuẩn của mẫu số liệu sau:` + BANG2,
+   giai: [
+    R`Giá trị đại diện: $42{,}5;\ 47{,}5;\ 52{,}5;\ 57{,}5;\ 62{,}5$; $n=50$.`,
+    R`$\overline x=\dfrac{6\cdot42{,}5+14\cdot47{,}5+18\cdot52{,}5+8\cdot57{,}5+4\cdot62{,}5}{50}=\dfrac{255+665+945+460+250}{50}=\dfrac{2575}{50}=51{,}5$ (kg).`,
+    R`$\sum n_ix_i^2=6\cdot1806{,}25+14\cdot2256{,}25+18\cdot2756{,}25+8\cdot3306{,}25+4\cdot3906{,}25=134\,112{,}5$.`,
+    R`$s^2=\dfrac{134\,112{,}5}{50}-51{,}5^2=2682{,}25-2652{,}25=30$; $s=\sqrt{30}\approx5{,}48$ (kg).`
+   ] }
+ ] },
+
+"C3-B10-D02": {
+ pp: [
+  R`Độ lệch chuẩn (phương sai) càng **nhỏ** thì số liệu càng **tập trung** quanh số trung bình, tức càng ổn định, đồng đều.`,
+  R`Trong đầu tư, độ lệch chuẩn của lợi nhuận dùng để đo **rủi ro**: cùng lợi nhuận trung bình, độ lệch chuẩn lớn hơn thì rủi ro cao hơn.`,
+  R`So sánh hai mẫu cùng đơn vị: tính (hoặc đọc) độ lệch chuẩn của mỗi mẫu rồi so sánh.`
+ ],
+ luuY: [
+  R`Kết luận "ổn định hơn" dựa vào số trung bình lớn hơn.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Hai xạ thủ có điểm trung bình bằng nhau; độ lệch chuẩn điểm của xạ thủ thứ nhất là $1{,}2$, của xạ thủ thứ hai là $2{,}5$. Xạ thủ nào bắn ổn định hơn?`,
+   giai: [
+    R`Độ lệch chuẩn nhỏ hơn thì điểm tập trung quanh trung bình hơn.`,
+    R`$1{,}2<2{,}5$ nên xạ thủ thứ nhất bắn ổn định hơn.`
+   ] },
+ { muc: "TH", de: R`Hai mã cổ phiếu X và Y có lợi nhuận trung bình hằng tháng cùng là $8\%$; độ lệch chuẩn lợi nhuận lần lượt là $3\%$ và $6\%$. Nên chọn mã nào nếu muốn ít rủi ro?`,
+   giai: [
+    R`Cùng lợi nhuận trung bình, mã có độ lệch chuẩn nhỏ hơn thì lợi nhuận ít dao động, rủi ro thấp hơn.`,
+    R`$3\%<6\%$ nên chọn mã X.`
+   ] },
+ { muc: "VD", de: R`Dùng độ lệch chuẩn để so sánh mức độ đồng đều về thời gian tập thể dục của hai lớp A và B:` + BANGB,
+   giai: [
+    R`Lớp A: $s_A\approx23{,}45$ phút (xem Dạng 1).`,
+    R`Lớp B: $\overline x_B=\dfrac{2\cdot10+10\cdot30+18\cdot50+8\cdot70+2\cdot90}{40}=\dfrac{1960}{40}=49$.`,
+    R`$\sum n_ix_i^2=2\cdot100+10\cdot900+18\cdot2500+8\cdot4900+2\cdot8100=109\,600$; $s_B^2=\dfrac{109\,600}{40}-49^2=2740-2401=339$; $s_B\approx18{,}41$.`,
+    R`**Kết luận.** $s_B<s_A$ nên thời gian tập của lớp B đồng đều hơn (cùng kết luận với khoảng tứ phân vị).`
+   ] }
+ ] },
+
+"C3-B10-D03": {
+ pp: [
+  R`Nếu mỗi số liệu biến đổi theo $y=ax+b$ thì $\overline y=a\overline x+b$, $s_y^2=a^2s_x^2$, $s_y=|a|\,s_x$. Cộng thêm một hằng số không làm đổi độ lệch chuẩn.`,
+  R`**Tìm tần số chưa biết:** viết công thức số trung bình (hoặc tứ phân vị) theo ẩn, cho bằng giá trị đề cho rồi giải phương trình.`
+ ],
+ luuY: [
+  R`Cho rằng cộng thêm $5$ vào mỗi số liệu thì độ lệch chuẩn cũng tăng $5$.`
+ ],
+ vd: [
+ { muc: "TH", de: R`Nhiệt độ trung bình các ngày trong tháng ở một thành phố là $25^\circ$C với độ lệch chuẩn $2^\circ$C. Đổi sang độ F theo công thức $F=1{,}8C+32$. Tính nhiệt độ trung bình và độ lệch chuẩn theo độ F.`,
+   giai: [
+    R`$\overline F=1{,}8\cdot25+32=45+32=77$ (°F).`,
+    R`$s_F=|1{,}8|\cdot s_C=1{,}8\cdot2=3{,}6$ (°F).`
+   ] },
+ { muc: "TH", de: R`Một lớp có điểm trung bình môn Toán là $6{,}2$, độ lệch chuẩn $1{,}5$. Thầy cộng thêm $0{,}5$ điểm cho mọi học sinh. Điểm trung bình và độ lệch chuẩn mới là bao nhiêu?`,
+   giai: [
+    R`Biến đổi $y=x+0{,}5$ ($a=1$, $b=0{,}5$).`,
+    R`$\overline y=6{,}2+0{,}5=6{,}7$; $s_y=1\cdot1{,}5=1{,}5$ (không đổi).`
+   ] },
+ { muc: "VD", de: R`Cho mẫu số liệu ghép nhóm: $[0;10)$: $3$; $[10;20)$: $x$; $[20;30)$: $5$; $[30;40)$: $2$. Biết số trung bình của mẫu bằng $19$. Tìm $x$.`,
+   giai: [
+    R`Giá trị đại diện $5;\ 15;\ 25;\ 35$; cỡ mẫu $n=10+x$.`,
+    R`$\overline x=\dfrac{3\cdot5+15x+5\cdot25+2\cdot35}{10+x}=\dfrac{210+15x}{10+x}$.`,
+    R`$\dfrac{210+15x}{10+x}=19\Leftrightarrow210+15x=190+19x\Leftrightarrow4x=20\Leftrightarrow x=5$.`,
+    R`Thử lại: $n=15$, $\overline x=\dfrac{15+75+125+70}{15}=\dfrac{285}{15}=19$ ✓.`
+   ] }
+ ] }
+});
 })(window);

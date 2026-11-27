@@ -130,7 +130,7 @@
 .stv .pp ol{margin:4px 0 0;padding-left:22px}
 .stv .vdm{border-top:1px dashed #dfe3ee;padding:10px 0 4px}
 .stv .vdm:first-of-type{border-top:0}
-.stv .vdm .de{margin:4px 0 2px}
+.stv .vdm .de{margin:4px 0 2px;overflow-x:auto}
 .stv em.muc{font-style:normal;font-size:12px;font-weight:700;padding:1px 8px;border-radius:99px;background:#e8eefc;color:#2a4fb0;margin-left:4px}
 .stv em.m-TH{background:#fff3d6;color:#8a5a00}.stv em.m-VD,.stv em.m-VDC{background:#ffe5ea;color:#a3123a}
 .stv figure.hnv{margin:10px 0 0;display:flex;flex-direction:column;align-items:center;gap:6px;overflow-x:auto}
