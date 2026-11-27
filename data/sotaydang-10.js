@@ -1005,4 +1005,137 @@ Object.assign(D, {
    ] }
  ] }
 });
+/* ---------- Chương V · Các số đặc trưng của mẫu số liệu không ghép nhóm ---------- */
+Object.assign(D, {
+"C5-B12-D29": {
+ pp: [
+  R`$a$ là số gần đúng của số đúng $\bar a$. **Sai số tuyệt đối** $\Delta_a=|\bar a-a|$. Nếu $\Delta_a\le d$ thì $d$ là **độ chính xác**, viết $\bar a=a\pm d$.`,
+  R`**Sai số tương đối** $\delta_a=\dfrac{\Delta_a}{|a|}\le\dfrac d{|a|}$; sai số tương đối càng nhỏ thì phép đo càng chính xác.`,
+  R`**Quy tròn đến một hàng:** chữ số ngay sau hàng đó $\ge5$ thì cộng $1$ vào hàng đó, $<5$ thì giữ nguyên; các chữ số sau bỏ đi (phần thập phân) hoặc thay bằng $0$ (phần nguyên).`,
+  R`**Biết độ chính xác $d$ mà không nói hàng:** quy tròn đến **hàng thấp nhất** mà $d$ nhỏ hơn một đơn vị của hàng đó.`
+ ],
+ luuY: [
+  R`So sánh độ chính xác hai phép đo khác đơn vị, khác độ lớn: phải so **sai số tương đối**, không so $d$.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Quy tròn $3{,}14159$ đến hàng phần trăm và $1\,234\,567$ đến hàng nghìn.`,
+   giai: [
+    R`$3{,}14159$: chữ số sau hàng phần trăm là $1<5$, giữ nguyên: $3{,}14$.`,
+    R`$1\,234\,567$: chữ số sau hàng nghìn là $5\ge5$, cộng $1$: $1\,235\,000$.`
+   ] },
+ { muc: "TH", de: R`Lấy $\sqrt2\approx1{,}41$. Đánh giá sai số tuyệt đối, biết $1{,}414<\sqrt2<1{,}415$.`,
+   giai: [
+    R`$1{,}414-1{,}41<\sqrt2-1{,}41<1{,}415-1{,}41$, tức $0{,}004<\Delta<0{,}005$.`,
+    R`Vậy sai số tuyệt đối không vượt quá $0{,}005$.`
+   ] },
+ { muc: "TH", de: R`Cho số gần đúng $a=2\,841\,275$ với độ chính xác $d=300$. Hãy quy tròn $a$.`,
+   giai: [
+    R`$d=300$: không nhỏ hơn $100$ (đơn vị hàng trăm) nhưng nhỏ hơn $1000$ (đơn vị hàng nghìn).`,
+    R`Quy tròn đến hàng nghìn: chữ số sau là $2<5$: $a\approx2\,841\,000$.`
+   ] },
+ { muc: "VD", de: R`Đo chiều dài cây cầu được $152\pm0{,}2$ m và chiều dài cái bút được $15\pm0{,}1$ cm. Phép đo nào chính xác hơn?`,
+   giai: [
+    R`Cầu: $\delta\le\dfrac{0{,}2}{152}\approx0{,}13\%$.`,
+    R`Bút: $\delta\le\dfrac{0{,}1}{15}\approx0{,}67\%$.`,
+    R`Sai số tương đối của phép đo cầu nhỏ hơn: **đo cầu chính xác hơn** (dù $d$ lớn hơn).`
+   ] }
+ ] },
+"C5-B13-D30": {
+ pp: [
+  R`**Bước 0.** Sắp xếp mẫu theo thứ tự không giảm: $x_1\le x_2\le\dots\le x_n$.`,
+  R`**Số trung bình:** $\bar x=\dfrac{x_1+\dots+x_n}n$; với bảng tần số: $\bar x=\dfrac{n_1x_1+\dots+n_kx_k}n$.`,
+  R`**Trung vị $M_e$:** $n$ lẻ thì là số ở giữa; $n$ chẵn thì là trung bình cộng hai số ở giữa.`,
+  R`**Tứ phân vị:** $Q_2=M_e$; $Q_1$ là trung vị nửa dưới, $Q_3$ là trung vị nửa trên (khi $n$ lẻ, **không** tính $M_e$ vào hai nửa).`,
+  R`**Mốt $M_o$:** giá trị có tần số lớn nhất (có thể có nhiều mốt).`
+ ],
+ luuY: [
+  R`Quên sắp xếp trước khi tìm trung vị, tứ phân vị.`,
+  R`Với bảng tần số, phải đếm theo vị trí cộng dồn, không lấy giá trị ở giữa bảng.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Cho mẫu: $5;\ 7;\ 8;\ 8;\ 9;\ 10;\ 12;\ 14;\ 18$. Tìm số trung bình, trung vị, mốt.`,
+   giai: [
+    R`$\bar x=\dfrac{91}9\approx10{,}11$.`,
+    R`$n=9$ lẻ: $M_e$ là số thứ $5$: $M_e=9$.`,
+    R`Giá trị $8$ xuất hiện $2$ lần, nhiều nhất: $M_o=8$.`
+   ] },
+ { muc: "TH", de: R`Tìm tứ phân vị của mẫu ở ví dụ trên.`,
+   giai: [
+    R`$Q_2=M_e=9$.`,
+    R`Nửa dưới (bỏ $9$): $5;7;8;8$ nên $Q_1=\dfrac{7+8}2=7{,}5$.`,
+    R`Nửa trên: $10;12;14;18$ nên $Q_3=\dfrac{12+14}2=13$.`
+   ] },
+ { muc: "TH", de: R`Điểm kiểm tra của $10$ bạn: $6;\ 7;\ 7;\ 8;\ 8;\ 8;\ 9;\ 9;\ 10;\ 5$. Tìm $\bar x$, $M_e$, $Q_1$, $Q_3$.`,
+   giai: [
+    R`Sắp xếp: $5;6;7;7;8;8;8;9;9;10$. $\bar x=\dfrac{77}{10}=7{,}7$.`,
+    R`$n=10$ chẵn: $M_e=\dfrac{8+8}2=8$.`,
+    R`Nửa dưới $5;6;7;7;8$: $Q_1=7$. Nửa trên $8;8;9;9;10$: $Q_3=9$.`
+   ] },
+ { muc: "VD", de: R`Khảo sát số con của $20$ gia đình: $$\begin{array}{c|ccccc}\text{Số con}&0&1&2&3&4\\\hline\text{Số gia đình}&2&5&8&4&1\end{array}$$ Tìm $\bar x$, $M_e$, $M_o$, $Q_1$, $Q_3$.`,
+   giai: [
+    R`$\bar x=\dfrac{0\cdot2+1\cdot5+2\cdot8+3\cdot4+4\cdot1}{20}=\dfrac{37}{20}=1{,}85$.`,
+    R`Tần số cộng dồn: $2;\ 7;\ 15;\ 19;\ 20$. Vị trí $10$ và $11$ đều có giá trị $2$: $M_e=2$.`,
+    R`$Q_1$: trung vị $10$ số đầu, là trung bình số thứ $5$, $6$ (đều bằng $1$): $Q_1=1$.`,
+    R`$Q_3$: trung bình số thứ $15$ (bằng $2$) và $16$ (bằng $3$): $Q_3=2{,}5$.`,
+    R`$M_o=2$ (tần số $8$ lớn nhất).`
+   ] }
+ ] },
+"C5-B14-D31": {
+ pp: [
+  R`**Khoảng biến thiên:** $R=x_{\max}-x_{\min}$.`,
+  R`**Khoảng tứ phân vị:** $\Delta_Q=Q_3-Q_1$ (độ phân tán của nửa giữa mẫu, ít bị ảnh hưởng bởi giá trị bất thường).`,
+  R`**Giá trị bất thường:** $x>Q_3+1{,}5\Delta_Q$ hoặc $x<Q_1-1{,}5\Delta_Q$.`
+ ],
+ luuY: [
+  R`$R$ rất nhạy với giá trị bất thường; muốn đo độ phân tán ổn định hơn thì dùng $\Delta_Q$.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Với mẫu $5;7;8;8;9;10;12;14;18$ (có $Q_1=7{,}5$, $Q_3=13$), tính $R$ và $\Delta_Q$.`,
+   giai: [
+    R`$R=18-5=13$; $\Delta_Q=13-7{,}5=5{,}5$.`
+   ] },
+ { muc: "TH", de: R`Mẫu trên có giá trị bất thường không?`,
+   giai: [
+    R`$Q_3+1{,}5\Delta_Q=13+8{,}25=21{,}25$; $Q_1-1{,}5\Delta_Q=7{,}5-8{,}25=-0{,}75$.`,
+    R`Mọi giá trị nằm trong $[-0{,}75;21{,}25]$: **không** có giá trị bất thường.`
+   ] },
+ { muc: "VD", de: R`Thời gian (phút) chạy về đích của $9$ bạn: $12;13;14;15;15;16;17;18;40$. Tìm giá trị bất thường.`,
+   giai: [
+    R`$n=9$: $M_e=15$. Nửa dưới $12;13;14;15$: $Q_1=13{,}5$. Nửa trên $16;17;18;40$: $Q_3=17{,}5$.`,
+    R`$\Delta_Q=4$; $Q_3+1{,}5\Delta_Q=23{,}5$; $Q_1-1{,}5\Delta_Q=7{,}5$.`,
+    R`$40>23{,}5$: giá trị $40$ là **bất thường**.`,
+    R`Nhận xét: $R=40-12=28$ bị đẩy lên rất lớn chỉ vì một giá trị, còn $\Delta_Q=4$ vẫn phản ánh đúng nhóm chính.`
+   ] }
+ ] },
+"C5-B14-D32": {
+ pp: [
+  R`**Phương sai:** $s^2=\dfrac1n\sum(x_i-\bar x)^2=\dfrac1n\sum x_i^2-\bar x^2$ (bảng tần số: nhân thêm tần số $n_i$).`,
+  R`**Độ lệch chuẩn:** $s=\sqrt{s^2}$, cùng đơn vị với số liệu.`,
+  R`**Các bước:** tính $\bar x$; lập cột $x_i-\bar x$ và $(x_i-\bar x)^2$; cộng lại, chia $n$.`,
+  R`**So sánh độ ổn định:** hai mẫu cùng trung bình, mẫu nào có $s$ nhỏ hơn thì **ổn định (đồng đều) hơn**.`
+ ],
+ luuY: [
+  R`Quên lấy căn khi đề hỏi độ lệch chuẩn; hoặc chia cho $n-1$ (chương trình lớp 10 chia cho $n$).`
+ ],
+ vd: [
+ { muc: "NB", de: R`Tính phương sai và độ lệch chuẩn của mẫu $2;4;6;8;10$.`,
+   giai: [
+    R`$\bar x=6$. Các độ lệch: $-4;-2;0;2;4$; bình phương: $16;4;0;4;16$.`,
+    R`$s^2=\dfrac{40}5=8$; $s=2\sqrt2\approx2{,}83$.`
+   ] },
+ { muc: "TH", de: R`Tính phương sai của mẫu cho bởi bảng $$\begin{array}{c|ccccc}x&5&6&7&8&9\\\hline n&1&2&4&2&1\end{array}$$`,
+   giai: [
+    R`$n=10$; $\bar x=\dfrac{5+12+28+16+9}{10}=7$.`,
+    R`$\sum n_i(x_i-\bar x)^2=1\cdot4+2\cdot1+4\cdot0+2\cdot1+1\cdot4=12$.`,
+    R`$s^2=\dfrac{12}{10}=1{,}2$; $s\approx1{,}10$.`
+   ] },
+ { muc: "VD", de: R`Điểm $6$ bài kiểm tra của An: $7;8;7;8;7;8$; của Bình: $5;10;6;9;7;8$. Ai học đều hơn?`,
+   giai: [
+    R`Cả hai có $\bar x=\dfrac{45}6=7{,}5$.`,
+    R`An: mọi độ lệch là $\pm0{,}5$: $s^2_A=0{,}25$, $s_A=0{,}5$.`,
+    R`Bình: độ lệch $\pm2{,}5;\pm1{,}5;\pm0{,}5$: $s^2_B=\dfrac{2(6{,}25+2{,}25+0{,}25)}6=\dfrac{17{,}5}6\approx2{,}92$, $s_B\approx1{,}71$.`,
+    R`$s_A<s_B$: **An học đều hơn**.`
+   ] }
+ ] }
+});
 })(window);
