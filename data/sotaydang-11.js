@@ -1807,21 +1807,28 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Gieo một con xúc xắc. $A$: "số chấm chẵn", $B$: "số chấm không nhỏ hơn $4$", $C$: "xuất hiện mặt $1$ chấm". Mô tả $A\cup B$, $AB$; hỏi $A$ và $C$ có xung khắc không?`,
    giai: [
-    R`$A=\{2;4;6\}$, $B=\{4;5;6\}$, $C=\{1\}$.`,
-    R`$A\cup B=\{2;4;5;6\}$; $AB=\{4;6\}$.`,
-    R`$AC=\varnothing$ nên $A$ và $C$ xung khắc.`
+    R`**Phân tích.** Liệt kê mỗi biến cố thành **tập hợp các kết quả**. Hợp $A\cup B$ là "$A$ hoặc $B$", giao $AB$ là "cả $A$ và $B$". Hai biến cố xung khắc khi giao của chúng rỗng.`,
+    R`**Bước 1.** $A=\{2;4;6\}$, $B=\{4;5;6\}$, $C=\{1\}$.`,
+    R`**Bước 2.** $A\cup B=\{2;4;5;6\}$; $AB=\{4;6\}$.`,
+    R`**Bước 3.** $AC=\varnothing$ nên $A$ và $C$ xung khắc.`,
+    R`**Kết luận.** $A\cup B=\{2;4;5;6\}$, $AB=\{4;6\}$; $A$ và $C$ xung khắc.`
    ] },
  { muc: "TH", de: R`Hai xạ thủ bắn mỗi người một viên vào bia. Gọi $A$: "người thứ nhất bắn trúng", $B$: "người thứ hai bắn trúng". Biểu diễn theo $A$, $B$ các biến cố: a) ít nhất một người bắn trúng; b) cả hai đều trượt; c) chỉ người thứ nhất bắn trúng; d) đúng một người bắn trúng.`,
    giai: [
-    R`a) $A\cup B$.`,
-    R`b) $\overline A\,\overline B$.`,
-    R`c) $A\overline B$.`,
-    R`d) $A\overline B\cup\overline AB$ (hai biến cố này xung khắc).`
+    R`**Phân tích.** Dịch từng câu chữ sang phép toán: "ít nhất một" là **hợp**, "cả hai" là **giao**, "trượt" là **biến cố đối** $\overline A$. "Đúng một người" gồm hai trường hợp rời nhau.`,
+    R`**Bước 1.** a) $A\cup B$.`,
+    R`**Bước 2.** b) $\overline A\,\overline B$.`,
+    R`**Bước 3.** c) $A\overline B$.`,
+    R`**Bước 4.** d) $A\overline B\cup\overline AB$ (hai biến cố này xung khắc).`,
+    R`**Kết luận.** a) $A\cup B$; b) $\overline A\,\overline B$; c) $A\overline B$; d) $A\overline B\cup\overline AB$.`
    ] },
  { muc: "TH", de: R`Xét xem hai biến cố sau có độc lập không: a) Tung một đồng xu hai lần; $A$: "lần $1$ sấp", $B$: "lần $2$ sấp". b) Hộp có $3$ bi đỏ, $2$ bi xanh, lấy lần lượt $2$ bi **không hoàn lại**; $A$: "lần $1$ đỏ", $B$: "lần $2$ đỏ".`,
    giai: [
-    R`a) Kết quả lần $1$ không ảnh hưởng lần $2$: $A$, $B$ độc lập. Kiểm tra: $P(AB)=\dfrac14=\dfrac12\cdot\dfrac12=P(A)P(B)$.`,
-    R`b) Nếu lần $1$ đỏ, lần $2$ đỏ với xác suất $\dfrac24$; nếu lần $1$ xanh, xác suất là $\dfrac34$. Xác suất của $B$ phụ thuộc vào $A$: **không** độc lập.`
+    R`**Phân tích.** $A$, $B$ độc lập khi việc $A$ xảy ra hay không **không làm thay đổi** xác suất của $B$. Có hoàn lại hay không là chỗ quyết định.`,
+    R`**Bước 1.** a) Kết quả lần $1$ không ảnh hưởng lần $2$: $A$, $B$ độc lập. Kiểm tra: $P(AB)=\dfrac14=\dfrac12\cdot\dfrac12=P(A)P(B)$.`,
+    R`**Bước 2.** b) Nếu lần $1$ đỏ, lần $2$ đỏ với xác suất $\dfrac24$; nếu lần $1$ xanh, xác suất là $\dfrac34$. Xác suất của $B$ phụ thuộc vào $A$: **không** độc lập.`,
+    R`**Kết luận.** a) độc lập; b) không độc lập.`,
+    R`**Nhận xét.** Nếu lấy **có hoàn lại** thì hộp trở lại như cũ, và $A$, $B$ ở câu b) sẽ độc lập.`
    ] }
  ] },
 "C8-B29-D35": {
@@ -1836,23 +1843,33 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Lớp có $40$ học sinh: $20$ em thích bóng đá, $15$ em thích cầu lông, $8$ em thích cả hai. Chọn ngẫu nhiên một em. Tính xác suất em đó thích ít nhất một trong hai môn.`,
    giai: [
-    R`$P(A)=\dfrac{20}{40}$, $P(B)=\dfrac{15}{40}$, $P(AB)=\dfrac8{40}$.`,
-    R`$P(A\cup B)=\dfrac{20+15-8}{40}=\dfrac{27}{40}$.`
+    R`**Phân tích.** "Thích ít nhất một môn" là $A\cup B$. Hai biến cố **không xung khắc** (có $8$ em thích cả hai) nên dùng công thức cộng tổng quát $P(A\cup B)=P(A)+P(B)-P(AB)$.`,
+    R`**Bước 1.** $P(A)=\dfrac{20}{40}$, $P(B)=\dfrac{15}{40}$, $P(AB)=\dfrac8{40}$.`,
+    R`**Bước 2.** $P(A\cup B)=\dfrac{20+15-8}{40}=\dfrac{27}{40}$.`,
+    R`**Kết luận.** Xác suất cần tìm là $\dfrac{27}{40}$.`,
+    R`**Nhận xét.** Nếu quên trừ $P(AB)$ sẽ được $\dfrac{35}{40}$, sai vì $8$ em thích cả hai bị đếm hai lần.`
    ] },
  { muc: "TH", de: R`Hộp có $5$ bi đỏ, $4$ bi xanh, $3$ bi vàng. Lấy ngẫu nhiên một viên. Tính xác suất lấy được bi đỏ hoặc bi xanh.`,
    giai: [
-    R`"Lấy được bi đỏ" và "lấy được bi xanh" xung khắc.`,
-    R`$P=\dfrac5{12}+\dfrac4{12}=\dfrac9{12}=\dfrac34$.`
+    R`**Phân tích.** Mỗi lần chỉ lấy một viên nên không thể vừa đỏ vừa xanh: hai biến cố **xung khắc**, xác suất của hợp bằng tổng hai xác suất.`,
+    R`**Bước 1.** "Lấy được bi đỏ" và "lấy được bi xanh" xung khắc.`,
+    R`**Bước 2.** $P=\dfrac5{12}+\dfrac4{12}=\dfrac9{12}=\dfrac34$.`,
+    R`**Kết luận.** Xác suất lấy được bi đỏ hoặc xanh là $\dfrac34$.`,
+    R`**Thử lại.** Biến cố đối là "lấy được bi vàng", có xác suất $\dfrac3{12}=\dfrac14$, và $1-\dfrac14=\dfrac34$ ✓.`
    ] },
  { muc: "TH", de: R`Chọn ngẫu nhiên một số nguyên từ $1$ đến $30$. Tính xác suất số đó chia hết cho $2$ hoặc cho $3$.`,
    giai: [
-    R`$A$: "chia hết cho $2$": $15$ số. $B$: "chia hết cho $3$": $10$ số. $AB$: "chia hết cho $6$": $5$ số.`,
-    R`$P(A\cup B)=\dfrac{15+10-5}{30}=\dfrac{20}{30}=\dfrac23$.`
+    R`**Phân tích.** Số chia hết cho cả $2$ và $3$ (tức cho $6$) bị đếm hai lần, nên phải trừ đi một lần: dùng công thức cộng tổng quát.`,
+    R`**Bước 1.** $A$: "chia hết cho $2$": $15$ số. $B$: "chia hết cho $3$": $10$ số. $AB$: "chia hết cho $6$": $5$ số.`,
+    R`**Bước 2.** $P(A\cup B)=\dfrac{15+10-5}{30}=\dfrac{20}{30}=\dfrac23$.`,
+    R`**Kết luận.** Xác suất cần tìm là $\dfrac23$.`
    ] },
  { muc: "VD", de: R`Gieo hai con xúc xắc cân đối. Tính xác suất có ít nhất một con xuất hiện mặt $6$ chấm.`,
    giai: [
+    R`**Phân tích.** "Ít nhất một" thường tính nhanh qua **biến cố đối** "không con nào ra mặt $6$". Có thể kiểm tra bằng công thức cộng.`,
     R`**Cách 1 (biến cố đối).** "Không con nào ra mặt $6$" có xác suất $\dfrac56\cdot\dfrac56=\dfrac{25}{36}$. Vậy $P=1-\dfrac{25}{36}=\dfrac{11}{36}$.`,
-    R`**Cách 2 (công thức cộng).** $P(A\cup B)=\dfrac16+\dfrac16-\dfrac1{36}=\dfrac{11}{36}$ ✓.`
+    R`**Cách 2 (công thức cộng).** $P(A\cup B)=\dfrac16+\dfrac16-\dfrac1{36}=\dfrac{11}{36}$ ✓.`,
+    R`**Kết luận.** Xác suất cần tìm là $\dfrac{11}{36}$.`
    ] }
  ] },
 "C8-B30-D36": {
@@ -1868,23 +1885,34 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Hai xạ thủ bắn độc lập với xác suất trúng lần lượt $0{,}8$ và $0{,}7$. Tính xác suất cả hai cùng bắn trúng.`,
    giai: [
-    R`$P(AB)=0{,}8\cdot0{,}7=0{,}56$.`
+    R`**Phân tích.** "Cả hai cùng trúng" là giao $AB$. Hai xạ thủ bắn **độc lập** nên dùng quy tắc nhân $P(AB)=P(A)\cdot P(B)$.`,
+    R`**Bước 1.** Gọi $A$: "người thứ nhất trúng", $B$: "người thứ hai trúng"; $P(A)=0{,}8$, $P(B)=0{,}7$, $A$ và $B$ độc lập.`,
+    R`**Bước 2.** $P(AB)=P(A)\cdot P(B)=0{,}8\cdot0{,}7=0{,}56$.`,
+    R`**Kết luận.** Xác suất cả hai cùng bắn trúng là $0{,}56$.`
    ] },
  { muc: "TH", de: R`Với hai xạ thủ trên, tính xác suất: a) có ít nhất một người bắn trúng; b) có đúng một người bắn trúng.`,
    giai: [
-    R`a) Cả hai trượt: $0{,}2\cdot0{,}3=0{,}06$. Ít nhất một người trúng: $1-0{,}06=0{,}94$.`,
-    R`b) $P(A\overline B)+P(\overline AB)=0{,}8\cdot0{,}3+0{,}2\cdot0{,}7=0{,}24+0{,}14=0{,}38$.`
+    R`**Phân tích.** a) "Ít nhất một" tính qua biến cố đối "cả hai trượt". b) "Đúng một người" gồm hai trường hợp xung khắc $A\overline B$ và $\overline AB$; mỗi trường hợp dùng quy tắc nhân.`,
+    R`**Bước 1.** a) Cả hai trượt: $0{,}2\cdot0{,}3=0{,}06$. Ít nhất một người trúng: $1-0{,}06=0{,}94$.`,
+    R`**Bước 2.** b) $P(A\overline B)+P(\overline AB)=0{,}8\cdot0{,}3+0{,}2\cdot0{,}7=0{,}24+0{,}14=0{,}38$.`,
+    R`**Kết luận.** a) $0{,}94$; b) $0{,}38$.`,
+    R`**Thử lại.** "Cả hai trúng" ($0{,}56$), "đúng một" ($0{,}38$), "cả hai trượt" ($0{,}06$) phủ hết mọi khả năng: $0{,}56+0{,}38+0{,}06=1$ ✓.`
    ] },
  { muc: "VD", de: R`Một học sinh làm $4$ câu trắc nghiệm, mỗi câu có $4$ phương án và chỉ $1$ phương án đúng; học sinh chọn ngẫu nhiên. Tính xác suất: a) đúng cả $4$ câu; b) đúng ít nhất một câu.`,
    giai: [
-    R`Mỗi câu đúng với xác suất $\dfrac14$, sai với xác suất $\dfrac34$; các câu độc lập.`,
-    R`a) $\left(\dfrac14\right)^4=\dfrac1{256}$.`,
-    R`b) $1-\left(\dfrac34\right)^4=1-\dfrac{81}{256}=\dfrac{175}{256}\approx0{,}684$.`
+    R`**Phân tích.** Các câu được chọn độc lập, nên xác suất đúng (sai) nhiều câu bằng **tích** các xác suất. "Ít nhất một câu đúng" tính qua biến cố đối "sai cả $4$ câu".`,
+    R`**Bước 1.** Mỗi câu đúng với xác suất $\dfrac14$, sai với xác suất $\dfrac34$; các câu độc lập.`,
+    R`**Bước 2.** a) $\left(\dfrac14\right)^4=\dfrac1{256}$.`,
+    R`**Bước 3.** b) $1-\left(\dfrac34\right)^4=1-\dfrac{81}{256}=\dfrac{175}{256}\approx0{,}684$.`,
+    R`**Kết luận.** a) $\dfrac1{256}$; b) $\dfrac{175}{256}\approx0{,}684$.`
    ] },
  { muc: "VD", de: R`Một hệ thống gồm hai bộ phận hoạt động độc lập, độ tin cậy (xác suất hoạt động tốt) lần lượt $0{,}9$ và $0{,}95$. Tính xác suất hệ thống hoạt động nếu hai bộ phận mắc a) nối tiếp; b) song song.`,
    giai: [
-    R`a) Nối tiếp: cả hai phải hoạt động. $P=0{,}9\cdot0{,}95=0{,}855$.`,
-    R`b) Song song: chỉ hỏng khi cả hai cùng hỏng, xác suất $0{,}1\cdot0{,}05=0{,}005$. $P=1-0{,}005=0{,}995$.`
+    R`**Phân tích.** Nối tiếp: hệ chạy khi **cả hai** bộ phận chạy (giao). Song song: hệ chỉ hỏng khi **cả hai** cùng hỏng, nên tính qua biến cố đối.`,
+    R`**Bước 1.** a) Nối tiếp: cả hai phải hoạt động. $P=0{,}9\cdot0{,}95=0{,}855$.`,
+    R`**Bước 2.** b) Song song: chỉ hỏng khi cả hai cùng hỏng, xác suất $0{,}1\cdot0{,}05=0{,}005$. $P=1-0{,}005=0{,}995$.`,
+    R`**Kết luận.** a) $0{,}855$; b) $0{,}995$.`,
+    R`**Nhận xét.** Mắc song song tin cậy hơn hẳn: đó là lí do các hệ thống quan trọng luôn có bộ phận dự phòng.`
    ] }
  ] }
 });
