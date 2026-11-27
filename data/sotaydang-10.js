@@ -2429,17 +2429,27 @@ Object.assign(D, {
  ],
  vd: [
  { muc: "NB", de: R`Một bạn có $5$ áo và $3$ quần. a) Có bao nhiêu cách chọn một bộ quần áo? b) Có bao nhiêu cách chọn một món (áo hoặc quần)?`,
-   giai: [ R`a) Chọn áo **và** quần: $5\cdot3=15$ cách.`, R`b) Chọn áo **hoặc** quần: $5+3=8$ cách.` ] },
+   giai: [
+    R`**Phân tích.** Phân biệt hai quy tắc: công việc gồm **các bước liên tiếp** (chọn áo **và** quần) thì dùng quy tắc **nhân**; công việc có **các phương án rời nhau** (chọn áo **hoặc** quần) thì dùng quy tắc **cộng**.`,
+    R`**Bước 1.** a) Chọn áo **và** quần: $5\cdot3=15$ cách.`,
+    R`**Bước 2.** b) Chọn áo **hoặc** quần: $5+3=8$ cách.`,
+    R`**Kết luận.** a) $15$ cách; b) $8$ cách.`
+   ] },
  { muc: "TH", de: R`Từ $A$ đến $B$ có $3$ con đường, từ $B$ đến $C$ có $4$ con đường. a) Có bao nhiêu cách đi từ $A$ đến $C$ qua $B$? b) Đi từ $A$ đến $C$ rồi về $A$ (qua $B$), không đi lại con đường đã đi, có bao nhiêu cách?`,
    giai: [
-    R`a) $3\cdot4=12$ cách.`,
-    R`b) Lượt đi: $12$ cách. Lượt về: $C\to B$ còn $3$ đường, $B\to A$ còn $2$ đường: $6$ cách.`,
-    R`Tổng: $12\cdot6=72$ cách.`
+    R`**Phân tích.** Đi qua $B$ là hai chặng liên tiếp: quy tắc nhân. Ở câu b), lượt về không được đi lại đường cũ nên mỗi chặng mất đi một con đường.`,
+    R`**Bước 1.** a) $3\cdot4=12$ cách.`,
+    R`**Bước 2.** b) Lượt đi: $12$ cách. Lượt về: $C\to B$ còn $3$ đường, $B\to A$ còn $2$ đường: $6$ cách.`,
+    R`**Bước 3.** Tổng: $12\cdot6=72$ cách.`,
+    R`**Kết luận.** a) $12$ cách; b) $72$ cách.`
    ] },
  { muc: "VD", de: R`Số $360$ có bao nhiêu ước nguyên dương?`,
    giai: [
-    R`$360=2^3\cdot3^2\cdot5$. Mỗi ước có dạng $2^a3^b5^c$ với $a\in\{0;1;2;3\}$, $b\in\{0;1;2\}$, $c\in\{0;1\}$.`,
-    R`Chọn $a$, rồi $b$, rồi $c$: $4\cdot3\cdot2=24$ ước.`
+    R`**Phân tích.** Phân tích $360$ ra thừa số nguyên tố. Mỗi ước được tạo ra bằng cách **chọn số mũ** cho từng thừa số: ba bước liên tiếp, dùng quy tắc nhân.`,
+    R`**Bước 1.** $360=2^3\cdot3^2\cdot5$. Mỗi ước có dạng $2^a3^b5^c$ với $a\in\{0;1;2;3\}$, $b\in\{0;1;2\}$, $c\in\{0;1\}$.`,
+    R`**Bước 2.** Chọn $a$, rồi $b$, rồi $c$: $4\cdot3\cdot2=24$ ước.`,
+    R`**Kết luận.** $360$ có $24$ ước nguyên dương.`,
+    R`**Nhận xét.** Công thức chung: $n=p_1^{a_1}\cdots p_k^{a_k}$ có $(a_1+1)\cdots(a_k+1)$ ước dương.`
    ] }
  ] },
 "C8-B23-D56": {
@@ -2453,20 +2463,30 @@ Object.assign(D, {
  ],
  vd: [
  { muc: "NB", de: R`Từ các chữ số $1;2;3;4;5$ lập được bao nhiêu số có $3$ chữ số? Bao nhiêu số có $3$ chữ số khác nhau?`,
-   giai: [ R`Không cần khác nhau: $5\cdot5\cdot5=125$ số.`, R`Khác nhau: $5\cdot4\cdot3=60$ số.` ] },
+   giai: [
+    R`**Phân tích.** Lập số là chọn lần lượt từng chữ số (quy tắc nhân). "Khác nhau" thì mỗi lần chọn bớt đi một chữ số đã dùng.`,
+    R`**Bước 1.** Không cần khác nhau: $5\cdot5\cdot5=125$ số.`,
+    R`**Bước 2.** Khác nhau: $5\cdot4\cdot3=60$ số.`,
+    R`**Kết luận.** $125$ số có $3$ chữ số; $60$ số có $3$ chữ số khác nhau.`
+   ] },
  { muc: "TH", de: R`Từ các chữ số $0;1;2;3;4;5$ lập được bao nhiêu số có $4$ chữ số khác nhau? Trong đó bao nhiêu số chẵn?`,
    giai: [
-    R`$a_1\ne0$: $5$ cách; $a_2$: $5$ cách; $a_3$: $4$; $a_4$: $3$. Có $5\cdot5\cdot4\cdot3=300$ số.`,
-    R`Số chẵn, trường hợp $a_4=0$: $a_1,a_2,a_3$ chọn từ $5$ chữ số còn lại: $5\cdot4\cdot3=60$.`,
-    R`Trường hợp $a_4\in\{2;4\}$ ($2$ cách): $a_1$ khác $0$ và khác $a_4$: $4$ cách; $a_2$: $4$; $a_3$: $3$. Có $2\cdot4\cdot4\cdot3=96$.`,
-    R`Tổng số chẵn: $60+96=156$.`
+    R`**Phân tích.** Có chữ số $0$ nên chữ số đầu phải khác $0$: **chọn chữ số đầu trước**. Với số chẵn, chữ số cuối có hai loại ảnh hưởng khác nhau tới chữ số đầu ($0$ hay khác $0$), nên **chia trường hợp** theo chữ số cuối.`,
+    R`**Bước 1.** $a_1\ne0$: $5$ cách; $a_2$: $5$ cách; $a_3$: $4$; $a_4$: $3$. Có $5\cdot5\cdot4\cdot3=300$ số.`,
+    R`**Bước 2.** Số chẵn, trường hợp $a_4=0$: $a_1,a_2,a_3$ chọn từ $5$ chữ số còn lại: $5\cdot4\cdot3=60$.`,
+    R`**Bước 3.** Trường hợp $a_4\in\{2;4\}$ ($2$ cách): $a_1$ khác $0$ và khác $a_4$: $4$ cách; $a_2$: $4$; $a_3$: $3$. Có $2\cdot4\cdot4\cdot3=96$.`,
+    R`**Bước 4.** Tổng số chẵn: $60+96=156$.`,
+    R`**Kết luận.** Có $300$ số có $4$ chữ số khác nhau, trong đó $156$ số chẵn.`,
+    R`**Thử lại.** Số lẻ (cuối là $1;3;5$): $3\cdot4\cdot4\cdot3=144$, và $156+144=300$ ✓.`
    ] },
  { muc: "VD", de: R`Có bao nhiêu số tự nhiên có $3$ chữ số khác nhau và chia hết cho $5$?`,
    giai: [
-    R`Chữ số cuối là $0$ hoặc $5$.`,
-    R`Cuối là $0$: $a_1$ có $9$ cách, $a_2$ có $8$ cách: $72$ số.`,
-    R`Cuối là $5$: $a_1\ne0,5$: $8$ cách; $a_2$: $8$ cách: $64$ số.`,
-    R`Tổng: $72+64=136$ số.`
+    R`**Phân tích.** Chia hết cho $5$ khi tận cùng là $0$ hoặc $5$. Hai trường hợp khác nhau ở số cách chọn chữ số đầu, nên đếm riêng rồi cộng.`,
+    R`**Bước 1.** Chữ số cuối là $0$ hoặc $5$.`,
+    R`**Bước 2.** Cuối là $0$: $a_1$ có $9$ cách, $a_2$ có $8$ cách: $72$ số.`,
+    R`**Bước 3.** Cuối là $5$: $a_1\ne0,5$: $8$ cách; $a_2$: $8$ cách: $64$ số.`,
+    R`**Bước 4.** Tổng: $72+64=136$ số.`,
+    R`**Kết luận.** Có $136$ số.`
    ] }
  ] },
 "C8-B24-D57": {
@@ -2481,13 +2501,38 @@ Object.assign(D, {
  ],
  vd: [
  { muc: "NB", de: R`Tính $P_5$, $A_5^2$, $C_5^2$.`,
-   giai: [ R`$P_5=120$; $A_5^2=5\cdot4=20$; $C_5^2=\dfrac{20}2=10$.` ] },
+   giai: [
+    R`**Phân tích.** Nhớ ba công thức: $P_n=n!$; $A_n^k=n(n-1)\cdots(n-k+1)$ ($k$ thừa số giảm dần); $C_n^k=\dfrac{A_n^k}{k!}$.`,
+    R`**Bước 1.** $P_5=5!=5\cdot4\cdot3\cdot2\cdot1=120$.`,
+    R`**Bước 2.** $A_5^2=5\cdot4=20$ (hai thừa số bắt đầu từ $5$).`,
+    R`**Bước 3.** $C_5^2=\dfrac{A_5^2}{2!}=\dfrac{20}2=10$.`,
+    R`**Kết luận.** $P_5=120$, $A_5^2=20$, $C_5^2=10$.`
+   ] },
  { muc: "TH", de: R`Giải phương trình $A_n^2=20$.`,
-   giai: [ R`Điều kiện $n\ge2$. $n(n-1)=20\iff n^2-n-20=0\iff n=5$ hoặc $n=-4$.`, R`Nhận $n=5$.` ] },
+   giai: [
+    R`**Phân tích.** Viết $A_n^2=n(n-1)$, giải phương trình bậc hai, chỉ nhận nghiệm **nguyên** thoả $n\ge2$.`,
+    R`**Bước 1.** Điều kiện $n\ge2$. $n(n-1)=20\iff n^2-n-20=0\iff n=5$ hoặc $n=-4$.`,
+    R`**Bước 2.** Nhận $n=5$.`,
+    R`**Kết luận.** $n=5$.`,
+    R`**Thử lại.** $A_5^2=5\cdot4=20$ ✓.`
+   ] },
  { muc: "TH", de: R`Giải phương trình $C_n^2=28$.`,
-   giai: [ R`$\dfrac{n(n-1)}2=28\iff n^2-n-56=0\iff n=8$ hoặc $n=-7$. Nhận $n=8$.` ] },
+   giai: [
+    R`**Phân tích.** Viết $C_n^2=\dfrac{n(n-1)}2$ để được phương trình bậc hai; nhớ điều kiện $n$ nguyên, $n\ge2$.`,
+    R`**Bước 1.** Điều kiện $n\in\mathbb N$, $n\ge2$.`,
+    R`**Bước 2.** $\dfrac{n(n-1)}2=28\iff n^2-n-56=0\iff n=8$ hoặc $n=-7$.`,
+    R`**Bước 3.** Đối chiếu điều kiện: loại $n=-7$.`,
+    R`**Kết luận.** $n=8$.`,
+    R`**Thử lại.** $C_8^2=\dfrac{8\cdot7}2=28$ ✓.`
+   ] },
  { muc: "VD", de: R`Giải phương trình $C_n^1+C_n^2=21$.`,
-   giai: [ R`Điều kiện $n\ge2$. $n+\dfrac{n(n-1)}2=21\iff n^2+n-42=0$.`, R`$n=6$ hoặc $n=-7$. Nhận $n=6$.` ] }
+   giai: [
+    R`**Phân tích.** $C_n^1=n$, $C_n^2=\dfrac{n(n-1)}2$. Thay vào, quy đồng, được phương trình bậc hai theo $n$.`,
+    R`**Bước 1.** Điều kiện $n\ge2$. $n+\dfrac{n(n-1)}2=21\iff n^2+n-42=0$.`,
+    R`**Bước 2.** $n=6$ hoặc $n=-7$. Nhận $n=6$.`,
+    R`**Kết luận.** $n=6$.`,
+    R`**Thử lại.** $C_6^1+C_6^2=6+15=21$ ✓.`
+   ] }
  ] },
 "C8-B24-D58": {
  pp: [
@@ -2501,18 +2546,33 @@ Object.assign(D, {
  ],
  vd: [
  { muc: "NB", de: R`Có bao nhiêu cách xếp $5$ bạn thành một hàng dọc?`,
-   giai: [ R`$P_5=5!=120$ cách.` ] },
+   giai: [
+    R`**Phân tích.** Xếp **tất cả** $n$ đối tượng theo thứ tự là một hoán vị, có $n!$ cách.`,
+    R`**Bước 1.** Vị trí thứ nhất có $5$ cách chọn, thứ hai còn $4$, thứ ba $3$, thứ tư $2$, thứ năm $1$.`,
+    R`**Bước 2.** Quy tắc nhân: $5\cdot4\cdot3\cdot2\cdot1=5!=120$.`,
+    R`**Kết luận.** Có $120$ cách xếp.`
+   ] },
  { muc: "TH", de: R`Lớp có $30$ học sinh. Có bao nhiêu cách chọn một lớp trưởng, một lớp phó, một thủ quỹ (không kiêm nhiệm)? Bao nhiêu cách chọn $3$ bạn đi trực nhật?`,
-   giai: [ R`Có phân công vai trò: $A_{30}^3=30\cdot29\cdot28=24\,360$ cách.`, R`Không phân biệt vai trò: $C_{30}^3=4060$ cách.` ] },
+   giai: [
+    R`**Phân tích.** Câu hỏi then chốt: **có phân biệt thứ tự (vai trò) không?** Có vai trò khác nhau thì dùng chỉnh hợp $A$; chỉ chọn nhóm không phân vai thì dùng tổ hợp $C$.`,
+    R`**Bước 1.** Có phân công vai trò: $A_{30}^3=30\cdot29\cdot28=24\,360$ cách.`,
+    R`**Bước 2.** Không phân biệt vai trò: $C_{30}^3=4060$ cách.`,
+    R`**Kết luận.** $24\,360$ cách chọn ban cán sự; $4060$ cách chọn nhóm trực nhật.`,
+    R`**Nhận xét.** $A_{30}^3=3!\cdot C_{30}^3$: mỗi nhóm $3$ bạn có $3!=6$ cách phân vai.`
+   ] },
  { muc: "VD", de: R`Xếp $5$ nam và $4$ nữ thành một hàng ngang. Có bao nhiêu cách để a) $4$ nữ đứng cạnh nhau; b) nam nữ đứng xen kẽ?`,
    giai: [
-    R`a) Coi $4$ nữ là một khối: xếp $5$ nam và $1$ khối: $6!=720$; trong khối: $4!=24$. Tổng $720\cdot24=17\,280$.`,
-    R`b) $9$ vị trí, $5$ nam $4$ nữ xen kẽ thì nam ở vị trí lẻ $1,3,5,7,9$, nữ ở vị trí chẵn: $5!\cdot4!=2880$.`
+    R`**Phân tích.** a) "Đứng cạnh nhau": **buộc** $4$ nữ thành một khối, xếp khối cùng các bạn nam, rồi xếp bên trong khối. b) $9$ chỗ, $5$ nam $4$ nữ xen kẽ thì nam phải đứng ở hai đầu và các vị trí lẻ.`,
+    R`**Bước 1.** a) Coi $4$ nữ là một khối: xếp $5$ nam và $1$ khối: $6!=720$; trong khối: $4!=24$. Tổng $720\cdot24=17\,280$.`,
+    R`**Bước 2.** b) $9$ vị trí, $5$ nam $4$ nữ xen kẽ thì nam ở vị trí lẻ $1,3,5,7,9$, nữ ở vị trí chẵn: $5!\cdot4!=2880$.`,
+    R`**Kết luận.** a) $17\,280$ cách; b) $2880$ cách.`
    ] },
  { muc: "VD", de: R`Từ $6$ nam và $5$ nữ chọn $4$ người. Có bao nhiêu cách chọn a) có ít nhất $1$ nữ; b) có đúng $2$ nữ?`,
    giai: [
-    R`a) Tất cả: $C_{11}^4=330$; không có nữ: $C_6^4=15$. Có ít nhất $1$ nữ: $330-15=315$.`,
-    R`b) Chọn $2$ nữ và $2$ nam: $C_5^2\cdot C_6^2=10\cdot15=150$.`
+    R`**Phân tích.** a) "Ít nhất $1$" thường nhanh hơn qua **phần bù**: lấy tất cả trừ trường hợp "không có nữ". b) Chọn riêng từng nhóm rồi nhân.`,
+    R`**Bước 1.** a) Tất cả: $C_{11}^4=330$; không có nữ: $C_6^4=15$. Có ít nhất $1$ nữ: $330-15=315$.`,
+    R`**Bước 2.** b) Chọn $2$ nữ và $2$ nam: $C_5^2\cdot C_6^2=10\cdot15=150$.`,
+    R`**Kết luận.** a) $315$ cách; b) $150$ cách.`
    ] }
  ] },
 "C8-B24-D59": {
@@ -2527,16 +2587,34 @@ Object.assign(D, {
  ],
  vd: [
  { muc: "NB", de: R`Cho $10$ điểm, không có $3$ điểm nào thẳng hàng. Có bao nhiêu đoạn thẳng, bao nhiêu tam giác có đỉnh là các điểm đó?`,
-   giai: [ R`Đoạn thẳng: $C_{10}^2=45$. Tam giác: $C_{10}^3=120$.` ] },
+   giai: [
+    R`**Phân tích.** Đoạn thẳng xác định bởi $2$ điểm, tam giác bởi $3$ điểm không thẳng hàng; **không có thứ tự**, nên dùng tổ hợp.`,
+    R`**Bước 1.** Số đoạn thẳng: chọn $2$ trong $10$ điểm, $C_{10}^2=\dfrac{10\cdot9}2=45$.`,
+    R`**Bước 2.** Số tam giác: chọn $3$ trong $10$ điểm (không có $3$ điểm thẳng hàng nên mọi bộ đều tạo tam giác), $C_{10}^3=\dfrac{10\cdot9\cdot8}6=120$.`,
+    R`**Kết luận.** $45$ đoạn thẳng và $120$ tam giác.`
+   ] },
  { muc: "TH", de: R`Một đa giác lồi có $10$ cạnh có bao nhiêu đường chéo?`,
-   giai: [ R`Mỗi cặp đỉnh cho một cạnh hoặc một đường chéo: $C_{10}^2-10=45-10=35$.` ] },
+   giai: [
+    R`**Phân tích.** Mỗi cặp đỉnh nối thành một đoạn: đó là **cạnh** hoặc **đường chéo**. Lấy tổng số cặp đỉnh trừ số cạnh.`,
+    R`**Bước 1.** Số cặp đỉnh: $C_{10}^2=45$.`,
+    R`**Bước 2.** Trừ $10$ cạnh: $45-10=35$.`,
+    R`**Kết luận.** Đa giác lồi $10$ cạnh có $35$ đường chéo.`,
+    R`**Thử lại.** Công thức $\dfrac{n(n-3)}2=\dfrac{10\cdot7}2=35$ ✓.`
+   ] },
  { muc: "TH", de: R`Trên đường thẳng $d_1$ có $5$ điểm, trên $d_2\parallel d_1$ có $6$ điểm. Có bao nhiêu tam giác, bao nhiêu tứ giác (hình thang) có đỉnh lấy từ $11$ điểm đó?`,
    giai: [
-    R`Tam giác: $2$ điểm trên $d_1$, $1$ trên $d_2$: $C_5^2\cdot6=60$; $1$ trên $d_1$, $2$ trên $d_2$: $5\cdot C_6^2=75$. Tổng $135$.`,
-    R`Tứ giác: $2$ điểm mỗi đường: $C_5^2\cdot C_6^2=150$.`
+    R`**Phân tích.** Ba điểm trên cùng một đường thẳng không tạo tam giác. Vì vậy tam giác phải lấy điểm từ **cả hai** đường: chia hai trường hợp $2+1$ và $1+2$. Tứ giác lấy $2$ điểm mỗi đường (hai cạnh song song, nên là hình thang).`,
+    R`**Bước 1.** Tam giác: $2$ điểm trên $d_1$, $1$ trên $d_2$: $C_5^2\cdot6=60$; $1$ trên $d_1$, $2$ trên $d_2$: $5\cdot C_6^2=75$. Tổng $135$.`,
+    R`**Bước 2.** Tứ giác: $2$ điểm mỗi đường: $C_5^2\cdot C_6^2=150$.`,
+    R`**Kết luận.** $135$ tam giác và $150$ hình thang.`
    ] },
  { muc: "VD", de: R`Giải bóng đá có $10$ đội thi đấu vòng tròn. Có bao nhiêu trận nếu đá một lượt? Hai lượt (sân nhà, sân khách)?`,
-   giai: [ R`Một lượt: mỗi cặp đội một trận: $C_{10}^2=45$.`, R`Hai lượt: mỗi cặp có thứ tự (chủ nhà, khách): $A_{10}^2=90$.` ] }
+   giai: [
+    R`**Phân tích.** Đá một lượt: mỗi **cặp đội** gặp nhau một lần, không thứ tự (tổ hợp). Hai lượt: phân biệt chủ nhà và đội khách, có thứ tự (chỉnh hợp).`,
+    R`**Bước 1.** Một lượt: mỗi cặp đội một trận: $C_{10}^2=45$.`,
+    R`**Bước 2.** Hai lượt: mỗi cặp có thứ tự (chủ nhà, khách): $A_{10}^2=90$.`,
+    R`**Kết luận.** Một lượt có $45$ trận, hai lượt có $90$ trận.`
+   ] }
  ] },
 "C8-B25-D60": {
  pp: [
@@ -2550,18 +2628,35 @@ Object.assign(D, {
  ],
  vd: [
  { muc: "NB", de: R`Khai triển $(x+2)^4$.`,
-   giai: [ R`$x^4+4x^3\cdot2+6x^2\cdot4+4x\cdot8+16=x^4+8x^3+24x^2+32x+16$.` ] },
+   giai: [
+    R`**Phân tích.** Dùng công thức khai triển $(a+b)^4=a^4+4a^3b+6a^2b^2+4ab^3+b^4$ (hệ số $1;4;6;4;1$) với $a=x$, $b=2$.`,
+    R`**Bước 1.** Thay $b=2$: $x^4+4x^3\cdot2+6x^2\cdot2^2+4x\cdot2^3+2^4$.`,
+    R`**Bước 2.** Tính các luỹ thừa của $2$: $2^2=4$, $2^3=8$, $2^4=16$.`,
+    R`**Bước 3.** Thu gọn: $x^4+8x^3+24x^2+32x+16$.`,
+    R`**Kết luận.** $(x+2)^4=x^4+8x^3+24x^2+32x+16$.`,
+    R`**Thử lại.** Thay $x=1$: vế trái $3^4=81$; vế phải $1+8+24+32+16=81$ ✓.`
+   ] },
  { muc: "TH", de: R`Khai triển $(2x-1)^5$.`,
    giai: [
-    R`Dùng $(a-b)^5$ với $a=2x$, $b=1$: $(2x)^5-5(2x)^4+10(2x)^3-10(2x)^2+5(2x)-1$.`,
-    R`$=32x^5-80x^4+80x^3-40x^2+10x-1$.`
+    R`**Phân tích.** Dùng công thức $(a-b)^5$ với hệ số $1;5;10;10;5;1$, **dấu đan xen**; $a=2x$ nên phải luỹ thừa cả hệ số $2$.`,
+    R`**Bước 1.** Dùng $(a-b)^5$ với $a=2x$, $b=1$: $(2x)^5-5(2x)^4+10(2x)^3-10(2x)^2+5(2x)-1$.`,
+    R`**Bước 2.** $=32x^5-80x^4+80x^3-40x^2+10x-1$.`,
+    R`**Kết luận.** $(2x-1)^5=32x^5-80x^4+80x^3-40x^2+10x-1$.`,
+    R`**Thử lại.** $x=1$: vế trái $1^5=1$; vế phải $32-80+80-40+10-1=1$ ✓.`
    ] },
  { muc: "TH", de: R`Tìm hệ số của $x^3$ trong khai triển $(1+2x)^5$.`,
-   giai: [ R`Số hạng chứa $x^3$: $C_5^3(2x)^3=10\cdot8x^3$.`, R`Hệ số là $80$.` ] },
+   giai: [
+    R`**Phân tích.** Không cần khai triển hết: số hạng tổng quát là $C_5^k(2x)^k$, chọn $k$ để luỹ thừa của $x$ bằng $3$.`,
+    R`**Bước 1.** Số hạng chứa $x^3$: $C_5^3(2x)^3=10\cdot8x^3$.`,
+    R`**Bước 2.** Hệ số là $80$.`,
+    R`**Kết luận.** Hệ số của $x^3$ là $80$.`
+   ] },
  { muc: "VD", de: R`Tìm số hạng không chứa $x$ trong khai triển $\left(x+\dfrac2x\right)^4$.`,
    giai: [
-    R`Số hạng tổng quát: $C_4^kx^{4-k}\left(\dfrac2x\right)^k=C_4^k2^kx^{4-2k}$.`,
-    R`Không chứa $x$: $4-2k=0\iff k=2$. Số hạng: $C_4^2\cdot4=24$.`
+    R`**Phân tích.** Viết số hạng tổng quát, gom luỹ thừa của $x$ thành một số mũ; "không chứa $x$" nghĩa là số mũ đó bằng $0$.`,
+    R`**Bước 1.** Số hạng tổng quát: $C_4^kx^{4-k}\left(\dfrac2x\right)^k=C_4^k2^kx^{4-2k}$.`,
+    R`**Bước 2.** Không chứa $x$: $4-2k=0\iff k=2$. Số hạng: $C_4^2\cdot4=24$.`,
+    R`**Kết luận.** Số hạng không chứa $x$ là $24$.`
    ] }
  ] }
 });
