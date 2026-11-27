@@ -586,24 +586,30 @@ Object.assign(D, {
   R`Lấy đầu mút trái làm giá trị đại diện.`
  ],
  vd: [
- { muc: "NB", de: R`Thời gian đi từ nhà đến trường của một nhóm học sinh được ghi lại như sau:` + BANG11 + R`Tìm cỡ mẫu, nhóm có nhiều học sinh nhất và giá trị đại diện của nhóm đó.`,
+ { muc: "NB", de: R`Thời gian đi từ nhà đến trường của một nhóm học sinh được ghi lại như sau:$$\begin{array}{|c|c|c|c|c|c|}\hline \text{Thời gian (phút)}&[0;10)&[10;20)&[20;30)&[30;40)&[40;50)\\\hline \text{Số học sinh}&5&12&15&6&2\\\hline\end{array}$$Tìm cỡ mẫu, nhóm có nhiều học sinh nhất và giá trị đại diện của nhóm đó.`,
    giai: [
-    R`Cỡ mẫu $n=5+12+15+6+2=40$.`,
-    R`Nhóm có tần số lớn nhất ($15$) là $[20;30)$.`,
-    R`Giá trị đại diện: $\dfrac{20+30}2=25$ (phút).`
+    R`**Phân tích.** Cỡ mẫu là **tổng các tần số**. Giá trị đại diện của nhóm $[a;b)$ là trung điểm $\dfrac{a+b}2$.`,
+    R`**Bước 1.** Cỡ mẫu $n=5+12+15+6+2=40$.`,
+    R`**Bước 2.** Nhóm có tần số lớn nhất ($15$) là $[20;30)$.`,
+    R`**Bước 3.** Giá trị đại diện: $\dfrac{20+30}2=25$ (phút).`,
+    R`**Kết luận.** Cỡ mẫu $40$; nhóm đông nhất là $[20;30)$ với giá trị đại diện $25$ phút.`
    ] },
  { muc: "TH", de: R`Với bảng ở ví dụ 1, có bao nhiêu phần trăm học sinh đi đến trường mất dưới $20$ phút?`,
    giai: [
-    R`"Dưới $20$ phút" gồm hai nhóm $[0;10)$ và $[10;20)$: $5+12=17$ học sinh.`,
-    R`Tỉ lệ: $\dfrac{17}{40}=0{,}425=42{,}5\%$.`
+    R`**Phân tích.** "Dưới $20$ phút" là các nhóm có đầu mút phải $\le20$. Cộng tần số các nhóm đó rồi chia cho cỡ mẫu $n=40$.`,
+    R`**Bước 1.** "Dưới $20$ phút" gồm hai nhóm $[0;10)$ và $[10;20)$: $5+12=17$ học sinh.`,
+    R`**Bước 2.** Tỉ lệ: $\dfrac{17}{40}=0{,}425=42{,}5\%$.`,
+    R`**Kết luận.** Có $42{,}5\%$ học sinh đi đến trường mất dưới $20$ phút.`
    ] },
  { muc: "TH", de: R`Chiều cao (cm) của $20$ học sinh: $152$, $155$, $158$, $160$, $161$, $163$, $163$, $165$, $166$, $167$, $168$, $168$, $170$, $171$, $172$, $173$, $175$, $176$, $178$, $180$. Lập bảng tần số ghép nhóm với các nhóm có độ dài $5$, bắt đầu từ $150$.`,
    giai: [
-    R`Các nhóm: $[150;155)$, $[155;160)$, $[160;165)$, $[165;170)$, $[170;175)$, $[175;180)$, $[180;185)$.`,
-    R`Đếm: $[150;155)$: $152$ → $1$. $[155;160)$: $155,158$ → $2$. $[160;165)$: $160,161,163,163$ → $4$. $[165;170)$: $165,166,167,168,168$ → $5$.`,
-    R`$[170;175)$: $170,171,172,173$ → $4$. $[175;180)$: $175,176,178$ → $3$. $[180;185)$: $180$ → $1$. (Chú ý $155$, $160$, $165$, $170$, $175$, $180$ được xếp vào nhóm có đầu mút trái là chính nó.)`,
-    R`Bảng tần số ghép nhóm: $$\begin{array}{|c|c|}\hline \text{Chiều cao (cm)}&\text{Tần số}\\\hline [150;155)&1\\\hline [155;160)&2\\\hline [160;165)&4\\\hline [165;170)&5\\\hline [170;175)&4\\\hline [175;180)&3\\\hline [180;185)&1\\\hline\end{array}$$`,
-    R`Kiểm tra: $1+2+4+5+4+3+1=20$ ✓.`
+    R`**Phân tích.** Lập các nhóm $[150;155)$, $[155;160)$, … đến khi chứa giá trị lớn nhất $180$. Mỗi nhóm **chứa đầu mút trái, không chứa đầu mút phải**, nên giá trị đúng bằng đầu mút thuộc nhóm phía sau.`,
+    R`**Bước 1.** Các nhóm: $[150;155)$, $[155;160)$, $[160;165)$, $[165;170)$, $[170;175)$, $[175;180)$, $[180;185)$.`,
+    R`**Bước 2.** Đếm: $[150;155)$: $152$ → $1$. $[155;160)$: $155,158$ → $2$. $[160;165)$: $160,161,163,163$ → $4$. $[165;170)$: $165,166,167,168,168$ → $5$.`,
+    R`**Bước 3.** $[170;175)$: $170,171,172,173$ → $4$. $[175;180)$: $175,176,178$ → $3$. $[180;185)$: $180$ → $1$. (Chú ý $155$, $160$, $165$, $170$, $175$, $180$ được xếp vào nhóm có đầu mút trái là chính nó.)`,
+    R`**Bước 4.** Bảng tần số ghép nhóm: $$\begin{array}{|c|c|}\hline \text{Chiều cao (cm)}&\text{Tần số}\\\hline [150;155)&1\\\hline [155;160)&2\\\hline [160;165)&4\\\hline [165;170)&5\\\hline [170;175)&4\\\hline [175;180)&3\\\hline [180;185)&1\\\hline\end{array}$$`,
+    R`**Kiểm tra.** $1+2+4+5+4+3+1=20$ ✓.`,
+    R`**Kết luận.** Bảng tần số ghép nhóm có $7$ nhóm như trên; nhóm đông nhất là $[165;170)$ với $5$ học sinh.`
    ] }
  ] },
 "C3-B9-D13": {
@@ -618,26 +624,35 @@ Object.assign(D, {
   R`Tính số trung bình bằng đầu mút nhóm thay vì giá trị đại diện.`
  ],
  vd: [
- { muc: "NB", de: R`Với bảng thời gian đến trường ở dạng trước:` + BANG11 + R`Tính thời gian trung bình.`,
+ { muc: "NB", de: R`Với bảng thời gian đến trường ở dạng trước:$$\begin{array}{|c|c|c|c|c|c|}\hline \text{Thời gian (phút)}&[0;10)&[10;20)&[20;30)&[30;40)&[40;50)\\\hline \text{Số học sinh}&5&12&15&6&2\\\hline\end{array}$$Tính thời gian trung bình.`,
    giai: [
-    R`Giá trị đại diện: $5$, $15$, $25$, $35$, $45$.`,
-    R`$\overline x=\dfrac{5\cdot5+12\cdot15+15\cdot25+6\cdot35+2\cdot45}{40}=\dfrac{25+180+375+210+90}{40}=\dfrac{880}{40}=22$ (phút).`
+    R`**Phân tích.** Mẫu ghép nhóm không biết từng số liệu, nên mỗi nhóm được thay bằng **giá trị đại diện** (trung điểm). Sau đó tính $\overline x=\dfrac{\sum n_ix_i}n$.`,
+    R`**Bước 1.** Giá trị đại diện: $5$, $15$, $25$, $35$, $45$.`,
+    R`**Bước 2.** $\overline x=\dfrac{5\cdot5+12\cdot15+15\cdot25+6\cdot35+2\cdot45}{40}=\dfrac{25+180+375+210+90}{40}=\dfrac{880}{40}=22$ (phút).`,
+    R`**Kết luận.** Thời gian đến trường trung bình là $22$ phút.`,
+    R`**Nhận xét.** $\overline x=22$ nằm trong nhóm đông nhất $[20;30)$, hợp lí với bảng số liệu.`
    ] },
  { muc: "TH", de: R`Với bảng trên, tìm trung vị của mẫu số liệu.`,
    giai: [
-    R`Tần số tích luỹ: $5$; $17$; $32$; $38$; $40$.`,
-    R`$\dfrac n2=20$. Nhóm đầu tiên có tần số tích luỹ $\ge20$ là $[20;30)$ (tích luỹ $32$); nhóm trước có $C=17$; $n_m=15$.`,
-    R`$M_e=20+\dfrac{20-17}{15}\cdot10=20+2=22$ (phút).`
+    R`**Phân tích.** Trung vị: lập dòng **tần số tích luỹ**, tìm nhóm đầu tiên có tích luỹ $\ge\dfrac n2$, rồi dùng $M_e=u_m+\dfrac{\frac n2-C}{n_m}(u_{m+1}-u_m)$ với $C$ là tích luỹ của nhóm **ngay trước**.`,
+    R`**Bước 1.** Tần số tích luỹ: $5$; $17$; $32$; $38$; $40$.`,
+    R`**Bước 2.** $\dfrac n2=20$. Nhóm đầu tiên có tần số tích luỹ $\ge20$ là $[20;30)$ (tích luỹ $32$); nhóm trước có $C=17$; $n_m=15$.`,
+    R`**Bước 3.** $M_e=20+\dfrac{20-17}{15}\cdot10=20+2=22$ (phút).`,
+    R`**Kết luận.** Trung vị $M_e=22$ phút: khoảng một nửa số học sinh đi mất dưới $22$ phút.`
    ] },
  { muc: "TH", de: R`Với bảng trên, tìm các tứ phân vị $Q_1$, $Q_3$.`,
    giai: [
-    R`$\dfrac n4=10$: nhóm chứa $Q_1$ là $[10;20)$ (tích luỹ $17\ge10$), $C=5$, $n_m=12$. $Q_1=10+\dfrac{10-5}{12}\cdot10=10+\dfrac{25}6=\dfrac{85}6\approx14{,}17$.`,
-    R`$\dfrac{3n}4=30$: nhóm chứa $Q_3$ là $[20;30)$ (tích luỹ $32\ge30$), $C=17$, $n_m=15$. $Q_3=20+\dfrac{30-17}{15}\cdot10=20+\dfrac{26}3=\dfrac{86}3\approx28{,}67$.`
+    R`**Phân tích.** Cùng quy trình như trung vị, chỉ thay $\dfrac n2$ bằng $\dfrac n4$ (cho $Q_1$) và $\dfrac{3n}4$ (cho $Q_3$).`,
+    R`**Bước 1.** $\dfrac n4=10$: nhóm chứa $Q_1$ là $[10;20)$ (tích luỹ $17\ge10$), $C=5$, $n_m=12$. $Q_1=10+\dfrac{10-5}{12}\cdot10=10+\dfrac{25}6=\dfrac{85}6\approx14{,}17$.`,
+    R`**Bước 2.** $\dfrac{3n}4=30$: nhóm chứa $Q_3$ là $[20;30)$ (tích luỹ $32\ge30$), $C=17$, $n_m=15$. $Q_3=20+\dfrac{30-17}{15}\cdot10=20+\dfrac{26}3=\dfrac{86}3\approx28{,}67$.`,
+    R`**Kết luận.** $Q_1\approx14{,}17$ phút; $Q_3\approx28{,}67$ phút.`,
+    R`**Thử lại.** Phải có $Q_1<M_e<Q_3$: $14{,}17<22<28{,}67$ ✓.`
    ] },
  { muc: "VD", de: R`Với bảng trên, tìm mốt của mẫu số liệu và giải thích ý nghĩa.`,
    giai: [
-    R`Nhóm có tần số lớn nhất: $[20;30)$ với $n_m=15$; nhóm trước có $12$, nhóm sau có $6$.`,
-    R`$M_o=20+\dfrac{15-12}{(15-12)+(15-6)}\cdot10=20+\dfrac3{12}\cdot10=22{,}5$ (phút).`,
+    R`**Phân tích.** Mốt nằm trong nhóm có **tần số lớn nhất**. Công thức cần tần số của nhóm đó và của hai nhóm kề hai bên.`,
+    R`**Bước 1.** Nhóm có tần số lớn nhất: $[20;30)$ với $n_m=15$; nhóm trước có $12$, nhóm sau có $6$.`,
+    R`**Bước 2.** $M_o=20+\dfrac{15-12}{(15-12)+(15-6)}\cdot10=20+\dfrac3{12}\cdot10=22{,}5$ (phút).`,
     R`**Ý nghĩa.** Thời gian đến trường hay gặp nhất là khoảng $22{,}5$ phút.`
    ] }
  ] }
