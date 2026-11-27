@@ -1136,4 +1136,392 @@ Object.assign(D, {
    ] }
  ] }
 });
+/* ---------- Chương II · Vectơ và hệ trục toạ độ trong không gian ---------- */
+const HOP = R`\draw[thick] (0,0)--(3,0)--(4,1.2);
+\draw[dashed] (4,1.2)--(1,1.2)--(0,0);
+\draw[thick] (0,2.5)--(3,2.5)--(4,3.7)--(1,3.7)--cycle;
+\draw[thick] (0,0)--(0,2.5);
+\draw[thick] (3,0)--(3,2.5);
+\draw[thick] (4,1.2)--(4,3.7);
+\draw[dashed] (1,1.2)--(1,3.7);
+\node[below left] at (0,0){$A$};
+\node[below right] at (3,0){$B$};
+\node[right] at (4,1.2){$C$};
+\node[above left] at (1,1.2){$D$};
+\node[left] at (0,2.5){$A'$};
+\node[below right] at (3,2.5){$B'$};
+\node[above right] at (4,3.7){$C'$};
+\node[above left] at (1,3.7){$D'$};`;
+Object.assign(D, {
+"C2-B6-D01": {
+ pp: [
+  R`**Quy tắc ba điểm:** $\overrightarrow{AB}+\overrightarrow{BC}=\overrightarrow{AC}$; $\overrightarrow{OB}-\overrightarrow{OA}=\overrightarrow{AB}$. **Quy tắc hình bình hành:** $\overrightarrow{AB}+\overrightarrow{AD}=\overrightarrow{AC}$.`,
+  R`**Quy tắc hình hộp:** với hình hộp $ABCD.A'B'C'D'$ ta có $\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{AA'}=\overrightarrow{AC'}$.`,
+  R`Trong hình hộp, các cạnh song song cùng hướng cho các vectơ bằng nhau (ví dụ $\overrightarrow{B'C'}=\overrightarrow{BC}=\overrightarrow{AD}$). Dùng điều này để đưa các vectơ về **chung gốc** rồi cộng.`,
+  R`$I$ là trung điểm $AB$ thì $\overrightarrow{MA}+\overrightarrow{MB}=2\overrightarrow{MI}$ với mọi $M$; $G$ là trọng tâm tam giác $ABC$ thì $\overrightarrow{GA}+\overrightarrow{GB}+\overrightarrow{GC}=\vec0$.`
+ ],
+ luuY: [
+  R`Viết $\overrightarrow{AB}+\overrightarrow{CD}$ thành $\overrightarrow{AD}$ (sai): quy tắc ba điểm chỉ dùng khi điểm cuối của vectơ này trùng điểm đầu của vectơ kia.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Cho hình hộp $ABCD.A'B'C'D'$. Chứng minh $\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{AA'}=\overrightarrow{AC'}$.`,
+   hinhDe: R`\begin{tikzpicture}[scale=0.9,>=stealth]
+` + HOP + R`
+\draw[->,red,thick] (0,0)--(4,3.7);
+\end{tikzpicture}`,
+   giai: [
+    R`$ABCD$ là hình bình hành nên $\overrightarrow{AB}+\overrightarrow{AD}=\overrightarrow{AC}$.`,
+    R`$ACC'A'$ là hình bình hành (vì $AA'$ và $CC'$ song song, bằng nhau) nên $\overrightarrow{AA'}=\overrightarrow{CC'}$.`,
+    R`Do đó $\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{AA'}=\overrightarrow{AC}+\overrightarrow{CC'}=\overrightarrow{AC'}$ (quy tắc ba điểm).`
+   ] },
+ { muc: "TH", de: R`Cho hình hộp $ABCD.A'B'C'D'$. Rút gọn $\vec u=\overrightarrow{AB}+\overrightarrow{B'C'}+\overrightarrow{D'D}$.`,
+   giai: [
+    R`$\overrightarrow{B'C'}=\overrightarrow{AD}$ (cùng hướng, cùng độ dài với cạnh $AD$).`,
+    R`$\overrightarrow{D'D}=\overrightarrow{A'A}$.`,
+    R`$\vec u=\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{A'A}=\overrightarrow{AC}+\overrightarrow{A'A}=\overrightarrow{A'A}+\overrightarrow{AC}=\overrightarrow{A'C}$.`,
+    R`**Kết luận.** $\vec u=\overrightarrow{A'C}$.`
+   ] },
+ { muc: "TH", de: R`Cho hình lập phương $ABCD.A'B'C'D'$ cạnh $a$. Tính độ dài vectơ $\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{AA'}$.`,
+   giai: [
+    R`Theo quy tắc hình hộp, $\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{AA'}=\overrightarrow{AC'}$.`,
+    R`$AC=a\sqrt2$ (đường chéo hình vuông). Tam giác $ACC'$ vuông tại $C$ nên $AC'=\sqrt{AC^2+CC'^2}=\sqrt{2a^2+a^2}=a\sqrt3$.`,
+    R`**Kết luận.** Độ dài bằng $a\sqrt3$.`
+   ] },
+ { muc: "VD", de: R`Cho tứ diện $ABCD$; $M$, $N$ lần lượt là trung điểm của $AB$ và $CD$. Chứng minh $\overrightarrow{MN}=\dfrac12\left(\overrightarrow{AD}+\overrightarrow{BC}\right)$.`,
+   giai: [
+    R`Chèn điểm theo hai đường: $\overrightarrow{MN}=\overrightarrow{MA}+\overrightarrow{AD}+\overrightarrow{DN}$ và $\overrightarrow{MN}=\overrightarrow{MB}+\overrightarrow{BC}+\overrightarrow{CN}$.`,
+    R`Cộng vế theo vế: $2\overrightarrow{MN}=\left(\overrightarrow{MA}+\overrightarrow{MB}\right)+\left(\overrightarrow{AD}+\overrightarrow{BC}\right)+\left(\overrightarrow{DN}+\overrightarrow{CN}\right)$.`,
+    R`$M$ là trung điểm $AB$ nên $\overrightarrow{MA}+\overrightarrow{MB}=\vec0$; $N$ là trung điểm $CD$ nên $\overrightarrow{DN}+\overrightarrow{CN}=\vec0$.`,
+    R`Vậy $2\overrightarrow{MN}=\overrightarrow{AD}+\overrightarrow{BC}$, tức $\overrightarrow{MN}=\dfrac12\left(\overrightarrow{AD}+\overrightarrow{BC}\right)$.`
+   ] }
+ ] },
+
+"C2-B6-D02": {
+ pp: [
+  R`Chọn ba vectơ **không đồng phẳng** làm "cơ sở" (thường là ba cạnh chung đỉnh, ví dụ $\vec a=\overrightarrow{AB}$, $\vec b=\overrightarrow{AD}$, $\vec c=\overrightarrow{AA'}$). Mọi vectơ đều viết được duy nhất dạng $m\vec a+n\vec b+p\vec c$.`,
+  R`Để biểu diễn $\overrightarrow{AX}$: đi từ $A$ tới $X$ theo các cạnh (quy tắc ba điểm), thay mỗi đoạn bằng $\pm\vec a$, $\pm\vec b$, $\pm\vec c$ hoặc một phần của chúng.`,
+  R`**Điểm chia:** $\overrightarrow{AM}=k\overrightarrow{AB}\Rightarrow\overrightarrow{OM}=(1-k)\overrightarrow{OA}+k\overrightarrow{OB}$. **Đồng phẳng:** $\vec a,\vec b,\vec c$ đồng phẳng khi $\vec c=m\vec a+n\vec b$ (với $\vec a,\vec b$ không cùng phương).`
+ ],
+ luuY: [
+  R`Sai dấu khi đi ngược chiều cạnh: $\overrightarrow{BA}=-\vec a$, không phải $\vec a$.`
+ ],
+ vd: [
+ { muc: "TH", de: R`Cho hình hộp $ABCD.A'B'C'D'$, đặt $\overrightarrow{AB}=\vec a$, $\overrightarrow{AD}=\vec b$, $\overrightarrow{AA'}=\vec c$. Gọi $M$ là trung điểm $CC'$. Biểu diễn các vectơ $\overrightarrow{AC'}$, $\overrightarrow{BD'}$, $\overrightarrow{AM}$ theo $\vec a$, $\vec b$, $\vec c$.`,
+   giai: [
+    R`$\overrightarrow{AC'}=\overrightarrow{AB}+\overrightarrow{BC}+\overrightarrow{CC'}=\vec a+\vec b+\vec c$ (vì $\overrightarrow{BC}=\overrightarrow{AD}$, $\overrightarrow{CC'}=\overrightarrow{AA'}$).`,
+    R`$\overrightarrow{BD'}=\overrightarrow{BA}+\overrightarrow{AD}+\overrightarrow{DD'}=-\vec a+\vec b+\vec c$.`,
+    R`$\overrightarrow{AM}=\overrightarrow{AC}+\overrightarrow{CM}=(\vec a+\vec b)+\dfrac12\overrightarrow{CC'}=\vec a+\vec b+\dfrac12\vec c$.`
+   ] },
+ { muc: "TH", de: R`Cho tứ diện $OABC$ và $G$ là trọng tâm tam giác $ABC$. Chứng minh $\overrightarrow{OG}=\dfrac13\left(\overrightarrow{OA}+\overrightarrow{OB}+\overrightarrow{OC}\right)$.`,
+   giai: [
+    R`$\overrightarrow{OA}=\overrightarrow{OG}+\overrightarrow{GA}$, $\overrightarrow{OB}=\overrightarrow{OG}+\overrightarrow{GB}$, $\overrightarrow{OC}=\overrightarrow{OG}+\overrightarrow{GC}$.`,
+    R`Cộng lại: $\overrightarrow{OA}+\overrightarrow{OB}+\overrightarrow{OC}=3\overrightarrow{OG}+\left(\overrightarrow{GA}+\overrightarrow{GB}+\overrightarrow{GC}\right)=3\overrightarrow{OG}+\vec0$.`,
+    R`Vậy $\overrightarrow{OG}=\dfrac13\left(\overrightarrow{OA}+\overrightarrow{OB}+\overrightarrow{OC}\right)$.`
+   ] },
+ { muc: "VD", de: R`Cho tứ diện $ABCD$; $M$, $N$ lần lượt là trung điểm của $AB$, $CD$. Chứng minh ba vectơ $\overrightarrow{AD}$, $\overrightarrow{BC}$, $\overrightarrow{MN}$ đồng phẳng.`,
+   giai: [
+    R`Theo ví dụ 4 của dạng C2-B6-D01: $\overrightarrow{MN}=\dfrac12\overrightarrow{AD}+\dfrac12\overrightarrow{BC}$.`,
+    R`$\overrightarrow{AD}$ và $\overrightarrow{BC}$ không cùng phương (vì $AD$, $BC$ là hai cạnh chéo nhau của tứ diện).`,
+    R`$\overrightarrow{MN}$ biểu diễn được theo $\overrightarrow{AD}$, $\overrightarrow{BC}$ nên ba vectơ đồng phẳng.`
+   ] }
+ ] },
+
+"C2-B6-D03": {
+ pp: [
+  R`$\vec a\cdot\vec b=|\vec a|\cdot|\vec b|\cdot\cos(\vec a,\vec b)$. Góc $(\vec a,\vec b)$ được đo khi hai vectơ **chung điểm đầu**, nằm trong $[0^\circ;180^\circ]$.`,
+  R`Nếu hai vectơ chưa chung gốc: thay một vectơ bằng vectơ bằng nó (tịnh tiến) cho chung gốc rồi đọc góc trong tam giác.`,
+  R`$\vec a\perp\vec b\Leftrightarrow\vec a\cdot\vec b=0$. Có thể tách vectơ theo quy tắc ba điểm rồi khai triển tích vô hướng.`
+ ],
+ luuY: [
+  R`Đọc góc giữa $\overrightarrow{AC}$ và $\overrightarrow{CB'}$ bằng góc $\widehat{ACB'}$: sai, vì hai vectơ không chung điểm đầu (đúng là $180^\circ-\widehat{ACB'}$).`
+ ],
+ vd: [
+ { muc: "NB", de: R`Cho hình lập phương $ABCD.A'B'C'D'$ cạnh $a$. Tính $\overrightarrow{AB}\cdot\overrightarrow{A'C'}$.`,
+   giai: [
+    R`$\overrightarrow{A'C'}=\overrightarrow{AC}$ nên $\overrightarrow{AB}\cdot\overrightarrow{A'C'}=\overrightarrow{AB}\cdot\overrightarrow{AC}$.`,
+    R`$AB=a$, $AC=a\sqrt2$, $(\overrightarrow{AB},\overrightarrow{AC})=\widehat{BAC}=45^\circ$.`,
+    R`$\overrightarrow{AB}\cdot\overrightarrow{AC}=a\cdot a\sqrt2\cdot\cos45^\circ=a\cdot a\sqrt2\cdot\dfrac{\sqrt2}{2}=a^2$.`
+   ] },
+ { muc: "TH", de: R`Cho hình lập phương $ABCD.A'B'C'D'$. Tính góc giữa hai vectơ $\overrightarrow{AC}$ và $\overrightarrow{DA'}$.`,
+   giai: [
+    R`Tịnh tiến: $\overrightarrow{DA'}=\overrightarrow{CB'}$ (vì $DCB'A'$ là hình bình hành).`,
+    R`Tam giác $ACB'$ có ba cạnh là ba đường chéo mặt của hình lập phương nên là tam giác đều, $\widehat{ACB'}=60^\circ$.`,
+    R`Hai vectơ $\overrightarrow{AC}$ và $\overrightarrow{CB'}$ nối tiếp nhau tại $C$, nên góc giữa chúng là $180^\circ-\widehat{ACB'}=120^\circ$.`,
+    R`Kiểm tra bằng toạ độ ($A$ gốc, cạnh $1$): $\overrightarrow{AC}=(1;1;0)$, $\overrightarrow{DA'}=(0;-1;1)$, $\cos=\dfrac{-1}{\sqrt2\cdot\sqrt2}=-\dfrac12$.`,
+    R`**Kết luận.** $(\overrightarrow{AC},\overrightarrow{DA'})=120^\circ$.`
+   ] },
+ { muc: "VD", de: R`Cho tứ diện đều $ABCD$ cạnh $a$. Chứng minh $AB\perp CD$.`,
+   giai: [
+    R`$\overrightarrow{AB}\cdot\overrightarrow{CD}=\overrightarrow{AB}\cdot\left(\overrightarrow{AD}-\overrightarrow{AC}\right)=\overrightarrow{AB}\cdot\overrightarrow{AD}-\overrightarrow{AB}\cdot\overrightarrow{AC}$.`,
+    R`Các mặt là tam giác đều nên $\widehat{BAD}=\widehat{BAC}=60^\circ$: $\overrightarrow{AB}\cdot\overrightarrow{AD}=a^2\cos60^\circ=\dfrac{a^2}{2}$, $\overrightarrow{AB}\cdot\overrightarrow{AC}=\dfrac{a^2}{2}$.`,
+    R`Vậy $\overrightarrow{AB}\cdot\overrightarrow{CD}=\dfrac{a^2}2-\dfrac{a^2}2=0$, nên $AB\perp CD$.`
+   ] }
+ ] },
+
+"C2-B6-D04": {
+ pp: [
+  R`Nhiều lực cùng tác động vào một điểm: **hợp lực** $\vec F=\vec F_1+\vec F_2+\dots$. Hai lực tạo góc $\alpha$: $|\vec F|^2=F_1^2+F_2^2+2F_1F_2\cos\alpha$.`,
+  R`Ba lực đôi một vuông góc: $|\vec F|=\sqrt{F_1^2+F_2^2+F_3^2}$ (giống đường chéo hình hộp chữ nhật).`,
+  R`**Công** của lực $\vec F$ làm vật dời theo vectơ $\vec d$: $A=\vec F\cdot\vec d=|\vec F|\cdot|\vec d|\cdot\cos(\vec F,\vec d)$ (J).`
+ ],
+ luuY: [
+  R`Cộng độ lớn các lực ($F_1+F_2$) thay vì cộng vectơ.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Một lực $\vec F$ có độ lớn $50$ N kéo một vật dịch chuyển $10$ m; góc giữa lực và hướng dịch chuyển là $60^\circ$. Tính công của lực.`,
+   giai: [
+    R`$A=|\vec F|\cdot|\vec d|\cdot\cos60^\circ=50\cdot10\cdot\dfrac12=250$ (J).`
+   ] },
+ { muc: "TH", de: R`Ba lực đôi một vuông góc, có độ lớn $3$ N, $4$ N, $12$ N cùng tác động vào một vật. Tính độ lớn hợp lực.`,
+   giai: [
+    R`Đặt ba lực dọc ba cạnh chung đỉnh của một hình hộp chữ nhật; hợp lực là đường chéo của hình hộp.`,
+    R`$|\vec F|=\sqrt{3^2+4^2+12^2}=\sqrt{9+16+144}=\sqrt{169}=13$ (N).`
+   ] },
+ { muc: "TH", de: R`Hai lực $\vec F_1$, $\vec F_2$ có độ lớn $6$ N và $8$ N cùng tác động vào một điểm, góc giữa chúng là $60^\circ$. Tính độ lớn hợp lực.`,
+   giai: [
+    R`$|\vec F|^2=\left(\vec F_1+\vec F_2\right)^2=F_1^2+F_2^2+2\vec F_1\cdot\vec F_2=36+64+2\cdot6\cdot8\cdot\cos60^\circ=100+48=148$.`,
+    R`$|\vec F|=\sqrt{148}=2\sqrt{37}\approx12{,}17$ (N).`
+   ] }
+ ] },
+
+"C2-B7-D05": {
+ pp: [
+  R`$M(x;y;z)\Leftrightarrow\overrightarrow{OM}=x\vec i+y\vec j+z\vec k$; $\vec a=(a_1;a_2;a_3)\Leftrightarrow\vec a=a_1\vec i+a_2\vec j+a_3\vec k$. Thành phần vắng mặt thì bằng $0$.`,
+  R`**Hình chiếu** của $M(x;y;z)$: lên $(Oxy)$ là $(x;y;0)$, lên $(Oyz)$ là $(0;y;z)$, lên $(Oxz)$ là $(x;0;z)$; lên trục $Ox$ là $(x;0;0)$, $Oy$: $(0;y;0)$, $Oz$: $(0;0;z)$.`,
+  R`**Đối xứng** của $M$: qua $O$ là $(-x;-y;-z)$; qua mặt $(Oxy)$ là $(x;y;-z)$ (đổi dấu toạ độ **không** có trong tên mặt); qua trục $Ox$ là $(x;-y;-z)$ (giữ toạ độ của trục, đổi dấu hai toạ độ còn lại).`,
+  R`$\overrightarrow{AB}=(x_B-x_A;\,y_B-y_A;\,z_B-z_A)$.`
+ ],
+ luuY: [
+  R`Viết $\vec a=2\vec i-3\vec k$ thành $(2;-3)$ hoặc $(2;-3;0)$; đúng là $(2;0;-3)$.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Cho điểm $M(2;-3;5)$. Tìm toạ độ hình chiếu của $M$ lên mặt phẳng $(Oxy)$, lên trục $Oz$; điểm đối xứng với $M$ qua mặt phẳng $(Oxz)$ và qua trục $Oy$.`,
+   giai: [
+    R`Hình chiếu lên $(Oxy)$: giữ $x$, $y$, cho $z=0$: $(2;-3;0)$.`,
+    R`Hình chiếu lên $Oz$: $(0;0;5)$.`,
+    R`Đối xứng qua $(Oxz)$: đổi dấu $y$: $(2;3;5)$.`,
+    R`Đối xứng qua trục $Oy$: giữ $y$, đổi dấu $x$ và $z$: $(-2;-3;-5)$.`
+   ] },
+ { muc: "TH", de: R`Cho $\vec a=2\vec i-3\vec k$ và $\overrightarrow{OM}=\vec j-4\vec i$. Tìm toạ độ của $\vec a$ và điểm $M$.`,
+   giai: [
+    R`$\vec a=2\vec i+0\vec j-3\vec k$ nên $\vec a=(2;0;-3)$.`,
+    R`$\overrightarrow{OM}=-4\vec i+1\vec j+0\vec k$ nên $M(-4;1;0)$.`
+   ] },
+ { muc: "VD", de: R`Cho hình lập phương $ABCD.A'B'C'D'$ cạnh $2$. Chọn hệ trục $Oxyz$ có gốc $A$, tia $Ox$ chứa $B$, tia $Oy$ chứa $D$, tia $Oz$ chứa $A'$. Tìm toạ độ các đỉnh $C$, $C'$ và trung điểm $M$ của $B'C'$.`,
+   hinhDe: R`\begin{tikzpicture}[scale=0.9,>=stealth]
+` + HOP + R`
+\draw[->] (3,0)--(3.8,0) node[below]{$x$};
+\draw[->] (1,1.2)--(1.6,1.92) node[above]{$y$};
+\draw[->] (0,2.5)--(0,3.2) node[left]{$z$};
+\fill (3.5,3.1) circle (2pt) node[above]{$M$};
+\end{tikzpicture}`,
+   giai: [
+    R`$A(0;0;0)$, $B(2;0;0)$, $D(0;2;0)$, $A'(0;0;2)$.`,
+    R`$\overrightarrow{AC}=\overrightarrow{AB}+\overrightarrow{AD}=(2;2;0)$ nên $C(2;2;0)$.`,
+    R`$\overrightarrow{AC'}=\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{AA'}=(2;2;2)$ nên $C'(2;2;2)$. Tương tự $B'(2;0;2)$.`,
+    R`$M$ là trung điểm $B'C'$: $M\left(\dfrac{2+2}2;\dfrac{0+2}2;\dfrac{2+2}2\right)=(2;1;2)$.`
+   ] }
+ ] },
+
+"C2-B7-D06": {
+ pp: [
+  R`Trung điểm $I$ của $AB$: $I\left(\dfrac{x_A+x_B}2;\dfrac{y_A+y_B}2;\dfrac{z_A+z_B}2\right)$.`,
+  R`Trọng tâm $G$ của tam giác $ABC$: $G\left(\dfrac{x_A+x_B+x_C}3;\dfrac{y_A+y_B+y_C}3;\dfrac{z_A+z_B+z_C}3\right)$.`,
+  R`**Điểm chia:** từ hệ thức vectơ (ví dụ $\overrightarrow{MA}=k\overrightarrow{MB}$) viết từng toạ độ $x_A-x_M=k(x_B-x_M)$… rồi giải. Giao điểm của đường thẳng $AB$ với mặt toạ độ: viết $M=A+t\overrightarrow{AB}$ rồi cho toạ độ tương ứng bằng $0$.`
+ ],
+ luuY: [
+  R`Quên chia cho $2$ (hoặc $3$), hoặc cộng nhầm toạ độ âm.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Cho $A(1;2;-3)$, $B(3;-4;1)$. Tìm toạ độ trung điểm $I$ của đoạn $AB$.`,
+   giai: [
+    R`$I\left(\dfrac{1+3}2;\dfrac{2+(-4)}2;\dfrac{-3+1}2\right)=(2;-1;-1)$.`
+   ] },
+ { muc: "TH", de: R`Cho $A(1;0;2)$, $B(2;-1;3)$, $C(0;4;1)$. Tìm toạ độ trọng tâm $G$ của tam giác $ABC$.`,
+   giai: [
+    R`$x_G=\dfrac{1+2+0}3=1$; $y_G=\dfrac{0-1+4}3=1$; $z_G=\dfrac{2+3+1}3=2$.`,
+    R`**Kết luận.** $G(1;1;2)$.`
+   ] },
+ { muc: "TH", de: R`Cho $A(1;2;-3)$, $B(3;-4;1)$. Tìm điểm $M$ thoả mãn $\overrightarrow{MA}=-2\overrightarrow{MB}$.`,
+   giai: [
+    R`$\overrightarrow{MA}=-2\overrightarrow{MB}\Leftrightarrow A-M=-2(B-M)\Leftrightarrow3M=A+2B$ (viết cho từng toạ độ).`,
+    R`$x_M=\dfrac{1+2\cdot3}3=\dfrac73$; $y_M=\dfrac{2+2\cdot(-4)}3=-2$; $z_M=\dfrac{-3+2\cdot1}3=-\dfrac13$.`,
+    R`**Kết luận.** $M\left(\dfrac73;-2;-\dfrac13\right)$ ($M$ nằm trên đoạn $AB$, $MA=2MB$).`
+   ] },
+ { muc: "VD", de: R`Cho $A(1;2;-3)$, $B(3;-4;1)$. Tìm giao điểm $M$ của đường thẳng $AB$ với mặt phẳng $(Oxy)$.`,
+   giai: [
+    R`$\overrightarrow{AB}=(2;-6;4)$. Điểm $M$ thuộc đường thẳng $AB$ có dạng $M=A+t\overrightarrow{AB}=(1+2t;\,2-6t;\,-3+4t)$.`,
+    R`$M\in(Oxy)\Leftrightarrow z_M=0\Leftrightarrow-3+4t=0\Leftrightarrow t=\dfrac34$.`,
+    R`$M\left(1+\dfrac32;\,2-\dfrac92;\,0\right)=\left(\dfrac52;-\dfrac52;0\right)$.`
+   ] }
+ ] },
+
+"C2-B8-D07": {
+ pp: [
+  R`$\vec a\pm\vec b=(a_1\pm b_1;a_2\pm b_2;a_3\pm b_3)$; $k\vec a=(ka_1;ka_2;ka_3)$.`,
+  R`$|\vec a|=\sqrt{a_1^2+a_2^2+a_3^2}$; $AB=\left|\overrightarrow{AB}\right|=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2+(z_B-z_A)^2}$.`
+ ],
+ luuY: [
+  R`Bình phương số âm: $(-4)^2=16$, không phải $-16$.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Cho $\vec a=(1;-2;3)$, $\vec b=(2;0;-1)$. Tính $\vec a+\vec b$, $2\vec a-3\vec b$ và $|\vec a|$.`,
+   giai: [
+    R`$\vec a+\vec b=(1+2;-2+0;3-1)=(3;-2;2)$.`,
+    R`$2\vec a=(2;-4;6)$, $3\vec b=(6;0;-3)$, nên $2\vec a-3\vec b=(2-6;-4-0;6+3)=(-4;-4;9)$.`,
+    R`$|\vec a|=\sqrt{1+4+9}=\sqrt{14}$.`
+   ] },
+ { muc: "TH", de: R`Cho $A(1;2;3)$, $B(3;0;2)$. Tính độ dài đoạn $AB$.`,
+   giai: [
+    R`$\overrightarrow{AB}=(2;-2;-1)$.`,
+    R`$AB=\sqrt{2^2+(-2)^2+(-1)^2}=\sqrt{9}=3$.`
+   ] },
+ { muc: "TH", de: R`Cho tam giác $ABC$ với $A(1;2;3)$, $B(3;0;2)$, $C(1;0;1)$. Tính chu vi tam giác.`,
+   giai: [
+    R`$AB=3$ (ví dụ 2).`,
+    R`$\overrightarrow{AC}=(0;-2;-2)$, $AC=\sqrt{0+4+4}=2\sqrt2$.`,
+    R`$\overrightarrow{BC}=(-2;0;-1)$, $BC=\sqrt{4+0+1}=\sqrt5$.`,
+    R`**Kết luận.** Chu vi bằng $3+2\sqrt2+\sqrt5$.`
+   ] }
+ ] },
+
+"C2-B8-D08": {
+ pp: [
+  R`$\vec a\cdot\vec b=a_1b_1+a_2b_2+a_3b_3$.`,
+  R`$\cos(\vec a,\vec b)=\dfrac{\vec a\cdot\vec b}{|\vec a|\cdot|\vec b|}$ (với $\vec a,\vec b\ne\vec0$). Góc $\widehat{BAC}$ là góc giữa $\overrightarrow{AB}$ và $\overrightarrow{AC}$.`,
+  R`$\vec a\perp\vec b\Leftrightarrow a_1b_1+a_2b_2+a_3b_3=0$.`
+ ],
+ luuY: [
+  R`Tính góc $\widehat{BAC}$ bằng $\overrightarrow{BA}$ và $\overrightarrow{AC}$ (sai gốc), góc nhận được là góc bù.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Cho $\vec a=(1;-2;3)$, $\vec b=(2;0;-1)$. Tính $\vec a\cdot\vec b$.`,
+   giai: [
+    R`$\vec a\cdot\vec b=1\cdot2+(-2)\cdot0+3\cdot(-1)=2+0-3=-1$.`
+   ] },
+ { muc: "TH", de: R`Tính góc giữa hai vectơ $\vec a=(1;1;0)$ và $\vec b=(1;0;1)$.`,
+   giai: [
+    R`$\vec a\cdot\vec b=1+0+0=1$; $|\vec a|=\sqrt2$, $|\vec b|=\sqrt2$.`,
+    R`$\cos(\vec a,\vec b)=\dfrac{1}{\sqrt2\cdot\sqrt2}=\dfrac12$ nên $(\vec a,\vec b)=60^\circ$.`
+   ] },
+ { muc: "TH", de: R`Tìm $m$ để $\vec a=(m;2;-1)$ vuông góc với $\vec b=(3;m;4)$.`,
+   giai: [
+    R`$\vec a\perp\vec b\Leftrightarrow3m+2m-4=0\Leftrightarrow5m=4\Leftrightarrow m=\dfrac45$.`
+   ] },
+ { muc: "VD", de: R`Cho $A(1;0;0)$, $B(0;1;0)$, $C(0;0;1)$. Tính góc $\widehat{BAC}$ và cho biết tam giác $ABC$ là tam giác gì.`,
+   giai: [
+    R`$\overrightarrow{AB}=(-1;1;0)$, $\overrightarrow{AC}=(-1;0;1)$.`,
+    R`$\cos\widehat{BAC}=\dfrac{(-1)(-1)+1\cdot0+0\cdot1}{\sqrt2\cdot\sqrt2}=\dfrac12$ nên $\widehat{BAC}=60^\circ$.`,
+    R`$AB=AC=\sqrt2$ và $BC=\left|(0;-1;1)\right|=\sqrt2$.`,
+    R`**Kết luận.** $\widehat{BAC}=60^\circ$; tam giác $ABC$ đều cạnh $\sqrt2$.`
+   ] }
+ ] },
+
+"C2-B8-D09": {
+ pp: [
+  R`$\vec a$, $\vec b$ ($\vec b\ne\vec0$) **cùng phương** $\Leftrightarrow$ có số $k$ để $\vec a=k\vec b$, tức các toạ độ tỉ lệ (khi mẫu khác $0$): $\dfrac{a_1}{b_1}=\dfrac{a_2}{b_2}=\dfrac{a_3}{b_3}$.`,
+  R`$A$, $B$, $C$ **thẳng hàng** $\Leftrightarrow\overrightarrow{AB}$, $\overrightarrow{AC}$ cùng phương.`,
+  R`$ABCD$ là **hình bình hành** $\Leftrightarrow\overrightarrow{AB}=\overrightarrow{DC}$ (và $A,B,C$ không thẳng hàng), suy ra $D=A+C-B$ theo từng toạ độ.`
+ ],
+ luuY: [
+  R`Viết $\overrightarrow{AB}=\overrightarrow{CD}$ cho hình bình hành $ABCD$ (sai thứ tự đỉnh).`
+ ],
+ vd: [
+ { muc: "TH", de: R`Cho $A(1;2;-1)$, $B(2;3;1)$, $C(4;5;5)$. Ba điểm $A$, $B$, $C$ có thẳng hàng không?`,
+   giai: [
+    R`$\overrightarrow{AB}=(1;1;2)$, $\overrightarrow{AC}=(3;3;6)$.`,
+    R`$\overrightarrow{AC}=3\overrightarrow{AB}$ nên hai vectơ cùng phương.`,
+    R`**Kết luận.** $A$, $B$, $C$ thẳng hàng.`
+   ] },
+ { muc: "TH", de: R`Tìm $m$, $n$ để hai vectơ $\vec a=(2;m;3)$ và $\vec b=(4;-2;n)$ cùng phương.`,
+   giai: [
+    R`Cần $\vec b=k\vec a$: từ hoành độ $4=2k\Rightarrow k=2$.`,
+    R`Tung độ: $-2=2m\Rightarrow m=-1$. Cao độ: $n=2\cdot3=6$.`,
+    R`**Kết luận.** $m=-1$, $n=6$.`
+   ] },
+ { muc: "VD", de: R`Cho $A(1;0;2)$, $B(2;-1;3)$, $C(0;4;1)$. Tìm toạ độ điểm $D$ để $ABCD$ là hình bình hành.`,
+   giai: [
+    R`$\overrightarrow{AB}=(1;-1;1)$, $\overrightarrow{AC}=(-1;4;-1)$ không cùng phương ($\frac{-1}{1}\ne\frac{4}{-1}$) nên $A$, $B$, $C$ không thẳng hàng.`,
+    R`$ABCD$ là hình bình hành $\Leftrightarrow\overrightarrow{AB}=\overrightarrow{DC}\Leftrightarrow(1;-1;1)=(0-x_D;4-y_D;1-z_D)$.`,
+    R`$\Leftrightarrow x_D=-1$, $y_D=5$, $z_D=0$.`,
+    R`**Kết luận.** $D(-1;5;0)$.`
+   ] }
+ ] },
+
+"C2-B8-D10": {
+ pp: [
+  R`**Toạ độ hoá:** chọn gốc tại đỉnh có ba cạnh đôi một vuông góc (đỉnh hình hộp chữ nhật, chân đường cao hình chóp…), đặt ba trục theo ba cạnh đó, viết toạ độ các đỉnh.`,
+  R`Chuyển yêu cầu hình học sang toạ độ: độ dài, góc (tích vô hướng), vuông góc, trung điểm, trọng tâm.`,
+  R`**Điểm cách đều** $A$, $B$: $MA^2=MB^2$ (bình phương để bỏ căn).`
+ ],
+ luuY: [
+  R`Đặt hệ trục ở đỉnh mà ba cạnh không đôi một vuông góc nên toạ độ sai.`
+ ],
+ vd: [
+ { muc: "TH", de: R`Tìm điểm $M$ trên trục $Ox$ cách đều hai điểm $A(1;2;3)$ và $B(3;0;2)$.`,
+   giai: [
+    R`$M\in Ox$ nên $M(x;0;0)$.`,
+    R`$MA^2=(x-1)^2+4+9$, $MB^2=(x-3)^2+0+4$.`,
+    R`$MA^2=MB^2\Leftrightarrow x^2-2x+14=x^2-6x+13\Leftrightarrow4x=-1\Leftrightarrow x=-\dfrac14$.`,
+    R`**Kết luận.** $M\left(-\dfrac14;0;0\right)$.`
+   ] },
+ { muc: "TH", de: R`Cho $A(1;0;1)$, $B(2;1;3)$, $C(3;-1;2)$. Chứng minh tam giác $ABC$ đều và tính diện tích.`,
+   giai: [
+    R`$\overrightarrow{AB}=(1;1;2)$, $AB=\sqrt6$; $\overrightarrow{AC}=(2;-1;1)$, $AC=\sqrt6$; $\overrightarrow{BC}=(1;-2;-1)$, $BC=\sqrt6$.`,
+    R`Ba cạnh bằng nhau nên tam giác $ABC$ đều cạnh $\sqrt6$.`,
+    R`$S=\dfrac{\sqrt3}{4}\cdot\left(\sqrt6\right)^2=\dfrac{6\sqrt3}{4}=\dfrac{3\sqrt3}2$.`
+   ] },
+ { muc: "VD", de: R`Cho hình chóp $S.ABCD$ có đáy là hình vuông cạnh $2$, $SA$ vuông góc với đáy và $SA=2$. Tính góc giữa hai đường thẳng $SB$ và $AC$.`,
+   hinhDe: R`\begin{tikzpicture}[scale=0.9]
+\draw[thick] (0,0)--(3,0)--(4,1.2);
+\draw[dashed] (4,1.2)--(1,1.2)--(0,0);
+\draw[dashed] (0,0)--(4,1.2);
+\draw[thick] (0,2.8)--(0,0);
+\draw[thick] (0,2.8)--(3,0);
+\draw[thick] (0,2.8)--(4,1.2);
+\draw[dashed] (0,2.8)--(1,1.2);
+\node[left] at (0,2.8){$S$};
+\node[below left] at (0,0){$A$};
+\node[below right] at (3,0){$B$};
+\node[right] at (4,1.2){$C$};
+\node[above right] at (1,1.2){$D$};
+\end{tikzpicture}`,
+   giai: [
+    R`Ba cạnh $AB$, $AD$, $AS$ đôi một vuông góc. Chọn $A(0;0;0)$, $B(2;0;0)$, $D(0;2;0)$, $S(0;0;2)$, khi đó $C(2;2;0)$.`,
+    R`$\overrightarrow{SB}=(2;0;-2)$, $\overrightarrow{AC}=(2;2;0)$.`,
+    R`$\cos\left(\overrightarrow{SB},\overrightarrow{AC}\right)=\dfrac{4+0+0}{2\sqrt2\cdot2\sqrt2}=\dfrac48=\dfrac12$.`,
+    R`Góc giữa hai đường thẳng là góc không tù, có $\cos=\left|\dfrac12\right|=\dfrac12$.`,
+    R`**Kết luận.** Góc giữa $SB$ và $AC$ bằng $60^\circ$.`
+   ] }
+ ] },
+
+"C2-B8-D11": {
+ pp: [
+  R`Đặt hệ trục theo đề (thường gốc là trạm, sân bay, chân cột; đơn vị km hoặc m), viết toạ độ các vị trí.`,
+  R`Khoảng cách giữa hai vị trí là độ dài vectơ nối chúng. Chuyển động thẳng đều: sau $k$ lần thời gian, độ dời gấp $k$ lần.`,
+  R`Vị trí nằm trên đoạn $AB$ đã đi được phần $t$ quãng đường: $M=A+t\overrightarrow{AB}$.`
+ ],
+ luuY: [
+  R`Trộn đơn vị (m với km) khi tính khoảng cách.`
+ ],
+ vd: [
+ { muc: "TH", de: R`Một máy bay cất cánh từ sân bay $O$, bay thẳng với vận tốc không đổi. Sau $1$ phút máy bay ở vị trí $A(2;3;0{,}5)$ (đơn vị km). Tính khoảng cách $OA$ và vị trí máy bay sau $2$ phút.`,
+   giai: [
+    R`$OA=\sqrt{2^2+3^2+0{,}5^2}=\sqrt{13{,}25}\approx3{,}64$ km.`,
+    R`Bay thẳng đều nên sau $2$ phút độ dời gấp đôi: $\overrightarrow{OB}=2\overrightarrow{OA}=(4;6;1)$.`,
+    R`**Kết luận.** Sau $2$ phút máy bay ở vị trí $B(4;6;1)$.`
+   ] },
+ { muc: "TH", de: R`Một tuyến cáp treo thẳng đi từ ga $A(0;0;0)$ đến ga $B(600;800;300)$ (đơn vị m). Tính chiều dài tuyến cáp và vị trí cabin khi đi được $\dfrac14$ quãng đường.`,
+   giai: [
+    R`$AB=\sqrt{600^2+800^2+300^2}=\sqrt{1\,090\,000}\approx1044$ m.`,
+    R`Vị trí cabin: $M=A+\dfrac14\overrightarrow{AB}=\left(150;200;75\right)$.`
+   ] },
+ { muc: "TH", de: R`Một trạm phát sóng đặt tại gốc $O(0;0;0)$ phủ sóng trong bán kính $5$ km. Một khách du lịch ở vị trí $M(3;4;1)$ (đơn vị km) có nhận được sóng không?`,
+   giai: [
+    R`$OM=\sqrt{3^2+4^2+1^2}=\sqrt{26}\approx5{,}10$ km.`,
+    R`$OM>5$ nên $M$ nằm ngoài vùng phủ sóng.`,
+    R`**Kết luận.** Khách du lịch không nhận được sóng.`
+   ] }
+ ] }
+});
 })(window);
