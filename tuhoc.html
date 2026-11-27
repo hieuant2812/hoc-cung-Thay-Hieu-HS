@@ -111,7 +111,7 @@
   const P = API.phien("hs"), esc = API.esc, S = window.SITE || {};
   $("#chanTrang").textContent = S.chanTrang || "";
   const hoSo = (() => { try { return JSON.parse(API.LS.get("hs-ho-so") || "{}"); } catch (e) { return {}; } })();
-  const KHOA_LUOT = "th-luot-" + (hoSo.id || "");
+  const KHOA_LUOT = "th-luot-" + (hoSo.id || ""), KHOA_TQ = "th-tq-" + (hoSo.id || "");
   const bao = (html, kieu) => { $("#thongBao").innerHTML = html ? `<div class="note ${kieu || "blue"}">${html}</div>` : ""; };
   window.addEventListener("unhandledrejection", e => bao("Lỗi: " + esc((e.reason && e.reason.message) || e.reason) + ". Em chụp màn hình gửi thầy nhé.", "red"));
   const TEN_MUC = { NB: "Nhận biết", TH: "Thông hiểu", VD: "Vận dụng", VDC: "Vận dụng cao" };
@@ -155,15 +155,23 @@
     xem("#vTong");
     const [mon, lop] = chonNH ? chonNH.split("|") : ["", ""];
     let r;
-    if (!TQ) { bao("⏳ Đang tải dữ liệu tự học…"); $("#dsDang").innerHTML = `<p class="muted small">Đang tải…</p>`; }
+    // lần mở trước còn lưu trong máy: hiện ngay, rồi cập nhật từ máy chủ ở phía sau
+    if (!TQ) {
+      let cu = null; try { cu = JSON.parse(API.LS.get(KHOA_TQ) || "null"); } catch (e) { }
+      if (cu && cu.r && (!chonNH || chonNH === cu.r.mon + "|" + cu.r.lop)) { try { veTong(cu.r); } catch (e) { } bao("⏳ Đang cập nhật…"); }
+      else { bao("⏳ Đang tải dữ liệu tự học…"); $("#dsDang").innerHTML = `<p class="muted small">Đang tải…</p>`; }
+    }
+    const coBanCu = $$(".chonD").length > 0;
     try { r = await goi("hs.tuHoc", { mon, lop }); }
     catch (e) {
-      $("#dsDang").innerHTML = "";
+      if (!coBanCu) $("#dsDang").innerHTML = "";                       // đang hiện bản lưu trong máy thì giữ lại cho em luyện
       bao(`${esc(e.message)} <button class="btn sm ghost" id="btnThuLai">Thử lại</button>`, "red");
       $("#btnThuLai").onclick = taiTong;
       return;
     }
-    try { veTong(r); chonSan(); } catch (e) { bao("Lỗi hiển thị trang: " + esc(e.message) + ". Em chụp màn hình gửi thầy nhé.", "red"); }
+    API.LS.set(KHOA_TQ, JSON.stringify({ r }));
+    const daChon = $$(".chonD:checked").map(c => c.value);              // giữ dạng em đã tick trong lúc chờ
+    try { veTong(r); $$(".chonD").forEach(c => { if (daChon.includes(c.value)) c.checked = true; }); chonSan(); } catch (e) { bao("Lỗi hiển thị trang: " + esc(e.message) + ". Em chụp màn hình gửi thầy nhé.", "red"); }
   }
   function veTong(r) {
     TQ = r; bao("");

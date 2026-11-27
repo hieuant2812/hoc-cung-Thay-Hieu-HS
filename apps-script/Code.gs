@@ -13,7 +13,7 @@
 /* ĐỔI DÒNG NÀY thành mật khẩu riêng của thầy (ít nhất 8 kí tự). */
 const KHOA_GV = "doi-mat-khau-nay";
 
-const PHIEN_BAN = "2026.11.28-5";
+const PHIEN_BAN = "2026.11.28-6";
 const HS_HAN_PHIEN_NGAY = 30;     // học sinh đăng nhập một lần dùng 30 ngày
 const GV_HAN_PHIEN_GIO = 12;      // giáo viên: 12 giờ
 const SO_LAN_SAI_TOI_DA = 5;      // sai mật khẩu 5 lần thì khoá 10 phút
@@ -281,6 +281,7 @@ const VIEC = {
         return { k: mon + "|" + lop + "|" + dkey, mon: mon, lop: lop, dkey: dkey, ten: String(yc.dang[k] || "") };
       });
       if (dang.length) ghiDe("Dang", dang);
+      doiPhienNH();
       return { moi: kq.moi, capNhat: kq.capNhat };
     });
   },
@@ -309,6 +310,7 @@ const VIEC = {
     return khoa(function () {
       const n1 = xoaTheo("CauHoi", function (o) { return o.mon === mon && +o.lop === lop; });
       xoaTheo("Dang", function (o) { return o.mon === mon && +o.lop === lop; });
+      doiPhienNH();
       ghiNhatKy("gv", "xoa-ngan-hang", mon + " " + lop + ": " + n1);
       return { n: n1 };
     });
@@ -989,6 +991,18 @@ function dangCuaNH(mon, lop) {
   docHet("Dang").forEach(function (o) { if (o.mon === mon && +o.lop === +lop && dang[o.dkey]) dang[o.dkey].ten = o.ten; });
   return Object.keys(dang).map(function (k) { return dang[k]; }).sort(function (a, b) { return a.chuong - b.chuong || a.bai - b.bai || a.so - b.so; });
 }
+/* lưu đệm (CacheService, 6 giờ) những gì chỉ phụ thuộc ngân hàng câu hỏi: danh sách môn/lớp, các dạng.
+   Thầy nạp hoặc xoá ngân hàng thì đổi "phiên ngân hàng" nên bản đệm cũ tự bỏ. */
+function boNhoNH(ten, tinh) {
+  let c = null; try { c = CacheService.getScriptCache(); } catch (e) { }
+  const v = PropertiesService.getScriptProperties().getProperty("NH_PHIEN") || "0";
+  const k = "nh:" + v + ":" + Utilities.base64EncodeWebSafe(encodeURIComponent(ten));
+  if (c) { try { const s = c.get(k); if (s) return JSON.parse(s); } catch (e) { } }
+  const kq = tinh();
+  if (c) { try { const s = JSON.stringify(kq); if (s.length < 95000) c.put(k, s, 21600); } catch (e) { } }
+  return JSON.parse(JSON.stringify(kq));
+}
+function doiPhienNH() { PropertiesService.getScriptProperties().setProperty("NH_PHIEN", String(Date.now())); }
 /* gợi ý: dạng em làm sai nhiều nhất (đã làm ít nhất 3 câu), rồi tới dạng chưa làm bao giờ */
 function goiYDang(t, mon, lop, ds) {
   const diem = ds.map(function (d) {
@@ -1006,16 +1020,19 @@ Object.assign(VIEC, {
     const tk = canHS(yc);
     const lopHS = timDong("Lop", tk.o.maLop), khoi = lopHS ? +lopHS.o.khoi || 0 : 0;
     const t = docTuHoc(tk.o.id), hn = ngayVN();
-    const nh = {};
-    docCot("CauHoi", ["mon", "lop"]).forEach(function (o) { const k = o.mon + "|" + o.lop; nh[k] = nh[k] || { mon: o.mon, lop: +o.lop, n: 0 }; nh[k].n++; });
-    const dsNH = Object.keys(nh).map(function (k) { return nh[k]; }).sort(function (a, b) { return a.mon.localeCompare(b.mon) || a.lop - b.lop; });
+    const dsNH = boNhoNH("ds", function () {                  // đếm câu theo môn, lớp: lưu đệm, không đọc lại cả ngân hàng mỗi lần
+      const nh = {};
+      docCot("CauHoi", ["mon", "lop"]).forEach(function (o) { const k = o.mon + "|" + o.lop; nh[k] = nh[k] || { mon: o.mon, lop: +o.lop, n: 0 }; nh[k].n++; });
+      return Object.keys(nh).map(function (k) { return nh[k]; }).sort(function (a, b) { return a.mon.localeCompare(b.mon) || a.lop - b.lop; });
+    });
+    const nh = {}; dsNH.forEach(function (x) { nh[x.mon + "|" + x.lop] = x; });
     let mon = chuanTen(yc.mon), lop = +yc.lop || 0;
     if (!nh[mon + "|" + lop]) {
       const hop = dsNH.filter(function (x) { return x.lop === khoi; });
       const c = hop.filter(function (x) { return /^To[aá]n/i.test(x.mon); })[0] || hop[0] || dsNH[0];
       mon = c ? c.mon : ""; lop = c ? c.lop : 0;
     }
-    const ds = mon ? dangCuaNH(mon, lop) : [];
+    const ds = mon ? boNhoNH("dang|" + mon + "|" + lop, function () { return dangCuaNH(mon, lop); }) : [];
     ds.forEach(function (d) { const s = t.dang[mon + "|" + lop + "|" + d.dkey] || [0, 0]; d.dung = s[0]; d.lam = s[1]; });
     const lich = [];
     for (let i = 34; i >= 0; i--) { const d = congNgay(hn, -i); lich.push({ d: d, dung: (t.ngay[d] || [0])[0] }); }
