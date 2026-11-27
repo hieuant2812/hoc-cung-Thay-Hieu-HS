@@ -545,14 +545,20 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Tính $\sin120^\circ$, $\cos135^\circ$, $\tan150^\circ$.`,
    giai: [
-    R`$\sin120^\circ=\sin(180^\circ-60^\circ)=\sin60^\circ=\dfrac{\sqrt3}2$.`,
-    R`$\cos135^\circ=-\cos45^\circ=-\dfrac{\sqrt2}2$.`,
-    R`$\tan150^\circ=-\tan30^\circ=-\dfrac{\sqrt3}3$.`
+    R`**Phân tích.** Góc tù đưa về góc nhọn bằng **góc bù** $180^\circ-\alpha$: hai góc bù nhau có $\sin$ bằng nhau, còn $\cos$, $\tan$, $\cot$ đối nhau.`,
+    R`**Bước 1.** $\sin120^\circ=\sin(180^\circ-60^\circ)=\sin60^\circ=\dfrac{\sqrt3}2$.`,
+    R`**Bước 2.** $\cos135^\circ=-\cos45^\circ=-\dfrac{\sqrt2}2$.`,
+    R`**Bước 3.** $\tan150^\circ=-\tan30^\circ=-\dfrac{\sqrt3}3$.`,
+    R`**Kết luận.** $\sin120^\circ=\dfrac{\sqrt3}2$, $\cos135^\circ=-\dfrac{\sqrt2}2$, $\tan150^\circ=-\dfrac{\sqrt3}3$.`,
+    R`**Nhận xét.** Góc tù có $\cos$, $\tan$ âm; chỉ $\sin$ dương.`
    ] },
  { muc: "NB", de: R`Cho $M$ trên nửa đường tròn đơn vị với $\widehat{xOM}=120^\circ$. Tìm toạ độ của $M$.`,
    giai: [
-    R`$x_0=\cos120^\circ=-\dfrac12$; $y_0=\sin120^\circ=\dfrac{\sqrt3}2$.`,
-    R`Vậy $M\left(-\dfrac12;\dfrac{\sqrt3}2\right)$ (nằm bên trái trục $Oy$ vì góc tù).`
+    R`**Phân tích.** Điểm $M$ trên nửa đường tròn đơn vị với $\widehat{xOM}=\alpha$ có toạ độ $(\cos\alpha;\sin\alpha)$. Tính hai giá trị lượng giác của $120^\circ$ bằng góc bù $60^\circ$.`,
+    R`**Bước 1.** $x_0=\cos120^\circ=-\dfrac12$; $y_0=\sin120^\circ=\dfrac{\sqrt3}2$.`,
+    R`**Bước 2.** Vậy $M\left(-\dfrac12;\dfrac{\sqrt3}2\right)$ (nằm bên trái trục $Oy$ vì góc tù).`,
+    R`**Kết luận.** $M\left(-\dfrac12;\dfrac{\sqrt3}2\right)$.`,
+    R`**Thử lại.** $M$ nằm trên đường tròn đơn vị: $\dfrac14+\dfrac34=1$ ✓.`
    ],
    hinh: R`\begin{tikzpicture}[scale=2,>=stealth]
 \draw[->] (-1.4,0)--(1.4,0) node[below]{$x$};
@@ -565,16 +571,21 @@ Object.assign(D, {
 \node[below] at (-0.5,0){$-\frac12$}; \node[right] at (0,0.75){$\frac{\sqrt3}2$};
 \node[below right] at (0,0){$O$}; \node[below] at (1,0){$1$}; \node[below] at (-1,0){$-1$};
 \draw[red] (0.22,0) arc (0:120:0.22); \node at (0.33,0.36){$120^\circ$};
-\end{tikzpicture}`, chuThich: R`$\cos\alpha$ là hoành độ, $\sin\alpha$ là tung độ của $M$.` },
+\end{tikzpicture}`,
+   chuThich: R`$\cos\alpha$ là hoành độ, $\sin\alpha$ là tung độ của $M$.` },
  { muc: "TH", de: R`Cho $\alpha$ là góc tù. Xét dấu $\sin\alpha$, $\cos\alpha$, $\tan\alpha$, $\cot\alpha$.`,
    giai: [
-    R`Góc tù thì $M$ nằm bên trái trục $Oy$: $x_0<0$, $y_0>0$.`,
-    R`Vậy $\sin\alpha>0$, $\cos\alpha<0$, $\tan\alpha=\dfrac{y_0}{x_0}<0$, $\cot\alpha<0$.`
+    R`**Phân tích.** Dấu của các giá trị lượng giác đọc từ **toạ độ** điểm $M$: $\cos$ là hoành độ, $\sin$ là tung độ, $\tan$ và $\cot$ là thương của chúng.`,
+    R`**Bước 1.** Góc tù thì $M$ nằm bên trái trục $Oy$: $x_0<0$, $y_0>0$.`,
+    R`**Bước 2.** Vậy $\sin\alpha>0$, $\cos\alpha<0$, $\tan\alpha=\dfrac{y_0}{x_0}<0$, $\cot\alpha<0$.`,
+    R`**Kết luận.** $\sin\alpha>0$; $\cos\alpha$, $\tan\alpha$, $\cot\alpha$ đều âm.`
    ] },
  { muc: "TH", de: R`Tính $A=\cos150^\circ+\sin120^\circ+\tan135^\circ\cdot\cot45^\circ$.`,
    giai: [
-    R`$\cos150^\circ=-\dfrac{\sqrt3}2$; $\sin120^\circ=\dfrac{\sqrt3}2$; $\tan135^\circ=-1$; $\cot45^\circ=1$.`,
-    R`$A=-\dfrac{\sqrt3}2+\dfrac{\sqrt3}2+(-1)\cdot1=-1$.`
+    R`**Phân tích.** Tính riêng từng giá trị bằng góc bù, rồi thay vào biểu thức. Hai số hạng đầu sẽ triệt tiêu nhau.`,
+    R`**Bước 1.** $\cos150^\circ=-\dfrac{\sqrt3}2$; $\sin120^\circ=\dfrac{\sqrt3}2$; $\tan135^\circ=-1$; $\cot45^\circ=1$.`,
+    R`**Bước 2.** $A=-\dfrac{\sqrt3}2+\dfrac{\sqrt3}2+(-1)\cdot1=-1$.`,
+    R`**Kết luận.** $A=-1$.`
    ] }
  ] },
 "C3-B5-D14": {
@@ -592,29 +603,41 @@ Object.assign(D, {
  vd: [
  { muc: "TH", de: R`Cho $\sin\alpha=\dfrac35$ với $90^\circ<\alpha<180^\circ$. Tính $\cos\alpha$, $\tan\alpha$, $\cot\alpha$.`,
    giai: [
-    R`$\cos^2\alpha=1-\dfrac9{25}=\dfrac{16}{25}$. Vì $\alpha$ tù nên $\cos\alpha<0$: $\cos\alpha=-\dfrac45$.`,
-    R`$\tan\alpha=\dfrac{\sin\alpha}{\cos\alpha}=\dfrac{3/5}{-4/5}=-\dfrac34$; $\cot\alpha=\dfrac1{\tan\alpha}=-\dfrac43$.`
+    R`**Phân tích.** Biết $\sin\alpha$, tìm $\cos\alpha$ bằng $\sin^2\alpha+\cos^2\alpha=1$. Khai căn được hai giá trị; $\alpha$ **tù** nên chọn $\cos\alpha<0$.`,
+    R`**Bước 1.** $\cos^2\alpha=1-\dfrac9{25}=\dfrac{16}{25}$. Vì $\alpha$ tù nên $\cos\alpha<0$: $\cos\alpha=-\dfrac45$.`,
+    R`**Bước 2.** $\tan\alpha=\dfrac{\sin\alpha}{\cos\alpha}=\dfrac{3/5}{-4/5}=-\dfrac34$; $\cot\alpha=\dfrac1{\tan\alpha}=-\dfrac43$.`,
+    R`**Kết luận.** $\cos\alpha=-\dfrac45$, $\tan\alpha=-\dfrac34$, $\cot\alpha=-\dfrac43$.`,
+    R`**Thử lại.** $\left(\dfrac35\right)^2+\left(-\dfrac45\right)^2=1$ ✓.`
    ] },
  { muc: "TH", de: R`Cho $\cos\alpha=-\dfrac13$. Tính $\sin\alpha$ và $\tan\alpha$.`,
    giai: [
-    R`$\sin^2\alpha=1-\dfrac19=\dfrac89$; vì $\sin\alpha\ge0$ nên $\sin\alpha=\dfrac{2\sqrt2}3$.`,
-    R`$\tan\alpha=\dfrac{2\sqrt2/3}{-1/3}=-2\sqrt2$.`
+    R`**Phân tích.** Với $0^\circ\le\alpha\le180^\circ$ luôn có $\sin\alpha\ge0$, nên sau khi khai căn chỉ lấy giá trị **không âm**.`,
+    R`**Bước 1.** $\sin^2\alpha=1-\dfrac19=\dfrac89$; vì $\sin\alpha\ge0$ nên $\sin\alpha=\dfrac{2\sqrt2}3$.`,
+    R`**Bước 2.** $\tan\alpha=\dfrac{2\sqrt2/3}{-1/3}=-2\sqrt2$.`,
+    R`**Kết luận.** $\sin\alpha=\dfrac{2\sqrt2}3$, $\tan\alpha=-2\sqrt2$.`,
+    R`**Thử lại.** $\dfrac89+\dfrac19=1$ ✓.`
    ] },
  { muc: "VD", de: R`Cho $\tan\alpha=2$. Tính $P=\dfrac{2\sin\alpha+\cos\alpha}{\sin\alpha-3\cos\alpha}$.`,
    giai: [
-    R`$\tan\alpha=2$ nên $\cos\alpha\ne0$. Chia cả tử và mẫu cho $\cos\alpha$: $P=\dfrac{2\tan\alpha+1}{\tan\alpha-3}$.`,
-    R`$P=\dfrac{2\cdot2+1}{2-3}=\dfrac5{-1}=-5$.`
+    R`**Phân tích.** Tử và mẫu đều có dạng $m\sin\alpha+n\cos\alpha$: chia cả tử và mẫu cho $\cos\alpha$ để xuất hiện $\tan\alpha$ đã biết.`,
+    R`**Bước 1.** $\tan\alpha=2$ nên $\cos\alpha\ne0$. Chia cả tử và mẫu cho $\cos\alpha$: $P=\dfrac{2\tan\alpha+1}{\tan\alpha-3}$.`,
+    R`**Bước 2.** $P=\dfrac{2\cdot2+1}{2-3}=\dfrac5{-1}=-5$.`,
+    R`**Kết luận.** $P=-5$.`,
+    R`**Thử lại.** $\tan\alpha=2$ nghĩa là $\sin\alpha=2\cos\alpha$: $P=\dfrac{4\cos\alpha+\cos\alpha}{2\cos\alpha-3\cos\alpha}=\dfrac{5}{-1}=-5$ ✓.`
    ] },
  { muc: "VD", de: R`Rút gọn $B=\cos10^\circ+\cos50^\circ+\cos130^\circ+\cos170^\circ$.`,
    giai: [
-    R`$\cos170^\circ=\cos(180^\circ-10^\circ)=-\cos10^\circ$; $\cos130^\circ=-\cos50^\circ$.`,
-    R`$B=\cos10^\circ+\cos50^\circ-\cos50^\circ-\cos10^\circ=0$.`
+    R`**Phân tích.** Các góc ghép thành cặp **bù nhau**: $10^\circ$ với $170^\circ$, $50^\circ$ với $130^\circ$. Hai góc bù nhau có $\cos$ đối nhau.`,
+    R`**Bước 1.** $\cos170^\circ=\cos(180^\circ-10^\circ)=-\cos10^\circ$; $\cos130^\circ=-\cos50^\circ$.`,
+    R`**Bước 2.** $B=\cos10^\circ+\cos50^\circ-\cos50^\circ-\cos10^\circ=0$.`,
+    R`**Kết luận.** $B=0$.`
    ] },
  { muc: "TH", de: R`Chứng minh $(\sin\alpha+\cos\alpha)^2+(\sin\alpha-\cos\alpha)^2=2$.`,
    giai: [
-    R`Khai triển: $(\sin\alpha+\cos\alpha)^2=\sin^2\alpha+2\sin\alpha\cos\alpha+\cos^2\alpha=1+2\sin\alpha\cos\alpha$.`,
-    R`Tương tự $(\sin\alpha-\cos\alpha)^2=1-2\sin\alpha\cos\alpha$.`,
-    R`Cộng lại được $2$ (điều phải chứng minh).`
+    R`**Phân tích.** Khai triển hai bình phương rồi dùng $\sin^2\alpha+\cos^2\alpha=1$; các số hạng $2\sin\alpha\cos\alpha$ trái dấu sẽ triệt tiêu.`,
+    R`**Bước 1.** Khai triển: $(\sin\alpha+\cos\alpha)^2=\sin^2\alpha+2\sin\alpha\cos\alpha+\cos^2\alpha=1+2\sin\alpha\cos\alpha$.`,
+    R`**Bước 2.** Tương tự $(\sin\alpha-\cos\alpha)^2=1-2\sin\alpha\cos\alpha$.`,
+    R`**Bước 3.** Cộng lại được $2$ (điều phải chứng minh).`
    ] }
  ] },
 "C3-B6-D15": {
@@ -631,24 +654,34 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Cho tam giác $ABC$ có $b=3$, $c=5$, $\widehat A=120^\circ$. Tính $a$.`,
    giai: [
-    R`$a^2=b^2+c^2-2bc\cos A=9+25-2\cdot3\cdot5\cdot\left(-\dfrac12\right)=34+15=49$.`,
-    R`$a=7$.`
-   ], hinh: TGC },
+    R`**Phân tích.** Biết **hai cạnh và góc xen giữa**, tìm cạnh thứ ba: dùng định lí côsin $a^2=b^2+c^2-2bc\cos A$. Chú ý $\cos120^\circ$ âm.`,
+    R`**Bước 1.** $a^2=b^2+c^2-2bc\cos A=9+25-2\cdot3\cdot5\cdot\left(-\dfrac12\right)=34+15=49$.`,
+    R`**Bước 2.** $a=7$.`,
+    R`**Kết luận.** $a=7$.`,
+    R`**Nhận xét.** Góc $A$ tù nên $a$ phải lớn hơn $b$ và $c$: $7>5>3$, hợp lí.`
+   ],
+   hinh: TGC },
  { muc: "TH", de: R`Cho tam giác $ABC$ có $a=7$, $b=5$, $c=8$. Tính góc $A$.`,
    giai: [
-    R`$\cos A=\dfrac{b^2+c^2-a^2}{2bc}=\dfrac{25+64-49}{2\cdot5\cdot8}=\dfrac{40}{80}=\dfrac12$.`,
-    R`Vậy $\widehat A=60^\circ$.`
+    R`**Phân tích.** Biết **ba cạnh**, tìm góc: dùng hệ quả định lí côsin $\cos A=\dfrac{b^2+c^2-a^2}{2bc}$.`,
+    R`**Bước 1.** $\cos A=\dfrac{b^2+c^2-a^2}{2bc}=\dfrac{25+64-49}{2\cdot5\cdot8}=\dfrac{40}{80}=\dfrac12$.`,
+    R`**Bước 2.** Vậy $\widehat A=60^\circ$.`,
+    R`**Kết luận.** $\widehat A=60^\circ$.`
    ] },
  { muc: "TH", de: R`Tam giác có ba cạnh $4$, $5$, $7$ là tam giác nhọn, vuông hay tù? Tính góc lớn nhất.`,
    giai: [
-    R`Góc lớn nhất đối diện cạnh $7$. So sánh: $4^2+5^2=41<49=7^2$ nên góc đó tù: tam giác **tù**.`,
-    R`$\cos\alpha=\dfrac{16+25-49}{2\cdot4\cdot5}=\dfrac{-8}{40}=-\dfrac15$, suy ra $\alpha\approx101{,}54^\circ$.`
+    R`**Phân tích.** Góc lớn nhất đối diện cạnh lớn nhất. Dấu của $\cos$ góc đó (tức dấu của $b^2+c^2-a^2$) cho biết góc nhọn, vuông hay tù.`,
+    R`**Bước 1.** Góc lớn nhất đối diện cạnh $7$. So sánh: $4^2+5^2=41<49=7^2$ nên góc đó tù: tam giác **tù**.`,
+    R`**Bước 2.** $\cos\alpha=\dfrac{16+25-49}{2\cdot4\cdot5}=\dfrac{-8}{40}=-\dfrac15$, suy ra $\alpha\approx101{,}54^\circ$.`,
+    R`**Kết luận.** Tam giác tù, góc lớn nhất khoảng $101{,}54^\circ$.`
    ] },
  { muc: "VD", de: R`Hai tàu cùng rời cảng, đi theo hai hướng hợp với nhau góc $60^\circ$, vận tốc $30$ km/h và $40$ km/h. Sau $2$ giờ, hai tàu cách nhau bao xa?`,
    giai: [
-    R`Sau $2$ giờ: tàu thứ nhất đi $60$ km, tàu thứ hai đi $80$ km. Hai quãng đường và khoảng cách $d$ tạo thành tam giác có góc xen giữa $60^\circ$.`,
-    R`$d^2=60^2+80^2-2\cdot60\cdot80\cdot\cos60^\circ=3600+6400-4800=5200$.`,
-    R`$d=\sqrt{5200}=20\sqrt{13}\approx72{,}11$ km.`
+    R`**Phân tích.** Quãng đường mỗi tàu đi được là hai cạnh, góc giữa hai hướng là góc xen giữa; khoảng cách hai tàu là cạnh thứ ba. Dùng định lí côsin.`,
+    R`**Bước 1.** Sau $2$ giờ: tàu thứ nhất đi $60$ km, tàu thứ hai đi $80$ km. Hai quãng đường và khoảng cách $d$ tạo thành tam giác có góc xen giữa $60^\circ$.`,
+    R`**Bước 2.** $d^2=60^2+80^2-2\cdot60\cdot80\cdot\cos60^\circ=3600+6400-4800=5200$.`,
+    R`**Bước 3.** $d=\sqrt{5200}=20\sqrt{13}\approx72{,}11$ km.`,
+    R`**Kết luận.** Sau $2$ giờ hai tàu cách nhau khoảng $72{,}11$ km.`
    ] }
  ] },
 "C3-B6-D16": {
@@ -665,22 +698,35 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Cho tam giác $ABC$ có $a=6$, $\widehat A=30^\circ$. Tính bán kính $R$ của đường tròn ngoại tiếp.`,
    giai: [
-    R`$R=\dfrac a{2\sin A}=\dfrac6{2\cdot\frac12}=6$.`
+    R`**Phân tích.** Biết một cạnh và **góc đối diện** với nó: dùng định lí sin $\dfrac a{\sin A}=2R$.`,
+    R`**Bước 1.** Từ định lí sin: $R=\dfrac a{2\sin A}$.`,
+    R`**Bước 2.** $\sin30^\circ=\dfrac12$, nên $R=\dfrac6{2\cdot\frac12}=\dfrac61=6$.`,
+    R`**Kết luận.** $R=6$.`,
+    R`**Nhận xét.** Góc $A=30^\circ$ thì $a=R$: cạnh đối diện góc $30^\circ$ bằng bán kính đường tròn ngoại tiếp.`
    ] },
  { muc: "TH", de: R`Cho tam giác $ABC$ có $\widehat A=60^\circ$, $\widehat B=45^\circ$, $b=4$. Tính $a$ và $c$.`,
    giai: [
-    R`$a=\dfrac{b\sin A}{\sin B}=\dfrac{4\cdot\frac{\sqrt3}2}{\frac{\sqrt2}2}=\dfrac{4\sqrt3}{\sqrt2}=2\sqrt6\approx4{,}90$.`,
-    R`$\widehat C=180^\circ-60^\circ-45^\circ=75^\circ$, với $\sin75^\circ=\dfrac{\sqrt6+\sqrt2}4$.`,
-    R`$c=\dfrac{b\sin C}{\sin B}=\dfrac{4\cdot\frac{\sqrt6+\sqrt2}4}{\frac{\sqrt2}2}=\dfrac{2(\sqrt6+\sqrt2)}{\sqrt2}=2\sqrt3+2\approx5{,}46$.`
+    R`**Phân tích.** Biết **hai góc và một cạnh**: dùng định lí sin $\dfrac a{\sin A}=\dfrac b{\sin B}=\dfrac c{\sin C}$. Góc $C$ tính từ tổng ba góc bằng $180^\circ$.`,
+    R`**Bước 1.** $a=\dfrac{b\sin A}{\sin B}=\dfrac{4\cdot\frac{\sqrt3}2}{\frac{\sqrt2}2}=\dfrac{4\sqrt3}{\sqrt2}=2\sqrt6\approx4{,}90$.`,
+    R`**Bước 2.** $\widehat C=180^\circ-60^\circ-45^\circ=75^\circ$, với $\sin75^\circ=\dfrac{\sqrt6+\sqrt2}4$.`,
+    R`**Bước 3.** $c=\dfrac{b\sin C}{\sin B}=\dfrac{4\cdot\frac{\sqrt6+\sqrt2}4}{\frac{\sqrt2}2}=\dfrac{2(\sqrt6+\sqrt2)}{\sqrt2}=2\sqrt3+2\approx5{,}46$.`,
+    R`**Kết luận.** $a=2\sqrt6\approx4{,}90$; $c=2\sqrt3+2\approx5{,}46$.`,
+    R`**Nhận xét.** Góc lớn hơn đối diện cạnh lớn hơn: $\widehat C>\widehat A>\widehat B$ và $c>a>b$ ✓.`
    ] },
  { muc: "TH", de: R`Tính bán kính đường tròn ngoại tiếp tam giác đều cạnh $a$.`,
    giai: [
-    R`Mỗi góc bằng $60^\circ$: $R=\dfrac a{2\sin60^\circ}=\dfrac a{\sqrt3}=\dfrac{a\sqrt3}3$.`
+    R`**Phân tích.** Tam giác đều có mọi góc bằng $60^\circ$; áp dụng định lí sin với một cạnh $a$ và góc đối diện $60^\circ$.`,
+    R`**Bước 1.** $R=\dfrac a{2\sin60^\circ}=\dfrac a{2\cdot\frac{\sqrt3}2}=\dfrac a{\sqrt3}$.`,
+    R`**Bước 2.** Trục căn ở mẫu: $\dfrac a{\sqrt3}=\dfrac{a\sqrt3}3$.`,
+    R`**Kết luận.** $R=\dfrac{a\sqrt3}3$.`,
+    R`**Thử lại.** Tâm đường tròn ngoại tiếp là trọng tâm, cách đỉnh $\dfrac23$ đường cao: $\dfrac23\cdot\dfrac{a\sqrt3}2=\dfrac{a\sqrt3}3$ ✓.`
    ] },
  { muc: "VD", de: R`Cho tam giác $ABC$ có $a=7$, $b=5$, $c=8$. Tính $R$.`,
    giai: [
-    R`Tính góc $A$ bằng định lí côsin: $\cos A=\dfrac{25+64-49}{80}=\dfrac12$ nên $\widehat A=60^\circ$.`,
-    R`$R=\dfrac a{2\sin A}=\dfrac7{2\cdot\frac{\sqrt3}2}=\dfrac7{\sqrt3}=\dfrac{7\sqrt3}3\approx4{,}04$.`
+    R`**Phân tích.** Định lí sin cần một góc. Biết ba cạnh thì tìm một góc bằng định lí côsin trước, rồi mới dùng $R=\dfrac a{2\sin A}$.`,
+    R`**Bước 1.** Tính góc $A$ bằng định lí côsin: $\cos A=\dfrac{25+64-49}{80}=\dfrac12$ nên $\widehat A=60^\circ$.`,
+    R`**Bước 2.** $R=\dfrac a{2\sin A}=\dfrac7{2\cdot\frac{\sqrt3}2}=\dfrac7{\sqrt3}=\dfrac{7\sqrt3}3\approx4{,}04$.`,
+    R`**Kết luận.** $R=\dfrac{7\sqrt3}3\approx4{,}04$.`
    ] }
  ] },
 "C3-B6-D17": {
@@ -697,26 +743,35 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Tính diện tích tam giác $ABC$ có $b=6$, $c=8$, $\widehat A=30^\circ$.`,
    giai: [
-    R`$S=\dfrac12bc\sin A=\dfrac12\cdot6\cdot8\cdot\dfrac12=12$.`
+    R`**Phân tích.** Biết hai cạnh và góc xen giữa: dùng $S=\dfrac12bc\sin A$.`,
+    R`**Bước 1.** Thay số: $S=\dfrac12\cdot6\cdot8\cdot\sin30^\circ$.`,
+    R`**Bước 2.** $\sin30^\circ=\dfrac12$, nên $S=\dfrac12\cdot48\cdot\dfrac12=12$.`,
+    R`**Kết luận.** Diện tích tam giác bằng $12$.`
    ] },
  { muc: "TH", de: R`Cho tam giác $ABC$ có $a=13$, $b=14$, $c=15$. Tính $S$, $R$, $r$ và đường cao $h_a$.`,
    giai: [
-    R`$p=\dfrac{13+14+15}2=21$. Heron: $S=\sqrt{21\cdot8\cdot7\cdot6}=\sqrt{7056}=84$.`,
-    R`$R=\dfrac{abc}{4S}=\dfrac{13\cdot14\cdot15}{4\cdot84}=\dfrac{2730}{336}=\dfrac{65}8$.`,
-    R`$r=\dfrac Sp=\dfrac{84}{21}=4$.`,
-    R`$h_a=\dfrac{2S}a=\dfrac{168}{13}\approx12{,}92$.`
+    R`**Phân tích.** Biết ba cạnh: tính $S$ bằng **Heron** với nửa chu vi $p$. Sau đó các đại lượng khác đều suy từ $S$: $R=\dfrac{abc}{4S}$, $r=\dfrac Sp$, $h_a=\dfrac{2S}a$.`,
+    R`**Bước 1.** $p=\dfrac{13+14+15}2=21$. Heron: $S=\sqrt{21\cdot8\cdot7\cdot6}=\sqrt{7056}=84$.`,
+    R`**Bước 2.** $R=\dfrac{abc}{4S}=\dfrac{13\cdot14\cdot15}{4\cdot84}=\dfrac{2730}{336}=\dfrac{65}8$.`,
+    R`**Bước 3.** $r=\dfrac Sp=\dfrac{84}{21}=4$.`,
+    R`**Bước 4.** $h_a=\dfrac{2S}a=\dfrac{168}{13}\approx12{,}92$.`,
+    R`**Kết luận.** $S=84$, $R=\dfrac{65}8$, $r=4$, $h_a=\dfrac{168}{13}\approx12{,}92$.`
    ] },
  { muc: "VD", de: R`Cho tam giác $ABC$ có $a=13$, $b=14$, $c=15$. Tính độ dài trung tuyến $m_b$ kẻ từ $B$.`,
    giai: [
-    R`$m_b^2=\dfrac{2a^2+2c^2-b^2}4=\dfrac{2\cdot169+2\cdot225-196}4=\dfrac{592}4=148$.`,
-    R`$m_b=\sqrt{148}=2\sqrt{37}\approx12{,}17$.`
+    R`**Phân tích.** Dùng công thức đường trung tuyến $m_b^2=\dfrac{2a^2+2c^2-b^2}4$; chú ý cạnh **bị trừ** là cạnh mà trung tuyến đi tới trung điểm của nó ($b$).`,
+    R`**Bước 1.** $m_b^2=\dfrac{2a^2+2c^2-b^2}4=\dfrac{2\cdot169+2\cdot225-196}4=\dfrac{592}4=148$.`,
+    R`**Bước 2.** $m_b=\sqrt{148}=2\sqrt{37}\approx12{,}17$.`,
+    R`**Kết luận.** $m_b=2\sqrt{37}\approx12{,}17$.`
    ] },
  { muc: "VD", de: R`Cho tam giác $ABC$ có $a=7$, $b=5$, $c=8$. Tính diện tích và bán kính đường tròn nội tiếp.`,
    giai: [
-    R`Theo định lí côsin, $\cos A=\dfrac{25+64-49}{80}=\dfrac12$ nên $\widehat A=60^\circ$.`,
-    R`$S=\dfrac12bc\sin A=\dfrac12\cdot5\cdot8\cdot\dfrac{\sqrt3}2=10\sqrt3$.`,
-    R`$p=\dfrac{7+5+8}2=10$; $r=\dfrac Sp=\sqrt3$.`,
-    R`(Kiểm tra bằng Heron: $\sqrt{10\cdot3\cdot5\cdot2}=\sqrt{300}=10\sqrt3$, khớp.)`
+    R`**Phân tích.** Có thể dùng Heron ngay, hoặc tìm góc $A$ (ra góc đặc biệt $60^\circ$) rồi dùng $S=\dfrac12bc\sin A$. Sau đó $r=\dfrac Sp$.`,
+    R`**Bước 1.** Theo định lí côsin, $\cos A=\dfrac{25+64-49}{80}=\dfrac12$ nên $\widehat A=60^\circ$.`,
+    R`**Bước 2.** $S=\dfrac12bc\sin A=\dfrac12\cdot5\cdot8\cdot\dfrac{\sqrt3}2=10\sqrt3$.`,
+    R`**Bước 3.** $p=\dfrac{7+5+8}2=10$; $r=\dfrac Sp=\sqrt3$.`,
+    R`**Bước 4.** (Kiểm tra bằng Heron: $\sqrt{10\cdot3\cdot5\cdot2}=\sqrt{300}=10\sqrt3$, khớp.)`,
+    R`**Kết luận.** $S=10\sqrt3$, $r=\sqrt3$.`
    ] }
  ] },
 "C3-B6-D18": {
@@ -734,16 +789,21 @@ Object.assign(D, {
  vd: [
  { muc: "TH", de: R`Giải tam giác $ABC$ biết $b=3$, $c=5$, $\widehat A=120^\circ$.`,
    giai: [
-    R`$a^2=9+25-2\cdot3\cdot5\cdot\left(-\dfrac12\right)=49$ nên $a=7$.`,
-    R`$\cos B=\dfrac{a^2+c^2-b^2}{2ac}=\dfrac{49+25-9}{70}=\dfrac{13}{14}$, suy ra $\widehat B\approx21{,}79^\circ$.`,
-    R`$\widehat C=180^\circ-120^\circ-21{,}79^\circ\approx38{,}21^\circ$.`
+    R`**Phân tích.** Giải tam giác là tìm đủ ba cạnh, ba góc. Biết hai cạnh và góc xen giữa: định lí côsin cho cạnh $a$, rồi hệ quả định lí côsin cho góc $B$, cuối cùng $C=180^\circ-A-B$.`,
+    R`**Bước 1.** $a^2=9+25-2\cdot3\cdot5\cdot\left(-\dfrac12\right)=49$ nên $a=7$.`,
+    R`**Bước 2.** $\cos B=\dfrac{a^2+c^2-b^2}{2ac}=\dfrac{49+25-9}{70}=\dfrac{13}{14}$, suy ra $\widehat B\approx21{,}79^\circ$.`,
+    R`**Bước 3.** $\widehat C=180^\circ-120^\circ-21{,}79^\circ\approx38{,}21^\circ$.`,
+    R`**Kết luận.** $a=7$, $\widehat B\approx21{,}79^\circ$, $\widehat C\approx38{,}21^\circ$.`,
+    R`**Thử lại.** Định lí sin: $\dfrac{\sin120^\circ}7\approx0{,}1237$ và $\dfrac{\sin21{,}79^\circ}3\approx0{,}1237$ ✓.`
    ] },
  { muc: "VD", de: R`Để đo chiều cao một tháp, người ta đứng tại hai điểm $A$, $B$ cách nhau $20$ m, thẳng hàng với chân tháp $H$ ($B$ ở giữa $A$ và $H$). Góc nâng tới đỉnh tháp $T$ từ $A$ là $30^\circ$, từ $B$ là $45^\circ$. Tính chiều cao tháp.`,
    giai: [
-    R`Trong tam giác $ABT$: $\widehat{TAB}=30^\circ$; $\widehat{ABT}=180^\circ-45^\circ=135^\circ$; suy ra $\widehat{ATB}=15^\circ$.`,
-    R`Định lí sin: $BT=\dfrac{AB\sin30^\circ}{\sin15^\circ}=\dfrac{20\cdot0{,}5}{\sin15^\circ}\approx38{,}64$ m.`,
-    R`Tam giác $BHT$ vuông tại $H$: $TH=BT\sin45^\circ\approx27{,}32$ m.`,
-    R`(Cách khác: $TH=h$ thì $AH=h\sqrt3$, $BH=h$; $h\sqrt3-h=20$ nên $h=\dfrac{20}{\sqrt3-1}=10(\sqrt3+1)\approx27{,}32$ m.)`
+    R`**Phân tích.** Không đo được trực tiếp $AH$. Xét tam giác $ABT$: biết cạnh $AB$ và hai góc, dùng **định lí sin** tìm $BT$; rồi dùng tam giác vuông $BHT$ để ra chiều cao.`,
+    R`**Bước 1.** Trong tam giác $ABT$: $\widehat{TAB}=30^\circ$; $\widehat{ABT}=180^\circ-45^\circ=135^\circ$; suy ra $\widehat{ATB}=15^\circ$.`,
+    R`**Bước 2.** Định lí sin: $BT=\dfrac{AB\sin30^\circ}{\sin15^\circ}=\dfrac{20\cdot0{,}5}{\sin15^\circ}\approx38{,}64$ m.`,
+    R`**Bước 3.** Tam giác $BHT$ vuông tại $H$: $TH=BT\sin45^\circ\approx27{,}32$ m.`,
+    R`**Bước 4.** (Cách khác: $TH=h$ thì $AH=h\sqrt3$, $BH=h$; $h\sqrt3-h=20$ nên $h=\dfrac{20}{\sqrt3-1}=10(\sqrt3+1)\approx27{,}32$ m.)`,
+    R`**Kết luận.** Tháp cao khoảng $27{,}32$ m.`
    ],
    hinh: R`\begin{tikzpicture}[scale=0.12]
 \draw[thick] (0,0)--(47.32,0);
@@ -755,14 +815,18 @@ Object.assign(D, {
 \end{tikzpicture}` },
  { muc: "VD", de: R`Để đo khoảng cách giữa hai điểm $A$, $B$ ở hai bên một cái hồ, người ta chọn điểm $C$ đo được $CA=200$ m, $CB=300$ m, $\widehat{ACB}=60^\circ$. Tính $AB$.`,
    giai: [
-    R`$AB^2=200^2+300^2-2\cdot200\cdot300\cdot\cos60^\circ=40000+90000-60000=70000$.`,
-    R`$AB=100\sqrt7\approx264{,}58$ m.`
+    R`**Phân tích.** Không đi qua hồ được, nhưng biết hai cạnh $CA$, $CB$ và góc xen giữa: dùng định lí côsin.`,
+    R`**Bước 1.** $AB^2=200^2+300^2-2\cdot200\cdot300\cdot\cos60^\circ=40000+90000-60000=70000$.`,
+    R`**Bước 2.** $AB=100\sqrt7\approx264{,}58$ m.`,
+    R`**Kết luận.** $AB=100\sqrt7\approx264{,}58$ m.`
    ] },
  { muc: "VD", de: R`Từ hai điểm $A$, $B$ trên một bờ sông cách nhau $100$ m, người ta ngắm cây $C$ ở bờ bên kia, đo được $\widehat{CAB}=60^\circ$, $\widehat{CBA}=75^\circ$. Tính $AC$ và khoảng cách từ $C$ đến bờ $AB$.`,
    giai: [
-    R`$\widehat{ACB}=180^\circ-60^\circ-75^\circ=45^\circ$.`,
-    R`Định lí sin: $AC=\dfrac{AB\sin B}{\sin C}=\dfrac{100\cdot\frac{\sqrt6+\sqrt2}4}{\frac{\sqrt2}2}=50(\sqrt3+1)\approx136{,}60$ m.`,
-    R`Khoảng cách từ $C$ đến $AB$: $d=AC\sin60^\circ=50(\sqrt3+1)\cdot\dfrac{\sqrt3}2=25(3+\sqrt3)\approx118{,}30$ m.`
+    R`**Phân tích.** Tam giác $ABC$ biết một cạnh và hai góc kề: tìm góc $C$, dùng định lí sin tìm $AC$; khoảng cách từ $C$ đến bờ là đường cao, tính trong tam giác vuông có góc $60^\circ$.`,
+    R`**Bước 1.** $\widehat{ACB}=180^\circ-60^\circ-75^\circ=45^\circ$.`,
+    R`**Bước 2.** Định lí sin: $AC=\dfrac{AB\sin B}{\sin C}=\dfrac{100\cdot\frac{\sqrt6+\sqrt2}4}{\frac{\sqrt2}2}=50(\sqrt3+1)\approx136{,}60$ m.`,
+    R`**Bước 3.** Khoảng cách từ $C$ đến $AB$: $d=AC\sin60^\circ=50(\sqrt3+1)\cdot\dfrac{\sqrt3}2=25(3+\sqrt3)\approx118{,}30$ m.`,
+    R`**Kết luận.** $AC\approx136{,}60$ m; khoảng cách từ $C$ đến bờ khoảng $118{,}30$ m.`
    ] }
  ] }
 });
