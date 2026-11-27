@@ -1790,4 +1790,154 @@ Object.assign(D, {
    giai: [ R`a) Chia $36$: $\dfrac{x^2}9-\dfrac{y^2}4=1$: hypebol.`, R`b) Elip. c) Parabol ($p=3$).` ] }
  ] }
 });
+/* ---------- Chương VIII · Đại số tổ hợp ---------- */
+Object.assign(D, {
+"C8-B23-D55": {
+ pp: [
+  R`**Quy tắc cộng:** công việc làm theo **một trong** các phương án (không trùng nhau), phương án 1 có $m$ cách, phương án 2 có $n$ cách: có $m+n$ cách.`,
+  R`**Quy tắc nhân:** công việc gồm **các công đoạn liên tiếp**, công đoạn 1 có $m$ cách, ứng với mỗi cách đó công đoạn 2 có $n$ cách: có $m\cdot n$ cách.`,
+  R`Dấu hiệu: "hoặc" thì cộng, "và (rồi)" thì nhân.`,
+  R`**Sơ đồ hình cây:** mỗi tầng là một công đoạn, mỗi nhánh là một lựa chọn; số kết quả bằng số nhánh cuối.`
+ ],
+ luuY: [
+  R`Dùng quy tắc cộng khi các phương án có phần trùng nhau: phải trừ phần trùng.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Một bạn có $5$ áo và $3$ quần. a) Có bao nhiêu cách chọn một bộ quần áo? b) Có bao nhiêu cách chọn một món (áo hoặc quần)?`,
+   giai: [ R`a) Chọn áo **và** quần: $5\cdot3=15$ cách.`, R`b) Chọn áo **hoặc** quần: $5+3=8$ cách.` ] },
+ { muc: "TH", de: R`Từ $A$ đến $B$ có $3$ con đường, từ $B$ đến $C$ có $4$ con đường. a) Có bao nhiêu cách đi từ $A$ đến $C$ qua $B$? b) Đi từ $A$ đến $C$ rồi về $A$ (qua $B$), không đi lại con đường đã đi, có bao nhiêu cách?`,
+   giai: [
+    R`a) $3\cdot4=12$ cách.`,
+    R`b) Lượt đi: $12$ cách. Lượt về: $C\to B$ còn $3$ đường, $B\to A$ còn $2$ đường: $6$ cách.`,
+    R`Tổng: $12\cdot6=72$ cách.`
+   ] },
+ { muc: "VD", de: R`Số $360$ có bao nhiêu ước nguyên dương?`,
+   giai: [
+    R`$360=2^3\cdot3^2\cdot5$. Mỗi ước có dạng $2^a3^b5^c$ với $a\in\{0;1;2;3\}$, $b\in\{0;1;2\}$, $c\in\{0;1\}$.`,
+    R`Chọn $a$, rồi $b$, rồi $c$: $4\cdot3\cdot2=24$ ước.`
+   ] }
+ ] },
+"C8-B23-D56": {
+ pp: [
+  R`Gọi số cần lập là $\overline{a_1a_2\dots a_n}$; **ưu tiên chọn chữ số có điều kiện trước** (chữ số đầu khác $0$, chữ số cuối chẵn/lẻ/chia hết cho $5$...).`,
+  R`"Khác nhau": mỗi chữ số đã dùng thì bớt một lựa chọn ở bước sau. "Không cần khác nhau": mỗi vị trí đủ lựa chọn.`,
+  R`Khi có chữ số $0$ và điều kiện ở chữ số cuối: **chia trường hợp** chữ số cuối bằng $0$ và khác $0$.`
+ ],
+ luuY: [
+  R`Quên chữ số đầu tiên phải khác $0$.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Từ các chữ số $1;2;3;4;5$ lập được bao nhiêu số có $3$ chữ số? Bao nhiêu số có $3$ chữ số khác nhau?`,
+   giai: [ R`Không cần khác nhau: $5\cdot5\cdot5=125$ số.`, R`Khác nhau: $5\cdot4\cdot3=60$ số.` ] },
+ { muc: "TH", de: R`Từ các chữ số $0;1;2;3;4;5$ lập được bao nhiêu số có $4$ chữ số khác nhau? Trong đó bao nhiêu số chẵn?`,
+   giai: [
+    R`$a_1\ne0$: $5$ cách; $a_2$: $5$ cách; $a_3$: $4$; $a_4$: $3$. Có $5\cdot5\cdot4\cdot3=300$ số.`,
+    R`Số chẵn, trường hợp $a_4=0$: $a_1,a_2,a_3$ chọn từ $5$ chữ số còn lại: $5\cdot4\cdot3=60$.`,
+    R`Trường hợp $a_4\in\{2;4\}$ ($2$ cách): $a_1$ khác $0$ và khác $a_4$: $4$ cách; $a_2$: $4$; $a_3$: $3$. Có $2\cdot4\cdot4\cdot3=96$.`,
+    R`Tổng số chẵn: $60+96=156$.`
+   ] },
+ { muc: "VD", de: R`Có bao nhiêu số tự nhiên có $3$ chữ số khác nhau và chia hết cho $5$?`,
+   giai: [
+    R`Chữ số cuối là $0$ hoặc $5$.`,
+    R`Cuối là $0$: $a_1$ có $9$ cách, $a_2$ có $8$ cách: $72$ số.`,
+    R`Cuối là $5$: $a_1\ne0,5$: $8$ cách; $a_2$: $8$ cách: $64$ số.`,
+    R`Tổng: $72+64=136$ số.`
+   ] }
+ ] },
+"C8-B24-D57": {
+ pp: [
+  R`**Hoán vị:** $P_n=n!$. **Chỉnh hợp** (chọn $k$ phần tử **có thứ tự**): $A_n^k=\dfrac{n!}{(n-k)!}$. **Tổ hợp** (chọn $k$ phần tử **không thứ tự**): $C_n^k=\dfrac{n!}{k!(n-k)!}$.`,
+  R`$A_n^k=k!\cdot C_n^k$; $C_n^k=C_n^{n-k}$.`,
+  R`**Giải phương trình:** đặt điều kiện ($n$ nguyên dương, $n\ge k$), viết theo công thức thành phương trình đa thức, giải, đối chiếu điều kiện.`,
+  R`Hay dùng: $A_n^2=n(n-1)$; $C_n^2=\dfrac{n(n-1)}2$; $C_n^3=\dfrac{n(n-1)(n-2)}6$.`
+ ],
+ luuY: [
+  R`Quên điều kiện $n\in\mathbb N$, $n\ge k$ nên giữ nghiệm âm hoặc không nguyên.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Tính $P_5$, $A_5^2$, $C_5^2$.`,
+   giai: [ R`$P_5=120$; $A_5^2=5\cdot4=20$; $C_5^2=\dfrac{20}2=10$.` ] },
+ { muc: "TH", de: R`Giải phương trình $A_n^2=20$.`,
+   giai: [ R`Điều kiện $n\ge2$. $n(n-1)=20\iff n^2-n-20=0\iff n=5$ hoặc $n=-4$.`, R`Nhận $n=5$.` ] },
+ { muc: "TH", de: R`Giải phương trình $C_n^2=28$.`,
+   giai: [ R`$\dfrac{n(n-1)}2=28\iff n^2-n-56=0\iff n=8$ hoặc $n=-7$. Nhận $n=8$.` ] },
+ { muc: "VD", de: R`Giải phương trình $C_n^1+C_n^2=21$.`,
+   giai: [ R`Điều kiện $n\ge2$. $n+\dfrac{n(n-1)}2=21\iff n^2+n-42=0$.`, R`$n=6$ hoặc $n=-7$. Nhận $n=6$.` ] }
+ ] },
+"C8-B24-D58": {
+ pp: [
+  R`**Xếp $n$ người vào $n$ chỗ:** $n!$.`,
+  R`**Chọn $k$ người có phân công vai trò** (lớp trưởng, lớp phó...): $A_n^k$. **Chọn $k$ người không phân biệt vai trò:** $C_n^k$.`,
+  R`**Đứng cạnh nhau:** "buộc" nhóm thành một khối, xếp các khối rồi nhân với số cách xếp bên trong khối.`,
+  R`**"Ít nhất một":** thường lấy tất cả trừ trường hợp "không có"; hoặc chia trường hợp rồi cộng.`
+ ],
+ luuY: [
+  R`Dùng $A$ khi không có thứ tự (hoặc $C$ khi có thứ tự). Tự hỏi: đổi chỗ hai người được chọn có tạo cách mới không?`
+ ],
+ vd: [
+ { muc: "NB", de: R`Có bao nhiêu cách xếp $5$ bạn thành một hàng dọc?`,
+   giai: [ R`$P_5=5!=120$ cách.` ] },
+ { muc: "TH", de: R`Lớp có $30$ học sinh. Có bao nhiêu cách chọn một lớp trưởng, một lớp phó, một thủ quỹ (không kiêm nhiệm)? Bao nhiêu cách chọn $3$ bạn đi trực nhật?`,
+   giai: [ R`Có phân công vai trò: $A_{30}^3=30\cdot29\cdot28=24\,360$ cách.`, R`Không phân biệt vai trò: $C_{30}^3=4060$ cách.` ] },
+ { muc: "VD", de: R`Xếp $5$ nam và $4$ nữ thành một hàng ngang. Có bao nhiêu cách để a) $4$ nữ đứng cạnh nhau; b) nam nữ đứng xen kẽ?`,
+   giai: [
+    R`a) Coi $4$ nữ là một khối: xếp $5$ nam và $1$ khối: $6!=720$; trong khối: $4!=24$. Tổng $720\cdot24=17\,280$.`,
+    R`b) $9$ vị trí, $5$ nam $4$ nữ xen kẽ thì nam ở vị trí lẻ $1,3,5,7,9$, nữ ở vị trí chẵn: $5!\cdot4!=2880$.`
+   ] },
+ { muc: "VD", de: R`Từ $6$ nam và $5$ nữ chọn $4$ người. Có bao nhiêu cách chọn a) có ít nhất $1$ nữ; b) có đúng $2$ nữ?`,
+   giai: [
+    R`a) Tất cả: $C_{11}^4=330$; không có nữ: $C_6^4=15$. Có ít nhất $1$ nữ: $330-15=315$.`,
+    R`b) Chọn $2$ nữ và $2$ nam: $C_5^2\cdot C_6^2=10\cdot15=150$.`
+   ] }
+ ] },
+"C8-B24-D59": {
+ pp: [
+  R`$n$ điểm, không có $3$ điểm thẳng hàng: số đoạn thẳng $C_n^2$; số tam giác $C_n^3$; số vectơ khác $\vec0$ là $A_n^2$.`,
+  R`Đa giác lồi $n$ cạnh: số đường chéo $C_n^2-n$.`,
+  R`Điểm nằm trên hai đường thẳng song song: tam giác lấy $2$ điểm trên đường này, $1$ điểm trên đường kia (cộng hai trường hợp).`,
+  R`Thi đấu vòng tròn một lượt: $C_n^2$ trận; hai lượt (sân nhà, sân khách): $A_n^2$ trận.`
+ ],
+ luuY: [
+  R`Ba điểm thẳng hàng không tạo thành tam giác.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Cho $10$ điểm, không có $3$ điểm nào thẳng hàng. Có bao nhiêu đoạn thẳng, bao nhiêu tam giác có đỉnh là các điểm đó?`,
+   giai: [ R`Đoạn thẳng: $C_{10}^2=45$. Tam giác: $C_{10}^3=120$.` ] },
+ { muc: "TH", de: R`Một đa giác lồi có $10$ cạnh có bao nhiêu đường chéo?`,
+   giai: [ R`Mỗi cặp đỉnh cho một cạnh hoặc một đường chéo: $C_{10}^2-10=45-10=35$.` ] },
+ { muc: "TH", de: R`Trên đường thẳng $d_1$ có $5$ điểm, trên $d_2\parallel d_1$ có $6$ điểm. Có bao nhiêu tam giác, bao nhiêu tứ giác (hình thang) có đỉnh lấy từ $11$ điểm đó?`,
+   giai: [
+    R`Tam giác: $2$ điểm trên $d_1$, $1$ trên $d_2$: $C_5^2\cdot6=60$; $1$ trên $d_1$, $2$ trên $d_2$: $5\cdot C_6^2=75$. Tổng $135$.`,
+    R`Tứ giác: $2$ điểm mỗi đường: $C_5^2\cdot C_6^2=150$.`
+   ] },
+ { muc: "VD", de: R`Giải bóng đá có $10$ đội thi đấu vòng tròn. Có bao nhiêu trận nếu đá một lượt? Hai lượt (sân nhà, sân khách)?`,
+   giai: [ R`Một lượt: mỗi cặp đội một trận: $C_{10}^2=45$.`, R`Hai lượt: mỗi cặp có thứ tự (chủ nhà, khách): $A_{10}^2=90$.` ] }
+ ] },
+"C8-B25-D60": {
+ pp: [
+  R`$(a+b)^4=a^4+4a^3b+6a^2b^2+4ab^3+b^4$.`,
+  R`$(a+b)^5=a^5+5a^4b+10a^3b^2+10a^2b^3+5ab^4+b^5$.`,
+  R`Số hạng tổng quát: $C_n^ka^{n-k}b^k$ ($n=4$ hoặc $5$). Muốn tìm hệ số của $x^m$: viết số hạng tổng quát, gom luỹ thừa của $x$, giải số mũ bằng $m$.`,
+  R`Với $(a-b)^n$: các dấu đan xen $+,-,+,\dots$ (thay $b$ bằng $-b$).`
+ ],
+ luuY: [
+  R`Quên luỹ thừa hệ số: số hạng của $(2x)^3$ là $8x^3$, không phải $2x^3$.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Khai triển $(x+2)^4$.`,
+   giai: [ R`$x^4+4x^3\cdot2+6x^2\cdot4+4x\cdot8+16=x^4+8x^3+24x^2+32x+16$.` ] },
+ { muc: "TH", de: R`Khai triển $(2x-1)^5$.`,
+   giai: [
+    R`Dùng $(a-b)^5$ với $a=2x$, $b=1$: $(2x)^5-5(2x)^4+10(2x)^3-10(2x)^2+5(2x)-1$.`,
+    R`$=32x^5-80x^4+80x^3-40x^2+10x-1$.`
+   ] },
+ { muc: "TH", de: R`Tìm hệ số của $x^3$ trong khai triển $(1+2x)^5$.`,
+   giai: [ R`Số hạng chứa $x^3$: $C_5^3(2x)^3=10\cdot8x^3$.`, R`Hệ số là $80$.` ] },
+ { muc: "VD", de: R`Tìm số hạng không chứa $x$ trong khai triển $\left(x+\dfrac2x\right)^4$.`,
+   giai: [
+    R`Số hạng tổng quát: $C_4^kx^{4-k}\left(\dfrac2x\right)^k=C_4^k2^kx^{4-2k}$.`,
+    R`Không chứa $x$: $4-2k=0\iff k=2$. Số hạng: $C_4^2\cdot4=24$.`
+   ] }
+ ] }
+});
 })(window);
