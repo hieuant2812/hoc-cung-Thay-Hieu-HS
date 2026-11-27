@@ -1165,34 +1165,39 @@ Object.assign(D, {
  ],
  vd: [
  { muc: "NB", de: R`Cho hình hộp $ABCD.A'B'C'D'$. Chứng minh $\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{AA'}=\overrightarrow{AC'}$.`,
-   hinhDe: R`\begin{tikzpicture}[scale=0.9,>=stealth]
-` + HOP + R`
-\draw[->,red,thick] (0,0)--(4,3.7);
-\end{tikzpicture}`,
    giai: [
-    R`$ABCD$ là hình bình hành nên $\overrightarrow{AB}+\overrightarrow{AD}=\overrightarrow{AC}$.`,
-    R`$ACC'A'$ là hình bình hành (vì $AA'$ và $CC'$ song song, bằng nhau) nên $\overrightarrow{AA'}=\overrightarrow{CC'}$.`,
-    R`Do đó $\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{AA'}=\overrightarrow{AC}+\overrightarrow{CC'}=\overrightarrow{AC'}$ (quy tắc ba điểm).`
+    R`**Phân tích.** Ba vectơ cùng xuất phát từ $A$ dọc theo ba cạnh của hình hộp. Ta cộng dần từng đôi bằng **quy tắc hình bình hành** (trong mặt đáy) rồi **quy tắc ba điểm** (đi lên theo cạnh bên).`,
+    R`**Bước 1.** $ABCD$ là hình bình hành nên $\overrightarrow{AB}+\overrightarrow{AD}=\overrightarrow{AC}$.`,
+    R`**Bước 2.** $ACC'A'$ là hình bình hành (vì $AA'$ và $CC'$ song song, bằng nhau) nên $\overrightarrow{AA'}=\overrightarrow{CC'}$.`,
+    R`**Bước 3.** Do đó $\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{AA'}=\overrightarrow{AC}+\overrightarrow{CC'}=\overrightarrow{AC'}$ (quy tắc ba điểm).`,
+    R`**Kết luận.** $\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{AA'}=\overrightarrow{AC'}$ (điều phải chứng minh). Đây là **quy tắc hình hộp**: tổng ba vectơ cạnh chung đỉnh bằng vectơ đường chéo xuất phát từ đỉnh đó.`
    ] },
  { muc: "TH", de: R`Cho hình hộp $ABCD.A'B'C'D'$. Rút gọn $\vec u=\overrightarrow{AB}+\overrightarrow{B'C'}+\overrightarrow{D'D}$.`,
    giai: [
-    R`$\overrightarrow{B'C'}=\overrightarrow{AD}$ (cùng hướng, cùng độ dài với cạnh $AD$).`,
-    R`$\overrightarrow{D'D}=\overrightarrow{A'A}$.`,
-    R`$\vec u=\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{A'A}=\overrightarrow{AC}+\overrightarrow{A'A}=\overrightarrow{A'A}+\overrightarrow{AC}=\overrightarrow{A'C}$.`,
-    R`**Kết luận.** $\vec u=\overrightarrow{A'C}$.`
+    R`**Phân tích.** Các vectơ chưa chung điểm đầu. Ta thay mỗi vectơ bằng một vectơ **bằng nó** (cùng hướng, cùng độ dài) có điểm đầu thuận tiện, rồi dùng quy tắc hình bình hành và quy tắc ba điểm.`,
+    R`**Bước 1.** $\overrightarrow{B'C'}=\overrightarrow{AD}$ (cùng hướng, cùng độ dài với cạnh $AD$).`,
+    R`**Bước 2.** $\overrightarrow{D'D}=\overrightarrow{A'A}$.`,
+    R`**Bước 3.** $\vec u=\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{A'A}=\overrightarrow{AC}+\overrightarrow{A'A}=\overrightarrow{A'A}+\overrightarrow{AC}=\overrightarrow{A'C}$.`,
+    R`**Kết luận.** $\vec u=\overrightarrow{A'C}$.`,
+    R`**Nhận xét.** Kiểm tra trên hình: đi từ $A'$ xuống $A$ rồi theo đường chéo đáy đến $C$ đúng là đi từ $A'$ đến $C$.`
    ] },
  { muc: "TH", de: R`Cho hình lập phương $ABCD.A'B'C'D'$ cạnh $a$. Tính độ dài vectơ $\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{AA'}$.`,
    giai: [
-    R`Theo quy tắc hình hộp, $\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{AA'}=\overrightarrow{AC'}$.`,
-    R`$AC=a\sqrt2$ (đường chéo hình vuông). Tam giác $ACC'$ vuông tại $C$ nên $AC'=\sqrt{AC^2+CC'^2}=\sqrt{2a^2+a^2}=a\sqrt3$.`,
-    R`**Kết luận.** Độ dài bằng $a\sqrt3$.`
+    R`**Phân tích.** Muốn tính độ dài một tổng vectơ, trước hết **rút gọn tổng thành một vectơ duy nhất**, rồi tính độ dài đoạn thẳng tương ứng bằng định lí Pythagore.`,
+    R`**Bước 1.** Theo quy tắc hình hộp, $\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{AA'}=\overrightarrow{AC'}$.`,
+    R`**Bước 2.** $AC=a\sqrt2$ (đường chéo hình vuông). Tam giác $ACC'$ vuông tại $C$ nên $AC'=\sqrt{AC^2+CC'^2}=\sqrt{2a^2+a^2}=a\sqrt3$.`,
+    R`**Kết luận.** Độ dài bằng $a\sqrt3$.`,
+    R`**Nhận xét.** Kết quả $a\sqrt3$ là độ dài đường chéo hình lập phương cạnh $a$, nên nhớ luôn công thức này.`
    ] },
  { muc: "VD", de: R`Cho tứ diện $ABCD$; $M$, $N$ lần lượt là trung điểm của $AB$ và $CD$. Chứng minh $\overrightarrow{MN}=\dfrac12\left(\overrightarrow{AD}+\overrightarrow{BC}\right)$.`,
    giai: [
-    R`Chèn điểm theo hai đường: $\overrightarrow{MN}=\overrightarrow{MA}+\overrightarrow{AD}+\overrightarrow{DN}$ và $\overrightarrow{MN}=\overrightarrow{MB}+\overrightarrow{BC}+\overrightarrow{CN}$.`,
-    R`Cộng vế theo vế: $2\overrightarrow{MN}=\left(\overrightarrow{MA}+\overrightarrow{MB}\right)+\left(\overrightarrow{AD}+\overrightarrow{BC}\right)+\left(\overrightarrow{DN}+\overrightarrow{CN}\right)$.`,
-    R`$M$ là trung điểm $AB$ nên $\overrightarrow{MA}+\overrightarrow{MB}=\vec0$; $N$ là trung điểm $CD$ nên $\overrightarrow{DN}+\overrightarrow{CN}=\vec0$.`,
-    R`Vậy $2\overrightarrow{MN}=\overrightarrow{AD}+\overrightarrow{BC}$, tức $\overrightarrow{MN}=\dfrac12\left(\overrightarrow{AD}+\overrightarrow{BC}\right)$.`
+    R`**Phân tích.** $\overrightarrow{MN}$ không biểu diễn ngay được qua $\overrightarrow{AD}$, $\overrightarrow{BC}$. Mẹo: **chèn điểm theo hai đường đi khác nhau** từ $M$ đến $N$ (qua $A$, $D$ và qua $B$, $C$), rồi cộng lại để các vectơ trung điểm triệt tiêu.`,
+    R`**Bước 1.** Chèn điểm theo hai đường: $\overrightarrow{MN}=\overrightarrow{MA}+\overrightarrow{AD}+\overrightarrow{DN}$ và $\overrightarrow{MN}=\overrightarrow{MB}+\overrightarrow{BC}+\overrightarrow{CN}$.`,
+    R`**Bước 2.** Cộng vế theo vế: $2\overrightarrow{MN}=\left(\overrightarrow{MA}+\overrightarrow{MB}\right)+\left(\overrightarrow{AD}+\overrightarrow{BC}\right)+\left(\overrightarrow{DN}+\overrightarrow{CN}\right)$.`,
+    R`**Bước 3.** $M$ là trung điểm $AB$ nên $\overrightarrow{MA}+\overrightarrow{MB}=\vec0$; $N$ là trung điểm $CD$ nên $\overrightarrow{DN}+\overrightarrow{CN}=\vec0$.`,
+    R`**Bước 4.** Vậy $2\overrightarrow{MN}=\overrightarrow{AD}+\overrightarrow{BC}$, tức $\overrightarrow{MN}=\dfrac12\left(\overrightarrow{AD}+\overrightarrow{BC}\right)$.`,
+    R`**Kết luận.** $\overrightarrow{MN}=\dfrac12\left(\overrightarrow{AD}+\overrightarrow{BC}\right)$ (điều phải chứng minh).`,
+    R`**Nhận xét.** Kĩ thuật "chèn điểm hai đường rồi cộng" dùng rất nhiều khi có hai trung điểm; công thức này cũng là công thức đường trung bình trong không gian.`
    ] }
  ] },
 
@@ -1208,21 +1213,29 @@ Object.assign(D, {
  vd: [
  { muc: "TH", de: R`Cho hình hộp $ABCD.A'B'C'D'$, đặt $\overrightarrow{AB}=\vec a$, $\overrightarrow{AD}=\vec b$, $\overrightarrow{AA'}=\vec c$. Gọi $M$ là trung điểm $CC'$. Biểu diễn các vectơ $\overrightarrow{AC'}$, $\overrightarrow{BD'}$, $\overrightarrow{AM}$ theo $\vec a$, $\vec b$, $\vec c$.`,
    giai: [
-    R`$\overrightarrow{AC'}=\overrightarrow{AB}+\overrightarrow{BC}+\overrightarrow{CC'}=\vec a+\vec b+\vec c$ (vì $\overrightarrow{BC}=\overrightarrow{AD}$, $\overrightarrow{CC'}=\overrightarrow{AA'}$).`,
-    R`$\overrightarrow{BD'}=\overrightarrow{BA}+\overrightarrow{AD}+\overrightarrow{DD'}=-\vec a+\vec b+\vec c$.`,
-    R`$\overrightarrow{AM}=\overrightarrow{AC}+\overrightarrow{CM}=(\vec a+\vec b)+\dfrac12\overrightarrow{CC'}=\vec a+\vec b+\dfrac12\vec c$.`
+    R`**Phân tích.** Ba vectơ gốc $\vec a$, $\vec b$, $\vec c$ đi theo ba cạnh từ $A$. Muốn biểu diễn một vectơ, ta **đi từ điểm đầu đến điểm cuối dọc theo các cạnh** của hình hộp, rồi thay mỗi cạnh bằng $\pm\vec a$, $\pm\vec b$, $\pm\vec c$ (cùng hướng thì $+$, ngược hướng thì $-$).`,
+    R`**Bước 1.** $\overrightarrow{AC'}=\overrightarrow{AB}+\overrightarrow{BC}+\overrightarrow{CC'}=\vec a+\vec b+\vec c$ (vì $\overrightarrow{BC}=\overrightarrow{AD}$, $\overrightarrow{CC'}=\overrightarrow{AA'}$).`,
+    R`**Bước 2.** $\overrightarrow{BD'}=\overrightarrow{BA}+\overrightarrow{AD}+\overrightarrow{DD'}=-\vec a+\vec b+\vec c$.`,
+    R`**Bước 3.** $\overrightarrow{AM}=\overrightarrow{AC}+\overrightarrow{CM}=(\vec a+\vec b)+\dfrac12\overrightarrow{CC'}=\vec a+\vec b+\dfrac12\vec c$.`,
+    R`**Kết luận.** $\overrightarrow{AC'}=\vec a+\vec b+\vec c$; $\overrightarrow{BD'}=-\vec a+\vec b+\vec c$; $\overrightarrow{AM}=\vec a+\vec b+\dfrac12\vec c$.`,
+    R`**Nhận xét.** Đi theo cạnh nào cũng được (ví dụ $\overrightarrow{AC'}=\overrightarrow{AA'}+\overrightarrow{A'D'}+\overrightarrow{D'C'}$), kết quả không đổi.`
    ] },
  { muc: "TH", de: R`Cho tứ diện $OABC$ và $G$ là trọng tâm tam giác $ABC$. Chứng minh $\overrightarrow{OG}=\dfrac13\left(\overrightarrow{OA}+\overrightarrow{OB}+\overrightarrow{OC}\right)$.`,
    giai: [
-    R`$\overrightarrow{OA}=\overrightarrow{OG}+\overrightarrow{GA}$, $\overrightarrow{OB}=\overrightarrow{OG}+\overrightarrow{GB}$, $\overrightarrow{OC}=\overrightarrow{OG}+\overrightarrow{GC}$.`,
-    R`Cộng lại: $\overrightarrow{OA}+\overrightarrow{OB}+\overrightarrow{OC}=3\overrightarrow{OG}+\left(\overrightarrow{GA}+\overrightarrow{GB}+\overrightarrow{GC}\right)=3\overrightarrow{OG}+\vec0$.`,
-    R`Vậy $\overrightarrow{OG}=\dfrac13\left(\overrightarrow{OA}+\overrightarrow{OB}+\overrightarrow{OC}\right)$.`
+    R`**Phân tích.** Ta biết tính chất trọng tâm $\overrightarrow{GA}+\overrightarrow{GB}+\overrightarrow{GC}=\vec0$. Chèn điểm $G$ vào từng vectơ $\overrightarrow{OA}$, $\overrightarrow{OB}$, $\overrightarrow{OC}$ để dùng tính chất đó.`,
+    R`**Bước 1.** $\overrightarrow{OA}=\overrightarrow{OG}+\overrightarrow{GA}$, $\overrightarrow{OB}=\overrightarrow{OG}+\overrightarrow{GB}$, $\overrightarrow{OC}=\overrightarrow{OG}+\overrightarrow{GC}$.`,
+    R`**Bước 2.** Cộng lại: $\overrightarrow{OA}+\overrightarrow{OB}+\overrightarrow{OC}=3\overrightarrow{OG}+\left(\overrightarrow{GA}+\overrightarrow{GB}+\overrightarrow{GC}\right)=3\overrightarrow{OG}+\vec0$.`,
+    R`**Bước 3.** Vậy $\overrightarrow{OG}=\dfrac13\left(\overrightarrow{OA}+\overrightarrow{OB}+\overrightarrow{OC}\right)$.`,
+    R`**Kết luận.** $\overrightarrow{OG}=\dfrac13\left(\overrightarrow{OA}+\overrightarrow{OB}+\overrightarrow{OC}\right)$ (điều phải chứng minh).`,
+    R`**Nhận xét.** Công thức đúng với mọi điểm $O$; khi dùng toạ độ, nó cho ngay công thức toạ độ trọng tâm.`
    ] },
  { muc: "VD", de: R`Cho tứ diện $ABCD$; $M$, $N$ lần lượt là trung điểm của $AB$, $CD$. Chứng minh ba vectơ $\overrightarrow{AD}$, $\overrightarrow{BC}$, $\overrightarrow{MN}$ đồng phẳng.`,
    giai: [
-    R`Theo ví dụ 4 của dạng C2-B6-D01: $\overrightarrow{MN}=\dfrac12\overrightarrow{AD}+\dfrac12\overrightarrow{BC}$.`,
-    R`$\overrightarrow{AD}$ và $\overrightarrow{BC}$ không cùng phương (vì $AD$, $BC$ là hai cạnh chéo nhau của tứ diện).`,
-    R`$\overrightarrow{MN}$ biểu diễn được theo $\overrightarrow{AD}$, $\overrightarrow{BC}$ nên ba vectơ đồng phẳng.`
+    R`**Phân tích.** Ba vectơ đồng phẳng khi một vectơ biểu diễn được theo hai vectơ còn lại (hai vectơ đó không cùng phương). Ta tận dụng công thức $\overrightarrow{MN}$ đã chứng minh ở dạng trước.`,
+    R`**Bước 1.** Theo ví dụ 4 của dạng C2-B6-D01: $\overrightarrow{MN}=\dfrac12\overrightarrow{AD}+\dfrac12\overrightarrow{BC}$.`,
+    R`**Bước 2.** $\overrightarrow{AD}$ và $\overrightarrow{BC}$ không cùng phương (vì $AD$, $BC$ là hai cạnh chéo nhau của tứ diện).`,
+    R`**Bước 3.** $\overrightarrow{MN}$ biểu diễn được theo $\overrightarrow{AD}$, $\overrightarrow{BC}$ nên ba vectơ đồng phẳng.`,
+    R`**Kết luận.** $\overrightarrow{AD}$, $\overrightarrow{BC}$, $\overrightarrow{MN}$ đồng phẳng.`
    ] }
  ] },
 
@@ -1238,23 +1251,29 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Cho hình lập phương $ABCD.A'B'C'D'$ cạnh $a$. Tính $\overrightarrow{AB}\cdot\overrightarrow{A'C'}$.`,
    giai: [
-    R`$\overrightarrow{A'C'}=\overrightarrow{AC}$ nên $\overrightarrow{AB}\cdot\overrightarrow{A'C'}=\overrightarrow{AB}\cdot\overrightarrow{AC}$.`,
-    R`$AB=a$, $AC=a\sqrt2$, $(\overrightarrow{AB},\overrightarrow{AC})=\widehat{BAC}=45^\circ$.`,
-    R`$\overrightarrow{AB}\cdot\overrightarrow{AC}=a\cdot a\sqrt2\cdot\cos45^\circ=a\cdot a\sqrt2\cdot\dfrac{\sqrt2}{2}=a^2$.`
+    R`**Phân tích.** Hai vectơ $\overrightarrow{AB}$ và $\overrightarrow{A'C'}$ không chung gốc. Ta **thay $\overrightarrow{A'C'}$ bằng vectơ bằng nó có gốc $A$**, rồi dùng định nghĩa $\vec u\cdot\vec v=|\vec u|\cdot|\vec v|\cdot\cos(\vec u,\vec v)$.`,
+    R`**Bước 1.** $\overrightarrow{A'C'}=\overrightarrow{AC}$ nên $\overrightarrow{AB}\cdot\overrightarrow{A'C'}=\overrightarrow{AB}\cdot\overrightarrow{AC}$.`,
+    R`**Bước 2.** $AB=a$, $AC=a\sqrt2$, $(\overrightarrow{AB},\overrightarrow{AC})=\widehat{BAC}=45^\circ$.`,
+    R`**Bước 3.** $\overrightarrow{AB}\cdot\overrightarrow{AC}=a\cdot a\sqrt2\cdot\cos45^\circ=a\cdot a\sqrt2\cdot\dfrac{\sqrt2}{2}=a^2$.`,
+    R`**Kết luận.** $\overrightarrow{AB}\cdot\overrightarrow{A'C'}=a^2$.`,
+    R`**Thử lại bằng toạ độ** ($A$ gốc): $\overrightarrow{AB}=(a;0;0)$, $\overrightarrow{A'C'}=(a;a;0)$, tích vô hướng $a\cdot a=a^2$, khớp.`
    ] },
  { muc: "TH", de: R`Cho hình lập phương $ABCD.A'B'C'D'$. Tính góc giữa hai vectơ $\overrightarrow{AC}$ và $\overrightarrow{DA'}$.`,
    giai: [
-    R`Tịnh tiến: $\overrightarrow{DA'}=\overrightarrow{CB'}$ (vì $DCB'A'$ là hình bình hành).`,
-    R`Tam giác $ACB'$ có ba cạnh là ba đường chéo mặt của hình lập phương nên là tam giác đều, $\widehat{ACB'}=60^\circ$.`,
-    R`Hai vectơ $\overrightarrow{AC}$ và $\overrightarrow{CB'}$ nối tiếp nhau tại $C$, nên góc giữa chúng là $180^\circ-\widehat{ACB'}=120^\circ$.`,
-    R`Kiểm tra bằng toạ độ ($A$ gốc, cạnh $1$): $\overrightarrow{AC}=(1;1;0)$, $\overrightarrow{DA'}=(0;-1;1)$, $\cos=\dfrac{-1}{\sqrt2\cdot\sqrt2}=-\dfrac12$.`,
+    R`**Phân tích.** Góc giữa hai vectơ được xác định khi chúng **chung điểm đầu**. Ta tịnh tiến một vectơ để hai vectơ nối tiếp hoặc chung gốc, nhận ra một tam giác quen thuộc rồi suy ra góc.`,
+    R`**Bước 1.** Tịnh tiến: $\overrightarrow{DA'}=\overrightarrow{CB'}$ (vì $DCB'A'$ là hình bình hành).`,
+    R`**Bước 2.** Tam giác $ACB'$ có ba cạnh là ba đường chéo mặt của hình lập phương nên là tam giác đều, $\widehat{ACB'}=60^\circ$.`,
+    R`**Bước 3.** Hai vectơ $\overrightarrow{AC}$ và $\overrightarrow{CB'}$ nối tiếp nhau tại $C$, nên góc giữa chúng là $180^\circ-\widehat{ACB'}=120^\circ$.`,
+    R`**Bước 4.** Kiểm tra bằng toạ độ ($A$ gốc, cạnh $1$): $\overrightarrow{AC}=(1;1;0)$, $\overrightarrow{DA'}=(0;-1;1)$, $\cos=\dfrac{-1}{\sqrt2\cdot\sqrt2}=-\dfrac12$.`,
     R`**Kết luận.** $(\overrightarrow{AC},\overrightarrow{DA'})=120^\circ$.`
    ] },
  { muc: "VD", de: R`Cho tứ diện đều $ABCD$ cạnh $a$. Chứng minh $AB\perp CD$.`,
    giai: [
-    R`$\overrightarrow{AB}\cdot\overrightarrow{CD}=\overrightarrow{AB}\cdot\left(\overrightarrow{AD}-\overrightarrow{AC}\right)=\overrightarrow{AB}\cdot\overrightarrow{AD}-\overrightarrow{AB}\cdot\overrightarrow{AC}$.`,
-    R`Các mặt là tam giác đều nên $\widehat{BAD}=\widehat{BAC}=60^\circ$: $\overrightarrow{AB}\cdot\overrightarrow{AD}=a^2\cos60^\circ=\dfrac{a^2}{2}$, $\overrightarrow{AB}\cdot\overrightarrow{AC}=\dfrac{a^2}{2}$.`,
-    R`Vậy $\overrightarrow{AB}\cdot\overrightarrow{CD}=\dfrac{a^2}2-\dfrac{a^2}2=0$, nên $AB\perp CD$.`
+    R`**Phân tích.** Hai đường thẳng vuông góc khi tích vô hướng của hai vectơ chỉ phương bằng $0$. Ta tách $\overrightarrow{CD}=\overrightarrow{AD}-\overrightarrow{AC}$ để mọi vectơ cùng gốc $A$, khi đó các góc đều là góc của tam giác đều.`,
+    R`**Bước 1.** $\overrightarrow{AB}\cdot\overrightarrow{CD}=\overrightarrow{AB}\cdot\left(\overrightarrow{AD}-\overrightarrow{AC}\right)=\overrightarrow{AB}\cdot\overrightarrow{AD}-\overrightarrow{AB}\cdot\overrightarrow{AC}$.`,
+    R`**Bước 2.** Các mặt là tam giác đều nên $\widehat{BAD}=\widehat{BAC}=60^\circ$: $\overrightarrow{AB}\cdot\overrightarrow{AD}=a^2\cos60^\circ=\dfrac{a^2}{2}$, $\overrightarrow{AB}\cdot\overrightarrow{AC}=\dfrac{a^2}{2}$.`,
+    R`**Bước 3.** Vậy $\overrightarrow{AB}\cdot\overrightarrow{CD}=\dfrac{a^2}2-\dfrac{a^2}2=0$, nên $AB\perp CD$.`,
+    R`**Kết luận.** $AB\perp CD$. Tương tự, mọi cặp cạnh đối của tứ diện đều đều vuông góc với nhau.`
    ] }
  ] },
 
@@ -1270,17 +1289,26 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Một lực $\vec F$ có độ lớn $50$ N kéo một vật dịch chuyển $10$ m; góc giữa lực và hướng dịch chuyển là $60^\circ$. Tính công của lực.`,
    giai: [
-    R`$A=|\vec F|\cdot|\vec d|\cdot\cos60^\circ=50\cdot10\cdot\dfrac12=250$ (J).`
+    R`**Phân tích.** Công của lực không đổi làm vật dịch chuyển: $A=\vec F\cdot\vec d=|\vec F|\cdot|\vec d|\cdot\cos\alpha$, trong đó $\alpha$ là góc giữa lực và hướng dịch chuyển.`,
+    R`**Bước 1.** Xác định số liệu: $|\vec F|=50$ N, $|\vec d|=10$ m, $\alpha=60^\circ$, $\cos60^\circ=\dfrac12$.`,
+    R`**Bước 2.** Thay vào công thức: $A=50\cdot10\cdot\dfrac12=250$.`,
+    R`**Kết luận.** Công của lực là $250$ J.`,
+    R`**Nhận xét.** Nếu kéo cùng hướng dịch chuyển ($\alpha=0^\circ$) thì công lớn nhất $500$ J; kéo vuông góc ($\alpha=90^\circ$) thì công bằng $0$.`
    ] },
  { muc: "TH", de: R`Ba lực đôi một vuông góc, có độ lớn $3$ N, $4$ N, $12$ N cùng tác động vào một vật. Tính độ lớn hợp lực.`,
    giai: [
-    R`Đặt ba lực dọc ba cạnh chung đỉnh của một hình hộp chữ nhật; hợp lực là đường chéo của hình hộp.`,
-    R`$|\vec F|=\sqrt{3^2+4^2+12^2}=\sqrt{9+16+144}=\sqrt{169}=13$ (N).`
+    R`**Phân tích.** Ba lực đôi một vuông góc giống ba cạnh chung đỉnh của một hình hộp chữ nhật. Theo quy tắc hình hộp, hợp lực là **đường chéo** của hình hộp.`,
+    R`**Bước 1.** Đặt ba lực dọc ba cạnh chung đỉnh của một hình hộp chữ nhật; hợp lực là đường chéo của hình hộp.`,
+    R`**Bước 2.** $|\vec F|=\sqrt{3^2+4^2+12^2}=\sqrt{9+16+144}=\sqrt{169}=13$ (N).`,
+    R`**Kết luận.** Độ lớn hợp lực là $13$ N.`
    ] },
  { muc: "TH", de: R`Hai lực $\vec F_1$, $\vec F_2$ có độ lớn $6$ N và $8$ N cùng tác động vào một điểm, góc giữa chúng là $60^\circ$. Tính độ lớn hợp lực.`,
    giai: [
-    R`$|\vec F|^2=\left(\vec F_1+\vec F_2\right)^2=F_1^2+F_2^2+2\vec F_1\cdot\vec F_2=36+64+2\cdot6\cdot8\cdot\cos60^\circ=100+48=148$.`,
-    R`$|\vec F|=\sqrt{148}=2\sqrt{37}\approx12{,}17$ (N).`
+    R`**Phân tích.** Hai lực không vuông góc, nên không dùng Pythagore được. Ta bình phương vô hướng: $|\vec F_1+\vec F_2|^2=F_1^2+F_2^2+2F_1F_2\cos\alpha$.`,
+    R`**Bước 1.** $|\vec F|^2=\left(\vec F_1+\vec F_2\right)^2=F_1^2+F_2^2+2\vec F_1\cdot\vec F_2=36+64+2\cdot6\cdot8\cdot\cos60^\circ=100+48=148$.`,
+    R`**Bước 2.** $|\vec F|=\sqrt{148}=2\sqrt{37}\approx12{,}17$ (N).`,
+    R`**Kết luận.** Độ lớn hợp lực khoảng $12{,}17$ N.`,
+    R`**Nhận xét.** Hợp lực nằm giữa $|F_1-F_2|=2$ N và $F_1+F_2=14$ N, hợp lí.`
    ] }
  ] },
 
@@ -1297,29 +1325,29 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Cho điểm $M(2;-3;5)$. Tìm toạ độ hình chiếu của $M$ lên mặt phẳng $(Oxy)$, lên trục $Oz$; điểm đối xứng với $M$ qua mặt phẳng $(Oxz)$ và qua trục $Oy$.`,
    giai: [
-    R`Hình chiếu lên $(Oxy)$: giữ $x$, $y$, cho $z=0$: $(2;-3;0)$.`,
-    R`Hình chiếu lên $Oz$: $(0;0;5)$.`,
-    R`Đối xứng qua $(Oxz)$: đổi dấu $y$: $(2;3;5)$.`,
-    R`Đối xứng qua trục $Oy$: giữ $y$, đổi dấu $x$ và $z$: $(-2;-3;-5)$.`
+    R`**Phân tích.** Nhớ quy tắc: chiếu lên mặt phẳng toạ độ thì **toạ độ ứng với trục không nằm trong mặt phẳng** bằng $0$; chiếu lên trục thì chỉ giữ toạ độ của trục đó. Đối xứng qua mặt phẳng thì **đổi dấu toạ độ còn lại**; đối xứng qua trục thì **giữ toạ độ của trục, đổi dấu hai toạ độ kia**.`,
+    R`**Bước 1.** Hình chiếu lên $(Oxy)$: giữ $x$, $y$, cho $z=0$: $(2;-3;0)$.`,
+    R`**Bước 2.** Hình chiếu lên $Oz$: $(0;0;5)$.`,
+    R`**Bước 3.** Đối xứng qua $(Oxz)$: đổi dấu $y$: $(2;3;5)$.`,
+    R`**Bước 4.** Đối xứng qua trục $Oy$: giữ $y$, đổi dấu $x$ và $z$: $(-2;-3;-5)$.`,
+    R`**Kết luận.** Hình chiếu: $(2;-3;0)$ và $(0;0;5)$; điểm đối xứng: $(2;3;5)$ và $(-2;-3;-5)$.`
    ] },
  { muc: "TH", de: R`Cho $\vec a=2\vec i-3\vec k$ và $\overrightarrow{OM}=\vec j-4\vec i$. Tìm toạ độ của $\vec a$ và điểm $M$.`,
    giai: [
-    R`$\vec a=2\vec i+0\vec j-3\vec k$ nên $\vec a=(2;0;-3)$.`,
-    R`$\overrightarrow{OM}=-4\vec i+1\vec j+0\vec k$ nên $M(-4;1;0)$.`
+    R`**Phân tích.** $\vec u=x\vec i+y\vec j+z\vec k\iff\vec u=(x;y;z)$. Viết đủ ba thành phần theo đúng thứ tự $\vec i$, $\vec j$, $\vec k$; thành phần nào vắng thì bằng $0$.`,
+    R`**Bước 1.** $\vec a=2\vec i+0\vec j-3\vec k$ nên $\vec a=(2;0;-3)$.`,
+    R`**Bước 2.** $\overrightarrow{OM}=-4\vec i+1\vec j+0\vec k$ nên $M(-4;1;0)$.`,
+    R`**Kết luận.** $\vec a=(2;0;-3)$, $M(-4;1;0)$.`,
+    R`**Lưu ý.** Đề viết $\vec j-4\vec i$ (đảo thứ tự), phải xếp lại theo $\vec i$, $\vec j$, $\vec k$ trước khi đọc toạ độ.`
    ] },
  { muc: "VD", de: R`Cho hình lập phương $ABCD.A'B'C'D'$ cạnh $2$. Chọn hệ trục $Oxyz$ có gốc $A$, tia $Ox$ chứa $B$, tia $Oy$ chứa $D$, tia $Oz$ chứa $A'$. Tìm toạ độ các đỉnh $C$, $C'$ và trung điểm $M$ của $B'C'$.`,
-   hinhDe: R`\begin{tikzpicture}[scale=0.9,>=stealth]
-` + HOP + R`
-\draw[->] (3,0)--(3.8,0) node[below]{$x$};
-\draw[->] (1,1.2)--(1.6,1.92) node[above]{$y$};
-\draw[->] (0,2.5)--(0,3.2) node[left]{$z$};
-\fill (3.5,3.1) circle (2pt) node[above]{$M$};
-\end{tikzpicture}`,
    giai: [
-    R`$A(0;0;0)$, $B(2;0;0)$, $D(0;2;0)$, $A'(0;0;2)$.`,
-    R`$\overrightarrow{AC}=\overrightarrow{AB}+\overrightarrow{AD}=(2;2;0)$ nên $C(2;2;0)$.`,
-    R`$\overrightarrow{AC'}=\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{AA'}=(2;2;2)$ nên $C'(2;2;2)$. Tương tự $B'(2;0;2)$.`,
-    R`$M$ là trung điểm $B'C'$: $M\left(\dfrac{2+2}2;\dfrac{0+2}2;\dfrac{2+2}2\right)=(2;1;2)$.`
+    R`**Phân tích.** Đặt hệ trục xong, toạ độ mỗi đỉnh được tìm bằng cách **biểu diễn vectơ từ gốc $A$ đến đỉnh đó** theo $\overrightarrow{AB}$, $\overrightarrow{AD}$, $\overrightarrow{AA'}$.`,
+    R`**Bước 1.** $A(0;0;0)$, $B(2;0;0)$, $D(0;2;0)$, $A'(0;0;2)$.`,
+    R`**Bước 2.** $\overrightarrow{AC}=\overrightarrow{AB}+\overrightarrow{AD}=(2;2;0)$ nên $C(2;2;0)$.`,
+    R`**Bước 3.** $\overrightarrow{AC'}=\overrightarrow{AB}+\overrightarrow{AD}+\overrightarrow{AA'}=(2;2;2)$ nên $C'(2;2;2)$. Tương tự $B'(2;0;2)$.`,
+    R`**Bước 4.** $M$ là trung điểm $B'C'$: $M\left(\dfrac{2+2}2;\dfrac{0+2}2;\dfrac{2+2}2\right)=(2;1;2)$.`,
+    R`**Kết luận.** $C(2;2;0)$, $C'(2;2;2)$, $M(2;1;2)$.`
    ] }
  ] },
 
@@ -1335,24 +1363,33 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Cho $A(1;2;-3)$, $B(3;-4;1)$. Tìm toạ độ trung điểm $I$ của đoạn $AB$.`,
    giai: [
-    R`$I\left(\dfrac{1+3}2;\dfrac{2+(-4)}2;\dfrac{-3+1}2\right)=(2;-1;-1)$.`
+    R`**Phân tích.** Toạ độ trung điểm bằng **trung bình cộng** toạ độ hai đầu mút, tính riêng cho từng toạ độ $x$, $y$, $z$.`,
+    R`**Bước 1.** $x_I=\dfrac{x_A+x_B}2=\dfrac{1+3}2=2$.`,
+    R`**Bước 2.** $y_I=\dfrac{2+(-4)}2=-1$; $z_I=\dfrac{-3+1}2=-1$.`,
+    R`**Kết luận.** $I(2;-1;-1)$.`,
+    R`**Thử lại.** $\overrightarrow{AI}=(1;-3;2)$ và $\overrightarrow{IB}=(1;-3;2)$ bằng nhau, đúng là trung điểm.`
    ] },
  { muc: "TH", de: R`Cho $A(1;0;2)$, $B(2;-1;3)$, $C(0;4;1)$. Tìm toạ độ trọng tâm $G$ của tam giác $ABC$.`,
    giai: [
-    R`$x_G=\dfrac{1+2+0}3=1$; $y_G=\dfrac{0-1+4}3=1$; $z_G=\dfrac{2+3+1}3=2$.`,
+    R`**Phân tích.** Toạ độ trọng tâm tam giác bằng trung bình cộng toạ độ ba đỉnh (từ công thức $\overrightarrow{OG}=\frac13(\overrightarrow{OA}+\overrightarrow{OB}+\overrightarrow{OC})$).`,
+    R`**Bước 1.** $x_G=\dfrac{1+2+0}3=1$; $y_G=\dfrac{0-1+4}3=1$; $z_G=\dfrac{2+3+1}3=2$.`,
     R`**Kết luận.** $G(1;1;2)$.`
    ] },
  { muc: "TH", de: R`Cho $A(1;2;-3)$, $B(3;-4;1)$. Tìm điểm $M$ thoả mãn $\overrightarrow{MA}=-2\overrightarrow{MB}$.`,
    giai: [
-    R`$\overrightarrow{MA}=-2\overrightarrow{MB}\Leftrightarrow A-M=-2(B-M)\Leftrightarrow3M=A+2B$ (viết cho từng toạ độ).`,
-    R`$x_M=\dfrac{1+2\cdot3}3=\dfrac73$; $y_M=\dfrac{2+2\cdot(-4)}3=-2$; $z_M=\dfrac{-3+2\cdot1}3=-\dfrac13$.`,
+    R`**Phân tích.** Đẳng thức vectơ viết được cho **từng toạ độ**. Viết $\overrightarrow{MA}=A-M$, $\overrightarrow{MB}=B-M$ rồi giải ra $M$.`,
+    R`**Bước 1.** $\overrightarrow{MA}=-2\overrightarrow{MB}\Leftrightarrow A-M=-2(B-M)\Leftrightarrow3M=A+2B$ (viết cho từng toạ độ).`,
+    R`**Bước 2.** $x_M=\dfrac{1+2\cdot3}3=\dfrac73$; $y_M=\dfrac{2+2\cdot(-4)}3=-2$; $z_M=\dfrac{-3+2\cdot1}3=-\dfrac13$.`,
     R`**Kết luận.** $M\left(\dfrac73;-2;-\dfrac13\right)$ ($M$ nằm trên đoạn $AB$, $MA=2MB$).`
    ] },
  { muc: "VD", de: R`Cho $A(1;2;-3)$, $B(3;-4;1)$. Tìm giao điểm $M$ của đường thẳng $AB$ với mặt phẳng $(Oxy)$.`,
    giai: [
-    R`$\overrightarrow{AB}=(2;-6;4)$. Điểm $M$ thuộc đường thẳng $AB$ có dạng $M=A+t\overrightarrow{AB}=(1+2t;\,2-6t;\,-3+4t)$.`,
-    R`$M\in(Oxy)\Leftrightarrow z_M=0\Leftrightarrow-3+4t=0\Leftrightarrow t=\dfrac34$.`,
-    R`$M\left(1+\dfrac32;\,2-\dfrac92;\,0\right)=\left(\dfrac52;-\dfrac52;0\right)$.`
+    R`**Phân tích.** Điểm trên đường thẳng $AB$ viết được dưới dạng $M=A+t\overrightarrow{AB}$. Điểm thuộc mặt phẳng $(Oxy)$ có cao độ $z=0$; giải tìm $t$.`,
+    R`**Bước 1.** $\overrightarrow{AB}=(2;-6;4)$. Điểm $M$ thuộc đường thẳng $AB$ có dạng $M=A+t\overrightarrow{AB}=(1+2t;\,2-6t;\,-3+4t)$.`,
+    R`**Bước 2.** $M\in(Oxy)\Leftrightarrow z_M=0\Leftrightarrow-3+4t=0\Leftrightarrow t=\dfrac34$.`,
+    R`**Bước 3.** $M\left(1+\dfrac32;\,2-\dfrac92;\,0\right)=\left(\dfrac52;-\dfrac52;0\right)$.`,
+    R`**Kết luận.** $M\left(\dfrac52;-\dfrac52;0\right)$.`,
+    R`**Thử lại.** $\overrightarrow{AM}=\left(\frac32;-\frac92;3\right)=\frac34\overrightarrow{AB}$, đúng là $M$ thuộc đường thẳng $AB$.`
    ] }
  ] },
 
@@ -1367,20 +1404,26 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Cho $\vec a=(1;-2;3)$, $\vec b=(2;0;-1)$. Tính $\vec a+\vec b$, $2\vec a-3\vec b$ và $|\vec a|$.`,
    giai: [
-    R`$\vec a+\vec b=(1+2;-2+0;3-1)=(3;-2;2)$.`,
-    R`$2\vec a=(2;-4;6)$, $3\vec b=(6;0;-3)$, nên $2\vec a-3\vec b=(2-6;-4-0;6+3)=(-4;-4;9)$.`,
-    R`$|\vec a|=\sqrt{1+4+9}=\sqrt{14}$.`
+    R`**Phân tích.** Cộng, trừ, nhân số với vectơ đều làm **theo từng toạ độ**. Độ dài $|\vec a|=\sqrt{x^2+y^2+z^2}$.`,
+    R`**Bước 1.** $\vec a+\vec b=(1+2;-2+0;3-1)=(3;-2;2)$.`,
+    R`**Bước 2.** $2\vec a=(2;-4;6)$, $3\vec b=(6;0;-3)$, nên $2\vec a-3\vec b=(2-6;-4-0;6+3)=(-4;-4;9)$.`,
+    R`**Bước 3.** $|\vec a|=\sqrt{1+4+9}=\sqrt{14}$.`,
+    R`**Kết luận.** $\vec a+\vec b=(3;-2;2)$; $2\vec a-3\vec b=(-4;-4;9)$; $|\vec a|=\sqrt{14}$.`
    ] },
  { muc: "TH", de: R`Cho $A(1;2;3)$, $B(3;0;2)$. Tính độ dài đoạn $AB$.`,
    giai: [
-    R`$\overrightarrow{AB}=(2;-2;-1)$.`,
-    R`$AB=\sqrt{2^2+(-2)^2+(-1)^2}=\sqrt{9}=3$.`
+    R`**Phân tích.** Độ dài đoạn $AB$ là độ dài vectơ $\overrightarrow{AB}$, với $\overrightarrow{AB}=(x_B-x_A;y_B-y_A;z_B-z_A)$ (cuối trừ đầu).`,
+    R`**Bước 1.** $\overrightarrow{AB}=(2;-2;-1)$.`,
+    R`**Bước 2.** $AB=\sqrt{2^2+(-2)^2+(-1)^2}=\sqrt{9}=3$.`,
+    R`**Kết luận.** $AB=3$.`,
+    R`**Nhận xét.** Bình phương khử dấu nên viết $\overrightarrow{BA}$ hay $\overrightarrow{AB}$ đều cho cùng độ dài.`
    ] },
  { muc: "TH", de: R`Cho tam giác $ABC$ với $A(1;2;3)$, $B(3;0;2)$, $C(1;0;1)$. Tính chu vi tam giác.`,
    giai: [
-    R`$AB=3$ (ví dụ 2).`,
-    R`$\overrightarrow{AC}=(0;-2;-2)$, $AC=\sqrt{0+4+4}=2\sqrt2$.`,
-    R`$\overrightarrow{BC}=(-2;0;-1)$, $BC=\sqrt{4+0+1}=\sqrt5$.`,
+    R`**Phân tích.** Chu vi là tổng ba cạnh; mỗi cạnh tính như ví dụ trước.`,
+    R`**Bước 1.** $AB=3$ (ví dụ 2).`,
+    R`**Bước 2.** $\overrightarrow{AC}=(0;-2;-2)$, $AC=\sqrt{0+4+4}=2\sqrt2$.`,
+    R`**Bước 3.** $\overrightarrow{BC}=(-2;0;-1)$, $BC=\sqrt{4+0+1}=\sqrt5$.`,
     R`**Kết luận.** Chu vi bằng $3+2\sqrt2+\sqrt5$.`
    ] }
  ] },
@@ -1397,22 +1440,32 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Cho $\vec a=(1;-2;3)$, $\vec b=(2;0;-1)$. Tính $\vec a\cdot\vec b$.`,
    giai: [
-    R`$\vec a\cdot\vec b=1\cdot2+(-2)\cdot0+3\cdot(-1)=2+0-3=-1$.`
+    R`**Phân tích.** Trong hệ toạ độ, $\vec a\cdot\vec b=x_1x_2+y_1y_2+z_1z_2$: nhân các toạ độ cùng tên rồi cộng.`,
+    R`**Bước 1.** Nhân từng cặp: $1\cdot2=2$; $(-2)\cdot0=0$; $3\cdot(-1)=-3$.`,
+    R`**Bước 2.** Cộng lại: $2+0-3=-1$.`,
+    R`**Kết luận.** $\vec a\cdot\vec b=-1$.`,
+    R`**Nhận xét.** Tích vô hướng âm nên góc giữa hai vectơ là góc tù.`
    ] },
  { muc: "TH", de: R`Tính góc giữa hai vectơ $\vec a=(1;1;0)$ và $\vec b=(1;0;1)$.`,
    giai: [
-    R`$\vec a\cdot\vec b=1+0+0=1$; $|\vec a|=\sqrt2$, $|\vec b|=\sqrt2$.`,
-    R`$\cos(\vec a,\vec b)=\dfrac{1}{\sqrt2\cdot\sqrt2}=\dfrac12$ nên $(\vec a,\vec b)=60^\circ$.`
+    R`**Phân tích.** $\cos(\vec a,\vec b)=\dfrac{\vec a\cdot\vec b}{|\vec a|\cdot|\vec b|}$. Tính tích vô hướng và hai độ dài, rồi suy ra góc.`,
+    R`**Bước 1.** $\vec a\cdot\vec b=1+0+0=1$; $|\vec a|=\sqrt2$, $|\vec b|=\sqrt2$.`,
+    R`**Bước 2.** $\cos(\vec a,\vec b)=\dfrac{1}{\sqrt2\cdot\sqrt2}=\dfrac12$ nên $(\vec a,\vec b)=60^\circ$.`,
+    R`**Kết luận.** $(\vec a,\vec b)=60^\circ$.`
    ] },
  { muc: "TH", de: R`Tìm $m$ để $\vec a=(m;2;-1)$ vuông góc với $\vec b=(3;m;4)$.`,
    giai: [
-    R`$\vec a\perp\vec b\Leftrightarrow3m+2m-4=0\Leftrightarrow5m=4\Leftrightarrow m=\dfrac45$.`
+    R`**Phân tích.** $\vec a\perp\vec b\iff\vec a\cdot\vec b=0$. Viết tích vô hướng theo $m$, giải phương trình bậc nhất.`,
+    R`**Bước 1.** $\vec a\perp\vec b\Leftrightarrow3m+2m-4=0\Leftrightarrow5m=4\Leftrightarrow m=\dfrac45$.`,
+    R`**Kết luận.** $m=\dfrac45$.`,
+    R`**Thử lại.** $\vec a=\left(\frac45;2;-1\right)$, $\vec b=\left(3;\frac45;4\right)$: $\frac{12}5+\frac85-4=0$, đúng.`
    ] },
  { muc: "VD", de: R`Cho $A(1;0;0)$, $B(0;1;0)$, $C(0;0;1)$. Tính góc $\widehat{BAC}$ và cho biết tam giác $ABC$ là tam giác gì.`,
    giai: [
-    R`$\overrightarrow{AB}=(-1;1;0)$, $\overrightarrow{AC}=(-1;0;1)$.`,
-    R`$\cos\widehat{BAC}=\dfrac{(-1)(-1)+1\cdot0+0\cdot1}{\sqrt2\cdot\sqrt2}=\dfrac12$ nên $\widehat{BAC}=60^\circ$.`,
-    R`$AB=AC=\sqrt2$ và $BC=\left|(0;-1;1)\right|=\sqrt2$.`,
+    R`**Phân tích.** Góc $\widehat{BAC}$ là góc giữa hai vectơ **chung gốc $A$**: $\overrightarrow{AB}$ và $\overrightarrow{AC}$. Tính thêm ba cạnh để nhận dạng tam giác.`,
+    R`**Bước 1.** $\overrightarrow{AB}=(-1;1;0)$, $\overrightarrow{AC}=(-1;0;1)$.`,
+    R`**Bước 2.** $\cos\widehat{BAC}=\dfrac{(-1)(-1)+1\cdot0+0\cdot1}{\sqrt2\cdot\sqrt2}=\dfrac12$ nên $\widehat{BAC}=60^\circ$.`,
+    R`**Bước 3.** $AB=AC=\sqrt2$ và $BC=\left|(0;-1;1)\right|=\sqrt2$.`,
     R`**Kết luận.** $\widehat{BAC}=60^\circ$; tam giác $ABC$ đều cạnh $\sqrt2$.`
    ] }
  ] },
@@ -1429,22 +1482,28 @@ Object.assign(D, {
  vd: [
  { muc: "TH", de: R`Cho $A(1;2;-1)$, $B(2;3;1)$, $C(4;5;5)$. Ba điểm $A$, $B$, $C$ có thẳng hàng không?`,
    giai: [
-    R`$\overrightarrow{AB}=(1;1;2)$, $\overrightarrow{AC}=(3;3;6)$.`,
-    R`$\overrightarrow{AC}=3\overrightarrow{AB}$ nên hai vectơ cùng phương.`,
-    R`**Kết luận.** $A$, $B$, $C$ thẳng hàng.`
+    R`**Phân tích.** $A$, $B$, $C$ thẳng hàng $\iff\overrightarrow{AB}$ và $\overrightarrow{AC}$ cùng phương, tức là có số $k$ để $\overrightarrow{AC}=k\overrightarrow{AB}$.`,
+    R`**Bước 1.** $\overrightarrow{AB}=(1;1;2)$, $\overrightarrow{AC}=(3;3;6)$.`,
+    R`**Bước 2.** $\overrightarrow{AC}=3\overrightarrow{AB}$ nên hai vectơ cùng phương.`,
+    R`**Kết luận.** $A$, $B$, $C$ thẳng hàng.`,
+    R`**Nhận xét.** $k=3>0$ nên $B$ nằm giữa $A$ và $C$, với $AC=3AB$.`
    ] },
  { muc: "TH", de: R`Tìm $m$, $n$ để hai vectơ $\vec a=(2;m;3)$ và $\vec b=(4;-2;n)$ cùng phương.`,
    giai: [
-    R`Cần $\vec b=k\vec a$: từ hoành độ $4=2k\Rightarrow k=2$.`,
-    R`Tung độ: $-2=2m\Rightarrow m=-1$. Cao độ: $n=2\cdot3=6$.`,
-    R`**Kết luận.** $m=-1$, $n=6$.`
+    R`**Phân tích.** $\vec b$ cùng phương $\vec a$ ($\vec a\ne\vec0$) khi $\vec b=k\vec a$. Tìm $k$ từ toạ độ đã biết đủ, rồi suy ra các ẩn còn lại.`,
+    R`**Bước 1.** Cần $\vec b=k\vec a$: từ hoành độ $4=2k\Rightarrow k=2$.`,
+    R`**Bước 2.** Tung độ: $-2=2m\Rightarrow m=-1$. Cao độ: $n=2\cdot3=6$.`,
+    R`**Kết luận.** $m=-1$, $n=6$.`,
+    R`**Thử lại.** $\vec b=(4;-2;6)=2\cdot(2;-1;3)=2\vec a$, đúng.`
    ] },
  { muc: "VD", de: R`Cho $A(1;0;2)$, $B(2;-1;3)$, $C(0;4;1)$. Tìm toạ độ điểm $D$ để $ABCD$ là hình bình hành.`,
    giai: [
-    R`$\overrightarrow{AB}=(1;-1;1)$, $\overrightarrow{AC}=(-1;4;-1)$ không cùng phương ($\frac{-1}{1}\ne\frac{4}{-1}$) nên $A$, $B$, $C$ không thẳng hàng.`,
-    R`$ABCD$ là hình bình hành $\Leftrightarrow\overrightarrow{AB}=\overrightarrow{DC}\Leftrightarrow(1;-1;1)=(0-x_D;4-y_D;1-z_D)$.`,
-    R`$\Leftrightarrow x_D=-1$, $y_D=5$, $z_D=0$.`,
-    R`**Kết luận.** $D(-1;5;0)$.`
+    R`**Phân tích.** Trước hết kiểm tra $A$, $B$, $C$ không thẳng hàng (để có hình bình hành thật). Sau đó dùng $\overrightarrow{AB}=\overrightarrow{DC}$, chú ý đúng **thứ tự đỉnh** $A\to B\to C\to D$.`,
+    R`**Bước 1.** $\overrightarrow{AB}=(1;-1;1)$, $\overrightarrow{AC}=(-1;4;-1)$ không cùng phương ($\frac{-1}{1}\ne\frac{4}{-1}$) nên $A$, $B$, $C$ không thẳng hàng.`,
+    R`**Bước 2.** $ABCD$ là hình bình hành $\Leftrightarrow\overrightarrow{AB}=\overrightarrow{DC}\Leftrightarrow(1;-1;1)=(0-x_D;4-y_D;1-z_D)$.`,
+    R`**Bước 3.** $\Leftrightarrow x_D=-1$, $y_D=5$, $z_D=0$.`,
+    R`**Kết luận.** $D(-1;5;0)$.`,
+    R`**Thử lại.** Trung điểm $AC$ là $\left(\frac12;2;\frac32\right)$, trung điểm $BD$ là $\left(\frac12;2;\frac32\right)$: trùng nhau, đúng là hình bình hành.`
    ] }
  ] },
 
@@ -1460,37 +1519,28 @@ Object.assign(D, {
  vd: [
  { muc: "TH", de: R`Tìm điểm $M$ trên trục $Ox$ cách đều hai điểm $A(1;2;3)$ và $B(3;0;2)$.`,
    giai: [
-    R`$M\in Ox$ nên $M(x;0;0)$.`,
-    R`$MA^2=(x-1)^2+4+9$, $MB^2=(x-3)^2+0+4$.`,
-    R`$MA^2=MB^2\Leftrightarrow x^2-2x+14=x^2-6x+13\Leftrightarrow4x=-1\Leftrightarrow x=-\dfrac14$.`,
-    R`**Kết luận.** $M\left(-\dfrac14;0;0\right)$.`
+    R`**Phân tích.** Điểm trên trục $Ox$ có dạng $M(x;0;0)$, chỉ còn một ẩn. "Cách đều" nghĩa là $MA=MB$; bình phương hai vế để bỏ căn.`,
+    R`**Bước 1.** $M\in Ox$ nên $M(x;0;0)$.`,
+    R`**Bước 2.** $MA^2=(x-1)^2+4+9$, $MB^2=(x-3)^2+0+4$.`,
+    R`**Bước 3.** $MA^2=MB^2\Leftrightarrow x^2-2x+14=x^2-6x+13\Leftrightarrow4x=-1\Leftrightarrow x=-\dfrac14$.`,
+    R`**Kết luận.** $M\left(-\dfrac14;0;0\right)$.`,
+    R`**Thử lại.** $MA^2=\frac{25}{16}+13=\frac{233}{16}$, $MB^2=\frac{169}{16}+4=\frac{233}{16}$, bằng nhau.`
    ] },
  { muc: "TH", de: R`Cho $A(1;0;1)$, $B(2;1;3)$, $C(3;-1;2)$. Chứng minh tam giác $ABC$ đều và tính diện tích.`,
    giai: [
-    R`$\overrightarrow{AB}=(1;1;2)$, $AB=\sqrt6$; $\overrightarrow{AC}=(2;-1;1)$, $AC=\sqrt6$; $\overrightarrow{BC}=(1;-2;-1)$, $BC=\sqrt6$.`,
-    R`Ba cạnh bằng nhau nên tam giác $ABC$ đều cạnh $\sqrt6$.`,
-    R`$S=\dfrac{\sqrt3}{4}\cdot\left(\sqrt6\right)^2=\dfrac{6\sqrt3}{4}=\dfrac{3\sqrt3}2$.`
+    R`**Phân tích.** Tam giác đều khi ba cạnh bằng nhau. Tính ba độ dài bằng toạ độ, rồi dùng $S=\dfrac{\sqrt3}4\cdot\text{cạnh}^2$.`,
+    R`**Bước 1.** $\overrightarrow{AB}=(1;1;2)$, $AB=\sqrt6$; $\overrightarrow{AC}=(2;-1;1)$, $AC=\sqrt6$; $\overrightarrow{BC}=(1;-2;-1)$, $BC=\sqrt6$.`,
+    R`**Bước 2.** Ba cạnh bằng nhau nên tam giác $ABC$ đều cạnh $\sqrt6$.`,
+    R`**Bước 3.** $S=\dfrac{\sqrt3}{4}\cdot\left(\sqrt6\right)^2=\dfrac{6\sqrt3}{4}=\dfrac{3\sqrt3}2$.`,
+    R`**Kết luận.** Tam giác $ABC$ đều, diện tích $\dfrac{3\sqrt3}2$.`
    ] },
  { muc: "VD", de: R`Cho hình chóp $S.ABCD$ có đáy là hình vuông cạnh $2$, $SA$ vuông góc với đáy và $SA=2$. Tính góc giữa hai đường thẳng $SB$ và $AC$.`,
-   hinhDe: R`\begin{tikzpicture}[scale=0.9]
-\draw[thick] (0,0)--(3,0)--(4,1.2);
-\draw[dashed] (4,1.2)--(1,1.2)--(0,0);
-\draw[dashed] (0,0)--(4,1.2);
-\draw[thick] (0,2.8)--(0,0);
-\draw[thick] (0,2.8)--(3,0);
-\draw[thick] (0,2.8)--(4,1.2);
-\draw[dashed] (0,2.8)--(1,1.2);
-\node[left] at (0,2.8){$S$};
-\node[below left] at (0,0){$A$};
-\node[below right] at (3,0){$B$};
-\node[right] at (4,1.2){$C$};
-\node[above right] at (1,1.2){$D$};
-\end{tikzpicture}`,
    giai: [
-    R`Ba cạnh $AB$, $AD$, $AS$ đôi một vuông góc. Chọn $A(0;0;0)$, $B(2;0;0)$, $D(0;2;0)$, $S(0;0;2)$, khi đó $C(2;2;0)$.`,
-    R`$\overrightarrow{SB}=(2;0;-2)$, $\overrightarrow{AC}=(2;2;0)$.`,
-    R`$\cos\left(\overrightarrow{SB},\overrightarrow{AC}\right)=\dfrac{4+0+0}{2\sqrt2\cdot2\sqrt2}=\dfrac48=\dfrac12$.`,
-    R`Góc giữa hai đường thẳng là góc không tù, có $\cos=\left|\dfrac12\right|=\dfrac12$.`,
+    R`**Phân tích.** Hình chóp có ba cạnh $AB$, $AD$, $AS$ đôi một vuông góc tại $A$: **gắn hệ trục tại $A$**. Khi đó góc giữa hai đường thẳng tính bằng $\cos\varphi=\dfrac{|\vec u\cdot\vec v|}{|\vec u|\cdot|\vec v|}$.`,
+    R`**Bước 1.** Ba cạnh $AB$, $AD$, $AS$ đôi một vuông góc. Chọn $A(0;0;0)$, $B(2;0;0)$, $D(0;2;0)$, $S(0;0;2)$, khi đó $C(2;2;0)$.`,
+    R`**Bước 2.** $\overrightarrow{SB}=(2;0;-2)$, $\overrightarrow{AC}=(2;2;0)$.`,
+    R`**Bước 3.** $\cos\left(\overrightarrow{SB},\overrightarrow{AC}\right)=\dfrac{4+0+0}{2\sqrt2\cdot2\sqrt2}=\dfrac48=\dfrac12$.`,
+    R`**Bước 4.** Góc giữa hai đường thẳng là góc không tù, có $\cos=\left|\dfrac12\right|=\dfrac12$.`,
     R`**Kết luận.** Góc giữa $SB$ và $AC$ bằng $60^\circ$.`
    ] }
  ] },
@@ -1507,19 +1557,24 @@ Object.assign(D, {
  vd: [
  { muc: "TH", de: R`Một máy bay cất cánh từ sân bay $O$, bay thẳng với vận tốc không đổi. Sau $1$ phút máy bay ở vị trí $A(2;3;0{,}5)$ (đơn vị km). Tính khoảng cách $OA$ và vị trí máy bay sau $2$ phút.`,
    giai: [
-    R`$OA=\sqrt{2^2+3^2+0{,}5^2}=\sqrt{13{,}25}\approx3{,}64$ km.`,
-    R`Bay thẳng đều nên sau $2$ phút độ dời gấp đôi: $\overrightarrow{OB}=2\overrightarrow{OA}=(4;6;1)$.`,
-    R`**Kết luận.** Sau $2$ phút máy bay ở vị trí $B(4;6;1)$.`
+    R`**Phân tích.** Đặt sân bay ở gốc toạ độ. Bay thẳng với vận tốc không đổi thì **vectơ độ dời tỉ lệ với thời gian**: sau thời gian gấp đôi, độ dời gấp đôi.`,
+    R`**Bước 1.** $OA=\sqrt{2^2+3^2+0{,}5^2}=\sqrt{13{,}25}\approx3{,}64$ km.`,
+    R`**Bước 2.** Bay thẳng đều nên sau $2$ phút độ dời gấp đôi: $\overrightarrow{OB}=2\overrightarrow{OA}=(4;6;1)$.`,
+    R`**Kết luận.** Sau $2$ phút máy bay ở vị trí $B(4;6;1)$.`,
+    R`**Nhận xét.** Độ cao sau $2$ phút là $z=1$ km, gấp đôi độ cao sau $1$ phút, đúng với bay thẳng đều.`
    ] },
  { muc: "TH", de: R`Một tuyến cáp treo thẳng đi từ ga $A(0;0;0)$ đến ga $B(600;800;300)$ (đơn vị m). Tính chiều dài tuyến cáp và vị trí cabin khi đi được $\dfrac14$ quãng đường.`,
    giai: [
-    R`$AB=\sqrt{600^2+800^2+300^2}=\sqrt{1\,090\,000}\approx1044$ m.`,
-    R`Vị trí cabin: $M=A+\dfrac14\overrightarrow{AB}=\left(150;200;75\right)$.`
+    R`**Phân tích.** Tuyến cáp là đoạn thẳng $AB$; chiều dài là $AB$. Cabin đi được $\frac14$ quãng đường thì $\overrightarrow{AM}=\frac14\overrightarrow{AB}$.`,
+    R`**Bước 1.** $AB=\sqrt{600^2+800^2+300^2}=\sqrt{1\,090\,000}\approx1044$ m.`,
+    R`**Bước 2.** Vị trí cabin: $M=A+\dfrac14\overrightarrow{AB}=\left(150;200;75\right)$.`,
+    R`**Kết luận.** Tuyến cáp dài khoảng $1044$ m; cabin ở vị trí $(150;200;75)$, tức là cao hơn ga $A$ $75$ m.`
    ] },
  { muc: "TH", de: R`Một trạm phát sóng đặt tại gốc $O(0;0;0)$ phủ sóng trong bán kính $5$ km. Một khách du lịch ở vị trí $M(3;4;1)$ (đơn vị km) có nhận được sóng không?`,
    giai: [
-    R`$OM=\sqrt{3^2+4^2+1^2}=\sqrt{26}\approx5{,}10$ km.`,
-    R`$OM>5$ nên $M$ nằm ngoài vùng phủ sóng.`,
+    R`**Phân tích.** Vùng phủ sóng là khối cầu tâm $O$ bán kính $5$. Điểm $M$ nhận được sóng khi $OM\le5$. Tính $OM$ rồi so sánh.`,
+    R`**Bước 1.** $OM=\sqrt{3^2+4^2+1^2}=\sqrt{26}\approx5{,}10$ km.`,
+    R`**Bước 2.** $OM>5$ nên $M$ nằm ngoài vùng phủ sóng.`,
     R`**Kết luận.** Khách du lịch không nhận được sóng.`
    ] }
  ] }
@@ -1538,21 +1593,28 @@ Object.assign(D, {
   R`Lấy giá trị đại diện (giá trị giữa) của nhóm đầu, nhóm cuối để trừ: sai, phải dùng đầu mút.`
  ],
  vd: [
- { muc: "NB", de: R`Thời gian tập thể dục mỗi ngày của $40$ học sinh lớp A được ghi lại như sau:` + BANG1 + R`Tính khoảng biến thiên của mẫu số liệu.`,
+ { muc: "NB", de: R`Thời gian tập thể dục mỗi ngày của $40$ học sinh lớp A được ghi lại như sau:$$\begin{array}{|c|c|c|c|c|c|}\hline \text{Thời gian (phút)}&[0;20)&[20;40)&[40;60)&[60;80)&[80;100)\\\hline \text{Số học sinh}&5&9&12&10&4\\\hline\end{array}$$Tính khoảng biến thiên của mẫu số liệu.`,
    giai: [
-    R`Nhóm đầu là $[0;20)$, có đầu mút trái $a_1=0$. Nhóm cuối là $[80;100)$, có đầu mút phải $a_6=100$.`,
-    R`$R=100-0=100$ (phút).`
+    R`**Phân tích.** Với mẫu ghép nhóm, khoảng biến thiên $R=a_{k+1}-a_1$: lấy **đầu mút phải của nhóm cuối** trừ **đầu mút trái của nhóm đầu** (chỉ xét các nhóm có tần số khác $0$).`,
+    R`**Bước 1.** Nhóm đầu là $[0;20)$, có đầu mút trái $a_1=0$. Nhóm cuối là $[80;100)$, có đầu mút phải $a_6=100$.`,
+    R`**Bước 2.** $R=100-0=100$ (phút).`,
+    R`**Kết luận.** Khoảng biến thiên $R=100$ phút.`,
+    R`**Nhận xét.** Đây chỉ là giá trị xấp xỉ: số liệu thật có thể nhỏ hơn $100$ vì nhóm cuối là $[80;100)$.`
    ] },
  { muc: "TH", de: R`Điểm kiểm tra (thang $50$) của một nhóm học sinh: $[10;15)$: $0$ em; $[15;20)$: $3$ em; $[20;25)$: $7$ em; $[25;30)$: $8$ em; $[30;35)$: $4$ em; $[35;40)$: $2$ em; $[40;45)$: $0$ em. Tính khoảng biến thiên.`,
    giai: [
-    R`Hai nhóm $[10;15)$ và $[40;45)$ có tần số $0$ nên bỏ đi.`,
-    R`Nhóm đầu có tần số khác $0$ là $[15;20)$, nhóm cuối là $[35;40)$.`,
-    R`$R=40-15=25$ (điểm).`
+    R`**Phân tích.** Công thức như ví dụ trước, nhưng phải **bỏ các nhóm có tần số $0$** ở hai đầu, vì không có số liệu nào nằm trong đó.`,
+    R`**Bước 1.** Hai nhóm $[10;15)$ và $[40;45)$ có tần số $0$ nên bỏ đi.`,
+    R`**Bước 2.** Nhóm đầu có tần số khác $0$ là $[15;20)$, nhóm cuối là $[35;40)$.`,
+    R`**Bước 3.** $R=40-15=25$ (điểm).`,
+    R`**Kết luận.** $R=25$ điểm.`
    ] },
  { muc: "TH", de: R`Với bảng số liệu ở ví dụ 1, có bao nhiêu phần trăm học sinh tập thể dục từ $60$ phút trở lên mỗi ngày?`,
    giai: [
-    R`Số học sinh tập từ $60$ phút trở lên thuộc hai nhóm $[60;80)$ và $[80;100)$: $10+4=14$ em.`,
-    R`Tỉ lệ $\dfrac{14}{40}=0{,}35=35\%$.`
+    R`**Phân tích.** "Từ $60$ phút trở lên" ứng với các nhóm có đầu mút trái $\ge60$. Cộng tần số các nhóm đó rồi chia cho cỡ mẫu.`,
+    R`**Bước 1.** Số học sinh tập từ $60$ phút trở lên thuộc hai nhóm $[60;80)$ và $[80;100)$: $10+4=14$ em.`,
+    R`**Bước 2.** Tỉ lệ $\dfrac{14}{40}=0{,}35=35\%$.`,
+    R`**Kết luận.** Có $35\%$ học sinh tập từ $60$ phút trở lên.`
    ] }
  ] },
 
@@ -1566,23 +1628,31 @@ Object.assign(D, {
   R`Dùng nhầm tần số tích luỹ của chính nhóm chứa $Q_k$ thay cho nhóm đứng trước.`
  ],
  vd: [
- { muc: "TH", de: R`Với mẫu số liệu thời gian tập thể dục của $40$ học sinh lớp A:` + BANG1 + R`Tìm trung vị $Q_2$.`,
+ { muc: "TH", de: R`Với mẫu số liệu thời gian tập thể dục của $40$ học sinh lớp A:$$\begin{array}{|c|c|c|c|c|c|}\hline \text{Thời gian (phút)}&[0;20)&[20;40)&[40;60)&[60;80)&[80;100)\\\hline \text{Số học sinh}&5&9&12&10&4\\\hline\end{array}$$Tìm trung vị $Q_2$.`,
    giai: [
-    R`$n=40$. Tần số tích luỹ: $5;\ 14;\ 26;\ 36;\ 40$.`,
-    R`$\dfrac{2n}{4}=20$. Nhóm đầu tiên có tần số tích luỹ $\ge20$ là $[40;60)$ (tích luỹ $26$). Vậy $u_m=40$, $n_m=12$, $C=14$, độ dài nhóm $20$.`,
-    R`$Q_2=40+\dfrac{20-14}{12}\cdot20=40+10=50$ (phút).`
+    R`**Phân tích.** Trung vị mẫu ghép nhóm: tìm **nhóm chứa trung vị** (nhóm đầu tiên có tần số tích luỹ $\ge\frac n2$), rồi dùng $Q_2=u_m+\dfrac{\frac n2-C}{n_m}\cdot(u_{m+1}-u_m)$, với $C$ là tần số tích luỹ của nhóm **ngay trước** nhóm đó.`,
+    R`**Bước 1.** $n=40$. Tần số tích luỹ: $5;\ 14;\ 26;\ 36;\ 40$.`,
+    R`**Bước 2.** $\dfrac{2n}{4}=20$. Nhóm đầu tiên có tần số tích luỹ $\ge20$ là $[40;60)$ (tích luỹ $26$). Vậy $u_m=40$, $n_m=12$, $C=14$, độ dài nhóm $20$.`,
+    R`**Bước 3.** $Q_2=40+\dfrac{20-14}{12}\cdot20=40+10=50$ (phút).`,
+    R`**Kết luận.** $Q_2=50$ phút: khoảng một nửa số học sinh tập dưới $50$ phút mỗi ngày.`,
+    R`**Thử lại.** $Q_2$ phải nằm trong nhóm $[40;60)$: $50\in[40;60)$, hợp lí.`
    ] },
  { muc: "TH", de: R`Với mẫu số liệu ở ví dụ 1, tìm $Q_1$ và $Q_3$.`,
    giai: [
-    R`$\dfrac n4=10$: nhóm đầu tiên có tích luỹ $\ge10$ là $[20;40)$ (tích luỹ $14$); $C=5$, $n_m=9$. $Q_1=20+\dfrac{10-5}{9}\cdot20=20+\dfrac{100}{9}=\dfrac{280}{9}\approx31{,}11$ (phút).`,
-    R`$\dfrac{3n}4=30$: nhóm đầu tiên có tích luỹ $\ge30$ là $[60;80)$ (tích luỹ $36$); $C=26$, $n_m=10$. $Q_3=60+\dfrac{30-26}{10}\cdot20=60+8=68$ (phút).`
+    R`**Phân tích.** Làm giống trung vị, chỉ thay $\frac n2$ bằng $\frac n4$ (cho $Q_1$) và $\frac{3n}4$ (cho $Q_3$). Luôn lập dòng tần số tích luỹ trước.`,
+    R`**Bước 1.** $\dfrac n4=10$: nhóm đầu tiên có tích luỹ $\ge10$ là $[20;40)$ (tích luỹ $14$); $C=5$, $n_m=9$. $Q_1=20+\dfrac{10-5}{9}\cdot20=20+\dfrac{100}{9}=\dfrac{280}{9}\approx31{,}11$ (phút).`,
+    R`**Bước 2.** $\dfrac{3n}4=30$: nhóm đầu tiên có tích luỹ $\ge30$ là $[60;80)$ (tích luỹ $36$); $C=26$, $n_m=10$. $Q_3=60+\dfrac{30-26}{10}\cdot20=60+8=68$ (phút).`,
+    R`**Kết luận.** $Q_1\approx31{,}11$ phút; $Q_3=68$ phút.`
    ] },
- { muc: "VD", de: R`Cân nặng của $50$ học sinh được cho trong bảng:` + BANG2 + R`Tìm các tứ phân vị của mẫu số liệu.`,
+ { muc: "VD", de: R`Cân nặng của $50$ học sinh được cho trong bảng:$$\begin{array}{|c|c|c|c|c|c|}\hline \text{Cân nặng (kg)}&[40;45)&[45;50)&[50;55)&[55;60)&[60;65)\\\hline \text{Số học sinh}&6&14&18&8&4\\\hline\end{array}$$Tìm các tứ phân vị của mẫu số liệu.`,
    giai: [
-    R`$n=50$. Tần số tích luỹ: $6;\ 20;\ 38;\ 46;\ 50$. Độ dài mỗi nhóm là $5$.`,
-    R`$Q_1$: $\dfrac n4=12{,}5$, thuộc nhóm $[45;50)$ ($C=6$, $n_m=14$): $Q_1=45+\dfrac{12{,}5-6}{14}\cdot5=45+\dfrac{65}{28}=\dfrac{1325}{28}\approx47{,}32$ (kg).`,
-    R`$Q_2$: $\dfrac{2n}4=25$, thuộc nhóm $[50;55)$ ($C=20$, $n_m=18$): $Q_2=50+\dfrac{25-20}{18}\cdot5=50+\dfrac{25}{18}=\dfrac{925}{18}\approx51{,}39$ (kg).`,
-    R`$Q_3$: $\dfrac{3n}4=37{,}5$, thuộc nhóm $[50;55)$: $Q_3=50+\dfrac{37{,}5-20}{18}\cdot5=50+\dfrac{175}{36}=\dfrac{1975}{36}\approx54{,}86$ (kg).`
+    R`**Phân tích.** Ba tứ phân vị cùng một quy trình: lập tần số tích luỹ, tìm nhóm chứa, thay công thức. Chú ý $\frac n4$ có thể không nguyên.`,
+    R`**Bước 1.** $n=50$. Tần số tích luỹ: $6;\ 20;\ 38;\ 46;\ 50$. Độ dài mỗi nhóm là $5$.`,
+    R`**Bước 2.** $Q_1$: $\dfrac n4=12{,}5$, thuộc nhóm $[45;50)$ ($C=6$, $n_m=14$): $Q_1=45+\dfrac{12{,}5-6}{14}\cdot5=45+\dfrac{65}{28}=\dfrac{1325}{28}\approx47{,}32$ (kg).`,
+    R`**Bước 3.** $Q_2$: $\dfrac{2n}4=25$, thuộc nhóm $[50;55)$ ($C=20$, $n_m=18$): $Q_2=50+\dfrac{25-20}{18}\cdot5=50+\dfrac{25}{18}=\dfrac{925}{18}\approx51{,}39$ (kg).`,
+    R`**Bước 4.** $Q_3$: $\dfrac{3n}4=37{,}5$, thuộc nhóm $[50;55)$: $Q_3=50+\dfrac{37{,}5-20}{18}\cdot5=50+\dfrac{175}{36}=\dfrac{1975}{36}\approx54{,}86$ (kg).`,
+    R`**Kết luận.** $Q_1\approx47{,}32$ kg; $Q_2\approx51{,}39$ kg; $Q_3\approx54{,}86$ kg.`,
+    R`**Nhận xét.** $Q_2$, $Q_3$ cùng nằm trong nhóm $[50;55)$ vì nhóm này có tần số lớn ($18$ em).`
    ] }
  ] },
 
@@ -1598,19 +1668,24 @@ Object.assign(D, {
  vd: [
  { muc: "TH", de: R`Với mẫu số liệu thời gian tập thể dục của lớp A ($Q_1=\dfrac{280}{9}$, $Q_3=68$, xem dạng C3-B9-D02), tính khoảng tứ phân vị.`,
    giai: [
-    R`$\Delta_Q=Q_3-Q_1=68-\dfrac{280}{9}=\dfrac{612-280}{9}=\dfrac{332}{9}\approx36{,}89$ (phút).`
+    R`**Phân tích.** Khoảng tứ phân vị $\Delta_Q=Q_3-Q_1$ đo độ phân tán của **nửa giữa** mẫu số liệu.`,
+    R`**Bước 1.** $\Delta_Q=Q_3-Q_1=68-\dfrac{280}{9}=\dfrac{612-280}{9}=\dfrac{332}{9}\approx36{,}89$ (phút).`,
+    R`**Kết luận.** $\Delta_Q\approx36{,}89$ phút.`
    ] },
  { muc: "TH", de: R`Mẫu số liệu của lớp A có giá trị ngoại lệ không?`,
    giai: [
-    R`$1{,}5\Delta_Q=1{,}5\cdot\dfrac{332}{9}=\dfrac{166}{3}\approx55{,}33$.`,
-    R`$Q_1-1{,}5\Delta_Q\approx31{,}11-55{,}33<0$ và $Q_3+1{,}5\Delta_Q\approx68+55{,}33=123{,}33$.`,
-    R`Mọi số liệu nằm trong $[0;100)$, tức nằm giữa hai ngưỡng trên, nên mẫu không có giá trị ngoại lệ.`
+    R`**Phân tích.** Giá trị ngoại lệ là giá trị nằm ngoài khoảng $\left[Q_1-1{,}5\Delta_Q;\ Q_3+1{,}5\Delta_Q\right]$. Tính hai ngưỡng rồi so với phạm vi số liệu.`,
+    R`**Bước 1.** $1{,}5\Delta_Q=1{,}5\cdot\dfrac{332}{9}=\dfrac{166}{3}\approx55{,}33$.`,
+    R`**Bước 2.** $Q_1-1{,}5\Delta_Q\approx31{,}11-55{,}33<0$ và $Q_3+1{,}5\Delta_Q\approx68+55{,}33=123{,}33$.`,
+    R`**Bước 3.** Mọi số liệu nằm trong $[0;100)$, tức nằm giữa hai ngưỡng trên, nên mẫu không có giá trị ngoại lệ.`,
+    R`**Kết luận.** Mẫu số liệu lớp A không có giá trị ngoại lệ.`
    ] },
- { muc: "VD", de: R`Thời gian tập thể dục mỗi ngày của học sinh hai lớp A và B được cho trong bảng:` + BANGB + R`Dựa vào khoảng tứ phân vị, lớp nào có thời gian tập đồng đều hơn?`,
+ { muc: "VD", de: R`Thời gian tập thể dục mỗi ngày của học sinh hai lớp A và B được cho trong bảng:$$\begin{array}{|c|c|c|c|c|c|}\hline \text{Thời gian (phút)}&[0;20)&[20;40)&[40;60)&[60;80)&[80;100)\\\hline \text{Lớp A}&5&9&12&10&4\\\hline \text{Lớp B}&2&10&18&8&2\\\hline\end{array}$$Dựa vào khoảng tứ phân vị, lớp nào có thời gian tập đồng đều hơn?`,
    giai: [
-    R`Lớp A: $\Delta_Q=\dfrac{332}{9}\approx36{,}89$ (ví dụ 1).`,
-    R`Lớp B: $n=40$, tích luỹ $2;\ 12;\ 30;\ 38;\ 40$. $Q_1$ thuộc $[20;40)$: $Q_1=20+\dfrac{10-2}{10}\cdot20=36$. $Q_3$ thuộc $[40;60)$: $Q_3=40+\dfrac{30-12}{18}\cdot20=60$.`,
-    R`Lớp B: $\Delta_Q=60-36=24$.`,
+    R`**Phân tích.** So sánh độ đồng đều bằng $\Delta_Q$: mẫu nào có $\Delta_Q$ **nhỏ hơn** thì nửa giữa tập trung hơn, đồng đều hơn. Cần tính $Q_1$, $Q_3$ của lớp B.`,
+    R`**Bước 1.** Lớp A: $\Delta_Q=\dfrac{332}{9}\approx36{,}89$ (ví dụ 1).`,
+    R`**Bước 2.** Lớp B: $n=40$, tích luỹ $2;\ 12;\ 30;\ 38;\ 40$. $Q_1$ thuộc $[20;40)$: $Q_1=20+\dfrac{10-2}{10}\cdot20=36$. $Q_3$ thuộc $[40;60)$: $Q_3=40+\dfrac{30-12}{18}\cdot20=60$.`,
+    R`**Bước 3.** Lớp B: $\Delta_Q=60-36=24$.`,
     R`**Kết luận.** $24<36{,}89$ nên thời gian tập của lớp B đồng đều hơn lớp A.`
    ] }
  ] },
@@ -1625,23 +1700,30 @@ Object.assign(D, {
   R`Quên trừ $\overline x^2$, hoặc lấy đầu mút nhóm thay cho giá trị đại diện.`
  ],
  vd: [
- { muc: "NB", de: R`Tính thời gian tập thể dục trung bình của học sinh lớp A:` + BANG1,
+ { muc: "NB", de: R`Tính thời gian tập thể dục trung bình của học sinh lớp A:$$\begin{array}{|c|c|c|c|c|c|}\hline \text{Thời gian (phút)}&[0;20)&[20;40)&[40;60)&[60;80)&[80;100)\\\hline \text{Số học sinh}&5&9&12&10&4\\\hline\end{array}$$`,
    giai: [
-    R`Giá trị đại diện: $10;\ 30;\ 50;\ 70;\ 90$.`,
-    R`$\overline x=\dfrac{5\cdot10+9\cdot30+12\cdot50+10\cdot70+4\cdot90}{40}=\dfrac{50+270+600+700+360}{40}=\dfrac{1980}{40}=49{,}5$ (phút).`
+    R`**Phân tích.** Với mẫu ghép nhóm, mỗi nhóm được đại diện bởi **trung điểm** của nhóm. Số trung bình $\overline x=\dfrac{\sum n_ix_i}{n}$.`,
+    R`**Bước 1.** Giá trị đại diện: $10;\ 30;\ 50;\ 70;\ 90$.`,
+    R`**Bước 2.** $\overline x=\dfrac{5\cdot10+9\cdot30+12\cdot50+10\cdot70+4\cdot90}{40}=\dfrac{50+270+600+700+360}{40}=\dfrac{1980}{40}=49{,}5$ (phút).`,
+    R`**Kết luận.** Thời gian tập trung bình khoảng $49{,}5$ phút.`
    ] },
  { muc: "TH", de: R`Tính phương sai và độ lệch chuẩn của mẫu số liệu ở ví dụ 1.`,
    giai: [
-    R`$\sum n_ix_i^2=5\cdot100+9\cdot900+12\cdot2500+10\cdot4900+4\cdot8100=500+8100+30000+49000+32400=120\,000$.`,
-    R`$s^2=\dfrac{120\,000}{40}-49{,}5^2=3000-2450{,}25=549{,}75$.`,
-    R`$s=\sqrt{549{,}75}\approx23{,}45$ (phút).`
+    R`**Phân tích.** Dùng công thức rút gọn $s^2=\dfrac{\sum n_ix_i^2}{n}-\overline x^2$ để tính nhanh, với $x_i$ là giá trị đại diện.`,
+    R`**Bước 1.** $\sum n_ix_i^2=5\cdot100+9\cdot900+12\cdot2500+10\cdot4900+4\cdot8100=500+8100+30000+49000+32400=120\,000$.`,
+    R`**Bước 2.** $s^2=\dfrac{120\,000}{40}-49{,}5^2=3000-2450{,}25=549{,}75$.`,
+    R`**Bước 3.** $s=\sqrt{549{,}75}\approx23{,}45$ (phút).`,
+    R`**Kết luận.** $s^2=549{,}75$; $s\approx23{,}45$ phút.`,
+    R`**Nhận xét.** Độ lệch chuẩn cùng đơn vị với số liệu (phút), còn phương sai có đơn vị phút$^2$.`
    ] },
- { muc: "VD", de: R`Tính cân nặng trung bình và độ lệch chuẩn của mẫu số liệu sau:` + BANG2,
+ { muc: "VD", de: R`Tính cân nặng trung bình và độ lệch chuẩn của mẫu số liệu sau:$$\begin{array}{|c|c|c|c|c|c|}\hline \text{Cân nặng (kg)}&[40;45)&[45;50)&[50;55)&[55;60)&[60;65)\\\hline \text{Số học sinh}&6&14&18&8&4\\\hline\end{array}$$`,
    giai: [
-    R`Giá trị đại diện: $42{,}5;\ 47{,}5;\ 52{,}5;\ 57{,}5;\ 62{,}5$; $n=50$.`,
-    R`$\overline x=\dfrac{6\cdot42{,}5+14\cdot47{,}5+18\cdot52{,}5+8\cdot57{,}5+4\cdot62{,}5}{50}=\dfrac{255+665+945+460+250}{50}=\dfrac{2575}{50}=51{,}5$ (kg).`,
-    R`$\sum n_ix_i^2=6\cdot1806{,}25+14\cdot2256{,}25+18\cdot2756{,}25+8\cdot3306{,}25+4\cdot3906{,}25=134\,112{,}5$.`,
-    R`$s^2=\dfrac{134\,112{,}5}{50}-51{,}5^2=2682{,}25-2652{,}25=30$; $s=\sqrt{30}\approx5{,}48$ (kg).`
+    R`**Phân tích.** Làm lần lượt: giá trị đại diện, số trung bình, tổng $\sum n_ix_i^2$, phương sai, rồi lấy căn được độ lệch chuẩn.`,
+    R`**Bước 1.** Giá trị đại diện: $42{,}5;\ 47{,}5;\ 52{,}5;\ 57{,}5;\ 62{,}5$; $n=50$.`,
+    R`**Bước 2.** $\overline x=\dfrac{6\cdot42{,}5+14\cdot47{,}5+18\cdot52{,}5+8\cdot57{,}5+4\cdot62{,}5}{50}=\dfrac{255+665+945+460+250}{50}=\dfrac{2575}{50}=51{,}5$ (kg).`,
+    R`**Bước 3.** $\sum n_ix_i^2=6\cdot1806{,}25+14\cdot2256{,}25+18\cdot2756{,}25+8\cdot3306{,}25+4\cdot3906{,}25=134\,112{,}5$.`,
+    R`**Bước 4.** $s^2=\dfrac{134\,112{,}5}{50}-51{,}5^2=2682{,}25-2652{,}25=30$; $s=\sqrt{30}\approx5{,}48$ (kg).`,
+    R`**Kết luận.** Cân nặng trung bình $51{,}5$ kg, độ lệch chuẩn khoảng $5{,}48$ kg.`
    ] }
  ] },
 
@@ -1657,19 +1739,24 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Hai xạ thủ có điểm trung bình bằng nhau; độ lệch chuẩn điểm của xạ thủ thứ nhất là $1{,}2$, của xạ thủ thứ hai là $2{,}5$. Xạ thủ nào bắn ổn định hơn?`,
    giai: [
-    R`Độ lệch chuẩn nhỏ hơn thì điểm tập trung quanh trung bình hơn.`,
-    R`$1{,}2<2{,}5$ nên xạ thủ thứ nhất bắn ổn định hơn.`
+    R`**Phân tích.** Độ lệch chuẩn đo mức độ phân tán quanh số trung bình. Khi hai mẫu **cùng trung bình**, mẫu có độ lệch chuẩn nhỏ hơn thì ổn định hơn.`,
+    R`**Bước 1.** Độ lệch chuẩn nhỏ hơn thì điểm tập trung quanh trung bình hơn.`,
+    R`**Bước 2.** $1{,}2<2{,}5$ nên xạ thủ thứ nhất bắn ổn định hơn.`,
+    R`**Kết luận.** Xạ thủ thứ nhất bắn ổn định hơn.`
    ] },
  { muc: "TH", de: R`Hai mã cổ phiếu X và Y có lợi nhuận trung bình hằng tháng cùng là $8\%$; độ lệch chuẩn lợi nhuận lần lượt là $3\%$ và $6\%$. Nên chọn mã nào nếu muốn ít rủi ro?`,
    giai: [
-    R`Cùng lợi nhuận trung bình, mã có độ lệch chuẩn nhỏ hơn thì lợi nhuận ít dao động, rủi ro thấp hơn.`,
-    R`$3\%<6\%$ nên chọn mã X.`
+    R`**Phân tích.** Trong đầu tư, độ lệch chuẩn của lợi nhuận được dùng làm thước đo **rủi ro**: dao động càng lớn thì càng rủi ro.`,
+    R`**Bước 1.** Cùng lợi nhuận trung bình, mã có độ lệch chuẩn nhỏ hơn thì lợi nhuận ít dao động, rủi ro thấp hơn.`,
+    R`**Bước 2.** $3\%<6\%$ nên chọn mã X.`,
+    R`**Kết luận.** Nên chọn mã X.`
    ] },
- { muc: "VD", de: R`Dùng độ lệch chuẩn để so sánh mức độ đồng đều về thời gian tập thể dục của hai lớp A và B:` + BANGB,
+ { muc: "VD", de: R`Dùng độ lệch chuẩn để so sánh mức độ đồng đều về thời gian tập thể dục của hai lớp A và B:$$\begin{array}{|c|c|c|c|c|c|}\hline \text{Thời gian (phút)}&[0;20)&[20;40)&[40;60)&[60;80)&[80;100)\\\hline \text{Lớp A}&5&9&12&10&4\\\hline \text{Lớp B}&2&10&18&8&2\\\hline\end{array}$$`,
    giai: [
-    R`Lớp A: $s_A\approx23{,}45$ phút (xem Dạng 1).`,
-    R`Lớp B: $\overline x_B=\dfrac{2\cdot10+10\cdot30+18\cdot50+8\cdot70+2\cdot90}{40}=\dfrac{1960}{40}=49$.`,
-    R`$\sum n_ix_i^2=2\cdot100+10\cdot900+18\cdot2500+8\cdot4900+2\cdot8100=109\,600$; $s_B^2=\dfrac{109\,600}{40}-49^2=2740-2401=339$; $s_B\approx18{,}41$.`,
+    R`**Phân tích.** Tính độ lệch chuẩn của lớp B như dạng trước, so với lớp A đã tính.`,
+    R`**Bước 1.** Lớp A: $s_A\approx23{,}45$ phút (xem Dạng 1).`,
+    R`**Bước 2.** Lớp B: $\overline x_B=\dfrac{2\cdot10+10\cdot30+18\cdot50+8\cdot70+2\cdot90}{40}=\dfrac{1960}{40}=49$.`,
+    R`**Bước 3.** $\sum n_ix_i^2=2\cdot100+10\cdot900+18\cdot2500+8\cdot4900+2\cdot8100=109\,600$; $s_B^2=\dfrac{109\,600}{40}-49^2=2740-2401=339$; $s_B\approx18{,}41$.`,
     R`**Kết luận.** $s_B<s_A$ nên thời gian tập của lớp B đồng đều hơn (cùng kết luận với khoảng tứ phân vị).`
    ] }
  ] },
@@ -1685,20 +1772,27 @@ Object.assign(D, {
  vd: [
  { muc: "TH", de: R`Nhiệt độ trung bình các ngày trong tháng ở một thành phố là $25^\circ$C với độ lệch chuẩn $2^\circ$C. Đổi sang độ F theo công thức $F=1{,}8C+32$. Tính nhiệt độ trung bình và độ lệch chuẩn theo độ F.`,
    giai: [
-    R`$\overline F=1{,}8\cdot25+32=45+32=77$ (°F).`,
-    R`$s_F=|1{,}8|\cdot s_C=1{,}8\cdot2=3{,}6$ (°F).`
+    R`**Phân tích.** Khi đổi $y=ax+b$ cho mọi số liệu thì $\overline y=a\overline x+b$ và $s_y=|a|\cdot s_x$: **cộng thêm hằng số không làm đổi độ lệch chuẩn**, nhân với $a$ thì độ lệch chuẩn nhân $|a|$.`,
+    R`**Bước 1.** $\overline F=1{,}8\cdot25+32=45+32=77$ (°F).`,
+    R`**Bước 2.** $s_F=|1{,}8|\cdot s_C=1{,}8\cdot2=3{,}6$ (°F).`,
+    R`**Kết luận.** Trung bình $77^\circ$F, độ lệch chuẩn $3{,}6^\circ$F.`,
+    R`**Nhận xét.** Số $32$ chỉ làm dịch chuyển, không ảnh hưởng độ phân tán.`
    ] },
  { muc: "TH", de: R`Một lớp có điểm trung bình môn Toán là $6{,}2$, độ lệch chuẩn $1{,}5$. Thầy cộng thêm $0{,}5$ điểm cho mọi học sinh. Điểm trung bình và độ lệch chuẩn mới là bao nhiêu?`,
    giai: [
-    R`Biến đổi $y=x+0{,}5$ ($a=1$, $b=0{,}5$).`,
-    R`$\overline y=6{,}2+0{,}5=6{,}7$; $s_y=1\cdot1{,}5=1{,}5$ (không đổi).`
+    R`**Phân tích.** Cộng cùng một số vào mọi điểm là biến đổi $y=x+b$ với $a=1$.`,
+    R`**Bước 1.** Biến đổi $y=x+0{,}5$ ($a=1$, $b=0{,}5$).`,
+    R`**Bước 2.** $\overline y=6{,}2+0{,}5=6{,}7$; $s_y=1\cdot1{,}5=1{,}5$ (không đổi).`,
+    R`**Kết luận.** Điểm trung bình mới $6{,}7$, độ lệch chuẩn vẫn là $1{,}5$.`
    ] },
  { muc: "VD", de: R`Cho mẫu số liệu ghép nhóm: $[0;10)$: $3$; $[10;20)$: $x$; $[20;30)$: $5$; $[30;40)$: $2$. Biết số trung bình của mẫu bằng $19$. Tìm $x$.`,
    giai: [
-    R`Giá trị đại diện $5;\ 15;\ 25;\ 35$; cỡ mẫu $n=10+x$.`,
-    R`$\overline x=\dfrac{3\cdot5+15x+5\cdot25+2\cdot35}{10+x}=\dfrac{210+15x}{10+x}$.`,
-    R`$\dfrac{210+15x}{10+x}=19\Leftrightarrow210+15x=190+19x\Leftrightarrow4x=20\Leftrightarrow x=5$.`,
-    R`Thử lại: $n=15$, $\overline x=\dfrac{15+75+125+70}{15}=\dfrac{285}{15}=19$ ✓.`
+    R`**Phân tích.** Ẩn $x$ nằm ở cả tử và mẫu của công thức số trung bình. Viết $\overline x$ theo $x$, cho bằng $19$, rồi giải phương trình.`,
+    R`**Bước 1.** Giá trị đại diện $5;\ 15;\ 25;\ 35$; cỡ mẫu $n=10+x$.`,
+    R`**Bước 2.** $\overline x=\dfrac{3\cdot5+15x+5\cdot25+2\cdot35}{10+x}=\dfrac{210+15x}{10+x}$.`,
+    R`**Bước 3.** $\dfrac{210+15x}{10+x}=19\Leftrightarrow210+15x=190+19x\Leftrightarrow4x=20\Leftrightarrow x=5$.`,
+    R`**Thử lại.** $n=15$, $\overline x=\dfrac{15+75+125+70}{15}=\dfrac{285}{15}=19$ ✓.`,
+    R`**Kết luận.** $x=5$.`
    ] }
  ] }
 });
@@ -1722,31 +1816,37 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Hàm số $F(x)=x^3+2x-5$ có phải là một nguyên hàm của hàm số $f(x)=3x^2+2$ trên $\mathbb R$ không?`,
    giai: [
-    R`Tính đạo hàm: $F'(x)=3x^2+2-0=3x^2+2$.`,
-    R`Ta thấy $F'(x)=f(x)$ với mọi $x\in\mathbb R$.`,
+    R`**Phân tích.** Theo định nghĩa, $F$ là một nguyên hàm của $f$ trên $K$ khi $F'(x)=f(x)$ với mọi $x\in K$. Vậy chỉ cần **tính đạo hàm của $F$** rồi so với $f$.`,
+    R`**Bước 1.** Tính đạo hàm: $F'(x)=3x^2+2-0=3x^2+2$.`,
+    R`**Bước 2.** Ta thấy $F'(x)=f(x)$ với mọi $x\in\mathbb R$.`,
     R`**Kết luận.** $F(x)$ là một nguyên hàm của $f(x)$ trên $\mathbb R$.`
    ] },
  { muc: "TH", de: R`Chứng minh rằng $F(x)=x\,e^x$ là một nguyên hàm của $f(x)=(x+1)e^x$ trên $\mathbb R$.`,
    giai: [
-    R`Dùng quy tắc đạo hàm của tích: $F'(x)=(x)'\cdot e^x+x\cdot(e^x)'=1\cdot e^x+x\,e^x$.`,
-    R`Đặt nhân tử chung: $F'(x)=(x+1)e^x=f(x)$ với mọi $x\in\mathbb R$.`,
-    R`Vậy $F(x)$ là một nguyên hàm của $f(x)$ trên $\mathbb R$.`
+    R`**Phân tích.** Kiểm tra $F'(x)=f(x)$. $F$ là tích của $x$ và $e^x$ nên dùng quy tắc $(uv)'=u'v+uv'$.`,
+    R`**Bước 1.** Dùng quy tắc đạo hàm của tích: $F'(x)=(x)'\cdot e^x+x\cdot(e^x)'=1\cdot e^x+x\,e^x$.`,
+    R`**Bước 2.** Đặt nhân tử chung: $F'(x)=(x+1)e^x=f(x)$ với mọi $x\in\mathbb R$.`,
+    R`**Bước 3.** Vậy $F(x)$ là một nguyên hàm của $f(x)$ trên $\mathbb R$.`,
+    R`**Kết luận.** $F(x)=xe^x$ là một nguyên hàm của $f(x)=(x+1)e^x$ trên $\mathbb R$.`
    ] },
  { muc: "TH", de: R`Hàm số nào sau đây là một nguyên hàm của $f(x)=\sin 2x$?
 **A.** $\cos 2x$. **B.** $-\tfrac12\cos 2x$. **C.** $2\cos 2x$. **D.** $\tfrac12\cos 2x$.`,
    giai: [
-    R`Nhớ công thức $(\cos 2x)'=-\sin 2x\cdot(2x)'=-2\sin 2x$.`,
-    R`Phương án A: $(\cos2x)'=-2\sin2x\ne\sin2x$. Loại.`,
-    R`Phương án B: $\left(-\tfrac12\cos2x\right)'=-\tfrac12\cdot(-2\sin2x)=\sin2x$. Đúng.`,
-    R`Phương án C: $(2\cos2x)'=-4\sin2x$; phương án D: $\left(\tfrac12\cos2x\right)'=-\sin2x$. Đều loại.`,
+    R`**Phân tích.** Câu trắc nghiệm: **đạo hàm từng phương án**, phương án nào cho đúng $\sin2x$ thì chọn. Nhớ đạo hàm hàm hợp: $(\cos u)'=-u'\sin u$.`,
+    R`**Bước 1.** Nhớ công thức $(\cos 2x)'=-\sin 2x\cdot(2x)'=-2\sin 2x$.`,
+    R`**Bước 2.** Phương án A: $(\cos2x)'=-2\sin2x\ne\sin2x$. Loại.`,
+    R`**Bước 3.** Phương án B: $\left(-\tfrac12\cos2x\right)'=-\tfrac12\cdot(-2\sin2x)=\sin2x$. Đúng.`,
+    R`**Bước 4.** Phương án C: $(2\cos2x)'=-4\sin2x$; phương án D: $\left(\tfrac12\cos2x\right)'=-\sin2x$. Đều loại.`,
     R`**Kết luận.** Chọn **B**.`
    ] },
  { muc: "VD", de: R`Tìm các số thực $a$, $b$ để $F(x)=(ax+b)e^x$ là một nguyên hàm của $f(x)=(2x+3)e^x$ trên $\mathbb R$.`,
    giai: [
-    R`$F'(x)=a\cdot e^x+(ax+b)e^x=(ax+a+b)e^x$.`,
-    R`$F$ là nguyên hàm của $f$ khi $F'(x)=f(x)$ với mọi $x$, tức là $(ax+a+b)e^x=(2x+3)e^x$ với mọi $x$.`,
-    R`Vì $e^x>0$ nên ta đồng nhất hệ số: $a=2$ và $a+b=3$.`,
-    R`Suy ra $a=2$, $b=1$. Thử lại: $F(x)=(2x+1)e^x$ có $F'(x)=2e^x+(2x+1)e^x=(2x+3)e^x$ ✓.`
+    R`**Phân tích.** Điều kiện "là nguyên hàm" cho đẳng thức $F'(x)=f(x)$ đúng với mọi $x$. Hai biểu thức dạng $(\dots)e^x$ bằng nhau với mọi $x$ khi các **hệ số tương ứng bằng nhau**.`,
+    R`**Bước 1.** $F'(x)=a\cdot e^x+(ax+b)e^x=(ax+a+b)e^x$.`,
+    R`**Bước 2.** $F$ là nguyên hàm của $f$ khi $F'(x)=f(x)$ với mọi $x$, tức là $(ax+a+b)e^x=(2x+3)e^x$ với mọi $x$.`,
+    R`**Bước 3.** Vì $e^x>0$ nên ta đồng nhất hệ số: $a=2$ và $a+b=3$.`,
+    R`**Bước 4.** Suy ra $a=2$, $b=1$. Thử lại: $F(x)=(2x+1)e^x$ có $F'(x)=2e^x+(2x+1)e^x=(2x+3)e^x$ ✓.`,
+    R`**Kết luận.** $a=2$, $b=1$.`
    ] }
  ] },
 "C4-B11-D02": {
@@ -1763,30 +1863,36 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Tìm $\displaystyle\int(3x^2-4x+5)\,dx$.`,
    giai: [
-    R`Tách thành từng hạng tử: $\displaystyle\int3x^2dx-\int4x\,dx+\int5\,dx$.`,
-    R`$\displaystyle\int3x^2dx=3\cdot\dfrac{x^3}{3}=x^3$; $\displaystyle\int4x\,dx=4\cdot\dfrac{x^2}{2}=2x^2$; $\displaystyle\int5\,dx=5x$.`,
-    R`**Kết quả.** $\displaystyle\int(3x^2-4x+5)\,dx=x^3-2x^2+5x+C$.`
+    R`**Phân tích.** Nguyên hàm của tổng bằng tổng các nguyên hàm; hằng số đưa ra ngoài được. Dùng $\displaystyle\int x^\alpha dx=\dfrac{x^{\alpha+1}}{\alpha+1}+C$ ($\alpha\ne-1$) cho từng hạng tử.`,
+    R`**Bước 1.** Tách thành từng hạng tử: $\displaystyle\int3x^2dx-\int4x\,dx+\int5\,dx$.`,
+    R`**Bước 2.** $\displaystyle\int3x^2dx=3\cdot\dfrac{x^3}{3}=x^3$; $\displaystyle\int4x\,dx=4\cdot\dfrac{x^2}{2}=2x^2$; $\displaystyle\int5\,dx=5x$.`,
+    R`**Kết quả.** $\displaystyle\int(3x^2-4x+5)\,dx=x^3-2x^2+5x+C$.`,
+    R`**Thử lại.** $\left(x^3-2x^2+5x\right)'=3x^2-4x+5$, đúng.`
    ] },
  { muc: "TH", de: R`Tìm $\displaystyle\int\left(\sqrt x+\dfrac1{x^2}\right)dx$ trên khoảng $(0;+\infty)$.`,
    giai: [
-    R`Viết dưới dạng luỹ thừa: $\sqrt x+\dfrac1{x^2}=x^{\frac12}+x^{-2}$.`,
-    R`$\displaystyle\int x^{\frac12}dx=\dfrac{x^{\frac32}}{\frac32}=\dfrac23x^{\frac32}=\dfrac23x\sqrt x$.`,
-    R`$\displaystyle\int x^{-2}dx=\dfrac{x^{-1}}{-1}=-\dfrac1x$.`,
-    R`**Kết quả.** $\displaystyle\int\left(\sqrt x+\dfrac1{x^2}\right)dx=\dfrac23x\sqrt x-\dfrac1x+C$.`
+    R`**Phân tích.** Căn và phân số chưa áp dụng được công thức ngay. **Viết lại dưới dạng luỹ thừa** $x^\alpha$ rồi dùng công thức nguyên hàm luỹ thừa.`,
+    R`**Bước 1.** Viết dưới dạng luỹ thừa: $\sqrt x+\dfrac1{x^2}=x^{\frac12}+x^{-2}$.`,
+    R`**Bước 2.** $\displaystyle\int x^{\frac12}dx=\dfrac{x^{\frac32}}{\frac32}=\dfrac23x^{\frac32}=\dfrac23x\sqrt x$.`,
+    R`**Bước 3.** $\displaystyle\int x^{-2}dx=\dfrac{x^{-1}}{-1}=-\dfrac1x$.`,
+    R`**Kết quả.** $\displaystyle\int\left(\sqrt x+\dfrac1{x^2}\right)dx=\dfrac23x\sqrt x-\dfrac1x+C$.`,
+    R`**Nhận xét.** Sai lầm hay gặp: $\displaystyle\int\dfrac1{x^2}dx=\ln x^2$. Phải viết $x^{-2}$ rồi dùng công thức luỹ thừa.`
    ] },
  { muc: "TH", de: R`Tìm $\displaystyle\int\dfrac{x^2-2x+3}{x}\,dx$ trên khoảng $(0;+\infty)$.`,
    giai: [
-    R`Chia từng hạng tử cho $x$: $\dfrac{x^2-2x+3}{x}=x-2+\dfrac3x$.`,
-    R`$\displaystyle\int\left(x-2+\dfrac3x\right)dx=\dfrac{x^2}2-2x+3\ln|x|+C$.`,
-    R`Trên $(0;+\infty)$ ta có $|x|=x$. **Kết quả.** $\dfrac{x^2}{2}-2x+3\ln x+C$.`
+    R`**Phân tích.** Phân thức có mẫu là đơn thức $x$: **chia từng hạng tử của tử cho mẫu**. Hạng tử $\frac3x$ có nguyên hàm là $3\ln|x|$ (trường hợp $\alpha=-1$).`,
+    R`**Bước 1.** Chia từng hạng tử cho $x$: $\dfrac{x^2-2x+3}{x}=x-2+\dfrac3x$.`,
+    R`**Bước 2.** $\displaystyle\int\left(x-2+\dfrac3x\right)dx=\dfrac{x^2}2-2x+3\ln|x|+C$.`,
+    R`**Bước 3.** Trên $(0;+\infty)$ ta có $|x|=x$. **Kết quả.** $\dfrac{x^2}{2}-2x+3\ln x+C$.`
    ] },
  { muc: "VD", de: R`Tìm $\displaystyle\int\dfrac{(x+1)^2}{\sqrt x}\,dx$ trên khoảng $(0;+\infty)$.`,
    giai: [
-    R`Khai triển tử số: $(x+1)^2=x^2+2x+1$.`,
-    R`Chia từng hạng tử cho $\sqrt x=x^{\frac12}$: $\dfrac{x^2+2x+1}{x^{\frac12}}=x^{\frac32}+2x^{\frac12}+x^{-\frac12}$.`,
-    R`Lấy nguyên hàm từng hạng tử: $\displaystyle\int x^{\frac32}dx=\dfrac25x^{\frac52}$; $\displaystyle\int2x^{\frac12}dx=2\cdot\dfrac23x^{\frac32}=\dfrac43x^{\frac32}$; $\displaystyle\int x^{-\frac12}dx=\dfrac{x^{\frac12}}{\frac12}=2x^{\frac12}$.`,
+    R`**Phân tích.** Khai triển tử, chia cho $\sqrt x=x^{\frac12}$ để được tổng các luỹ thừa, rồi lấy nguyên hàm từng hạng tử. Cuối cùng kiểm tra bằng đạo hàm.`,
+    R`**Bước 1.** Khai triển tử số: $(x+1)^2=x^2+2x+1$.`,
+    R`**Bước 2.** Chia từng hạng tử cho $\sqrt x=x^{\frac12}$: $\dfrac{x^2+2x+1}{x^{\frac12}}=x^{\frac32}+2x^{\frac12}+x^{-\frac12}$.`,
+    R`**Bước 3.** Lấy nguyên hàm từng hạng tử: $\displaystyle\int x^{\frac32}dx=\dfrac25x^{\frac52}$; $\displaystyle\int2x^{\frac12}dx=2\cdot\dfrac23x^{\frac32}=\dfrac43x^{\frac32}$; $\displaystyle\int x^{-\frac12}dx=\dfrac{x^{\frac12}}{\frac12}=2x^{\frac12}$.`,
     R`**Kết quả.** $\displaystyle\int\dfrac{(x+1)^2}{\sqrt x}dx=\dfrac25x^2\sqrt x+\dfrac43x\sqrt x+2\sqrt x+C$.`,
-    R`Kiểm tra lại bằng đạo hàm: $\left(\dfrac25x^{\frac52}\right)'=x^{\frac32}$, $\left(\dfrac43x^{\frac32}\right)'=2x^{\frac12}$, $\left(2x^{\frac12}\right)'=x^{-\frac12}$ ✓.`
+    R`**Bước 4.** Kiểm tra lại bằng đạo hàm: $\left(\dfrac25x^{\frac52}\right)'=x^{\frac32}$, $\left(\dfrac43x^{\frac32}\right)'=2x^{\frac12}$, $\left(2x^{\frac12}\right)'=x^{-\frac12}$ ✓.`
    ] }
  ] },
 "C4-B11-D03": {
@@ -1802,30 +1908,40 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Tìm $\displaystyle\int(2e^x-3\cos x)\,dx$.`,
    giai: [
-    R`$\displaystyle\int2e^xdx=2e^x$; $\displaystyle\int3\cos x\,dx=3\sin x$.`,
-    R`**Kết quả.** $\displaystyle\int(2e^x-3\cos x)\,dx=2e^x-3\sin x+C$.`
+    R`**Phân tích.** Dùng bảng nguyên hàm cơ bản: $\displaystyle\int e^xdx=e^x+C$, $\displaystyle\int\cos x\,dx=\sin x+C$.`,
+    R`**Bước 1.** $\displaystyle\int2e^xdx=2e^x$; $\displaystyle\int3\cos x\,dx=3\sin x$.`,
+    R`**Kết quả.** $\displaystyle\int(2e^x-3\cos x)\,dx=2e^x-3\sin x+C$.`,
+    R`**Thử lại.** $(2e^x-3\sin x)'=2e^x-3\cos x$, đúng.`
    ] },
  { muc: "TH", de: R`Tìm $\displaystyle\int2^{2x+1}dx$.`,
    giai: [
-    R`Biến đổi: $2^{2x+1}=2\cdot2^{2x}=2\cdot(2^2)^x=2\cdot4^x$.`,
-    R`$\displaystyle\int2\cdot4^xdx=2\cdot\dfrac{4^x}{\ln4}+C$.`,
-    R`Vì $\ln4=2\ln2$ nên $2\cdot\dfrac{4^x}{2\ln2}=\dfrac{4^x}{\ln2}$. **Kết quả.** $\dfrac{4^x}{\ln2}+C$.`
+    R`**Phân tích.** Số mũ là $2x+1$ chứ không phải $x$. Ta **biến đổi về dạng $k\cdot a^x$** để dùng $\displaystyle\int a^xdx=\dfrac{a^x}{\ln a}+C$.`,
+    R`**Bước 1.** Biến đổi: $2^{2x+1}=2\cdot2^{2x}=2\cdot(2^2)^x=2\cdot4^x$.`,
+    R`**Bước 2.** $\displaystyle\int2\cdot4^xdx=2\cdot\dfrac{4^x}{\ln4}+C$.`,
+    R`**Bước 3.** Vì $\ln4=2\ln2$ nên $2\cdot\dfrac{4^x}{2\ln2}=\dfrac{4^x}{\ln2}$. **Kết quả.** $\dfrac{4^x}{\ln2}+C$.`
    ] },
  { muc: "TH", de: R`Tìm $\displaystyle\int\sin^2\dfrac x2\,dx$.`,
    giai: [
-    R`Hạ bậc: $\sin^2\dfrac x2=\dfrac{1-\cos x}{2}=\dfrac12-\dfrac12\cos x$.`,
-    R`$\displaystyle\int\left(\dfrac12-\dfrac12\cos x\right)dx=\dfrac x2-\dfrac12\sin x+C$.`
+    R`**Phân tích.** Chưa có công thức nguyên hàm cho $\sin^2$. Dùng **công thức hạ bậc** $\sin^2t=\dfrac{1-\cos2t}2$ để đưa về hàm bậc nhất của $\cos$.`,
+    R`**Bước 1.** Hạ bậc: $\sin^2\dfrac x2=\dfrac{1-\cos x}{2}=\dfrac12-\dfrac12\cos x$.`,
+    R`**Bước 2.** $\displaystyle\int\left(\dfrac12-\dfrac12\cos x\right)dx=\dfrac x2-\dfrac12\sin x+C$.`,
+    R`**Kết luận.** $\displaystyle\int\sin^2\dfrac x2\,dx=\dfrac x2-\dfrac12\sin x+C$.`
    ] },
  { muc: "VD", de: R`Tìm $\displaystyle\int\tan^2x\,dx$ trên khoảng $\left(-\dfrac\pi2;\dfrac\pi2\right)$.`,
    giai: [
-    R`Ta có $1+\tan^2x=\dfrac1{\cos^2x}$ nên $\tan^2x=\dfrac1{\cos^2x}-1$.`,
-    R`$\displaystyle\int\left(\dfrac1{\cos^2x}-1\right)dx=\tan x-x+C$.`
+    R`**Phân tích.** Không có công thức trực tiếp cho $\tan^2x$. Dùng hệ thức $1+\tan^2x=\dfrac1{\cos^2x}$ để đưa về hàm có trong bảng.`,
+    R`**Bước 1.** Ta có $1+\tan^2x=\dfrac1{\cos^2x}$ nên $\tan^2x=\dfrac1{\cos^2x}-1$.`,
+    R`**Bước 2.** $\displaystyle\int\left(\dfrac1{\cos^2x}-1\right)dx=\tan x-x+C$.`,
+    R`**Kết luận.** $\displaystyle\int\tan^2x\,dx=\tan x-x+C$.`,
+    R`**Thử lại.** $(\tan x-x)'=\dfrac1{\cos^2x}-1=\tan^2x$, đúng.`
    ] },
  { muc: "VD", de: R`Tìm $\displaystyle\int\dfrac{dx}{\sin^2x\cos^2x}$ trên khoảng $\left(0;\dfrac\pi2\right)$.`,
    giai: [
-    R`Thay $1=\sin^2x+\cos^2x$ ở tử: $\dfrac{1}{\sin^2x\cos^2x}=\dfrac{\sin^2x+\cos^2x}{\sin^2x\cos^2x}$.`,
-    R`Tách thành hai phân số: $=\dfrac{\sin^2x}{\sin^2x\cos^2x}+\dfrac{\cos^2x}{\sin^2x\cos^2x}=\dfrac1{\cos^2x}+\dfrac1{\sin^2x}$.`,
-    R`**Kết quả.** $\displaystyle\int\dfrac{dx}{\sin^2x\cos^2x}=\tan x-\cot x+C$.`
+    R`**Phân tích.** Mẹo "thay số $1$": viết $1=\sin^2x+\cos^2x$ ở tử để tách thành hai phân số có trong bảng nguyên hàm.`,
+    R`**Bước 1.** Thay $1=\sin^2x+\cos^2x$ ở tử: $\dfrac{1}{\sin^2x\cos^2x}=\dfrac{\sin^2x+\cos^2x}{\sin^2x\cos^2x}$.`,
+    R`**Bước 2.** Tách thành hai phân số: $=\dfrac{\sin^2x}{\sin^2x\cos^2x}+\dfrac{\cos^2x}{\sin^2x\cos^2x}=\dfrac1{\cos^2x}+\dfrac1{\sin^2x}$.`,
+    R`**Kết quả.** $\displaystyle\int\dfrac{dx}{\sin^2x\cos^2x}=\tan x-\cot x+C$.`,
+    R`**Thử lại.** $(\tan x-\cot x)'=\dfrac1{\cos^2x}+\dfrac1{\sin^2x}$, đúng.`
    ] }
  ] },
 "C4-B11-D04": {
@@ -1841,28 +1957,34 @@ Object.assign(D, {
  vd: [
  { muc: "TH", de: R`Biết $F(x)$ là một nguyên hàm của $f(x)=3x^2-2x$ và $F(1)=4$. Tính $F(2)$.`,
    giai: [
-    R`$F(x)=\displaystyle\int(3x^2-2x)\,dx=x^3-x^2+C$.`,
-    R`$F(1)=1-1+C=C$. Từ $F(1)=4$ suy ra $C=4$, nên $F(x)=x^3-x^2+4$.`,
-    R`$F(2)=8-4+4=8$.`
+    R`**Phân tích.** Bài cho thêm một giá trị của $F$: tìm **họ nguyên hàm** (có $C$), rồi thay điều kiện đã cho để tìm $C$.`,
+    R`**Bước 1.** $F(x)=\displaystyle\int(3x^2-2x)\,dx=x^3-x^2+C$.`,
+    R`**Bước 2.** $F(1)=1-1+C=C$. Từ $F(1)=4$ suy ra $C=4$, nên $F(x)=x^3-x^2+4$.`,
+    R`**Bước 3.** $F(2)=8-4+4=8$.`,
+    R`**Kết luận.** $F(2)=8$.`
    ] },
  { muc: "TH", de: R`Tìm nguyên hàm $F(x)$ của $f(x)=e^x+2x$ thoả mãn $F(0)=3$.`,
    giai: [
-    R`$F(x)=e^x+x^2+C$.`,
-    R`$F(0)=e^0+0+C=1+C$. Từ $F(0)=3$ suy ra $C=2$.`,
+    R`**Phân tích.** Như ví dụ trước: tìm họ nguyên hàm, thay $x=0$ để xác định hằng số $C$.`,
+    R`**Bước 1.** $F(x)=e^x+x^2+C$.`,
+    R`**Bước 2.** $F(0)=e^0+0+C=1+C$. Từ $F(0)=3$ suy ra $C=2$.`,
     R`**Kết quả.** $F(x)=e^x+x^2+2$.`
    ] },
  { muc: "VD", de: R`Một vật chuyển động với gia tốc $a(t)=6t$ (m/s²), trong đó $t$ là thời gian tính bằng giây. Vận tốc ban đầu là $2$ m/s và lúc $t=0$ vật ở vị trí gốc ($s(0)=0$). Tính vận tốc của vật tại $t=3$ và quãng đường vật đi được trong $3$ giây đầu.`,
    giai: [
+    R`**Phân tích.** Vận tốc là nguyên hàm của gia tốc, quãng đường (vị trí) là nguyên hàm của vận tốc. Mỗi lần lấy nguyên hàm có một hằng số, xác định bằng điều kiện ban đầu.`,
     R`**Vận tốc.** $v(t)=\displaystyle\int6t\,dt=3t^2+C_1$. Từ $v(0)=2$ suy ra $C_1=2$, nên $v(t)=3t^2+2$.`,
-    R`Tại $t=3$: $v(3)=27+2=29$ (m/s).`,
+    R`**Bước 1.** Tại $t=3$: $v(3)=27+2=29$ (m/s).`,
     R`**Quãng đường.** $s(t)=\displaystyle\int(3t^2+2)\,dt=t^3+2t+C_2$. Từ $s(0)=0$ suy ra $C_2=0$, nên $s(t)=t^3+2t$.`,
-    R`Vì $v(t)>0$ nên vật chỉ đi theo một chiều; quãng đường trong $3$ giây đầu là $s(3)=27+6=33$ (m).`
+    R`**Bước 2.** Vì $v(t)>0$ nên vật chỉ đi theo một chiều; quãng đường trong $3$ giây đầu là $s(3)=27+6=33$ (m).`,
+    R`**Kết luận.** $v(3)=29$ m/s; quãng đường trong $3$ giây đầu là $33$ m.`
    ] },
  { muc: "VD", de: R`Một quần thể vi khuẩn lúc đầu có $500$ con. Tốc độ tăng số lượng là $N'(t)=300\sqrt t$ (con/giờ), $t$ tính bằng giờ. Sau $4$ giờ quần thể có bao nhiêu con?`,
    giai: [
-    R`$N(t)=\displaystyle\int300t^{\frac12}dt=300\cdot\dfrac23t^{\frac32}+C=200t\sqrt t+C$.`,
-    R`Lúc đầu $N(0)=500$ nên $C=500$, tức là $N(t)=200t\sqrt t+500$.`,
-    R`$N(4)=200\cdot4\cdot2+500=1600+500=2100$.`,
+    R`**Phân tích.** $N'(t)$ là tốc độ tăng nên $N(t)$ là một nguyên hàm của $N'(t)$; số lượng lúc đầu cho ta hằng số $C$.`,
+    R`**Bước 1.** $N(t)=\displaystyle\int300t^{\frac12}dt=300\cdot\dfrac23t^{\frac32}+C=200t\sqrt t+C$.`,
+    R`**Bước 2.** Lúc đầu $N(0)=500$ nên $C=500$, tức là $N(t)=200t\sqrt t+500$.`,
+    R`**Bước 3.** $N(4)=200\cdot4\cdot2+500=1600+500=2100$.`,
     R`**Kết luận.** Sau $4$ giờ có $2100$ con vi khuẩn.`
    ] }
  ] },
@@ -1880,25 +2002,33 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Cho $\displaystyle\int_0^2f(x)\,dx=3$ và $\displaystyle\int_0^2g(x)\,dx=-1$. Tính $\displaystyle\int_0^2\big[2f(x)-3g(x)+1\big]dx$.`,
    giai: [
-    R`Tách theo tính chất: $\displaystyle\int_0^2[2f-3g+1]dx=2\int_0^2f\,dx-3\int_0^2g\,dx+\int_0^21\,dx$.`,
-    R`$\displaystyle\int_0^21\,dx=x\Big|_0^2=2$.`,
-    R`Thay số: $2\cdot3-3\cdot(-1)+2=6+3+2=11$.`
+    R`**Phân tích.** Dùng **tính chất tuyến tính** của tích phân: tách tổng thành từng tích phân và đưa hằng số ra ngoài, rồi thay các giá trị đã cho.`,
+    R`**Bước 1.** Tách theo tính chất: $\displaystyle\int_0^2[2f-3g+1]dx=2\int_0^2f\,dx-3\int_0^2g\,dx+\int_0^21\,dx$.`,
+    R`**Bước 2.** $\displaystyle\int_0^21\,dx=x\Big|_0^2=2$.`,
+    R`**Bước 3.** Thay số: $2\cdot3-3\cdot(-1)+2=6+3+2=11$.`,
+    R`**Kết luận.** Tích phân bằng $11$.`
    ] },
  { muc: "TH", de: R`Cho $\displaystyle\int_1^3f(x)\,dx=5$ và $\displaystyle\int_1^5f(x)\,dx=2$. Tính $\displaystyle\int_3^5f(x)\,dx$.`,
    giai: [
-    R`Cộng đoạn: $\displaystyle\int_1^5f=\int_1^3f+\int_3^5f$.`,
-    R`Suy ra $\displaystyle\int_3^5f(x)\,dx=2-5=-3$.`
+    R`**Phân tích.** Dùng **tính chất cộng đoạn**: $\displaystyle\int_a^c=\int_a^b+\int_b^c$. Đoạn $[1;5]$ gồm $[1;3]$ và $[3;5]$.`,
+    R`**Bước 1.** Cộng đoạn: $\displaystyle\int_1^5f=\int_1^3f+\int_3^5f$.`,
+    R`**Bước 2.** Suy ra $\displaystyle\int_3^5f(x)\,dx=2-5=-3$.`,
+    R`**Kết luận.** $\displaystyle\int_3^5f(x)\,dx=-3$.`
    ] },
  { muc: "TH", de: R`Cho $F(x)$ là một nguyên hàm của $f(x)$ trên $\mathbb R$, $F(1)=2$, $F(4)=11$. Tính $\displaystyle\int_1^4f(x)\,dx$ và $\displaystyle\int_4^1f(t)\,dt$.`,
    giai: [
-    R`Theo định nghĩa: $\displaystyle\int_1^4f(x)\,dx=F(4)-F(1)=11-2=9$.`,
-    R`Đổi biến $x$ thành $t$ không làm thay đổi giá trị; đổi chỗ hai cận thì đổi dấu: $\displaystyle\int_4^1f(t)\,dt=-9$.`
+    R`**Phân tích.** Định nghĩa: $\displaystyle\int_a^bf(x)dx=F(b)-F(a)$. Tích phân không phụ thuộc tên biến; đổi chỗ hai cận thì đổi dấu.`,
+    R`**Bước 1.** Theo định nghĩa: $\displaystyle\int_1^4f(x)\,dx=F(4)-F(1)=11-2=9$.`,
+    R`**Bước 2.** Đổi biến $x$ thành $t$ không làm thay đổi giá trị; đổi chỗ hai cận thì đổi dấu: $\displaystyle\int_4^1f(t)\,dt=-9$.`,
+    R`**Kết luận.** $\displaystyle\int_1^4f(x)\,dx=9$ và $\displaystyle\int_4^1f(t)\,dt=-9$.`
    ] },
  { muc: "VD", de: R`Cho hàm số $f$ liên tục trên $\mathbb R$, $\displaystyle\int_0^1f(x)\,dx=2$ và $\displaystyle\int_0^3f(x)\,dx=6$. Tính $I=\displaystyle\int_1^3\big[3f(x)-2x\big]dx$.`,
    giai: [
-    R`Tìm $\displaystyle\int_1^3f$: vì $\displaystyle\int_0^3f=\int_0^1f+\int_1^3f$ nên $\displaystyle\int_1^3f(x)\,dx=6-2=4$.`,
-    R`$\displaystyle\int_1^32x\,dx=x^2\Big|_1^3=9-1=8$.`,
-    R`$I=3\cdot4-8=4$.`
+    R`**Phân tích.** Cần $\displaystyle\int_1^3f$ mà đề chỉ cho trên $[0;1]$ và $[0;3]$: dùng cộng đoạn để tìm, rồi tính phần $2x$ trực tiếp.`,
+    R`**Bước 1.** Tìm $\displaystyle\int_1^3f$: vì $\displaystyle\int_0^3f=\int_0^1f+\int_1^3f$ nên $\displaystyle\int_1^3f(x)\,dx=6-2=4$.`,
+    R`**Bước 2.** $\displaystyle\int_1^32x\,dx=x^2\Big|_1^3=9-1=8$.`,
+    R`**Bước 3.** $I=3\cdot4-8=4$.`,
+    R`**Kết luận.** $I=4$.`
    ] }
  ] },
 "C4-B12-D02": {
@@ -1914,31 +2044,41 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Tính $\displaystyle\int_1^2(3x^2+2x)\,dx$.`,
    giai: [
-    R`Một nguyên hàm: $F(x)=x^3+x^2$.`,
-    R`$\displaystyle\int_1^2(3x^2+2x)\,dx=(x^3+x^2)\Big|_1^2=(8+4)-(1+1)=10$.`
+    R`**Phân tích.** Tính tích phân bằng công thức Newton–Leibniz: tìm **một** nguyên hàm $F$ (không cần $+C$), rồi tính $F(b)-F(a)$.`,
+    R`**Bước 1.** Một nguyên hàm: $F(x)=x^3+x^2$.`,
+    R`**Bước 2.** $\displaystyle\int_1^2(3x^2+2x)\,dx=(x^3+x^2)\Big|_1^2=(8+4)-(1+1)=10$.`,
+    R`**Kết luận.** $\displaystyle\int_1^2(3x^2+2x)\,dx=10$.`
    ] },
  { muc: "TH", de: R`Tính $\displaystyle\int_0^{\frac\pi2}(2\cos x-\sin x)\,dx$.`,
    giai: [
-    R`Một nguyên hàm: $\displaystyle\int(2\cos x-\sin x)dx=2\sin x+\cos x$ (vì $\displaystyle\int-\sin x\,dx=\cos x$).`,
-    R`$(2\sin x+\cos x)\Big|_0^{\frac\pi2}=\left(2\cdot1+0\right)-\left(2\cdot0+1\right)=2-1=1$.`
+    R`**Phân tích.** Như trên, chú ý dấu: nguyên hàm của $-\sin x$ là $+\cos x$. Thay cận $\frac\pi2$ và $0$ cẩn thận.`,
+    R`**Bước 1.** Một nguyên hàm: $\displaystyle\int(2\cos x-\sin x)dx=2\sin x+\cos x$ (vì $\displaystyle\int-\sin x\,dx=\cos x$).`,
+    R`**Bước 2.** $(2\sin x+\cos x)\Big|_0^{\frac\pi2}=\left(2\cdot1+0\right)-\left(2\cdot0+1\right)=2-1=1$.`,
+    R`**Kết luận.** Tích phân bằng $1$.`
    ] },
  { muc: "TH", de: R`Tính $\displaystyle\int_1^e\dfrac{x+1}{x}\,dx$.`,
    giai: [
-    R`Chia: $\dfrac{x+1}{x}=1+\dfrac1x$.`,
-    R`$\displaystyle\int_1^e\left(1+\dfrac1x\right)dx=(x+\ln x)\Big|_1^e=(e+1)-(1+0)=e$.`
+    R`**Phân tích.** Chia tử cho mẫu để được tổng các hàm cơ bản, rồi dùng Newton–Leibniz. Nhớ $\ln e=1$, $\ln1=0$.`,
+    R`**Bước 1.** Chia: $\dfrac{x+1}{x}=1+\dfrac1x$.`,
+    R`**Bước 2.** $\displaystyle\int_1^e\left(1+\dfrac1x\right)dx=(x+\ln x)\Big|_1^e=(e+1)-(1+0)=e$.`,
+    R`**Kết luận.** $\displaystyle\int_1^e\dfrac{x+1}x\,dx=e$.`
    ] },
  { muc: "VD", de: R`Tính $\displaystyle\int_1^4\dfrac{x-1}{\sqrt x}\,dx$.`,
    giai: [
-    R`Chia từng hạng tử: $\dfrac{x-1}{\sqrt x}=x^{\frac12}-x^{-\frac12}$.`,
-    R`Một nguyên hàm: $F(x)=\dfrac23x^{\frac32}-2x^{\frac12}=\dfrac23x\sqrt x-2\sqrt x$.`,
-    R`$F(4)=\dfrac23\cdot8-4=\dfrac{16}3-4=\dfrac43$; $F(1)=\dfrac23-2=-\dfrac43$.`,
-    R`$\displaystyle\int_1^4\dfrac{x-1}{\sqrt x}dx=\dfrac43-\left(-\dfrac43\right)=\dfrac83$.`
+    R`**Phân tích.** Đưa về tổng luỹ thừa của $x$ bằng cách chia từng hạng tử cho $\sqrt x$; tính $F(4)$ và $F(1)$ riêng cho đỡ nhầm.`,
+    R`**Bước 1.** Chia từng hạng tử: $\dfrac{x-1}{\sqrt x}=x^{\frac12}-x^{-\frac12}$.`,
+    R`**Bước 2.** Một nguyên hàm: $F(x)=\dfrac23x^{\frac32}-2x^{\frac12}=\dfrac23x\sqrt x-2\sqrt x$.`,
+    R`**Bước 3.** $F(4)=\dfrac23\cdot8-4=\dfrac{16}3-4=\dfrac43$; $F(1)=\dfrac23-2=-\dfrac43$.`,
+    R`**Bước 4.** $\displaystyle\int_1^4\dfrac{x-1}{\sqrt x}dx=\dfrac43-\left(-\dfrac43\right)=\dfrac83$.`,
+    R`**Kết luận.** Tích phân bằng $\dfrac83$.`
    ] },
  { muc: "VD", de: R`Tính $\displaystyle\int_0^1(e^x+2^x)\,dx$.`,
    giai: [
-    R`Một nguyên hàm: $F(x)=e^x+\dfrac{2^x}{\ln2}$.`,
-    R`$F(1)-F(0)=\left(e+\dfrac2{\ln2}\right)-\left(1+\dfrac1{\ln2}\right)=e-1+\dfrac1{\ln2}$.`,
-    R`Giá trị gần đúng: $\approx2{,}718-1+1{,}443\approx3{,}16$.`
+    R`**Phân tích.** Nguyên hàm của $a^x$ là $\dfrac{a^x}{\ln a}$. Tính giá trị đúng trước, rồi mới lấy gần đúng.`,
+    R`**Bước 1.** Một nguyên hàm: $F(x)=e^x+\dfrac{2^x}{\ln2}$.`,
+    R`**Bước 2.** $F(1)-F(0)=\left(e+\dfrac2{\ln2}\right)-\left(1+\dfrac1{\ln2}\right)=e-1+\dfrac1{\ln2}$.`,
+    R`**Bước 3.** Giá trị gần đúng: $\approx2{,}718-1+1{,}443\approx3{,}16$.`,
+    R`**Kết luận.** $\displaystyle\int_0^1(e^x+2^x)\,dx=e-1+\dfrac1{\ln2}$.`
    ] }
  ] },
 "C4-B12-D03": {
@@ -1954,15 +2094,19 @@ Object.assign(D, {
  vd: [
  { muc: "TH", de: R`Tính $\displaystyle\int_0^3|x-1|\,dx$.`,
    giai: [
-    R`$x-1=0\Leftrightarrow x=1$. Trên $[0;1]$: $x-1\le0$ nên $|x-1|=1-x$. Trên $[1;3]$: $|x-1|=x-1$.`,
-    R`$\displaystyle\int_0^1(1-x)\,dx=\left(x-\dfrac{x^2}2\right)\Big|_0^1=\dfrac12$.`,
-    R`$\displaystyle\int_1^3(x-1)\,dx=\left(\dfrac{x^2}2-x\right)\Big|_1^3=\left(\dfrac92-3\right)-\left(\dfrac12-1\right)=\dfrac32+\dfrac12=2$.`,
+    R`**Phân tích.** Tích phân chứa giá trị tuyệt đối: tìm nghiệm của biểu thức bên trong, **xét dấu** để bỏ dấu $|\ |$ trên từng đoạn, rồi tách tích phân theo các đoạn đó.`,
+    R`**Bước 1.** $x-1=0\Leftrightarrow x=1$. Trên $[0;1]$: $x-1\le0$ nên $|x-1|=1-x$. Trên $[1;3]$: $|x-1|=x-1$.`,
+    R`**Bước 2.** $\displaystyle\int_0^1(1-x)\,dx=\left(x-\dfrac{x^2}2\right)\Big|_0^1=\dfrac12$.`,
+    R`**Bước 3.** $\displaystyle\int_1^3(x-1)\,dx=\left(\dfrac{x^2}2-x\right)\Big|_1^3=\left(\dfrac92-3\right)-\left(\dfrac12-1\right)=\dfrac32+\dfrac12=2$.`,
     R`**Kết quả.** $\displaystyle\int_0^3|x-1|\,dx=\dfrac12+2=\dfrac52$.`
    ],
    hinh: R`\begin{tikzpicture}[scale=1,>=stealth]
 \fill[blue!20] (0,0)--(0,1)--(1,0)--(3,2)--(3,0)--cycle;
 \draw[thick,blue] (0,1)--(1,0)--(3.3,2.3);
-${TRUC(-0.6,3.8,-0.4,2.8)}
+\draw[->] (-0.6,0)--(3.8,0) node[below]{$x$};
+\draw[->] (0,-0.4)--(0,2.8) node[left]{$y$};
+
+\node[below left] at (0,0){$O$};
 \draw[dashed] (3,0)--(3,2);
 \node[below] at (1,0){$1$}; \node[below] at (3,0){$3$};
 \node[left] at (0,1){$1$}; \node[left] at (0,2){$2$}; \draw[dashed] (0,2)--(3,2);
@@ -1970,32 +2114,39 @@ ${TRUC(-0.6,3.8,-0.4,2.8)}
    chuThich: R`Tích phân bằng tổng diện tích hai tam giác tô màu: $\dfrac12\cdot1\cdot1+\dfrac12\cdot2\cdot2=\dfrac52$ (khớp kết quả).` },
  { muc: "TH", de: R`Tính $\displaystyle\int_{-1}^{2}|x^2-1|\,dx$.`,
    giai: [
-    R`$x^2-1=0\Leftrightarrow x=\pm1$. Bảng xét dấu trên $[-1;2]$:
+    R`**Phân tích.** Như ví dụ trước nhưng biểu thức bậc hai: lập bảng xét dấu $x^2-1$ trên $[-1;2]$ để biết đoạn nào phải đổi dấu.`,
+    R`**Bước 1.** $x^2-1=0\Leftrightarrow x=\pm1$. Bảng xét dấu trên $[-1;2]$:
 \begin{center}\begin{tikzpicture}
 \tkzTabInit[lgt=2.2,espcl=2.4]{$x$/0.8,$x^2-1$/0.8}{$-1$,$1$,$2$}
 \tkzTabLine{0,-,0,+,}
 \end{tikzpicture}\end{center}`,
-    R`Trên $[-1;1]$: $|x^2-1|=1-x^2$. $\displaystyle\int_{-1}^1(1-x^2)\,dx=\left(x-\dfrac{x^3}3\right)\Big|_{-1}^1=\dfrac23-\left(-\dfrac23\right)=\dfrac43$.`,
-    R`Trên $[1;2]$: $|x^2-1|=x^2-1$. $\displaystyle\int_1^2(x^2-1)\,dx=\left(\dfrac{x^3}3-x\right)\Big|_1^2=\dfrac23-\left(-\dfrac23\right)=\dfrac43$.`,
+    R`**Bước 2.** Trên $[-1;1]$: $|x^2-1|=1-x^2$. $\displaystyle\int_{-1}^1(1-x^2)\,dx=\left(x-\dfrac{x^3}3\right)\Big|_{-1}^1=\dfrac23-\left(-\dfrac23\right)=\dfrac43$.`,
+    R`**Bước 3.** Trên $[1;2]$: $|x^2-1|=x^2-1$. $\displaystyle\int_1^2(x^2-1)\,dx=\left(\dfrac{x^3}3-x\right)\Big|_1^2=\dfrac23-\left(-\dfrac23\right)=\dfrac43$.`,
     R`**Kết quả.** $\dfrac43+\dfrac43=\dfrac83$.`
    ] },
  { muc: "VD", de: R`Cho hàm số $f(x)=\begin{cases}2x&\text{khi }x\le1\\3-x^2&\text{khi }x>1\end{cases}$. Tính $\displaystyle\int_0^2f(x)\,dx$.`,
    giai: [
-    R`Hàm số liên tục tại $x=1$ vì $2\cdot1=2$ và $3-1^2=2$. Tách tại $x=1$: $\displaystyle\int_0^2f=\int_0^12x\,dx+\int_1^2(3-x^2)\,dx$.`,
-    R`$\displaystyle\int_0^12x\,dx=x^2\Big|_0^1=1$.`,
-    R`$\displaystyle\int_1^2(3-x^2)\,dx=\left(3x-\dfrac{x^3}3\right)\Big|_1^2=\left(6-\dfrac83\right)-\left(3-\dfrac13\right)=\dfrac{10}3-\dfrac83=\dfrac23$.`,
+    R`**Phân tích.** Hàm cho bởi hai công thức, đổi công thức tại $x=1$. **Tách tích phân tại điểm đổi công thức**, mỗi đoạn dùng đúng công thức của nó.`,
+    R`**Bước 1.** Hàm số liên tục tại $x=1$ vì $2\cdot1=2$ và $3-1^2=2$. Tách tại $x=1$: $\displaystyle\int_0^2f=\int_0^12x\,dx+\int_1^2(3-x^2)\,dx$.`,
+    R`**Bước 2.** $\displaystyle\int_0^12x\,dx=x^2\Big|_0^1=1$.`,
+    R`**Bước 3.** $\displaystyle\int_1^2(3-x^2)\,dx=\left(3x-\dfrac{x^3}3\right)\Big|_1^2=\left(6-\dfrac83\right)-\left(3-\dfrac13\right)=\dfrac{10}3-\dfrac83=\dfrac23$.`,
     R`**Kết quả.** $\displaystyle\int_0^2f(x)\,dx=1+\dfrac23=\dfrac53$.`
    ] },
  { muc: "TH", de: R`Dùng ý nghĩa hình học, tính $\displaystyle\int_0^2\sqrt{4-x^2}\,dx$.`,
    giai: [
-    R`Đặt $y=\sqrt{4-x^2}$ thì $y\ge0$ và $x^2+y^2=4$: đồ thị là nửa trên của đường tròn tâm $O$, bán kính $2$.`,
-    R`Với $0\le x\le2$, hình phẳng dưới đồ thị là một phần tư hình tròn bán kính $2$ (hình dưới).`,
-    R`Tích phân bằng diện tích phần đó: $\dfrac14\pi\cdot2^2=\pi$.`
+    R`**Phân tích.** Không tìm được nguyên hàm dễ dàng. Dùng **ý nghĩa hình học**: tích phân của hàm không âm bằng diện tích hình phẳng dưới đồ thị.`,
+    R`**Bước 1.** Đặt $y=\sqrt{4-x^2}$ thì $y\ge0$ và $x^2+y^2=4$: đồ thị là nửa trên của đường tròn tâm $O$, bán kính $2$.`,
+    R`**Bước 2.** Với $0\le x\le2$, hình phẳng dưới đồ thị là một phần tư hình tròn bán kính $2$ (hình dưới).`,
+    R`**Bước 3.** Tích phân bằng diện tích phần đó: $\dfrac14\pi\cdot2^2=\pi$.`,
+    R`**Kết luận.** $\displaystyle\int_0^2\sqrt{4-x^2}\,dx=\pi$.`
    ],
    hinh: R`\begin{tikzpicture}[scale=1,>=stealth]
 \fill[blue!20] (0,0)--(2,0) arc (0:90:2)--cycle;
 \draw[thick,blue] (2,0) arc (0:90:2);
-${TRUC(-0.5,2.7,-0.4,2.7)}
+\draw[->] (-0.5,0)--(2.7,0) node[below]{$x$};
+\draw[->] (0,-0.4)--(0,2.7) node[left]{$y$};
+
+\node[below left] at (0,0){$O$};
 \node[below] at (2,0){$2$}; \node[left] at (0,2){$2$};
 \end{tikzpicture}`,
    chuThich: R`Phần tô màu là một phần tư hình tròn bán kính $2$.` }
@@ -2013,25 +2164,31 @@ ${TRUC(-0.5,2.7,-0.4,2.7)}
  vd: [
  { muc: "TH", de: R`Một ô tô đang chạy với vận tốc $20$ m/s thì phanh. Từ lúc phanh, ô tô chuyển động chậm dần đều với $v(t)=20-5t$ (m/s). Hỏi từ lúc phanh đến khi dừng, ô tô đi thêm bao nhiêu mét?`,
    giai: [
-    R`Ô tô dừng khi $v(t)=0\Leftrightarrow20-5t=0\Leftrightarrow t=4$ (giây).`,
-    R`Trên $[0;4]$ ta có $v(t)\ge0$, nên quãng đường là $s=\displaystyle\int_0^4(20-5t)\,dt$.`,
-    R`$s=\left(20t-\dfrac{5t^2}2\right)\Big|_0^4=80-40=40$ (m).`
+    R`**Phân tích.** Quãng đường đi được bằng tích phân của vận tốc theo thời gian (khi $v\ge0$). Cần tìm thời điểm dừng ($v=0$) để làm cận trên.`,
+    R`**Bước 1.** Ô tô dừng khi $v(t)=0\Leftrightarrow20-5t=0\Leftrightarrow t=4$ (giây).`,
+    R`**Bước 2.** Trên $[0;4]$ ta có $v(t)\ge0$, nên quãng đường là $s=\displaystyle\int_0^4(20-5t)\,dt$.`,
+    R`**Bước 3.** $s=\left(20t-\dfrac{5t^2}2\right)\Big|_0^4=80-40=40$ (m).`,
+    R`**Kết luận.** Từ lúc phanh đến khi dừng, ô tô đi thêm $40$ m.`
    ] },
  { muc: "TH", de: R`Nước chảy vào một bể với tốc độ $r(t)=2t+10$ (lít/phút), $t$ tính bằng phút. Trong $10$ phút đầu có bao nhiêu lít nước chảy vào bể?`,
    giai: [
-    R`Lượng nước chảy vào là $\displaystyle\int_0^{10}(2t+10)\,dt$.`,
-    R`$=\left(t^2+10t\right)\Big|_0^{10}=100+100=200$ (lít).`
+    R`**Phân tích.** Lượng nước chảy vào bằng tích phân của tốc độ chảy theo thời gian trên khoảng $[0;10]$.`,
+    R`**Bước 1.** Lượng nước chảy vào là $\displaystyle\int_0^{10}(2t+10)\,dt$.`,
+    R`**Bước 2.** $=\left(t^2+10t\right)\Big|_0^{10}=100+100=200$ (lít).`,
+    R`**Kết luận.** Có $200$ lít nước chảy vào bể.`
    ] },
  { muc: "VD", de: R`Một chất điểm chuyển động thẳng với vận tốc $v(t)=t^2-4t+3$ (m/s). Tính độ dịch chuyển và quãng đường chất điểm đi được trong khoảng thời gian $0\le t\le3$.`,
    giai: [
-    R`$v(t)=0\Leftrightarrow t=1$ hoặc $t=3$. Bảng xét dấu:
+    R`**Phân tích.** **Độ dịch chuyển** $=\displaystyle\int v\,dt$ (có thể âm); **quãng đường** $=\displaystyle\int|v|\,dt$. Phải xét dấu $v(t)$ để tách đoạn khi tính quãng đường.`,
+    R`**Bước 1.** $v(t)=0\Leftrightarrow t=1$ hoặc $t=3$. Bảng xét dấu:
 \begin{center}\begin{tikzpicture}
 \tkzTabInit[lgt=1.4,espcl=2.4]{$t$/0.8,$v(t)$/0.8}{$0$,$1$,$3$}
 \tkzTabLine{,+,0,-,0}
 \end{tikzpicture}\end{center}`,
-    R`Một nguyên hàm: $F(t)=\dfrac{t^3}3-2t^2+3t$. Ta có $F(0)=0$, $F(1)=\dfrac13-2+3=\dfrac43$, $F(3)=9-18+9=0$.`,
+    R`**Bước 2.** Một nguyên hàm: $F(t)=\dfrac{t^3}3-2t^2+3t$. Ta có $F(0)=0$, $F(1)=\dfrac13-2+3=\dfrac43$, $F(3)=9-18+9=0$.`,
     R`**Độ dịch chuyển:** $\displaystyle\int_0^3v(t)\,dt=F(3)-F(0)=0$ (chất điểm quay về vị trí ban đầu).`,
-    R`**Quãng đường:** $\displaystyle\int_0^1v\,dt+\left|\int_1^3v\,dt\right|=\dfrac43+\left|0-\dfrac43\right|=\dfrac83$ (m).`
+    R`**Quãng đường:** $\displaystyle\int_0^1v\,dt+\left|\int_1^3v\,dt\right|=\dfrac43+\left|0-\dfrac43\right|=\dfrac83$ (m).`,
+    R`**Kết luận.** Độ dịch chuyển bằng $0$; quãng đường đi được là $\dfrac83$ m.`
    ] }
  ] },
 "C4-B13-D01": {
@@ -2048,41 +2205,56 @@ ${TRUC(-0.5,2.7,-0.4,2.7)}
  vd: [
  { muc: "NB", de: R`Tính diện tích hình phẳng giới hạn bởi đồ thị $y=x^2$, trục hoành và hai đường thẳng $x=0$, $x=2$.`,
    giai: [
-    R`Trên $[0;2]$ ta có $x^2\ge0$ nên $S=\displaystyle\int_0^2x^2\,dx$.`,
-    R`$S=\dfrac{x^3}3\Big|_0^2=\dfrac83$.`
+    R`**Phân tích.** Diện tích hình phẳng giới hạn bởi $y=f(x)$, trục hoành, $x=a$, $x=b$ là $S=\displaystyle\int_a^b|f(x)|\,dx$. Nếu $f\ge0$ trên đoạn thì bỏ được dấu giá trị tuyệt đối.`,
+    R`**Bước 1.** Trên $[0;2]$ ta có $x^2\ge0$ nên $S=\displaystyle\int_0^2x^2\,dx$.`,
+    R`**Bước 2.** $S=\dfrac{x^3}3\Big|_0^2=\dfrac83$.`,
+    R`**Kết luận.** $S=\dfrac83$.`
    ],
    hinh: R`\begin{tikzpicture}[scale=1,>=stealth]
 \fill[blue!20] (0,0) plot[domain=0:2,samples=60](\x,{\x*\x})--(2,0)--cycle;
 \draw[thick,blue,domain=-1.2:2.2,samples=80] plot(\x,{\x*\x});
-${TRUC(-1.5,3,-0.5,5)}
+\draw[->] (-1.5,0)--(3,0) node[below]{$x$};
+\draw[->] (0,-0.5)--(0,5) node[left]{$y$};
+
+\node[below left] at (0,0){$O$};
 \draw[dashed] (2,0)--(2,4); \node[below] at (2,0){$2$};
 \node[right] at (2.2,4.6){$y=x^2$};
 \end{tikzpicture}` },
  { muc: "TH", de: R`Tính diện tích hình phẳng giới hạn bởi đồ thị $y=x^2-2x$ và trục hoành.`,
    giai: [
-    R`$x^2-2x=0\Leftrightarrow x=0$ hoặc $x=2$. Đề không cho đường thẳng nên hai cận là $0$ và $2$.`,
-    R`Trên $[0;2]$, $x^2-2x\le0$ (đồ thị nằm dưới trục $Ox$). $\displaystyle\int_0^2(x^2-2x)\,dx=\left(\dfrac{x^3}3-x^2\right)\Big|_0^2=\dfrac83-4=-\dfrac43$.`,
-    R`$S=\left|-\dfrac43\right|=\dfrac43$.`
+    R`**Phân tích.** Đề không cho đường thẳng $x=a$, $x=b$: hai cận chính là **hoành độ giao điểm** của đồ thị với trục hoành. Đồ thị nằm dưới trục thì tích phân âm, phải lấy giá trị tuyệt đối.`,
+    R`**Bước 1.** $x^2-2x=0\Leftrightarrow x=0$ hoặc $x=2$. Đề không cho đường thẳng nên hai cận là $0$ và $2$.`,
+    R`**Bước 2.** Trên $[0;2]$, $x^2-2x\le0$ (đồ thị nằm dưới trục $Ox$). $\displaystyle\int_0^2(x^2-2x)\,dx=\left(\dfrac{x^3}3-x^2\right)\Big|_0^2=\dfrac83-4=-\dfrac43$.`,
+    R`**Bước 3.** $S=\left|-\dfrac43\right|=\dfrac43$.`,
+    R`**Kết luận.** $S=\dfrac43$.`
    ],
    hinh: R`\begin{tikzpicture}[scale=1.3,>=stealth]
 \fill[blue!20] (0,0) plot[domain=0:2,samples=60](\x,{\x*\x-2*\x})--cycle;
 \draw[thick,blue,domain=-0.6:2.6,samples=80] plot(\x,{\x*\x-2*\x});
-${TRUC(-1,3.2,-1.6,2.2)}
+\draw[->] (-1,0)--(3.2,0) node[below]{$x$};
+\draw[->] (0,-1.6)--(0,2.2) node[left]{$y$};
+
+\node[below left] at (0,0){$O$};
 \node[above left] at (2,0){$2$}; \node[right] at (2.6,1.4){$y=x^2-2x$};
 \end{tikzpicture}`,
    chuThich: R`Phần tô màu nằm dưới trục $Ox$ nên tích phân âm, diện tích là giá trị tuyệt đối.` },
  { muc: "VD", de: R`Tính diện tích hình phẳng giới hạn bởi đồ thị $y=x^3-x$ và trục hoành.`,
    giai: [
-    R`$x^3-x=0\Leftrightarrow x(x-1)(x+1)=0\Leftrightarrow x\in\{-1;0;1\}$.`,
-    R`$S=\left|\displaystyle\int_{-1}^0(x^3-x)\,dx\right|+\left|\int_0^1(x^3-x)\,dx\right|$.`,
-    R`Một nguyên hàm $F(x)=\dfrac{x^4}4-\dfrac{x^2}2$: $F(-1)=F(1)=-\dfrac14$, $F(0)=0$.`,
-    R`$\displaystyle\int_{-1}^0=F(0)-F(-1)=\dfrac14$; $\displaystyle\int_0^1=F(1)-F(0)=-\dfrac14$.`,
-    R`$S=\dfrac14+\dfrac14=\dfrac12$. (Nếu tính thẳng $\displaystyle\int_{-1}^1(x^3-x)dx=0$ là sai.)`
+    R`**Phân tích.** Có ba giao điểm, đồ thị đổi dấu ở giữa. Phải **tách thành từng đoạn** giữa các nghiệm và lấy giá trị tuyệt đối của mỗi đoạn.`,
+    R`**Bước 1.** $x^3-x=0\Leftrightarrow x(x-1)(x+1)=0\Leftrightarrow x\in\{-1;0;1\}$.`,
+    R`**Bước 2.** $S=\left|\displaystyle\int_{-1}^0(x^3-x)\,dx\right|+\left|\int_0^1(x^3-x)\,dx\right|$.`,
+    R`**Bước 3.** Một nguyên hàm $F(x)=\dfrac{x^4}4-\dfrac{x^2}2$: $F(-1)=F(1)=-\dfrac14$, $F(0)=0$.`,
+    R`**Bước 4.** $\displaystyle\int_{-1}^0=F(0)-F(-1)=\dfrac14$; $\displaystyle\int_0^1=F(1)-F(0)=-\dfrac14$.`,
+    R`**Bước 5.** $S=\dfrac14+\dfrac14=\dfrac12$. (Nếu tính thẳng $\displaystyle\int_{-1}^1(x^3-x)dx=0$ là sai.)`,
+    R`**Kết luận.** $S=\dfrac12$.`
    ],
    hinh: R`\begin{tikzpicture}[scale=2,>=stealth]
 \fill[blue!20] (-1,0) plot[domain=-1:1,samples=80](\x,{\x*\x*\x-\x})--cycle;
 \draw[thick,blue,domain=-1.25:1.25,samples=80] plot(\x,{\x*\x*\x-\x});
-${TRUC(-1.6,1.7,-0.8,0.9)}
+\draw[->] (-1.6,0)--(1.7,0) node[below]{$x$};
+\draw[->] (0,-0.8)--(0,0.9) node[left]{$y$};
+
+\node[below left] at (0,0){$O$};
 \node[below right] at (-1,0){$-1$}; \node[above left] at (1,0){$1$};
 \end{tikzpicture}`,
    chuThich: R`Hai phần tô màu đối xứng qua $O$, mỗi phần có diện tích $\tfrac14$.` }
@@ -2101,15 +2273,19 @@ ${TRUC(-1.6,1.7,-0.8,0.9)}
  vd: [
  { muc: "TH", de: R`Tính diện tích hình phẳng giới hạn bởi parabol $y=x^2$ và đường thẳng $y=x+2$.`,
    giai: [
-    R`Hoành độ giao điểm: $x^2=x+2\Leftrightarrow x^2-x-2=0\Leftrightarrow x=-1$ hoặc $x=2$.`,
-    R`Trên $[-1;2]$ đường thẳng nằm trên parabol (thử $x=0$: $2>0$), nên $S=\displaystyle\int_{-1}^2(x+2-x^2)\,dx$.`,
-    R`$S=\left(\dfrac{x^2}2+2x-\dfrac{x^3}3\right)\Big|_{-1}^2=\left(2+4-\dfrac83\right)-\left(\dfrac12-2+\dfrac13\right)=\dfrac{10}3+\dfrac76=\dfrac92$.`
+    R`**Phân tích.** Diện tích giữa hai đồ thị: $S=\displaystyle\int_a^b|f(x)-g(x)|\,dx$, với $a$, $b$ là hoành độ giao điểm. Xác định đồ thị nào nằm trên để lấy "trên trừ dưới".`,
+    R`**Bước 1.** Hoành độ giao điểm: $x^2=x+2\Leftrightarrow x^2-x-2=0\Leftrightarrow x=-1$ hoặc $x=2$.`,
+    R`**Bước 2.** Trên $[-1;2]$ đường thẳng nằm trên parabol (thử $x=0$: $2>0$), nên $S=\displaystyle\int_{-1}^2(x+2-x^2)\,dx$.`,
+    R`**Bước 3.** $S=\left(\dfrac{x^2}2+2x-\dfrac{x^3}3\right)\Big|_{-1}^2=\left(2+4-\dfrac83\right)-\left(\dfrac12-2+\dfrac13\right)=\dfrac{10}3+\dfrac76=\dfrac92$.`,
+    R`**Kết luận.** $S=\dfrac92$.`
    ],
    hinh: R`\begin{tikzpicture}[scale=0.9,>=stealth]
 \fill[blue!20] (-1,1) plot[domain=-1:2,samples=60](\x,{\x*\x})--cycle;
 \draw[thick,blue,domain=-1.6:2.3,samples=80] plot(\x,{\x*\x});
 \draw[thick,red] (-1.8,0.2)--(2.4,4.4);
-${TRUC(-2,3,-0.6,5.6,1)}
+\draw[->] (-2,0)--(3,0) node[below]{$x$};
+\draw[->] (0,-0.6)--(0,5.6) node[left]{$y$};
+
 \fill (-1,1) circle (2pt); \fill (2,4) circle (2pt);
 \node[below] at (-1,0){$-1$}; \node[below] at (2,0){$2$};
 \draw[dashed] (-1,0)--(-1,1); \draw[dashed] (2,0)--(2,4);
@@ -2117,31 +2293,40 @@ ${TRUC(-2,3,-0.6,5.6,1)}
    chuThich: R`Đường màu đỏ $y=x+2$ nằm trên parabol màu xanh $y=x^2$ giữa hai giao điểm.` },
  { muc: "TH", de: R`Tính diện tích hình phẳng giới hạn bởi hai đồ thị $y=x^3$ và $y=x$.`,
    giai: [
-    R`$x^3=x\Leftrightarrow x(x^2-1)=0\Leftrightarrow x\in\{-1;0;1\}$.`,
-    R`$S=\left|\displaystyle\int_{-1}^0(x^3-x)dx\right|+\left|\int_0^1(x^3-x)dx\right|$.`,
-    R`Như ví dụ ở dạng trước: hai tích phân lần lượt bằng $\dfrac14$ và $-\dfrac14$.`,
-    R`$S=\dfrac14+\dfrac14=\dfrac12$.`
+    R`**Phân tích.** Hai đồ thị cắt nhau tại ba điểm nên hiệu $x^3-x$ đổi dấu; tách tích phân tại các nghiệm.`,
+    R`**Bước 1.** $x^3=x\Leftrightarrow x(x^2-1)=0\Leftrightarrow x\in\{-1;0;1\}$.`,
+    R`**Bước 2.** $S=\left|\displaystyle\int_{-1}^0(x^3-x)dx\right|+\left|\int_0^1(x^3-x)dx\right|$.`,
+    R`**Bước 3.** Như ví dụ ở dạng trước: hai tích phân lần lượt bằng $\dfrac14$ và $-\dfrac14$.`,
+    R`**Bước 4.** $S=\dfrac14+\dfrac14=\dfrac12$.`,
+    R`**Kết luận.** $S=\dfrac12$.`
    ],
    hinh: R`\begin{tikzpicture}[scale=1.8,>=stealth]
 \fill[blue!20] (-1,-1) plot[domain=-1:1,samples=80](\x,{\x*\x*\x})--(1,1)--cycle;
 \draw[thick,blue,domain=-1.15:1.15,samples=80] plot(\x,{\x*\x*\x});
 \draw[thick,red] (-1.2,-1.2)--(1.2,1.2);
-${TRUC(-1.5,1.6,-1.5,1.6,1)}
+\draw[->] (-1.5,0)--(1.6,0) node[below]{$x$};
+\draw[->] (0,-1.5)--(0,1.6) node[left]{$y$};
+
 \node[right] at (1,0.9){$y=x$}; \node[right] at (-1,-1.45){$y=x^3$};
 \end{tikzpicture}`,
    chuThich: R`Hai miền tô màu nằm giữa đường thẳng (đỏ) và đường bậc ba (xanh).` },
  { muc: "VD", de: R`Tính diện tích hình phẳng giới hạn bởi đồ thị $y=\sqrt x$, đường thẳng $y=2-x$ và trục hoành.`,
    giai: [
-    R`Giao điểm của $y=\sqrt x$ và $y=2-x$: $\sqrt x=2-x$ ($x\le2$) $\Rightarrow x=4-4x+x^2\Leftrightarrow x^2-5x+4=0\Leftrightarrow x=1$ hoặc $x=4$. Loại $x=4$ (vì $x\le2$). Giao điểm $(1;1)$.`,
-    R`$y=\sqrt x$ cắt $Ox$ tại $x=0$; $y=2-x$ cắt $Ox$ tại $x=2$.`,
-    R`Nhìn hình: trên $[0;1]$ hình phẳng nằm dưới $y=\sqrt x$; trên $[1;2]$ nằm dưới $y=2-x$. Chia làm hai phần.`,
-    R`$S=\displaystyle\int_0^1\sqrt x\,dx+\int_1^2(2-x)\,dx=\dfrac23x\sqrt x\Big|_0^1+\left(2x-\dfrac{x^2}2\right)\Big|_1^2=\dfrac23+\left(2-\dfrac32\right)=\dfrac23+\dfrac12=\dfrac76$.`
+    R`**Phân tích.** Hình phẳng có ba đường biên; **vẽ hình** để thấy biên dưới là trục hoành, biên trên đổi từ $y=\sqrt x$ sang $y=2-x$ tại giao điểm của chúng, nên chia làm hai phần.`,
+    R`**Bước 1.** Giao điểm của $y=\sqrt x$ và $y=2-x$: $\sqrt x=2-x$ ($x\le2$) $\Rightarrow x=4-4x+x^2\Leftrightarrow x^2-5x+4=0\Leftrightarrow x=1$ hoặc $x=4$. Loại $x=4$ (vì $x\le2$). Giao điểm $(1;1)$.`,
+    R`**Bước 2.** $y=\sqrt x$ cắt $Ox$ tại $x=0$; $y=2-x$ cắt $Ox$ tại $x=2$.`,
+    R`**Bước 3.** Nhìn hình: trên $[0;1]$ hình phẳng nằm dưới $y=\sqrt x$; trên $[1;2]$ nằm dưới $y=2-x$. Chia làm hai phần.`,
+    R`**Bước 4.** $S=\displaystyle\int_0^1\sqrt x\,dx+\int_1^2(2-x)\,dx=\dfrac23x\sqrt x\Big|_0^1+\left(2x-\dfrac{x^2}2\right)\Big|_1^2=\dfrac23+\left(2-\dfrac32\right)=\dfrac23+\dfrac12=\dfrac76$.`,
+    R`**Kết luận.** $S=\dfrac76$.`
    ],
    hinh: R`\begin{tikzpicture}[scale=1.6,>=stealth]
 \fill[blue!20] (0,0) plot[domain=0:1,samples=60](\x,{sqrt(\x)})--(2,0)--cycle;
 \draw[thick,blue,domain=0:2.4,samples=80] plot(\x,{sqrt(\x)});
 \draw[thick,red] (0.4,1.6)--(2.3,-0.3);
-${TRUC(-0.4,2.7,-0.4,1.9)}
+\draw[->] (-0.4,0)--(2.7,0) node[below]{$x$};
+\draw[->] (0,-0.4)--(0,1.9) node[left]{$y$};
+
+\node[below left] at (0,0){$O$};
 \fill (1,1) circle (1.5pt); \draw[dashed] (1,0)--(1,1);
 \node[below] at (1,0){$1$}; \node[below left] at (2,0){$2$};
 \node[right] at (2.4,1.55){$y=\sqrt x$}; \node[left] at (0.4,1.6){$y=2-x$};
@@ -2161,15 +2346,18 @@ ${TRUC(-0.4,2.7,-0.4,1.9)}
  vd: [
  { muc: "NB", de: R`Tính thể tích khối tròn xoay tạo thành khi quay hình phẳng giới hạn bởi $y=\sqrt x$, trục $Ox$ và đường thẳng $x=4$ quanh trục $Ox$.`,
    giai: [
-    R`$\sqrt x=0\Leftrightarrow x=0$, nên hai cận là $0$ và $4$.`,
-    R`$V=\pi\displaystyle\int_0^4\left(\sqrt x\right)^2dx=\pi\int_0^4x\,dx=\pi\cdot\dfrac{x^2}2\Big|_0^4=8\pi$.`
+    R`**Phân tích.** Quay hình phẳng giới hạn bởi $y=f(x)$, trục $Ox$, $x=a$, $x=b$ quanh $Ox$: $V=\pi\displaystyle\int_a^bf^2(x)\,dx$. Cận dưới là giao điểm với $Ox$.`,
+    R`**Bước 1.** $\sqrt x=0\Leftrightarrow x=0$, nên hai cận là $0$ và $4$.`,
+    R`**Bước 2.** $V=\pi\displaystyle\int_0^4\left(\sqrt x\right)^2dx=\pi\int_0^4x\,dx=\pi\cdot\dfrac{x^2}2\Big|_0^4=8\pi$.`,
+    R`**Kết luận.** $V=8\pi$.`
    ] },
  { muc: "TH", de: R`Tính thể tích khối tròn xoay tạo thành khi quay hình phẳng giới hạn bởi $y=2x-x^2$ và trục $Ox$ quanh trục $Ox$.`,
    giai: [
-    R`$2x-x^2=0\Leftrightarrow x=0$ hoặc $x=2$.`,
-    R`Bình phương: $(2x-x^2)^2=4x^2-4x^3+x^4$.`,
-    R`$V=\pi\displaystyle\int_0^2(4x^2-4x^3+x^4)\,dx=\pi\left(\dfrac{4x^3}3-x^4+\dfrac{x^5}5\right)\Big|_0^2=\pi\left(\dfrac{32}3-16+\dfrac{32}5\right)$.`,
-    R`Quy đồng mẫu $15$: $\dfrac{160-240+96}{15}=\dfrac{16}{15}$. **Kết quả.** $V=\dfrac{16\pi}{15}$.`
+    R`**Phân tích.** Hai cận là hai giao điểm với $Ox$. **Bình phương hàm số trước** (khai triển), rồi mới lấy nguyên hàm.`,
+    R`**Bước 1.** $2x-x^2=0\Leftrightarrow x=0$ hoặc $x=2$.`,
+    R`**Bước 2.** Bình phương: $(2x-x^2)^2=4x^2-4x^3+x^4$.`,
+    R`**Bước 3.** $V=\pi\displaystyle\int_0^2(4x^2-4x^3+x^4)\,dx=\pi\left(\dfrac{4x^3}3-x^4+\dfrac{x^5}5\right)\Big|_0^2=\pi\left(\dfrac{32}3-16+\dfrac{32}5\right)$.`,
+    R`**Bước 4.** Quy đồng mẫu $15$: $\dfrac{160-240+96}{15}=\dfrac{16}{15}$. **Kết quả.** $V=\dfrac{16\pi}{15}$.`
    ],
    hinh: R`\begin{tikzpicture}[scale=1.4,>=stealth]
 \fill[blue!20] (0,0) plot[domain=0:2,samples=60](\x,{2*\x-\x*\x})--cycle;
@@ -2177,20 +2365,27 @@ ${TRUC(-0.4,2.7,-0.4,1.9)}
 \draw[thick,blue,domain=0:2,samples=60] plot(\x,{2*\x-\x*\x});
 \draw[dashed,blue,domain=0:2,samples=60] plot(\x,{-(2*\x-\x*\x)});
 \draw[dashed] (1,0) ellipse (0.18 and 1);
-${TRUC(-0.4,2.6,-1.2,1.4)}
+\draw[->] (-0.4,0)--(2.6,0) node[below]{$x$};
+\draw[->] (0,-1.2)--(0,1.4) node[left]{$y$};
+
+\node[below left] at (0,0){$O$};
 \node[below right] at (2,0){$2$};
 \end{tikzpicture}`,
    chuThich: R`Quay phần tô đậm quanh $Ox$; mỗi lát cắt tại $x$ là hình tròn bán kính $2x-x^2$ (elip nét đứt).` },
  { muc: "TH", de: R`Một vật thể nằm giữa hai mặt phẳng $x=0$ và $x=3$. Cắt vật thể bởi mặt phẳng vuông góc với $Ox$ tại $x$ ($0\le x\le3$), thiết diện là hình vuông cạnh $\sqrt{9-x^2}$. Tính thể tích vật thể.`,
    giai: [
-    R`Diện tích thiết diện: $S(x)=\left(\sqrt{9-x^2}\right)^2=9-x^2$.`,
-    R`$V=\displaystyle\int_0^3(9-x^2)\,dx=\left(9x-\dfrac{x^3}3\right)\Big|_0^3=27-9=18$.`
+    R`**Phân tích.** Vật thể không phải khối tròn xoay; dùng công thức tổng quát $V=\displaystyle\int_a^bS(x)\,dx$, với $S(x)$ là diện tích thiết diện.`,
+    R`**Bước 1.** Diện tích thiết diện: $S(x)=\left(\sqrt{9-x^2}\right)^2=9-x^2$.`,
+    R`**Bước 2.** $V=\displaystyle\int_0^3(9-x^2)\,dx=\left(9x-\dfrac{x^3}3\right)\Big|_0^3=27-9=18$.`,
+    R`**Kết luận.** Thể tích vật thể bằng $18$.`
    ] },
  { muc: "VD", de: R`Dùng tích phân, chứng minh thể tích khối cầu bán kính $R$ là $V=\dfrac43\pi R^3$.`,
    giai: [
-    R`Đặt khối cầu tâm $O$. Khối cầu được tạo khi quay nửa hình tròn giới hạn bởi $y=\sqrt{R^2-x^2}$ và trục $Ox$ quanh $Ox$, với $-R\le x\le R$.`,
-    R`$V=\pi\displaystyle\int_{-R}^R\left(R^2-x^2\right)dx=\pi\left(R^2x-\dfrac{x^3}3\right)\Big|_{-R}^R$.`,
-    R`$=\pi\left[\left(R^3-\dfrac{R^3}3\right)-\left(-R^3+\dfrac{R^3}3\right)\right]=\pi\cdot\dfrac{4R^3}3=\dfrac43\pi R^3$.`
+    R`**Phân tích.** Khối cầu là khối tròn xoay sinh ra khi quay nửa hình tròn quanh đường kính. Viết phương trình nửa đường tròn rồi áp dụng công thức thể tích.`,
+    R`**Bước 1.** Đặt khối cầu tâm $O$. Khối cầu được tạo khi quay nửa hình tròn giới hạn bởi $y=\sqrt{R^2-x^2}$ và trục $Ox$ quanh $Ox$, với $-R\le x\le R$.`,
+    R`**Bước 2.** $V=\pi\displaystyle\int_{-R}^R\left(R^2-x^2\right)dx=\pi\left(R^2x-\dfrac{x^3}3\right)\Big|_{-R}^R$.`,
+    R`**Bước 3.** $=\pi\left[\left(R^3-\dfrac{R^3}3\right)-\left(-R^3+\dfrac{R^3}3\right)\right]=\pi\cdot\dfrac{4R^3}3=\dfrac43\pi R^3$.`,
+    R`**Kết luận.** $V=\dfrac43\pi R^3$ (điều phải chứng minh).`
    ] }
  ] },
 "C4-B13-D04": {
@@ -2206,33 +2401,45 @@ ${TRUC(-0.4,2.6,-1.2,1.4)}
  vd: [
  { muc: "VD", de: R`Một cổng có dạng parabol, chiều cao $4$ m, khoảng cách giữa hai chân cổng là $4$ m. Tính diện tích mặt cổng.`,
    giai: [
-    R`Đặt hệ trục: $Ox$ trùng mặt đất, $Oy$ là trục đối xứng của cổng. Hai chân cổng là $(-2;0)$, $(2;0)$, đỉnh là $(0;4)$.`,
-    R`Parabol có dạng $y=ax^2+4$. Đi qua $(2;0)$: $4a+4=0\Rightarrow a=-1$. Vậy $y=4-x^2$.`,
-    R`$S=\displaystyle\int_{-2}^2(4-x^2)\,dx=\left(4x-\dfrac{x^3}3\right)\Big|_{-2}^2=\left(8-\dfrac83\right)-\left(-8+\dfrac83\right)=\dfrac{32}3\approx10{,}67$ (m²).`
+    R`**Phân tích.** Bài thực tế: **đặt hệ trục toạ độ** thuận tiện, viết phương trình đường cong từ số liệu, rồi tính diện tích bằng tích phân.`,
+    R`**Bước 1.** Đặt hệ trục: $Ox$ trùng mặt đất, $Oy$ là trục đối xứng của cổng. Hai chân cổng là $(-2;0)$, $(2;0)$, đỉnh là $(0;4)$.`,
+    R`**Bước 2.** Parabol có dạng $y=ax^2+4$. Đi qua $(2;0)$: $4a+4=0\Rightarrow a=-1$. Vậy $y=4-x^2$.`,
+    R`**Bước 3.** $S=\displaystyle\int_{-2}^2(4-x^2)\,dx=\left(4x-\dfrac{x^3}3\right)\Big|_{-2}^2=\left(8-\dfrac83\right)-\left(-8+\dfrac83\right)=\dfrac{32}3\approx10{,}67$ (m²).`,
+    R`**Kết luận.** Diện tích mặt cổng khoảng $10{,}67$ m².`
    ],
    hinh: R`\begin{tikzpicture}[scale=0.7,>=stealth]
 \fill[blue!20] (-2,0) plot[domain=-2:2,samples=60](\x,{4-\x*\x})--cycle;
 \draw[thick,blue,domain=-2:2,samples=60] plot(\x,{4-\x*\x});
-${TRUC(-3,3,-0.5,5)}
+\draw[->] (-3,0)--(3,0) node[below]{$x$};
+\draw[->] (0,-0.5)--(0,5) node[left]{$y$};
+
+\node[below left] at (0,0){$O$};
 \node[below] at (-2,0){$-2$}; \node[below] at (2,0){$2$}; \node[above right] at (0,4){$4$};
 \end{tikzpicture}` },
  { muc: "VD", de: R`Một chậu cây có dạng khối tròn xoay, tạo thành khi quay hình phẳng giới hạn bởi đường thẳng $y=\dfrac x4+1$, trục $Ox$, $x=0$ và $x=4$ quanh trục $Ox$ (đơn vị dm). Chậu chứa được bao nhiêu lít đất (làm tròn đến hàng phần trăm)?`,
    giai: [
-    R`$V=\pi\displaystyle\int_0^4\left(\dfrac x4+1\right)^2dx=\pi\int_0^4\left(\dfrac{x^2}{16}+\dfrac x2+1\right)dx$.`,
-    R`$=\pi\left(\dfrac{x^3}{48}+\dfrac{x^2}4+x\right)\Big|_0^4=\pi\left(\dfrac{64}{48}+4+4\right)=\pi\left(\dfrac43+8\right)=\dfrac{28\pi}3$ (dm³).`,
-    R`Đổi đơn vị: $1$ dm³ $=1$ lít, nên $V=\dfrac{28\pi}3\approx29{,}32$ lít.`,
-    R`Kiểm tra: chậu là khối nón cụt bán kính đáy $1$ và $2$, cao $4$: $V=\dfrac{\pi\cdot4}3(1^2+1\cdot2+2^2)=\dfrac{28\pi}3$ ✓.`
+    R`**Phân tích.** Chậu là khối tròn xoay; thể tích $V=\pi\displaystyle\int_0^4y^2\,dx$. Nhớ đổi đơn vị dm³ sang lít.`,
+    R`**Bước 1.** $V=\pi\displaystyle\int_0^4\left(\dfrac x4+1\right)^2dx=\pi\int_0^4\left(\dfrac{x^2}{16}+\dfrac x2+1\right)dx$.`,
+    R`**Bước 2.** $=\pi\left(\dfrac{x^3}{48}+\dfrac{x^2}4+x\right)\Big|_0^4=\pi\left(\dfrac{64}{48}+4+4\right)=\pi\left(\dfrac43+8\right)=\dfrac{28\pi}3$ (dm³).`,
+    R`**Bước 3.** Đổi đơn vị: $1$ dm³ $=1$ lít, nên $V=\dfrac{28\pi}3\approx29{,}32$ lít.`,
+    R`**Kiểm tra.** chậu là khối nón cụt bán kính đáy $1$ và $2$, cao $4$: $V=\dfrac{\pi\cdot4}3(1^2+1\cdot2+2^2)=\dfrac{28\pi}3$ ✓.`,
+    R`**Kết luận.** Chậu chứa được khoảng $29{,}32$ lít đất.`
    ] },
  { muc: "VD", de: R`Một mảnh vườn hình elip có trục lớn $8$ m, trục nhỏ $4$ m. Elip có phương trình $\dfrac{x^2}{16}+\dfrac{y^2}4=1$. Tính diện tích mảnh vườn.`,
    giai: [
-    R`Phần elip ở góc phần tư thứ nhất nằm dưới đồ thị $y=\dfrac12\sqrt{16-x^2}$, $0\le x\le4$. Do đối xứng: $S=4\displaystyle\int_0^4\dfrac12\sqrt{16-x^2}\,dx=2\int_0^4\sqrt{16-x^2}\,dx$.`,
-    R`Theo ý nghĩa hình học, $\displaystyle\int_0^4\sqrt{16-x^2}\,dx$ là diện tích một phần tư hình tròn bán kính $4$: $\dfrac14\pi\cdot16=4\pi$.`,
-    R`$S=2\cdot4\pi=8\pi\approx25{,}13$ (m²). (Khớp công thức $S=\pi ab=\pi\cdot4\cdot2$.)`
+    R`**Phân tích.** Elip đối xứng qua hai trục, nên diện tích bằng $4$ lần phần ở góc phần tư thứ nhất. Rút $y$ theo $x$ rồi dùng ý nghĩa hình học của tích phân.`,
+    R`**Bước 1.** Phần elip ở góc phần tư thứ nhất nằm dưới đồ thị $y=\dfrac12\sqrt{16-x^2}$, $0\le x\le4$. Do đối xứng: $S=4\displaystyle\int_0^4\dfrac12\sqrt{16-x^2}\,dx=2\int_0^4\sqrt{16-x^2}\,dx$.`,
+    R`**Bước 2.** Theo ý nghĩa hình học, $\displaystyle\int_0^4\sqrt{16-x^2}\,dx$ là diện tích một phần tư hình tròn bán kính $4$: $\dfrac14\pi\cdot16=4\pi$.`,
+    R`**Bước 3.** $S=2\cdot4\pi=8\pi\approx25{,}13$ (m²). (Khớp công thức $S=\pi ab=\pi\cdot4\cdot2$.)`,
+    R`**Kết luận.** Diện tích mảnh vườn khoảng $25{,}13$ m².`
    ],
    hinh: R`\begin{tikzpicture}[scale=0.6,>=stealth]
 \fill[blue!20] (0,0) ellipse (4 and 2);
 \draw[thick,blue] (0,0) ellipse (4 and 2);
-${TRUC(-4.8,4.9,-2.6,2.8)}
+\draw[->] (-4.8,0)--(4.9,0) node[below]{$x$};
+\draw[->] (0,-2.6)--(0,2.8) node[left]{$y$};
+
+\node[below left] at (0,0){$O$};
 \node[below right] at (4,0){$4$}; \node[above right] at (0,2){$2$};
 \end{tikzpicture}` }
  ] }
@@ -2269,23 +2476,27 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Cho $\vec u=(1;2;-1)$, $\vec v=(2;0;3)$. Tính $[\vec u,\vec v]$.`,
    giai: [
-    R`Thành phần thứ nhất: $a_2b_3-a_3b_2=2\cdot3-(-1)\cdot0=6$.`,
-    R`Thành phần thứ hai: $a_3b_1-a_1b_3=(-1)\cdot2-1\cdot3=-5$.`,
-    R`Thành phần thứ ba: $a_1b_2-a_2b_1=1\cdot0-2\cdot2=-4$.`,
+    R`**Phân tích.** Tích có hướng $[\vec u,\vec v]=\left(\begin{vmatrix}a_2&a_3\\b_2&b_3\end{vmatrix};\begin{vmatrix}a_3&a_1\\b_3&b_1\end{vmatrix};\begin{vmatrix}a_1&a_2\\b_1&b_2\end{vmatrix}\right)$. Mẹo nhớ: che cột của thành phần đang tính, lấy "chéo chính trừ chéo phụ" (thành phần thứ hai đảo thứ tự cột).`,
+    R`**Bước 1.** Thành phần thứ nhất: $a_2b_3-a_3b_2=2\cdot3-(-1)\cdot0=6$.`,
+    R`**Bước 2.** Thành phần thứ hai: $a_3b_1-a_1b_3=(-1)\cdot2-1\cdot3=-5$.`,
+    R`**Bước 3.** Thành phần thứ ba: $a_1b_2-a_2b_1=1\cdot0-2\cdot2=-4$.`,
     R`**Kết quả.** $[\vec u,\vec v]=(6;-5;-4)$. Thử lại: $6\cdot1-5\cdot2-4\cdot(-1)=0$ và $6\cdot2-5\cdot0-4\cdot3=0$ ✓.`
    ] },
  { muc: "TH", de: R`Cho $A(1;0;0)$, $B(0;2;0)$, $C(0;0;3)$. Tìm một vectơ pháp tuyến của mặt phẳng $(ABC)$.`,
    giai: [
-    R`$\overrightarrow{AB}=(-1;2;0)$, $\overrightarrow{AC}=(-1;0;3)$, không cùng phương.`,
-    R`$[\overrightarrow{AB},\overrightarrow{AC}]=\left(2\cdot3-0\cdot0;\ 0\cdot(-1)-(-1)\cdot3;\ (-1)\cdot0-2\cdot(-1)\right)=(6;3;2)$.`,
+    R`**Phân tích.** Vectơ pháp tuyến của $(ABC)$ phải vuông góc với cả $\overrightarrow{AB}$ và $\overrightarrow{AC}$, nên lấy $\vec n=[\overrightarrow{AB},\overrightarrow{AC}]$ (hai vectơ không cùng phương).`,
+    R`**Bước 1.** $\overrightarrow{AB}=(-1;2;0)$, $\overrightarrow{AC}=(-1;0;3)$, không cùng phương.`,
+    R`**Bước 2.** $[\overrightarrow{AB},\overrightarrow{AC}]=\left(2\cdot3-0\cdot0;\ 0\cdot(-1)-(-1)\cdot3;\ (-1)\cdot0-2\cdot(-1)\right)=(6;3;2)$.`,
     R`**Kết quả.** $\vec n=(6;3;2)$ là một VTPT của $(ABC)$.`
    ] },
  { muc: "VD", de: R`Với $A(1;0;0)$, $B(0;2;0)$, $C(0;0;3)$ như trên, tính diện tích tam giác $ABC$ và thể tích tứ diện $OABC$.`,
    giai: [
-    R`Từ ví dụ trước: $[\overrightarrow{AB},\overrightarrow{AC}]=(6;3;2)$, có độ dài $\sqrt{36+9+4}=7$.`,
-    R`$S_{ABC}=\dfrac12\cdot7=\dfrac72$.`,
-    R`$\overrightarrow{AO}=(-1;0;0)$. $[\overrightarrow{AB},\overrightarrow{AC}]\cdot\overrightarrow{AO}=6\cdot(-1)+3\cdot0+2\cdot0=-6$.`,
-    R`$V_{OABC}=\dfrac16\cdot|-6|=1$. Kiểm tra: $OA$, $OB$, $OC$ đôi một vuông góc nên $V=\dfrac16\cdot1\cdot2\cdot3=1$ ✓.`
+    R`**Phân tích.** Dùng hai công thức: $S_{ABC}=\dfrac12\left|[\overrightarrow{AB},\overrightarrow{AC}]\right|$ và $V_{OABC}=\dfrac16\left|[\overrightarrow{OA},\overrightarrow{OB}]\cdot\overrightarrow{OC}\right|$ (hoặc dùng bất kì ba cạnh chung đỉnh).`,
+    R`**Bước 1.** Từ ví dụ trước: $[\overrightarrow{AB},\overrightarrow{AC}]=(6;3;2)$, có độ dài $\sqrt{36+9+4}=7$.`,
+    R`**Bước 2.** $S_{ABC}=\dfrac12\cdot7=\dfrac72$.`,
+    R`**Bước 3.** $\overrightarrow{AO}=(-1;0;0)$. $[\overrightarrow{AB},\overrightarrow{AC}]\cdot\overrightarrow{AO}=6\cdot(-1)+3\cdot0+2\cdot0=-6$.`,
+    R`**Bước 4.** $V_{OABC}=\dfrac16\cdot|-6|=1$. Kiểm tra: $OA$, $OB$, $OC$ đôi một vuông góc nên $V=\dfrac16\cdot1\cdot2\cdot3=1$ ✓.`,
+    R`**Kết luận.** $S_{ABC}=\dfrac72$, $V_{OABC}=1$.`
    ],
    hinh: R`\begin{tikzpicture}[scale=1,>=stealth]
 \draw[->] (0,0)--(3.6,0) node[right]{$y$};
@@ -2313,34 +2524,45 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Viết phương trình mặt phẳng qua $M(1;-2;3)$ và có vectơ pháp tuyến $\vec n=(2;-1;1)$.`,
    giai: [
-    R`$2(x-1)-1\cdot(y+2)+1\cdot(z-3)=0$.`,
-    R`$\Leftrightarrow2x-2-y-2+z-3=0\Leftrightarrow2x-y+z-7=0$.`,
-    R`Thử lại với $M$: $2+2+3-7=0$ ✓.`
+    R`**Phân tích.** Mặt phẳng qua $M(x_0;y_0;z_0)$ có VTPT $\vec n=(A;B;C)$: $A(x-x_0)+B(y-y_0)+C(z-z_0)=0$. Thay số rồi khai triển.`,
+    R`**Bước 1.** $2(x-1)-1\cdot(y+2)+1\cdot(z-3)=0$.`,
+    R`**Bước 2.** $\Leftrightarrow2x-2-y-2+z-3=0\Leftrightarrow2x-y+z-7=0$.`,
+    R`**Bước 3.** Thử lại với $M$: $2+2+3-7=0$ ✓.`,
+    R`**Kết luận.** $(P):2x-y+z-7=0$.`
    ] },
  { muc: "TH", de: R`Viết phương trình mặt phẳng $(ABC)$ với $A(1;0;0)$, $B(0;2;0)$, $C(0;0;3)$.`,
    giai: [
-    R`Ba điểm nằm trên ba trục nên dùng phương trình đoạn chắn: $\dfrac x1+\dfrac y2+\dfrac z3=1$.`,
-    R`Nhân hai vế với $6$: $6x+3y+2z-6=0$.`,
-    R`Đối chiếu: VTPT $(6;3;2)$ trùng với $[\overrightarrow{AB},\overrightarrow{AC}]$ đã tính ở dạng trước ✓.`
+    R`**Phân tích.** Ba điểm nằm trên ba trục toạ độ ($A\in Ox$, $B\in Oy$, $C\in Oz$) nên dùng **phương trình đoạn chắn** $\dfrac xa+\dfrac yb+\dfrac zc=1$ cho nhanh.`,
+    R`**Bước 1.** Ba điểm nằm trên ba trục nên dùng phương trình đoạn chắn: $\dfrac x1+\dfrac y2+\dfrac z3=1$.`,
+    R`**Bước 2.** Nhân hai vế với $6$: $6x+3y+2z-6=0$.`,
+    R`**Bước 3.** Đối chiếu: VTPT $(6;3;2)$ trùng với $[\overrightarrow{AB},\overrightarrow{AC}]$ đã tính ở dạng trước ✓.`,
+    R`**Kết luận.** $(ABC):6x+3y+2z-6=0$.`
    ] },
  { muc: "TH", de: R`Viết phương trình mặt phẳng $(P)$ qua $A(2;1;-1)$ và song song với $(Q):x-2y+3z+5=0$.`,
    giai: [
-    R`$(P)\parallel(Q)$ nên $(P)$ nhận $\vec n=(1;-2;3)$ làm VTPT.`,
-    R`$(P):1(x-2)-2(y-1)+3(z+1)=0\Leftrightarrow x-2y+3z+3=0$.`,
-    R`Thử lại: $2-2-3+3=0$ ✓; hệ số tự do $3\ne5$ nên $(P)$ không trùng $(Q)$ ✓.`
+    R`**Phân tích.** Hai mặt phẳng song song có cùng VTPT. Lấy VTPT của $(Q)$ cho $(P)$, rồi dùng điểm $A$.`,
+    R`**Bước 1.** $(P)\parallel(Q)$ nên $(P)$ nhận $\vec n=(1;-2;3)$ làm VTPT.`,
+    R`**Bước 2.** $(P):1(x-2)-2(y-1)+3(z+1)=0\Leftrightarrow x-2y+3z+3=0$.`,
+    R`**Thử lại.** $2-2-3+3=0$ ✓; hệ số tự do $3\ne5$ nên $(P)$ không trùng $(Q)$ ✓.`,
+    R`**Kết luận.** $(P):x-2y+3z+3=0$.`
    ] },
  { muc: "VD", de: R`Cho $A(1;2;3)$, $B(3;0;-1)$. Viết phương trình mặt phẳng trung trực của đoạn $AB$.`,
    giai: [
-    R`Trung điểm $I$ của $AB$: $I\left(\dfrac{1+3}2;\dfrac{2+0}2;\dfrac{3-1}2\right)=(2;1;1)$.`,
-    R`$\overrightarrow{AB}=(2;-2;-4)=2(1;-1;-2)$, chọn VTPT $\vec n=(1;-1;-2)$.`,
-    R`Phương trình: $(x-2)-(y-1)-2(z-1)=0\Leftrightarrow x-y-2z+1=0$.`
+    R`**Phân tích.** Mặt phẳng trung trực của $AB$ đi qua **trung điểm** $I$ của $AB$ và **vuông góc** với $AB$, nên nhận $\overrightarrow{AB}$ làm VTPT.`,
+    R`**Bước 1.** Trung điểm $I$ của $AB$: $I\left(\dfrac{1+3}2;\dfrac{2+0}2;\dfrac{3-1}2\right)=(2;1;1)$.`,
+    R`**Bước 2.** $\overrightarrow{AB}=(2;-2;-4)=2(1;-1;-2)$, chọn VTPT $\vec n=(1;-1;-2)$.`,
+    R`**Bước 3.** Phương trình: $(x-2)-(y-1)-2(z-1)=0\Leftrightarrow x-y-2z+1=0$.`,
+    R`**Kết luận.** Mặt phẳng trung trực: $x-y-2z+1=0$.`,
+    R`**Thử lại.** $A$ và $B$ phải cách đều mặt phẳng: $\dfrac{|1-2-6+1|}{\sqrt6}=\dfrac6{\sqrt6}$ và $\dfrac{|3-0+2+1|}{\sqrt6}=\dfrac6{\sqrt6}$, bằng nhau.`
    ] },
  { muc: "VD", de: R`Viết phương trình mặt phẳng $(P)$ đi qua $A(1;1;1)$, $B(2;0;1)$ và vuông góc với mặt phẳng $(Q):x+y+z-1=0$.`,
    giai: [
-    R`$\overrightarrow{AB}=(1;-1;0)$ nằm trong $(P)$; $\vec n_Q=(1;1;1)$ có giá song song với $(P)$ (vì $(P)\perp(Q)$).`,
-    R`$\vec n_P=[\overrightarrow{AB},\vec n_Q]=\left((-1)\cdot1-0\cdot1;\ 0\cdot1-1\cdot1;\ 1\cdot1-(-1)\cdot1\right)=(-1;-1;2)$.`,
-    R`$(P):-(x-1)-(y-1)+2(z-1)=0\Leftrightarrow x+y-2z=0$.`,
-    R`Thử lại: $A$: $1+1-2=0$ ✓; $B$: $2+0-2=0$ ✓; $\vec n_P\cdot\vec n_Q=-1-1+2=0$ ✓.`
+    R`**Phân tích.** $(P)$ chứa $\overrightarrow{AB}$ và song song với $\vec n_Q$ (vì $(P)\perp(Q)$). Hai vectơ đó không cùng phương nên VTPT của $(P)$ là tích có hướng của chúng.`,
+    R`**Bước 1.** $\overrightarrow{AB}=(1;-1;0)$ nằm trong $(P)$; $\vec n_Q=(1;1;1)$ có giá song song với $(P)$ (vì $(P)\perp(Q)$).`,
+    R`**Bước 2.** $\vec n_P=[\overrightarrow{AB},\vec n_Q]=\left((-1)\cdot1-0\cdot1;\ 0\cdot1-1\cdot1;\ 1\cdot1-(-1)\cdot1\right)=(-1;-1;2)$.`,
+    R`**Bước 3.** $(P):-(x-1)-(y-1)+2(z-1)=0\Leftrightarrow x+y-2z=0$.`,
+    R`**Thử lại.** $A$: $1+1-2=0$ ✓; $B$: $2+0-2=0$ ✓; $\vec n_P\cdot\vec n_Q=-1-1+2=0$ ✓.`,
+    R`**Kết luận.** $(P):x+y-2z=0$.`
    ] }
  ] },
 "C5-B14-D03": {
@@ -2357,24 +2579,31 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Trong hai điểm $M(1;0;1)$ và $N(1;1;1)$, điểm nào thuộc mặt phẳng $(P):2x-y+z-3=0$?`,
    giai: [
-    R`Thay $M$: $2\cdot1-0+1-3=0$, nên $M\in(P)$.`,
-    R`Thay $N$: $2\cdot1-1+1-3=-1\ne0$, nên $N\notin(P)$.`
+    R`**Phân tích.** Điểm thuộc mặt phẳng khi **toạ độ của nó thoả phương trình** mặt phẳng. Thay lần lượt từng điểm vào vế trái.`,
+    R`**Bước 1.** Thay $M$: $2\cdot1-0+1-3=0$, nên $M\in(P)$.`,
+    R`**Bước 2.** Thay $N$: $2\cdot1-1+1-3=-1\ne0$, nên $N\notin(P)$.`,
+    R`**Kết luận.** Điểm $M$ thuộc $(P)$, điểm $N$ không thuộc.`
    ] },
  { muc: "TH", de: R`Cho $(P):x-2y+2z-1=0$, $(Q):2x-4y+4z+3=0$, $(R):2x+y+3=0$. Xét vị trí tương đối của $(P)$ với $(Q)$ và của $(P)$ với $(R)$.`,
    giai: [
-    R`$\vec n_Q=(2;-4;4)=2(1;-2;2)=2\vec n_P$. Hệ số tự do: $3\ne2\cdot(-1)=-2$. Vậy $(P)\parallel(Q)$.`,
-    R`$\vec n_R=(2;1;0)$ không cùng phương với $\vec n_P$ nên $(P)$ cắt $(R)$.`,
-    R`Hơn nữa $\vec n_P\cdot\vec n_R=1\cdot2-2\cdot1+2\cdot0=0$, nên $(P)\perp(R)$.`
+    R`**Phân tích.** So sánh hai VTPT: tỉ lệ thì hai mặt phẳng song song hoặc trùng (xét thêm hệ số tự do); không tỉ lệ thì cắt nhau, và nếu tích vô hướng bằng $0$ thì vuông góc.`,
+    R`**Bước 1.** $\vec n_Q=(2;-4;4)=2(1;-2;2)=2\vec n_P$. Hệ số tự do: $3\ne2\cdot(-1)=-2$. Vậy $(P)\parallel(Q)$.`,
+    R`**Bước 2.** $\vec n_R=(2;1;0)$ không cùng phương với $\vec n_P$ nên $(P)$ cắt $(R)$.`,
+    R`**Bước 3.** Hơn nữa $\vec n_P\cdot\vec n_R=1\cdot2-2\cdot1+2\cdot0=0$, nên $(P)\perp(R)$.`,
+    R`**Kết luận.** $(P)\parallel(Q)$ và $(P)\perp(R)$.`
    ] },
  { muc: "VD", de: R`Tìm $m$ để mặt phẳng $(P):x+my-z+1=0$ vuông góc với $(Q):2x-y+3z-4=0$.`,
    giai: [
-    R`$(P)\perp(Q)\Leftrightarrow\vec n_P\cdot\vec n_Q=0\Leftrightarrow1\cdot2+m\cdot(-1)+(-1)\cdot3=0$.`,
-    R`$\Leftrightarrow2-m-3=0\Leftrightarrow m=-1$.`
+    R`**Phân tích.** $(P)\perp(Q)\iff\vec n_P\cdot\vec n_Q=0$; viết theo $m$ và giải.`,
+    R`**Bước 1.** $(P)\perp(Q)\Leftrightarrow\vec n_P\cdot\vec n_Q=0\Leftrightarrow1\cdot2+m\cdot(-1)+(-1)\cdot3=0$.`,
+    R`**Bước 2.** $\Leftrightarrow2-m-3=0\Leftrightarrow m=-1$.`,
+    R`**Kết luận.** $m=-1$.`
    ] },
  { muc: "VD", de: R`Tìm $m$ để $(P):(m+1)x-2y+2z+1=0$ song song với $(Q):2x-4y+4z+5=0$.`,
    giai: [
-    R`Cần $\dfrac{m+1}2=\dfrac{-2}{-4}=\dfrac24$, tức là $\dfrac{m+1}2=\dfrac12\Leftrightarrow m=0$.`,
-    R`Với $m=0$: $(P):x-2y+2z+1=0$; nhân $2$: $2x-4y+4z+2=0$, hệ số tự do $2\ne5$ nên không trùng.`,
+    R`**Phân tích.** $(P)\parallel(Q)$ khi các hệ số $x$, $y$, $z$ tỉ lệ nhưng hệ số tự do **không** theo cùng tỉ lệ.`,
+    R`**Bước 1.** Cần $\dfrac{m+1}2=\dfrac{-2}{-4}=\dfrac24$, tức là $\dfrac{m+1}2=\dfrac12\Leftrightarrow m=0$.`,
+    R`**Bước 2.** Với $m=0$: $(P):x-2y+2z+1=0$; nhân $2$: $2x-4y+4z+2=0$, hệ số tự do $2\ne5$ nên không trùng.`,
     R`**Kết luận.** $m=0$.`
    ] }
  ] },
@@ -2390,20 +2619,25 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Tính khoảng cách từ $M(1;2;3)$ đến mặt phẳng $(P):2x-2y+z+3=0$.`,
    giai: [
-    R`Tử số: $|2\cdot1-2\cdot2+3+3|=|4|=4$. Mẫu số: $\sqrt{4+4+1}=3$.`,
-    R`$d\big(M,(P)\big)=\dfrac43$.`
+    R`**Phân tích.** $d\big(M,(P)\big)=\dfrac{|Ax_0+By_0+Cz_0+D|}{\sqrt{A^2+B^2+C^2}}$: thay toạ độ $M$ vào vế trái phương trình mặt phẳng, lấy giá trị tuyệt đối, chia độ dài VTPT.`,
+    R`**Bước 1.** Tử số: $|2\cdot1-2\cdot2+3+3|=|4|=4$. Mẫu số: $\sqrt{4+4+1}=3$.`,
+    R`**Bước 2.** $d\big(M,(P)\big)=\dfrac43$.`,
+    R`**Kết luận.** $d\big(M,(P)\big)=\dfrac43$.`
    ] },
  { muc: "TH", de: R`Tính khoảng cách giữa hai mặt phẳng $(P):x+2y-2z+1=0$ và $(Q):2x+4y-4z-7=0$.`,
    giai: [
-    R`$(Q)$ chia $2$: $x+2y-2z-\dfrac72=0$. Hai mặt phẳng có cùng VTPT $(1;2;-2)$, hệ số tự do khác nhau nên song song.`,
-    R`$d=\dfrac{\left|1-\left(-\frac72\right)\right|}{\sqrt{1+4+4}}=\dfrac{\frac92}{3}=\dfrac32$.`,
-    R`Kiểm tra: $M(-1;0;0)\in(P)$; $d\big(M,(Q)\big)=\dfrac{|-2-7|}{\sqrt{4+16+16}}=\dfrac96=\dfrac32$ ✓.`
+    R`**Phân tích.** Hai mặt phẳng song song: khoảng cách giữa chúng bằng khoảng cách từ **một điểm bất kì** của mặt này đến mặt kia. Cần kiểm tra song song trước.`,
+    R`**Bước 1.** $(Q)$ chia $2$: $x+2y-2z-\dfrac72=0$. Hai mặt phẳng có cùng VTPT $(1;2;-2)$, hệ số tự do khác nhau nên song song.`,
+    R`**Bước 2.** $d=\dfrac{\left|1-\left(-\frac72\right)\right|}{\sqrt{1+4+4}}=\dfrac{\frac92}{3}=\dfrac32$.`,
+    R`**Kiểm tra.** $M(-1;0;0)\in(P)$; $d\big(M,(Q)\big)=\dfrac{|-2-7|}{\sqrt{4+16+16}}=\dfrac96=\dfrac32$ ✓.`,
+    R`**Kết luận.** Khoảng cách giữa hai mặt phẳng bằng $\dfrac32$.`
    ] },
  { muc: "VD", de: R`Tìm điểm $M$ trên trục $Oz$ sao cho khoảng cách từ $M$ đến $(P):2x+y-2z+2=0$ bằng $2$.`,
    giai: [
-    R`$M\in Oz$ nên $M(0;0;t)$.`,
-    R`$d\big(M,(P)\big)=\dfrac{|-2t+2|}{3}=2\Leftrightarrow|2-2t|=6$.`,
-    R`$2-2t=6\Leftrightarrow t=-2$, hoặc $2-2t=-6\Leftrightarrow t=4$.`,
+    R`**Phân tích.** Điểm trên $Oz$ có dạng $M(0;0;t)$. Lập phương trình khoảng cách bằng $2$; có giá trị tuyệt đối nên được hai trường hợp.`,
+    R`**Bước 1.** $M\in Oz$ nên $M(0;0;t)$.`,
+    R`**Bước 2.** $d\big(M,(P)\big)=\dfrac{|-2t+2|}{3}=2\Leftrightarrow|2-2t|=6$.`,
+    R`**Bước 3.** $2-2t=6\Leftrightarrow t=-2$, hoặc $2-2t=-6\Leftrightarrow t=4$.`,
     R`**Kết luận.** $M(0;0;-2)$ hoặc $M(0;0;4)$.`
    ] }
  ] },
@@ -2421,21 +2655,25 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Cho $\Delta:\begin{cases}x=1+2t\\y=-1+t\\z=3-t\end{cases}$. Chỉ ra một điểm và một VTCP của $\Delta$. Điểm $A(5;1;1)$ có thuộc $\Delta$ không?`,
    giai: [
-    R`Ứng với $t=0$: $M(1;-1;3)\in\Delta$. VTCP $\vec u=(2;1;-1)$.`,
-    R`Thay $A$: $5=1+2t\Rightarrow t=2$. Thử: $y=-1+2=1$ ✓, $z=3-2=1$ ✓.`,
+    R`**Phân tích.** Từ phương trình tham số đọc được ngay một điểm (cho $t=0$) và VTCP (các hệ số của $t$). Điểm thuộc đường thẳng khi tìm được **cùng một** giá trị $t$ thoả cả ba phương trình.`,
+    R`**Bước 1.** Ứng với $t=0$: $M(1;-1;3)\in\Delta$. VTCP $\vec u=(2;1;-1)$.`,
+    R`**Bước 2.** Thay $A$: $5=1+2t\Rightarrow t=2$. Thử: $y=-1+2=1$ ✓, $z=3-2=1$ ✓.`,
     R`**Kết luận.** $A\in\Delta$ (ứng với $t=2$).`
    ] },
  { muc: "TH", de: R`Cho $\Delta:\dfrac{x-2}{3}=\dfrac{y+1}{-2}=\dfrac z1$. Viết phương trình tham số của $\Delta$ và xét xem $B(-1;1;-1)$, $C(5;-3;2)$ có thuộc $\Delta$ không.`,
    giai: [
-    R`$\Delta$ qua $M(2;-1;0)$, VTCP $\vec u=(3;-2;1)$: $\begin{cases}x=2+3t\\y=-1-2t\\z=t\end{cases}$.`,
-    R`$B$: $-1=2+3t\Rightarrow t=-1$; khi đó $y=-1+2=1$ ✓, $z=-1$ ✓. Vậy $B\in\Delta$.`,
-    R`$C$: $5=2+3t\Rightarrow t=1$; khi đó $y=-3$ ✓ nhưng $z=1\ne2$. Vậy $C\notin\Delta$.`
+    R`**Phân tích.** Phương trình chính tắc $\dfrac{x-x_0}a=\dfrac{y-y_0}b=\dfrac{z-z_0}c$ cho điểm $(x_0;y_0;z_0)$ và VTCP $(a;b;c)$. Đặt các tỉ số bằng $t$ để được dạng tham số.`,
+    R`**Bước 1.** $\Delta$ qua $M(2;-1;0)$, VTCP $\vec u=(3;-2;1)$: $\begin{cases}x=2+3t\\y=-1-2t\\z=t\end{cases}$.`,
+    R`**Bước 2.** $B$: $-1=2+3t\Rightarrow t=-1$; khi đó $y=-1+2=1$ ✓, $z=-1$ ✓. Vậy $B\in\Delta$.`,
+    R`**Bước 3.** $C$: $5=2+3t\Rightarrow t=1$; khi đó $y=-3$ ✓ nhưng $z=1\ne2$. Vậy $C\notin\Delta$.`,
+    R`**Kết luận.** $B\in\Delta$, $C\notin\Delta$.`
    ] },
  { muc: "TH", de: R`Cho $A(1;2;3)$, $B(3;-2;5)$. Vectơ nào sau đây **không** là VTCP của đường thẳng $AB$?
 **A.** $(2;-4;2)$. **B.** $(1;-2;1)$. **C.** $(-2;4;-2)$. **D.** $(2;4;2)$.`,
    giai: [
-    R`$\overrightarrow{AB}=(2;-4;2)=2(1;-2;1)$. Mọi vectơ $k(1;-2;1)$ ($k\ne0$) đều là VTCP.`,
-    R`A ($k=2$), B ($k=1$), C ($k=-2$) đều có dạng đó. D: $(2;4;2)$ có tỉ số $\dfrac21\ne\dfrac4{-2}$ nên không cùng phương.`,
+    R`**Phân tích.** VTCP của đường thẳng $AB$ là $\overrightarrow{AB}$ hoặc bất kì vectơ nào **cùng phương** với nó. Phương án nào không tỉ lệ với $\overrightarrow{AB}$ thì không phải.`,
+    R`**Bước 1.** $\overrightarrow{AB}=(2;-4;2)=2(1;-2;1)$. Mọi vectơ $k(1;-2;1)$ ($k\ne0$) đều là VTCP.`,
+    R`**Bước 2.** A ($k=2$), B ($k=1$), C ($k=-2$) đều có dạng đó. D: $(2;4;2)$ có tỉ số $\dfrac21\ne\dfrac4{-2}$ nên không cùng phương.`,
     R`**Kết luận.** Chọn **D**.`
    ] }
  ] },
@@ -2453,26 +2691,34 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Viết phương trình tham số của đường thẳng $AB$ với $A(1;2;3)$, $B(3;-2;5)$.`,
    giai: [
-    R`$\overrightarrow{AB}=(2;-4;2)$, chọn VTCP $\vec u=(1;-2;1)$.`,
-    R`$AB:\begin{cases}x=1+t\\y=2-2t\\z=3+t\end{cases}$. (Thử $t=2$ được $B$ ✓.)`
+    R`**Phân tích.** Đường thẳng qua hai điểm: lấy $\overrightarrow{AB}$ (hoặc vectơ cùng phương gọn hơn) làm VTCP và một trong hai điểm làm điểm đi qua.`,
+    R`**Bước 1.** $\overrightarrow{AB}=(2;-4;2)$, chọn VTCP $\vec u=(1;-2;1)$.`,
+    R`**Bước 2.** $AB:\begin{cases}x=1+t\\y=2-2t\\z=3+t\end{cases}$. (Thử $t=2$ được $B$ ✓.)`,
+    R`**Kết luận.** $AB:\ x=1+t,\ y=2-2t,\ z=3+t$.`
    ] },
  { muc: "TH", de: R`Viết phương trình chính tắc của đường thẳng $\Delta$ qua $M(2;0;-1)$ và vuông góc với $(P):x-3y+2z+1=0$.`,
    giai: [
-    R`$\Delta\perp(P)$ nên VTCP của $\Delta$ là $\vec n_P=(1;-3;2)$.`,
-    R`$\Delta:\dfrac{x-2}{1}=\dfrac{y}{-3}=\dfrac{z+1}{2}$.`
+    R`**Phân tích.** Đường thẳng vuông góc với mặt phẳng thì nhận VTPT của mặt phẳng làm VTCP.`,
+    R`**Bước 1.** $\Delta\perp(P)$ nên VTCP của $\Delta$ là $\vec n_P=(1;-3;2)$.`,
+    R`**Bước 2.** $\Delta:\dfrac{x-2}{1}=\dfrac{y}{-3}=\dfrac{z+1}{2}$.`,
+    R`**Kết luận.** $\Delta:\dfrac{x-2}1=\dfrac y{-3}=\dfrac{z+1}2$.`
    ] },
  { muc: "VD", de: R`Viết phương trình đường thẳng $\Delta$ qua $M(1;1;1)$ và vuông góc với cả hai đường thẳng $d_1$ có VTCP $\vec u_1=(1;0;2)$, $d_2$ có VTCP $\vec u_2=(0;1;-1)$.`,
    giai: [
-    R`$\vec u=[\vec u_1,\vec u_2]=\left(0\cdot(-1)-2\cdot1;\ 2\cdot0-1\cdot(-1);\ 1\cdot1-0\cdot0\right)=(-2;1;1)$.`,
-    R`Thử lại: $\vec u\cdot\vec u_1=-2+0+2=0$ ✓; $\vec u\cdot\vec u_2=0+1-1=0$ ✓.`,
-    R`$\Delta:\begin{cases}x=1-2t\\y=1+t\\z=1+t\end{cases}$.`
+    R`**Phân tích.** $\Delta$ vuông góc với cả hai VTCP $\vec u_1$, $\vec u_2$ (không cùng phương) nên VTCP của $\Delta$ là $[\vec u_1,\vec u_2]$.`,
+    R`**Bước 1.** $\vec u=[\vec u_1,\vec u_2]=\left(0\cdot(-1)-2\cdot1;\ 2\cdot0-1\cdot(-1);\ 1\cdot1-0\cdot0\right)=(-2;1;1)$.`,
+    R`**Thử lại.** $\vec u\cdot\vec u_1=-2+0+2=0$ ✓; $\vec u\cdot\vec u_2=0+1-1=0$ ✓.`,
+    R`**Bước 2.** $\Delta:\begin{cases}x=1-2t\\y=1+t\\z=1+t\end{cases}$.`,
+    R`**Thử lại.** $\vec u=(-2;1;1)$: $\vec u\cdot\vec u_1=-2+0+2=0$, $\vec u\cdot\vec u_2=0+1-1=0$, đúng.`
    ] },
  { muc: "VD", de: R`Viết phương trình giao tuyến $\Delta$ của hai mặt phẳng $(P):x+y+z-3=0$ và $(Q):x-y+z-1=0$.`,
    giai: [
-    R`$\vec u=[\vec n_P,\vec n_Q]=\left(1\cdot1-1\cdot(-1);\ 1\cdot1-1\cdot1;\ 1\cdot(-1)-1\cdot1\right)=(2;0;-2)$, chọn $\vec u=(1;0;-1)$.`,
-    R`Tìm một điểm chung: cho $z=0$, được $\begin{cases}x+y=3\\x-y=1\end{cases}\Leftrightarrow x=2,\ y=1$. Điểm $A(2;1;0)$.`,
-    R`$\Delta:\begin{cases}x=2+t\\y=1\\z=-t\end{cases}$.`,
-    R`Thử lại với $t=1$, điểm $(3;1;-1)$: $(P)$: $3+1-1-3=0$ ✓; $(Q)$: $3-1-1-1=0$ ✓.`
+    R`**Phân tích.** Giao tuyến nằm trong cả hai mặt phẳng nên vuông góc với cả hai VTPT: VTCP là $[\vec n_P,\vec n_Q]$. Còn cần một điểm chung: cho một ẩn bằng $0$ rồi giải hệ hai ẩn.`,
+    R`**Bước 1.** $\vec u=[\vec n_P,\vec n_Q]=\left(1\cdot1-1\cdot(-1);\ 1\cdot1-1\cdot1;\ 1\cdot(-1)-1\cdot1\right)=(2;0;-2)$, chọn $\vec u=(1;0;-1)$.`,
+    R`**Bước 2.** Tìm một điểm chung: cho $z=0$, được $\begin{cases}x+y=3\\x-y=1\end{cases}\Leftrightarrow x=2,\ y=1$. Điểm $A(2;1;0)$.`,
+    R`**Bước 3.** $\Delta:\begin{cases}x=2+t\\y=1\\z=-t\end{cases}$.`,
+    R`**Bước 4.** Thử lại với $t=1$, điểm $(3;1;-1)$: $(P)$: $3+1-1-3=0$ ✓; $(Q)$: $3-1-1-1=0$ ✓.`,
+    R`**Kết luận.** Giao tuyến $\Delta:\ x=2+t,\ y=1,\ z=-t$.`
    ] }
  ] },
 "C5-B15-D03": {
@@ -2489,26 +2735,31 @@ Object.assign(D, {
  vd: [
  { muc: "TH", de: R`Xét vị trí tương đối của $d_1:\begin{cases}x=1+t\\y=2-t\\z=3+2t\end{cases}$ và $d_2:\begin{cases}x=3+s\\y=3+2s\\z=4-s\end{cases}$.`,
    giai: [
-    R`$\vec u_1=(1;-1;2)$, $\vec u_2=(1;2;-1)$ không cùng phương.`,
-    R`Xét hệ $\begin{cases}1+t=3+s\\2-t=3+2s\\3+2t=4-s\end{cases}$. Từ phương trình đầu: $t=2+s$. Thay vào phương trình hai: $2-(2+s)=3+2s\Leftrightarrow s=-1$, nên $t=1$.`,
-    R`Thử phương trình ba: $3+2\cdot1=5$ và $4-(-1)=5$ ✓. Hệ có nghiệm.`,
+    R`**Phân tích.** Hai đường thẳng: xét VTCP có cùng phương không. **Không cùng phương** thì giải hệ tìm giao điểm: có nghiệm là cắt nhau, vô nghiệm là chéo nhau.`,
+    R`**Bước 1.** $\vec u_1=(1;-1;2)$, $\vec u_2=(1;2;-1)$ không cùng phương.`,
+    R`**Bước 2.** Xét hệ $\begin{cases}1+t=3+s\\2-t=3+2s\\3+2t=4-s\end{cases}$. Từ phương trình đầu: $t=2+s$. Thay vào phương trình hai: $2-(2+s)=3+2s\Leftrightarrow s=-1$, nên $t=1$.`,
+    R`**Bước 3.** Thử phương trình ba: $3+2\cdot1=5$ và $4-(-1)=5$ ✓. Hệ có nghiệm.`,
     R`**Kết luận.** $d_1$ cắt $d_2$ tại điểm ứng với $t=1$: $(2;1;5)$.`
    ] },
  { muc: "TH", de: R`Với $d_1$ như trên, xét vị trí tương đối của $d_1$ với $d_3:\begin{cases}x=2+2s\\y=-2s\\z=1+4s\end{cases}$ và với $d_4:\begin{cases}x=s\\y=0\\z=1\end{cases}$.`,
    giai: [
-    R`$\vec u_3=(2;-2;4)=2\vec u_1$: cùng phương. Lấy $M_3(2;0;1)\in d_3$; thay vào $d_1$: $2=1+t\Rightarrow t=1$, khi đó $y=1\ne0$. Vậy $M_3\notin d_1$, suy ra $d_1\parallel d_3$.`,
-    R`$\vec u_4=(1;0;0)$ không cùng phương với $\vec u_1$. Hệ $\begin{cases}1+t=s\\2-t=0\\3+2t=1\end{cases}$: phương trình hai cho $t=2$, phương trình ba cho $t=-1$, mâu thuẫn. Hệ vô nghiệm.`,
+    R`**Phân tích.** VTCP **cùng phương** thì hai đường thẳng song song hoặc trùng: lấy một điểm của đường này thử vào đường kia.`,
+    R`**Bước 1.** $\vec u_3=(2;-2;4)=2\vec u_1$: cùng phương. Lấy $M_3(2;0;1)\in d_3$; thay vào $d_1$: $2=1+t\Rightarrow t=1$, khi đó $y=1\ne0$. Vậy $M_3\notin d_1$, suy ra $d_1\parallel d_3$.`,
+    R`**Bước 2.** $\vec u_4=(1;0;0)$ không cùng phương với $\vec u_1$. Hệ $\begin{cases}1+t=s\\2-t=0\\3+2t=1\end{cases}$: phương trình hai cho $t=2$, phương trình ba cho $t=-1$, mâu thuẫn. Hệ vô nghiệm.`,
     R`**Kết luận.** $d_1\parallel d_3$; $d_1$ và $d_4$ chéo nhau.`
    ] },
  { muc: "VD", de: R`Tìm giao điểm của $d:\dfrac{x-1}2=\dfrac{y+1}1=\dfrac{z-2}{-1}$ và $(P):x+y+z-6=0$.`,
    giai: [
-    R`Tham số hoá: $x=1+2t$, $y=-1+t$, $z=2-t$.`,
-    R`Thay vào $(P)$: $(1+2t)+(-1+t)+(2-t)-6=0\Leftrightarrow2t-4=0\Leftrightarrow t=2$.`,
-    R`**Giao điểm** $(5;1;0)$. Thử: $5+1+0-6=0$ ✓.`
+    R`**Phân tích.** Đường thẳng cắt mặt phẳng: thay dạng tham số vào phương trình mặt phẳng để được phương trình theo $t$, giải $t$ rồi suy ra giao điểm.`,
+    R`**Bước 1.** Tham số hoá: $x=1+2t$, $y=-1+t$, $z=2-t$.`,
+    R`**Bước 2.** Thay vào $(P)$: $(1+2t)+(-1+t)+(2-t)-6=0\Leftrightarrow2t-4=0\Leftrightarrow t=2$.`,
+    R`**Giao điểm** $(5;1;0)$. Thử: $5+1+0-6=0$ ✓.`,
+    R`**Kết luận.** $d$ cắt $(P)$ tại $(5;1;0)$.`
    ] },
  { muc: "VD", de: R`Xét vị trí tương đối của $d:\begin{cases}x=1+t\\y=2+t\\z=-2t\end{cases}$ và $(P):x+y+z-3=0$.`,
    giai: [
-    R`Thay vào $(P)$: $(1+t)+(2+t)+(-2t)-3=0\Leftrightarrow0\cdot t=0$, đúng với mọi $t$.`,
+    R`**Phân tích.** Thay tham số vào mặt phẳng: phương trình theo $t$ có thể **vô nghiệm** (song song), **một nghiệm** (cắt) hoặc **nghiệm đúng mọi $t$** (nằm trong).`,
+    R`**Bước 1.** Thay vào $(P)$: $(1+t)+(2+t)+(-2t)-3=0\Leftrightarrow0\cdot t=0$, đúng với mọi $t$.`,
     R`**Kết luận.** $d$ nằm trong $(P)$. (Ở đây $\vec u\cdot\vec n=1+1-2=0$ nhưng $d$ không song song mà nằm trong $(P)$.)`
    ] }
  ] },
@@ -2526,22 +2777,28 @@ Object.assign(D, {
  vd: [
  { muc: "TH", de: R`Tìm hình chiếu $H$ của $M(1;2;3)$ lên $(P):x+y+z-3=0$ và điểm $M'$ đối xứng với $M$ qua $(P)$.`,
    giai: [
-    R`Đường thẳng qua $M$, VTCP $\vec n=(1;1;1)$: $x=1+t$, $y=2+t$, $z=3+t$.`,
-    R`Thay vào $(P)$: $(1+t)+(2+t)+(3+t)-3=0\Leftrightarrow3t+3=0\Leftrightarrow t=-1$. Vậy $H(0;1;2)$.`,
-    R`$M'=2H-M=(0-1;\,2-2;\,4-3)=(-1;0;1)$.`
+    R`**Phân tích.** Hình chiếu $H$ của $M$ lên $(P)$: dựng đường thẳng qua $M$ vuông góc với $(P)$ (VTCP là $\vec n$), tìm giao điểm với $(P)$. Điểm đối xứng: $H$ là trung điểm $MM'$.`,
+    R`**Bước 1.** Đường thẳng qua $M$, VTCP $\vec n=(1;1;1)$: $x=1+t$, $y=2+t$, $z=3+t$.`,
+    R`**Bước 2.** Thay vào $(P)$: $(1+t)+(2+t)+(3+t)-3=0\Leftrightarrow3t+3=0\Leftrightarrow t=-1$. Vậy $H(0;1;2)$.`,
+    R`**Bước 3.** $M'=2H-M=(0-1;\,2-2;\,4-3)=(-1;0;1)$.`,
+    R`**Kết luận.** $H(0;1;2)$, $M'(-1;0;1)$.`
    ] },
  { muc: "TH", de: R`Tìm hình chiếu $H$ của $M(4;1;3)$ lên $\Delta:\begin{cases}x=1+t\\y=t\\z=-1+2t\end{cases}$ và tính khoảng cách từ $M$ đến $\Delta$.`,
    giai: [
-    R`$H(1+t;\,t;\,-1+2t)$, $\overrightarrow{MH}=(t-3;\,t-1;\,2t-4)$, $\vec u=(1;1;2)$.`,
-    R`$\overrightarrow{MH}\cdot\vec u=0\Leftrightarrow(t-3)+(t-1)+2(2t-4)=0\Leftrightarrow6t-12=0\Leftrightarrow t=2$.`,
-    R`$H(3;2;3)$, $\overrightarrow{MH}=(-1;1;0)$, $d(M,\Delta)=MH=\sqrt2$.`
+    R`**Phân tích.** Hình chiếu $H$ của $M$ lên đường thẳng: $H$ thuộc $\Delta$ (viết theo $t$) và $\overrightarrow{MH}\perp\vec u$. Giải $\overrightarrow{MH}\cdot\vec u=0$.`,
+    R`**Bước 1.** $H(1+t;\,t;\,-1+2t)$, $\overrightarrow{MH}=(t-3;\,t-1;\,2t-4)$, $\vec u=(1;1;2)$.`,
+    R`**Bước 2.** $\overrightarrow{MH}\cdot\vec u=0\Leftrightarrow(t-3)+(t-1)+2(2t-4)=0\Leftrightarrow6t-12=0\Leftrightarrow t=2$.`,
+    R`**Bước 3.** $H(3;2;3)$, $\overrightarrow{MH}=(-1;1;0)$, $d(M,\Delta)=MH=\sqrt2$.`,
+    R`**Kết luận.** $H(3;2;3)$, $d(M,\Delta)=\sqrt2$.`
    ] },
  { muc: "VD", de: R`Trong một hệ toạ độ (đơn vị: mét), một flycam đang ở vị trí $M(3;4;10)$, sườn đồi được mô hình hoá bởi mặt phẳng $(P):x+2y+2z-4=0$. Flycam cần hạ xuống sườn đồi theo đường ngắn nhất. Tìm điểm hạ cánh và quãng đường bay.`,
    giai: [
-    R`Đường ngắn nhất là đoạn vuông góc $MH$ với $H$ là hình chiếu của $M$ lên $(P)$.`,
-    R`Đường thẳng qua $M$, VTCP $(1;2;2)$: $x=3+t$, $y=4+2t$, $z=10+2t$.`,
-    R`Thay vào $(P)$: $(3+t)+2(4+2t)+2(10+2t)-4=0\Leftrightarrow27+9t=0\Leftrightarrow t=-3$. Vậy $H(0;-2;4)$.`,
-    R`Quãng đường $MH=\sqrt{3^2+6^2+6^2}=9$ (m). Kiểm tra: $d\big(M,(P)\big)=\dfrac{|3+8+20-4|}{3}=9$ ✓.`
+    R`**Phân tích.** Đường đi ngắn nhất từ một điểm đến một mặt phẳng là **đường vuông góc**. Tìm chân vuông góc $H$ và tính $MH$.`,
+    R`**Bước 1.** Đường ngắn nhất là đoạn vuông góc $MH$ với $H$ là hình chiếu của $M$ lên $(P)$.`,
+    R`**Bước 2.** Đường thẳng qua $M$, VTCP $(1;2;2)$: $x=3+t$, $y=4+2t$, $z=10+2t$.`,
+    R`**Bước 3.** Thay vào $(P)$: $(3+t)+2(4+2t)+2(10+2t)-4=0\Leftrightarrow27+9t=0\Leftrightarrow t=-3$. Vậy $H(0;-2;4)$.`,
+    R`**Bước 4.** Quãng đường $MH=\sqrt{3^2+6^2+6^2}=9$ (m). Kiểm tra: $d\big(M,(P)\big)=\dfrac{|3+8+20-4|}{3}=9$ ✓.`,
+    R`**Kết luận.** Flycam cần bay quãng ngắn nhất $9$ m.`
    ] }
  ] },
 "C5-B16-D01": {
@@ -2555,27 +2812,48 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Tính góc giữa $d_1:\begin{cases}x=1+t\\y=2\\z=t\end{cases}$ và $d_2:\begin{cases}x=0\\y=s\\z=1+s\end{cases}$.`,
    giai: [
-    R`$\vec u_1=(1;0;1)$, $\vec u_2=(0;1;1)$; $\vec u_1\cdot\vec u_2=1$; $|\vec u_1|=|\vec u_2|=\sqrt2$.`,
-    R`$\cos(d_1,d_2)=\dfrac{1}{\sqrt2\cdot\sqrt2}=\dfrac12$, nên $(d_1,d_2)=60^\circ$.`
+    R`**Phân tích.** Góc giữa hai đường thẳng: $\cos\varphi=\dfrac{|\vec u_1\cdot\vec u_2|}{|\vec u_1|\cdot|\vec u_2|}$, luôn có $0^\circ\le\varphi\le90^\circ$ (vì có giá trị tuyệt đối).`,
+    R`**Bước 1.** $\vec u_1=(1;0;1)$, $\vec u_2=(0;1;1)$; $\vec u_1\cdot\vec u_2=1$; $|\vec u_1|=|\vec u_2|=\sqrt2$.`,
+    R`**Bước 2.** $\cos(d_1,d_2)=\dfrac{1}{\sqrt2\cdot\sqrt2}=\dfrac12$, nên $(d_1,d_2)=60^\circ$.`,
+    R`**Kết luận.** $(d_1,d_2)=60^\circ$.`
    ] },
  { muc: "TH", de: R`Chứng minh hai đường thẳng có VTCP $\vec u=(1;2;2)$ và $\vec v=(2;-2;1)$ vuông góc với nhau.`,
    giai: [
-    R`$\vec u\cdot\vec v=1\cdot2+2\cdot(-2)+2\cdot1=0$.`,
-    R`Vậy $\cos=0$, góc giữa hai đường thẳng là $90^\circ$.`
+    R`**Phân tích.** Hai đường thẳng vuông góc khi tích vô hướng hai VTCP bằng $0$.`,
+    R`**Bước 1.** $\vec u\cdot\vec v=1\cdot2+2\cdot(-2)+2\cdot1=0$.`,
+    R`**Bước 2.** Vậy $\cos=0$, góc giữa hai đường thẳng là $90^\circ$.`,
+    R`**Kết luận.** Hai đường thẳng vuông góc.`
    ] },
  { muc: "VD", de: R`Tìm $m$ để góc giữa hai đường thẳng có VTCP $\vec u=(1;1;0)$ và $\vec v=(1;0;m)$ bằng $60^\circ$.`,
    giai: [
-    R`$\cos60^\circ=\dfrac{|1\cdot1+1\cdot0+0\cdot m|}{\sqrt2\cdot\sqrt{1+m^2}}=\dfrac{1}{\sqrt2\sqrt{1+m^2}}$.`,
-    R`$\dfrac12=\dfrac1{\sqrt{2(1+m^2)}}\Leftrightarrow\sqrt{2(1+m^2)}=2\Leftrightarrow1+m^2=2\Leftrightarrow m=\pm1$.`
+    R`**Phân tích.** Viết công thức góc theo $m$, cho bằng $\cos60^\circ=\dfrac12$, bình phương để bỏ căn.`,
+    R`**Bước 1.** $\cos60^\circ=\dfrac{|1\cdot1+1\cdot0+0\cdot m|}{\sqrt2\cdot\sqrt{1+m^2}}=\dfrac{1}{\sqrt2\sqrt{1+m^2}}$.`,
+    R`**Bước 2.** $\dfrac12=\dfrac1{\sqrt{2(1+m^2)}}\Leftrightarrow\sqrt{2(1+m^2)}=2\Leftrightarrow1+m^2=2\Leftrightarrow m=\pm1$.`,
+    R`**Kết luận.** $m=1$ hoặc $m=-1$.`
    ] },
  { muc: "VD", de: R`Cho hình lập phương $ABCD.A'B'C'D'$ cạnh $1$. Tính góc giữa hai đường thẳng $AB'$ và $BC'$.`,
    giai: [
-    R`Gắn hệ trục: $A(0;0;0)$, $B(1;0;0)$, $D(0;1;0)$, $A'(0;0;1)$. Khi đó $B'(1;0;1)$, $C'(1;1;1)$.`,
-    R`$\overrightarrow{AB'}=(1;0;1)$, $\overrightarrow{BC'}=(0;1;1)$.`,
-    R`$\cos=\dfrac{|0+0+1|}{\sqrt2\cdot\sqrt2}=\dfrac12$. **Kết luận.** Góc bằng $60^\circ$.`
+    R`**Phân tích.** Góc giữa hai đường thẳng trong hình lập phương: **gắn hệ trục** tại một đỉnh, tìm toạ độ các điểm, rồi dùng công thức.`,
+    R`**Bước 1.** Gắn hệ trục: $A(0;0;0)$, $B(1;0;0)$, $D(0;1;0)$, $A'(0;0;1)$. Khi đó $B'(1;0;1)$, $C'(1;1;1)$.`,
+    R`**Bước 2.** $\overrightarrow{AB'}=(1;0;1)$, $\overrightarrow{BC'}=(0;1;1)$.`,
+    R`**Bước 3.** $\cos=\dfrac{|0+0+1|}{\sqrt2\cdot\sqrt2}=\dfrac12$. **Kết luận.** Góc bằng $60^\circ$.`
    ],
    hinh: R`\begin{tikzpicture}[scale=1,>=stealth]
-` + LP + R`
+\draw[thick] (0,0)--(2.5,0)--(3.5,1);
+\draw[dashed] (3.5,1)--(1,1)--(0,0);
+\draw[thick] (0,2.5)--(2.5,2.5)--(3.5,3.5)--(1,3.5)--cycle;
+\draw[thick] (0,0)--(0,2.5);
+\draw[thick] (2.5,0)--(2.5,2.5);
+\draw[thick] (3.5,1)--(3.5,3.5);
+\draw[dashed] (1,1)--(1,3.5);
+\node[below left] at (0,0){$A$};
+\node[below right] at (2.5,0){$B$};
+\node[right] at (3.5,1){$C$};
+\node[above left] at (1,1){$D$};
+\node[left] at (0,2.5){$A'$};
+\node[above left] at (2.5,2.5){$B'$};
+\node[above right] at (3.5,3.5){$C'$};
+\node[above left] at (1,3.5){$D'$};
 \draw[thick,red] (0,0)--(2.5,2.5);
 \draw[thick,blue] (2.5,0)--(3.5,3.5);
 \end{tikzpicture}`,
@@ -2592,23 +2870,43 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Tính góc giữa $\Delta:\begin{cases}x=1+t\\y=2\\z=3+t\end{cases}$ và mặt phẳng $(Oxy)$.`,
    giai: [
-    R`$\vec u=(1;0;1)$; $(Oxy):z=0$ có VTPT $\vec n=(0;0;1)$.`,
-    R`$\sin\varphi=\dfrac{|0+0+1|}{\sqrt2\cdot1}=\dfrac{1}{\sqrt2}$, nên $\varphi=45^\circ$.`
+    R`**Phân tích.** Góc giữa đường thẳng và mặt phẳng dùng **sin**: $\sin\varphi=\dfrac{|\vec u\cdot\vec n|}{|\vec u|\cdot|\vec n|}$ (không phải cos, vì $\vec n$ vuông góc với mặt phẳng).`,
+    R`**Bước 1.** $\vec u=(1;0;1)$; $(Oxy):z=0$ có VTPT $\vec n=(0;0;1)$.`,
+    R`**Bước 2.** $\sin\varphi=\dfrac{|0+0+1|}{\sqrt2\cdot1}=\dfrac{1}{\sqrt2}$, nên $\varphi=45^\circ$.`,
+    R`**Kết luận.** Góc giữa $\Delta$ và $(Oxy)$ bằng $45^\circ$.`
    ] },
  { muc: "TH", de: R`Tính góc giữa $\Delta:\dfrac{x-1}2=\dfrac{y+1}1=\dfrac{z-3}{-2}$ và $(P):2x-y+2z+5=0$ (làm tròn đến hàng phần mười của độ).`,
    giai: [
-    R`$\vec u=(2;1;-2)$, $|\vec u|=3$; $\vec n=(2;-1;2)$, $|\vec n|=3$.`,
-    R`$\vec u\cdot\vec n=4-1-4=-1$.`,
-    R`$\sin\varphi=\dfrac{|-1|}{3\cdot3}=\dfrac19$, suy ra $\varphi\approx6{,}4^\circ$.`
+    R`**Phân tích.** Như ví dụ trước: tính $\vec u\cdot\vec n$ và hai độ dài, rồi dùng $\sin$, bấm máy $\sin^{-1}$.`,
+    R`**Bước 1.** $\vec u=(2;1;-2)$, $|\vec u|=3$; $\vec n=(2;-1;2)$, $|\vec n|=3$.`,
+    R`**Bước 2.** $\vec u\cdot\vec n=4-1-4=-1$.`,
+    R`**Bước 3.** $\sin\varphi=\dfrac{|-1|}{3\cdot3}=\dfrac19$, suy ra $\varphi\approx6{,}4^\circ$.`,
+    R`**Kết luận.** $\varphi\approx6{,}4^\circ$.`
    ] },
  { muc: "VD", de: R`Cho hình lập phương $ABCD.A'B'C'D'$. Tính góc giữa đường chéo $AC'$ và mặt đáy $(ABCD)$ (làm tròn đến hàng phần mười của độ).`,
    giai: [
-    R`Gắn hệ trục với cạnh $1$: $A(0;0;0)$, $C'(1;1;1)$; mặt $(ABCD)$ là $(Oxy)$, VTPT $\vec n=(0;0;1)$.`,
-    R`$\overrightarrow{AC'}=(1;1;1)$, $\sin\varphi=\dfrac{1}{\sqrt3\cdot1}=\dfrac{1}{\sqrt3}$.`,
-    R`$\varphi\approx35{,}3^\circ$. (Kiểm tra bằng hình học: $\tan\varphi=\dfrac{CC'}{AC}=\dfrac1{\sqrt2}$ cho cùng kết quả.)`
+    R`**Phân tích.** Gắn hệ trục vào hình lập phương: mặt đáy là $(Oxy)$, VTPT $(0;0;1)$; đường chéo $AC'$ có VTCP $\overrightarrow{AC'}$.`,
+    R`**Bước 1.** Gắn hệ trục với cạnh $1$: $A(0;0;0)$, $C'(1;1;1)$; mặt $(ABCD)$ là $(Oxy)$, VTPT $\vec n=(0;0;1)$.`,
+    R`**Bước 2.** $\overrightarrow{AC'}=(1;1;1)$, $\sin\varphi=\dfrac{1}{\sqrt3\cdot1}=\dfrac{1}{\sqrt3}$.`,
+    R`**Bước 3.** $\varphi\approx35{,}3^\circ$. (Kiểm tra bằng hình học: $\tan\varphi=\dfrac{CC'}{AC}=\dfrac1{\sqrt2}$ cho cùng kết quả.)`,
+    R`**Kết luận.** Góc giữa $AC'$ và mặt đáy khoảng $35{,}3^\circ$.`
    ],
    hinh: R`\begin{tikzpicture}[scale=1,>=stealth]
-` + LP + R`
+\draw[thick] (0,0)--(2.5,0)--(3.5,1);
+\draw[dashed] (3.5,1)--(1,1)--(0,0);
+\draw[thick] (0,2.5)--(2.5,2.5)--(3.5,3.5)--(1,3.5)--cycle;
+\draw[thick] (0,0)--(0,2.5);
+\draw[thick] (2.5,0)--(2.5,2.5);
+\draw[thick] (3.5,1)--(3.5,3.5);
+\draw[dashed] (1,1)--(1,3.5);
+\node[below left] at (0,0){$A$};
+\node[below right] at (2.5,0){$B$};
+\node[right] at (3.5,1){$C$};
+\node[above left] at (1,1){$D$};
+\node[left] at (0,2.5){$A'$};
+\node[above left] at (2.5,2.5){$B'$};
+\node[above right] at (3.5,3.5){$C'$};
+\node[above left] at (1,3.5){$D'$};
 \draw[dashed] (0,0)--(3.5,1);
 \draw[thick,red] (0,0)--(3.5,3.5);
 \end{tikzpicture}`,
@@ -2625,19 +2923,24 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Tính góc giữa $(P):x+2y+2z-1=0$ và $(Q):2x+y-2z+3=0$.`,
    giai: [
-    R`$\vec n_P\cdot\vec n_Q=2+2-4=0$.`,
-    R`Vậy $\cos=0$, $(P)\perp(Q)$, góc bằng $90^\circ$.`
+    R`**Phân tích.** Góc giữa hai mặt phẳng bằng góc giữa hai VTPT (lấy giá trị tuyệt đối): $\cos\varphi=\dfrac{|\vec n_P\cdot\vec n_Q|}{|\vec n_P|\cdot|\vec n_Q|}$.`,
+    R`**Bước 1.** $\vec n_P\cdot\vec n_Q=2+2-4=0$.`,
+    R`**Bước 2.** Vậy $\cos=0$, $(P)\perp(Q)$, góc bằng $90^\circ$.`,
+    R`**Kết luận.** $(P)\perp(Q)$.`
    ] },
  { muc: "TH", de: R`Tính góc giữa $(P):x-z+1=0$ và $(Q):y-z=0$.`,
    giai: [
-    R`$\vec n_P=(1;0;-1)$, $\vec n_Q=(0;1;-1)$; $\vec n_P\cdot\vec n_Q=0+0+1=1$; $|\vec n_P|=|\vec n_Q|=\sqrt2$.`,
-    R`$\cos=\dfrac{1}{2}$, góc giữa hai mặt phẳng bằng $60^\circ$.`
+    R`**Phân tích.** Đọc đúng VTPT khi phương trình thiếu ẩn: $x-z+1=0$ có $\vec n=(1;0;-1)$ (hệ số của $y$ bằng $0$).`,
+    R`**Bước 1.** $\vec n_P=(1;0;-1)$, $\vec n_Q=(0;1;-1)$; $\vec n_P\cdot\vec n_Q=0+0+1=1$; $|\vec n_P|=|\vec n_Q|=\sqrt2$.`,
+    R`**Bước 2.** $\cos=\dfrac{1}{2}$, góc giữa hai mặt phẳng bằng $60^\circ$.`,
+    R`**Kết luận.** Góc giữa $(P)$ và $(Q)$ bằng $60^\circ$.`
    ] },
  { muc: "VD", de: R`Một mái nhà là mặt phẳng đi qua ba điểm $A(0;0;3)$, $B(4;0;3)$, $C(0;3;5)$ (đơn vị: mét; mặt đất là $(Oxy)$). Tính góc giữa mái nhà và mặt đất (làm tròn đến độ).`,
    giai: [
-    R`$\overrightarrow{AB}=(4;0;0)$, $\overrightarrow{AC}=(0;3;2)$.`,
-    R`$[\overrightarrow{AB},\overrightarrow{AC}]=\left(0\cdot2-0\cdot3;\ 0\cdot0-4\cdot2;\ 4\cdot3-0\cdot0\right)=(0;-8;12)$, chọn $\vec n=(0;-2;3)$.`,
-    R`Mặt đất có VTPT $\vec k=(0;0;1)$. $\cos\alpha=\dfrac{|3|}{\sqrt{4+9}\cdot1}=\dfrac{3}{\sqrt{13}}\approx0{,}832$.`,
+    R`**Phân tích.** Bài thực tế: viết VTPT của mái nhà bằng tích có hướng $[\overrightarrow{AB},\overrightarrow{AC}]$, mặt đất có VTPT $(0;0;1)$, rồi dùng công thức góc giữa hai mặt phẳng.`,
+    R`**Bước 1.** $\overrightarrow{AB}=(4;0;0)$, $\overrightarrow{AC}=(0;3;2)$.`,
+    R`**Bước 2.** $[\overrightarrow{AB},\overrightarrow{AC}]=\left(0\cdot2-0\cdot3;\ 0\cdot0-4\cdot2;\ 4\cdot3-0\cdot0\right)=(0;-8;12)$, chọn $\vec n=(0;-2;3)$.`,
+    R`**Bước 3.** Mặt đất có VTPT $\vec k=(0;0;1)$. $\cos\alpha=\dfrac{|3|}{\sqrt{4+9}\cdot1}=\dfrac{3}{\sqrt{13}}\approx0{,}832$.`,
     R`**Kết luận.** $\alpha\approx34^\circ$.`
    ] }
  ] },
@@ -2654,20 +2957,24 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Tìm tâm và bán kính của mặt cầu $(S):(x-1)^2+(y+2)^2+z^2=9$.`,
    giai: [
-    R`So với dạng chuẩn: $a=1$, $b=-2$, $c=0$, $R^2=9$.`,
+    R`**Phân tích.** Phương trình $(x-a)^2+(y-b)^2+(z-c)^2=R^2$ cho ngay tâm $I(a;b;c)$ (đổi dấu các số trong ngoặc) và bán kính $R$.`,
+    R`**Bước 1.** So với dạng chuẩn: $a=1$, $b=-2$, $c=0$, $R^2=9$.`,
     R`**Kết quả.** Tâm $I(1;-2;0)$, bán kính $R=3$.`
    ] },
  { muc: "TH", de: R`Tìm tâm và bán kính của mặt cầu $x^2+y^2+z^2-2x+4y-6z-2=0$.`,
    giai: [
-    R`$-2a=-2\Rightarrow a=1$; $-2b=4\Rightarrow b=-2$; $-2c=-6\Rightarrow c=3$; $d=-2$.`,
-    R`$a^2+b^2+c^2-d=1+4+9+2=16>0$.`,
+    R`**Phân tích.** Dạng khai triển $x^2+y^2+z^2-2ax-2by-2cz+d=0$: tâm $I(a;b;c)$ (lấy **nửa hệ số, đổi dấu**), $R=\sqrt{a^2+b^2+c^2-d}$.`,
+    R`**Bước 1.** $-2a=-2\Rightarrow a=1$; $-2b=4\Rightarrow b=-2$; $-2c=-6\Rightarrow c=3$; $d=-2$.`,
+    R`**Bước 2.** $a^2+b^2+c^2-d=1+4+9+2=16>0$.`,
     R`**Kết quả.** Tâm $I(1;-2;3)$, bán kính $R=4$.`
    ] },
  { muc: "VD", de: R`Cho phương trình $x^2+y^2+z^2-2x-4y+2z+m=0$. Tìm $m$ để đây là phương trình mặt cầu, và tìm $m$ để mặt cầu đó có bán kính bằng $3$.`,
    giai: [
-    R`$a=1$, $b=2$, $c=-1$, $d=m$.`,
-    R`Là mặt cầu khi $1+4+1-m>0\Leftrightarrow m<6$.`,
-    R`$R=3\Leftrightarrow6-m=9\Leftrightarrow m=-3$ (thoả mãn $m<6$).`
+    R`**Phân tích.** Là mặt cầu khi $a^2+b^2+c^2-d>0$. Sau đó cho $R^2=9$ để tìm $m$, nhớ đối chiếu điều kiện.`,
+    R`**Bước 1.** $a=1$, $b=2$, $c=-1$, $d=m$.`,
+    R`**Bước 2.** Là mặt cầu khi $1+4+1-m>0\Leftrightarrow m<6$.`,
+    R`**Bước 3.** $R=3\Leftrightarrow6-m=9\Leftrightarrow m=-3$ (thoả mãn $m<6$).`,
+    R`**Kết luận.** Là mặt cầu khi $m<6$; bán kính bằng $3$ khi $m=-3$.`
    ] }
  ] },
 "C5-B17-D02": {
@@ -2684,25 +2991,33 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Viết phương trình mặt cầu tâm $I(1;2;-1)$ và đi qua $A(3;0;0)$.`,
    giai: [
-    R`$\overrightarrow{IA}=(2;-2;1)$, $R=IA=\sqrt{4+4+1}=3$.`,
-    R`$(S):(x-1)^2+(y-2)^2+(z+1)^2=9$.`
+    R`**Phân tích.** Biết tâm, cần bán kính: mặt cầu đi qua $A$ nên $R=IA$.`,
+    R`**Bước 1.** $\overrightarrow{IA}=(2;-2;1)$, $R=IA=\sqrt{4+4+1}=3$.`,
+    R`**Bước 2.** $(S):(x-1)^2+(y-2)^2+(z+1)^2=9$.`,
+    R`**Kết luận.** $(S):(x-1)^2+(y-2)^2+(z+1)^2=9$.`
    ] },
  { muc: "TH", de: R`Viết phương trình mặt cầu đường kính $AB$ với $A(1;3;-2)$, $B(3;-1;4)$.`,
    giai: [
-    R`Tâm $I$ là trung điểm $AB$: $I(2;1;1)$.`,
-    R`$\overrightarrow{AB}=(2;-4;6)$, $AB=\sqrt{4+16+36}=\sqrt{56}=2\sqrt{14}$, nên $R=\sqrt{14}$.`,
-    R`$(S):(x-2)^2+(y-1)^2+(z-1)^2=14$.`
+    R`**Phân tích.** Mặt cầu đường kính $AB$: tâm là trung điểm $AB$, bán kính $R=\dfrac{AB}2$ (hoặc $R=IA$).`,
+    R`**Bước 1.** Tâm $I$ là trung điểm $AB$: $I(2;1;1)$.`,
+    R`**Bước 2.** $\overrightarrow{AB}=(2;-4;6)$, $AB=\sqrt{4+16+36}=\sqrt{56}=2\sqrt{14}$, nên $R=\sqrt{14}$.`,
+    R`**Bước 3.** $(S):(x-2)^2+(y-1)^2+(z-1)^2=14$.`,
+    R`**Kết luận.** $(S):(x-2)^2+(y-1)^2+(z-1)^2=14$.`
    ] },
  { muc: "TH", de: R`Viết phương trình mặt cầu tâm $I(1;-2;3)$ tiếp xúc với mặt phẳng $(P):2x+y-2z-3=0$.`,
    giai: [
-    R`$R=d\big(I,(P)\big)=\dfrac{|2-2-6-3|}{\sqrt{4+1+4}}=\dfrac93=3$.`,
-    R`$(S):(x-1)^2+(y+2)^2+(z-3)^2=9$.`
+    R`**Phân tích.** Mặt cầu tiếp xúc mặt phẳng: bán kính bằng khoảng cách từ tâm đến mặt phẳng.`,
+    R`**Bước 1.** $R=d\big(I,(P)\big)=\dfrac{|2-2-6-3|}{\sqrt{4+1+4}}=\dfrac93=3$.`,
+    R`**Bước 2.** $(S):(x-1)^2+(y+2)^2+(z-3)^2=9$.`,
+    R`**Kết luận.** $(S):(x-1)^2+(y+2)^2+(z-3)^2=9$.`
    ] },
  { muc: "VD", de: R`Viết phương trình mặt cầu đi qua bốn điểm $O(0;0;0)$, $A(2;0;0)$, $B(0;4;0)$, $C(0;0;6)$.`,
    giai: [
-    R`Gọi $(S):x^2+y^2+z^2-2ax-2by-2cz+d=0$.`,
-    R`Qua $O$: $d=0$. Qua $A$: $4-4a=0\Rightarrow a=1$. Qua $B$: $16-8b=0\Rightarrow b=2$. Qua $C$: $36-12c=0\Rightarrow c=3$.`,
-    R`$(S):x^2+y^2+z^2-2x-4y-6z=0$; tâm $I(1;2;3)$, $R=\sqrt{1+4+9-0}=\sqrt{14}$.`
+    R`**Phân tích.** Qua bốn điểm: dùng dạng khai triển, thay bốn điểm được hệ bốn ẩn $a$, $b$, $c$, $d$. Điểm $O$ cho ngay $d=0$, nên hệ rất gọn.`,
+    R`**Bước 1.** Gọi $(S):x^2+y^2+z^2-2ax-2by-2cz+d=0$.`,
+    R`**Bước 2.** Qua $O$: $d=0$. Qua $A$: $4-4a=0\Rightarrow a=1$. Qua $B$: $16-8b=0\Rightarrow b=2$. Qua $C$: $36-12c=0\Rightarrow c=3$.`,
+    R`**Bước 3.** $(S):x^2+y^2+z^2-2x-4y-6z=0$; tâm $I(1;2;3)$, $R=\sqrt{1+4+9-0}=\sqrt{14}$.`,
+    R`**Thử lại.** $IA^2=1+4+9=14$, $IB^2=1+4+9=14$, $IC^2=1+4+9=14$, $IO^2=14$: cả bốn điểm cách tâm $\sqrt{14}$.`
    ] }
  ] },
 "C5-B17-D03": {
@@ -2717,28 +3032,35 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Cho $(S):(x-1)^2+y^2+(z+2)^2=9$. Xét vị trí của $M(2;2;0)$ và $N(1;1;-1)$ đối với $(S)$.`,
    giai: [
-    R`Tâm $I(1;0;-2)$, $R=3$.`,
-    R`$IM^2=1+4+4=9=R^2$: $M$ nằm trên mặt cầu.`,
-    R`$IN^2=0+1+1=2<9$: $N$ nằm trong mặt cầu.`
+    R`**Phân tích.** So sánh khoảng cách từ điểm đến tâm với bán kính: $IM<R$ (trong), $IM=R$ (trên), $IM>R$ (ngoài). Dùng $IM^2$ và $R^2$ để khỏi khai căn.`,
+    R`**Bước 1.** Tâm $I(1;0;-2)$, $R=3$.`,
+    R`**Bước 2.** $IM^2=1+4+4=9=R^2$: $M$ nằm trên mặt cầu.`,
+    R`**Bước 3.** $IN^2=0+1+1=2<9$: $N$ nằm trong mặt cầu.`,
+    R`**Kết luận.** $M$ nằm trên mặt cầu, $N$ nằm trong mặt cầu.`
    ] },
  { muc: "TH", de: R`Cho mặt cầu tâm $I(1;2;3)$, bán kính $5$ và mặt phẳng $(P):2x-2y+z+8=0$. Chứng minh $(P)$ cắt mặt cầu theo một đường tròn; tìm tâm và bán kính của đường tròn đó.`,
    giai: [
-    R`$d=d\big(I,(P)\big)=\dfrac{|2-4+3+8|}{3}=3<5$: $(P)$ cắt mặt cầu theo một đường tròn.`,
-    R`Bán kính đường tròn: $r=\sqrt{R^2-d^2}=\sqrt{25-9}=4$.`,
-    R`Tâm $H$ là hình chiếu của $I$: đường thẳng qua $I$, VTCP $(2;-2;1)$: $(1+2t;\,2-2t;\,3+t)$. Thay vào $(P)$: $2(1+2t)-2(2-2t)+(3+t)+8=0\Leftrightarrow9t+9=0\Leftrightarrow t=-1$.`,
+    R`**Phân tích.** Mặt phẳng cắt mặt cầu khi $d=d(I,(P))<R$. Đường tròn giao tuyến có tâm $H$ là **hình chiếu** của $I$ lên $(P)$, bán kính $r=\sqrt{R^2-d^2}$.`,
+    R`**Bước 1.** $d=d\big(I,(P)\big)=\dfrac{|2-4+3+8|}{3}=3<5$: $(P)$ cắt mặt cầu theo một đường tròn.`,
+    R`**Bước 2.** Bán kính đường tròn: $r=\sqrt{R^2-d^2}=\sqrt{25-9}=4$.`,
+    R`**Bước 3.** Tâm $H$ là hình chiếu của $I$: đường thẳng qua $I$, VTCP $(2;-2;1)$: $(1+2t;\,2-2t;\,3+t)$. Thay vào $(P)$: $2(1+2t)-2(2-2t)+(3+t)+8=0\Leftrightarrow9t+9=0\Leftrightarrow t=-1$.`,
     R`**Kết quả.** $H(-1;4;2)$, $r=4$.`
    ] },
  { muc: "TH", de: R`Tìm $m$ để $(P):x+2y+2z+m=0$ tiếp xúc với $(S):(x-1)^2+(y-1)^2+(z-1)^2=4$.`,
    giai: [
-    R`$I(1;1;1)$, $R=2$. Tiếp xúc $\Leftrightarrow d\big(I,(P)\big)=R\Leftrightarrow\dfrac{|1+2+2+m|}3=2$.`,
-    R`$|5+m|=6\Leftrightarrow m=1$ hoặc $m=-11$.`
+    R`**Phân tích.** Tiếp xúc $\iff d(I,(P))=R$. Có giá trị tuyệt đối nên thường được hai giá trị $m$.`,
+    R`**Bước 1.** $I(1;1;1)$, $R=2$. Tiếp xúc $\Leftrightarrow d\big(I,(P)\big)=R\Leftrightarrow\dfrac{|1+2+2+m|}3=2$.`,
+    R`**Bước 2.** $|5+m|=6\Leftrightarrow m=1$ hoặc $m=-11$.`,
+    R`**Kết luận.** $m=1$ hoặc $m=-11$.`
    ] },
  { muc: "VD", de: R`Một quả bóng hình cầu bán kính $1{,}5$ dm đặt ở góc phòng, tiếp xúc với sàn nhà và hai bức tường. Chọn hệ trục với gốc $O$ là góc phòng, sàn là $(Oxy)$, hai tường là $(Oxz)$ và $(Oyz)$. Viết phương trình mặt cầu (quả bóng) và tính khoảng cách ngắn nhất từ góc phòng $O$ đến quả bóng.`,
    giai: [
-    R`Bóng tiếp xúc với ba mặt toạ độ nên khoảng cách từ tâm đến mỗi mặt bằng $R=1{,}5$; tâm nằm trong phòng nên $I(1{,}5;1{,}5;1{,}5)$.`,
-    R`$(S):(x-1{,}5)^2+(y-1{,}5)^2+(z-1{,}5)^2=2{,}25$.`,
-    R`$OI=\sqrt{3\cdot1{,}5^2}=1{,}5\sqrt3\approx2{,}598$ dm, lớn hơn $R$ nên $O$ ở ngoài quả bóng.`,
-    R`Khoảng cách ngắn nhất từ $O$ đến quả bóng: $OI-R=1{,}5\sqrt3-1{,}5\approx1{,}10$ dm.`
+    R`**Phân tích.** Quả bóng tiếp xúc ba mặt toạ độ nên tâm cách mỗi mặt đúng $R$; điểm gần $O$ nhất của quả cầu nằm trên đoạn $OI$, cách $O$ một khoảng $OI-R$.`,
+    R`**Bước 1.** Bóng tiếp xúc với ba mặt toạ độ nên khoảng cách từ tâm đến mỗi mặt bằng $R=1{,}5$; tâm nằm trong phòng nên $I(1{,}5;1{,}5;1{,}5)$.`,
+    R`**Bước 2.** $(S):(x-1{,}5)^2+(y-1{,}5)^2+(z-1{,}5)^2=2{,}25$.`,
+    R`**Bước 3.** $OI=\sqrt{3\cdot1{,}5^2}=1{,}5\sqrt3\approx2{,}598$ dm, lớn hơn $R$ nên $O$ ở ngoài quả bóng.`,
+    R`**Bước 4.** Khoảng cách ngắn nhất từ $O$ đến quả bóng: $OI-R=1{,}5\sqrt3-1{,}5\approx1{,}10$ dm.`,
+    R`**Kết luận.** Tâm bóng $I(1{,}5;1{,}5;1{,}5)$; khoảng cách ngắn nhất từ góc phòng đến bóng khoảng $1{,}10$ dm.`
    ] }
  ] }
 });
@@ -2769,26 +3091,34 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Gieo một con xúc xắc cân đối. Gọi $A$: "số chấm là số chẵn", $B$: "số chấm lớn hơn $3$". Tính $P(A\mid B)$.`,
    giai: [
-    R`$B=\{4;5;6\}$, $n(B)=3$.`,
-    R`$AB=\{4;6\}$, $n(AB)=2$.`,
-    R`$P(A\mid B)=\dfrac{n(AB)}{n(B)}=\dfrac23$.`
+    R`**Phân tích.** $P(A\mid B)$ là xác suất của $A$ **khi đã biết $B$ xảy ra**: không gian mẫu thu hẹp lại thành $B$. Với các kết quả đồng khả năng, $P(A\mid B)=\dfrac{n(AB)}{n(B)}$.`,
+    R`**Bước 1.** $B=\{4;5;6\}$, $n(B)=3$.`,
+    R`**Bước 2.** $AB=\{4;6\}$, $n(AB)=2$.`,
+    R`**Bước 3.** $P(A\mid B)=\dfrac{n(AB)}{n(B)}=\dfrac23$.`,
+    R`**Nhận xét.** Không có điều kiện thì $P(A)=\dfrac12$; biết số chấm lớn hơn $3$ thì xác suất chẵn tăng lên $\dfrac23$.`
    ] },
  { muc: "TH", de: R`Một hộp có $5$ viên bi đỏ và $3$ viên bi xanh. Lấy lần lượt hai viên, không hoàn lại. Biết lần thứ nhất lấy được bi đỏ, tính xác suất lần thứ hai cũng lấy được bi đỏ.`,
    giai: [
-    R`Sau khi lấy một bi đỏ, hộp còn $4$ đỏ và $3$ xanh, tổng $7$ viên.`,
-    R`Xác suất cần tìm: $P=\dfrac47$.`
+    R`**Phân tích.** "Biết lần thứ nhất lấy được bi đỏ" là điều kiện. Cập nhật lại hộp sau lần lấy thứ nhất, rồi tính xác suất lần hai trên hộp mới.`,
+    R`**Bước 1.** Sau khi lấy một bi đỏ, hộp còn $4$ đỏ và $3$ xanh, tổng $7$ viên.`,
+    R`**Bước 2.** Xác suất cần tìm: $P=\dfrac47$.`,
+    R`**Kết luận.** Xác suất lần thứ hai cũng được bi đỏ là $\dfrac47$.`
    ] },
  { muc: "TH", de: R`Cho $P(A)=0{,}6$, $P(B)=0{,}4$, $P(A\cup B)=0{,}7$. Tính $P(A\mid B)$ và $P(B\mid A)$.`,
    giai: [
-    R`$P(AB)=P(A)+P(B)-P(A\cup B)=0{,}6+0{,}4-0{,}7=0{,}3$.`,
-    R`$P(A\mid B)=\dfrac{0{,}3}{0{,}4}=0{,}75$.`,
-    R`$P(B\mid A)=\dfrac{0{,}3}{0{,}6}=0{,}5$. (Hai kết quả khác nhau.)`
+    R`**Phân tích.** Dùng công thức $P(A\mid B)=\dfrac{P(AB)}{P(B)}$. Chưa có $P(AB)$ nên tìm từ công thức cộng xác suất.`,
+    R`**Bước 1.** $P(AB)=P(A)+P(B)-P(A\cup B)=0{,}6+0{,}4-0{,}7=0{,}3$.`,
+    R`**Bước 2.** $P(A\mid B)=\dfrac{0{,}3}{0{,}4}=0{,}75$.`,
+    R`**Bước 3.** $P(B\mid A)=\dfrac{0{,}3}{0{,}6}=0{,}5$. (Hai kết quả khác nhau.)`,
+    R`**Kết luận.** $P(A\mid B)=0{,}75$; $P(B\mid A)=0{,}5$.`
    ] },
  { muc: "VD", de: R`Gieo hai con xúc xắc cân đối. Biết tổng số chấm bằng $8$, tính xác suất có ít nhất một con xuất hiện mặt $6$ chấm.`,
    giai: [
-    R`$B$: "tổng bằng $8$" $=\{(2;6),(3;5),(4;4),(5;3),(6;2)\}$, $n(B)=5$.`,
-    R`Trong $B$, các kết quả có mặt $6$: $(2;6)$, $(6;2)$, nên $n(AB)=2$.`,
-    R`$P(A\mid B)=\dfrac25$.`
+    R`**Phân tích.** Liệt kê các kết quả của biến cố điều kiện $B$ ("tổng bằng $8$"), rồi đếm trong đó các kết quả thuận lợi cho $A$.`,
+    R`**Bước 1.** $B$: "tổng bằng $8$" $=\{(2;6),(3;5),(4;4),(5;3),(6;2)\}$, $n(B)=5$.`,
+    R`**Bước 2.** Trong $B$, các kết quả có mặt $6$: $(2;6)$, $(6;2)$, nên $n(AB)=2$.`,
+    R`**Bước 3.** $P(A\mid B)=\dfrac25$.`,
+    R`**Kết luận.** $P(A\mid B)=\dfrac25$.`
    ] }
  ] },
 "C6-B18-D02": {
@@ -2806,23 +3136,28 @@ Object.assign(D, {
 $$\begin{array}{|c|c|c|c|}\hline &\text{Thích Toán}&\text{Không thích}&\text{Tổng}\\\hline \text{Nam}&60&40&100\\\hline \text{Nữ}&50&50&100\\\hline \text{Tổng}&110&90&200\\\hline\end{array}$$
 Chọn ngẫu nhiên một học sinh. Tính xác suất học sinh đó thích Toán, biết đó là nam; và xác suất học sinh đó là nam, biết học sinh đó thích Toán.`,
    giai: [
-    R`Gọi $T$: "thích Toán", $N$: "là nam". $n(N)=100$, $n(TN)=60$.`,
-    R`$P(T\mid N)=\dfrac{60}{100}=0{,}6$.`,
-    R`$n(T)=110$, nên $P(N\mid T)=\dfrac{60}{110}=\dfrac6{11}\approx0{,}545$.`
+    R`**Phân tích.** Với bảng thống kê, $P(A\mid B)$ là **tỉ lệ của $A$ trong dòng (hoặc cột) $B$**. Đọc đúng dòng hoặc cột ứng với điều kiện.`,
+    R`**Bước 1.** Gọi $T$: "thích Toán", $N$: "là nam". $n(N)=100$, $n(TN)=60$.`,
+    R`**Bước 2.** $P(T\mid N)=\dfrac{60}{100}=0{,}6$.`,
+    R`**Bước 3.** $n(T)=110$, nên $P(N\mid T)=\dfrac{60}{110}=\dfrac6{11}\approx0{,}545$.`,
+    R`**Kết luận.** $P(T\mid N)=0{,}6$; $P(N\mid T)=\dfrac6{11}\approx0{,}545$.`
    ] },
  { muc: "TH", de: R`Với bảng ở ví dụ 1, hai biến cố "thích Toán" và "là nam" có độc lập không?`,
    giai: [
-    R`$P(T)=\dfrac{110}{200}=0{,}55$; $P(T\mid N)=0{,}6$.`,
-    R`$P(T\mid N)\ne P(T)$, nên $T$ và $N$ **không** độc lập.`,
-    R`Cách khác: $P(TN)=\dfrac{60}{200}=0{,}3$, còn $P(T)\cdot P(N)=0{,}55\cdot0{,}5=0{,}275\ne0{,}3$.`
+    R`**Phân tích.** $A$, $B$ độc lập khi $P(A\mid B)=P(A)$, tương đương $P(AB)=P(A)\cdot P(B)$. So sánh hai số đó.`,
+    R`**Bước 1.** $P(T)=\dfrac{110}{200}=0{,}55$; $P(T\mid N)=0{,}6$.`,
+    R`**Bước 2.** $P(T\mid N)\ne P(T)$, nên $T$ và $N$ **không** độc lập.`,
+    R`**Bước 3.** Cách khác: $P(TN)=\dfrac{60}{200}=0{,}3$, còn $P(T)\cdot P(N)=0{,}55\cdot0{,}5=0{,}275\ne0{,}3$.`,
+    R`**Kết luận.** Hai biến cố "thích Toán" và "là nam" **không** độc lập.`
    ] },
  { muc: "VD", de: R`Một khảo sát khác có bảng sau ($x$ chưa biết):
 $$\begin{array}{|c|c|c|}\hline &\text{Thích}&\text{Không thích}\\\hline \text{Nam}&30&20\\\hline \text{Nữ}&x&30\\\hline\end{array}$$
 Tìm $x$ để hai biến cố "thích" và "là nam" độc lập.`,
    giai: [
-    R`Độc lập khi tỉ lệ "thích" ở nam bằng tỉ lệ "thích" ở nữ: $\dfrac{30}{50}=\dfrac{x}{x+30}$.`,
-    R`$0{,}6(x+30)=x\Leftrightarrow0{,}6x+18=x\Leftrightarrow0{,}4x=18\Leftrightarrow x=45$.`,
-    R`Thử lại: tổng $125$ người, $75$ người thích; $P(\text{thích})=\dfrac{75}{125}=0{,}6=P(\text{thích}\mid\text{nam})$ ✓.`
+    R`**Phân tích.** Độc lập nghĩa là tỉ lệ "thích" không phụ thuộc giới tính: tỉ lệ ở nam bằng tỉ lệ ở nữ. Lập phương trình theo $x$.`,
+    R`**Bước 1.** Độc lập khi tỉ lệ "thích" ở nam bằng tỉ lệ "thích" ở nữ: $\dfrac{30}{50}=\dfrac{x}{x+30}$.`,
+    R`**Bước 2.** $0{,}6(x+30)=x\Leftrightarrow0{,}6x+18=x\Leftrightarrow0{,}4x=18\Leftrightarrow x=45$.`,
+    R`**Thử lại.** tổng $125$ người, $75$ người thích; $P(\text{thích})=\dfrac{75}{125}=0{,}6=P(\text{thích}\mid\text{nam})$ ✓.`
    ] }
  ] },
 "C6-B18-D03": {
@@ -2838,22 +3173,39 @@ Tìm $x$ để hai biến cố "thích" và "là nam" độc lập.`,
  vd: [
  { muc: "TH", de: R`Hộp có $6$ bi đỏ và $4$ bi xanh. Lấy lần lượt hai viên không hoàn lại. Tính xác suất cả hai viên đều đỏ.`,
    giai: [
-    R`$A$: "lần 1 đỏ", $B$: "lần 2 đỏ". $P(A)=\dfrac6{10}$.`,
-    R`Biết lần 1 đỏ, còn $5$ đỏ trong $9$ viên: $P(B\mid A)=\dfrac59$.`,
-    R`$P(AB)=\dfrac6{10}\cdot\dfrac59=\dfrac{30}{90}=\dfrac13$.`
+    R`**Phân tích.** Lấy lần lượt không hoàn lại: dùng **công thức nhân** $P(AB)=P(A)\cdot P(B\mid A)$, với $P(B\mid A)$ tính trên hộp sau lần lấy thứ nhất.`,
+    R`**Bước 1.** $A$: "lần 1 đỏ", $B$: "lần 2 đỏ". $P(A)=\dfrac6{10}$.`,
+    R`**Bước 2.** Biết lần 1 đỏ, còn $5$ đỏ trong $9$ viên: $P(B\mid A)=\dfrac59$.`,
+    R`**Bước 3.** $P(AB)=\dfrac6{10}\cdot\dfrac59=\dfrac{30}{90}=\dfrac13$.`,
+    R`**Kết luận.** Xác suất cả hai viên đều đỏ là $\dfrac13$.`
    ] },
  { muc: "TH", de: R`Xác suất một học sinh làm bài tập về nhà là $0{,}8$. Nếu đã làm bài tập thì xác suất đạt điểm giỏi trong bài kiểm tra là $0{,}7$. Tính xác suất học sinh đó làm bài tập và đạt điểm giỏi.`,
    giai: [
-    R`$P(L)=0{,}8$, $P(G\mid L)=0{,}7$.`,
-    R`$P(LG)=0{,}8\cdot0{,}7=0{,}56$.`
+    R`**Phân tích.** "Làm bài tập và đạt giỏi" là giao của hai biến cố; đề cho $P(L)$ và xác suất có điều kiện $P(G\mid L)$, nên dùng công thức nhân.`,
+    R`**Bước 1.** $P(L)=0{,}8$, $P(G\mid L)=0{,}7$.`,
+    R`**Bước 2.** $P(LG)=0{,}8\cdot0{,}7=0{,}56$.`,
+    R`**Kết luận.** Xác suất cần tìm là $0{,}56$.`
    ] },
  { muc: "VD", de: R`Một lớp có $60\%$ học sinh nữ. Tỉ lệ đeo kính ở học sinh nữ là $30\%$, ở học sinh nam là $20\%$. Chọn ngẫu nhiên một học sinh. Vẽ sơ đồ hình cây và tính xác suất chọn được: a) học sinh nữ đeo kính; b) học sinh nam không đeo kính.`,
    giai: [
-    R`Gọi $F$: "nữ", $K$: "đeo kính". $P(F)=0{,}6$, $P(\overline F)=0{,}4$; $P(K\mid F)=0{,}3$, $P(K\mid\overline F)=0{,}2$.`,
-    R`a) $P(FK)=0{,}6\cdot0{,}3=0{,}18$.`,
-    R`b) $P(\overline K\mid\overline F)=1-0{,}2=0{,}8$, nên $P(\overline F\,\overline K)=0{,}4\cdot0{,}8=0{,}32$.`
+    R`**Phân tích.** Bài có hai tầng phân loại (giới tính, rồi đeo kính): vẽ **sơ đồ hình cây**, mỗi nhánh ghi xác suất; xác suất của một đường đi bằng tích các xác suất trên nhánh.`,
+    R`**Bước 1.** Gọi $F$: "nữ", $K$: "đeo kính". $P(F)=0{,}6$, $P(\overline F)=0{,}4$; $P(K\mid F)=0{,}3$, $P(K\mid\overline F)=0{,}2$.`,
+    R`**Bước 2.** a) $P(FK)=0{,}6\cdot0{,}3=0{,}18$.`,
+    R`**Bước 3.** b) $P(\overline K\mid\overline F)=1-0{,}2=0{,}8$, nên $P(\overline F\,\overline K)=0{,}4\cdot0{,}8=0{,}32$.`,
+    R`**Kết luận.** a) $0{,}18$; b) $0{,}32$.`
    ],
-   hinh: CAY(["K", R`\overline K`], "F", R`\overline F`, "0{,}6", "0{,}4", ["0{,}3", "0{,}7"], "0{,}2", "0{,}8"),
+   hinh: R`\begin{tikzpicture}[scale=1]
+\draw (0,0)--(2.6,1.3) node[midway,above]{$0{,}6$};
+\draw (0,0)--(2.6,-1.3) node[midway,below]{$0{,}4$};
+\draw (3.2,1.3)--(5.8,2) node[midway,above]{$0{,}3$};
+\draw (3.2,1.3)--(5.8,0.6) node[midway,below]{$0{,}7$};
+\draw (3.2,-1.3)--(5.8,-0.6) node[midway,above]{$0{,}2$};
+\draw (3.2,-1.3)--(5.8,-2) node[midway,below]{$0{,}8$};
+\fill (0,0) circle (2pt);
+\node at (2.9,1.3){$F$}; \node at (2.9,-1.3){$\overline F$};
+\node[right] at (5.8,2){$K$}; \node[right] at (5.8,0.6){$\overline K$};
+\node[right] at (5.8,-0.6){$K$}; \node[right] at (5.8,-2){$\overline K$};
+\end{tikzpicture}`,
    chuThich: R`Mỗi đường đi từ gốc đến ngọn: nhân các số trên nhánh.` }
  ] },
 "C6-B19-D01": {
@@ -2868,21 +3220,39 @@ Tìm $x$ để hai biến cố "thích" và "là nam" độc lập.`,
  vd: [
  { muc: "TH", de: R`Với lớp học ở dạng trước ($60\%$ nữ; nữ đeo kính $30\%$, nam đeo kính $20\%$), tính xác suất chọn ngẫu nhiên được một học sinh đeo kính.`,
    giai: [
-    R`$P(K)=P(F)P(K\mid F)+P(\overline F)P(K\mid\overline F)$.`,
-    R`$=0{,}6\cdot0{,}3+0{,}4\cdot0{,}2=0{,}18+0{,}08=0{,}26$.`
+    R`**Phân tích.** Học sinh đeo kính có thể là nữ hoặc nam: hai trường hợp rời nhau, phủ hết. Dùng **công thức xác suất toàn phần** $P(K)=P(F)P(K\mid F)+P(\overline F)P(K\mid\overline F)$.`,
+    R`**Bước 1.** $P(K)=P(F)P(K\mid F)+P(\overline F)P(K\mid\overline F)$.`,
+    R`**Bước 2.** $=0{,}6\cdot0{,}3+0{,}4\cdot0{,}2=0{,}18+0{,}08=0{,}26$.`,
+    R`**Kết luận.** $P(K)=0{,}26$.`
    ] },
  { muc: "TH", de: R`Một nhà máy có hai máy. Máy I làm ra $60\%$ sản phẩm, tỉ lệ phế phẩm $2\%$; máy II làm ra $40\%$ sản phẩm, tỉ lệ phế phẩm $3\%$. Lấy ngẫu nhiên một sản phẩm. Tính xác suất đó là phế phẩm.`,
    giai: [
-    R`Gọi $M$: "do máy I làm", $H$: "là phế phẩm". $P(M)=0{,}6$, $P(H\mid M)=0{,}02$; $P(\overline M)=0{,}4$, $P(H\mid\overline M)=0{,}03$.`,
-    R`$P(H)=0{,}6\cdot0{,}02+0{,}4\cdot0{,}03=0{,}012+0{,}012=0{,}024$.`
+    R`**Phân tích.** Phế phẩm có thể do máy I hoặc máy II làm ra; cộng xác suất theo từng máy (xác suất toàn phần).`,
+    R`**Bước 1.** Gọi $M$: "do máy I làm", $H$: "là phế phẩm". $P(M)=0{,}6$, $P(H\mid M)=0{,}02$; $P(\overline M)=0{,}4$, $P(H\mid\overline M)=0{,}03$.`,
+    R`**Bước 2.** $P(H)=0{,}6\cdot0{,}02+0{,}4\cdot0{,}03=0{,}012+0{,}012=0{,}024$.`,
+    R`**Kết luận.** Xác suất lấy được phế phẩm là $0{,}024$.`
    ] },
  { muc: "VD", de: R`Hộp I có $3$ bi đỏ, $2$ bi xanh; hộp II có $4$ bi đỏ, $4$ bi xanh. Lấy ngẫu nhiên một bi từ hộp I bỏ vào hộp II, rồi lấy ngẫu nhiên một bi từ hộp II. Tính xác suất bi lấy ra từ hộp II là bi đỏ.`,
    giai: [
-    R`Gọi $B$: "bi chuyển sang là đỏ", $A$: "bi lấy từ hộp II là đỏ". $P(B)=\dfrac35$, $P(\overline B)=\dfrac25$.`,
-    R`Nếu chuyển bi đỏ, hộp II có $5$ đỏ, $4$ xanh: $P(A\mid B)=\dfrac59$. Nếu chuyển bi xanh, hộp II có $4$ đỏ, $5$ xanh: $P(A\mid\overline B)=\dfrac49$.`,
-    R`$P(A)=\dfrac35\cdot\dfrac59+\dfrac25\cdot\dfrac49=\dfrac{15}{45}+\dfrac8{45}=\dfrac{23}{45}$.`
+    R`**Phân tích.** Kết quả lần lấy thứ hai phụ thuộc bi chuyển sang là đỏ hay xanh. Chia hai trường hợp, tính hộp II sau khi chuyển, rồi dùng xác suất toàn phần.`,
+    R`**Bước 1.** Gọi $B$: "bi chuyển sang là đỏ", $A$: "bi lấy từ hộp II là đỏ". $P(B)=\dfrac35$, $P(\overline B)=\dfrac25$.`,
+    R`**Bước 2.** Nếu chuyển bi đỏ, hộp II có $5$ đỏ, $4$ xanh: $P(A\mid B)=\dfrac59$. Nếu chuyển bi xanh, hộp II có $4$ đỏ, $5$ xanh: $P(A\mid\overline B)=\dfrac49$.`,
+    R`**Bước 3.** $P(A)=\dfrac35\cdot\dfrac59+\dfrac25\cdot\dfrac49=\dfrac{15}{45}+\dfrac8{45}=\dfrac{23}{45}$.`,
+    R`**Kết luận.** $P(A)=\dfrac{23}{45}$.`,
+    R`**Nhận xét.** Nếu bi chuyển sang là đỏ thì hộp II có $5$ đỏ, $4$ xanh nên $P(A\mid B)=\dfrac59$; là xanh thì $4$ đỏ, $5$ xanh nên $P(A\mid\overline B)=\dfrac49$.`
    ],
-   hinh: CAY(["A", R`\overline A`], "B", R`\overline B`, R`\tfrac35`, R`\tfrac25`, [R`\tfrac59`, R`\tfrac49`], R`\tfrac49`, R`\tfrac59`),
+   hinh: R`\begin{tikzpicture}[scale=1]
+\draw (0,0)--(2.6,1.3) node[midway,above]{$\tfrac35$};
+\draw (0,0)--(2.6,-1.3) node[midway,below]{$\tfrac25$};
+\draw (3.2,1.3)--(5.8,2) node[midway,above]{$\tfrac59$};
+\draw (3.2,1.3)--(5.8,0.6) node[midway,below]{$\tfrac49$};
+\draw (3.2,-1.3)--(5.8,-0.6) node[midway,above]{$\tfrac49$};
+\draw (3.2,-1.3)--(5.8,-2) node[midway,below]{$\tfrac59$};
+\fill (0,0) circle (2pt);
+\node at (2.9,1.3){$B$}; \node at (2.9,-1.3){$\overline B$};
+\node[right] at (5.8,2){$A$}; \node[right] at (5.8,0.6){$\overline A$};
+\node[right] at (5.8,-0.6){$A$}; \node[right] at (5.8,-2){$\overline A$};
+\end{tikzpicture}`,
    chuThich: R`$P(A)$ là tổng hai đường đi kết thúc ở $A$.` }
  ] },
 "C6-B19-D02": {
@@ -2898,19 +3268,24 @@ Tìm $x$ để hai biến cố "thích" và "là nam" độc lập.`,
  vd: [
  { muc: "TH", de: R`Với nhà máy ở dạng trước, lấy được một phế phẩm. Tính xác suất phế phẩm đó do máy I làm ra.`,
    giai: [
-    R`$P(H)=0{,}024$ (đã tính).`,
-    R`$P(M\mid H)=\dfrac{P(M)P(H\mid M)}{P(H)}=\dfrac{0{,}012}{0{,}024}=0{,}5$.`
+    R`**Phân tích.** Biết kết quả (lấy được phế phẩm), hỏi **nguyên nhân** (máy nào làm ra): dùng **công thức Bayes** $P(M\mid H)=\dfrac{P(M)P(H\mid M)}{P(H)}$.`,
+    R`**Bước 1.** $P(H)=0{,}024$ (đã tính).`,
+    R`**Bước 2.** $P(M\mid H)=\dfrac{P(M)P(H\mid M)}{P(H)}=\dfrac{0{,}012}{0{,}024}=0{,}5$.`,
+    R`**Kết luận.** Xác suất phế phẩm do máy I làm ra là $0{,}5$.`
    ] },
  { muc: "TH", de: R`Với lớp học ở dạng trước, chọn được một học sinh đeo kính. Tính xác suất học sinh đó là nữ.`,
    giai: [
-    R`$P(K)=0{,}26$, $P(FK)=0{,}18$.`,
-    R`$P(F\mid K)=\dfrac{0{,}18}{0{,}26}=\dfrac9{13}\approx0{,}692$.`
+    R`**Phân tích.** Biết học sinh đeo kính, hỏi xác suất là nữ: lại là bài toán Bayes, dùng $P(K)$ đã tính bằng xác suất toàn phần.`,
+    R`**Bước 1.** $P(K)=0{,}26$, $P(FK)=0{,}18$.`,
+    R`**Bước 2.** $P(F\mid K)=\dfrac{0{,}18}{0{,}26}=\dfrac9{13}\approx0{,}692$.`,
+    R`**Kết luận.** $P(F\mid K)=\dfrac9{13}\approx0{,}692$.`
    ] },
  { muc: "VD", de: R`Một bệnh có tỉ lệ mắc trong cộng đồng là $1\%$. Xét nghiệm cho kết quả dương tính ở $95\%$ người mắc bệnh và cho dương tính (nhầm) ở $5\%$ người không mắc bệnh. Một người xét nghiệm dương tính. Tính xác suất người đó thật sự mắc bệnh.`,
    giai: [
-    R`$B$: "mắc bệnh", $D$: "dương tính". $P(B)=0{,}01$, $P(D\mid B)=0{,}95$; $P(\overline B)=0{,}99$, $P(D\mid\overline B)=0{,}05$.`,
-    R`Toàn phần: $P(D)=0{,}01\cdot0{,}95+0{,}99\cdot0{,}05=0{,}0095+0{,}0495=0{,}059$.`,
-    R`Bayes: $P(B\mid D)=\dfrac{0{,}0095}{0{,}059}=\dfrac{19}{118}\approx0{,}161$.`,
+    R`**Phân tích.** Hỏi "dương tính thì xác suất thật sự mắc bệnh": tính $P(D)$ bằng xác suất toàn phần, rồi dùng Bayes tính $P(B\mid D)$.`,
+    R`**Bước 1.** $B$: "mắc bệnh", $D$: "dương tính". $P(B)=0{,}01$, $P(D\mid B)=0{,}95$; $P(\overline B)=0{,}99$, $P(D\mid\overline B)=0{,}05$.`,
+    R`**Bước 2.** Toàn phần: $P(D)=0{,}01\cdot0{,}95+0{,}99\cdot0{,}05=0{,}0095+0{,}0495=0{,}059$.`,
+    R`**Bước 3.** Bayes: $P(B\mid D)=\dfrac{0{,}0095}{0{,}059}=\dfrac{19}{118}\approx0{,}161$.`,
     R`**Nhận xét.** Chỉ khoảng $16\%$: vì bệnh hiếm, phần lớn người dương tính lại là người khoẻ bị xét nghiệm nhầm. Vì vậy cần xét nghiệm lại.`
    ] }
  ] },
@@ -2927,21 +3302,27 @@ Tìm $x$ để hai biến cố "thích" và "là nam" độc lập.`,
  vd: [
  { muc: "VD", de: R`Trong hộp thư, $30\%$ thư là thư rác. Từ "khuyến mãi" xuất hiện trong $40\%$ thư rác và $5\%$ thư thường. a) Tính xác suất một thư có từ "khuyến mãi". b) Một thư có từ "khuyến mãi", tính xác suất đó là thư rác.`,
    giai: [
-    R`$R$: "thư rác", $K$: "có từ khuyến mãi". $P(R)=0{,}3$, $P(K\mid R)=0{,}4$; $P(\overline R)=0{,}7$, $P(K\mid\overline R)=0{,}05$.`,
-    R`a) $P(K)=0{,}3\cdot0{,}4+0{,}7\cdot0{,}05=0{,}12+0{,}035=0{,}155$.`,
-    R`b) $P(R\mid K)=\dfrac{0{,}12}{0{,}155}=\dfrac{24}{31}\approx0{,}774$.`
+    R`**Phân tích.** Câu a) dùng xác suất toàn phần; câu b) "biết thư có từ khuyến mãi, hỏi là thư rác": dùng Bayes với $P(K)$ vừa tính.`,
+    R`**Bước 1.** $R$: "thư rác", $K$: "có từ khuyến mãi". $P(R)=0{,}3$, $P(K\mid R)=0{,}4$; $P(\overline R)=0{,}7$, $P(K\mid\overline R)=0{,}05$.`,
+    R`**Bước 2.** a) $P(K)=0{,}3\cdot0{,}4+0{,}7\cdot0{,}05=0{,}12+0{,}035=0{,}155$.`,
+    R`**Bước 3.** b) $P(R\mid K)=\dfrac{0{,}12}{0{,}155}=\dfrac{24}{31}\approx0{,}774$.`,
+    R`**Kết luận.** a) $P(K)=0{,}155$; b) $P(R\mid K)\approx0{,}774$.`
    ] },
  { muc: "VD", de: R`Một túi có hai đồng xu: một đồng cân đối và một đồng có cả hai mặt đều là mặt sấp. Lấy ngẫu nhiên một đồng và tung, được mặt sấp. Tính xác suất đồng xu đã lấy là đồng hai mặt sấp.`,
    giai: [
-    R`$H$: "lấy đồng hai mặt sấp", $S$: "tung được mặt sấp". $P(H)=P(\overline H)=\dfrac12$; $P(S\mid H)=1$, $P(S\mid\overline H)=\dfrac12$.`,
-    R`$P(S)=\dfrac12\cdot1+\dfrac12\cdot\dfrac12=\dfrac34$.`,
-    R`$P(H\mid S)=\dfrac{\frac12}{\frac34}=\dfrac23$.`
+    R`**Phân tích.** Hai giả thuyết: lấy đồng cân đối hoặc đồng hai mặt sấp. Tính xác suất được mặt sấp theo từng giả thuyết, rồi dùng Bayes.`,
+    R`**Bước 1.** $H$: "lấy đồng hai mặt sấp", $S$: "tung được mặt sấp". $P(H)=P(\overline H)=\dfrac12$; $P(S\mid H)=1$, $P(S\mid\overline H)=\dfrac12$.`,
+    R`**Bước 2.** $P(S)=\dfrac12\cdot1+\dfrac12\cdot\dfrac12=\dfrac34$.`,
+    R`**Bước 3.** $P(H\mid S)=\dfrac{\frac12}{\frac34}=\dfrac23$.`,
+    R`**Kết luận.** Xác suất đồng xu đã lấy là đồng hai mặt sấp bằng $\dfrac23$.`
    ] },
  { muc: "VD", de: R`Một học sinh thi chứng chỉ: xác suất đỗ ở lần thi thứ nhất là $0{,}7$; nếu trượt lần đầu thì được thi lại và xác suất đỗ lần thi lại là $0{,}6$. a) Tính xác suất học sinh đó đỗ. b) Biết học sinh đã đỗ, tính xác suất học sinh đỗ ngay lần đầu.`,
    giai: [
-    R`$A_1$: "đỗ lần 1", $D$: "đỗ". $P(A_1)=0{,}7$, $P(D\mid A_1)=1$; $P(\overline{A_1})=0{,}3$, $P(D\mid\overline{A_1})=0{,}6$.`,
-    R`a) $P(D)=0{,}7\cdot1+0{,}3\cdot0{,}6=0{,}7+0{,}18=0{,}88$.`,
-    R`b) $P(A_1\mid D)=\dfrac{0{,}7}{0{,}88}=\dfrac{35}{44}\approx0{,}795$.`
+    R`**Phân tích.** Đỗ có hai cách: đỗ ngay lần $1$, hoặc trượt lần $1$ rồi đỗ lần thi lại. Câu b) biết đã đỗ, hỏi đỗ ngay lần đầu: dùng Bayes.`,
+    R`**Bước 1.** $A_1$: "đỗ lần 1", $D$: "đỗ". $P(A_1)=0{,}7$, $P(D\mid A_1)=1$; $P(\overline{A_1})=0{,}3$, $P(D\mid\overline{A_1})=0{,}6$.`,
+    R`**Bước 2.** a) $P(D)=0{,}7\cdot1+0{,}3\cdot0{,}6=0{,}7+0{,}18=0{,}88$.`,
+    R`**Bước 3.** b) $P(A_1\mid D)=\dfrac{0{,}7}{0{,}88}=\dfrac{35}{44}\approx0{,}795$.`,
+    R`**Kết luận.** a) $P(D)=0{,}88$; b) $P(A_1\mid D)\approx0{,}795$.`
    ] }
  ] }
 });
