@@ -2476,23 +2476,27 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Cho $\vec u=(1;2;-1)$, $\vec v=(2;0;3)$. Tính $[\vec u,\vec v]$.`,
    giai: [
-    R`Thành phần thứ nhất: $a_2b_3-a_3b_2=2\cdot3-(-1)\cdot0=6$.`,
-    R`Thành phần thứ hai: $a_3b_1-a_1b_3=(-1)\cdot2-1\cdot3=-5$.`,
-    R`Thành phần thứ ba: $a_1b_2-a_2b_1=1\cdot0-2\cdot2=-4$.`,
+    R`**Phân tích.** Tích có hướng $[\vec u,\vec v]=\left(\begin{vmatrix}a_2&a_3\\b_2&b_3\end{vmatrix};\begin{vmatrix}a_3&a_1\\b_3&b_1\end{vmatrix};\begin{vmatrix}a_1&a_2\\b_1&b_2\end{vmatrix}\right)$. Mẹo nhớ: che cột của thành phần đang tính, lấy "chéo chính trừ chéo phụ" (thành phần thứ hai đảo thứ tự cột).`,
+    R`**Bước 1.** Thành phần thứ nhất: $a_2b_3-a_3b_2=2\cdot3-(-1)\cdot0=6$.`,
+    R`**Bước 2.** Thành phần thứ hai: $a_3b_1-a_1b_3=(-1)\cdot2-1\cdot3=-5$.`,
+    R`**Bước 3.** Thành phần thứ ba: $a_1b_2-a_2b_1=1\cdot0-2\cdot2=-4$.`,
     R`**Kết quả.** $[\vec u,\vec v]=(6;-5;-4)$. Thử lại: $6\cdot1-5\cdot2-4\cdot(-1)=0$ và $6\cdot2-5\cdot0-4\cdot3=0$ ✓.`
    ] },
  { muc: "TH", de: R`Cho $A(1;0;0)$, $B(0;2;0)$, $C(0;0;3)$. Tìm một vectơ pháp tuyến của mặt phẳng $(ABC)$.`,
    giai: [
-    R`$\overrightarrow{AB}=(-1;2;0)$, $\overrightarrow{AC}=(-1;0;3)$, không cùng phương.`,
-    R`$[\overrightarrow{AB},\overrightarrow{AC}]=\left(2\cdot3-0\cdot0;\ 0\cdot(-1)-(-1)\cdot3;\ (-1)\cdot0-2\cdot(-1)\right)=(6;3;2)$.`,
+    R`**Phân tích.** Vectơ pháp tuyến của $(ABC)$ phải vuông góc với cả $\overrightarrow{AB}$ và $\overrightarrow{AC}$, nên lấy $\vec n=[\overrightarrow{AB},\overrightarrow{AC}]$ (hai vectơ không cùng phương).`,
+    R`**Bước 1.** $\overrightarrow{AB}=(-1;2;0)$, $\overrightarrow{AC}=(-1;0;3)$, không cùng phương.`,
+    R`**Bước 2.** $[\overrightarrow{AB},\overrightarrow{AC}]=\left(2\cdot3-0\cdot0;\ 0\cdot(-1)-(-1)\cdot3;\ (-1)\cdot0-2\cdot(-1)\right)=(6;3;2)$.`,
     R`**Kết quả.** $\vec n=(6;3;2)$ là một VTPT của $(ABC)$.`
    ] },
  { muc: "VD", de: R`Với $A(1;0;0)$, $B(0;2;0)$, $C(0;0;3)$ như trên, tính diện tích tam giác $ABC$ và thể tích tứ diện $OABC$.`,
    giai: [
-    R`Từ ví dụ trước: $[\overrightarrow{AB},\overrightarrow{AC}]=(6;3;2)$, có độ dài $\sqrt{36+9+4}=7$.`,
-    R`$S_{ABC}=\dfrac12\cdot7=\dfrac72$.`,
-    R`$\overrightarrow{AO}=(-1;0;0)$. $[\overrightarrow{AB},\overrightarrow{AC}]\cdot\overrightarrow{AO}=6\cdot(-1)+3\cdot0+2\cdot0=-6$.`,
-    R`$V_{OABC}=\dfrac16\cdot|-6|=1$. Kiểm tra: $OA$, $OB$, $OC$ đôi một vuông góc nên $V=\dfrac16\cdot1\cdot2\cdot3=1$ ✓.`
+    R`**Phân tích.** Dùng hai công thức: $S_{ABC}=\dfrac12\left|[\overrightarrow{AB},\overrightarrow{AC}]\right|$ và $V_{OABC}=\dfrac16\left|[\overrightarrow{OA},\overrightarrow{OB}]\cdot\overrightarrow{OC}\right|$ (hoặc dùng bất kì ba cạnh chung đỉnh).`,
+    R`**Bước 1.** Từ ví dụ trước: $[\overrightarrow{AB},\overrightarrow{AC}]=(6;3;2)$, có độ dài $\sqrt{36+9+4}=7$.`,
+    R`**Bước 2.** $S_{ABC}=\dfrac12\cdot7=\dfrac72$.`,
+    R`**Bước 3.** $\overrightarrow{AO}=(-1;0;0)$. $[\overrightarrow{AB},\overrightarrow{AC}]\cdot\overrightarrow{AO}=6\cdot(-1)+3\cdot0+2\cdot0=-6$.`,
+    R`**Bước 4.** $V_{OABC}=\dfrac16\cdot|-6|=1$. Kiểm tra: $OA$, $OB$, $OC$ đôi một vuông góc nên $V=\dfrac16\cdot1\cdot2\cdot3=1$ ✓.`,
+    R`**Kết luận.** $S_{ABC}=\dfrac72$, $V_{OABC}=1$.`
    ],
    hinh: R`\begin{tikzpicture}[scale=1,>=stealth]
 \draw[->] (0,0)--(3.6,0) node[right]{$y$};
@@ -2520,34 +2524,45 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Viết phương trình mặt phẳng qua $M(1;-2;3)$ và có vectơ pháp tuyến $\vec n=(2;-1;1)$.`,
    giai: [
-    R`$2(x-1)-1\cdot(y+2)+1\cdot(z-3)=0$.`,
-    R`$\Leftrightarrow2x-2-y-2+z-3=0\Leftrightarrow2x-y+z-7=0$.`,
-    R`Thử lại với $M$: $2+2+3-7=0$ ✓.`
+    R`**Phân tích.** Mặt phẳng qua $M(x_0;y_0;z_0)$ có VTPT $\vec n=(A;B;C)$: $A(x-x_0)+B(y-y_0)+C(z-z_0)=0$. Thay số rồi khai triển.`,
+    R`**Bước 1.** $2(x-1)-1\cdot(y+2)+1\cdot(z-3)=0$.`,
+    R`**Bước 2.** $\Leftrightarrow2x-2-y-2+z-3=0\Leftrightarrow2x-y+z-7=0$.`,
+    R`**Bước 3.** Thử lại với $M$: $2+2+3-7=0$ ✓.`,
+    R`**Kết luận.** $(P):2x-y+z-7=0$.`
    ] },
  { muc: "TH", de: R`Viết phương trình mặt phẳng $(ABC)$ với $A(1;0;0)$, $B(0;2;0)$, $C(0;0;3)$.`,
    giai: [
-    R`Ba điểm nằm trên ba trục nên dùng phương trình đoạn chắn: $\dfrac x1+\dfrac y2+\dfrac z3=1$.`,
-    R`Nhân hai vế với $6$: $6x+3y+2z-6=0$.`,
-    R`Đối chiếu: VTPT $(6;3;2)$ trùng với $[\overrightarrow{AB},\overrightarrow{AC}]$ đã tính ở dạng trước ✓.`
+    R`**Phân tích.** Ba điểm nằm trên ba trục toạ độ ($A\in Ox$, $B\in Oy$, $C\in Oz$) nên dùng **phương trình đoạn chắn** $\dfrac xa+\dfrac yb+\dfrac zc=1$ cho nhanh.`,
+    R`**Bước 1.** Ba điểm nằm trên ba trục nên dùng phương trình đoạn chắn: $\dfrac x1+\dfrac y2+\dfrac z3=1$.`,
+    R`**Bước 2.** Nhân hai vế với $6$: $6x+3y+2z-6=0$.`,
+    R`**Bước 3.** Đối chiếu: VTPT $(6;3;2)$ trùng với $[\overrightarrow{AB},\overrightarrow{AC}]$ đã tính ở dạng trước ✓.`,
+    R`**Kết luận.** $(ABC):6x+3y+2z-6=0$.`
    ] },
  { muc: "TH", de: R`Viết phương trình mặt phẳng $(P)$ qua $A(2;1;-1)$ và song song với $(Q):x-2y+3z+5=0$.`,
    giai: [
-    R`$(P)\parallel(Q)$ nên $(P)$ nhận $\vec n=(1;-2;3)$ làm VTPT.`,
-    R`$(P):1(x-2)-2(y-1)+3(z+1)=0\Leftrightarrow x-2y+3z+3=0$.`,
-    R`Thử lại: $2-2-3+3=0$ ✓; hệ số tự do $3\ne5$ nên $(P)$ không trùng $(Q)$ ✓.`
+    R`**Phân tích.** Hai mặt phẳng song song có cùng VTPT. Lấy VTPT của $(Q)$ cho $(P)$, rồi dùng điểm $A$.`,
+    R`**Bước 1.** $(P)\parallel(Q)$ nên $(P)$ nhận $\vec n=(1;-2;3)$ làm VTPT.`,
+    R`**Bước 2.** $(P):1(x-2)-2(y-1)+3(z+1)=0\Leftrightarrow x-2y+3z+3=0$.`,
+    R`**Thử lại.** $2-2-3+3=0$ ✓; hệ số tự do $3\ne5$ nên $(P)$ không trùng $(Q)$ ✓.`,
+    R`**Kết luận.** $(P):x-2y+3z+3=0$.`
    ] },
  { muc: "VD", de: R`Cho $A(1;2;3)$, $B(3;0;-1)$. Viết phương trình mặt phẳng trung trực của đoạn $AB$.`,
    giai: [
-    R`Trung điểm $I$ của $AB$: $I\left(\dfrac{1+3}2;\dfrac{2+0}2;\dfrac{3-1}2\right)=(2;1;1)$.`,
-    R`$\overrightarrow{AB}=(2;-2;-4)=2(1;-1;-2)$, chọn VTPT $\vec n=(1;-1;-2)$.`,
-    R`Phương trình: $(x-2)-(y-1)-2(z-1)=0\Leftrightarrow x-y-2z+1=0$.`
+    R`**Phân tích.** Mặt phẳng trung trực của $AB$ đi qua **trung điểm** $I$ của $AB$ và **vuông góc** với $AB$, nên nhận $\overrightarrow{AB}$ làm VTPT.`,
+    R`**Bước 1.** Trung điểm $I$ của $AB$: $I\left(\dfrac{1+3}2;\dfrac{2+0}2;\dfrac{3-1}2\right)=(2;1;1)$.`,
+    R`**Bước 2.** $\overrightarrow{AB}=(2;-2;-4)=2(1;-1;-2)$, chọn VTPT $\vec n=(1;-1;-2)$.`,
+    R`**Bước 3.** Phương trình: $(x-2)-(y-1)-2(z-1)=0\Leftrightarrow x-y-2z+1=0$.`,
+    R`**Kết luận.** Mặt phẳng trung trực: $x-y-2z+1=0$.`,
+    R`**Thử lại.** $A$ và $B$ phải cách đều mặt phẳng: $\dfrac{|1-2-6+1|}{\sqrt6}=\dfrac6{\sqrt6}$ và $\dfrac{|3-0+2+1|}{\sqrt6}=\dfrac6{\sqrt6}$, bằng nhau.`
    ] },
  { muc: "VD", de: R`Viết phương trình mặt phẳng $(P)$ đi qua $A(1;1;1)$, $B(2;0;1)$ và vuông góc với mặt phẳng $(Q):x+y+z-1=0$.`,
    giai: [
-    R`$\overrightarrow{AB}=(1;-1;0)$ nằm trong $(P)$; $\vec n_Q=(1;1;1)$ có giá song song với $(P)$ (vì $(P)\perp(Q)$).`,
-    R`$\vec n_P=[\overrightarrow{AB},\vec n_Q]=\left((-1)\cdot1-0\cdot1;\ 0\cdot1-1\cdot1;\ 1\cdot1-(-1)\cdot1\right)=(-1;-1;2)$.`,
-    R`$(P):-(x-1)-(y-1)+2(z-1)=0\Leftrightarrow x+y-2z=0$.`,
-    R`Thử lại: $A$: $1+1-2=0$ ✓; $B$: $2+0-2=0$ ✓; $\vec n_P\cdot\vec n_Q=-1-1+2=0$ ✓.`
+    R`**Phân tích.** $(P)$ chứa $\overrightarrow{AB}$ và song song với $\vec n_Q$ (vì $(P)\perp(Q)$). Hai vectơ đó không cùng phương nên VTPT của $(P)$ là tích có hướng của chúng.`,
+    R`**Bước 1.** $\overrightarrow{AB}=(1;-1;0)$ nằm trong $(P)$; $\vec n_Q=(1;1;1)$ có giá song song với $(P)$ (vì $(P)\perp(Q)$).`,
+    R`**Bước 2.** $\vec n_P=[\overrightarrow{AB},\vec n_Q]=\left((-1)\cdot1-0\cdot1;\ 0\cdot1-1\cdot1;\ 1\cdot1-(-1)\cdot1\right)=(-1;-1;2)$.`,
+    R`**Bước 3.** $(P):-(x-1)-(y-1)+2(z-1)=0\Leftrightarrow x+y-2z=0$.`,
+    R`**Thử lại.** $A$: $1+1-2=0$ ✓; $B$: $2+0-2=0$ ✓; $\vec n_P\cdot\vec n_Q=-1-1+2=0$ ✓.`,
+    R`**Kết luận.** $(P):x+y-2z=0$.`
    ] }
  ] },
 "C5-B14-D03": {
@@ -2564,24 +2579,31 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Trong hai điểm $M(1;0;1)$ và $N(1;1;1)$, điểm nào thuộc mặt phẳng $(P):2x-y+z-3=0$?`,
    giai: [
-    R`Thay $M$: $2\cdot1-0+1-3=0$, nên $M\in(P)$.`,
-    R`Thay $N$: $2\cdot1-1+1-3=-1\ne0$, nên $N\notin(P)$.`
+    R`**Phân tích.** Điểm thuộc mặt phẳng khi **toạ độ của nó thoả phương trình** mặt phẳng. Thay lần lượt từng điểm vào vế trái.`,
+    R`**Bước 1.** Thay $M$: $2\cdot1-0+1-3=0$, nên $M\in(P)$.`,
+    R`**Bước 2.** Thay $N$: $2\cdot1-1+1-3=-1\ne0$, nên $N\notin(P)$.`,
+    R`**Kết luận.** Điểm $M$ thuộc $(P)$, điểm $N$ không thuộc.`
    ] },
  { muc: "TH", de: R`Cho $(P):x-2y+2z-1=0$, $(Q):2x-4y+4z+3=0$, $(R):2x+y+3=0$. Xét vị trí tương đối của $(P)$ với $(Q)$ và của $(P)$ với $(R)$.`,
    giai: [
-    R`$\vec n_Q=(2;-4;4)=2(1;-2;2)=2\vec n_P$. Hệ số tự do: $3\ne2\cdot(-1)=-2$. Vậy $(P)\parallel(Q)$.`,
-    R`$\vec n_R=(2;1;0)$ không cùng phương với $\vec n_P$ nên $(P)$ cắt $(R)$.`,
-    R`Hơn nữa $\vec n_P\cdot\vec n_R=1\cdot2-2\cdot1+2\cdot0=0$, nên $(P)\perp(R)$.`
+    R`**Phân tích.** So sánh hai VTPT: tỉ lệ thì hai mặt phẳng song song hoặc trùng (xét thêm hệ số tự do); không tỉ lệ thì cắt nhau, và nếu tích vô hướng bằng $0$ thì vuông góc.`,
+    R`**Bước 1.** $\vec n_Q=(2;-4;4)=2(1;-2;2)=2\vec n_P$. Hệ số tự do: $3\ne2\cdot(-1)=-2$. Vậy $(P)\parallel(Q)$.`,
+    R`**Bước 2.** $\vec n_R=(2;1;0)$ không cùng phương với $\vec n_P$ nên $(P)$ cắt $(R)$.`,
+    R`**Bước 3.** Hơn nữa $\vec n_P\cdot\vec n_R=1\cdot2-2\cdot1+2\cdot0=0$, nên $(P)\perp(R)$.`,
+    R`**Kết luận.** $(P)\parallel(Q)$ và $(P)\perp(R)$.`
    ] },
  { muc: "VD", de: R`Tìm $m$ để mặt phẳng $(P):x+my-z+1=0$ vuông góc với $(Q):2x-y+3z-4=0$.`,
    giai: [
-    R`$(P)\perp(Q)\Leftrightarrow\vec n_P\cdot\vec n_Q=0\Leftrightarrow1\cdot2+m\cdot(-1)+(-1)\cdot3=0$.`,
-    R`$\Leftrightarrow2-m-3=0\Leftrightarrow m=-1$.`
+    R`**Phân tích.** $(P)\perp(Q)\iff\vec n_P\cdot\vec n_Q=0$; viết theo $m$ và giải.`,
+    R`**Bước 1.** $(P)\perp(Q)\Leftrightarrow\vec n_P\cdot\vec n_Q=0\Leftrightarrow1\cdot2+m\cdot(-1)+(-1)\cdot3=0$.`,
+    R`**Bước 2.** $\Leftrightarrow2-m-3=0\Leftrightarrow m=-1$.`,
+    R`**Kết luận.** $m=-1$.`
    ] },
  { muc: "VD", de: R`Tìm $m$ để $(P):(m+1)x-2y+2z+1=0$ song song với $(Q):2x-4y+4z+5=0$.`,
    giai: [
-    R`Cần $\dfrac{m+1}2=\dfrac{-2}{-4}=\dfrac24$, tức là $\dfrac{m+1}2=\dfrac12\Leftrightarrow m=0$.`,
-    R`Với $m=0$: $(P):x-2y+2z+1=0$; nhân $2$: $2x-4y+4z+2=0$, hệ số tự do $2\ne5$ nên không trùng.`,
+    R`**Phân tích.** $(P)\parallel(Q)$ khi các hệ số $x$, $y$, $z$ tỉ lệ nhưng hệ số tự do **không** theo cùng tỉ lệ.`,
+    R`**Bước 1.** Cần $\dfrac{m+1}2=\dfrac{-2}{-4}=\dfrac24$, tức là $\dfrac{m+1}2=\dfrac12\Leftrightarrow m=0$.`,
+    R`**Bước 2.** Với $m=0$: $(P):x-2y+2z+1=0$; nhân $2$: $2x-4y+4z+2=0$, hệ số tự do $2\ne5$ nên không trùng.`,
     R`**Kết luận.** $m=0$.`
    ] }
  ] },
@@ -2597,20 +2619,25 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Tính khoảng cách từ $M(1;2;3)$ đến mặt phẳng $(P):2x-2y+z+3=0$.`,
    giai: [
-    R`Tử số: $|2\cdot1-2\cdot2+3+3|=|4|=4$. Mẫu số: $\sqrt{4+4+1}=3$.`,
-    R`$d\big(M,(P)\big)=\dfrac43$.`
+    R`**Phân tích.** $d\big(M,(P)\big)=\dfrac{|Ax_0+By_0+Cz_0+D|}{\sqrt{A^2+B^2+C^2}}$: thay toạ độ $M$ vào vế trái phương trình mặt phẳng, lấy giá trị tuyệt đối, chia độ dài VTPT.`,
+    R`**Bước 1.** Tử số: $|2\cdot1-2\cdot2+3+3|=|4|=4$. Mẫu số: $\sqrt{4+4+1}=3$.`,
+    R`**Bước 2.** $d\big(M,(P)\big)=\dfrac43$.`,
+    R`**Kết luận.** $d\big(M,(P)\big)=\dfrac43$.`
    ] },
  { muc: "TH", de: R`Tính khoảng cách giữa hai mặt phẳng $(P):x+2y-2z+1=0$ và $(Q):2x+4y-4z-7=0$.`,
    giai: [
-    R`$(Q)$ chia $2$: $x+2y-2z-\dfrac72=0$. Hai mặt phẳng có cùng VTPT $(1;2;-2)$, hệ số tự do khác nhau nên song song.`,
-    R`$d=\dfrac{\left|1-\left(-\frac72\right)\right|}{\sqrt{1+4+4}}=\dfrac{\frac92}{3}=\dfrac32$.`,
-    R`Kiểm tra: $M(-1;0;0)\in(P)$; $d\big(M,(Q)\big)=\dfrac{|-2-7|}{\sqrt{4+16+16}}=\dfrac96=\dfrac32$ ✓.`
+    R`**Phân tích.** Hai mặt phẳng song song: khoảng cách giữa chúng bằng khoảng cách từ **một điểm bất kì** của mặt này đến mặt kia. Cần kiểm tra song song trước.`,
+    R`**Bước 1.** $(Q)$ chia $2$: $x+2y-2z-\dfrac72=0$. Hai mặt phẳng có cùng VTPT $(1;2;-2)$, hệ số tự do khác nhau nên song song.`,
+    R`**Bước 2.** $d=\dfrac{\left|1-\left(-\frac72\right)\right|}{\sqrt{1+4+4}}=\dfrac{\frac92}{3}=\dfrac32$.`,
+    R`**Kiểm tra.** $M(-1;0;0)\in(P)$; $d\big(M,(Q)\big)=\dfrac{|-2-7|}{\sqrt{4+16+16}}=\dfrac96=\dfrac32$ ✓.`,
+    R`**Kết luận.** Khoảng cách giữa hai mặt phẳng bằng $\dfrac32$.`
    ] },
  { muc: "VD", de: R`Tìm điểm $M$ trên trục $Oz$ sao cho khoảng cách từ $M$ đến $(P):2x+y-2z+2=0$ bằng $2$.`,
    giai: [
-    R`$M\in Oz$ nên $M(0;0;t)$.`,
-    R`$d\big(M,(P)\big)=\dfrac{|-2t+2|}{3}=2\Leftrightarrow|2-2t|=6$.`,
-    R`$2-2t=6\Leftrightarrow t=-2$, hoặc $2-2t=-6\Leftrightarrow t=4$.`,
+    R`**Phân tích.** Điểm trên $Oz$ có dạng $M(0;0;t)$. Lập phương trình khoảng cách bằng $2$; có giá trị tuyệt đối nên được hai trường hợp.`,
+    R`**Bước 1.** $M\in Oz$ nên $M(0;0;t)$.`,
+    R`**Bước 2.** $d\big(M,(P)\big)=\dfrac{|-2t+2|}{3}=2\Leftrightarrow|2-2t|=6$.`,
+    R`**Bước 3.** $2-2t=6\Leftrightarrow t=-2$, hoặc $2-2t=-6\Leftrightarrow t=4$.`,
     R`**Kết luận.** $M(0;0;-2)$ hoặc $M(0;0;4)$.`
    ] }
  ] },
@@ -2628,21 +2655,25 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Cho $\Delta:\begin{cases}x=1+2t\\y=-1+t\\z=3-t\end{cases}$. Chỉ ra một điểm và một VTCP của $\Delta$. Điểm $A(5;1;1)$ có thuộc $\Delta$ không?`,
    giai: [
-    R`Ứng với $t=0$: $M(1;-1;3)\in\Delta$. VTCP $\vec u=(2;1;-1)$.`,
-    R`Thay $A$: $5=1+2t\Rightarrow t=2$. Thử: $y=-1+2=1$ ✓, $z=3-2=1$ ✓.`,
+    R`**Phân tích.** Từ phương trình tham số đọc được ngay một điểm (cho $t=0$) và VTCP (các hệ số của $t$). Điểm thuộc đường thẳng khi tìm được **cùng một** giá trị $t$ thoả cả ba phương trình.`,
+    R`**Bước 1.** Ứng với $t=0$: $M(1;-1;3)\in\Delta$. VTCP $\vec u=(2;1;-1)$.`,
+    R`**Bước 2.** Thay $A$: $5=1+2t\Rightarrow t=2$. Thử: $y=-1+2=1$ ✓, $z=3-2=1$ ✓.`,
     R`**Kết luận.** $A\in\Delta$ (ứng với $t=2$).`
    ] },
  { muc: "TH", de: R`Cho $\Delta:\dfrac{x-2}{3}=\dfrac{y+1}{-2}=\dfrac z1$. Viết phương trình tham số của $\Delta$ và xét xem $B(-1;1;-1)$, $C(5;-3;2)$ có thuộc $\Delta$ không.`,
    giai: [
-    R`$\Delta$ qua $M(2;-1;0)$, VTCP $\vec u=(3;-2;1)$: $\begin{cases}x=2+3t\\y=-1-2t\\z=t\end{cases}$.`,
-    R`$B$: $-1=2+3t\Rightarrow t=-1$; khi đó $y=-1+2=1$ ✓, $z=-1$ ✓. Vậy $B\in\Delta$.`,
-    R`$C$: $5=2+3t\Rightarrow t=1$; khi đó $y=-3$ ✓ nhưng $z=1\ne2$. Vậy $C\notin\Delta$.`
+    R`**Phân tích.** Phương trình chính tắc $\dfrac{x-x_0}a=\dfrac{y-y_0}b=\dfrac{z-z_0}c$ cho điểm $(x_0;y_0;z_0)$ và VTCP $(a;b;c)$. Đặt các tỉ số bằng $t$ để được dạng tham số.`,
+    R`**Bước 1.** $\Delta$ qua $M(2;-1;0)$, VTCP $\vec u=(3;-2;1)$: $\begin{cases}x=2+3t\\y=-1-2t\\z=t\end{cases}$.`,
+    R`**Bước 2.** $B$: $-1=2+3t\Rightarrow t=-1$; khi đó $y=-1+2=1$ ✓, $z=-1$ ✓. Vậy $B\in\Delta$.`,
+    R`**Bước 3.** $C$: $5=2+3t\Rightarrow t=1$; khi đó $y=-3$ ✓ nhưng $z=1\ne2$. Vậy $C\notin\Delta$.`,
+    R`**Kết luận.** $B\in\Delta$, $C\notin\Delta$.`
    ] },
  { muc: "TH", de: R`Cho $A(1;2;3)$, $B(3;-2;5)$. Vectơ nào sau đây **không** là VTCP của đường thẳng $AB$?
 **A.** $(2;-4;2)$. **B.** $(1;-2;1)$. **C.** $(-2;4;-2)$. **D.** $(2;4;2)$.`,
    giai: [
-    R`$\overrightarrow{AB}=(2;-4;2)=2(1;-2;1)$. Mọi vectơ $k(1;-2;1)$ ($k\ne0$) đều là VTCP.`,
-    R`A ($k=2$), B ($k=1$), C ($k=-2$) đều có dạng đó. D: $(2;4;2)$ có tỉ số $\dfrac21\ne\dfrac4{-2}$ nên không cùng phương.`,
+    R`**Phân tích.** VTCP của đường thẳng $AB$ là $\overrightarrow{AB}$ hoặc bất kì vectơ nào **cùng phương** với nó. Phương án nào không tỉ lệ với $\overrightarrow{AB}$ thì không phải.`,
+    R`**Bước 1.** $\overrightarrow{AB}=(2;-4;2)=2(1;-2;1)$. Mọi vectơ $k(1;-2;1)$ ($k\ne0$) đều là VTCP.`,
+    R`**Bước 2.** A ($k=2$), B ($k=1$), C ($k=-2$) đều có dạng đó. D: $(2;4;2)$ có tỉ số $\dfrac21\ne\dfrac4{-2}$ nên không cùng phương.`,
     R`**Kết luận.** Chọn **D**.`
    ] }
  ] },
@@ -2660,26 +2691,34 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Viết phương trình tham số của đường thẳng $AB$ với $A(1;2;3)$, $B(3;-2;5)$.`,
    giai: [
-    R`$\overrightarrow{AB}=(2;-4;2)$, chọn VTCP $\vec u=(1;-2;1)$.`,
-    R`$AB:\begin{cases}x=1+t\\y=2-2t\\z=3+t\end{cases}$. (Thử $t=2$ được $B$ ✓.)`
+    R`**Phân tích.** Đường thẳng qua hai điểm: lấy $\overrightarrow{AB}$ (hoặc vectơ cùng phương gọn hơn) làm VTCP và một trong hai điểm làm điểm đi qua.`,
+    R`**Bước 1.** $\overrightarrow{AB}=(2;-4;2)$, chọn VTCP $\vec u=(1;-2;1)$.`,
+    R`**Bước 2.** $AB:\begin{cases}x=1+t\\y=2-2t\\z=3+t\end{cases}$. (Thử $t=2$ được $B$ ✓.)`,
+    R`**Kết luận.** $AB:\ x=1+t,\ y=2-2t,\ z=3+t$.`
    ] },
  { muc: "TH", de: R`Viết phương trình chính tắc của đường thẳng $\Delta$ qua $M(2;0;-1)$ và vuông góc với $(P):x-3y+2z+1=0$.`,
    giai: [
-    R`$\Delta\perp(P)$ nên VTCP của $\Delta$ là $\vec n_P=(1;-3;2)$.`,
-    R`$\Delta:\dfrac{x-2}{1}=\dfrac{y}{-3}=\dfrac{z+1}{2}$.`
+    R`**Phân tích.** Đường thẳng vuông góc với mặt phẳng thì nhận VTPT của mặt phẳng làm VTCP.`,
+    R`**Bước 1.** $\Delta\perp(P)$ nên VTCP của $\Delta$ là $\vec n_P=(1;-3;2)$.`,
+    R`**Bước 2.** $\Delta:\dfrac{x-2}{1}=\dfrac{y}{-3}=\dfrac{z+1}{2}$.`,
+    R`**Kết luận.** $\Delta:\dfrac{x-2}1=\dfrac y{-3}=\dfrac{z+1}2$.`
    ] },
  { muc: "VD", de: R`Viết phương trình đường thẳng $\Delta$ qua $M(1;1;1)$ và vuông góc với cả hai đường thẳng $d_1$ có VTCP $\vec u_1=(1;0;2)$, $d_2$ có VTCP $\vec u_2=(0;1;-1)$.`,
    giai: [
-    R`$\vec u=[\vec u_1,\vec u_2]=\left(0\cdot(-1)-2\cdot1;\ 2\cdot0-1\cdot(-1);\ 1\cdot1-0\cdot0\right)=(-2;1;1)$.`,
-    R`Thử lại: $\vec u\cdot\vec u_1=-2+0+2=0$ ✓; $\vec u\cdot\vec u_2=0+1-1=0$ ✓.`,
-    R`$\Delta:\begin{cases}x=1-2t\\y=1+t\\z=1+t\end{cases}$.`
+    R`**Phân tích.** $\Delta$ vuông góc với cả hai VTCP $\vec u_1$, $\vec u_2$ (không cùng phương) nên VTCP của $\Delta$ là $[\vec u_1,\vec u_2]$.`,
+    R`**Bước 1.** $\vec u=[\vec u_1,\vec u_2]=\left(0\cdot(-1)-2\cdot1;\ 2\cdot0-1\cdot(-1);\ 1\cdot1-0\cdot0\right)=(-2;1;1)$.`,
+    R`**Thử lại.** $\vec u\cdot\vec u_1=-2+0+2=0$ ✓; $\vec u\cdot\vec u_2=0+1-1=0$ ✓.`,
+    R`**Bước 2.** $\Delta:\begin{cases}x=1-2t\\y=1+t\\z=1+t\end{cases}$.`,
+    R`**Thử lại.** $\vec u=(-2;1;1)$: $\vec u\cdot\vec u_1=-2+0+2=0$, $\vec u\cdot\vec u_2=0+1-1=0$, đúng.`
    ] },
  { muc: "VD", de: R`Viết phương trình giao tuyến $\Delta$ của hai mặt phẳng $(P):x+y+z-3=0$ và $(Q):x-y+z-1=0$.`,
    giai: [
-    R`$\vec u=[\vec n_P,\vec n_Q]=\left(1\cdot1-1\cdot(-1);\ 1\cdot1-1\cdot1;\ 1\cdot(-1)-1\cdot1\right)=(2;0;-2)$, chọn $\vec u=(1;0;-1)$.`,
-    R`Tìm một điểm chung: cho $z=0$, được $\begin{cases}x+y=3\\x-y=1\end{cases}\Leftrightarrow x=2,\ y=1$. Điểm $A(2;1;0)$.`,
-    R`$\Delta:\begin{cases}x=2+t\\y=1\\z=-t\end{cases}$.`,
-    R`Thử lại với $t=1$, điểm $(3;1;-1)$: $(P)$: $3+1-1-3=0$ ✓; $(Q)$: $3-1-1-1=0$ ✓.`
+    R`**Phân tích.** Giao tuyến nằm trong cả hai mặt phẳng nên vuông góc với cả hai VTPT: VTCP là $[\vec n_P,\vec n_Q]$. Còn cần một điểm chung: cho một ẩn bằng $0$ rồi giải hệ hai ẩn.`,
+    R`**Bước 1.** $\vec u=[\vec n_P,\vec n_Q]=\left(1\cdot1-1\cdot(-1);\ 1\cdot1-1\cdot1;\ 1\cdot(-1)-1\cdot1\right)=(2;0;-2)$, chọn $\vec u=(1;0;-1)$.`,
+    R`**Bước 2.** Tìm một điểm chung: cho $z=0$, được $\begin{cases}x+y=3\\x-y=1\end{cases}\Leftrightarrow x=2,\ y=1$. Điểm $A(2;1;0)$.`,
+    R`**Bước 3.** $\Delta:\begin{cases}x=2+t\\y=1\\z=-t\end{cases}$.`,
+    R`**Bước 4.** Thử lại với $t=1$, điểm $(3;1;-1)$: $(P)$: $3+1-1-3=0$ ✓; $(Q)$: $3-1-1-1=0$ ✓.`,
+    R`**Kết luận.** Giao tuyến $\Delta:\ x=2+t,\ y=1,\ z=-t$.`
    ] }
  ] },
 "C5-B15-D03": {
@@ -2696,26 +2735,31 @@ Object.assign(D, {
  vd: [
  { muc: "TH", de: R`Xét vị trí tương đối của $d_1:\begin{cases}x=1+t\\y=2-t\\z=3+2t\end{cases}$ và $d_2:\begin{cases}x=3+s\\y=3+2s\\z=4-s\end{cases}$.`,
    giai: [
-    R`$\vec u_1=(1;-1;2)$, $\vec u_2=(1;2;-1)$ không cùng phương.`,
-    R`Xét hệ $\begin{cases}1+t=3+s\\2-t=3+2s\\3+2t=4-s\end{cases}$. Từ phương trình đầu: $t=2+s$. Thay vào phương trình hai: $2-(2+s)=3+2s\Leftrightarrow s=-1$, nên $t=1$.`,
-    R`Thử phương trình ba: $3+2\cdot1=5$ và $4-(-1)=5$ ✓. Hệ có nghiệm.`,
+    R`**Phân tích.** Hai đường thẳng: xét VTCP có cùng phương không. **Không cùng phương** thì giải hệ tìm giao điểm: có nghiệm là cắt nhau, vô nghiệm là chéo nhau.`,
+    R`**Bước 1.** $\vec u_1=(1;-1;2)$, $\vec u_2=(1;2;-1)$ không cùng phương.`,
+    R`**Bước 2.** Xét hệ $\begin{cases}1+t=3+s\\2-t=3+2s\\3+2t=4-s\end{cases}$. Từ phương trình đầu: $t=2+s$. Thay vào phương trình hai: $2-(2+s)=3+2s\Leftrightarrow s=-1$, nên $t=1$.`,
+    R`**Bước 3.** Thử phương trình ba: $3+2\cdot1=5$ và $4-(-1)=5$ ✓. Hệ có nghiệm.`,
     R`**Kết luận.** $d_1$ cắt $d_2$ tại điểm ứng với $t=1$: $(2;1;5)$.`
    ] },
  { muc: "TH", de: R`Với $d_1$ như trên, xét vị trí tương đối của $d_1$ với $d_3:\begin{cases}x=2+2s\\y=-2s\\z=1+4s\end{cases}$ và với $d_4:\begin{cases}x=s\\y=0\\z=1\end{cases}$.`,
    giai: [
-    R`$\vec u_3=(2;-2;4)=2\vec u_1$: cùng phương. Lấy $M_3(2;0;1)\in d_3$; thay vào $d_1$: $2=1+t\Rightarrow t=1$, khi đó $y=1\ne0$. Vậy $M_3\notin d_1$, suy ra $d_1\parallel d_3$.`,
-    R`$\vec u_4=(1;0;0)$ không cùng phương với $\vec u_1$. Hệ $\begin{cases}1+t=s\\2-t=0\\3+2t=1\end{cases}$: phương trình hai cho $t=2$, phương trình ba cho $t=-1$, mâu thuẫn. Hệ vô nghiệm.`,
+    R`**Phân tích.** VTCP **cùng phương** thì hai đường thẳng song song hoặc trùng: lấy một điểm của đường này thử vào đường kia.`,
+    R`**Bước 1.** $\vec u_3=(2;-2;4)=2\vec u_1$: cùng phương. Lấy $M_3(2;0;1)\in d_3$; thay vào $d_1$: $2=1+t\Rightarrow t=1$, khi đó $y=1\ne0$. Vậy $M_3\notin d_1$, suy ra $d_1\parallel d_3$.`,
+    R`**Bước 2.** $\vec u_4=(1;0;0)$ không cùng phương với $\vec u_1$. Hệ $\begin{cases}1+t=s\\2-t=0\\3+2t=1\end{cases}$: phương trình hai cho $t=2$, phương trình ba cho $t=-1$, mâu thuẫn. Hệ vô nghiệm.`,
     R`**Kết luận.** $d_1\parallel d_3$; $d_1$ và $d_4$ chéo nhau.`
    ] },
  { muc: "VD", de: R`Tìm giao điểm của $d:\dfrac{x-1}2=\dfrac{y+1}1=\dfrac{z-2}{-1}$ và $(P):x+y+z-6=0$.`,
    giai: [
-    R`Tham số hoá: $x=1+2t$, $y=-1+t$, $z=2-t$.`,
-    R`Thay vào $(P)$: $(1+2t)+(-1+t)+(2-t)-6=0\Leftrightarrow2t-4=0\Leftrightarrow t=2$.`,
-    R`**Giao điểm** $(5;1;0)$. Thử: $5+1+0-6=0$ ✓.`
+    R`**Phân tích.** Đường thẳng cắt mặt phẳng: thay dạng tham số vào phương trình mặt phẳng để được phương trình theo $t$, giải $t$ rồi suy ra giao điểm.`,
+    R`**Bước 1.** Tham số hoá: $x=1+2t$, $y=-1+t$, $z=2-t$.`,
+    R`**Bước 2.** Thay vào $(P)$: $(1+2t)+(-1+t)+(2-t)-6=0\Leftrightarrow2t-4=0\Leftrightarrow t=2$.`,
+    R`**Giao điểm** $(5;1;0)$. Thử: $5+1+0-6=0$ ✓.`,
+    R`**Kết luận.** $d$ cắt $(P)$ tại $(5;1;0)$.`
    ] },
  { muc: "VD", de: R`Xét vị trí tương đối của $d:\begin{cases}x=1+t\\y=2+t\\z=-2t\end{cases}$ và $(P):x+y+z-3=0$.`,
    giai: [
-    R`Thay vào $(P)$: $(1+t)+(2+t)+(-2t)-3=0\Leftrightarrow0\cdot t=0$, đúng với mọi $t$.`,
+    R`**Phân tích.** Thay tham số vào mặt phẳng: phương trình theo $t$ có thể **vô nghiệm** (song song), **một nghiệm** (cắt) hoặc **nghiệm đúng mọi $t$** (nằm trong).`,
+    R`**Bước 1.** Thay vào $(P)$: $(1+t)+(2+t)+(-2t)-3=0\Leftrightarrow0\cdot t=0$, đúng với mọi $t$.`,
     R`**Kết luận.** $d$ nằm trong $(P)$. (Ở đây $\vec u\cdot\vec n=1+1-2=0$ nhưng $d$ không song song mà nằm trong $(P)$.)`
    ] }
  ] },
@@ -2733,22 +2777,28 @@ Object.assign(D, {
  vd: [
  { muc: "TH", de: R`Tìm hình chiếu $H$ của $M(1;2;3)$ lên $(P):x+y+z-3=0$ và điểm $M'$ đối xứng với $M$ qua $(P)$.`,
    giai: [
-    R`Đường thẳng qua $M$, VTCP $\vec n=(1;1;1)$: $x=1+t$, $y=2+t$, $z=3+t$.`,
-    R`Thay vào $(P)$: $(1+t)+(2+t)+(3+t)-3=0\Leftrightarrow3t+3=0\Leftrightarrow t=-1$. Vậy $H(0;1;2)$.`,
-    R`$M'=2H-M=(0-1;\,2-2;\,4-3)=(-1;0;1)$.`
+    R`**Phân tích.** Hình chiếu $H$ của $M$ lên $(P)$: dựng đường thẳng qua $M$ vuông góc với $(P)$ (VTCP là $\vec n$), tìm giao điểm với $(P)$. Điểm đối xứng: $H$ là trung điểm $MM'$.`,
+    R`**Bước 1.** Đường thẳng qua $M$, VTCP $\vec n=(1;1;1)$: $x=1+t$, $y=2+t$, $z=3+t$.`,
+    R`**Bước 2.** Thay vào $(P)$: $(1+t)+(2+t)+(3+t)-3=0\Leftrightarrow3t+3=0\Leftrightarrow t=-1$. Vậy $H(0;1;2)$.`,
+    R`**Bước 3.** $M'=2H-M=(0-1;\,2-2;\,4-3)=(-1;0;1)$.`,
+    R`**Kết luận.** $H(0;1;2)$, $M'(-1;0;1)$.`
    ] },
  { muc: "TH", de: R`Tìm hình chiếu $H$ của $M(4;1;3)$ lên $\Delta:\begin{cases}x=1+t\\y=t\\z=-1+2t\end{cases}$ và tính khoảng cách từ $M$ đến $\Delta$.`,
    giai: [
-    R`$H(1+t;\,t;\,-1+2t)$, $\overrightarrow{MH}=(t-3;\,t-1;\,2t-4)$, $\vec u=(1;1;2)$.`,
-    R`$\overrightarrow{MH}\cdot\vec u=0\Leftrightarrow(t-3)+(t-1)+2(2t-4)=0\Leftrightarrow6t-12=0\Leftrightarrow t=2$.`,
-    R`$H(3;2;3)$, $\overrightarrow{MH}=(-1;1;0)$, $d(M,\Delta)=MH=\sqrt2$.`
+    R`**Phân tích.** Hình chiếu $H$ của $M$ lên đường thẳng: $H$ thuộc $\Delta$ (viết theo $t$) và $\overrightarrow{MH}\perp\vec u$. Giải $\overrightarrow{MH}\cdot\vec u=0$.`,
+    R`**Bước 1.** $H(1+t;\,t;\,-1+2t)$, $\overrightarrow{MH}=(t-3;\,t-1;\,2t-4)$, $\vec u=(1;1;2)$.`,
+    R`**Bước 2.** $\overrightarrow{MH}\cdot\vec u=0\Leftrightarrow(t-3)+(t-1)+2(2t-4)=0\Leftrightarrow6t-12=0\Leftrightarrow t=2$.`,
+    R`**Bước 3.** $H(3;2;3)$, $\overrightarrow{MH}=(-1;1;0)$, $d(M,\Delta)=MH=\sqrt2$.`,
+    R`**Kết luận.** $H(3;2;3)$, $d(M,\Delta)=\sqrt2$.`
    ] },
  { muc: "VD", de: R`Trong một hệ toạ độ (đơn vị: mét), một flycam đang ở vị trí $M(3;4;10)$, sườn đồi được mô hình hoá bởi mặt phẳng $(P):x+2y+2z-4=0$. Flycam cần hạ xuống sườn đồi theo đường ngắn nhất. Tìm điểm hạ cánh và quãng đường bay.`,
    giai: [
-    R`Đường ngắn nhất là đoạn vuông góc $MH$ với $H$ là hình chiếu của $M$ lên $(P)$.`,
-    R`Đường thẳng qua $M$, VTCP $(1;2;2)$: $x=3+t$, $y=4+2t$, $z=10+2t$.`,
-    R`Thay vào $(P)$: $(3+t)+2(4+2t)+2(10+2t)-4=0\Leftrightarrow27+9t=0\Leftrightarrow t=-3$. Vậy $H(0;-2;4)$.`,
-    R`Quãng đường $MH=\sqrt{3^2+6^2+6^2}=9$ (m). Kiểm tra: $d\big(M,(P)\big)=\dfrac{|3+8+20-4|}{3}=9$ ✓.`
+    R`**Phân tích.** Đường đi ngắn nhất từ một điểm đến một mặt phẳng là **đường vuông góc**. Tìm chân vuông góc $H$ và tính $MH$.`,
+    R`**Bước 1.** Đường ngắn nhất là đoạn vuông góc $MH$ với $H$ là hình chiếu của $M$ lên $(P)$.`,
+    R`**Bước 2.** Đường thẳng qua $M$, VTCP $(1;2;2)$: $x=3+t$, $y=4+2t$, $z=10+2t$.`,
+    R`**Bước 3.** Thay vào $(P)$: $(3+t)+2(4+2t)+2(10+2t)-4=0\Leftrightarrow27+9t=0\Leftrightarrow t=-3$. Vậy $H(0;-2;4)$.`,
+    R`**Bước 4.** Quãng đường $MH=\sqrt{3^2+6^2+6^2}=9$ (m). Kiểm tra: $d\big(M,(P)\big)=\dfrac{|3+8+20-4|}{3}=9$ ✓.`,
+    R`**Kết luận.** Flycam cần bay quãng ngắn nhất $9$ m.`
    ] }
  ] },
 "C5-B16-D01": {
@@ -2762,27 +2812,48 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Tính góc giữa $d_1:\begin{cases}x=1+t\\y=2\\z=t\end{cases}$ và $d_2:\begin{cases}x=0\\y=s\\z=1+s\end{cases}$.`,
    giai: [
-    R`$\vec u_1=(1;0;1)$, $\vec u_2=(0;1;1)$; $\vec u_1\cdot\vec u_2=1$; $|\vec u_1|=|\vec u_2|=\sqrt2$.`,
-    R`$\cos(d_1,d_2)=\dfrac{1}{\sqrt2\cdot\sqrt2}=\dfrac12$, nên $(d_1,d_2)=60^\circ$.`
+    R`**Phân tích.** Góc giữa hai đường thẳng: $\cos\varphi=\dfrac{|\vec u_1\cdot\vec u_2|}{|\vec u_1|\cdot|\vec u_2|}$, luôn có $0^\circ\le\varphi\le90^\circ$ (vì có giá trị tuyệt đối).`,
+    R`**Bước 1.** $\vec u_1=(1;0;1)$, $\vec u_2=(0;1;1)$; $\vec u_1\cdot\vec u_2=1$; $|\vec u_1|=|\vec u_2|=\sqrt2$.`,
+    R`**Bước 2.** $\cos(d_1,d_2)=\dfrac{1}{\sqrt2\cdot\sqrt2}=\dfrac12$, nên $(d_1,d_2)=60^\circ$.`,
+    R`**Kết luận.** $(d_1,d_2)=60^\circ$.`
    ] },
  { muc: "TH", de: R`Chứng minh hai đường thẳng có VTCP $\vec u=(1;2;2)$ và $\vec v=(2;-2;1)$ vuông góc với nhau.`,
    giai: [
-    R`$\vec u\cdot\vec v=1\cdot2+2\cdot(-2)+2\cdot1=0$.`,
-    R`Vậy $\cos=0$, góc giữa hai đường thẳng là $90^\circ$.`
+    R`**Phân tích.** Hai đường thẳng vuông góc khi tích vô hướng hai VTCP bằng $0$.`,
+    R`**Bước 1.** $\vec u\cdot\vec v=1\cdot2+2\cdot(-2)+2\cdot1=0$.`,
+    R`**Bước 2.** Vậy $\cos=0$, góc giữa hai đường thẳng là $90^\circ$.`,
+    R`**Kết luận.** Hai đường thẳng vuông góc.`
    ] },
  { muc: "VD", de: R`Tìm $m$ để góc giữa hai đường thẳng có VTCP $\vec u=(1;1;0)$ và $\vec v=(1;0;m)$ bằng $60^\circ$.`,
    giai: [
-    R`$\cos60^\circ=\dfrac{|1\cdot1+1\cdot0+0\cdot m|}{\sqrt2\cdot\sqrt{1+m^2}}=\dfrac{1}{\sqrt2\sqrt{1+m^2}}$.`,
-    R`$\dfrac12=\dfrac1{\sqrt{2(1+m^2)}}\Leftrightarrow\sqrt{2(1+m^2)}=2\Leftrightarrow1+m^2=2\Leftrightarrow m=\pm1$.`
+    R`**Phân tích.** Viết công thức góc theo $m$, cho bằng $\cos60^\circ=\dfrac12$, bình phương để bỏ căn.`,
+    R`**Bước 1.** $\cos60^\circ=\dfrac{|1\cdot1+1\cdot0+0\cdot m|}{\sqrt2\cdot\sqrt{1+m^2}}=\dfrac{1}{\sqrt2\sqrt{1+m^2}}$.`,
+    R`**Bước 2.** $\dfrac12=\dfrac1{\sqrt{2(1+m^2)}}\Leftrightarrow\sqrt{2(1+m^2)}=2\Leftrightarrow1+m^2=2\Leftrightarrow m=\pm1$.`,
+    R`**Kết luận.** $m=1$ hoặc $m=-1$.`
    ] },
  { muc: "VD", de: R`Cho hình lập phương $ABCD.A'B'C'D'$ cạnh $1$. Tính góc giữa hai đường thẳng $AB'$ và $BC'$.`,
    giai: [
-    R`Gắn hệ trục: $A(0;0;0)$, $B(1;0;0)$, $D(0;1;0)$, $A'(0;0;1)$. Khi đó $B'(1;0;1)$, $C'(1;1;1)$.`,
-    R`$\overrightarrow{AB'}=(1;0;1)$, $\overrightarrow{BC'}=(0;1;1)$.`,
-    R`$\cos=\dfrac{|0+0+1|}{\sqrt2\cdot\sqrt2}=\dfrac12$. **Kết luận.** Góc bằng $60^\circ$.`
+    R`**Phân tích.** Góc giữa hai đường thẳng trong hình lập phương: **gắn hệ trục** tại một đỉnh, tìm toạ độ các điểm, rồi dùng công thức.`,
+    R`**Bước 1.** Gắn hệ trục: $A(0;0;0)$, $B(1;0;0)$, $D(0;1;0)$, $A'(0;0;1)$. Khi đó $B'(1;0;1)$, $C'(1;1;1)$.`,
+    R`**Bước 2.** $\overrightarrow{AB'}=(1;0;1)$, $\overrightarrow{BC'}=(0;1;1)$.`,
+    R`**Bước 3.** $\cos=\dfrac{|0+0+1|}{\sqrt2\cdot\sqrt2}=\dfrac12$. **Kết luận.** Góc bằng $60^\circ$.`
    ],
    hinh: R`\begin{tikzpicture}[scale=1,>=stealth]
-` + LP + R`
+\draw[thick] (0,0)--(2.5,0)--(3.5,1);
+\draw[dashed] (3.5,1)--(1,1)--(0,0);
+\draw[thick] (0,2.5)--(2.5,2.5)--(3.5,3.5)--(1,3.5)--cycle;
+\draw[thick] (0,0)--(0,2.5);
+\draw[thick] (2.5,0)--(2.5,2.5);
+\draw[thick] (3.5,1)--(3.5,3.5);
+\draw[dashed] (1,1)--(1,3.5);
+\node[below left] at (0,0){$A$};
+\node[below right] at (2.5,0){$B$};
+\node[right] at (3.5,1){$C$};
+\node[above left] at (1,1){$D$};
+\node[left] at (0,2.5){$A'$};
+\node[above left] at (2.5,2.5){$B'$};
+\node[above right] at (3.5,3.5){$C'$};
+\node[above left] at (1,3.5){$D'$};
 \draw[thick,red] (0,0)--(2.5,2.5);
 \draw[thick,blue] (2.5,0)--(3.5,3.5);
 \end{tikzpicture}`,
@@ -2799,23 +2870,43 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Tính góc giữa $\Delta:\begin{cases}x=1+t\\y=2\\z=3+t\end{cases}$ và mặt phẳng $(Oxy)$.`,
    giai: [
-    R`$\vec u=(1;0;1)$; $(Oxy):z=0$ có VTPT $\vec n=(0;0;1)$.`,
-    R`$\sin\varphi=\dfrac{|0+0+1|}{\sqrt2\cdot1}=\dfrac{1}{\sqrt2}$, nên $\varphi=45^\circ$.`
+    R`**Phân tích.** Góc giữa đường thẳng và mặt phẳng dùng **sin**: $\sin\varphi=\dfrac{|\vec u\cdot\vec n|}{|\vec u|\cdot|\vec n|}$ (không phải cos, vì $\vec n$ vuông góc với mặt phẳng).`,
+    R`**Bước 1.** $\vec u=(1;0;1)$; $(Oxy):z=0$ có VTPT $\vec n=(0;0;1)$.`,
+    R`**Bước 2.** $\sin\varphi=\dfrac{|0+0+1|}{\sqrt2\cdot1}=\dfrac{1}{\sqrt2}$, nên $\varphi=45^\circ$.`,
+    R`**Kết luận.** Góc giữa $\Delta$ và $(Oxy)$ bằng $45^\circ$.`
    ] },
  { muc: "TH", de: R`Tính góc giữa $\Delta:\dfrac{x-1}2=\dfrac{y+1}1=\dfrac{z-3}{-2}$ và $(P):2x-y+2z+5=0$ (làm tròn đến hàng phần mười của độ).`,
    giai: [
-    R`$\vec u=(2;1;-2)$, $|\vec u|=3$; $\vec n=(2;-1;2)$, $|\vec n|=3$.`,
-    R`$\vec u\cdot\vec n=4-1-4=-1$.`,
-    R`$\sin\varphi=\dfrac{|-1|}{3\cdot3}=\dfrac19$, suy ra $\varphi\approx6{,}4^\circ$.`
+    R`**Phân tích.** Như ví dụ trước: tính $\vec u\cdot\vec n$ và hai độ dài, rồi dùng $\sin$, bấm máy $\sin^{-1}$.`,
+    R`**Bước 1.** $\vec u=(2;1;-2)$, $|\vec u|=3$; $\vec n=(2;-1;2)$, $|\vec n|=3$.`,
+    R`**Bước 2.** $\vec u\cdot\vec n=4-1-4=-1$.`,
+    R`**Bước 3.** $\sin\varphi=\dfrac{|-1|}{3\cdot3}=\dfrac19$, suy ra $\varphi\approx6{,}4^\circ$.`,
+    R`**Kết luận.** $\varphi\approx6{,}4^\circ$.`
    ] },
  { muc: "VD", de: R`Cho hình lập phương $ABCD.A'B'C'D'$. Tính góc giữa đường chéo $AC'$ và mặt đáy $(ABCD)$ (làm tròn đến hàng phần mười của độ).`,
    giai: [
-    R`Gắn hệ trục với cạnh $1$: $A(0;0;0)$, $C'(1;1;1)$; mặt $(ABCD)$ là $(Oxy)$, VTPT $\vec n=(0;0;1)$.`,
-    R`$\overrightarrow{AC'}=(1;1;1)$, $\sin\varphi=\dfrac{1}{\sqrt3\cdot1}=\dfrac{1}{\sqrt3}$.`,
-    R`$\varphi\approx35{,}3^\circ$. (Kiểm tra bằng hình học: $\tan\varphi=\dfrac{CC'}{AC}=\dfrac1{\sqrt2}$ cho cùng kết quả.)`
+    R`**Phân tích.** Gắn hệ trục vào hình lập phương: mặt đáy là $(Oxy)$, VTPT $(0;0;1)$; đường chéo $AC'$ có VTCP $\overrightarrow{AC'}$.`,
+    R`**Bước 1.** Gắn hệ trục với cạnh $1$: $A(0;0;0)$, $C'(1;1;1)$; mặt $(ABCD)$ là $(Oxy)$, VTPT $\vec n=(0;0;1)$.`,
+    R`**Bước 2.** $\overrightarrow{AC'}=(1;1;1)$, $\sin\varphi=\dfrac{1}{\sqrt3\cdot1}=\dfrac{1}{\sqrt3}$.`,
+    R`**Bước 3.** $\varphi\approx35{,}3^\circ$. (Kiểm tra bằng hình học: $\tan\varphi=\dfrac{CC'}{AC}=\dfrac1{\sqrt2}$ cho cùng kết quả.)`,
+    R`**Kết luận.** Góc giữa $AC'$ và mặt đáy khoảng $35{,}3^\circ$.`
    ],
    hinh: R`\begin{tikzpicture}[scale=1,>=stealth]
-` + LP + R`
+\draw[thick] (0,0)--(2.5,0)--(3.5,1);
+\draw[dashed] (3.5,1)--(1,1)--(0,0);
+\draw[thick] (0,2.5)--(2.5,2.5)--(3.5,3.5)--(1,3.5)--cycle;
+\draw[thick] (0,0)--(0,2.5);
+\draw[thick] (2.5,0)--(2.5,2.5);
+\draw[thick] (3.5,1)--(3.5,3.5);
+\draw[dashed] (1,1)--(1,3.5);
+\node[below left] at (0,0){$A$};
+\node[below right] at (2.5,0){$B$};
+\node[right] at (3.5,1){$C$};
+\node[above left] at (1,1){$D$};
+\node[left] at (0,2.5){$A'$};
+\node[above left] at (2.5,2.5){$B'$};
+\node[above right] at (3.5,3.5){$C'$};
+\node[above left] at (1,3.5){$D'$};
 \draw[dashed] (0,0)--(3.5,1);
 \draw[thick,red] (0,0)--(3.5,3.5);
 \end{tikzpicture}`,
@@ -2832,19 +2923,24 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Tính góc giữa $(P):x+2y+2z-1=0$ và $(Q):2x+y-2z+3=0$.`,
    giai: [
-    R`$\vec n_P\cdot\vec n_Q=2+2-4=0$.`,
-    R`Vậy $\cos=0$, $(P)\perp(Q)$, góc bằng $90^\circ$.`
+    R`**Phân tích.** Góc giữa hai mặt phẳng bằng góc giữa hai VTPT (lấy giá trị tuyệt đối): $\cos\varphi=\dfrac{|\vec n_P\cdot\vec n_Q|}{|\vec n_P|\cdot|\vec n_Q|}$.`,
+    R`**Bước 1.** $\vec n_P\cdot\vec n_Q=2+2-4=0$.`,
+    R`**Bước 2.** Vậy $\cos=0$, $(P)\perp(Q)$, góc bằng $90^\circ$.`,
+    R`**Kết luận.** $(P)\perp(Q)$.`
    ] },
  { muc: "TH", de: R`Tính góc giữa $(P):x-z+1=0$ và $(Q):y-z=0$.`,
    giai: [
-    R`$\vec n_P=(1;0;-1)$, $\vec n_Q=(0;1;-1)$; $\vec n_P\cdot\vec n_Q=0+0+1=1$; $|\vec n_P|=|\vec n_Q|=\sqrt2$.`,
-    R`$\cos=\dfrac{1}{2}$, góc giữa hai mặt phẳng bằng $60^\circ$.`
+    R`**Phân tích.** Đọc đúng VTPT khi phương trình thiếu ẩn: $x-z+1=0$ có $\vec n=(1;0;-1)$ (hệ số của $y$ bằng $0$).`,
+    R`**Bước 1.** $\vec n_P=(1;0;-1)$, $\vec n_Q=(0;1;-1)$; $\vec n_P\cdot\vec n_Q=0+0+1=1$; $|\vec n_P|=|\vec n_Q|=\sqrt2$.`,
+    R`**Bước 2.** $\cos=\dfrac{1}{2}$, góc giữa hai mặt phẳng bằng $60^\circ$.`,
+    R`**Kết luận.** Góc giữa $(P)$ và $(Q)$ bằng $60^\circ$.`
    ] },
  { muc: "VD", de: R`Một mái nhà là mặt phẳng đi qua ba điểm $A(0;0;3)$, $B(4;0;3)$, $C(0;3;5)$ (đơn vị: mét; mặt đất là $(Oxy)$). Tính góc giữa mái nhà và mặt đất (làm tròn đến độ).`,
    giai: [
-    R`$\overrightarrow{AB}=(4;0;0)$, $\overrightarrow{AC}=(0;3;2)$.`,
-    R`$[\overrightarrow{AB},\overrightarrow{AC}]=\left(0\cdot2-0\cdot3;\ 0\cdot0-4\cdot2;\ 4\cdot3-0\cdot0\right)=(0;-8;12)$, chọn $\vec n=(0;-2;3)$.`,
-    R`Mặt đất có VTPT $\vec k=(0;0;1)$. $\cos\alpha=\dfrac{|3|}{\sqrt{4+9}\cdot1}=\dfrac{3}{\sqrt{13}}\approx0{,}832$.`,
+    R`**Phân tích.** Bài thực tế: viết VTPT của mái nhà bằng tích có hướng $[\overrightarrow{AB},\overrightarrow{AC}]$, mặt đất có VTPT $(0;0;1)$, rồi dùng công thức góc giữa hai mặt phẳng.`,
+    R`**Bước 1.** $\overrightarrow{AB}=(4;0;0)$, $\overrightarrow{AC}=(0;3;2)$.`,
+    R`**Bước 2.** $[\overrightarrow{AB},\overrightarrow{AC}]=\left(0\cdot2-0\cdot3;\ 0\cdot0-4\cdot2;\ 4\cdot3-0\cdot0\right)=(0;-8;12)$, chọn $\vec n=(0;-2;3)$.`,
+    R`**Bước 3.** Mặt đất có VTPT $\vec k=(0;0;1)$. $\cos\alpha=\dfrac{|3|}{\sqrt{4+9}\cdot1}=\dfrac{3}{\sqrt{13}}\approx0{,}832$.`,
     R`**Kết luận.** $\alpha\approx34^\circ$.`
    ] }
  ] },
@@ -2861,20 +2957,24 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Tìm tâm và bán kính của mặt cầu $(S):(x-1)^2+(y+2)^2+z^2=9$.`,
    giai: [
-    R`So với dạng chuẩn: $a=1$, $b=-2$, $c=0$, $R^2=9$.`,
+    R`**Phân tích.** Phương trình $(x-a)^2+(y-b)^2+(z-c)^2=R^2$ cho ngay tâm $I(a;b;c)$ (đổi dấu các số trong ngoặc) và bán kính $R$.`,
+    R`**Bước 1.** So với dạng chuẩn: $a=1$, $b=-2$, $c=0$, $R^2=9$.`,
     R`**Kết quả.** Tâm $I(1;-2;0)$, bán kính $R=3$.`
    ] },
  { muc: "TH", de: R`Tìm tâm và bán kính của mặt cầu $x^2+y^2+z^2-2x+4y-6z-2=0$.`,
    giai: [
-    R`$-2a=-2\Rightarrow a=1$; $-2b=4\Rightarrow b=-2$; $-2c=-6\Rightarrow c=3$; $d=-2$.`,
-    R`$a^2+b^2+c^2-d=1+4+9+2=16>0$.`,
+    R`**Phân tích.** Dạng khai triển $x^2+y^2+z^2-2ax-2by-2cz+d=0$: tâm $I(a;b;c)$ (lấy **nửa hệ số, đổi dấu**), $R=\sqrt{a^2+b^2+c^2-d}$.`,
+    R`**Bước 1.** $-2a=-2\Rightarrow a=1$; $-2b=4\Rightarrow b=-2$; $-2c=-6\Rightarrow c=3$; $d=-2$.`,
+    R`**Bước 2.** $a^2+b^2+c^2-d=1+4+9+2=16>0$.`,
     R`**Kết quả.** Tâm $I(1;-2;3)$, bán kính $R=4$.`
    ] },
  { muc: "VD", de: R`Cho phương trình $x^2+y^2+z^2-2x-4y+2z+m=0$. Tìm $m$ để đây là phương trình mặt cầu, và tìm $m$ để mặt cầu đó có bán kính bằng $3$.`,
    giai: [
-    R`$a=1$, $b=2$, $c=-1$, $d=m$.`,
-    R`Là mặt cầu khi $1+4+1-m>0\Leftrightarrow m<6$.`,
-    R`$R=3\Leftrightarrow6-m=9\Leftrightarrow m=-3$ (thoả mãn $m<6$).`
+    R`**Phân tích.** Là mặt cầu khi $a^2+b^2+c^2-d>0$. Sau đó cho $R^2=9$ để tìm $m$, nhớ đối chiếu điều kiện.`,
+    R`**Bước 1.** $a=1$, $b=2$, $c=-1$, $d=m$.`,
+    R`**Bước 2.** Là mặt cầu khi $1+4+1-m>0\Leftrightarrow m<6$.`,
+    R`**Bước 3.** $R=3\Leftrightarrow6-m=9\Leftrightarrow m=-3$ (thoả mãn $m<6$).`,
+    R`**Kết luận.** Là mặt cầu khi $m<6$; bán kính bằng $3$ khi $m=-3$.`
    ] }
  ] },
 "C5-B17-D02": {
@@ -2891,25 +2991,33 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Viết phương trình mặt cầu tâm $I(1;2;-1)$ và đi qua $A(3;0;0)$.`,
    giai: [
-    R`$\overrightarrow{IA}=(2;-2;1)$, $R=IA=\sqrt{4+4+1}=3$.`,
-    R`$(S):(x-1)^2+(y-2)^2+(z+1)^2=9$.`
+    R`**Phân tích.** Biết tâm, cần bán kính: mặt cầu đi qua $A$ nên $R=IA$.`,
+    R`**Bước 1.** $\overrightarrow{IA}=(2;-2;1)$, $R=IA=\sqrt{4+4+1}=3$.`,
+    R`**Bước 2.** $(S):(x-1)^2+(y-2)^2+(z+1)^2=9$.`,
+    R`**Kết luận.** $(S):(x-1)^2+(y-2)^2+(z+1)^2=9$.`
    ] },
  { muc: "TH", de: R`Viết phương trình mặt cầu đường kính $AB$ với $A(1;3;-2)$, $B(3;-1;4)$.`,
    giai: [
-    R`Tâm $I$ là trung điểm $AB$: $I(2;1;1)$.`,
-    R`$\overrightarrow{AB}=(2;-4;6)$, $AB=\sqrt{4+16+36}=\sqrt{56}=2\sqrt{14}$, nên $R=\sqrt{14}$.`,
-    R`$(S):(x-2)^2+(y-1)^2+(z-1)^2=14$.`
+    R`**Phân tích.** Mặt cầu đường kính $AB$: tâm là trung điểm $AB$, bán kính $R=\dfrac{AB}2$ (hoặc $R=IA$).`,
+    R`**Bước 1.** Tâm $I$ là trung điểm $AB$: $I(2;1;1)$.`,
+    R`**Bước 2.** $\overrightarrow{AB}=(2;-4;6)$, $AB=\sqrt{4+16+36}=\sqrt{56}=2\sqrt{14}$, nên $R=\sqrt{14}$.`,
+    R`**Bước 3.** $(S):(x-2)^2+(y-1)^2+(z-1)^2=14$.`,
+    R`**Kết luận.** $(S):(x-2)^2+(y-1)^2+(z-1)^2=14$.`
    ] },
  { muc: "TH", de: R`Viết phương trình mặt cầu tâm $I(1;-2;3)$ tiếp xúc với mặt phẳng $(P):2x+y-2z-3=0$.`,
    giai: [
-    R`$R=d\big(I,(P)\big)=\dfrac{|2-2-6-3|}{\sqrt{4+1+4}}=\dfrac93=3$.`,
-    R`$(S):(x-1)^2+(y+2)^2+(z-3)^2=9$.`
+    R`**Phân tích.** Mặt cầu tiếp xúc mặt phẳng: bán kính bằng khoảng cách từ tâm đến mặt phẳng.`,
+    R`**Bước 1.** $R=d\big(I,(P)\big)=\dfrac{|2-2-6-3|}{\sqrt{4+1+4}}=\dfrac93=3$.`,
+    R`**Bước 2.** $(S):(x-1)^2+(y+2)^2+(z-3)^2=9$.`,
+    R`**Kết luận.** $(S):(x-1)^2+(y+2)^2+(z-3)^2=9$.`
    ] },
  { muc: "VD", de: R`Viết phương trình mặt cầu đi qua bốn điểm $O(0;0;0)$, $A(2;0;0)$, $B(0;4;0)$, $C(0;0;6)$.`,
    giai: [
-    R`Gọi $(S):x^2+y^2+z^2-2ax-2by-2cz+d=0$.`,
-    R`Qua $O$: $d=0$. Qua $A$: $4-4a=0\Rightarrow a=1$. Qua $B$: $16-8b=0\Rightarrow b=2$. Qua $C$: $36-12c=0\Rightarrow c=3$.`,
-    R`$(S):x^2+y^2+z^2-2x-4y-6z=0$; tâm $I(1;2;3)$, $R=\sqrt{1+4+9-0}=\sqrt{14}$.`
+    R`**Phân tích.** Qua bốn điểm: dùng dạng khai triển, thay bốn điểm được hệ bốn ẩn $a$, $b$, $c$, $d$. Điểm $O$ cho ngay $d=0$, nên hệ rất gọn.`,
+    R`**Bước 1.** Gọi $(S):x^2+y^2+z^2-2ax-2by-2cz+d=0$.`,
+    R`**Bước 2.** Qua $O$: $d=0$. Qua $A$: $4-4a=0\Rightarrow a=1$. Qua $B$: $16-8b=0\Rightarrow b=2$. Qua $C$: $36-12c=0\Rightarrow c=3$.`,
+    R`**Bước 3.** $(S):x^2+y^2+z^2-2x-4y-6z=0$; tâm $I(1;2;3)$, $R=\sqrt{1+4+9-0}=\sqrt{14}$.`,
+    R`**Thử lại.** $IA^2=1+4+9=14$, $IB^2=1+4+9=14$, $IC^2=1+4+9=14$, $IO^2=14$: cả bốn điểm cách tâm $\sqrt{14}$.`
    ] }
  ] },
 "C5-B17-D03": {
@@ -2924,28 +3032,35 @@ Object.assign(D, {
  vd: [
  { muc: "NB", de: R`Cho $(S):(x-1)^2+y^2+(z+2)^2=9$. Xét vị trí của $M(2;2;0)$ và $N(1;1;-1)$ đối với $(S)$.`,
    giai: [
-    R`Tâm $I(1;0;-2)$, $R=3$.`,
-    R`$IM^2=1+4+4=9=R^2$: $M$ nằm trên mặt cầu.`,
-    R`$IN^2=0+1+1=2<9$: $N$ nằm trong mặt cầu.`
+    R`**Phân tích.** So sánh khoảng cách từ điểm đến tâm với bán kính: $IM<R$ (trong), $IM=R$ (trên), $IM>R$ (ngoài). Dùng $IM^2$ và $R^2$ để khỏi khai căn.`,
+    R`**Bước 1.** Tâm $I(1;0;-2)$, $R=3$.`,
+    R`**Bước 2.** $IM^2=1+4+4=9=R^2$: $M$ nằm trên mặt cầu.`,
+    R`**Bước 3.** $IN^2=0+1+1=2<9$: $N$ nằm trong mặt cầu.`,
+    R`**Kết luận.** $M$ nằm trên mặt cầu, $N$ nằm trong mặt cầu.`
    ] },
  { muc: "TH", de: R`Cho mặt cầu tâm $I(1;2;3)$, bán kính $5$ và mặt phẳng $(P):2x-2y+z+8=0$. Chứng minh $(P)$ cắt mặt cầu theo một đường tròn; tìm tâm và bán kính của đường tròn đó.`,
    giai: [
-    R`$d=d\big(I,(P)\big)=\dfrac{|2-4+3+8|}{3}=3<5$: $(P)$ cắt mặt cầu theo một đường tròn.`,
-    R`Bán kính đường tròn: $r=\sqrt{R^2-d^2}=\sqrt{25-9}=4$.`,
-    R`Tâm $H$ là hình chiếu của $I$: đường thẳng qua $I$, VTCP $(2;-2;1)$: $(1+2t;\,2-2t;\,3+t)$. Thay vào $(P)$: $2(1+2t)-2(2-2t)+(3+t)+8=0\Leftrightarrow9t+9=0\Leftrightarrow t=-1$.`,
+    R`**Phân tích.** Mặt phẳng cắt mặt cầu khi $d=d(I,(P))<R$. Đường tròn giao tuyến có tâm $H$ là **hình chiếu** của $I$ lên $(P)$, bán kính $r=\sqrt{R^2-d^2}$.`,
+    R`**Bước 1.** $d=d\big(I,(P)\big)=\dfrac{|2-4+3+8|}{3}=3<5$: $(P)$ cắt mặt cầu theo một đường tròn.`,
+    R`**Bước 2.** Bán kính đường tròn: $r=\sqrt{R^2-d^2}=\sqrt{25-9}=4$.`,
+    R`**Bước 3.** Tâm $H$ là hình chiếu của $I$: đường thẳng qua $I$, VTCP $(2;-2;1)$: $(1+2t;\,2-2t;\,3+t)$. Thay vào $(P)$: $2(1+2t)-2(2-2t)+(3+t)+8=0\Leftrightarrow9t+9=0\Leftrightarrow t=-1$.`,
     R`**Kết quả.** $H(-1;4;2)$, $r=4$.`
    ] },
  { muc: "TH", de: R`Tìm $m$ để $(P):x+2y+2z+m=0$ tiếp xúc với $(S):(x-1)^2+(y-1)^2+(z-1)^2=4$.`,
    giai: [
-    R`$I(1;1;1)$, $R=2$. Tiếp xúc $\Leftrightarrow d\big(I,(P)\big)=R\Leftrightarrow\dfrac{|1+2+2+m|}3=2$.`,
-    R`$|5+m|=6\Leftrightarrow m=1$ hoặc $m=-11$.`
+    R`**Phân tích.** Tiếp xúc $\iff d(I,(P))=R$. Có giá trị tuyệt đối nên thường được hai giá trị $m$.`,
+    R`**Bước 1.** $I(1;1;1)$, $R=2$. Tiếp xúc $\Leftrightarrow d\big(I,(P)\big)=R\Leftrightarrow\dfrac{|1+2+2+m|}3=2$.`,
+    R`**Bước 2.** $|5+m|=6\Leftrightarrow m=1$ hoặc $m=-11$.`,
+    R`**Kết luận.** $m=1$ hoặc $m=-11$.`
    ] },
  { muc: "VD", de: R`Một quả bóng hình cầu bán kính $1{,}5$ dm đặt ở góc phòng, tiếp xúc với sàn nhà và hai bức tường. Chọn hệ trục với gốc $O$ là góc phòng, sàn là $(Oxy)$, hai tường là $(Oxz)$ và $(Oyz)$. Viết phương trình mặt cầu (quả bóng) và tính khoảng cách ngắn nhất từ góc phòng $O$ đến quả bóng.`,
    giai: [
-    R`Bóng tiếp xúc với ba mặt toạ độ nên khoảng cách từ tâm đến mỗi mặt bằng $R=1{,}5$; tâm nằm trong phòng nên $I(1{,}5;1{,}5;1{,}5)$.`,
-    R`$(S):(x-1{,}5)^2+(y-1{,}5)^2+(z-1{,}5)^2=2{,}25$.`,
-    R`$OI=\sqrt{3\cdot1{,}5^2}=1{,}5\sqrt3\approx2{,}598$ dm, lớn hơn $R$ nên $O$ ở ngoài quả bóng.`,
-    R`Khoảng cách ngắn nhất từ $O$ đến quả bóng: $OI-R=1{,}5\sqrt3-1{,}5\approx1{,}10$ dm.`
+    R`**Phân tích.** Quả bóng tiếp xúc ba mặt toạ độ nên tâm cách mỗi mặt đúng $R$; điểm gần $O$ nhất của quả cầu nằm trên đoạn $OI$, cách $O$ một khoảng $OI-R$.`,
+    R`**Bước 1.** Bóng tiếp xúc với ba mặt toạ độ nên khoảng cách từ tâm đến mỗi mặt bằng $R=1{,}5$; tâm nằm trong phòng nên $I(1{,}5;1{,}5;1{,}5)$.`,
+    R`**Bước 2.** $(S):(x-1{,}5)^2+(y-1{,}5)^2+(z-1{,}5)^2=2{,}25$.`,
+    R`**Bước 3.** $OI=\sqrt{3\cdot1{,}5^2}=1{,}5\sqrt3\approx2{,}598$ dm, lớn hơn $R$ nên $O$ ở ngoài quả bóng.`,
+    R`**Bước 4.** Khoảng cách ngắn nhất từ $O$ đến quả bóng: $OI-R=1{,}5\sqrt3-1{,}5\approx1{,}10$ dm.`,
+    R`**Kết luận.** Tâm bóng $I(1{,}5;1{,}5;1{,}5)$; khoảng cách ngắn nhất từ góc phòng đến bóng khoảng $1{,}10$ dm.`
    ] }
  ] }
 });
