@@ -554,12 +554,16 @@
       · kết quả ${bai.ketQuaMo ? "<b>đã mở</b> cho học sinh" : "chưa mở (mở khi cả lớp nộp xong, khi đóng bài, hoặc khi thầy bấm Công bố)"}
       ${hs.some(h => h.khoa) ? `<div class="note red" style="margin:8px 0 4px">🔒 Đang khoá chờ thầy mở: ${hs.filter(h => h.khoa).map(h => `<b>${esc(h.hoTen)}</b>`).join(", ")}. <button class="btn sm green" id="btnMoKhoaHet">Mở khoá tất cả</button></div>` : ""}
       ${hs.some(h => h.viPham) ? `<br>⚠ Rời màn hình khi thi: ${hs.filter(h => h.viPham).map(h => `<b>${esc(h.hoTen)}</b> (${h.viPham} lần)`).join(", ")}` : ""}`;
-    $("#tGS tbody").innerHTML = hs.map((h, i) => `<tr><td>${i + 1}</td><td>${esc(h.hoTen)}</td><td><span class="tt ${h.trangThai}">${TT[h.trangThai]}</span>${h.khoa ? ` <button class="btn sm green" data-mo-khoa="${esc(h.id)}" title="Em này rời màn hình lần 2">🔓 Mở khoá</button>` : ""}</td>
+    $("#tGS tbody").innerHTML = hs.map((h, i) => `<tr><td>${i + 1}</td><td>${esc(h.hoTen)}</td><td><span class="tt ${h.trangThai}">${TT[h.trangThai]}</span>${h.khoa ? ` <button class="btn sm green" data-mo-khoa="${esc(h.id)}" title="Em này rời màn hình lần 2">🔓 Mở khoá</button>` : ""}${h.trangThai !== "chua" && bai.trangThai === "mo" ? ` <button class="btn sm ghost" data-lam-lai="${esc(h.id)}" data-ten="${esc(h.hoTen)}" title="Xoá lượt làm này để em làm lại từ đầu với đề mới">↺ Cho làm lại</button>` : ""}</td>
       <td class="num">${h.trangThai === "chua" ? "" : h.soLam + "/" + bai.soCau}</td><td class="small">${h.batDau ? ngay(h.batDau) : ""}</td><td class="small">${h.nopLuc ? ngay(h.nopLuc) : ""}</td>
       <td class="num">${h.viPham ? `<span class="tt khoa">${h.viPham}</span>` : ""}</td>
       <td class="num"><b>${h.diem == null ? "" : String(h.diem).replace(".", ",")}</b></td></tr>`).join("") || `<tr><td colspan="8" class="muted">Lớp chưa có học sinh đã duyệt.</td></tr>`;
     const moKhoa = (btn, ids) => cho(btn, async () => { try { const r = await goi("gv.moKhoaThi", { maBai: bai.maBai, hsId: ids }); bao(`Đã mở khoá cho ${r.n} em.`, "green"); giamSat(); } catch (e) { bao(esc(e.message), "red"); } });
     $$("[data-mo-khoa]").forEach(b => b.onclick = () => moKhoa(b, [b.dataset.moKhoa]));
+    $$("[data-lam-lai]").forEach(b => b.onclick = () => {
+      if (!confirm(`Cho ${b.dataset.ten} làm lại bài từ đầu? Lượt làm hiện tại (điểm, số lần rời màn hình) được cất vào nhật kí và không còn tính. Em vào lại sẽ nhận đề mới và đủ thời gian.`)) return;
+      cho(b, async () => { try { await goi("gv.choLamLai", { maBai: bai.maBai, hsId: b.dataset.lamLai }); bao(`Đã cho <b>${esc(b.dataset.ten)}</b> làm lại. Em tải lại trang chính rồi bấm Vào làm bài.`, "green"); giamSat(); } catch (e) { bao(esc(e.message), "red"); } });
+    });
     if ($("#btnMoKhoaHet")) $("#btnMoKhoaHet").onclick = () => moKhoa($("#btnMoKhoaHet"), hs.filter(h => h.khoa).map(h => h.id));
     $("#gsLuc").textContent = "cập nhật " + new Date().toLocaleTimeString("vi-VN");
     taiBai().catch(() => { });                                        // số vào / nộp trong danh sách bài cũng cập nhật theo

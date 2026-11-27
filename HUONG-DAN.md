@@ -130,3 +130,8 @@ Thầy làm một lần, khoảng 15 phút.
 - **Đặt lại mật khẩu:** bấm **Đặt lại mật khẩu** ở dòng của em đó. Thầy đưa em mật khẩu tạm hiện ra; em đăng nhập rồi vào *Đổi mật khẩu*.
 - **Chuyển lớp:** tick các em → chọn lớp ở ô *Chuyển sang lớp…* → **Chuyển mục đã chọn sang lớp này**.
 - **Xoá lớp:** bấm **🗑 Xoá lớp**. Chỉ xoá được khi lớp không còn học sinh, bài kiểm tra hay bài tự học giao (chuyển hoặc xoá các mục đó trước), để không mất điểm của các em.
+
+**Mở khoá, cho làm lại bài**
+- Thẻ **📝 Bài kiểm tra** → bấm **Theo dõi** ở bài đang mở.
+- Em bị khoá (rời màn hình lần 2): bấm **🔓 Mở khoá** ở dòng của em (hoặc **Mở khoá tất cả**). Em làm tiếp bài cũ, giữ nguyên câu đã làm.
+- Em đã nộp hoặc bị tự nộp (lần 3) mà thầy muốn cho làm lại: bấm **↺ Cho làm lại**. Lượt cũ được cất vào nhật kí (trang NhatKy ghi điểm cũ), em vào lại nhận đề mới với đủ thời gian. Nút chỉ hiện khi bài đang mở.
