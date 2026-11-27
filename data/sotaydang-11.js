@@ -917,4 +917,214 @@ Object.assign(D, {
    ] }
  ] }
 });
+/* ---------- Chương VI · Hàm số mũ và hàm số lôgarit ---------- */
+Object.assign(D, {
+"C6-B18-D23": {
+ pp: [
+  R`**Quy tắc** (với $a,b>0$; $m,n$ thực): $a^m\cdot a^n=a^{m+n}$; $\dfrac{a^m}{a^n}=a^{m-n}$; $(a^m)^n=a^{mn}$; $(ab)^n=a^nb^n$; $a^{\frac mn}=\sqrt[n]{a^m}$; $a^{-n}=\dfrac1{a^n}$.`,
+  R`**Rút gọn:** đổi mọi căn thức về luỹ thừa với số mũ hữu tỉ, rồi cộng, trừ số mũ.`,
+  R`**So sánh:** với $a>1$: $a^m>a^n\Leftrightarrow m>n$; với $0<a<1$: $a^m>a^n\Leftrightarrow m<n$.`,
+  R`**Lãi kép:** gửi $P$, lãi suất $r$ mỗi kì, lãi nhập gốc; sau $n$ kì: $A=P(1+r)^n$. **Tăng trưởng mũ:** $N(t)=N_0\cdot a^{t/T}$ (mỗi khoảng $T$ tăng gấp $a$ lần).`
+ ],
+ luuY: [
+  R`$a^m+a^n\ne a^{m+n}$ (chỉ có quy tắc cho tích).`,
+  R`So sánh hai luỹ thừa cơ số nhỏ hơn $1$ mà quên đổi chiều.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Tính $A=8^{\frac23}-27^{-\frac13}$.`,
+   giai: [
+    R`$8^{\frac23}=\left(2^3\right)^{\frac23}=2^2=4$.`,
+    R`$27^{-\frac13}=\left(3^3\right)^{-\frac13}=3^{-1}=\dfrac13$.`,
+    R`$A=4-\dfrac13=\dfrac{11}3$.`
+   ] },
+ { muc: "TH", de: R`Rút gọn $P=\dfrac{a^{\frac13}\cdot\sqrt a}{\sqrt[6]a}$ với $a>0$.`,
+   giai: [
+    R`$\sqrt a=a^{\frac12}$, $\sqrt[6]a=a^{\frac16}$.`,
+    R`$P=a^{\frac13+\frac12-\frac16}=a^{\frac{2+3-1}6}=a^{\frac23}$.`
+   ] },
+ { muc: "TH", de: R`So sánh: a) $3^{\sqrt2}$ và $3^{1{,}4}$; b) $(0{,}5)^{\sqrt3}$ và $(0{,}5)^{1{,}7}$.`,
+   giai: [
+    R`a) $\sqrt2\approx1{,}414>1{,}4$ và cơ số $3>1$, nên $3^{\sqrt2}>3^{1{,}4}$.`,
+    R`b) $\sqrt3\approx1{,}732>1{,}7$ nhưng cơ số $0<0{,}5<1$, nên $(0{,}5)^{\sqrt3}<(0{,}5)^{1{,}7}$.`
+   ] },
+ { muc: "VD", de: R`Gửi tiết kiệm $50$ triệu đồng, lãi suất $0{,}5\%$/tháng, lãi nhập gốc hằng tháng. Sau $24$ tháng có bao nhiêu tiền (làm tròn đến hàng phần trăm triệu đồng)?`,
+   giai: [
+    R`$P=50$, $r=0{,}005$, $n=24$.`,
+    R`$A=50\cdot(1{,}005)^{24}\approx50\cdot1{,}12716\approx56{,}36$ (triệu đồng).`
+   ] },
+ { muc: "VD", de: R`Số vi khuẩn sau $t$ giờ là $N(t)=500\cdot2^{\frac t3}$. Sau $12$ giờ có bao nhiêu vi khuẩn? Sau bao lâu số vi khuẩn gấp $8$ lần ban đầu?`,
+   giai: [
+    R`$N(12)=500\cdot2^{4}=8000$ (con).`,
+    R`Gấp $8$ lần: $2^{\frac t3}=8=2^3\Leftrightarrow\dfrac t3=3\Leftrightarrow t=9$ (giờ).`
+   ] }
+ ] },
+"C6-B19-D24": {
+ pp: [
+  R`**Định nghĩa:** với $0<a\ne1$, $b>0$: $\log_ab=\alpha\Leftrightarrow a^\alpha=b$. Kí hiệu $\log b=\log_{10}b$, $\ln b=\log_eb$.`,
+  R`**Tính chất:** $\log_a1=0$; $\log_aa=1$; $a^{\log_ab}=b$; $\log_aa^\alpha=\alpha$.`,
+  R`**Quy tắc** ($b,c>0$): $\log_a(bc)=\log_ab+\log_ac$; $\log_a\dfrac bc=\log_ab-\log_ac$; $\log_ab^\alpha=\alpha\log_ab$; **đổi cơ số** $\log_ab=\dfrac{\log_cb}{\log_ca}$, đặc biệt $\log_ab=\dfrac1{\log_ba}$.`,
+  R`**Ứng dụng:** độ pH $=-\log[\text{H}^+]$; độ Richter $M=\log\dfrac{A}{A_0}$ (biên độ gấp $10^k$ lần thì tăng $k$ độ).`
+ ],
+ luuY: [
+  R`$\log_a(b+c)\ne\log_ab+\log_ac$.`,
+  R`Quên điều kiện cơ số $0<a\ne1$ và biểu thức trong lôgarit dương.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Tính $\log_232$, $\log_3\dfrac19$, $\log_{\frac12}8$.`,
+   giai: [
+    R`$32=2^5$ nên $\log_232=5$.`,
+    R`$\dfrac19=3^{-2}$ nên $\log_3\dfrac19=-2$.`,
+    R`$8=2^3=\left(\dfrac12\right)^{-3}$ nên $\log_{\frac12}8=-3$.`
+   ] },
+ { muc: "TH", de: R`Tính $A=\log_212-\log_23+\log_2\sqrt2$.`,
+   giai: [
+    R`$\log_212-\log_23=\log_2\dfrac{12}3=\log_24=2$.`,
+    R`$\log_2\sqrt2=\log_22^{\frac12}=\dfrac12$.`,
+    R`$A=2+\dfrac12=\dfrac52$.`
+   ] },
+ { muc: "TH", de: R`Cho $\log_23=a$. Tính $\log_218$, $\log_32$ và $\log_618$ theo $a$.`,
+   giai: [
+    R`$\log_218=\log_2(2\cdot3^2)=1+2\log_23=1+2a$.`,
+    R`$\log_32=\dfrac1{\log_23}=\dfrac1a$.`,
+    R`$\log_618=\dfrac{\log_218}{\log_26}=\dfrac{1+2a}{\log_2(2\cdot3)}=\dfrac{1+2a}{1+a}$.`
+   ] },
+ { muc: "VD", de: R`a) Một dung dịch có nồng độ $[\text{H}^+]=10^{-3}$ mol/L. Tính pH. b) Một dung dịch có pH $=5{,}5$. Tính $[\text{H}^+]$. c) Biên độ trận động đất A gấp $100$ lần trận B. Độ Richter của A lớn hơn của B bao nhiêu?`,
+   giai: [
+    R`a) $\text{pH}=-\log10^{-3}=3$.`,
+    R`b) $-\log[\text{H}^+]=5{,}5\Leftrightarrow[\text{H}^+]=10^{-5{,}5}\approx3{,}16\cdot10^{-6}$ (mol/L).`,
+    R`c) $M_A-M_B=\log\dfrac{A_A}{A_0}-\log\dfrac{A_B}{A_0}=\log\dfrac{A_A}{A_B}=\log100=2$ (độ).`
+   ] }
+ ] },
+"C6-B20-D25": {
+ pp: [
+  R`**Hàm số mũ** $y=a^x$ ($0<a\ne1$): tập xác định $\mathbb R$, tập giá trị $(0;+\infty)$; đồng biến khi $a>1$, nghịch biến khi $0<a<1$; đồ thị đi qua $(0;1)$ và $(1;a)$, luôn nằm trên trục hoành.`,
+  R`**Hàm số lôgarit** $y=\log_ax$: tập xác định $(0;+\infty)$, tập giá trị $\mathbb R$; đồng biến khi $a>1$, nghịch biến khi $0<a<1$; đồ thị đi qua $(1;0)$ và $(a;1)$, nằm bên phải trục tung.`,
+  R`**Tập xác định của $y=\log_au(x)$:** giải $u(x)>0$ (kết hợp điều kiện của căn, mẫu nếu có).`,
+  R`Đồ thị $y=a^x$ và $y=\log_ax$ đối xứng nhau qua đường thẳng $y=x$.`
+ ],
+ luuY: [
+  R`Nhận xét tính đơn điệu theo dấu của số mũ thay vì theo cơ số.`,
+  R`Đặt điều kiện $u(x)\ge0$ cho lôgarit (phải là $u(x)>0$).`
+ ],
+ vd: [
+ { muc: "NB", de: R`Trong các hàm số $y=\left(\dfrac\pi4\right)^x$, $y=\left(\sqrt3\right)^x$, $y=\log_{0{,}5}x$, $y=\log_{\frac e2}x$, hàm số nào đồng biến trên tập xác định?`,
+   giai: [
+    R`$\dfrac\pi4\approx0{,}785<1$: nghịch biến. $\sqrt3>1$: đồng biến.`,
+    R`$0{,}5<1$: nghịch biến. $\dfrac e2\approx1{,}36>1$: đồng biến.`,
+    R`**Kết luận.** $y=\left(\sqrt3\right)^x$ và $y=\log_{\frac e2}x$.`
+   ] },
+ { muc: "TH", de: R`Tìm tập xác định của $y=\log_2(x^2-4x+3)$.`,
+   giai: [
+    R`Điều kiện $x^2-4x+3>0\Leftrightarrow(x-1)(x-3)>0\Leftrightarrow x<1$ hoặc $x>3$.`,
+    R`$D=(-\infty;1)\cup(3;+\infty)$.`
+   ] },
+ { muc: "TH", de: R`Tìm tập xác định của $y=\log_3(4-x)+\sqrt{x-1}$.`,
+   giai: [
+    R`Điều kiện: $4-x>0$ và $x-1\ge0$, tức $x<4$ và $x\ge1$.`,
+    R`$D=[1;4)$.`
+   ] },
+ { muc: "VD", de: R`Vẽ đồ thị các hàm số $y=2^x$ và $y=\log_2x$ trên cùng một hệ trục. Nhận xét.`,
+   giai: [
+    R`Bảng giá trị $y=2^x$: $x=-1,0,1,2$ cho $y=\dfrac12,1,2,4$.`,
+    R`Bảng giá trị $y=\log_2x$: $x=\dfrac12,1,2,4$ cho $y=-1,0,1,2$ (đổi chỗ $x$, $y$ của bảng trên).`,
+    R`**Nhận xét.** Cả hai hàm đồng biến (cơ số $2>1$); hai đồ thị đối xứng nhau qua đường thẳng $y=x$; $y=2^x$ luôn nằm trên trục hoành, $y=\log_2x$ luôn nằm bên phải trục tung.`
+   ],
+   hinh: R`\begin{tikzpicture}[scale=0.8,>=stealth]
+\draw[->] (-2.5,0)--(4.8,0) node[below]{$x$};
+\draw[->] (0,-2.5)--(0,4.8) node[left]{$y$};
+\draw[thick,blue,domain=-2.5:2.2,samples=80] plot(\x,{pow(2,\x)});
+\draw[thick,red,domain=0.18:4.6,samples=80] plot(\x,{ln(\x)/ln(2)});
+\draw[dashed,gray] (-2.3,-2.3)--(4.5,4.5);
+\fill (0,1) circle (2pt); \fill (1,0) circle (2pt); \fill (1,2) circle (2pt); \fill (2,1) circle (2pt);
+\node[left] at (0,1){$1$}; \node[below] at (1,0){$1$};
+\node[right] at (2.05,4.1){$y=2^x$}; \node[right] at (3.6,1.5){$y=\log_2x$}; \node[right] at (4.3,4.3){$y=x$};
+\node[below left] at (0,0){$O$};
+\end{tikzpicture}`,
+   chuThich: R`Đồ thị $y=2^x$ (xanh) và $y=\log_2x$ (đỏ) đối xứng qua đường $y=x$ (nét đứt).` },
+ { muc: "TH", de: R`So sánh $\log_{0{,}3}5$ và $\log_{0{,}3}7$.`,
+   giai: [
+    R`Cơ số $0<0{,}3<1$ nên hàm $y=\log_{0{,}3}x$ nghịch biến.`,
+    R`$5<7$ nên $\log_{0{,}3}5>\log_{0{,}3}7$.`
+   ] }
+ ] },
+"C6-B21-D26": {
+ pp: [
+  R`**Phương trình mũ cơ bản:** $a^x=b$ có nghiệm $x=\log_ab$ khi $b>0$, vô nghiệm khi $b\le0$.`,
+  R`**Đưa về cùng cơ số:** $a^{u(x)}=a^{v(x)}\Leftrightarrow u(x)=v(x)$.`,
+  R`**Phương trình lôgarit:** $\log_au(x)=b\Leftrightarrow u(x)=a^b$; $\log_au=\log_av\Leftrightarrow u=v>0$. Luôn đặt điều kiện trước, đối chiếu sau.`,
+  R`**Đặt ẩn phụ:** ví dụ $t=a^x$ (điều kiện $t>0$), $t=\log_ax$, đưa về phương trình bậc hai.`
+ ],
+ luuY: [
+  R`Quên điều kiện xác định của lôgarit nên nhận nghiệm ngoại lai.`,
+  R`Đặt $t=3^x$ nhưng nhận cả nghiệm $t\le0$.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Giải phương trình $2^{x+1}=8$.`,
+   giai: [
+    R`$8=2^3$: $2^{x+1}=2^3\Leftrightarrow x+1=3\Leftrightarrow x=2$.`
+   ] },
+ { muc: "TH", de: R`Giải phương trình $9^x-4\cdot3^x+3=0$.`,
+   giai: [
+    R`$9^x=(3^x)^2$. Đặt $t=3^x>0$: $t^2-4t+3=0\Leftrightarrow t=1$ hoặc $t=3$ (đều dương).`,
+    R`$3^x=1\Leftrightarrow x=0$; $3^x=3\Leftrightarrow x=1$.`,
+    R`**Kết quả.** $x\in\{0;1\}$.`
+   ] },
+ { muc: "TH", de: R`Giải phương trình $\log_2(x-1)=3$.`,
+   giai: [
+    R`Điều kiện $x>1$.`,
+    R`$x-1=2^3=8\Leftrightarrow x=9$ (thoả mãn).`
+   ] },
+ { muc: "VD", de: R`Giải phương trình $\log_2x+\log_2(x-2)=3$.`,
+   giai: [
+    R`Điều kiện: $x>0$ và $x>2$, tức $x>2$.`,
+    R`$\log_2[x(x-2)]=3\Leftrightarrow x^2-2x=8\Leftrightarrow x^2-2x-8=0\Leftrightarrow x=4$ hoặc $x=-2$.`,
+    R`Đối chiếu điều kiện: loại $x=-2$. **Kết quả.** $x=4$.`
+   ] },
+ { muc: "VD", de: R`Dân số một tỉnh là $90$ vạn người, tăng đều $1\%$ mỗi năm. Sau ít nhất bao nhiêu năm dân số đạt $100$ vạn người?`,
+   giai: [
+    R`Sau $n$ năm: $90\cdot1{,}01^n$. Cần $90\cdot1{,}01^n=100\Leftrightarrow1{,}01^n=\dfrac{10}9$.`,
+    R`$n=\log_{1{,}01}\dfrac{10}9=\dfrac{\ln\frac{10}9}{\ln1{,}01}\approx10{,}59$.`,
+    R`$n$ là số nguyên nên cần ít nhất $11$ năm.`
+   ] }
+ ] },
+"C6-B21-D27": {
+ pp: [
+  R`**Bất phương trình mũ:** nếu $a>1$: $a^u>a^v\Leftrightarrow u>v$ (giữ chiều); nếu $0<a<1$: $a^u>a^v\Leftrightarrow u<v$ (**đổi chiều**).`,
+  R`**Bất phương trình lôgarit:** nếu $a>1$: $\log_au>\log_av\Leftrightarrow u>v>0$; nếu $0<a<1$: $\log_au>\log_av\Leftrightarrow0<u<v$.`,
+  R`Đưa hai vế về cùng cơ số; luôn kèm điều kiện biểu thức trong lôgarit dương.`,
+  R`Bài thực tế "sau ít nhất bao nhiêu năm thì vượt...": lập bất phương trình mũ, lấy lôgarit, chọn số nguyên nhỏ nhất thoả mãn.`
+ ],
+ luuY: [
+  R`Quên đổi chiều khi cơ số nhỏ hơn $1$.`,
+  R`Quên điều kiện $u>0$ ở bất phương trình lôgarit.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Giải bất phương trình $2^x>8$.`,
+   giai: [
+    R`$2^x>2^3$, cơ số $2>1$ nên $x>3$.`
+   ] },
+ { muc: "TH", de: R`Giải bất phương trình $\left(\dfrac13\right)^{x-1}\ge9$.`,
+   giai: [
+    R`$9=\left(\dfrac13\right)^{-2}$, nên bất phương trình là $\left(\dfrac13\right)^{x-1}\ge\left(\dfrac13\right)^{-2}$.`,
+    R`Cơ số $\dfrac13<1$, đổi chiều: $x-1\le-2\Leftrightarrow x\le-1$.`
+   ] },
+ { muc: "TH", de: R`Giải bất phương trình $\log_2(x-3)<2$.`,
+   giai: [
+    R`Cơ số $2>1$: $0<x-3<2^2\Leftrightarrow3<x<7$.`,
+    R`Tập nghiệm $S=(3;7)$.`
+   ] },
+ { muc: "VD", de: R`Giải bất phương trình $\log_{0{,}5}(2x-1)\ge\log_{0{,}5}(x+2)$.`,
+   giai: [
+    R`Cơ số $0<0{,}5<1$ nên bất phương trình $\Leftrightarrow0<2x-1\le x+2$.`,
+    R`$2x-1>0\Leftrightarrow x>\dfrac12$; $2x-1\le x+2\Leftrightarrow x\le3$.`,
+    R`Tập nghiệm $S=\left(\dfrac12;3\right]$.`
+   ] },
+ { muc: "VD", de: R`Gửi $100$ triệu đồng với lãi suất $7\%$/năm, lãi nhập gốc. Sau ít nhất bao nhiêu năm số tiền vượt $150$ triệu đồng?`,
+   giai: [
+    R`Cần $100\cdot1{,}07^n>150\Leftrightarrow1{,}07^n>1{,}5\Leftrightarrow n>\log_{1{,}07}1{,}5=\dfrac{\ln1{,}5}{\ln1{,}07}\approx5{,}99$.`,
+    R`Số nguyên nhỏ nhất là $n=6$. Kiểm tra: $1{,}07^5\approx1{,}403<1{,}5$; $1{,}07^6\approx1{,}501>1{,}5$ ✓.`,
+    R`**Kết luận.** Sau ít nhất $6$ năm.`
+   ] }
+ ] }
+});
 })(window);
