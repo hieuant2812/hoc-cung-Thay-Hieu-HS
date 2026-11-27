@@ -443,4 +443,75 @@ Object.assign(D, {
    ] }
  ] }
 });
+/* ---------- Chương III · Các số đặc trưng đo xu thế trung tâm của mẫu số liệu ghép nhóm ---------- */
+const BANG11 = R`$$\begin{array}{|c|c|c|c|c|c|}\hline \text{Thời gian (phút)}&[0;10)&[10;20)&[20;30)&[30;40)&[40;50)\\\hline \text{Số học sinh}&5&12&15&6&2\\\hline\end{array}$$`;
+Object.assign(D, {
+"C3-B8-D12": {
+ pp: [
+  R`**Mẫu số liệu ghép nhóm:** số liệu được chia vào các nhóm $[a_1;a_2),[a_2;a_3),\dots$; tần số $n_i$ là số giá trị thuộc nhóm thứ $i$; cỡ mẫu $n=n_1+n_2+\dots+n_k$.`,
+  R`**Giá trị đại diện** của nhóm $[a_i;a_{i+1})$: $x_i=\dfrac{a_i+a_{i+1}}2$ (trung điểm).`,
+  R`**Ghép nhóm từ dữ liệu:** chọn độ dài nhóm bằng nhau, đầu mút trái thuộc nhóm, đầu mút phải không thuộc nhóm; đếm cẩn thận, kiểm tra tổng tần số bằng số dữ liệu.`,
+  R`Tỉ lệ phần trăm của một (vài) nhóm $=\dfrac{\text{tổng tần số các nhóm đó}}{n}\cdot100\%$.`
+ ],
+ luuY: [
+  R`Đếm giá trị đúng bằng đầu mút phải vào nhóm đó (phải đưa sang nhóm sau).`,
+  R`Lấy đầu mút trái làm giá trị đại diện.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Thời gian đi từ nhà đến trường của một nhóm học sinh được ghi lại như sau:` + BANG11 + R`Tìm cỡ mẫu, nhóm có nhiều học sinh nhất và giá trị đại diện của nhóm đó.`,
+   giai: [
+    R`Cỡ mẫu $n=5+12+15+6+2=40$.`,
+    R`Nhóm có tần số lớn nhất ($15$) là $[20;30)$.`,
+    R`Giá trị đại diện: $\dfrac{20+30}2=25$ (phút).`
+   ] },
+ { muc: "TH", de: R`Với bảng ở ví dụ 1, có bao nhiêu phần trăm học sinh đi đến trường mất dưới $20$ phút?`,
+   giai: [
+    R`"Dưới $20$ phút" gồm hai nhóm $[0;10)$ và $[10;20)$: $5+12=17$ học sinh.`,
+    R`Tỉ lệ: $\dfrac{17}{40}=0{,}425=42{,}5\%$.`
+   ] },
+ { muc: "TH", de: R`Chiều cao (cm) của $20$ học sinh: $152$, $155$, $158$, $160$, $161$, $163$, $163$, $165$, $166$, $167$, $168$, $168$, $170$, $171$, $172$, $173$, $175$, $176$, $178$, $180$. Lập bảng tần số ghép nhóm với các nhóm có độ dài $5$, bắt đầu từ $150$.`,
+   giai: [
+    R`Các nhóm: $[150;155)$, $[155;160)$, $[160;165)$, $[165;170)$, $[170;175)$, $[175;180)$, $[180;185)$.`,
+    R`Đếm: $[150;155)$: $152$ → $1$. $[155;160)$: $155,158$ → $2$. $[160;165)$: $160,161,163,163$ → $4$. $[165;170)$: $165,166,167,168,168$ → $5$.`,
+    R`$[170;175)$: $170,171,172,173$ → $4$. $[175;180)$: $175,176,178$ → $3$. $[180;185)$: $180$ → $1$. (Chú ý $155$, $160$, $165$, $170$, $175$, $180$ được xếp vào nhóm có đầu mút trái là chính nó.)`,
+    R`Bảng tần số ghép nhóm: $$\begin{array}{|c|c|}\hline \text{Chiều cao (cm)}&\text{Tần số}\\\hline [150;155)&1\\\hline [155;160)&2\\\hline [160;165)&4\\\hline [165;170)&5\\\hline [170;175)&4\\\hline [175;180)&3\\\hline [180;185)&1\\\hline\end{array}$$`,
+    R`Kiểm tra: $1+2+4+5+4+3+1=20$ ✓.`
+   ] }
+ ] },
+"C3-B9-D13": {
+ pp: [
+  R`**Số trung bình:** $\overline x=\dfrac{n_1x_1+n_2x_2+\dots+n_kx_k}{n}$, với $x_i$ là giá trị đại diện.`,
+  R`**Trung vị** $M_e$: tìm nhóm $[u_m;u_{m+1})$ đầu tiên có tần số tích luỹ $\ge\dfrac n2$. $M_e=u_m+\dfrac{\frac n2-C}{n_m}\cdot(u_{m+1}-u_m)$, với $C$ là tần số tích luỹ của nhóm **ngay trước**, $n_m$ là tần số nhóm đó.`,
+  R`**Tứ phân vị:** $Q_2=M_e$; $Q_1$ và $Q_3$ tính như trên, thay $\dfrac n2$ bằng $\dfrac n4$ và $\dfrac{3n}4$.`,
+  R`**Mốt** $M_o$: nhóm $[u_m;u_{m+1})$ có tần số lớn nhất $n_m$; $M_o=u_m+\dfrac{n_m-n_{m-1}}{(n_m-n_{m-1})+(n_m-n_{m+1})}\cdot(u_{m+1}-u_m)$ (nhóm trước, sau không có thì lấy tần số $0$).`
+ ],
+ luuY: [
+  R`Dùng tần số tích luỹ **của chính nhóm chứa trung vị** làm $C$ (phải là của nhóm ngay trước).`,
+  R`Tính số trung bình bằng đầu mút nhóm thay vì giá trị đại diện.`
+ ],
+ vd: [
+ { muc: "NB", de: R`Với bảng thời gian đến trường ở dạng trước:` + BANG11 + R`Tính thời gian trung bình.`,
+   giai: [
+    R`Giá trị đại diện: $5$, $15$, $25$, $35$, $45$.`,
+    R`$\overline x=\dfrac{5\cdot5+12\cdot15+15\cdot25+6\cdot35+2\cdot45}{40}=\dfrac{25+180+375+210+90}{40}=\dfrac{880}{40}=22$ (phút).`
+   ] },
+ { muc: "TH", de: R`Với bảng trên, tìm trung vị của mẫu số liệu.`,
+   giai: [
+    R`Tần số tích luỹ: $5$; $17$; $32$; $38$; $40$.`,
+    R`$\dfrac n2=20$. Nhóm đầu tiên có tần số tích luỹ $\ge20$ là $[20;30)$ (tích luỹ $32$); nhóm trước có $C=17$; $n_m=15$.`,
+    R`$M_e=20+\dfrac{20-17}{15}\cdot10=20+2=22$ (phút).`
+   ] },
+ { muc: "TH", de: R`Với bảng trên, tìm các tứ phân vị $Q_1$, $Q_3$.`,
+   giai: [
+    R`$\dfrac n4=10$: nhóm chứa $Q_1$ là $[10;20)$ (tích luỹ $17\ge10$), $C=5$, $n_m=12$. $Q_1=10+\dfrac{10-5}{12}\cdot10=10+\dfrac{25}6=\dfrac{85}6\approx14{,}17$.`,
+    R`$\dfrac{3n}4=30$: nhóm chứa $Q_3$ là $[20;30)$ (tích luỹ $32\ge30$), $C=17$, $n_m=15$. $Q_3=20+\dfrac{30-17}{15}\cdot10=20+\dfrac{26}3=\dfrac{86}3\approx28{,}67$.`
+   ] },
+ { muc: "VD", de: R`Với bảng trên, tìm mốt của mẫu số liệu và giải thích ý nghĩa.`,
+   giai: [
+    R`Nhóm có tần số lớn nhất: $[20;30)$ với $n_m=15$; nhóm trước có $12$, nhóm sau có $6$.`,
+    R`$M_o=20+\dfrac{15-12}{(15-12)+(15-6)}\cdot10=20+\dfrac3{12}\cdot10=22{,}5$ (phút).`,
+    R`**Ý nghĩa.** Thời gian đến trường hay gặp nhất là khoảng $22{,}5$ phút.`
+   ] }
+ ] }
+});
 })(window);
